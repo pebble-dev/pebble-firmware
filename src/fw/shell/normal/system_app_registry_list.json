@@ -549,8 +549,7 @@
         "spalding",
         "silk",
         "robert"
-      ],
-      "ifdefs": ["CAPABILITY_HAS_MICROPHONE=1"]
+      ]
     },
     {
       "id": -91,
