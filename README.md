@@ -100,7 +100,7 @@ Make sure openocd is installed, then run:
 ./waf flash
 ```
 
-## Flashing firmware (nRF)
+## Flashing firmware (nRF, `nrfjprog`)
 
 First make sure Nordic S140 Softdevice is flashed (only do this once):
 
@@ -114,6 +114,28 @@ Flash the firmware:
 nrfjprog --program build/src/fw/tintin_fw.elf --sectorerase --reset
 ```
 
+## Flashing firmware (nRF, OpenOCD or BlackMagicDebug)
+
+Launch OpenOCD as needed to connect to your target:
+
+```shell
+openocd -f interface/cmsis-dap.cfg -f target/nrf52.cfg
+```
+
+First make sure Nordic S140 Softdevice is flashed (only do this once):
+
+```shell
+arm-none-eabi-gdb -ex 'target extended-remote localhost:3333' -ex 'load src/fw/vendor/nrf5-sdk/components/softdevice/s140/hex/s140_nrf52_7.2.0_softdevice.hex' -ex exit
+```
+
+Flash the firmware:
+
+```shell
+arm-none-eabi-gdb -ex 'target extended-remote localhost:3333' build/src/fw/tintin_fw.elf -ex load -ex 'monitor poll on' -ex 'monitor reset halt'
+```
+
+And at the `(gdb)` prompt, you can issue the command `run` to release the board from reset.
+
 ## Flashing resources
 
 The first time you boot you may see a "sad watch" screen because resources are not
@@ -123,7 +145,10 @@ flashed. To flash resources, run:
 ./waf image_resources
 ```
 
-You don't need to do this every time, only when resources are changed.
+You don't need to do this every time, only when resources are changed.  On
+some machines, probing the TTY automatically will fail; in this case, you
+can use the `--tty` parameter (i.e., `./waf image_resources --tty
+/dev/tty.usbserial-TG110ae90` to use the UART port of an attached Tigard).
 
 ## Viewing logs
 
