@@ -41,28 +41,11 @@ may work right now.
 - If using Ubuntu, install `gcc-multilib` and `gettext`
 - (If you want to use an nRF based board) Install `nrfjprog` from
   https://www.nordicsemi.com/Products/Development-tools/nRF-Command-Line-Tools.
-- Create a Python venv:
-
-  ```shell
-  python -m venv .venv
-  ```
-
-- Activate the Python venv (also every time you start working):
-  ```shell
-  source .venv/bin/activate
-  ```
-- Install dependencies:
-  ```shell
-  pip install -r requirements-linux.txt
-  ```
-- Install local dependencies:
-  ```shell
-  pip install -e \
-    python_libs/pblprog \
-    python_libs/pebble-commander \
-    python_libs/pulse2 \
-    python_libs/pebble-loghash
-  ```
+- Install Python dependencies managers:
+  - [uv](https://docs.astral.sh/uv/getting-started/installation/)
+  - [Hatch](https://hatch.pypa.io/latest/install/)
+  - The tools may be installed from pip, but installing them with `pipx` is preferred.
+- Enter Python virtual environment shell with `uv run bash` (or other shells if desired)
 
 ## Building
 
