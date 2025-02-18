@@ -1,0 +1,25 @@
+[project]
+name = "pebble.pulse2"
+version = "0.0.7"
+description = "Python tools for connecting to PULSEv2 links"
+readme = "README.rst"
+requires-python = ">=3.8"
+dependencies = [
+	"cobs",
+	"construct>=2.5.3,<2.8",
+	"pyserial",
+	"transitions==0.4.1",
+	"enum34; python_version < \"3.4.0\"",
+]
+
+[project.optional-dependencies]
+dev = [
+	"mock>=2.0.0; python_version < \"3.3.0\"",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pebble"]
