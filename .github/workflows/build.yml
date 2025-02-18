@@ -8,6 +8,7 @@ on:
 
 env:
   ARM_GNU_TOOLCHAIN_VERSION: 14.2.rel1
+  HATCH_VERSION: 1.9.7
 
 jobs:
   build:
@@ -26,29 +27,33 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.6.1"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
       - name: Set up environment
         run: |
           sudo apt-get update
           sudo apt-get install -y gettext gcc-multilib
-          pip install -r requirements-linux.txt
-          pip install -e \
-            python_libs/pblprog \
-            python_libs/pebble-commander \
-            python_libs/pulse2 \
-            python_libs/pebble-loghash
+          curl -Lf https://github.com/pypa/hatch/releases/download/hatch-v${HATCH_VERSION}/hatch-${HATCH_VERSION}-$(uname -m)-unknown-linux-gnu.tar.gz | tar xzf -
+          sudo mv hatch-${HATCH_VERSION}-$(uname -m)-unknown-linux-gnu /usr/local/bin/hatch
+          uv sync --dev
           wget --no-verbose "https://developer.arm.com/-/media/Files/downloads/gnu/${ARM_GNU_TOOLCHAIN_VERSION}/binrel/arm-gnu-toolchain-${ARM_GNU_TOOLCHAIN_VERSION}-x86_64-arm-none-eabi.tar.xz"
           sudo tar xf arm-gnu-toolchain-${ARM_GNU_TOOLCHAIN_VERSION}-x86_64-arm-none-eabi.tar.xz -C /opt
           echo "/opt/arm-gnu-toolchain-${ARM_GNU_TOOLCHAIN_VERSION}-x86_64-arm-none-eabi/bin" >> $GITHUB_PATH
 
       - name: Configure
-        run: ./waf configure --board ${{ matrix.board }} --nojs
+        run: uv run ./waf configure --board ${{ matrix.board }} --nojs
 
       - name: Build FW
-        run: ./waf build
+        run: uv run ./waf build
 
       - name: Build recovery FW
         if: ${{ matrix.board == 'asterix_vla_dvb1' }}
-        run: ./waf build_prf
+        run: uv run ./waf build_prf
 
       - name: Store firmware images
         uses: actions/upload-artifact@v4
@@ -63,11 +68,11 @@ jobs:
 
       - name: Configure (QEMU)
         if: ${{ matrix.board != 'asterix_vla_dvb1' }}
-        run: ./waf clean configure --board ${{ matrix.board }} --nojs --qemu
+        run: uv run ./waf clean configure --board ${{ matrix.board }} --nojs --qemu
 
       - name: Build FW (QEMU)
         if: ${{ matrix.board != 'asterix_vla_dvb1' }}
-        run: ./waf build qemu_image_micro qemu_image_spi
+        run: uv run ./waf build qemu_image_micro qemu_image_spi
 
       - name: Store firmware images (QEMU)
         if: ${{ matrix.board != 'asterix_vla_dvb1' }}
