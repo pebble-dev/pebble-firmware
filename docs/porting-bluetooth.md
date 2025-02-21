@@ -14,35 +14,53 @@ the respect of PebbleOS!
 A Bluetooth driver exports 70-ish APIs, and has a handful of callbacks that
 it needs to trigger at appropriate times.  I group these below in terms of
 API families that one should implement, roughly in order of how critical it
-is to implement them to get anything at all working.  Below are the ones I
-haven't gotten a chance to actually sift through and write about, but the
-list is getting smaller:
+is to implement them to get anything at all working.
+
+### Power and identity
+
+* bt_driver_init
+* bt_driver_start
+* bt_driver_stop
+* bt_driver_power_down_controller_on_boot
+* bt_driver_id_set_local_device_name 
+* bt_driver_id_copy_local_identity_address
+* bt_driver_id_copy_chip_info_string
+* bt_driver_id_generate_private_resolvable_address
+* bt_driver_supports_bt_classic
+* bt_driver_set_local_address
+
+* bt_driver_comm_schedule_send_next_job -- you probably just want to have
+  these run on KernelMain, unless you have your own thread that sends should
+  happen from.  copy from qemu
+* bt_driver_comm_is_current_task_send_next_task
+
+### Advertising
 
 * bt_driver_adv_reconnect_get_job_terms
 * bt_driver_advert_advertising_disable 
 * bt_driver_advert_client_get_tx_power
 * bt_driver_advert_set_advertising_data
 * bt_driver_advert_advertising_enable
-* bt_driver_supports_bt_classic
-* bt_driver_comm_schedule_send_next_job
-* bt_driver_comm_is_current_task_send_next_task
-* bt_driver_gap_le_disconnect
-* bt_driver_gap_le_device_name_request
-* bt_driver_gap_le_device_name_request_all
+
+### Scanning
+
 * bt_driver_start_le_scan
 * bt_driver_stop_le_scan
 * bt_driver_cb_le_scan_handle_report
-* bt_driver_id_set_local_device_name 
-* bt_driver_id_copy_local_identity_address
-* bt_driver_set_local_address
-* bt_driver_id_copy_chip_info_string
-* bt_driver_id_generate_private_resolvable_address
-* bt_driver_init
-* bt_driver_start
-* bt_driver_stop
-* bt_driver_power_down_controller_on_boot
+
+### GAP
+
+* bt_driver_gap_le_disconnect
+* bt_driver_gap_le_device_name_request
+* bt_driver_gap_le_device_name_request_all
 * bt_driver_le_connection_parameter_update
-* sys_app_comm_get_sniff_interval
+* bt_driver_handle_le_connection_handle_update_address_and_irk
+* bt_driver_handle_peer_version_info_event
+* bt_driver_handle_le_connection_complete_event
+* bt_driver_handle_le_disconnection_complete_event
+* bt_driver_handle_le_encryption_change_event
+* bt_driver_handle_le_conn_params_update_event
+
 
 ### Pairing and pairing service
 
@@ -127,7 +145,7 @@ These apply only to Bluetooth Classic and are no-ops on BLE.
 * bt_driver_reconnect_notify_platform_bitfield
 * bt_driver_le_pairability_set_enabled -- not implemented even on Dialog
 * bt_driver_classic_pairability_set_enabled
-
+* sys_app_comm_get_sniff_interval
 
 ### BLE advertisement bug workaround APIs.
 
