@@ -77,6 +77,11 @@ static ble_gap_adv_data_t _advdata = {
   .scan_rsp_data = { .p_data = _srdata_buf, .len = sizeof(_srdata_buf) },
 };
 
+static BTDeviceAddress s_identity_address; /* initialized at bt_driver_start time */
+void bt_driver_id_copy_local_identity_address(BTDeviceAddress *addr_out) {
+  *addr_out = s_identity_address;
+}
+
 static DisInfo s_dis_info;
 
 bool bt_driver_start(BTDriverConfig *config) {
@@ -99,7 +104,13 @@ bool bt_driver_start(BTDriverConfig *config) {
   rv = ble_dis_init(&dis_init);
   PBL_ASSERTN(rv == NRF_SUCCESS);
 
-  /* config->identity_addr is an OUTPUT from here, but TI does not set it.  all the same, we will do it here */
+  /* config->identity_addr is an OUTPUT from here, but TI does not set it. 
+   * all the same, we will do it here.  we grab the identity_addr on boot,
+   * so it is unaffected by later calls to bt_driver_set_local_address */
+  ble_gap_addr_t addr;
+  sd_ble_gap_addr_get(&addr);
+  memcpy(&s_identity_address, addr.addr, 6);
+
   bt_driver_id_copy_local_identity_address(&config->identity_addr);
 
   /* config->is_hrm_supported_and_enabled */
