@@ -16,6 +16,7 @@
 #include <bluetooth/dis.h>
 #include <bluetooth/id.h>
 #include <bluetooth/qemu_transport.h>
+#include <bluetooth/bt_driver_advert.h>
 
 #include <stdlib.h>
 
@@ -69,14 +70,6 @@ void bt_driver_init(void) {
   PBL_LOG(LOG_LEVEL_INFO, "nRF52: BLE stack enabled");
 }
 
-static uint8_t _adv_handle = BLE_GAP_ADV_SET_HANDLE_NOT_SET;
-static uint8_t _advdata_buf[BLE_GAP_ADV_SET_DATA_SIZE_MAX];
-static uint8_t _srdata_buf[BLE_GAP_ADV_SET_DATA_SIZE_MAX];
-static ble_gap_adv_data_t _advdata = {
-  .adv_data = { .p_data = _advdata_buf, .len = sizeof(_advdata_buf) },
-  .scan_rsp_data = { .p_data = _srdata_buf, .len = sizeof(_srdata_buf) },
-};
-
 static BTDeviceAddress s_identity_address; /* initialized at bt_driver_start time */
 void bt_driver_id_copy_local_identity_address(BTDeviceAddress *addr_out) {
   *addr_out = s_identity_address;
@@ -115,8 +108,6 @@ bool bt_driver_start(BTDriverConfig *config) {
 
   /* config->is_hrm_supported_and_enabled */
 
-  /* XXX: later, these should go into advertising init */
-
   PBL_ASSERTN(!config->is_hrm_supported_and_enabled);
   static uint8_t _name_buf[24] = "Asterix softdevice";
   
@@ -125,37 +116,6 @@ bool bt_driver_start(BTDriverConfig *config) {
   sd_ble_gap_device_name_set(&sec_mode, _name_buf, strlen((char *)_name_buf));
   
   sd_ble_gap_appearance_set(BLE_APPEARANCE_GENERIC_WATCH);
-  
-  ble_advdata_t advdata;
-  ble_advdata_t srdata;
-  
-  ble_gap_adv_params_t advparams;
-  
-  memset(&advdata, 0, sizeof(advdata));
-  _advdata.adv_data.len = sizeof(_advdata_buf);
-  advdata.name_type = BLE_ADVDATA_FULL_NAME;
-  advdata.include_appearance = 1;
-  advdata.flags = BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE;
-  rv = ble_advdata_encode(&advdata, _advdata.adv_data.p_data, &_advdata.adv_data.len);
-  PBL_ASSERTN(rv == NRF_SUCCESS);
-  
-  memset(&srdata, 0, sizeof(srdata));
-  _advdata.scan_rsp_data.len = sizeof(_srdata_buf);
-  rv = ble_advdata_encode(&srdata, _advdata.scan_rsp_data.p_data, &_advdata.scan_rsp_data.len);
-  PBL_ASSERTN(rv == NRF_SUCCESS);
-  
-  memset(&advparams, 0, sizeof(advparams));
-  advparams.primary_phy = BLE_GAP_PHY_1MBPS;
-  advparams.duration = BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED;
-  advparams.properties.type = /* vis ? */ BLE_GAP_ADV_TYPE_CONNECTABLE_SCANNABLE_UNDIRECTED /*: BLE_GAP_ADV_TYPE_CONNECTABLE_NONSCANNABLE_DIRECTED */;
-  advparams.p_peer_addr = NULL;
-  advparams.filter_policy = /* vis ? */ BLE_GAP_ADV_FP_ANY /* : BLE_GAP_ADV_FP_FILTER_BOTH */; /* XXX: Later, whitelist things that can try to connect. */
-  advparams.interval = 64;
-  rv = sd_ble_gap_adv_set_configure(&_adv_handle, &_advdata, &advparams);
-  PBL_ASSERTN(rv == NRF_SUCCESS);
-  
-  rv = sd_ble_gap_adv_start(_adv_handle, CONN_TAG);
-  PBL_ASSERTN(rv == NRF_SUCCESS);
   
   prv_sdh_evts_poll_cb(NULL);
   
@@ -167,6 +127,7 @@ void bt_driver_stop(void) {
    * if we are connected; this will shut down the radio entirely (and there
    * is no other way to reset the softdevice through airplane mode or any
    * such, if it wedges you're on your own and it's time to boot) */
+  bt_driver_advert_advertising_disable();
 }
 
 void bt_driver_power_down_controller_on_boot(void) {

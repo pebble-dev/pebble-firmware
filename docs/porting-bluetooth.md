@@ -42,11 +42,6 @@ is to implement them to get anything at all working.
 * bt_driver_advert_set_advertising_data
 * bt_driver_advert_advertising_enable
 
-### Scanning
-
-* bt_driver_start_le_scan
-* bt_driver_stop_le_scan
-* bt_driver_cb_le_scan_handle_report
 
 ### GAP
 
@@ -128,6 +123,14 @@ rather than the OS.  Not implemented on TI.
 * bt_driver_cb_hrm_service_update_subscription
 * bt_driver_hrm_service_handle_measurement
 
+### Scanning
+
+Scanning was only used by APIs that never became public.
+
+* bt_driver_start_le_scan
+* bt_driver_stop_le_scan
+* bt_driver_cb_le_scan_handle_report
+
 ### Bluetooth Classic
 
 These apply only to Bluetooth Classic and are no-ops on BLE.
@@ -165,6 +168,7 @@ need to be repeatedly kicked.
 * bt_driver_analytics_external_collect_bt_chip_heartbeat
 * bt_driver_analytics_get_conn_event_stats
 * bluetooth_analytics_handle_ble_pairing_request (callback)
+
 
 ### Factory test mode / debugging.
 
