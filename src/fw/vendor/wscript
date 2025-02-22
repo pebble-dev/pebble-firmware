@@ -67,6 +67,7 @@ def build(bld):
             'components/libraries/atomic/nrf_atomic.c',
             'components/ble/ble_db_discovery/ble_db_discovery.c',
             'components/libraries/util/app_util_platform.c',
+            'components/ble/ble_services/ble_dis/ble_dis.c',
         ]
         micro_sources += [ "nrf5-sdk/" + f for f in nrf52_bluetooth_sources ]
  
@@ -82,6 +83,7 @@ def build(bld):
             'nrf5-sdk/components/ble/nrf_ble_qwr',
             'nrf5-sdk/components/ble/nrf_ble_gq',
             'nrf5-sdk/components/ble/ble_db_discovery',
+            'nrf5-sdk/components/ble/ble_services/ble_dis',
             'nrf5-sdk/components/softdevice/s140/headers',
             'nrf5-sdk/components/softdevice/common',
             'nrf5-sdk/components/libraries/util',
