@@ -79,8 +79,11 @@ void peek_layer_set_frame(PeekLayer *peek_layer, const GRect *frame);
 //! The peek layer will be primed with an unfold animation.
 //! The resource will begin as a dot until the peek layer is played.
 void peek_layer_set_icon(PeekLayer *peek_layer, const TimelineResourceInfo *timeline_res);
+void peek_layer_set_icon_with_invert(PeekLayer *peek_layer, const TimelineResourceInfo *timeline_res, bool invert);
 void peek_layer_set_icon_with_size(PeekLayer *peek_layer, const TimelineResourceInfo *timeline_res,
                                    TimelineResourceSize res_size, GRect icon_from);
+void peek_layer_set_icon_with_size_with_invert(PeekLayer *peek_layer, const TimelineResourceInfo *timeline_res,
+                                   TimelineResourceSize res_size, GRect icon_from, bool invert);
 
 //! Set the peek layer to have a stretching animation to a frame.
 //! @param align_in_frame if true, scale the image to the resource size and align within icon_to
@@ -89,6 +92,15 @@ void peek_layer_set_scale_to(PeekLayer *peek_layer, GRect icon_to);
 void peek_layer_set_scale_to_image(PeekLayer *peek_layer, const TimelineResourceInfo *timeline_res,
                                    TimelineResourceSize res_size, GRect icon_to,
                                    bool align_in_frame);
+
+//! Set the peek layer to have a stretching animation to a frame with the ability to invert the icon.
+//! @param align_in_frame if true, scale the image to the resource size and align within icon_to
+//! @param invert if true, invert the icon
+//! instead of scaling to the icon_to size
+void peek_layer_set_scale_to(PeekLayer *peek_layer, GRect icon_to);
+void peek_layer_set_scale_to_image_with_invert(PeekLayer *peek_layer, const TimelineResourceInfo *timeline_res,
+                                   TimelineResourceSize res_size, GRect icon_to,
+                                   bool align_in_frame, bool invert);
 
 //! Set the duration of the primed animation in milliseconds.
 void peek_layer_set_duration(PeekLayer *peek_layer, uint32_t duration);

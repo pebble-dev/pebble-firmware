@@ -123,9 +123,9 @@ void kino_player_set_reel_with_resource(KinoPlayer *player, uint32_t resource_id
 }
 
 void kino_player_set_reel_with_resource_system(KinoPlayer *player, ResAppNum app_num,
-                                               uint32_t resource_id) {
+                                               uint32_t resource_id, bool invert) {
   kino_player_set_reel(player, NULL, false);
-  KinoReel *new_reel = kino_reel_create_with_resource_system(app_num, resource_id);
+  KinoReel *new_reel = kino_reel_create_with_resource_system_with_invert(app_num, resource_id, invert);
   kino_player_set_reel(player, new_reel, true);
 }
 

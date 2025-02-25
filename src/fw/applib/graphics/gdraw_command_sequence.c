@@ -214,3 +214,44 @@ uint32_t gdraw_command_sequence_get_num_frames(GDrawCommandSequence *sequence) {
 
   return sequence->num_frames;
 }
+
+#if PBL_BW
+// These functions are only needed for B&W platforms due to the new notification system
+void gdraw_command_sequence_set_stroke_color(GDrawCommandSequence *sequence, GColor stroke_color) {
+  if (!sequence) {
+    return;
+  }
+
+  GDrawCommandFrame *frame = sequence->frames;
+  for (uint32_t i = 0; i < sequence->num_frames; i++) {
+    GDrawCommandList *command_list = gdraw_command_frame_get_command_list(frame);
+    if (command_list) {
+      GDrawCommand *command = command_list->commands;
+      for (uint32_t j = 0; j < command_list->num_commands; j++) {
+        gdraw_command_set_stroke_color(command, stroke_color);
+        command = (GDrawCommand *) (command->points + command->num_points);
+      }
+    }
+    frame = prv_next_frame(frame);
+  }
+}
+
+void gdraw_command_sequence_set_fill_color(GDrawCommandSequence *sequence, GColor fill_color) {
+  if (!sequence) {
+    return;
+  }
+
+  GDrawCommandFrame *frame = sequence->frames;
+  for (uint32_t i = 0; i < sequence->num_frames; i++) {
+    GDrawCommandList *command_list = gdraw_command_frame_get_command_list(frame);
+    if (command_list) {
+      GDrawCommand *command = command_list->commands;
+      for (uint32_t j = 0; j < command_list->num_commands; j++) {
+        gdraw_command_set_fill_color(command, fill_color);
+        command = (GDrawCommand *) (command->points + command->num_points);
+      }
+    }
+    frame = prv_next_frame(frame);
+  }
+}
+#endif

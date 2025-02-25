@@ -378,11 +378,34 @@ static void prv_card_init(NotificationLayout *layout, AttributeList *attributes,
 
   const GRect *frame = &layout->layout.layer.frame;
   const GSize icon_size = NOTIFICATION_TINY_RESOURCE_SIZE;
-  const int16_t origin_x = frame->origin.x + (frame->size.w / 2) - (icon_size.w / 2);
-  const int16_t origin_y = frame->origin.y + CARD_ICON_UPPER_PADDING;
+  int16_t origin_x = frame->origin.x + (frame->size.w / 2) - (icon_size.w / 2);
+  const int16_t origin_y = frame->origin.y + CARD_ICON_UPPER_PADDING + PBL_IF_RECT_ELSE(3, 0);
+  #if PBL_RECT
+  const char *banner_title_str = attribute_get_string(attributes, AttributeIdBannerTitle, "");
+  LayoutColors *colors = &layout->colors;
+  if (banner_title_str != NULL && banner_title_str[0] != '\0') {
+    const int16_t text_origin_x = frame->origin.x + icon_size.w + 5;
+    const GRect banner_title_frame = GRect(text_origin_x, 1, frame->size.w, frame->size.h);
+    
+    TextLayer *banner_title = text_layer_create(banner_title_frame);
+    text_layer_set_text(banner_title, banner_title_str);
+    text_layer_set_font(banner_title, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
+    text_layer_set_text_alignment(banner_title, GTextAlignmentLeft);
+    text_layer_set_background_color(banner_title, GColorClear);
+    text_layer_set_text_color(banner_title, colors->primary_color);
+    layer_add_child(&layout->layout.layer, text_layer_get_layer(banner_title));
+    origin_x = frame->origin.x + 5;
+  }
+  #endif
   kino_layer_init(&layout->icon_layer, &GRect(origin_x, origin_y, icon_size.w, icon_size.h));
+
+  #if PBL_BW
   kino_layer_set_reel_with_resource_system(&layout->icon_layer, layout->icon_res_info.res_app_num,
-                                           layout->icon_res_info.res_id);
+                                           layout->icon_res_info.res_id, true);
+  #else
+  kino_layer_set_reel_with_resource_system(&layout->icon_layer, layout->icon_res_info.res_app_num,
+                                           layout->icon_res_info.res_id, false);
+  #endif
   layer_add_child(&layout->layout.layer, kino_layer_get_layer(&layout->icon_layer));
 }
 
@@ -570,9 +593,9 @@ bool notification_layout_verify(bool existing_attributes[]) {
 static void prv_layout_init_colors(NotificationLayout *notification_layout) {
   LayoutColors *colors = &notification_layout->colors;
   *colors = (LayoutColors) {
-    .primary_color = GColorBlack,
+    .primary_color = GColorWhite,
     .secondary_color = GColorBlack,
-    .bg_color = GColorLightGray,
+    .bg_color = GColorBlack,
   };
 
 #if PBL_COLOR
