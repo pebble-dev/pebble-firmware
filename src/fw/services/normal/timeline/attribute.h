@@ -124,6 +124,8 @@ typedef enum {
   AttributeIdSubtitleTemplateString = 47,
   //! Generic icon.
   AttributeIdIcon = 48,
+  //! Origin of a Notification, will be displayed in the banner.
+  AttributeIdBannerTitle = 49,
   NumAttributeIds,
 } AttributeId;
 
