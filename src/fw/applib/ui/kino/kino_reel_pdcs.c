@@ -133,14 +133,20 @@ KinoReel *kino_reel_pdcs_create(GDrawCommandSequence *sequence, bool take_owners
 
 KinoReel *kino_reel_pdcs_create_with_resource(uint32_t resource_id) {
   ResAppNum app_num = sys_get_current_resource_num();
-  return kino_reel_pdcs_create_with_resource_system(app_num, resource_id);
+  return kino_reel_pdcs_create_with_resource_system(app_num, resource_id, false);
 }
 
-KinoReel *kino_reel_pdcs_create_with_resource_system(ResAppNum app_num, uint32_t resource_id) {
+KinoReel *kino_reel_pdcs_create_with_resource_system(ResAppNum app_num, uint32_t resource_id, bool invert) {
   GDrawCommandSequence *sequence = gdraw_command_sequence_create_with_resource_system(app_num,
                                                                                       resource_id);
   if (sequence == NULL) {
     return NULL;
   }
+  #if PBL_BW
+    if (invert) {
+      gdraw_command_sequence_set_stroke_color(sequence, GColorWhite);
+      gdraw_command_sequence_set_fill_color(sequence, GColorBlack);
+    }
+  #endif
   return kino_reel_pdcs_create(sequence, true);
 }

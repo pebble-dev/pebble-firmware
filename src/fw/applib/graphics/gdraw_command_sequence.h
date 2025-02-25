@@ -114,5 +114,17 @@ uint32_t gdraw_command_sequence_get_total_duration(GDrawCommandSequence *sequenc
 //! @return number of frames in the sequence
 uint32_t gdraw_command_sequence_get_num_frames(GDrawCommandSequence *sequence);
 
+#if PBL_BW
+//! Sets the stroke color for all commands in the sequence.
+//! @param sequence The sequence to modify.
+//! @param stroke_color The new stroke color.
+void gdraw_command_sequence_set_stroke_color(GDrawCommandSequence *sequence, GColor stroke_color);
+
+//! Sets the fill color for all commands in the sequence.
+//! @param sequence The sequence to modify.
+//! @param fill_color The new fill color.
+void gdraw_command_sequence_set_fill_color(GDrawCommandSequence *sequence, GColor fill_color);
+#endif
+
 //!   @} // end addtogroup DrawCommand
 //! @} // end addtogroup Graphics

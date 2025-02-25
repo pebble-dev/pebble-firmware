@@ -22,4 +22,4 @@ KinoReel *kino_reel_pdci_create(GDrawCommandImage *image, bool take_ownership);
 
 KinoReel *kino_reel_pdci_create_with_resource(uint32_t resource_id);
 
-KinoReel *kino_reel_pdci_create_with_resource_system(ResAppNum app_num, uint32_t resource_id);
+KinoReel *kino_reel_pdci_create_with_resource_system(ResAppNum app_num, uint32_t resource_id, bool invert);

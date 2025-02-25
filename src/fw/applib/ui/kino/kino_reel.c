@@ -37,6 +37,10 @@ KinoReel *kino_reel_create_with_resource(uint32_t resource_id) {
 }
 
 KinoReel *kino_reel_create_with_resource_system(ResAppNum app_num, uint32_t resource_id) {
+  return kino_reel_create_with_resource_system_with_invert(app_num, resource_id, false);
+}
+
+KinoReel *kino_reel_create_with_resource_system_with_invert(ResAppNum app_num, uint32_t resource_id, bool invert) {
   if (resource_id == RESOURCE_ID_INVALID) {
     return NULL;
   }
@@ -50,9 +54,9 @@ KinoReel *kino_reel_create_with_resource_system(ResAppNum app_num, uint32_t reso
 
   switch (ntohl(data_signature)) {
     case PDCS_SIGNATURE:
-      return kino_reel_pdcs_create_with_resource_system(app_num, resource_id);
+      return kino_reel_pdcs_create_with_resource_system(app_num, resource_id, invert);
     case PDCI_SIGNATURE:
-      return kino_reel_pdci_create_with_resource_system(app_num, resource_id);
+      return kino_reel_pdci_create_with_resource_system(app_num, resource_id, invert);
     case PNG_SIGNATURE:
       {
         bool is_apng = false;

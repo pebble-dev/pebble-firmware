@@ -187,12 +187,17 @@ static bool prv_is_dot_size(GSize size) {
 
 void peek_layer_set_icon_with_size(PeekLayer *peek_layer, const TimelineResourceInfo *timeline_res,
                                    TimelineResourceSize res_size, GRect icon_from) {
+  peek_layer_set_icon_with_size_with_invert(peek_layer, timeline_res, res_size, icon_from, false);
+}
+
+void peek_layer_set_icon_with_size_with_invert(PeekLayer *peek_layer, const TimelineResourceInfo *timeline_res,
+                                   TimelineResourceSize res_size, GRect icon_from, bool invert) {
   kino_layer_set_reel(&peek_layer->kino_layer, NULL, false);
 
   AppResourceInfo icon_res_info;
   timeline_resources_get_id(timeline_res, res_size, &icon_res_info);
-  KinoReel *from_reel = kino_reel_create_with_resource_system(icon_res_info.res_app_num,
-                                                              icon_res_info.res_id);
+  KinoReel *from_reel = kino_reel_create_with_resource_system_with_invert(icon_res_info.res_app_num,
+                                                              icon_res_info.res_id, invert);
   if (!from_reel) {
     return;
   }
@@ -239,6 +244,10 @@ void peek_layer_set_icon(PeekLayer *peek_layer, const TimelineResourceInfo *time
   peek_layer_set_icon_with_size(peek_layer, timeline_res, TimelineResourceSizeLarge, GRectZero);
 }
 
+void peek_layer_set_icon_with_invert(PeekLayer *peek_layer, const TimelineResourceInfo *timeline_res, bool invert) {
+  peek_layer_set_icon_with_size_with_invert(peek_layer, timeline_res, TimelineResourceSizeLarge, GRectZero, invert);
+}
+
 //! This is called after both the scale to and the PDCS is complete
 static void prv_scale_to_did_stop(KinoLayer *kino_layer, bool finished, void *context) {
   PeekLayer *peek_layer = context;
@@ -258,6 +267,13 @@ static void prv_scale_to_timer_callback(void *data) {
 void peek_layer_set_scale_to_image(PeekLayer *peek_layer, const TimelineResourceInfo *timeline_res,
                                    TimelineResourceSize res_size, GRect icon_to,
                                    bool align_in_frame) {
+  peek_layer_set_scale_to_image_with_invert(peek_layer, timeline_res, res_size, icon_to,
+                                            align_in_frame, false);
+}
+
+void peek_layer_set_scale_to_image_with_invert(PeekLayer *peek_layer, const TimelineResourceInfo *timeline_res,
+                                   TimelineResourceSize res_size, GRect icon_to,
+                                   bool align_in_frame, bool invert) {
   GRect icon_from = GRectZero;
   KinoReel *prev_reel = kino_layer_get_reel(&peek_layer->kino_layer);
   if (prev_reel) {
@@ -266,8 +282,8 @@ void peek_layer_set_scale_to_image(PeekLayer *peek_layer, const TimelineResource
   }
   kino_layer_set_reel(&peek_layer->kino_layer, NULL, false);
 
-  KinoReel *from_reel = kino_reel_create_with_resource_system(peek_layer->res_info.res_app_num,
-                                                              peek_layer->res_info.res_id);
+  KinoReel *from_reel = kino_reel_create_with_resource_system_with_invert(peek_layer->res_info.res_app_num,
+                                                              peek_layer->res_info.res_id, invert);
   if (!from_reel) {
     return;
   }
@@ -276,8 +292,8 @@ void peek_layer_set_scale_to_image(PeekLayer *peek_layer, const TimelineResource
   if (timeline_res) {
     AppResourceInfo res_info;
     timeline_resources_get_id(timeline_res, res_size, &res_info);
-    to_reel = kino_reel_create_with_resource_system(res_info.res_app_num,
-                                                    res_info.res_id);
+    to_reel = kino_reel_create_with_resource_system_with_invert(res_info.res_app_num,
+                                                    res_info.res_id, invert);
   }
 
   GSize size;

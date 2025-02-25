@@ -86,9 +86,11 @@ struct KinoReel {
   const KinoReelImpl *impl;
 };
 
-KinoReel *kino_reel_create_with_resource(uint32_t resource_id);
+KinoReel *kino_reel_create_with_resource(uint32_t resource_id);\
 
 KinoReel *kino_reel_create_with_resource_system(ResAppNum app_num, uint32_t resource_id);
+
+KinoReel *kino_reel_create_with_resource_system_with_invert(ResAppNum app_num, uint32_t resource_id, bool invert);
 
 void kino_reel_destroy(KinoReel *reel);
 

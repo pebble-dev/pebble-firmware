@@ -48,7 +48,7 @@ void kino_player_set_reel(KinoPlayer *player, KinoReel *reel, bool take_ownershi
 //! @internal
 void kino_player_set_reel_with_resource(KinoPlayer *player, uint32_t resource_id);
 void kino_player_set_reel_with_resource_system(KinoPlayer *player, ResAppNum app_num,
-                                               uint32_t resource_id);
+                                               uint32_t resource_id, bool invert);
 
 KinoReel *kino_player_get_reel(KinoPlayer *player);
 
