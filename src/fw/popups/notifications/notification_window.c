@@ -301,11 +301,25 @@ static Animation *prv_create_anim_frame(Layer *layer, int16_t dy, bool scroll) {
 }
 
 /////////////////////
+// Banner Mask
+/////////////////////
+
+static void prv_banner_mask_update_proc(Layer *layer, GContext *ctx) {
+  // The mask should be invisible, so we don't draw anything.
+  // The clipping is handled by layer_set_clips(banner_mask, true);
+  // which is set when the layer is created.
+}
+
+/////////////////////
 // Peek Layer
 /////////////////////
 static void prv_peek_anim_stopped(Animation *animation, bool finished, void *context) {
   NotificationWindowData *data = context;
   data->first_notif_loaded = true;
+  if (data->banner_title_layer) {
+    text_layer_destroy(data->banner_title_layer);
+    data->banner_title_layer = NULL;
+  }
   peek_layer_destroy(data->peek_layer);
   data->peek_layer = NULL;
   TimelineItem *item = prv_get_current_notification(data);
@@ -322,6 +336,7 @@ static void prv_hide_peek_layer(void *context) {
 
   // duration of animation of both peek layer and swap layer moving up to the top
   int16_t peek_frame_animation_dy = swap_frame_animation_dy;
+  int16_t banner_title_frame_animation_dy = -63;
 #if PBL_ROUND
   // Needed because the peek layer's background and the screen have different sizes,
   // so the peek layer needs to move a different number of pixels vs the swap layer
@@ -332,7 +347,21 @@ static void prv_hide_peek_layer(void *context) {
                                              false /* scroll */);
   Animation *swap_up = prv_create_anim_frame((Layer *)&data->swap_layer, swap_frame_animation_dy,
                                              true /* scroll */);
-  Animation *spawn = animation_spawn_create(peek_up, swap_up, NULL);
+
+  Animation *spawn;
+#if PBL_RECT
+  if (data->banner_title_layer) {
+    Animation *banner_title_up = prv_create_anim_frame((Layer *)data->banner_title_layer,
+                                                       banner_title_frame_animation_dy,
+                                                       true /* scroll */);
+    spawn = animation_spawn_create(peek_up, swap_up, banner_title_up, NULL);
+  } else {
+    spawn = animation_spawn_create(peek_up, swap_up, NULL);
+  }
+#else
+  spawn = animation_spawn_create(peek_up, swap_up, NULL);
+#endif
+
   AnimationHandlers anim_handlers = {
     .started = NULL,
     .stopped = prv_peek_anim_stopped,
@@ -343,12 +372,24 @@ static void prv_hide_peek_layer(void *context) {
   PeekLayer *peek_layer = data->peek_layer;
   GRect frame = peek_layer->layer.frame;
   frame.origin.x = (frame.size.w / 2) - (NOTIFICATION_TINY_RESOURCE_SIZE.w / 2);
-  frame.origin.y = CARD_ICON_UPPER_PADDING + STATUS_BAR_LAYER_HEIGHT;
+  frame.origin.y = CARD_ICON_UPPER_PADDING + STATUS_BAR_LAYER_HEIGHT + PBL_IF_RECT_ELSE(3, 0);
   frame.size = NOTIFICATION_TINY_RESOURCE_SIZE;
 
   const bool align_in_frame = true;
+
+  #if PBL_RECT
+  if (data->banner_title_layer) {
+    frame.origin.x = 5;
+  }
+  #endif
+
+  #if PBL_BW
+  peek_layer_set_scale_to_image_with_invert(peek_layer, &data->peek_icon_info, TimelineResourceSizeTiny, frame,
+                                align_in_frame, true);
+  #else
   peek_layer_set_scale_to_image(peek_layer, &data->peek_icon_info, TimelineResourceSizeTiny, frame,
                                 align_in_frame);
+  #endif
 
   // set peek_layer clips to true so I can resize the peek_layer's background
   layer_set_clips(&peek_layer->layer, true);
@@ -412,7 +453,50 @@ static void prv_show_peek_for_notification(NotificationWindowData *data, Uuid *i
     .app_id = &data->notification_app_id, // This is set earlier when we reload the layout
     .fallback_id = fallback_icon_id,
   };
+
+    #if PBL_RECT
+    const char *banner_title_str = attribute_get_string(&item->attr_list, AttributeIdBannerTitle, "");
+    if (banner_title_str != NULL && banner_title_str[0] != '\0') {
+      const int16_t text_origin_x = 5 + NOTIFICATION_TINY_RESOURCE_SIZE.w;
+      const GRect root_layer_frame = window_get_root_layer(&data->window)->frame;
+      const GRect banner_mask_frame = GRect(0, 0, root_layer_frame.size.w, 
+                                                  CARD_ICON_UPPER_PADDING + 
+                                                  STATUS_BAR_LAYER_HEIGHT + 
+                                                  NOTIFICATION_TINY_RESOURCE_HEIGHT +
+                                                  7);
+      const GRect banner_title_frame = GRect(text_origin_x, 80, root_layer_frame.size.w, CARD_ICON_UPPER_PADDING +  
+                                                                                                         NOTIFICATION_TINY_RESOURCE_HEIGHT +
+                                                                                                         6);
+
+      // Create the TextLayer first
+      TextLayer *banner_title = text_layer_create(banner_title_frame);
+      text_layer_set_text(banner_title, banner_title_str);
+      text_layer_set_font(banner_title, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
+      text_layer_set_text_alignment(banner_title, GTextAlignmentLeft);
+      text_layer_set_background_color(banner_title, GColorClear);
+      text_layer_set_text_color(banner_title, colors->primary_color);
+      text_layer_set_overflow_mode(banner_title, GTextOverflowModeFill);
+
+      data->banner_title_layer = banner_title;
+
+      // Create the custom layer mask
+      Layer *banner_mask = layer_create(banner_mask_frame);
+      layer_set_update_proc(banner_mask, prv_banner_mask_update_proc);
+      layer_set_clips(banner_mask, true);
+
+      // Add the text layer to the mask layer
+      layer_add_child(banner_mask, text_layer_get_layer(banner_title));
+
+      // Add the mask to the root layer
+      layer_add_child(window_get_root_layer(&data->window), banner_mask);
+    }
+  #endif
+  #if PBL_BW
+  peek_layer_set_icon_with_invert(data->peek_layer, &data->peek_icon_info, true);
+  #else
   peek_layer_set_icon(data->peek_layer, &data->peek_icon_info);
+  #endif
+
   peek_layer_set_background_color(data->peek_layer, colors->bg_color);
 
   // This is so that only the banner of the swap_layer is sticking out from the bottom

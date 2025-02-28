@@ -61,4 +61,6 @@ typedef struct NotificationWindowData {
   Layer dnd_icon_layer;
   GBitmap dnd_icon;
   bool dnd_icon_visible;
+
+  TextLayer *banner_title_layer;
 } NotificationWindowData;

@@ -57,9 +57,9 @@ static const LayoutColors s_default_colors = {
 };
 
 static const LayoutColors s_default_notification_colors = {
-  .primary_color = { .argb = GColorBlackARGB8 },
+  .primary_color = { .argb = GColorWhiteARGB8 },
   .secondary_color = { .argb = GColorBlackARGB8 },
-  .bg_color = { .argb = GColorLightGrayARGB8 },
+  .bg_color = { .argb = GColorBlackARGB8 },
 };
 
 LayoutLayer *layout_create(LayoutId id, const LayoutLayerConfig *config) {
