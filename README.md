@@ -34,10 +34,9 @@ may work right now.
   git submodule init
   git submodule update
   ```
-- Install GNU ARM Embedded toolchain from
-  https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads. Make
-  sure it is available on your `PATH` by checking `arm-none-eabi-gcc --version`
-  returns the expected version.
+- Install GNU ARM Embedded toolchain from https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads. 
+  - Make sure it is available on your `PATH` by checking `arm-none-eabi-gcc --version` returns the expected version.
+- Install [clang](https://clang.llvm.org/)
 - If using Ubuntu, install `gcc-multilib` and `gettext`
 - Create a Python venv:
 
