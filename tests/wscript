@@ -279,9 +279,15 @@ def build(bld):
     # clang on Linux errors on true == true or false == false compile-time assertions
     bld.env.CFLAGS.append('-Wno-tautological-compare')
 
+    # Don't compile the comm tests because they fail to compile due to the missing bluetooth library
+    bld.env.DEFINES.append('COMM_TESTS_DISABLED')
+
+    # Disable warning promotion. Not ideal, but gets most of the tests running again without straight up disabling the new warnings
+    bld.env.CFLAGS.append('-Wno-error')
+
     # time_t is defined in sys/types in newlib, and time.h on recent Linux
     # so just force the defined type for testing time
-    bld.env.CFLAGS.append('-Dtime_t=__SYSCALL_SLONG_TYPE')
+    #bld.env.CFLAGS.append('-Dtime_t=__SYSCALL_SLONG_TYPE')
 
     # Many tests operate on a set of test images and require tools to process these
     # images and therefore need extra defines. Set up our environment first before running any

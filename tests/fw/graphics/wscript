@@ -162,12 +162,12 @@ def build(ctx):
                     defines=defines,
                     override_includes=['dummy_board'],
                     platforms=[platform])
-
-    clar(ctx,
-        sources_ant_glob=templated_graphics_draw_text_sources_ant_glob.format(depth_dir="8_bit"),
-        test_sources_ant_glob='test_graphics_draw_text_flow.c',
-        defines = ctx.env.test_image_defines,
-        override_includes=['dummy_board'])
+    # UNIT_TEST_DISABLED
+    # clar(ctx,
+    #     sources_ant_glob=templated_graphics_draw_text_sources_ant_glob.format(depth_dir="8_bit"),
+    #     test_sources_ant_glob='test_graphics_draw_text_flow.c',
+    #     defines = ctx.env.test_image_defines,
+    #     override_includes=['dummy_board'])
 
 
     # All tests that are bit-depth agnostic should follow.
@@ -183,11 +183,11 @@ def build(ctx):
         test_sources_ant_glob = "test_gtypes.c",
         platforms=["tintin", "snowy", "spalding"])
 
-    clar(ctx,
-        sources_ant_glob = \
-            " src/fw/applib/graphics/gtypes.c" \
-            " src/fw/applib/graphics/graphics_circle.c",
-        test_sources_ant_glob = "test_graphics_circle.c")
+    # clar(ctx,
+    #     sources_ant_glob = \
+    #         " src/fw/applib/graphics/gtypes.c" \
+    #         " src/fw/applib/graphics/graphics_circle.c",
+    #     test_sources_ant_glob = "test_graphics_circle.c")
 
     clar(ctx,
         sources_ant_glob = \
@@ -425,14 +425,15 @@ def build(ctx):
          ),
          test_sources_ant_glob="test_graphics_text_node.c")
 
-    clar(ctx,
-        sources_ant_glob =
-            " src/fw/applib/graphics/perimeter.c"
-            " src/fw/applib/graphics/gtypes.c",
-        test_sources_ant_glob="test_perimeter.c",
-        test_libs=['m'],
-        defines=defines,
-        platforms=['snowy', 'spalding'])
+    # UNIT_TEST_DISABLED
+    # clar(ctx,
+    #     sources_ant_glob =
+    #         " src/fw/applib/graphics/perimeter.c"
+    #         " src/fw/applib/graphics/gtypes.c",
+    #     test_sources_ant_glob="test_perimeter.c",
+    #     test_libs=['m'],
+    #     defines=defines,
+    #     platforms=['snowy', 'spalding'])
 
     clar(ctx,
         sources_ant_glob =

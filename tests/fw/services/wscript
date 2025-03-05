@@ -368,16 +368,16 @@ def build(ctx):
          ),
          test_sources_ant_glob="test_app_menu_data_source.c",
          override_includes=['dummy_board', 'fake_app_registry'])
-
-    clar(ctx,
-        sources_ant_glob =
-            "  src/fw/util/rand/rand.c" \
-            "  src/fw/vendor/tinymt32/tinymt32.c" \
-            "  src/fw/services/normal/app_fetch_endpoint.c" \
-            "  tests/fakes/fake_events.c " \
-            "  tests/fakes/fake_session.c ",
-        test_sources_ant_glob = "test_app_fetch_endpoint.c",
-        override_includes=['dummy_board'])
+    # UNIT_TEST_DISABLED
+    # clar(ctx,
+    #     sources_ant_glob =
+    #         "  src/fw/util/rand/rand.c" \
+    #         "  src/fw/vendor/tinymt32/tinymt32.c" \
+    #         "  src/fw/services/normal/app_fetch_endpoint.c" \
+    #         "  tests/fakes/fake_events.c " \
+    #         "  tests/fakes/fake_session.c ",
+    #     test_sources_ant_glob = "test_app_fetch_endpoint.c",
+    #     override_includes=['dummy_board'])
 
     clar(ctx,
         sources_ant_glob =

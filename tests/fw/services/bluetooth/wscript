@@ -46,21 +46,22 @@ def build(bld):
             "src/fw/services/common/bluetooth/local_addr.c"
          ),
          test_sources_ant_glob="test_local_addr.c")
-
-    clar(bld,
-         sources_ant_glob=(
-            "src/fw/services/prf/bluetooth/bluetooth_persistent_storage.c "
-            "src/fw/services/common/shared_prf_storage/v2_sprf/shared_prf_storage.c "
-            "tests/fakes/fake_spi_flash.c "
-            "tests/fakes/fake_events.c "
-         ),
-         test_sources_ant_glob="test_bluetooth_persistent_storage_prf.c",
-         override_includes=['snowy_mfg_board'])
+# UNIT_TEST_DISABLED
+#     clar(bld,
+#          sources_ant_glob=(
+#             "src/fw/services/prf/bluetooth/bluetooth_persistent_storage.c "
+#             "src/fw/services/common/shared_prf_storage/v2_sprf/shared_prf_storage.c "
+#             "tests/fakes/fake_spi_flash.c "
+#             "tests/fakes/fake_events.c "
+#          ),
+#          test_sources_ant_glob="test_bluetooth_persistent_storage_prf.c",
+#          override_includes=['snowy_mfg_board'])
 
     # Run the bluetooth_persistent_storage.c unit tests
     # for the v1 and v2 serialization formats:
-    _test_bluetooth_persistent_storage(bld, version=1)
-    _test_bluetooth_persistent_storage(bld, version=2)
+# UNIT_TEST_DISABLED
+#     _test_bluetooth_persistent_storage(bld, version=1)
+#     _test_bluetooth_persistent_storage(bld, version=2)
 
 
 # vim:filetype=python

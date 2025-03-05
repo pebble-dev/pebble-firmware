@@ -2,6 +2,11 @@ from waftools.pebble_test import clar
 import waftools.ragel
 
 def build(bld):
+    # These tests don't compile because the bluetooth library needed was removed. The 'COMM_TESTS_DISABLED'
+    # flag has been added to temporarily disabled them.
+    if 'COMM_TESTS_DISABLED' in bld.env.DEFINES:
+        return
+
     clar(bld,
         sources_ant_glob = "src/fw/comm/ble/kernel_le_client/ams/ams_util.c "
                            "src/fw/comm/ble/kernel_le_client/ams/ams.c "

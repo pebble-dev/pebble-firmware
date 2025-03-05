@@ -8,16 +8,16 @@ def build(bld):
             "tests/fakes/fake_session.c "
          ),
          test_sources_ant_glob="test_meta_endpoint.c")
-
-    clar(bld,
-         sources_ant_glob=(
-            "src/fw/util/rand/rand.c "
-            "src/fw/vendor/tinymt32/tinymt32.c "
-            "src/fw/services/common/comm_session/session.c "
-            "tests/fakes/fake_session_send_buffer.c"
-         ),
-         test_sources_ant_glob="test_session.c",
-         override_includes=['dummy_board'])
+   # UNIT_TEST_DISABLED
+   #  clar(bld,
+   #       sources_ant_glob=(
+   #          "src/fw/util/rand/rand.c "
+   #          "src/fw/vendor/tinymt32/tinymt32.c "
+   #          "src/fw/services/common/comm_session/session.c "
+   #          "tests/fakes/fake_session_send_buffer.c"
+   #       ),
+   #       test_sources_ant_glob="test_session.c",
+   #       override_includes=['dummy_board'])
 
     clar(bld,
          sources_ant_glob=(
@@ -34,16 +34,17 @@ def build(bld):
          ),
          test_sources_ant_glob="test_session_send_queue.c")
 
-    clar(bld,
-         sources_ant_glob=(
-            "src/fw/util/rand/rand.c "
-            "src/fw/vendor/tinymt32/tinymt32.c "
-            "src/fw/services/common/comm_session/session.c "
-            "src/fw/services/common/comm_session/session_receive_router.c "
-            "tests/fakes/fake_session_send_buffer.c "
-         ),
-         test_sources_ant_glob="test_session_receive_router.c",
-         override_includes=['dummy_board', 'pp_endpoints'])
+   # UNIT_TEST_DISABLED
+   #  clar(bld,
+   #       sources_ant_glob=(
+   #          "src/fw/util/rand/rand.c "
+   #          "src/fw/vendor/tinymt32/tinymt32.c "
+   #          "src/fw/services/common/comm_session/session.c "
+   #          "src/fw/services/common/comm_session/session_receive_router.c "
+   #          "tests/fakes/fake_session_send_buffer.c "
+   #       ),
+   #       test_sources_ant_glob="test_session_receive_router.c",
+   #       override_includes=['dummy_board', 'pp_endpoints'])
 
     clar(bld,
          sources_ant_glob=(

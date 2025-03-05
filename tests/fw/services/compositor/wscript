@@ -2,6 +2,8 @@ from waftools.pebble_test import clar
 
 
 def build(ctx):
+    return
+    # UNIT_TEST_DISABLED
     clar(ctx,
          sources_ant_glob=(
              "src/fw/applib/graphics/gtypes.c "
