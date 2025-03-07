@@ -12,6 +12,12 @@
     },
     {
       "type": "raw",
+      "name": "AS7000_FW_IMAGE",
+      "file": "normal/silk/vendor/as7000_fw_image.bin",
+      "builtin": true
+    },
+    {
+      "type": "raw",
       "name": "NO_EVENTS_LARGE",
       "file": "normal/snowy/images/Pebble_80x80_No_events.pdc",
       "builtin": true
