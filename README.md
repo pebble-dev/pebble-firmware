@@ -27,36 +27,82 @@ Several original PebbleOS firmware engineers [recorded a podcast](https://www.yo
 may work right now.
 
 ## Getting Started
+### 1. Install system dependencies
 
-- Use Linux (tested: Ubuntu 24.04, Fedora 41) or macOS (tested: Sequoia 15.2)
-- Clone the submodules:
-  ```shell
-  git submodule init
-  git submodule update
-  ```
-- Install GNU ARM Embedded toolchain from
-  https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads. Make
-  sure it is available on your `PATH` by checking `arm-none-eabi-gcc --version`
-  returns the expected version.
-- If using Ubuntu, install `gcc-multilib` and `gettext`
-- Create a Python venv:
+The process to install system dependencies depends on your operating system. 
 
-  ```shell
-  python -m venv .venv
-  ```
+<details>
+<summary>Ubuntu 24.04 LTS (Noble Numbat)</summary>
 
-- Activate the Python venv (also every time you start working):
-  ```shell
-  source .venv/bin/activate
-  ```
-- Install dependencies:
-  ```shell
-  pip install -r requirements.txt
-  ```
-- Install emscripten
+Install system dependencies using apt:
+
+```bash
+sudo apt install \
+    git \
+    python3.12-venv \
+    gcc-multilib \
+    gettext \
+    python3-dev \
+    npm \
+    clang
+    # emscripten # TODO BUG this doesn't work. You still need --nojs
+```
+</details>
+
+<!-- <details> -->
+<!-- <summary>Fedora 41</summary> -->
+<!-- Install system dependencies using dnf: -->
+<!---->
+<!-- ```bash -->
+<!-- sudo dnf install \ -->
+<!--     # TODO -->
+<!-- ``` -->
+<!-- </details> -->
+
+<details>
+<summary>Manual installation (for other operating systems)</summary>
+
+Use the following installation guides to install the required dependencies:
+
+- Git: [Git installation guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- Python 3: [Python installation guide](https://wiki.python.org/moin/BeginnersGuide/Download)
+- Arm GNU toolchain: [Arm GNU Toolchain installation guide](https://learn.arm.com/install-guides/gcc/arm-gnu/)
+- Node.js & npm: [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- clang: [Clang install guide](https://clang.llvm.org/get_started.html)
+- emscripten (optional):
   - If you're on Mac and using [Homebrew](https://brew.sh), you can run `brew install emscripten`.
   - If you're on Linux, follow the instructions [here](https://github.com/emscripten-core/emsdk) and install version 4.0.1.
   - You can skip this if you wish by configuring with `--nojs` but beware the built-in clock for several devices requires JS and will render a blank screen when disabled.
+
+</details>
+
+### 2. Clone the repository
+
+Run the following command to install the repository:
+
+```bash
+git clone --recurse-submodules git@github.com:pebble-dev/pebble-firmware.git
+cd pebble-firmware
+```
+
+### 3. Install python dependencies in a virtual environment
+
+Run the following commands:
+
+```bash
+python3 -m venv .venv --prompt pebble-firmware
+source .venv/bin/activate
+```
+
+Next, use pip to install Python dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+Finally, install the local Python dependencies:
+```bash
+pip install -e python_libs/{pblprog,pebble-commander,pulse2,pebble-loghash}
+```
 
 ## Building
 
