@@ -140,3 +140,36 @@ GDrawCommandList *gdraw_command_image_get_command_list(GDrawCommandImage *image)
 
   return &image->command_list;
 }
+
+#if PBL_BW
+// These functions are only needed for B&W platforms due to the new notification system
+void gdraw_command_image_set_stroke_color(GDrawCommandImage *image, GColor stroke_color) {
+  if (!image) {
+    return;
+  }
+
+  GDrawCommandList *command_list = gdraw_command_image_get_command_list(image);
+  if (command_list) {
+    GDrawCommand *command = command_list->commands;
+    for (uint32_t j = 0; j < command_list->num_commands; j++) {
+      gdraw_command_set_stroke_color(command, stroke_color);
+      command = (GDrawCommand *) (command->points + command->num_points);
+    }
+  }
+}
+
+void gdraw_command_image_set_fill_color(GDrawCommandImage *image, GColor fill_color) {
+  if (!image) {
+    return;
+  }
+
+  GDrawCommandList *command_list = gdraw_command_image_get_command_list(image);
+  if (command_list) {
+    GDrawCommand *command = command_list->commands;
+    for (uint32_t j = 0; j < command_list->num_commands; j++) {
+      gdraw_command_set_fill_color(command, fill_color);
+      command = (GDrawCommand *) (command->points + command->num_points);
+    }
+  }
+}
+#endif

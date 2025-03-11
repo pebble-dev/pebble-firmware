@@ -112,8 +112,8 @@ void kino_layer_set_reel_with_resource(KinoLayer *kino_layer, uint32_t resource_
 }
 
 void kino_layer_set_reel_with_resource_system(KinoLayer *kino_layer, ResAppNum app_num,
-                                              uint32_t resource_id) {
-  kino_player_set_reel_with_resource_system(&kino_layer->player, app_num, resource_id);
+                                              uint32_t resource_id, bool invert) {
+  kino_player_set_reel_with_resource_system(&kino_layer->player, app_num, resource_id, invert);
 }
 
 KinoReel *kino_layer_get_reel(KinoLayer *kino_layer) {
