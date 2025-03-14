@@ -29,7 +29,7 @@
 #include <inttypes.h>
 #include <stdint.h>
 
-#if MICRO_FAMILY_NRF5
+#if MICRO_FAMILY_NRF5 || MICRO_FAMILY_SF32LB
 
 static uint32_t _bootbits;
 

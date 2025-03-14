@@ -1,1 +1,2 @@
 *.hex binary
+* -eol -mode

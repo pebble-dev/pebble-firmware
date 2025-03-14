@@ -94,6 +94,8 @@ def find_subregions_for_region(address, size):
 
         current_block_size *= 2
     else:
+        print(smallest_block_size,largest_block_size)
+        print(address,size)
         raise Exception("No solution found")
 
 if __name__ == '__main__':

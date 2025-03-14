@@ -38,6 +38,15 @@ void NOINLINE delay_us(uint32_t us) {
 void delay_init(void) {
 }
 
+#elif defined(MICRO_FAMILY_SF32LB)
+#include "bf0_hal.h"
+void NOINLINE delay_us(uint32_t us) {
+  HAL_Delay_us(us);
+}
+
+void delay_init(void) {
+}
+
 #else
 
 #if MICRO_FAMILY_STM32F7

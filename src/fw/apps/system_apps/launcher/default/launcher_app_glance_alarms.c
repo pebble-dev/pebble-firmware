@@ -32,6 +32,10 @@
 
 #include <stdio.h>
 
+#ifndef UNUSED
+#define UNUSED
+#endif
+
 typedef struct LauncherAppGlanceAlarms {
   char title[APP_NAME_SIZE_BYTES];
   char subtitle[ATTRIBUTE_APP_GLANCE_SUBTITLE_MAX_LEN];

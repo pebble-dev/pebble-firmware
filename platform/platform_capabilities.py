@@ -255,6 +255,32 @@ board_capability_dicts = [
         }
     },
     {
+        'boards': ['em_lb525'],
+        'capabilities':
+        {
+            'HAS_ACCESSORY_CONNECTOR',
+            'HAS_APPLE_MFI',
+            'HAS_APP_GLANCES',
+            'HAS_CORE_NAVIGATION4',
+            'HAS_DEFECTIVE_FW_CRC',
+            'HAS_HARDWARE_PANIC_SCREEN',
+            'HAS_HEALTH_TRACKING',
+            'HAS_JAVASCRIPT',
+            'HAS_LAUNCHER4',
+            'HAS_MAGNETOMETER',
+            #'HAS_MAPPABLE_FLASH',
+            'HAS_MASKING',
+            # 'HAS_MICROPHONE', -- TODO: disabled because driver was removed
+            #'HAS_PMIC',
+            'HAS_SDK_SHELL4',
+            'HAS_TEMPERATURE',
+            'HAS_TIMELINE_PEEK',
+            'HAS_VIBE_SCORES',
+            'USE_PARALLEL_FLASH',
+            'HAS_WEATHER',
+        },
+    },    
+    {
         'boards': [ 'asterix_evt1' ],
         'capabilities':
         {

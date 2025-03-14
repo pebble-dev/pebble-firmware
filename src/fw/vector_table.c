@@ -47,6 +47,7 @@ ALIAS("Default_Handler") void SysTick_Handler(void);
 #define IRQ_DEF(idx, irq) ALIAS("Default_Handler") void irq##_IRQHandler(void);
 #if defined(MICRO_FAMILY_NRF52840)
 # include "irq_nrf52840.def"
+#elif defined(MICRO_FAMILY_SF32LB)
 #else
 # include "irq_stm32.def"
 #endif
@@ -63,6 +64,8 @@ ALIAS("Default_Handler") void SysTick_Handler(void);
 }
 #if defined(MICRO_FAMILY_NRF52840)
 # include "irq_nrf52.def"
+#elif defined(MICRO_FAMILY_SF32LB)
+
 #else
 # include "irq_stm32.def"
 #endif
@@ -96,6 +99,8 @@ EXTERNALLY_VISIBLE SECTION(".isr_vector") const void * const vector_table[] = {
 #endif
 #if defined(MICRO_FAMILY_NRF52840)
 # include "irq_nrf52840.def"
+#elif defined(MICRO_FAMILY_SF32LB)
+
 #else
 # include "irq_stm32.def"
 #endif

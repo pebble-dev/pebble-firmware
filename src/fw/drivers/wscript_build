@@ -1,5 +1,5 @@
 mcu_family = bld.env.MICRO_FAMILY
-if mcu_family not in ('STM32F2', 'STM32F4', 'STM32F7', 'NRF52840'):
+if mcu_family not in ('STM32F2', 'STM32F4', 'STM32F7', 'NRF52840', 'SF32LB'):
     bld.fatal('src/fw/drivers/wscript: '
               'Unknown MICRO_FAMILY {}'.format(mcu_family))
 
@@ -183,10 +183,23 @@ elif bld.is_asterix():
             'driver_mpu',
         ],
     )
+    
+elif bld.is_sifli():
+    bld(
+        name='drivers',
+        use=[
+            'driver_uart',
+            'driver_sf32lb',
+            'driver_mpu',
+            'driver_flash',
+            'driver_accessory',
+            'driver_gpio_defaults',
+        ],
+    )    
 
 ## ----------
 
-if bld.is_snowy_compatible() or bld.is_silk() or bld.is_cutts() or bld.is_robert():
+if bld.is_snowy_compatible() or bld.is_silk() or bld.is_cutts() or bld.is_robert() or bld.is_sifli():
     bld.objects(
         name='driver_accessory',
         source=[
@@ -791,7 +804,7 @@ if bld.capability('HAS_MICROPHONE'):
 
 
 # FIXME: make generic to Cortex-M
-if mcu_family in ('STM32F2', 'STM32F4', 'STM32F7', 'NRF52840'):
+if mcu_family in ('STM32F2', 'STM32F4', 'STM32F7', 'NRF52840', 'SF32LB'):
     bld.objects(
         name='driver_mpu',
         source=[
@@ -1214,4 +1227,57 @@ if mcu_family == 'NRF52840':
         ],
     )
 
+if mcu_family == 'SF32LB':
+    # XXX: factor this into... drivers
+    bld.objects(
+        name='driver_sf32lb',
+        source=[
+            'sf32lb/stubs/rtc.c',
+            'sf32lb/stubs/rng.c',
+            'flash/flash_api.c',
+            'flash/flash_crc.c',
+            'flash/flash_erase.c',
+            'flash/cd_flash_driver.c',
+            'battery/battery_common.c',
+            'sf32lb/stubs/battery.c',
+            #'flash/xt25f64b.c',
+            'task_watchdog.c',
+            'sf32lb/stubs/watchdog.c',
+            'sf32lb/stubs/display.c',
+            #'display/sharp_ls013b7dh01/sharp_ls013b7dh01_nrf5.c',
+            'sf32lb/stubs/accel.c',
+            'sf32lb/stubs/ambient_light.c',
+            'sf32lb/stubs/vibe.c',
+            'i2c.c',
+            'sf32lb/stubs/otp.c',
+            'sf32lb/stubs/mcu.c',
+            'sf32lb/stubs/backlight.c',
+            'sf32lb/stubs/voltage_monitor.c',
+            'imu/imu_asterix.c',
+            'sf32lb/stubs/mag.c',
+            'sf32lb/stubs/temperature.c',
+            'sf32lb/stubs/periph_config.c',
+            'sf32lb/stubs/gpio_defaults.c',
+            #'nrf5/qspi.c',
+            #'nrf5/button.c',
+            #'nrf5/debounced_button.c',
+            #'nrf5/exti.c',
+            #'nrf5/uart.c',
+            #'nrf5/gpio.c',
+            #'nrf5/i2c_hal.c',
+            #'nrf5/spi.c',
+            #'nrf5/pwm.c',
+            #'pmic/npm1300.c',
+        ],
+        use=[
+            'driver_clocksource',
+            'driver_gpio',
+            'driver_pwr',
+            'driver_periph_config',
+            'freertos',
+            'fw_includes',
+            'root_includes',
+            'hal_nordic',
+        ],
+    )
 # vim:filetype=python

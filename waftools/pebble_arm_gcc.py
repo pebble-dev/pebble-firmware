@@ -235,6 +235,11 @@ Or re-configure with the --relax_toolchain_restrictions option. """
     elif conf.env.MICRO_FAMILY == "NRF52840":
         args += [ '-mcpu=cortex-m4']
         cpu_fpu = "fpv4-sp-d16"
+    elif conf.env.MICRO_FAMILY == "SF32LB":
+        args += [ '-march=armv8-m.main+cdecp1', 
+                  '-mfpu=fpv5-sp-d16', 
+                  '-mfloat-abi=hard',
+                  '-Wno-error=unused-value']
     # QEMU does not have FPU
     if conf.env.QEMU:
         cpu_fpu = None

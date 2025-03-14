@@ -65,6 +65,16 @@
 #   undef HAD_UNUSED
 #  endif
 # pragma GCC diagnostic pop
+#elif defined(MICRO_FAMILY_SF32LB)
+#  ifdef UNUSED
+/* bleh */
+#   define HAD_UNUSED
+#   undef UNUSED
+#  endif
+# include <bf0_hal.h>
+# ifndef HAD_UNUSED
+#   undef UNUSED
+#endif
 #elif !defined(SDK) && !defined(UNITTEST)
 # error "Unknown or missing MICRO_FAMILY_* define"
 #endif

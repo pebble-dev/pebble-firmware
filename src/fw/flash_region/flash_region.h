@@ -19,7 +19,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#if PLATFORM_TINTIN
+#if PLATFORM_TINTIN 
   // v2_0 and v1_5 have 8MB flash chips instead of 4MB. In the following definition,
   // BOARD_NOR_FLASH_SIZE is set to allow 6MB of the flash chip to be used. The extra 2MB tacked
   // onto the end will be used for the filesystem and is being added to help with storing large
@@ -41,6 +41,8 @@
   #include "flash_region_mt25q.h"
 #elif PLATFORM_SNOWY || PLATFORM_SPALDING
   #include "flash_region_s29vs.h"
+#elif PLATFORM_SF32LB || PLATFORM_SIFLI
+  #include "flash_region_mt25q.h"
 #endif
 
 // NOTE: The following functions are deprecated! New code should use the

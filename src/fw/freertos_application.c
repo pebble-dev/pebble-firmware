@@ -55,7 +55,7 @@ static RtcTicks s_analytics_app_stop_ticks = 0;
 static const RtcTicks EARLY_WAKEUP_TICKS = 2;
 // slightly larger than the 2 permitted by FreeRTOS in tasks.c
 static const RtcTicks MIN_STOP_TICKS = 5;
-#elif defined(MICRO_FAMILY_STM32F4) || defined(MICRO_FAMILY_STM32F7) || defined(MICRO_FAMILY_NRF5)
+#elif defined(MICRO_FAMILY_STM32F4) || defined(MICRO_FAMILY_STM32F7) || defined(MICRO_FAMILY_NRF5) || defined(MICRO_FAMILY_SF32LB)
 /* XXX(nrf5): double check this */
 //! Stop mode until this number of ticks before the next scheduled task
 static const RtcTicks EARLY_WAKEUP_TICKS = 4;
