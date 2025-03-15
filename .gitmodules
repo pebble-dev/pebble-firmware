@@ -16,6 +16,12 @@
 [submodule "third_party/freertos/FreeRTOS-Kernel"]
 	path = third_party/freertos/FreeRTOS-Kernel
 	url = https://github.com/pebble-dev/FreeRTOS-Kernel
+[submodule "third_party/nanopb/nanopb"]
+	path = third_party/nanopb/nanopb
+	url = https://github.com/nanopb/nanopb
+[submodule "third_party/tinymt/TinyMT"]
+	path = third_party/tinymt/TinyMT
+	url = https://github.com/MersenneTwister-Lab/TinyMT
 [submodule "third_party/hal_sifli/SiFliSDK"]
 	path = third_party/hal_sifli/SiFliSDK
 	url = https://github.com/OpenSiFli/SiFli-SDK.git
