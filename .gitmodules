@@ -24,4 +24,4 @@
 	url = https://github.com/MersenneTwister-Lab/TinyMT
 [submodule "third_party/hal_sifli/SiFliSDK"]
 	path = third_party/hal_sifli/SiFliSDK
-	url = https://github.com/OpenSiFli/SiFli-SDK.git
+	url = https://github.com/gangheivt/SiFli-SDK.git
