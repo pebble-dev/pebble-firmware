@@ -90,13 +90,19 @@ KinoReel *kino_reel_pdci_create(GDrawCommandImage *image, bool take_ownership) {
 
 KinoReel *kino_reel_pdci_create_with_resource(uint32_t resource_id) {
   ResAppNum app_num = sys_get_current_resource_num();
-  return kino_reel_pdci_create_with_resource_system(app_num, resource_id);
+  return kino_reel_pdci_create_with_resource_system(app_num, resource_id, false);
 }
 
-KinoReel *kino_reel_pdci_create_with_resource_system(ResAppNum app_num, uint32_t resource_id) {
+KinoReel *kino_reel_pdci_create_with_resource_system(ResAppNum app_num, uint32_t resource_id, bool invert) {
   GDrawCommandImage *image = gdraw_command_image_create_with_resource_system(app_num, resource_id);
   if (image == NULL) {
     return NULL;
   }
+  #if PBL_BW
+    if (invert) {
+      gdraw_command_image_set_stroke_color(image, GColorWhite);
+      gdraw_command_image_set_fill_color(image, GColorBlack);
+    }
+  #endif
   return kino_reel_pdci_create(image, true);
 }
