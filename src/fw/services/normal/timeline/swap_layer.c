@@ -248,15 +248,10 @@ static void prv_arrow_layer_update_proc(Layer *layer, GContext* ctx) {
 
   const GRect *layer_bounds = &layer->bounds;
 
-#if PBL_RECT
-  graphics_context_set_fill_color(ctx, GColorWhite);
-  graphics_fill_rect(ctx, layer_bounds);
-#endif
-
   GRect arrow_bounds = arrow_layer->arrow_bitmap.bounds;
-  const GAlign arrow_alignment = PBL_IF_RECT_ELSE(GAlignTop, GAlignBottom);
+  const GAlign arrow_alignment = PBL_IF_RECT_ELSE(GAlignBottomRight, GAlignBottom);
   grect_align(&arrow_bounds, layer_bounds, arrow_alignment, false /* clip */);
-  const int16_t arrow_nudge_y = PBL_IF_RECT_ELSE(7, -8);
+  const int16_t arrow_nudge_y = PBL_IF_RECT_ELSE(-3, -8);
   arrow_bounds.origin.y += arrow_nudge_y;
 
   // FIXME PBL-43428:
