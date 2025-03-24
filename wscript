@@ -122,6 +122,8 @@ def options(opt):
                    help='Disable PBL_LOG macros to save space')
     opt.add_option('--nohash', action='store_true',
                    help='Disable log hashing and make the logs human readable')
+    opt.add_option('--log-level', default='info', choices=['error', 'warn', 'info', 'debug', 'debug_verbose'],
+		   help='Default global log level')
 
     opt.add_option('--lang',
                    action='store',
@@ -253,6 +255,9 @@ def handle_configure_options(conf):
     if conf.options.verbose_logs:
         conf.env.append_value('DEFINES', 'VERBOSE_LOGGING')
         print("Verbose logging enabled")
+
+    print(f"Log level: {conf.options.log_level.upper()}")
+    conf.env.append_value('DEFINES', f'DEFAULT_LOG_LEVEL=LOG_LEVEL_{conf.options.log_level.upper()}')
 
     if conf.options.ui_debug:
         conf.env.append_value('DEFINES', 'UI_DEBUG')
@@ -708,7 +713,7 @@ def build(bld):
         bld.recurse('resources')
         bld.recurse('src/libutil')
         bld.recurse('src/fw')
-        bld.recurse('src/fw/vendor/nanopb')
+        bld.recurse('third_party/nanopb')
         bld.recurse('src/include')
         bld.recurse('applib-targets')
         return
@@ -728,12 +733,12 @@ def build(bld):
             bld.fatal('Did you mean ./waf test_rocky_emx ?')
         bld.recurse('src/include')
         bld.recurse('src/fw/vendor/jerryscript')
-        bld.recurse('src/fw/vendor/nanopb')
+        bld.recurse('third_party/nanopb')
         bld.recurse('src/libbtutil')
         bld.recurse('src/libos')
         bld.recurse('src/libutil')
-        bld.recurse('tools')
         bld.recurse('tests')
+        bld.recurse('tools')
         return
     elif bld.variant == 'test_rocky_emx':
         if bld.env.APPLIB_TARGET != 'emscripten':
@@ -741,7 +746,7 @@ def build(bld):
         bld.recurse('src/libutil')
         bld.recurse('src/libos')
         bld.recurse('src/fw/vendor/jerryscript')
-        bld.recurse('src/fw/vendor/nanopb')
+        bld.recurse('third_party/nanopb')
         bld.recurse('applib-targets')
         bld.recurse('tools')
         bld.recurse('tests')
