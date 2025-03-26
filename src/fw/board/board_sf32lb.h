@@ -36,6 +36,17 @@ typedef enum {
 // This is generated in order to faciliate the check within the IRQ_MAP macro below
 #include "bf0_hal.h"
 
+// This is generated in order to faciliate the check within the IRQ_MAP macro below
+enum {
+  #define IRQ_DEF(num, irq) IS_VALID_IRQ__##irq,
+  #if defined(MICRO_FAMILY_SF32LB)
+  #  include "irq_sf32lb.def"
+  #else
+  #  error need IRQ table for new micro family
+  #endif
+  #undef IRQ_DEF
+  };
+
 //! Creates a trampoline to the interrupt handler defined within the driver
 #define IRQ_MAP(irq, handler, device) \
   void irq##_IRQHandler(void) { \
