@@ -1262,7 +1262,7 @@ if mcu_family == 'SF32LB':
             #'nrf5/button.c',
             #'nrf5/debounced_button.c',
             #'nrf5/exti.c',
-            #'nrf5/uart.c',
+            'sf32lb/uart.c',
             #'nrf5/gpio.c',
             #'nrf5/i2c_hal.c',
             #'nrf5/spi.c',
