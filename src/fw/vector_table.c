@@ -48,6 +48,7 @@ ALIAS("Default_Handler") void SysTick_Handler(void);
 #if defined(MICRO_FAMILY_NRF52840)
 # include "irq_nrf52840.def"
 #elif defined(MICRO_FAMILY_SF32LB)
+# include "irq_sf32lb.def"
 #else
 # include "irq_stm32.def"
 #endif
