@@ -3,6 +3,8 @@
 #define NRF5_COMPATIBLE
 #include <mcu.h>
 
+/* dummy variable to make SystemInit find the variable for VTOR, but the actual VTOR would be set by main */
+uint32_t __Vectors;
 
 static uint32_t did = 0;
 const uint32_t* mcu_get_serial(void) {

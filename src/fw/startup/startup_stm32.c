@@ -39,6 +39,13 @@ extern uint8_t __dtcm_bss_start[];
 extern uint8_t __dtcm_bss_end[];
 #endif
 
+#if MICRO_FAMILY_SF32LB
+extern uint8_t __retm_ro_load_start[];
+extern uint8_t __retm_ro_start[];
+extern uint8_t __retm_ro_end[];
+
+#endif 
+
 //! Firmware main function, ResetHandler calls this
 extern int main(void);
 
@@ -60,6 +67,10 @@ NORETURN Reset_Handler(void) {
   // Clear the DTCM bss section
   memset(__dtcm_bss_start, 0, __dtcm_bss_end - __dtcm_bss_start);
 #endif
+
+#if MICRO_FAMILY_SF32LB
+  memcpy(__retm_ro_start, __retm_ro_load_start, __retm_ro_end - __retm_ro_start);
+#endif /* MICRO_FAMILY_SF32LB */
 
   SystemInit();
 

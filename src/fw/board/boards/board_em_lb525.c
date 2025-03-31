@@ -36,6 +36,14 @@ static UARTDevice DBG_UART_DEVICE = {.state = &s_dbg_uart_state,
                                      .rx_dma = &s_dbg_uart_rx_dma_handle,
                                      .irq_priority = 1};
 UARTDevice *const DBG_UART = &DBG_UART_DEVICE;
+UARTDevice *const ACCESSORY_UART;  //TODO
 IRQ_MAP(USART3, uart_irq_handler, DBG_UART);
 
 void DMAC1_CH1_IRQHandler(void) { HAL_DMA_IRQHandler(&s_dbg_uart_rx_dma_handle); }
+
+
+void board_early_init(void) {
+}
+
+void board_init(void) {
+}
