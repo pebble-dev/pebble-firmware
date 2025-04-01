@@ -138,6 +138,11 @@ static UARTPinFunction_t get_uart_pin_fun(UART_HandleTypeDef *uart) {
 }
 
 static void prv_init(UARTDevice *dev, UARTInitMode_t mode) {
+  if (mode == UART_FullDuplex) {
+    dev->periph->Init.Mode = UART_MODE_TX_RX;
+  } else {
+    dev->periph->Init.Mode = (mode == UART_TxOnly) ? UART_MODE_TX : UART_MODE_RX;
+  }
   if (HAL_UART_Init(dev->periph) != HAL_OK) {
     // Initialization Error
     WTF;

@@ -28,6 +28,7 @@ static UART_HandleTypeDef s_dbg_uart_handle = {.Instance = USART3,
                                                }};
 static DMA_HandleTypeDef s_dbg_uart_rx_dma_handle = {
     .Instance = DMA1_Channel1,
+    .Init.Request = DMA_REQUEST_7,
 };
 static UARTDevice DBG_UART_DEVICE = {.state = &s_dbg_uart_state,
                                      .tx_gpio = PAD_PA20,
