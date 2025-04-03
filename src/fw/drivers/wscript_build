@@ -192,14 +192,14 @@ elif bld.is_sifli():
             'driver_sf32lb',
             'driver_mpu',
             'driver_flash',
-            'driver_accessory',
+            # 'driver_accessory',
             'driver_gpio_defaults',
         ],
     )    
 
 ## ----------
 
-if bld.is_snowy_compatible() or bld.is_silk() or bld.is_cutts() or bld.is_robert() or bld.is_sifli():
+if bld.is_snowy_compatible() or bld.is_silk() or bld.is_cutts() or bld.is_robert():
     bld.objects(
         name='driver_accessory',
         source=[

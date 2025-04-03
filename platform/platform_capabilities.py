@@ -258,7 +258,7 @@ board_capability_dicts = [
         'boards': ['em_lb525'],
         'capabilities':
         {
-            'HAS_ACCESSORY_CONNECTOR',
+            # 'HAS_ACCESSORY_CONNECTOR',
             'HAS_APPLE_MFI',
             'HAS_APP_GLANCES',
             'HAS_CORE_NAVIGATION4',
