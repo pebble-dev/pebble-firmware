@@ -12,6 +12,7 @@ def build(bld):
         excludes = ['**/bf0_hal_audcodec.c']
         micro_sources = bld.path.ant_glob('SiFliSDK/drivers/hal/*.c', excl=excludes)
         micro_sources += bld.path.ant_glob('SiFliSDK/drivers/cmsis/sf32lb52x/bf0_pin_const.c')
+        micro_sources += bld.path.ant_glob('SiFliSDK/drivers/cmsis/sf32lb52x/bf0_lcpu_init.c')
         micro_sources += bld.path.ant_glob('SiFliSDK/drivers/cmsis/sf32lb52x/lcpu_patch_rev_b.c')
         micro_sources += bld.path.ant_glob('SiFliSDK/drivers/cmsis/sf32lb52x/bt_rf_fulcal.c')
         micro_sources += bld.path.ant_glob('SiFliSDK/drivers/cmsis/sf32lb52x/bt_rf_cw_config.c')
@@ -25,7 +26,14 @@ def build(bld):
                           'SiFliSDK/drivers/cmsis/Include',
                           'SiFliSDK/drivers/cmsis/sf32lb52x'
                           ]
-                          
+        micro_sources += bld.path.ant_glob('SiFliSDK/middleware/ipc_queue/common/circular_buf.c')
+        micro_sources += bld.path.ant_glob('SiFliSDK/middleware/ipc_queue/common/ipc_hw.c')
+        micro_sources += bld.path.ant_glob('SiFliSDK/middleware/ipc_queue/common/ipc_queue.c')
+        micro_sources += bld.path.ant_glob('SiFliSDK/middleware/ipc_queue/porting/sf32lb52x/hcpu/ipc_hw_port.c')
+        micro_includes += ['SiFliSDK/middleware/include',
+                          'SiFliSDK/middleware/ipc_queue/common',
+                          'SifliSDK/middleware/ipc_queue/porting/sf32lb52x/hcpu'
+                          ]                          
     bld.stlib(source=micro_sources,
               target='hal_sifli',
               use=['cmsis_core', 'pblibc'],
