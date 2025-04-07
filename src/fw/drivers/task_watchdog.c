@@ -82,6 +82,9 @@ static uint8_t s_ticks_since_successful_feed = 0;
 #if MICRO_FAMILY_NRF5
 #define WATCHDOG_FREERTOS_IRQn        EGU5_SWI5_IRQn
 #define WATCHDOG_FREERTOS_IRQHandler  EGU5_SWI5_IRQHandler
+#elif MICRO_FAMILY_SF32LB
+#define WATCHDOG_FREERTOS_IRQn        2
+#define WATCHDOG_FREERTOS_IRQHandler  NMI_Handler2 
 #else
 #define WATCHDOG_FREERTOS_IRQn        CAN2_SCE_IRQn
 #define WATCHDOG_FREERTOS_IRQHandler  CAN2_SCE_IRQHandler
@@ -337,6 +340,7 @@ void task_watchdog_init(void) {
   // configMAX_SYSCALL_INTERRUPT_PRIORITY or lower, it can at least call FreeRTOS ISR functions.
 #if MICRO_FAMILY_NRF5
   NVIC_SetPriority(WATCHDOG_FREERTOS_IRQn, configMAX_SYSCALL_INTERRUPT_PRIORITY);
+#elif MICRO_FAMILY_SF32LB
 #else
   NVIC_InitStructure.NVIC_IRQChannel = WATCHDOG_FREERTOS_IRQn;
   NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = configMAX_SYSCALL_INTERRUPT_PRIORITY >> 4;

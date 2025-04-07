@@ -393,6 +393,7 @@ static NOINLINE void prv_main_task_init(void) {
   static McuRebootReason s_mcu_reboot_reason;
   s_mcu_reboot_reason = watchdog_clear_reset_flag();
 
+  __asm("B .");
 #if PULSE_EVERYWHERE
   pulse_init();
   pulse_logging_init();

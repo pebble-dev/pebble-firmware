@@ -59,6 +59,10 @@ RtcTicks rtc_get_ticks(void) {
   // TODO
   RtcTicks rtc_interval_ticks = 1;
 
+  if (ints_enabled) {
+    __enable_irq();
+  }
+
   return s_coarse_ticks + rtc_interval_ticks;
 }
 
