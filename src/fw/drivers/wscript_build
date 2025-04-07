@@ -184,7 +184,7 @@ elif bld.is_asterix():
         ],
     )
     
-elif bld.is_sifli():
+elif bld.is_obelix():
     bld(
         name='drivers',
         use=[

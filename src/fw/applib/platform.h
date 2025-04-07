@@ -37,7 +37,7 @@ typedef enum PlatformType {
     #define PBL_PLATFORM_TYPE_CURRENT PlatformTypeDiorite
   #elif PLATFORM_ROBERT || PLATFORM_CALCULUS
     #define PBL_PLATFORM_TYPE_CURRENT PlatformTypeEmery
-  #elif PLATFORM_SF32LB || PLATFORM_SIFLI
+  #elif PLATFORM_OBELIX
     #define PBL_PLATFORM_TYPE_CURRENT PlatformTypeAplite  
   #else
     #error "PBL_PLATFORM_TYPE_CURRENT couldn't be determined: No PLATFORM_* defined!"

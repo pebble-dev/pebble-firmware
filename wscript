@@ -81,7 +81,7 @@ def options(opt):
                              'robert_bb2',
                              'robert_evt',
                              'robert_es',
-                             'em_lb525',
+                             'obelix',
                              'asterix_evt1',],
                    help='Which board we are targeting '
                         'bb2, snowy_dvt, spalding, silk...')
@@ -457,7 +457,7 @@ def configure(conf):
     elif conf.is_cutts() or conf.is_robert():
         conf.env.PLATFORM_NAME = 'emery'
         conf.env.MIN_SDK_VERSION = 3
-    elif conf.is_sifli():
+    elif conf.is_obelix():
         conf.env.PLATFORM_NAME = 'sf32lb'
         conf.env.MIN_SDK_VERSION = 3
     else:
@@ -472,7 +472,7 @@ def configure(conf):
         conf.env.MICRO_FAMILY = 'STM32F4'
     elif conf.is_cutts() or conf.is_robert():
         conf.env.MICRO_FAMILY = 'STM32F7'
-    elif conf.is_sifli():
+    elif conf.is_obelix():
         conf.env.MICRO_FAMILY = 'SF32LB'        
     elif conf.is_asterix():
         conf.env.MICRO_FAMILY = 'NRF52840'
@@ -522,6 +522,9 @@ def configure(conf):
     elif conf.is_asterix():
         conf.env.bt_controller = 'nrf52'
         conf.env.append_value('DEFINES', ['BT_CONTROLLER_NRF52'])
+    elif conf.is_obelix():
+        conf.env.bt_controller = 'sf32lb'
+        conf.env.append_value('DEFINES', ['BT_CONTROLLER_SF32LB'])
     elif bt_board in ('silk_bb2', 'silk', 'robert_bb2', 'robert_evt'):
         conf.env.bt_controller = 'da14681-01'
         conf.env.append_value('DEFINES', ['BT_CONTROLLER_DA14681'])

@@ -255,7 +255,7 @@ board_capability_dicts = [
         }
     },
     {
-        'boards': ['em_lb525'],
+        'boards': ['obelix'],
         'capabilities':
         {
             # 'HAS_ACCESSORY_CONNECTOR',

@@ -16,6 +16,8 @@ def _recurse(ctx):
         ctx.recurse('ti_bt_sp')
     elif ctx.env.bt_controller == 'nrf52':
         ctx.recurse('nimble')
+    elif ctx.env.bt_controller == 'sf32lb':
+        ctx.recurse('nimble')
 
 def configure(conf):
     _recurse(conf)

@@ -62,7 +62,7 @@ static const PermissionMapping s_permission_mappings[] = {
 };
 
 static const uint32_t s_cache_settings[MpuCachePolicyNum] = {
-#if !PLATFORM_SF32LB    
+#if !PLATFORM_OBELIX    
   [MpuCachePolicy_NotCacheable] = (0x1 << MPU_RASR_TEX_Pos) | (MPU_RASR_S_Msk),
   [MpuCachePolicy_WriteThrough] = (MPU_RASR_S_Msk | MPU_RASR_C_Msk),
   [MpuCachePolicy_WriteBackWriteAllocate] =
@@ -145,7 +145,7 @@ void mpu_set_region(const MpuRegion* region) {
 
   mpu_get_register_settings(region, &base_reg, &attr_reg);
   MPU->RBAR = base_reg;
-#if PLATFORM_SF32LB  
+#if PLATFORM_OBELIX  
 #else
   MPU->RASR = attr_reg;
 #endif  
@@ -157,7 +157,7 @@ MpuRegion mpu_get_region(int region_num) {
 
   MPU->RNR = region_num;
 
-#if PLATFORM_SF32LB  
+#if PLATFORM_OBELIX  
   const uint32_t attributes = 8;
 #else
   const uint32_t attributes = MPU->RASR;

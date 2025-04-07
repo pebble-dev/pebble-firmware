@@ -13,6 +13,7 @@ def build(bld):
         micro_sources = bld.path.ant_glob('SiFliSDK/drivers/hal/*.c', excl=excludes)
         micro_sources += bld.path.ant_glob('SiFliSDK/drivers/cmsis/sf32lb52x/bf0_pin_const.c')
         micro_sources += bld.path.ant_glob('SiFliSDK/drivers/cmsis/sf32lb52x/bf0_lcpu_init.c')
+        micro_sources += bld.path.ant_glob('SiFliSDK/drivers/cmsis/sf32lb52x/lcpu_patch.c')
         micro_sources += bld.path.ant_glob('SiFliSDK/drivers/cmsis/sf32lb52x/lcpu_patch_rev_b.c')
         micro_sources += bld.path.ant_glob('SiFliSDK/drivers/cmsis/sf32lb52x/bt_rf_fulcal.c')
         micro_sources += bld.path.ant_glob('SiFliSDK/drivers/cmsis/sf32lb52x/bt_rf_cw_config.c')

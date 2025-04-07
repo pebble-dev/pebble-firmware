@@ -29,7 +29,7 @@ typedef struct VoltagePoint {
 
 // TODO: Move these curves somewhere else. Related: PBL-21049
 
-#if defined(PLATFORM_TINTIN)||defined(PLATFORM_SF32LB)
+#if defined(PLATFORM_TINTIN)||defined(PLATFORM_OBELIX)
 // When the voltage drops below these (mV), the watch will start heading for standby (after delay)
 #define BATTERY_CRITICAL_VOLTAGE_CHARGING 3200
 #define BATTERY_CRITICAL_VOLTAGE_DISCHARGING 3100
