@@ -42,7 +42,7 @@ status_t flash_impl_read_sync(void *buffer_ptr, FlashAddress start_addr, size_t 
 }
 
 int flash_impl_write_page_begin(const void *buffer, const FlashAddress start_addr, size_t len) {
-  return S_SUCCESS;
+  return len;
 }
 
 status_t flash_impl_get_write_status(void) { return S_SUCCESS; }
