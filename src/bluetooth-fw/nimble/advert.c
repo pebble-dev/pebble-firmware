@@ -66,17 +66,30 @@ static void prv_handle_connection_event(struct ble_gap_event *event) {
 
   struct BleConnectionCompleteEvent complete_event = {
       .handle = event->connect.conn_handle,
-      .is_master = desc.role != BLE_GAP_ROLE_MASTER,
+      .is_master = desc.role == BLE_GAP_ROLE_MASTER,
       .status = HciStatusCode_Success,
-      .is_resolved = false,
   };
+
+  // If OTA address != ID address, then the address must be resolved.
+  // This happens for an already paired devices.
+  complete_event.is_resolved = ble_addr_cmp(&desc.peer_id_addr, &desc.peer_ota_addr) != 0;
+  if (complete_event.is_resolved) {
+    int rc;
+    struct ble_store_key_sec key_sec;
+    struct ble_store_value_sec value_sec;
+
+    key_sec.idx = 0;
+    key_sec.peer_addr = desc.peer_id_addr;
+
+    rc = ble_store_read_peer_sec(&key_sec, &value_sec);
+    PBL_ASSERT(rc == 0, "Failed to read peer security (%d)", rc);
+
+    memcpy(complete_event.irk.data, value_sec.irk, 16);
+  }
+
   nimble_conn_params_to_pebble(&desc, &complete_event.conn_params);
-  nimble_addr_to_pebble_device(&desc.peer_ota_addr, &complete_event.peer_address);
+  nimble_addr_to_pebble_device(&desc.peer_id_addr, &complete_event.peer_address);
   bt_driver_handle_le_connection_complete_event(&complete_event);
-  PBL_LOG_D(LOG_DOMAIN_BT, LOG_LEVEL_INFO,
-            "device connected! connection handle:%d addr:" BT_DEVICE_ADDRESS_FMT,
-            event->connect.conn_handle,
-            BT_DEVICE_ADDRESS_XPLODE(complete_event.peer_address.address));
 }
 
 static void prv_handle_disconnection_event(struct ble_gap_event *event) {
@@ -92,7 +105,6 @@ static void prv_handle_disconnection_event(struct ble_gap_event *event) {
   nimble_addr_to_pebble_device(&event->disconnect.conn.peer_id_addr,
                                &disconnection_event.peer_address);
   bt_driver_handle_le_disconnection_complete_event(&disconnection_event);
-  PBL_LOG_D(LOG_DOMAIN_BT, LOG_LEVEL_INFO, "device disconnected!");
 }
 
 static void prv_handle_enc_change_event(struct ble_gap_event *event) {
@@ -110,21 +122,6 @@ static void prv_handle_enc_change_event(struct ble_gap_event *event) {
   };
   nimble_addr_to_pebble_addr(&desc.peer_id_addr, &enc_change_event.dev_address);
   bt_driver_handle_le_encryption_change_event(&enc_change_event);
-
-  BleBonding bonding = {
-      .is_gateway = true,
-      .should_pin_address = false,
-      .pairing_info =
-          {
-              .is_local_encryption_info_valid = false,
-              .is_remote_encryption_info_valid = false,
-              .is_remote_identity_info_valid = true,
-              .is_remote_signing_info_valid = false,
-              .is_mitm_protection_enabled = false,
-          },
-  };
-  nimble_addr_to_pebble_device(&desc.peer_id_addr, &bonding.pairing_info.identity);
-  bt_driver_cb_handle_create_bonding(&bonding, &enc_change_event.dev_address);
 }
 
 static void prv_handle_conn_params_updated_event(struct ble_gap_event *event) {
@@ -174,17 +171,10 @@ static void prv_handle_identity_resolved_event(struct ble_gap_event *event) {
     return;
   }
 
-  BleAddressAndIRKChange addr_change_event = {
-      .is_address_updated = true,
-      .is_resolved = true,
-  };
+  BleAddressChange addr_change_event;
   nimble_addr_to_pebble_device(&desc.peer_ota_addr, &addr_change_event.device);
   nimble_addr_to_pebble_device(&desc.peer_id_addr, &addr_change_event.new_device);
-  PBL_LOG_D(LOG_DOMAIN_BT, LOG_LEVEL_INFO, "identity resolved, old addr:" BT_DEVICE_ADDRESS_FMT,
-            BT_DEVICE_ADDRESS_XPLODE(addr_change_event.device.address));
-  PBL_LOG_D(LOG_DOMAIN_BT, LOG_LEVEL_INFO, "identity resolved, new addr:" BT_DEVICE_ADDRESS_FMT,
-            BT_DEVICE_ADDRESS_XPLODE(addr_change_event.new_device.address));
-  bt_driver_handle_le_connection_handle_update_address_and_irk(&addr_change_event);
+  bt_driver_handle_le_connection_handle_update_address(&addr_change_event);
 }
 
 static void prv_handle_mtu_change_event(struct ble_gap_event *event) {
@@ -293,7 +283,7 @@ bool bt_driver_advert_advertising_enable(uint32_t min_interval_ms, uint32_t max_
   int rc;
   uint8_t own_addr_type;
   struct ble_gap_adv_params advp = {
-      .conn_mode = enable_scan_resp ? BLE_GAP_CONN_MODE_UND : BLE_GAP_DISC_MODE_NON,
+      .conn_mode = BLE_GAP_CONN_MODE_UND,
       .disc_mode = BLE_GAP_DISC_MODE_GEN,
       .itvl_min = BLE_GAP_CONN_ITVL_MS(min_interval_ms),
       .itvl_max = BLE_GAP_CONN_ITVL_MS(max_interval_ms),
@@ -315,7 +305,7 @@ bool bt_driver_advert_advertising_enable(uint32_t min_interval_ms, uint32_t max_
 }
 
 // no impl needed for nimble, buggy stack workaround
-bool bt_driver_advert_client_has_cycled(void) { return true; }
+bool bt_driver_advert_client_has_cycled(void) { return false; }
 
 // no impl needed for nimble, buggy stack workaround
 void bt_driver_advert_client_set_cycled(bool has_cycled) {}

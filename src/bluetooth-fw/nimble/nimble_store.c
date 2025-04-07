@@ -1,0 +1,323 @@
+/*
+ * Copyright 2025 Core Devices LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#include <bluetooth/bonding_sync.h>
+#include <bluetooth/gap_le_connect.h>
+#include <comm/bt_lock.h>
+#include <host/ble_hs.h>
+#include <string.h>
+#include <system/logging.h>
+#include <system/passert.h>
+#include <util/list.h>
+
+#include "nimble_type_conversions.h"
+
+#define KEY_SIZE 16
+
+#define BLE_FLAG_SECURE_CONNECTIONS 0x01
+
+typedef struct {
+  ListNode node;
+  struct ble_store_value_sec value_sec;
+} BleStoreValue;
+
+static BleStoreValue *s_peer_value_secs;
+static BleStoreValue *s_our_value_secs;
+
+static bool prv_nimble_store_find_sec_cb(ListNode *node, void *data) {
+  BleStoreValue *s = (BleStoreValue *)node;
+  struct ble_store_key_sec *key_sec = (struct ble_store_key_sec *)data;
+
+  return ble_addr_cmp(&s->value_sec.peer_addr, &key_sec->peer_addr) == 0;
+}
+
+static ListNode **prv_find_sec_list_for_obj_type(const int obj_type) {
+  switch (obj_type) {
+    case BLE_STORE_OBJ_TYPE_OUR_SEC:
+      return (ListNode **)&s_our_value_secs;
+    case BLE_STORE_OBJ_TYPE_PEER_SEC:
+      return (ListNode **)&s_peer_value_secs;
+    default:
+      PBL_ASSERT(0, "Unkmown store object type");
+  }
+}
+
+static BleStoreValue *prv_nimble_store_find_sec(const int obj_type,
+                                                const struct ble_store_key_sec *key_sec) {
+  ListNode *sec_list = *prv_find_sec_list_for_obj_type(obj_type);
+
+  if (!ble_addr_cmp(&key_sec->peer_addr, BLE_ADDR_ANY)) {
+    return (BleStoreValue *)list_get_at(sec_list, key_sec->idx);
+  } else if (key_sec->idx == 0) {
+    return (BleStoreValue *)list_find(sec_list, prv_nimble_store_find_sec_cb,
+                                      (void *)&key_sec->peer_addr);
+  }
+
+  return NULL;
+}
+
+static int prv_nimble_store_read_sec(const int obj_type, const struct ble_store_key_sec *key_sec,
+                                     struct ble_store_value_sec *value_sec) {
+  int ret = 0;
+  BleStoreValue *s;
+
+  bt_lock();
+
+  s = prv_nimble_store_find_sec(obj_type, key_sec);
+  if (s == NULL) {
+    ret = BLE_HS_ENOENT;
+    goto unlock;
+  }
+
+  *value_sec = s->value_sec;
+
+unlock:
+  bt_unlock();
+
+  return ret;
+}
+
+static BleStoreValue *prv_nimble_store_upsert_sec(const int obj_type,
+                                                  const struct ble_store_value_sec *value_sec) {
+  BleStoreValue *s;
+  struct ble_store_key_sec key_sec;
+  ble_store_key_from_value_sec(&key_sec, value_sec);
+  ListNode **sec_list = prv_find_sec_list_for_obj_type(obj_type);
+
+  bt_lock();
+
+  s = prv_nimble_store_find_sec(obj_type, &key_sec);
+  if (s == NULL) {
+    s = kernel_zalloc_check(sizeof(BleStoreValue));
+    if (*sec_list == NULL) {
+      *sec_list = (ListNode *)s;
+    } else {
+      list_append(*sec_list, (ListNode *)s);
+    }
+  }
+
+  s->value_sec = *value_sec;
+
+  bt_unlock();
+
+  return s;
+}
+
+static void prv_convert_peer_sec_to_bonding(const struct ble_store_value_sec *value_sec,
+                                            BleBonding *bonding) {
+  if (value_sec->ltk_present) {
+    bonding->pairing_info.is_remote_encryption_info_valid = true;
+    bonding->pairing_info.remote_encryption_info.ediv = value_sec->ediv;
+    bonding->pairing_info.remote_encryption_info.rand = value_sec->rand_num;
+    memcpy(bonding->pairing_info.remote_encryption_info.ltk.data, value_sec->ltk, KEY_SIZE);
+  }
+
+  if (value_sec->irk_present) {
+    bonding->pairing_info.is_remote_identity_info_valid = true;
+    memcpy(bonding->pairing_info.irk.data, value_sec->irk, KEY_SIZE);
+  }
+}
+
+static void prv_convert_our_sec_to_bonding(const struct ble_store_value_sec *value_sec,
+                                           BleBonding *bonding) {
+  if (value_sec->ltk_present) {
+    bonding->pairing_info.is_local_encryption_info_valid = true;
+    bonding->pairing_info.local_encryption_info.ediv = value_sec->ediv;
+    bonding->pairing_info.local_encryption_info.rand = value_sec->rand_num;
+    memcpy(bonding->pairing_info.local_encryption_info.ltk.data, value_sec->ltk, KEY_SIZE);
+  }
+}
+
+static void prv_notify_irk_updated(const struct ble_store_value_sec *value_sec) {
+  BleIRKChange irk_change_event;
+
+  irk_change_event.irk_valid = true;
+  memcpy(irk_change_event.irk.data, value_sec->irk, KEY_SIZE);
+
+  nimble_addr_to_pebble_device(&value_sec->peer_addr, &irk_change_event.device);
+
+  bt_driver_handle_le_connection_handle_update_irk(&irk_change_event);
+}
+
+static void prv_notify_host_bonding_changed(const int obj_type,
+                                            const struct ble_store_value_sec *value_sec) {
+  int rc;
+  BleBonding bonding;
+  BTDeviceAddress addr;
+  struct ble_store_key_sec key_sec;
+  struct ble_store_value_sec existing_value_sec;
+
+  ble_store_key_from_value_sec(&key_sec, value_sec);
+
+  // persist bonding
+  memset(&bonding, 0, sizeof(bonding));
+
+  bonding.is_gateway = true;
+
+  // read any existing data of the opposite type and combine with the new data before sending to the
+  // host
+  switch (obj_type) {
+    case BLE_STORE_OBJ_TYPE_PEER_SEC:
+      rc = prv_nimble_store_read_sec(BLE_STORE_OBJ_TYPE_OUR_SEC, &key_sec, &existing_value_sec);
+      if (rc == 0) {
+        prv_convert_our_sec_to_bonding(&existing_value_sec, &bonding);
+      }
+      prv_convert_peer_sec_to_bonding(value_sec, &bonding);
+
+      break;
+    case BLE_STORE_OBJ_TYPE_OUR_SEC:
+      rc = prv_nimble_store_read_sec(BLE_STORE_OBJ_TYPE_PEER_SEC, &key_sec, &existing_value_sec);
+      if (rc == 0) {
+        prv_convert_peer_sec_to_bonding(&existing_value_sec, &bonding);
+      }
+      prv_convert_our_sec_to_bonding(value_sec, &bonding);
+      break;
+  }
+
+  if (value_sec->sc) {
+    bonding.flags |= BLE_FLAG_SECURE_CONNECTIONS;
+  }
+
+  nimble_addr_to_pebble_device(&value_sec->peer_addr, &bonding.pairing_info.identity);
+
+  nimble_addr_to_pebble_addr(&value_sec->peer_addr, &addr);
+
+  if (bonding.pairing_info.is_remote_encryption_info_valid) {
+    bt_driver_cb_handle_create_bonding(&bonding, &addr);
+  } else {
+    PBL_LOG_D(LOG_DOMAIN_BT, LOG_LEVEL_DEBUG, "Skipping notifying OS of our keys");
+  }
+}
+
+static int prv_nimble_store_write_sec(const int obj_type,
+                                      const struct ble_store_value_sec *value_sec) {
+  if (value_sec->key_size != KEY_SIZE || value_sec->authenticated || value_sec->csrk_present) {
+    PBL_LOG_D(LOG_DOMAIN_BT, LOG_LEVEL_ERROR, "Unsupported security parameters");
+    return BLE_HS_ENOTSUP;
+  }
+
+  prv_nimble_store_upsert_sec(obj_type, value_sec);
+
+  // inform about new IRK
+  if (obj_type == BLE_STORE_OBJ_TYPE_PEER_SEC && value_sec->irk_present) {
+    prv_notify_irk_updated(value_sec);
+  }
+
+  prv_notify_host_bonding_changed(obj_type, value_sec);
+
+  return 0;
+}
+
+static int prv_nimble_store_read(const int obj_type, const union ble_store_key *key,
+                                 union ble_store_value *value) {
+  switch (obj_type) {
+    case BLE_STORE_OBJ_TYPE_OUR_SEC:
+    case BLE_STORE_OBJ_TYPE_PEER_SEC:
+      return prv_nimble_store_read_sec(obj_type, &key->sec, &value->sec);
+    default:
+      return BLE_HS_ENOTSUP;
+  }
+}
+
+static int prv_nimble_store_write(int obj_type, const union ble_store_value *val) {
+  switch (obj_type) {
+    case BLE_STORE_OBJ_TYPE_OUR_SEC:
+    case BLE_STORE_OBJ_TYPE_PEER_SEC:
+      return prv_nimble_store_write_sec(obj_type, &val->sec);
+    default:
+      return BLE_HS_ENOTSUP;
+  }
+}
+
+void nimble_store_init(void) {
+  ble_hs_cfg.store_read_cb = prv_nimble_store_read;
+  ble_hs_cfg.store_write_cb = prv_nimble_store_write;
+}
+
+static void prv_convert_bonding_remote_to_store_val(const BleBonding *bonding,
+                                                    struct ble_store_value_sec *value_sec) {
+  memset(value_sec, 0, sizeof(struct ble_store_value_sec));
+
+  value_sec->key_size = KEY_SIZE;
+
+  if (bonding->pairing_info.is_remote_encryption_info_valid) {
+    value_sec->ediv = bonding->pairing_info.remote_encryption_info.ediv;
+    value_sec->rand_num = bonding->pairing_info.remote_encryption_info.rand;
+    value_sec->ltk_present = true;
+    memcpy(value_sec->ltk, bonding->pairing_info.remote_encryption_info.ltk.data, KEY_SIZE);
+  }
+
+  if (bonding->pairing_info.is_remote_identity_info_valid) {
+    value_sec->irk_present = true;
+    memcpy(value_sec->irk, bonding->pairing_info.irk.data, KEY_SIZE);
+  }
+
+  value_sec->sc = !!(bonding->flags & BLE_FLAG_SECURE_CONNECTIONS);
+
+  pebble_device_to_nimble_addr(&bonding->pairing_info.identity, &value_sec->peer_addr);
+}
+
+static void prv_convert_bonding_local_to_store_val(const BleBonding *bonding,
+                                                   struct ble_store_value_sec *value_sec) {
+  memset(value_sec, 0, sizeof(struct ble_store_value_sec));
+
+  value_sec->key_size = KEY_SIZE;
+
+  if (bonding->pairing_info.is_local_encryption_info_valid) {
+    value_sec->ediv = bonding->pairing_info.local_encryption_info.ediv;
+    value_sec->rand_num = bonding->pairing_info.local_encryption_info.rand;
+    value_sec->ltk_present = true;
+    memcpy(value_sec->ltk, bonding->pairing_info.local_encryption_info.ltk.data, KEY_SIZE);
+  }
+
+  value_sec->sc = !!(bonding->flags & BLE_FLAG_SECURE_CONNECTIONS);
+
+  pebble_device_to_nimble_addr(&bonding->pairing_info.identity, &value_sec->peer_addr);
+}
+
+void bt_driver_handle_host_added_bonding(const BleBonding *bonding) {
+  struct ble_store_value_sec value_sec;
+
+  prv_convert_bonding_remote_to_store_val(bonding, &value_sec);
+  prv_nimble_store_upsert_sec(BLE_STORE_OBJ_TYPE_PEER_SEC, &value_sec);
+
+  prv_convert_bonding_local_to_store_val(bonding, &value_sec);
+  prv_nimble_store_upsert_sec(BLE_STORE_OBJ_TYPE_OUR_SEC, &value_sec);
+}
+
+void bt_driver_handle_host_removed_bonding(const BleBonding *bonding) {
+  BleStoreValue *s;
+  struct ble_store_key_sec key_sec;
+
+  key_sec.idx = 0;
+  pebble_device_to_nimble_addr(&bonding->pairing_info.identity, &key_sec.peer_addr);
+
+  bt_lock();
+
+  s = prv_nimble_store_find_sec(BLE_STORE_OBJ_TYPE_OUR_SEC, &key_sec);
+  if (s != NULL) {
+    list_remove((ListNode *)s, (ListNode **)&s_our_value_secs, NULL);
+    kernel_free(s);
+  }
+
+  s = prv_nimble_store_find_sec(BLE_STORE_OBJ_TYPE_PEER_SEC, &key_sec);
+  if (s != NULL) {
+    list_remove((ListNode *)s, (ListNode **)&s_peer_value_secs, NULL);
+    kernel_free(s);
+  }
+
+  bt_unlock();
+}
