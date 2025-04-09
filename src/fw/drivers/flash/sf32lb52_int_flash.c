@@ -62,7 +62,7 @@ status_t flash_impl_init(bool coredump_mode) {
   spi_flash_handle.dual_mode = 1;
   spi_flash_handle.flash_mode = 0;  // nor
   HAL_StatusTypeDef res = HAL_FLASH_Init(&spi_flash_handle, &flash_cfg, &spi_flash_dma_handle,
-                                         &flash_dma, 1);
+                                         &flash_dma, 5);
 
   if (res != HAL_OK) {
     return E_ERROR;
