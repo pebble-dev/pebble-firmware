@@ -42,7 +42,7 @@
 #elif PLATFORM_SNOWY || PLATFORM_SPALDING
   #include "flash_region_s29vs.h"
 #elif PLATFORM_OBELIX
-  #include "flash_region_mt25q.h"
+  #include "flash_region_sf32lb_int.h"
 #else
   #error "Unknown platform"
 #endif
