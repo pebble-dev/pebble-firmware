@@ -26,6 +26,8 @@
 
 #include "nimble_type_conversions.h"
 
+#include <stdio.h>
+
 void bt_driver_advert_advertising_disable(void) {
   int rc;
 
