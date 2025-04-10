@@ -25,6 +25,7 @@
 #include "applib/graphics/perimeter.h"
 #include "applib/ui/bitmap_layer.h"
 #include "applib/ui/kino/kino_layer.h"
+#include "applib/ui/text_layer.h"
 #include "services/normal/timeline/attribute.h"
 #include "services/normal/timeline/timeline_resources.h"
 
@@ -99,6 +100,8 @@ typedef struct {
 #endif
 } NotificationLayoutInfo;
 
+typedef struct BannerScrollState BannerScrollState;
+
 typedef struct {
   LayoutLayer layout;
   KinoLayer icon_layer;
@@ -111,7 +114,14 @@ typedef struct {
   const NotificationStyle *style;
   GTextNode *view_node;
   GSize view_size;
+  TextLayer *banner_title_layer;
+  int banner_scroll_cycle;           // Track scroll cycle count
+  AppTimer *banner_scroll_timer;     // Timer for scrolling
+  int16_t banner_title_scroll_distance; // Distance to scroll
+  bool destroyed;
+  uint8_t banner_scroll_state;
 } NotificationLayout;
+
 
 //! Default notification color
 #define DEFAULT_NOTIFICATION_COLOR (GColorFolly)

@@ -103,5 +103,17 @@ void gdraw_command_image_set_bounds_size(GDrawCommandImage *image, GSize size);
 //! @return command list
 GDrawCommandList *gdraw_command_image_get_command_list(GDrawCommandImage *image);
 
+#if PBL_BW
+//! Sets the stroke color for all commands in the image.
+//! @param image The image to modify.
+//! @param stroke_color The new stroke color.
+void gdraw_command_image_set_stroke_color(GDrawCommandImage *image, GColor stroke_color);
+
+//! Sets the fill color for all commands in the image.
+//! @param image The image to modify.
+//! @param fill_color The new fill color.
+void gdraw_command_image_set_fill_color(GDrawCommandImage *image, GColor fill_color);
+#endif
+
 //!   @} // end addtogroup DrawCommand
 //! @} // end addtogroup Graphics
