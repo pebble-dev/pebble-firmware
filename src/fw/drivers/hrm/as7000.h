@@ -16,16 +16,14 @@
 
 #pragma once
 
-#include "drivers/hrm.h"
+#include <stdbool.h>
 
 #include "board/board.h"
+#include "drivers/hrm.h"
 #include "drivers/i2c_definitions.h"
 #include "os/mutex.h"
 #include "services/common/new_timer/new_timer.h"
 #include "util/attributes.h"
-
-#include <stdbool.h>
-
 
 typedef enum HRMEnabledState {
   HRMEnabledState_Uninitialized = 0,

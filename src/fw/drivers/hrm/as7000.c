@@ -23,14 +23,14 @@
 #include "drivers/gpio.h"
 #include "drivers/i2c.h"
 #include "kernel/events.h"
-#include "kernel/util/sleep.h"
 #include "kernel/util/interval_timer.h"
+#include "kernel/util/sleep.h"
 #include "mfg/mfg_info.h"
 #include "resource/resource.h"
 #include "resource/resource_ids.auto.h"
 #include "services/common/analytics/analytics.h"
-#include "services/common/system_task.h"
 #include "services/common/hrm/hrm_manager.h"
+#include "services/common/system_task.h"
 #include "system/logging.h"
 #include "system/passert.h"
 #include "system/profiler.h"
@@ -48,8 +48,8 @@
 #define PPG_DEBUG 0
 
 #if PPG_DEBUG
-#define PPG_DBG(...) \
-  do { \
+#define PPG_DBG(...)                       \
+  do {                                     \
     PBL_LOG(LOG_LEVEL_DEBUG, __VA_ARGS__); \
   } while (0);
 #else
@@ -57,15 +57,13 @@
 #endif
 
 #if PPG_DEBUG == 2
-#define PPG_DBG_VERBOSE(...) \
-  do { \
+#define PPG_DBG_VERBOSE(...)                       \
+  do {                                             \
     PBL_LOG_VERBOSE(LOG_LEVEL_DEBUG, __VA_ARGS__); \
   } while (0);
 #else
 #define PPG_DBG_VERBOSE(...)
 #endif
-
-
 
 // The datasheet recommends waiting for 250ms for the chip to boot
 #define NORMAL_BOOT_DELAY_MS (250)
@@ -86,8 +84,8 @@
 // Value stored in the register is in units of 64 ADC counts
 // e.g. 78 * 64 = 4992 ADC-counts
 // Refer to AS7000 SW Communication Protocol section 6.7
-#define PRES_DETECT_THRSH_WHITE 78 // (5000 / 64)
-#define PRES_DETECT_THRSH_BLACK 54 // (3500 / 64)
+#define PRES_DETECT_THRSH_WHITE 78  // (5000 / 64)
+#define PRES_DETECT_THRSH_BLACK 54  // (3500 / 64)
 
 // register addresses
 #define ADDR_LOADER_STATUS (0x00)
@@ -125,8 +123,8 @@
 #define ADDR_LED_CURRENT_MSB (0x34)
 #define ADDR_LED_CURRENT_LSB (0x35)
 #define ADDR_HRM_STATUS (0x36)
-#define ADDR_HRM_BPM    (0x37)
-#define ADDR_HRM_SQI    (0x38)
+#define ADDR_HRM_BPM (0x37)
+#define ADDR_HRM_SQI (0x38)
 
 #define ADDR_SYNC (0x39)
 
@@ -192,7 +190,6 @@ _Static_assert(IHEX_RECORD_LENGTH(MAX_HEX_DATA_BYTES) <= 256,
                "The value of MAX_HEX_DATA_BYTES will result in HEX records "
                "which are longer than the AS7000 loader can handle.");
 
-
 // The sw_version_major field is actually a bitfield encoding both the
 // major and minor components of the SDK version number. Define macros
 // to extract the components for logging purposes.
@@ -224,8 +221,8 @@ static bool prv_write_register(HRMDevice *dev, uint8_t register_address, uint8_t
   return rv;
 }
 
-static bool prv_write_register_block(HRMDevice *dev, uint8_t register_address,
-                                     const void *buffer, uint32_t length) {
+static bool prv_write_register_block(HRMDevice *dev, uint8_t register_address, const void *buffer,
+                                     uint32_t length) {
   i2c_use(dev->i2c_slave);
   bool rv = i2c_write_register_block(dev->i2c_slave, register_address, length, buffer);
   i2c_release(dev->i2c_slave);
@@ -248,15 +245,15 @@ static bool prv_read_register_block(HRMDevice *dev, uint8_t register_address, vo
 }
 
 static bool prv_set_host_one_second_time_register(HRMDevice *dev, uint32_t average_ms) {
-  PPG_DBG("host one second time: %"PRIu32" ms", average_ms);
+  PPG_DBG("host one second time: %" PRIu32 " ms", average_ms);
 
   // Register takes a reading in 0.1ms increments
   uint16_t value = average_ms * 10;
 
   const uint8_t msb = (value >> 8) & 0xff;
   const uint8_t lsb = value & 0xff;
-  return prv_write_register(dev, ADDR_HOST_ONE_SECOND_TIME_MSB, msb)
-      && prv_write_register(dev, ADDR_HOST_ONE_SECOND_TIME_LSB, lsb);
+  return prv_write_register(dev, ADDR_HOST_ONE_SECOND_TIME_MSB, msb) &&
+         prv_write_register(dev, ADDR_HOST_ONE_SECOND_TIME_LSB, lsb);
 }
 
 static void prv_read_ppg_data(HRMDevice *dev, HRMPPGData *data_out) {
@@ -289,8 +286,8 @@ static void prv_read_ppg_data(HRMDevice *dev, HRMPPGData *data_out) {
         break;
       }
 
-      PPG_DBG_VERBOSE("FAIL: got %"PRIu16" expected %u tia %"PRIu16,
-                      ppg_reading.idx, i + 1, ntohs(ppg_reading.tia));
+      PPG_DBG_VERBOSE("FAIL: got %" PRIu16 " expected %u tia %" PRIu16, ppg_reading.idx, i + 1,
+                      ntohs(ppg_reading.tia));
       // Keep trying...
     }
 
@@ -302,8 +299,7 @@ static void prv_read_ppg_data(HRMDevice *dev, HRMPPGData *data_out) {
     data_out->num_samples++;
   }
 
-  PPG_DBG("num_samples reg: %"PRIu8" read: %u",
-          num_ppg_samples, data_out->num_samples);
+  PPG_DBG("num_samples reg: %" PRIu8 " read: %u", num_ppg_samples, data_out->num_samples);
 }
 
 static void prv_write_accel_sample(HRMDevice *dev, uint8_t sample_idx, AccelRawData *data) {
@@ -313,11 +309,10 @@ static void prv_write_accel_sample(HRMDevice *dev, uint8_t sample_idx, AccelRawD
     net16 accel_y;
     net16 accel_z;
   } sample_data = {
-    .sample_idx = sample_idx,
-    .accel_x = hton16(data->x * 2), // Accel service supplies mGs, AS7000 expects lsb = 0.5 mG
-    .accel_y = hton16(data->y * 2),
-    .accel_z = hton16(data->z * 2)
-  };
+      .sample_idx = sample_idx,
+      .accel_x = hton16(data->x * 2),  // Accel service supplies mGs, AS7000 expects lsb = 0.5 mG
+      .accel_y = hton16(data->y * 2),
+      .accel_z = hton16(data->z * 2)};
   prv_write_register_block(dev, ADDR_ACCEL_SAMPLE_IDX, &sample_data, sizeof(sample_data));
 }
 
@@ -375,7 +370,7 @@ static void prv_handle_handshake_pulse(void *unused_data) {
   // We keep track of the number of handshakes so that we know when to expect samples
   const bool should_expect_samples = (HRM->state->handshake_count > WARMUP_HANDSHAKES);
 
-  HRMData data = (HRMData) {};
+  HRMData data = (HRMData){};
 
   // Immediately read the PPG data. The timing constraints are pretty tight (we need to read this
   // within 30ms~ of getting the handshake or else we'll lose PPG data). The other registers can
@@ -401,13 +396,11 @@ static void prv_handle_handshake_pulse(void *unused_data) {
 
   // Handle the clock skew register
   uint32_t average_handshake_interval_ms;
-  uint32_t num_intervals = interval_timer_get(&s_handshake_interval_timer,
-                                              &average_handshake_interval_ms);
+  uint32_t num_intervals =
+      interval_timer_get(&s_handshake_interval_timer, &average_handshake_interval_ms);
   // Try to write the register frequently early on, and then every half second to accommodate
   // changes over time.
-  if (num_intervals == 2 ||
-      num_intervals == 10 ||
-      (num_intervals % 30) == 0) {
+  if (num_intervals == 2 || num_intervals == 10 || (num_intervals % 30) == 0) {
     prv_set_host_one_second_time_register(HRM, average_handshake_interval_ms);
   }
 
@@ -415,19 +408,16 @@ static void prv_handle_handshake_pulse(void *unused_data) {
   uint8_t unused;
   prv_read_register(HRM, ADDR_SYNC, &unused);
 
-
   PPG_DBG("Handshake handle done");
   HRM->state->handshake_count++;
-
 
   PROFILER_NODE_STOP(hrm_handling);
   mutex_unlock(HRM->state->lock);
 
-
   // PPG_DBG log out each PPG data sample that we recorded
   for (int i = 0; i < data.ppg_data.num_samples; i++) {
-    PPG_DBG_VERBOSE("idx %-2"PRIu8" ppg %-6"PRIu16" tia %-6"PRIu16,
-                    data.ppg_data.indexes[i], data.ppg_data.ppg[i], data.ppg_data.tia[i]);
+    PPG_DBG_VERBOSE("idx %-2" PRIu8 " ppg %-6" PRIu16 " tia %-6" PRIu16, data.ppg_data.indexes[i],
+                    data.ppg_data.ppg[i], data.ppg_data.tia[i]);
   }
 
   hrm_manager_new_data_cb(&data);
@@ -436,13 +426,12 @@ static void prv_handle_handshake_pulse(void *unused_data) {
     analytics_inc(ANALYTICS_DEVICE_METRIC_HRM_ACCEL_DATA_MISSING, AnalyticsClient_System);
     PBL_LOG(LOG_LEVEL_WARNING, "Falling behind: HRM got 0 accel samples");
   }
-
 }
 
 static void prv_as7000_interrupt_handler(bool *should_context_switch) {
   PPG_DBG("Handshake interrupt");
 
-  PROFILER_NODE_START(hrm_handling); // Starting to respond to handshake toggle
+  PROFILER_NODE_START(hrm_handling);  // Starting to respond to handshake toggle
 
   // Reset the watchdog counter
   s_missing_interrupt_count = 0;
@@ -484,8 +473,7 @@ static void prv_log_running_apps(HRMDevice *dev) {
   }
 }
 
-static bool prv_get_and_log_device_info(HRMDevice *dev, AS7000InfoRecord *info,
-                                        bool log_version) {
+static bool prv_get_and_log_device_info(HRMDevice *dev, AS7000InfoRecord *info, bool log_version) {
   // get the device info
   if (!prv_read_register_block(dev, ADDR_INFO_START, info, sizeof(AS7000InfoRecord))) {
     return false;
@@ -493,12 +481,13 @@ static bool prv_get_and_log_device_info(HRMDevice *dev, AS7000InfoRecord *info,
 
   if (log_version) {
     // print out the version information
-    PBL_LOG(LOG_LEVEL_INFO, "AS7000 enabled! Protocol v%" PRIu8 ".%" PRIu8
-      ", SW v%" PRIu8 ".%" PRIu8 ".%" PRIu8 ", HW Rev %" PRIu8,
+    PBL_LOG(LOG_LEVEL_INFO,
+            "AS7000 enabled! Protocol v%" PRIu8 ".%" PRIu8 ", SW v%" PRIu8 ".%" PRIu8 ".%" PRIu8
+            ", HW Rev %" PRIu8,
             info->protocol_version_major, info->protocol_version_minor,
             HRM_SW_VERSION_PART_MAJOR(info->sw_version_major),
-            HRM_SW_VERSION_PART_MINOR(info->sw_version_major),
-            info->sw_version_minor, info->hw_revision);
+            HRM_SW_VERSION_PART_MINOR(info->sw_version_major), info->sw_version_minor,
+            info->hw_revision);
   }
   prv_log_running_apps(dev);
   return true;
@@ -509,7 +498,7 @@ static bool prv_is_app_running(HRMDevice *dev, AS7000AppId app) {
   if (!prv_read_register(dev, ADDR_APP_IDS, &running_apps)) {
     return false;
   }
-  PBL_LOG(LOG_LEVEL_DEBUG, "Apps running: 0x%"PRIx8, running_apps);
+  PBL_LOG(LOG_LEVEL_DEBUG, "Apps running: 0x%" PRIx8, running_apps);
   if (app == AS7000AppId_Idle) {
     // no apps should be running
     return running_apps == AS7000AppId_Idle;
@@ -644,7 +633,7 @@ static void prv_watchdog_timer_cb(void *data) {
     system_task_add_callback(prv_watchdog_timer_system_cb, (void *)dev);
   }
   if (s_missing_interrupt_count > 1) {
-    PBL_LOG(LOG_LEVEL_DEBUG, "Missing interrupt count: %"PRIu8" ", s_missing_interrupt_count);
+    PBL_LOG(LOG_LEVEL_DEBUG, "Missing interrupt count: %" PRIu8 " ", s_missing_interrupt_count);
   }
 }
 
@@ -652,9 +641,9 @@ static void prv_watchdog_timer_cb(void *data) {
 // the sensor stops generating interrupts.
 static void prv_enable_watchdog(HRMDevice *dev) {
   mutex_assert_held_by_curr_task(dev->state->lock, true);
-  s_as7000_watchdog_timer = (RegularTimerInfo) {
-    .cb = prv_watchdog_timer_cb,
-    .cb_data = (void *)dev,
+  s_as7000_watchdog_timer = (RegularTimerInfo){
+      .cb = prv_watchdog_timer_cb,
+      .cb_data = (void *)dev,
   };
   s_missing_interrupt_count = 0;
   regular_timer_add_seconds_callback(&s_as7000_watchdog_timer);
@@ -707,7 +696,7 @@ static bool prv_wait_for_loader_ready(HRMDevice *dev) {
       return true;
     } else if ((status != AS7000LoaderStatus_Busy1) && (status != AS7000LoaderStatus_Busy2)) {
       // error
-      PBL_LOG(LOG_LEVEL_ERROR, "Error status: %"PRIx8, status);
+      PBL_LOG(LOG_LEVEL_ERROR, "Error status: %" PRIx8, status);
       return false;
     }
     psleep(1);
@@ -730,11 +719,9 @@ static bool prv_flash_fw(HRMDevice *dev) {
     return false;
   }
 
-  const uint32_t image_length =
-    resource_size(SYSTEM_APP, RESOURCE_ID_AS7000_FW_IMAGE);
+  const uint32_t image_length = resource_size(SYSTEM_APP, RESOURCE_ID_AS7000_FW_IMAGE);
   PBL_ASSERTN(image_length);
-  PBL_LOG(LOG_LEVEL_DEBUG,
-          "Loading FW image (%"PRIu32" bytes encoded)", image_length);
+  PBL_LOG(LOG_LEVEL_DEBUG, "Loading FW image (%" PRIu32 " bytes encoded)", image_length);
   // Skip over the image header.
   uint32_t cursor = sizeof(AS7000FWUpdateHeader);
   while (cursor < image_length) {
@@ -744,12 +731,13 @@ static bool prv_flash_fw(HRMDevice *dev) {
     PBL_ASSERTN((image_length - cursor) > sizeof(AS7000FWSegmentHeader));
     // Read the header.
     AS7000FWSegmentHeader segment_header;
-    if (resource_load_byte_range_system(
-          SYSTEM_APP, RESOURCE_ID_AS7000_FW_IMAGE, cursor,
-          (uint8_t *)&segment_header, sizeof(segment_header)) !=
-        sizeof(segment_header)) {
-      PBL_LOG(LOG_LEVEL_ERROR, "Failed to read FW image! "
-              "(segment header @ 0x%" PRIx32 ")", cursor);
+    if (resource_load_byte_range_system(SYSTEM_APP, RESOURCE_ID_AS7000_FW_IMAGE, cursor,
+                                        (uint8_t *)&segment_header,
+                                        sizeof(segment_header)) != sizeof(segment_header)) {
+      PBL_LOG(LOG_LEVEL_ERROR,
+              "Failed to read FW image! "
+              "(segment header @ 0x%" PRIx32 ")",
+              cursor);
       return false;
     }
     cursor += sizeof(segment_header);
@@ -759,19 +747,19 @@ static bool prv_flash_fw(HRMDevice *dev) {
     while (bytes_remaining) {
       uint8_t chunk[MAX_HEX_DATA_BYTES];
       const size_t load_length = MIN(MAX_HEX_DATA_BYTES, bytes_remaining);
-      if (resource_load_byte_range_system(
-            SYSTEM_APP, RESOURCE_ID_AS7000_FW_IMAGE, cursor, chunk, load_length)
-          != load_length) {
-        PBL_LOG(LOG_LEVEL_ERROR, "Failed to read FW image! "
-                "(segment data @ 0x%" PRIx32 ")", cursor);
+      if (resource_load_byte_range_system(SYSTEM_APP, RESOURCE_ID_AS7000_FW_IMAGE, cursor, chunk,
+                                          load_length) != load_length) {
+        PBL_LOG(LOG_LEVEL_ERROR,
+                "Failed to read FW image! "
+                "(segment data @ 0x%" PRIx32 ")",
+                cursor);
         return false;
       }
 
       // Encode the chunk into an Intel HEX record and send it to the
       // AS7000 loader.
       uint8_t data_record[IHEX_RECORD_LENGTH(MAX_HEX_DATA_BYTES)];
-      ihex_encode(data_record, IHEX_TYPE_DATA, write_address,
-                  chunk, load_length);
+      ihex_encode(data_record, IHEX_TYPE_DATA, write_address, chunk, load_length);
       if (!prv_write_register_block(dev, ADDR_LOADER_STATUS, data_record,
                                     IHEX_RECORD_LENGTH(load_length))) {
         PBL_LOG(LOG_LEVEL_ERROR, "Failed to write hex record");
@@ -797,8 +785,7 @@ static bool prv_flash_fw(HRMDevice *dev) {
   // fully written.
   uint8_t eof_record[IHEX_RECORD_LENGTH(0)];
   ihex_encode(eof_record, IHEX_TYPE_EOF, 0, NULL, 0);
-  if (!prv_write_register_block(dev, ADDR_LOADER_STATUS,
-                                eof_record, IHEX_RECORD_LENGTH(0))) {
+  if (!prv_write_register_block(dev, ADDR_LOADER_STATUS, eof_record, IHEX_RECORD_LENGTH(0))) {
     PBL_LOG(LOG_LEVEL_ERROR, "Failed to write EOF record");
     return false;
   }
@@ -809,8 +796,8 @@ static bool prv_flash_fw(HRMDevice *dev) {
 static bool prv_set_accel_sample_frequency(HRMDevice *dev, uint16_t freq) {
   const uint8_t msb = (freq >> 8) & 0xff;
   const uint8_t lsb = freq & 0xff;
-  return prv_write_register(dev, ADDR_ACCEL_SAMPLE_FREQ_MSB, msb)
-      && prv_write_register(dev, ADDR_ACCEL_SAMPLE_FREQ_LSB, lsb);
+  return prv_write_register(dev, ADDR_ACCEL_SAMPLE_FREQ_MSB, msb) &&
+         prv_write_register(dev, ADDR_ACCEL_SAMPLE_FREQ_LSB, lsb);
 }
 
 static void prv_enable_system_task_cb(void *context) {
@@ -820,8 +807,10 @@ static void prv_enable_system_task_cb(void *context) {
     // Enable was cancelled before this callback fired.
     goto done;
   } else if (dev->state->enabled_state != HRMEnabledState_PoweringOn) {
-    PBL_LOG(LOG_LEVEL_ERROR, "Enable KernelBG callback fired while HRM was in "
-            "an unexpected state: %u", (unsigned int)dev->state->enabled_state);
+    PBL_LOG(LOG_LEVEL_ERROR,
+            "Enable KernelBG callback fired while HRM was in "
+            "an unexpected state: %u",
+            (unsigned int)dev->state->enabled_state);
     WTF;
   }
 
@@ -834,8 +823,7 @@ static void prv_enable_system_task_cb(void *context) {
   if (info.application_id == AS7000AppId_Loader) {
     // This shouldn't happen. The application firmware should have been
     // flashed during boot.
-    PBL_LOG(LOG_LEVEL_ERROR,
-            "AS7000 booted into loader! Something is very wrong.");
+    PBL_LOG(LOG_LEVEL_ERROR, "AS7000 booted into loader! Something is very wrong.");
     goto failed;
   }
 
@@ -847,8 +835,7 @@ static void prv_enable_system_task_cb(void *context) {
   }
 
   if (info.application_id != AS7000AppId_Idle) {
-    PBL_LOG(LOG_LEVEL_ERROR,
-            "Unexpected application running: 0x%" PRIx8, info.application_id);
+    PBL_LOG(LOG_LEVEL_ERROR, "Unexpected application running: 0x%" PRIx8, info.application_id);
     goto failed;
   }
 
@@ -901,7 +888,8 @@ static void prv_enable_system_task_cb(void *context) {
 
   // wait for the INT line to go high indicating the Idle app has ended
   if (!prv_wait_int_high(dev)) {
-    PBL_LOG(LOG_LEVEL_ERROR, "Timed-out waiting for the Idle app to end but we "
+    PBL_LOG(LOG_LEVEL_ERROR,
+            "Timed-out waiting for the Idle app to end but we "
             "probably just missed it");
     // TODO: The line only goes high for a few ms. If there is any kind of context switch while we
     // wait for the line to go high we will miss this. Let's fix this the right way in PBL-41812
@@ -949,8 +937,7 @@ void hrm_init(HRMDevice *dev) {
   // if it needs to be updated.
 
   // First, read the version from the firmware update resource.
-  const uint32_t update_length = resource_size(
-      SYSTEM_APP, RESOURCE_ID_AS7000_FW_IMAGE);
+  const uint32_t update_length = resource_size(SYSTEM_APP, RESOURCE_ID_AS7000_FW_IMAGE);
   if (update_length == 0) {
     // We don't have a firmware to write so there's no point in booting
     // the HRM.
@@ -959,16 +946,15 @@ void hrm_init(HRMDevice *dev) {
   }
 
   AS7000FWUpdateHeader image_header;
-  if (resource_load_byte_range_system(
-        SYSTEM_APP, RESOURCE_ID_AS7000_FW_IMAGE, 0, (uint8_t *)&image_header,
-        sizeof(image_header)) != sizeof(image_header)) {
+  if (resource_load_byte_range_system(SYSTEM_APP, RESOURCE_ID_AS7000_FW_IMAGE, 0,
+                                      (uint8_t *)&image_header,
+                                      sizeof(image_header)) != sizeof(image_header)) {
     PBL_LOG(LOG_LEVEL_ERROR, "Failed to read HRM FW image header!");
     return;
   }
   PBL_LOG(LOG_LEVEL_DEBUG, "FW update image is v%" PRIu8 ".%" PRIu8 ".%" PRIu8,
           HRM_SW_VERSION_PART_MAJOR(image_header.sw_version_major),
-          HRM_SW_VERSION_PART_MINOR(image_header.sw_version_major),
-          image_header.sw_version_minor);
+          HRM_SW_VERSION_PART_MINOR(image_header.sw_version_major), image_header.sw_version_minor);
 
   // Now that we know what version the image is, actually boot up the
   // HRM so we can read off the version.
@@ -1020,8 +1006,7 @@ void hrm_init(HRMDevice *dev) {
     gpio_output_set(&dev->en_gpio, true);
     psleep(LOADER_REBOOT_DELAY_MS);
     if (!prv_get_and_log_device_info(dev, &hrm_info, true /* log_version */)) {
-      PBL_LOG(LOG_LEVEL_ERROR,
-              "Failed to read AS7000 version info after flashing!");
+      PBL_LOG(LOG_LEVEL_ERROR, "Failed to read AS7000 version info after flashing!");
       goto cleanup;
     }
   } else {
@@ -1059,8 +1044,8 @@ void hrm_disable(HRMDevice *dev) {
 }
 
 bool hrm_is_enabled(HRMDevice *dev) {
-  return (dev->state->enabled_state == HRMEnabledState_Enabled
-         || dev->state->enabled_state == HRMEnabledState_PoweringOn);
+  return (dev->state->enabled_state == HRMEnabledState_Enabled ||
+          dev->state->enabled_state == HRMEnabledState_PoweringOn);
 }
 
 void as7000_get_version_info(HRMDevice *dev, AS7000InfoRecord *info_out) {
@@ -1079,8 +1064,9 @@ void as7000_get_version_info(HRMDevice *dev, AS7000InfoRecord *info_out) {
 // Prompt Commands
 // ===============
 
-#include "console/prompt.h"
 #include <string.h>
+
+#include "console/prompt.h"
 
 void command_hrm_wipe(void) {
   // HEX records to write 0xFFFFFFFF to the magic number region.
@@ -1091,20 +1077,18 @@ void command_hrm_wipe(void) {
   gpio_output_set(&HRM->en_gpio, true);
   psleep(NORMAL_BOOT_DELAY_MS);
 
-  bool success = prv_start_loader(HRM) &&
-                 prv_wait_for_loader_ready(HRM) &&
-                 prv_write_register_block(HRM, ADDR_LOADER_STATUS,
-                                          erase_magic_record,
-                                          strlen(erase_magic_record)) &&
-                 prv_wait_for_loader_ready(HRM) &&
-                 prv_write_register_block(HRM, ADDR_LOADER_STATUS,
-                                          eof_record, strlen(eof_record)) &&
-                 prv_wait_for_loader_ready(HRM);
+  bool success =
+      prv_start_loader(HRM) && prv_wait_for_loader_ready(HRM) &&
+      prv_write_register_block(HRM, ADDR_LOADER_STATUS, erase_magic_record,
+                               strlen(erase_magic_record)) &&
+      prv_wait_for_loader_ready(HRM) &&
+      prv_write_register_block(HRM, ADDR_LOADER_STATUS, eof_record, strlen(eof_record)) &&
+      prv_wait_for_loader_ready(HRM);
 
   gpio_output_set(&HRM->en_gpio, false);
   mutex_unlock(HRM->state->lock);
 
-  prompt_send_response(success? "HRM Firmware invalidated" : "ERROR");
+  prompt_send_response(success ? "HRM Firmware invalidated" : "ERROR");
 }
 
 // Simulate a frozen sensor for testing the watchdog recovery logic
