@@ -149,6 +149,8 @@ def _get_reset_conf(conf, should_connect_assert_srst):
         return ' '.join(options)
     elif conf.env.MICRO_FAMILY.startswith('NRF52'):
         return 'none'
+    elif conf.env.MICRO_FAMILY.startswith('SF32LB'):
+        return 'none'        
     else:
         raise Exception("Unsupported microcontroller family: %s" % conf.env.MICRO_FAMILY)
 
@@ -167,6 +169,8 @@ def write_cfg(conf):
         target = 'stm32f4x.cfg'
     elif conf.env.MICRO_FAMILY == 'STM32F7':
         target = 'stm32f7x.cfg'
+    elif conf.env.MICRO_FAMILY == 'SF32LB':
+        target = 'stm32f7x.cfg'        
     elif conf.env.MICRO_FAMILY == 'NRF52840':
         target = 'nrf52.cfg'
 

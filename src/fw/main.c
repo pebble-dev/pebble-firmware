@@ -249,11 +249,11 @@ int main(void) {
   stop_mode_disable(InhibitorMain);
 
   // Turn off power to internal flash when in stop mode
-#if !MICRO_FAMILY_NRF5
+#if !MICRO_FAMILY_NRF5 && !MICRO_FAMILY_SF32LB
   periph_config_enable(PWR, RCC_APB1Periph_PWR);
 #endif
   pwr_flash_power_down_stop_mode(true /* power_down */);
-#if !MICRO_FAMILY_NRF5
+#if !MICRO_FAMILY_NRF5 && !MICRO_FAMILY_SF32LB
   periph_config_disable(PWR, RCC_APB1Periph_PWR);
 #endif
 
@@ -393,6 +393,7 @@ static NOINLINE void prv_main_task_init(void) {
   static McuRebootReason s_mcu_reboot_reason;
   s_mcu_reboot_reason = watchdog_clear_reset_flag();
 
+  __asm("B .");
 #if PULSE_EVERYWHERE
   pulse_init();
   pulse_logging_init();

@@ -69,6 +69,10 @@ void enter_stop_mode(void) {
   flash_power_up_after_stop_mode();
 
 }
+#elif defined(MICRO_FAMILY_SF32LB)
+void enter_stop_mode(void) 
+{
+}
 #else /* STM32 */
 void enter_stop_mode(void) {
   // enable the interrupt on the debug RX line so that we can use the serial

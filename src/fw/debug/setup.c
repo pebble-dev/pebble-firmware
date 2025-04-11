@@ -28,7 +28,7 @@
 
 void enable_mcu_debugging(void) {
 #ifndef RELEASE
-#if defined(MICRO_FAMILY_NRF52840)
+#if defined(MICRO_FAMILY_NRF52840) || defined(MICRO_FAMILY_SF32LB)
 //  NRF_APPROTECT->APPROTECT.DISABLE = 1;
 #else
   DBGMCU_Config(DBGMCU_SLEEP | DBGMCU_STOP, ENABLE);
@@ -43,6 +43,7 @@ void enable_mcu_debugging(void) {
 void disable_mcu_debugging(void) {
 #if defined(MICRO_FAMILY_NRF52840)
 //  NRF_APPROTECT->APPROTECT.DISABLE = 0;
+#elif defined (MICRO_FAMILY_SF32LB)
 #else
   DBGMCU->CR = 0;
   DBGMCU->APB1FZ = 0;
