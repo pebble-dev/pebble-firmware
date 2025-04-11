@@ -581,7 +581,7 @@ def _build_normal(bld):
 
     excludes.extend(_get_launcher_globs_to_exclude(bld))
 
-    if not bld.capability('HAS_BUILTIN_HRM'):
+    if not bld.capability('HAS_BUILTIN_HRM') or not bld.env.SILK_HR:
         excludes.append('popups/ble_hrm/**')
 
     if bld.is_tintin():
