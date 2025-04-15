@@ -184,7 +184,7 @@ board_capability_dicts = [
         {
             'HAS_ACCESSORY_CONNECTOR',
             'HAS_APP_GLANCES',
-            # 'HAS_BUILTIN_HRM', -- TODO: disabled because driver was removed
+            # 'HAS_BUILTIN_HRM', -- disabled by default
             'HAS_CORE_NAVIGATION4',
             'HAS_HEALTH_TRACKING',
             'HAS_JAVASCRIPT',
@@ -209,7 +209,7 @@ board_capability_dicts = [
             'COMPOSITOR_USES_DMA',
             'HAS_ACCESSORY_CONNECTOR',
             'HAS_APP_GLANCES',
-            # 'HAS_BUILTIN_HRM', -- TODO: disabled because driver was removed
+            # 'HAS_BUILTIN_HRM', -- disabled by default
             'HAS_CORE_NAVIGATION4',
             'HAS_GLYPH_BITMAP_CACHING',
             'HAS_HEALTH_TRACKING',
@@ -322,6 +322,10 @@ def get_capability_dict(ctx, board):
 
     if ctx.env.NOJS:
         capabilities_of_board.discard('HAS_JAVASCRIPT')
+
+    if ctx.env.SILK_HR:
+        # Enable builtin HRM for Silk
+        capabilities_of_board.add('HAS_BUILTIN_HRM')
 
     # End overrides section
 

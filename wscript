@@ -172,6 +172,8 @@ def options(opt):
     opt.add_option('--reboot_on_bt_crash', action='store_true', help='Forces a BT '
                    'chip crash to immediately force a system reboot instead of just cycling airplane mode. '
                    'This makes it easier for us to actually get crash info')
+    opt.add_option('--enable_silk_hr', action='store_true', 
+                   help='Enable heart rate sensor on Silk, downloads the proprietary firmware from the server if available')
 
 
 def handle_configure_options(conf):
@@ -335,6 +337,89 @@ def handle_configure_options(conf):
 
     if not conf.options.mfg and not conf.options.no_pulse_everywhere:
         conf.env.append_value('DEFINES', 'PULSE_EVERYWHERE=1')
+    
+    if conf.options.enable_silk_hr and conf.is_silk():
+        conf.env.SILK_HR = True
+        print("Enabling Silk heart rate sensor")
+        
+        import urllib.request
+        import json
+        
+        # Store the firmware in resources/normal/silk/blobs
+        hr_fw_dir = conf.path.make_node('resources/normal/silk/blobs')
+        if not os.path.exists(hr_fw_dir.abspath()):
+            os.makedirs(hr_fw_dir.abspath())
+        
+        # Path to save the firmware
+        hr_fw_path = hr_fw_dir.make_node('as7000_fw_image.bin')
+        conf.env.HR_FW_PATH = hr_fw_path.abspath()
+        
+        # Download the firmware if it doesn't exist
+        if not os.path.exists(hr_fw_path.abspath()):
+            print("Downloading AS7000 heart rate sensor firmware...")
+            hr_fw_url = "https://github.com/jplexer/AS7000_FW/raw/refs/heads/main/as7000_fw_image.bin"
+            try:
+                urllib.request.urlretrieve(hr_fw_url, hr_fw_path.abspath())
+                print("AS7000 firmware downloaded successfully")
+            except Exception as e:
+                print(f"Error downloading AS7000 firmware: {e}")
+        else:
+            print(f"Using existing AS7000 firmware at {hr_fw_path.abspath()}")
+            
+        # Add the firmware to the resource map manually to preserve formatting
+        resource_map_path = conf.path.make_node('resources/normal/silk/resource_map.json')
+        if os.path.exists(resource_map_path.abspath()):
+            try:
+                # Check if our entry is already there
+                with open(resource_map_path.abspath(), 'r') as f:
+                    content = f.read()
+                
+                if '"name": "AS7000_FW_IMAGE"' not in content:
+                    print("Adding AS7000 firmware to resource map")
+                    
+                    # Find the position to insert our entry - right before the last entry
+                    insert_pos = content.rindex('  ]')
+                    
+                    # Create our entry with the same formatting style as the rest of the file
+                    new_entry = ',\n    {\n      "type": "raw",\n      "name": "AS7000_FW_IMAGE",\n      "file": "normal/silk/blobs/as7000_fw_image.bin",\n      "builtin": true\n    }'
+                    
+                    # Insert our entry
+                    new_content = content[:insert_pos] + new_entry + content[insert_pos:]
+                    
+                    # Write back the modified content
+                    with open(resource_map_path.abspath(), 'w') as f:
+                        f.write(new_content)
+                    
+                    print("AS7000 firmware added to resource map")
+                else:
+                    print("AS7000 firmware already present in resource map")
+            except Exception as e:
+                print(f"Error modifying resource map: {e}")
+    else:
+        # If Silk HR is not enabled, remove the AS7000 firmware entry manually
+        if conf.is_silk():
+            resource_map_path = conf.path.make_node('resources/normal/silk/resource_map.json')
+            if os.path.exists(resource_map_path.abspath()):
+                try:
+                    with open(resource_map_path.abspath(), 'r') as f:
+                        content = f.read()
+                    
+                    # Try to find and remove our entry
+                    import re
+                    pattern = r',?\s*\{\s*"type"\s*:\s*"raw"\s*,\s*"name"\s*:\s*"AS7000_FW_IMAGE"\s*,[^}]*\}'
+                    new_content = re.sub(pattern, '', content)
+                    
+                    # Fix any double commas that might result
+                    new_content = new_content.replace(',\n    ,', ',')
+                    
+                    # Write back the modified content if it changed
+                    if new_content != content:
+                        print("Removing AS7000 firmware from resource map")
+                        with open(resource_map_path.abspath(), 'w') as f:
+                            f.write(new_content)
+                
+                except Exception as e:
+                    print(f"Error modifying resource map: {e}")
 
 def _create_cm0_env(conf):
     prev_env = conf.env
