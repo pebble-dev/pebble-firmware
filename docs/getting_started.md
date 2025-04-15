@@ -43,7 +43,7 @@ sudo apt update
 2. Install required dependencies
 
 ```shell
-sudo apt install gcc-multilib gettext python3-venv
+sudo apt install gcc-multilib gettext python3-venv python3-dev libpython3-dev 
 ```
 
 ::::
