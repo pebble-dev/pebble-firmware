@@ -33,7 +33,7 @@ def build(bld):
         micro_sources += bld.path.ant_glob('SiFliSDK/middleware/ipc_queue/porting/sf32lb52x/hcpu/ipc_hw_port.c')
         micro_includes += ['SiFliSDK/middleware/include',
                           'SiFliSDK/middleware/ipc_queue/common',
-                          'SifliSDK/middleware/ipc_queue/porting/sf32lb52x/hcpu'
+                          'SiFliSDK/middleware/ipc_queue/porting/sf32lb52x/hcpu'
                           ]                          
     bld.stlib(source=micro_sources,
               target='hal_sifli',
