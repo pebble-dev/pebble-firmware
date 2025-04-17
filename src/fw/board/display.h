@@ -84,7 +84,7 @@ typedef struct {
 #elif BOARD_ROBERT_EVT
 #include "displays/display_robert_evt.h"
 #elif BOARD_OBELIX
-#include "displays/display_silk.h"
+#include "displays/display_robert.h"
 #else
 #error "Unknown display definition for board"
 #endif // BOARD_*

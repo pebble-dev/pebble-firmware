@@ -146,6 +146,26 @@
       "file": "normal/snowy/images/health_icon_rotated_moon.png"
     },
     {
+      "type": "png",
+      "name": "STRIDE_HEART",
+      "file": "normal/robert/images/stride_heart.png"
+    },
+    {
+      "type": "png",
+      "name": "STRIDE_SHOE_GREEN",
+      "file": "normal/robert/images/stride_shoe_green.png"
+    },
+    {
+      "type": "png",
+      "name": "STRIDE_SHOE_BLUE",
+      "file": "normal/robert/images/stride_shoe_blue.png"
+    },
+    {
+      "type": "png",
+      "name": "WEATHER_CHANNEL_LOGO",
+      "file": "normal/snowy/images/weather_channel_logo.png"
+    },
+    {
       "type": "pbi",
       "name": "SYSTEM_FCC_MARK",
       "file": "normal/snowy/images/system_fcc_mark.png"
@@ -445,6 +465,24 @@
       "name": "HEALTH_APP_CROWN",
       "file": "normal/silk/images/health_app_crown.svg"
     },
+    {
+      "type": "font",
+      "name": "AGENCY_FB_46_NUMBERS_AM_PM",
+      "file": "normal/base/pbf/AGENCY_FB_36_NUMBERS_AM_PM.pbf",
+      "characterRegex": "[ 0-9:/.,°APMHIK\\+\\-\\%]"
+    },
+    {
+      "type": "font",
+      "name": "AGENCY_FB_88_NUMBERS_AM_PM",
+      "file": "normal/base/pbf/AGENCY_FB_60_NUMBERS_AM_PM.pbf",
+      "characterRegex": "[ 0-9:/.,°APMHIK\\+\\-\\%]"
+    },
+    {
+      "type": "font",
+      "name": "AGENCY_FB_88_THIN_NUMBERS_AM_PM",
+      "file": "normal/base/pbf/AGENCY_FB_60_THIN_NUMBERS_AM_PM.pbf",
+      "characterRegex": "[ 0-9:/.,°APMHIK\\+\\-\\%]"
+    },    
     {
      "type": "js",
      "name": "JS_TICTOC",
