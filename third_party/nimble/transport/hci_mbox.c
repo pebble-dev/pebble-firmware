@@ -141,9 +141,6 @@ void ble_transport_ll_init(void) {
   hci_h4_sm_init(&hci_uart_h4sm, &hci_h4_allocs_from_ll, hci_uart_frame_cb);
 
   s_rx_data_ready = xSemaphoreCreateBinary();
- 
-  pb_config_mbox();
-  lcpu_power_on();
 
   TaskParameters_t task_params = {
       .pvTaskCode = prv_rx_task_main,
@@ -154,6 +151,10 @@ void ble_transport_ll_init(void) {
   };
 
   pebble_task_create(PebbleTask_BTHCI, &task_params, &s_rx_task_handle);
+
+  pb_config_mbox();
+  //lcpu_power_on();
+
   PBL_ASSERTN(s_rx_task_handle);
 
 }
@@ -165,9 +166,16 @@ void ble_queue_cmd(void *buf, bool needs_free, bool wait) {
 }
 
 /* APIs to be implemented by HS/LL side of transports */
+static uint8_t hci_cmd[256];
 int ble_transport_to_ll_cmd_impl(void *buf) {
-  int written = ipc_queue_write(mbox_env.ipc_port, buf, 3 + ((uint8_t *)buf)[2], 10);
+  hci_cmd[0]=1;
+  memcpy(&(hci_cmd[1]), buf, 3 + ((uint8_t *)buf)[2]);
+#if 0
+  int written = ipc_queue_write(mbox_env.ipc_port, hci_cmd, 3 + ((uint8_t *)buf)[2]+1, 10);
   return (written>=0)?0:-1;
+#else
+  return 0;
+#endif
 }
 
 int ble_transport_to_ll_acl_impl(struct os_mbuf *om) {
