@@ -229,7 +229,7 @@
         "_comment": "Generously padded because it's not feature complete yet (only 3.x)"
     }, {
         "name": "KinoLayer",
-        "size_3x_padding": 40,
+        "size_3x_padding": 36,
         "size_3x": 164,
         "dependencies": ["Layer", "KinoPlayer"],
         "_comment": "Generously padded because it's not feature complete yet (only 3.x)"
@@ -241,7 +241,7 @@
         "_comment": "Generously padded because it's not feature complete yet (only 3.x)"
     }, {
         "name": "ExpandableDialog",
-        "size_3x_padding": 48,
+        "size_3x_padding": 44,
         "size_3x": 1280,
         "dependencies": ["Dialog", "TextLayer", "ScrollLayer", "ActionBarLayer", "Layer"],
         "_comment": "Generously padded because it's not feature complete yet (only 3.x)"
@@ -253,7 +253,7 @@
         "_comment": "Generously padded because it's not feature complete yet (only 3.x)"
     }, {
         "name": "VoiceWindow",
-        "size_3x_padding": 40,
+        "size_3x_padding": 36,
         "size_3x": 2368,
         "dependencies": ["TranscriptionDialog", "Layer", "Layer", "StatusBarLayer", "TextLayer", 
                          "KinoLayer", "Window", "EventServiceInfo"],
