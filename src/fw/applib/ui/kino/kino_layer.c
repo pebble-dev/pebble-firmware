@@ -19,24 +19,15 @@
 #include "applib/applib_malloc.auto.h"
 #include "applib/graphics/graphics.h"
 
-static GColor prv_invert_bw_color(GColor color) {
-  if (gcolor_equal(color, GColorBlack)) {
-    return GColorWhite;
-  } else if (gcolor_equal(color, GColorWhite)) {
-    return GColorBlack;
-  }
-  return color;
-}
-
 static void prv_invert_pdc_colors(GDrawCommandProcessor *processor, GDrawCommand *processed_command,
                                   size_t processed_command_max_size, const GDrawCommandList *list,
                                   const GDrawCommand *command) {
   gdraw_command_set_stroke_color(
       processed_command,
-      prv_invert_bw_color(gdraw_command_get_stroke_color((GDrawCommand *)command)));
+      gcolor_invert(gdraw_command_get_stroke_color((GDrawCommand *)command)));
   gdraw_command_set_fill_color(
       processed_command,
-      prv_invert_bw_color(gdraw_command_get_fill_color((GDrawCommand *)command)));
+      gcolor_invert(gdraw_command_get_fill_color((GDrawCommand *)command)));
 }
 
 GDrawCommandProcessor prv_gdraw_inv_processor = {
