@@ -25,6 +25,7 @@
 #include <nimble/transport.h>
 #include <nimble/transport/hci_h4.h>
 #include <nimble/transport_impl.h>
+#include <nimble/hci_common.h>
 #include <os/os_mempool.h>
 #include <os/os_mbuf.h>
 #include <queue.h>
@@ -67,7 +68,9 @@ static void prv_rx_task_main(void *unused) {
 
 static int32_t mbox_rx_ind(ipc_queue_handle_t handle, size_t size)
 {
-    xSemaphoreGive(s_rx_data_ready);
+    static BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+
+    xSemaphoreGiveFromISR(s_rx_data_ready, &xHigherPriorityTaskWoken);
     return 0;
 }
 
@@ -125,6 +128,16 @@ hci_uart_frame_cb(uint8_t pkt_type, void *data)
 {
     switch (pkt_type) {
     case HCI_H4_EVT:
+        {
+            struct ble_hci_ev *ev = data;            
+            struct ble_hci_ev_command_complete *cmd_complete = (void *) ev->data;
+            
+            if (ev->opcode==BLE_HCI_EVCODE_COMMAND_COMPLETE)
+                PBL_LOG(LOG_LEVEL_INFO, "CMD complete %x", cmd_complete->opcode);
+            
+            if (ev->opcode==BLE_HCI_EVCODE_COMMAND_COMPLETE&&cmd_complete->opcode==0xFC11)
+                break;                    
+        }
         return ble_transport_to_hs_evt(data);
     case HCI_H4_ACL:
         return ble_transport_to_hs_acl(data);
@@ -135,6 +148,18 @@ hci_uart_frame_cb(uint8_t pkt_type, void *data)
 
     return -1;
 }
+#if 0
+void HAL_DBG_printf(const char *fmt, ...)
+{
+    va_list args;
+    static char rt_log_buf[128];
+
+    va_start(args, fmt);
+    vsnprintf(rt_log_buf, sizeof(rt_log_buf) - 1, fmt, args);
+    PBL_LOG(LOG_LEVEL_INFO,"%s", rt_log_buf);    
+    va_end(args);
+}
+#endif
 
 extern void lcpu_power_on(void);
 void ble_transport_ll_init(void) {
@@ -153,7 +178,7 @@ void ble_transport_ll_init(void) {
   pebble_task_create(PebbleTask_BTHCI, &task_params, &s_rx_task_handle);
 
   pb_config_mbox();
-  //lcpu_power_on();
+  lcpu_power_on();
 
   PBL_ASSERTN(s_rx_task_handle);
 
@@ -167,15 +192,15 @@ void ble_queue_cmd(void *buf, bool needs_free, bool wait) {
 
 /* APIs to be implemented by HS/LL side of transports */
 static uint8_t hci_cmd[256];
-int ble_transport_to_ll_cmd_impl(void *buf) {
+int ble_transport_to_ll_cmd_impl(void *buf) {   
+  struct ble_hci_cmd *cmd = buf;
   hci_cmd[0]=1;
-  memcpy(&(hci_cmd[1]), buf, 3 + ((uint8_t *)buf)[2]);
-#if 0
-  int written = ipc_queue_write(mbox_env.ipc_port, hci_cmd, 3 + ((uint8_t *)buf)[2]+1, 10);
+  memcpy(&(hci_cmd[1]), buf, 3 + cmd->length);
+  int written = ipc_queue_write(mbox_env.ipc_port, hci_cmd, 3 + cmd->length+1, 10);
+  
+  PBL_LOG(LOG_LEVEL_INFO, "BLE TX CMD %x", cmd->opcode);
+  ble_transport_free(buf);
   return (written>=0)?0:-1;
-#else
-  return 0;
-#endif
 }
 
 int ble_transport_to_ll_acl_impl(struct os_mbuf *om) {

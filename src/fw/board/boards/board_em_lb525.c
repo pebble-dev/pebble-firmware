@@ -17,8 +17,21 @@
 #include "board/board.h"
 #include "drivers/sf32lb/uart_definitions.h"
 
+#define USING_UART1
+#ifdef USING_UART1
+#define UART_INST USART1
+#define UART_TX PAD_PA19
+#define UART_RX PAD_PA18
+#define UART_DMAREQ DMA_REQUEST_4
+#else
+#define UART_INST USART3
+#define UART_TX PAD_PA20
+#define UART_RX PAD_PA27
+#define UART_DMAREQ DMA_REQUEST_7
+#endif
+
 static UARTDeviceState s_dbg_uart_state;
-static UART_HandleTypeDef s_dbg_uart_handle = {.Instance = USART1,
+static UART_HandleTypeDef s_dbg_uart_handle = {.Instance = UART_INST,
                                                .Init = {
                                                    .WordLength = UART_WORDLENGTH_8B,
                                                    .StopBits = UART_STOPBITS_1,
@@ -28,11 +41,11 @@ static UART_HandleTypeDef s_dbg_uart_handle = {.Instance = USART1,
                                                }};
 static DMA_HandleTypeDef s_dbg_uart_rx_dma_handle = {
     .Instance = DMA1_Channel1,
-    .Init.Request = DMA_REQUEST_4,
+    .Init.Request = UART_DMAREQ,
 };
 static UARTDevice DBG_UART_DEVICE = {.state = &s_dbg_uart_state,
-                                     .tx_gpio = PAD_PA19,
-                                     .rx_gpio = PAD_PA18,  // TODO: Setting GPIOs to actual values
+                                     .tx_gpio = UART_TX,
+                                     .rx_gpio = UART_RX,  // TODO: Setting GPIOs to actual values
                                      .periph = &s_dbg_uart_handle,
                                      .rx_dma = &s_dbg_uart_rx_dma_handle,
                                      .irq_priority = 1};
