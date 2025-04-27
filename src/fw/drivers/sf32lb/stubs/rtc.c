@@ -164,13 +164,17 @@ void rtc_init(void) {
 #error "RTC LXT is disabled, but RTC init requires it to be enabled"
 #endif
 #ifdef SF32LB52X
+  HAL_PMU_EnableXTAL32();
   if (HAL_PMU_LXTReady() != HAL_OK)
 #else
   if (HAL_RTC_LXT_ENABLED() && HAL_PMU_LXTReady() != HAL_OK)
 #endif
   {
+    PBL_LOG(LOG_LEVEL_ALWAYS, "RTC init fail");
     WTF;
   }
+  HAL_RTC_ENABLE_LXT();
+  
   RTC_Handler.Init.DivAInt = 0x80;
   RTC_Handler.Init.DivAFrac = 0x0;
   RTC_Handler.Init.DivB = 0x100;
