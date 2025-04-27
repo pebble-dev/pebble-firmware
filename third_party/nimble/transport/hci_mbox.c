@@ -61,7 +61,7 @@ static void prv_rx_task_main(void *unused) {
       }
       else
         break;
-    }
+    }    
   }
 }
 
@@ -69,7 +69,8 @@ static void prv_rx_task_main(void *unused) {
 static int32_t mbox_rx_ind(ipc_queue_handle_t handle, size_t size)
 {
     static BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-
+    
+    HAL_HPAON_WakeCore(CORE_ID_LCPU);
     xSemaphoreGiveFromISR(s_rx_data_ready, &xHigherPriorityTaskWoken);
     return 0;
 }
@@ -197,7 +198,6 @@ int ble_transport_to_ll_cmd_impl(void *buf) {
   hci_cmd[0]=1;
   memcpy(&(hci_cmd[1]), buf, 3 + cmd->length);
   int written = ipc_queue_write(mbox_env.ipc_port, hci_cmd, 3 + cmd->length+1, 10);
-  
   PBL_LOG(LOG_LEVEL_INFO, "BLE TX CMD %x", cmd->opcode);
   ble_transport_free(buf);
   return (written>=0)?0:-1;
