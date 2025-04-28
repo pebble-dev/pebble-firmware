@@ -758,7 +758,7 @@ msgstr "Mouvements"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:207
 msgid "Ambient Sensor"
-msgstr "Lumière Ambiente"
+msgstr "Lumière Ambiante"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:224
 msgid "Screen Alignment"
