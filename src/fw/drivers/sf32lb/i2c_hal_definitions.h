@@ -5,9 +5,9 @@
 #include "freertos_types.h"
 #include <stdbool.h>
 #include <stdint.h>
-#include "os/mutex.h"
 #include "board/board.h"
-#include "drivers/i2c.h"
+#include "drivers/i2c_definitions.h"
+#include "board/board_sf32lb.h"
 #include "drivers/dma.h"
 #include "bf0_hal.h"
 #include "bf0_hal_i2c.h"
@@ -15,6 +15,8 @@
 #include "bf0_hal_def.h"
 #include "bf0_hal_rcc.h"
 #include "register.h"
+#include "bf0_hal_pinmux.h"
+
 typedef struct bf0_i2c_config
 {
     const char *device_name;
@@ -35,22 +37,21 @@ struct rt_i2c_configuration
     uint16_t open_flag;
     ;
 };
-typedef struct bf0_i2c
+
+typedef struct I2CBusHal
 {
     I2C_HandleTypeDef handle;
     bf0_i2c_config_t *bf0_i2c_cfg;
+    const struct I2CBus *bus; 
     struct rt_i2c_configuration *i2c_configuration;
     struct
     {
         DMA_HandleTypeDef dma_rx;
         DMA_HandleTypeDef dma_tx;
     } dma;
-    SemaphoreHandle_t sema;
-    PebbleMutex *mutex;
     uint8_t i2c_dma_flag;
     uint8_t i2c_int_flag;
-} bf0_i2c_t;
-
+} I2CBusHal;
 
 struct rt_i2c_msg
 {
@@ -61,6 +62,28 @@ struct rt_i2c_msg
     uint16_t len;
     uint8_t  *buf;
 };
+
+
+#if defined(I2C1)
+extern struct I2CBusHal i2c1_hal_obj;
+#endif
+#if defined(I2C2)
+extern struct I2CBusHal i2c2_hal_obj;
+#endif
+#if defined(I2C3)
+extern struct I2CBusHal i2c3_hal_obj;
+#endif
+#if defined(I2C4)
+extern struct I2CBusHal i2c4_hal_obj;
+#endif
+#if defined(I2C5)
+extern struct I2CBusHal i2c5_hal_obj;
+#endif
+#if defined(I2C6)
+extern struct I2CBusHal i2c6_hal_obj;
+#endif
+
+
 #define RT_I2C_WR                0x0000
 #define RT_I2C_RD               (1u << 0)
 #define RT_I2C_ADDR_10BIT       (1u << 2)  /* this is a ten bit chip address */

@@ -16,6 +16,11 @@
 
 #include "board/board.h"
 #include "drivers/sf32lb/uart_definitions.h"
+#include "board_em_lb525.h"
+#include "drivers/i2c.h"
+#include "FreeRTOS.h"
+#include "semphr.h"
+#include "drivers/sf32lb/i2c_hal_definitions.h"
 
 #define USING_UART1
 #ifdef USING_UART1
@@ -56,8 +61,61 @@ IRQ_MAP(USART1, uart_irq_handler, DBG_UART);
 void DMAC1_CH1_IRQHandler(void) { HAL_DMA_IRQHandler(&s_dbg_uart_rx_dma_handle); }
 
 
+
+I2CBusState i2c1_state;
+I2CBus i2c1 = {
+            .hal  = &i2c1_hal_obj,
+            .state = &i2c1_state,
+            .scl_gpio = 
+            {
+                .gpio_pin = 31,
+            },
+            .sda_gpio = 
+            {
+                .gpio_pin = 33,
+            },
+            .name = "i2c1",
+            }; 
+
+
+
+#define LCD_RESET_PIN           (0)         // GPIO_A00
+static void BSP_GPIO_Set(int pin, int val, int is_porta)
+{
+    GPIO_TypeDef *gpio = (is_porta) ? hwp_gpio1 : hwp_gpio2;
+    GPIO_InitTypeDef GPIO_InitStruct;
+
+    // set sensor pin to output mode
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT;
+    GPIO_InitStruct.Pin = pin;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(gpio, &GPIO_InitStruct);
+
+    // set sensor pin to high == power on sensor board
+    HAL_GPIO_WritePin(gpio, pin, (GPIO_PinState)val);
+}
+void BSP_LCD_Reset(uint8_t high1_low0)
+{
+    BSP_GPIO_Set(LCD_RESET_PIN, high1_low0, 1);
+}
+
+void BSP_LCD_PowerDown(void)
+{
+    // TODO: LCD power down
+    BSP_GPIO_Set(LCD_RESET_PIN, 0, 1);
+}
+
+void BSP_LCD_PowerUp(void)
+{
+    // TODO: LCD power up
+    HAL_Delay_us(500);      // lcd power on finish ,need 500us
+}
+
+
+
 void board_early_init(void) {
 }
 
 void board_init(void) {
+
 }

@@ -18,7 +18,6 @@
 
 #include "services/imu/units.h"
 #include "util/size.h"
-
 static const BoardConfigPower BOARD_CONFIG_POWER = {
   .battery_vmon_scale = {
     // Battery voltage is scaled down by a pair of resistors:
@@ -88,6 +87,11 @@ static const BoardConfig BOARD_CONFIG = {
 
   .has_mic = true,
 };
+extern void BSP_LCD_PowerDown(void);
+extern void BSP_LCD_PowerUp(void);
+extern void BSP_LCD_Reset(uint8_t high1_low0);
+
+
 #if 0
 
 static const BoardConfigButton BOARD_CONFIG_BUTTON = {

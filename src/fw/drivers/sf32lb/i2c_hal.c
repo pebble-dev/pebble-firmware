@@ -9,43 +9,23 @@
 #include "drivers/gpio.h"
 #include "drivers/periph_config.h"
 #include "system/passert.h"
-#include "drivers/sf32lb/i2c_definitions.h"
-#include "services/common/analytics/analytics.h"
+#include "drivers/sf32lb/i2c_hal_definitions.h"
+#include "drivers/i2c_definitions.h"
+#include "board/board_sf32lb.h"
+#include "bf0_pin_const.h"
+//#ifdef HAL_I2C_MODULE_ENABLED
 
-#ifdef HAL_I2C_MODULE_ENABLED
-static uint32_t s_max_transfer_duration_ticks;
-
-static void prv_analytics_track_i2c_error(void);
-
-static bool prv_semaphore_take(bf0_i2c_t *obj) 
+static void hal_semaphore_give(I2CBusState *bus_state) 
 {
-    return (xSemaphoreTake(obj->sema, 0) == pdPASS);
-}
-  
-static bool prv_semaphore_wait(bf0_i2c_t *obj) 
-{
-TickType_t timeout_ticks = milliseconds_to_ticks(obj->bf0_i2c_cfg->timeout);
-return (xSemaphoreTake(obj->sema, timeout_ticks) == pdPASS);
-}
-  
-static void prv_semaphore_give(bf0_i2c_t *obj) 
-{
-// If this fails, something is very wrong
-(void)xSemaphoreGive(obj->sema);
-}
-  
-static portBASE_TYPE prv_semaphore_give_from_isr(bf0_i2c_t *obj) 
-{
-portBASE_TYPE should_context_switch = pdFALSE;
-(void)xSemaphoreGiveFromISR(obj->sema,  &should_context_switch);
-return should_context_switch;
+    // If this fails, something is very wrong
+    xSemaphoreGive(bus_state->event_semaphore);
 }
 
-
-static void I2Cx_IRQHandler(bf0_i2c_t *obj)
+static void I2Cx_IRQHandler(struct I2CBusHal *hal)
 {
     I2C_HandleTypeDef *handle;
-    handle = &(obj->handle);
+    I2CBus *bus = hal->bus;
+    handle = &(hal->handle);
 
     if (handle->XferISR != NULL)
     {
@@ -54,7 +34,15 @@ static void I2Cx_IRQHandler(bf0_i2c_t *obj)
 
     if ((HAL_I2C_STATE_BUSY_TX != handle->State) && (HAL_I2C_STATE_BUSY_RX != handle->State))
     {
-        prv_semaphore_give(obj);
+        hal_semaphore_give(bus->state); 
+        HAL_I2C_StateTypeDef i2c_state = HAL_I2C_GetState(handle);
+        if(i2c_state == HAL_I2C_STATE_READY)
+            bus->state->transfer_event = I2CTransferEvent_TransferComplete;
+        else if(i2c_state == HAL_I2C_STATE_TIMEOUT)
+            bus->state->transfer_event = I2CTransferEvent_Timeout;
+        else
+            bus->state->transfer_event = I2CTransferEvent_Error;
+        __HAL_I2C_DISABLE(handle);
     }
 
 }
@@ -75,11 +63,12 @@ struct rt_i2c_configuration i2c1_cfg_default =
     5000,    // timeout;
     400000   // max_hz;
 }; 
-bf0_i2c_t i2c1_obj;
-bf0_i2c_t *const bf0_i2c1 = &i2c1_obj;
+struct I2CBusHal i2c1_hal_obj;
+
+
 void I2C1_IRQHandler(void)
 {
-    I2Cx_IRQHandler(&i2c1_obj); 
+    I2Cx_IRQHandler(&i2c1_hal_obj); 
 }
 
 #endif
@@ -101,11 +90,11 @@ struct rt_i2c_configuration i2c2_cfg_default =
     400000   // max_hz;
 }; 
 
-bf0_i2c_t i2c2_obj;
-bf0_i2c_t *const bf0_i2c2 = &i2c2_obj;
+struct I2CBusHal i2c2_hal_obj;
+
 void I2C2_IRQHandler(void)
 {
-    I2Cx_IRQHandler(&i2c2_obj); 
+    I2Cx_IRQHandler(&i2c2_hal_obj); 
 }
 #endif
 
@@ -126,11 +115,11 @@ struct rt_i2c_configuration i2c3_cfg_default =
     400000   // max_hz;
 }; 
 
-bf0_i2c_t i2c3_obj;
-bf0_i2c_t *const bf0_i2c3 = &i2c3_obj;
+struct I2CBusHal i2c3_hal_obj;
+
 void I2C3_IRQHandler(void)
 {
-    I2Cx_IRQHandler(&i2c3_obj);  
+    I2Cx_IRQHandler(&i2c3_hal_obj);  
 }
 #endif
 
@@ -151,11 +140,11 @@ struct rt_i2c_configuration i2c4_cfg_default =
     400000   // max_hz;
 }; 
 
-bf0_i2c_t i2c4_obj;
-bf0_i2c_t *const bf0_i2c4 = &i2c4_obj;
+struct I2CBusHal i2c4_hal_obj;
+
 void I2C4_IRQHandler(void)
 {
-    I2Cx_IRQHandler(&i2c4_obj); 
+    I2Cx_IRQHandler(&i2c4_hal_obj); 
 }
 #endif
 
@@ -176,11 +165,11 @@ struct rt_i2c_configuration i2c5_cfg_default =
     400000   // max_hz;
 }; 
 
-bf0_i2c_t i2c5_obj;
-bf0_i2c_t *const bf0_i2c5 = &i2c5_obj;
+struct I2CBusHal i2c5_hal_obj;
+
 void I2C5_IRQHandler(void)
 {
-    I2Cx_IRQHandler(&i2c5_obj); 
+    I2Cx_IRQHandler(&i2c5_hal_obj); 
 }
 #endif
 
@@ -201,17 +190,17 @@ struct rt_i2c_configuration i2c6_cfg_default =
     400000   // max_hz;
 }; 
 
-bf0_i2c_t i2c6_obj;
-bf0_i2c_t *const bf0_i2c6 = &i2c6_obj;
+struct I2CBusHal i2c6_hal_obj;
+
 void I2C6_IRQHandler(void)
 {
-    I2Cx_IRQHandler(&i2c6_obj); 
+    I2Cx_IRQHandler(&i2c6_hal_obj); 
 }
 #endif
-static void I2Cx_DMA_IRQHandler(bf0_i2c_t *obj)
+static void I2Cx_DMA_IRQHandler(struct I2CBusHal *hal )
 {
     I2C_HandleTypeDef *handle;
-    handle = &(obj->handle);
+    handle = &(hal->handle);
     if (handle->State == HAL_I2C_STATE_BUSY_TX)
     {
         HAL_DMA_IRQHandler(handle->hdmatx);
@@ -326,24 +315,23 @@ void I2C6_DMA_IRQHandler(void)
     I2Cx_DMA_IRQHandler(&i2c6_obj);
 }
 #endif
-static uint32_t master_xfer(bf0_i2c_t *objs, struct rt_i2c_msg msgs[], uint32_t num)
+struct rt_i2c_msg msgs[2];
+uint32_t msgs_num;
+static HAL_StatusTypeDef master_xfer(struct I2CBusHal * i2c_hal, struct rt_i2c_msg msgs[], uint32_t num)
 {
-    uint32_t ret = (0);
-
     uint32_t index = 0;
-    bf0_i2c_t *bf0_i2c = NULL;
+    struct I2CBusHal *bf0_i2c = NULL;
     struct rt_i2c_msg *msg = NULL;
     HAL_StatusTypeDef status;
     uint16_t mem_addr_type;
 
-    PBL_ASSERTN(objs != NULL);
-    bf0_i2c = objs;
+    PBL_ASSERTN(i2c_hal != NULL);
+    bf0_i2c = i2c_hal;
     PBL_LOG(LOG_LEVEL_ALWAYS, "i2cmaster_xfer start");
 
     __HAL_I2C_ENABLE(&bf0_i2c->handle);
     for (index = 0; index < num; index++)
     {
-
         msg = &msgs[index];
         if (msg->flags & RT_I2C_MEM_ACCESS)
         {
@@ -431,7 +419,7 @@ static uint32_t master_xfer(bf0_i2c_t *objs, struct rt_i2c_msg msgs[], uint32_t 
         }
 
         if (HAL_OK != status) goto exit;
-
+#if 1
         while (1)
         {
             HAL_I2C_StateTypeDef i2c_state = HAL_I2C_GetState(&bf0_i2c->handle);
@@ -446,18 +434,8 @@ static uint32_t master_xfer(bf0_i2c_t *objs, struct rt_i2c_msg msgs[], uint32_t 
             }
             else if ((HAL_I2C_STATE_BUSY_TX == i2c_state) || (HAL_I2C_STATE_BUSY_RX == i2c_state)) //Interrupt or DMA mode, wait semaphore
             {
-                if(prv_semaphore_wait(objs) == pdTRUE)
-                {
-                    //已获取到二值信号量，二值信号量值-1，可以开始处理输出
-                    continue;
-                }
-                else
-                {
-                    PBL_LOG(LOG_LEVEL_ALWAYS, "i2c sem timeout!");
-                    status = HAL_TIMEOUT;   
-                    prv_analytics_track_i2c_error();
-                }
- 
+                //if(prv_semaphore_wait(objs) == pdTRUE)
+                status = HAL_BUSY;                
             }
             else
             {
@@ -467,112 +445,275 @@ static uint32_t master_xfer(bf0_i2c_t *objs, struct rt_i2c_msg msgs[], uint32_t 
             break;
         }
 
-        if (objs->handle.ErrorCode) goto exit;
+        if (bf0_i2c->handle.ErrorCode) goto exit;
 
         if (HAL_OK != status) goto exit;
 
-#if 0
+#if 1
         //Wordaround: I2C Wait TE fail in 'I2C_MasterRequestWrite' after ISR mode read(After 58x)  - Fixed
         bf0_i2c->handle.Instance->CR |= I2C_CR_UR;
         HAL_Delay_us(1);        // Delay at least 9 cycle.
         bf0_i2c->handle.Instance->CR &= ~I2C_CR_UR;
 #endif
+#endif
  
     }
-    ret = index;
+
 
 exit:
+#if  0
     if ((ret != num) || (HAL_OK != status))
     {
         PBL_LOG(LOG_LEVEL_ALWAYS,"bus err:%d, xfer:%d/%d, i2c_stat:%x, i2c_errcode=%x", status, (int)index, (int)num, HAL_I2C_GetState(&bf0_i2c->handle), (int)bf0_i2c->handle.ErrorCode);
         HAL_I2C_Reset(&bf0_i2c->handle);
         PBL_LOG(LOG_LEVEL_ALWAYS,"reset and send 9 clks");
     }
-    __HAL_I2C_DISABLE(&bf0_i2c->handle);
+#endif     
 
-    PBL_LOG(LOG_LEVEL_ALWAYS,"master_xfer end");
+    if(status != HAL_BUSY)
+        __HAL_I2C_DISABLE(&bf0_i2c->handle);
 
-    return ret;
+    PBL_LOG(LOG_LEVEL_ALWAYS,"master_xfer");
+
+    return status;
 }
-int rt_i2c_transfer(bf0_i2c_t *objs, struct rt_i2c_msg msgs[], uint32_t num)
+
+void i2c_hal_init_transfer(I2CBus *bus)
 {
-    int  ret = 0;    
-    mutex_lock(objs->mutex);
-    master_xfer(objs, msgs, num);
-    mutex_unlock(objs->mutex);
-    return ret;
+    if(I2CTransferType_SendRegisterAddress == bus->state->transfer.type)
+    {
+        if(bus->state->transfer.direction == I2CTransferDirection_Write)
+        {
+            msgs[0].addr   = bus->state->transfer.device_address;
+            msgs[0].mem_addr = bus->state->transfer.register_address;
+            msgs[0].mem_addr_size = I2C_MEMADD_SIZE_8BIT;
+            msgs[0].flags  = RT_I2C_WR | RT_I2C_MEM_ACCESS;
+            msgs[0].len    = bus->state->transfer.size;
+            msgs[0].buf    = bus->state->transfer.data;
+            msgs_num = 1;
+         }
+        else 
+        {
+            msgs[0].addr   = bus->state->transfer.device_address;
+            msgs[0].mem_addr = bus->state->transfer.register_address;
+            msgs[0].mem_addr_size = I2C_MEMADD_SIZE_8BIT;
+            msgs[0].flags  = RT_I2C_RD | RT_I2C_MEM_ACCESS;
+            msgs[0].len    = bus->state->transfer.size;
+            msgs[0].buf    = bus->state->transfer.data;
+            msgs_num = 1;
+        }
+
+
+    }
+    else
+    {
+        if(bus->state->transfer.direction == I2CTransferDirection_Write)
+        {
+            msgs[0].addr   = bus->state->transfer.device_address;
+            msgs[0].flags  = RT_I2C_WR;
+            msgs[0].len    = bus->state->transfer.size;
+            msgs[0].buf    = bus->state->transfer.data;
+            msgs_num = 1;
+         }
+        else 
+        {
+            msgs[0].addr   = bus->state->transfer.device_address;
+            msgs[0].flags  = RT_I2C_RD ;
+            msgs[0].len    = bus->state->transfer.size;
+            msgs[0].buf    = bus->state->transfer.data;
+            msgs_num = 1;
+        } 
+
+    }  
 }
 
-int i2c_bus_configure(bf0_i2c_t *objs, struct rt_i2c_configuration *configuration)
+void i2c_hal_abort_transfer(I2CBus *bus)
+{
+    struct I2CBusHal * hal = (struct I2CBusHal * )bus->hal;
+    HAL_I2C_Reset(&(hal->handle));
+    //I2C_HandleTypeDef
+    PBL_LOG(LOG_LEVEL_ALWAYS,"reset and send 9 clks");
+    __HAL_I2C_DISABLE(&(hal->handle));
+}
+void i2c_hal_start_transfer(I2CBus *bus)
+{
+    struct I2CBusHal * hal = (struct I2CBusHal * )bus->hal;
+    HAL_StatusTypeDef status = master_xfer(hal, &msgs[0], msgs_num);
+    if(status ==HAL_BUSY)
+        return;
+    if(status == HAL_OK)
+        bus->state->transfer_event = I2CTransferEvent_TransferComplete;
+    else if(status == HAL_TIMEOUT)
+        bus->state->transfer_event = I2CTransferEvent_Timeout;
+    else
+        bus->state->transfer_event = I2CTransferEvent_Error;
+    return;
+}
+
+int i2c_bus_configure(struct I2CBusHal * i2c_hal, struct rt_i2c_configuration *configuration)
 {
     int  ret = 0;
 
     PBL_LOG(LOG_LEVEL_ALWAYS, "i2c_bus_configure start");
 
-    PBL_ASSERTN(objs != NULL);
+    PBL_ASSERTN(i2c_hal != NULL);
     PBL_ASSERTN(configuration != NULL);
 
     if (configuration->mode & RT_I2C_ADDR_10BIT)
     {
-        objs->handle.Init.AddressingMode = I2C_ADDRESSINGMODE_10BIT;
-        objs->handle.Init.OwnAddress1 = (configuration->addr & 0x7fff);
+        i2c_hal->handle.Init.AddressingMode = I2C_ADDRESSINGMODE_10BIT;
+        i2c_hal->handle.Init.OwnAddress1 = (configuration->addr & 0x7fff);
     }
     else
     {
-        objs->handle.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
-        objs->handle.Init.OwnAddress1 = (configuration->addr & 0x7fff) << 1;
+        i2c_hal->handle.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+        i2c_hal->handle.Init.OwnAddress1 = (configuration->addr & 0x7fff) << 1;
     }
-    objs->bf0_i2c_cfg->open_flag = RT_DEVICE_FLAG_RDWR | configuration->open_flag ;
-    objs->bf0_i2c_cfg->timeout = configuration->timeout;
-    objs->handle.Init.ClockSpeed = configuration->max_hz;
-    objs->handle.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
-    objs->handle.core = objs->bf0_i2c_cfg->core;
-    objs->handle.Mode = HAL_I2C_MODE_MASTER;
+    i2c_hal->bf0_i2c_cfg->open_flag = RT_DEVICE_FLAG_RDWR | configuration->open_flag ;
+    i2c_hal->bf0_i2c_cfg->timeout = configuration->timeout;
+    i2c_hal->handle.Init.ClockSpeed = configuration->max_hz;
+    i2c_hal->handle.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+    i2c_hal->handle.core = i2c_hal->bf0_i2c_cfg->core;
+    i2c_hal->handle.Mode = HAL_I2C_MODE_MASTER;
 
-    memcpy(objs->i2c_configuration,
-           configuration, sizeof(struct rt_i2c_configuration));
+
     #if defined(I2C1)               
-    if (objs->handle.Instance == hwp_i2c1)
+    if (i2c_hal->handle.Instance == hwp_i2c1)
         HAL_RCC_EnableModule(RCC_MOD_I2C1);
     #endif
     #if defined(I2C2)  
-    if (objs->handle.Instance == hwp_i2c2)
+    if (i2c_hal->handle.Instance == hwp_i2c2)
         HAL_RCC_EnableModule(RCC_MOD_I2C2);
     #endif
     #if defined(I2C3)  
-    if (objs->handle.Instance == hwp_i2c3)
+    if (i2c_hal->handle.Instance == hwp_i2c3)
         HAL_RCC_EnableModule(RCC_MOD_I2C3);
     #endif
     #if defined(I2C4)      
-    if (objs->handle.Instance == hwp_i2c4)
+    if (i2c_hal->handle.Instance == hwp_i2c4)
         HAL_RCC_EnableModule(RCC_MOD_I2C4);
     #endif
     #if defined(I2C5)  
-    if (objs->handle.Instance == hwp_i2c5)
+    if (i2c_hal->handle.Instance == hwp_i2c5)
         HAL_RCC_EnableModule(RCC_MOD_I2C5);
     #endif    
     #if defined(I2C6)  
-    if (objs->handle.Instance == hwp_i2c6)
+    if (i2c_hal->handle.Instance == hwp_i2c6)
         HAL_RCC_EnableModule(RCC_MOD_I2C6);
     #endif
 
-    ret = HAL_I2C_Init(&(objs->handle));
+    ret = HAL_I2C_Init(&(i2c_hal->handle));
 
     PBL_LOG(LOG_LEVEL_ALWAYS, "i2c_bus_configure end");
 
     return ret;
 }
-int rt_i2c_configure(bf0_i2c_t *objs, struct rt_i2c_configuration *cfg)
+
+
+
+
+void i2c_hal_enable(I2CBus *bus)
 {
-    int ret =0;
-    PBL_ASSERTN(objs != NULL);
-    /* take lock */
-    mutex_lock(objs->mutex);
-    i2c_bus_configure(objs, cfg);
-    /* release lock */
-    mutex_unlock(objs->mutex);
-    return ret;
+    if(strcmp(bus->name, "i2c1"))
+    {
+        #if defined(I2C1)
+        HAL_RCC_EnableModule(RCC_MOD_I2C1);
+        #endif
+    }
+    else if(strcmp(bus->name, "i2c2"))
+    {
+        #if defined(I2C2)
+        HAL_RCC_EnableModule(RCC_MOD_I2C2);
+        #endif
+
+    }
+    else if(strcmp(bus->name, "i2c3"))
+    {
+        #if defined(I2C3)
+        HAL_RCC_EnableModule(RCC_MOD_I2C3);
+        #endif
+
+    }
+    else if(strcmp(bus->name, "i2c4"))
+    {
+        #if defined(I2C4)
+        HAL_RCC_EnableModule(RCC_MOD_I2C4);
+        #endif
+
+    }
+    else if(strcmp(bus->name, "i2c5"))
+    {
+        #if defined(I2C5)
+        HAL_RCC_EnableModule(RCC_MOD_I2C5);
+        #endif
+
+    }
+    else if(strcmp(bus->name, "i2c6"))
+    {
+        #if defined(I2C6)
+        HAL_RCC_EnableModule(RCC_MOD_I2C6);
+        #endif
+    }
+
+
 }
+
+void i2c_hal_disable(I2CBus *bus)
+{
+    if(strcmp(bus->name, "i2c1"))
+    {
+    #if defined(I2C1)
+        HAL_RCC_DisableModule(RCC_MOD_I2C1);
+    #endif
+    }
+    else if(strcmp(bus->name, "i2c2"))
+    {
+    #if defined(I2C2)
+        HAL_RCC_DisableModule(RCC_MOD_I2C2);
+    #endif
+
+    }
+    else if(strcmp(bus->name, "i2c3"))
+    {
+    #if defined(I2C3)
+        HAL_RCC_DisableModule(RCC_MOD_I2C3);
+    #endif
+
+    }
+    else if(strcmp(bus->name, "i2c4"))
+    {
+    #if defined(I2C4)
+        HAL_RCC_DisableModule(RCC_MOD_I2C4);
+    #endif
+
+    }
+    else if(strcmp(bus->name, "i2c5"))
+    {
+    #if defined(I2C5)
+        HAL_RCC_DisableModule(RCC_MOD_I2C5);
+    #endif
+
+    }
+    else if(strcmp(bus->name, "i2c6"))
+    {
+    #if defined(I2C6)
+        HAL_RCC_DisableModule(RCC_MOD_I2C6);
+    #endif
+    }
+
+
+}
+
+bool i2c_hal_is_busy(I2CBus *bus)
+{
+    bool ret = true;
+    struct I2CBusHal * hal = (struct I2CBusHal * )bus->hal;
+    if(HAL_I2C_GetState(&(hal->handle)) != HAL_I2C_STATE_READY)
+        ret = false;
+    return ret;
+}       
+
+
 static void i2c_get_dma_info(void)
 {
 #if defined(I2C1_DMA_INSTANCEC) && defined(I2C1)
@@ -607,56 +748,127 @@ static void i2c_get_dma_info(void)
 #endif
 }
 
-int rt_hw_i2c_init(bf0_i2c_t *objs, bf0_i2c_config_t *cfg, struct rt_i2c_configuration *cfg_default)
+int rt_hw_i2c_init(struct I2CBusHal * i2c_hal, bf0_i2c_config_t *cfg, struct rt_i2c_configuration *cfg_default)
 {
     int ret = 0;
 
-    objs->bf0_i2c_cfg = cfg;
-    objs->i2c_configuration = cfg_default;
-    objs->handle.Instance = cfg->Instance;
+    i2c_hal->bf0_i2c_cfg = cfg;
+    i2c_hal->i2c_configuration = cfg_default;
+    i2c_hal->handle.Instance = cfg->Instance;
 
-    if (objs->i2c_dma_flag)
+    if (i2c_hal->i2c_dma_flag)
     {
-        __HAL_LINKDMA(&(objs->handle), hdmarx, objs->dma.dma_rx);
-        __HAL_LINKDMA(&(objs->handle), hdmatx, objs->dma.dma_tx);
-        HAL_I2C_DMA_Init(&(objs->handle), cfg->dma_rx, cfg->dma_tx);
+        __HAL_LINKDMA(&(i2c_hal->handle), hdmarx, i2c_hal->dma.dma_rx);
+        __HAL_LINKDMA(&(i2c_hal->handle), hdmatx, i2c_hal->dma.dma_tx);
+        HAL_I2C_DMA_Init(&(i2c_hal->handle), cfg->dma_rx, cfg->dma_tx);
     }
-    i2c_bus_configure(objs, cfg_default);
-    objs->sema = xSemaphoreCreateBinary();
-    objs->mutex = mutex_create();
+    i2c_bus_configure(i2c_hal, cfg_default);
     return ret;
 }
-void i2c_init()
+
+
+void i2c_hal_init(I2CBus *bus)
 {
+    PBL_ASSERTN(bus != NULL);
+    struct I2CBusHal * hal = (struct I2CBusHal * )bus->hal;
     i2c_get_dma_info();
-    #if defined(I2C1)
-    rt_hw_i2c_init(&i2c1_obj, &bf0_i2c1_cfg, &i2c1_cfg_default);
-    #endif
-    #if defined(I2C2)
-    rt_hw_i2c_init(&i2c2_obj, &bf0_i2c2_cfg, &i2c2_cfg_default);
-    #endif
-    #if defined(I2C3)
-    rt_hw_i2c_init(&i2c3_obj, &bf0_i2c3_cfg, &i2c3_cfg_default);
-    #endif
-    #if defined(I2C4)
-    rt_hw_i2c_init(&i2c4_obj, &bf0_i2c4_cfg, &i2c4_cfg_default);
-    #endif
-    #if defined(I2C5)
-    rt_hw_i2c_init(&i2c5_obj, &bf0_i2c5_cfg, &i2c5_cfg_default);
-    #endif
-    #if defined(I2C6)
-    rt_hw_i2c_init(&i2c6_obj, &bf0_i2c6_cfg, &i2c6_cfg_default);
-    #endif
+    
+    if(strcmp(bus->name, "i2c1"))
+    {
+        #if defined(I2C1)
+        rt_hw_i2c_init(hal, &bf0_i2c1_cfg, &i2c1_cfg_default);
+        #endif
+    }
+    else if(strcmp(bus->name, "i2c2"))
+    {
+        #if defined(I2C2)
+        rt_hw_i2c_init(hal, &bf0_i2c2_cfg, &i2c2_cfg_default);
+        #endif
+    }
+    else if(strcmp(bus->name, "i2c3"))
+    {
+        #if defined(I2C3)    
+        rt_hw_i2c_init(hal, &bf0_i2c3_cfg, &i2c3_cfg_default);
+        #endif
+    }
+    else if(strcmp(bus->name, "i2c4"))
+    {
+        #if defined(I2C4)
+        rt_hw_i2c_init(hal, &bf0_i2c4_cfg, &i2c4_cfg_default);
+        #endif
+    }
+    else if(strcmp(bus->name, "i2c5"))
+    {
+        #if defined(I2C5)
+        rt_hw_i2c_init(hal, &bf0_i2c5_cfg, &i2c5_cfg_default);
+        #endif
+    }
+    else if(strcmp(bus->name, "i2c6"))
+    {
+        #if defined(I2C6)
+        rt_hw_i2c_init(hal, &bf0_i2c6_cfg, &i2c6_cfg_default);
+        #endif
+    }
+    hal->bus = bus;
+
 }
 
-/*------------------------ANALYTICS----------------------------------*/
 
-static void prv_analytics_track_i2c_error(void) {
-    analytics_inc(ANALYTICS_DEVICE_METRIC_I2C_ERROR_COUNT, AnalyticsClient_System);
-  }
-  
-  void analytics_external_collect_i2c_stats(void) {
-    analytics_set(ANALYTICS_DEVICE_METRIC_I2C_MAX_TRANSFER_DURATION_TICKS,
-                  s_max_transfer_duration_ticks, AnalyticsClient_System);
-    s_max_transfer_duration_ticks = 0;
-  }  #endif
+
+
+
+
+void i2c_hal_pins_set_gpio(I2CBus *bus)
+{
+    int pad_sda, pad_scl;
+    int hcpu_sda, hcpu_scl;
+    pin_function func_sda, func_scl;
+    if(strcmp(bus->name, "i2c1"))
+    {
+        func_sda = I2C1_SDA;
+        func_scl = I2C1_SCL;
+    }
+    else if(strcmp(bus->name, "i2c2"))
+    {
+        func_sda = I2C2_SDA;
+        func_scl = I2C2_SCL;
+    }
+    else if(strcmp(bus->name, "i2c3"))
+    {
+        func_sda = I2C3_SDA;
+        func_scl = I2C3_SCL;
+    }
+    else if(strcmp(bus->name, "i2c4"))
+    {
+        func_sda = I2C4_SDA;
+        func_scl = I2C4_SCL;
+    }
+    else if(strcmp(bus->name, "i2c5"))
+    {
+        func_sda = I2C5_SDA;
+        func_scl = I2C5_SCL;
+    }
+    else if(strcmp(bus->name, "i2c6"))
+    {
+        func_sda = I2C6_SDA;
+        func_scl = I2C6_SCL;
+    }
+    else
+    {
+        func_sda = I2C1_SDA;
+        func_scl = I2C1_SCL;
+    }
+
+    pad_sda = bus->sda_gpio.gpio_pin;
+    pad_scl = bus->scl_gpio.gpio_pin;
+    hcpu_sda = (pad_sda > 96) ? 0 : 1;
+    hcpu_scl = (pad_scl > 96) ? 0 : 1;
+    HAL_PIN_Set(pad_sda, func_sda, PIN_NOPULL, hcpu_sda);
+    HAL_PIN_Set(pad_scl, func_scl, PIN_NOPULL, hcpu_scl);
+} 
+void i2c_hal_pins_set_i2c(I2CBus *bus)
+{
+
+}
+
+//#endif
