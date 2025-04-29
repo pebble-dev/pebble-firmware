@@ -55,6 +55,7 @@ SECTIONS
         *.o                 (.text.rt_memset)
         *rt_memclr*.*.o       (.text*)
         *memset*.*.o          (.text*)      
+        *memcpy*.*.o          (.text*)  
 
         . = ALIGN(4);
         __retm_ro_end = .;

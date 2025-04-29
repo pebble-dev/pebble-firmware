@@ -79,6 +79,7 @@ static int prv_erase_nor(uint32_t addr, uint32_t size) {
   FLASH_HandleTypeDef *hflash;
   uint32_t taddr, remain;
   int res;
+  __disable_irq();
 
   hflash = &spi_flash_handle.handle;
 
@@ -98,6 +99,7 @@ static int prv_erase_nor(uint32_t addr, uint32_t size) {
     taddr += QSPI_NOR_SECT_SIZE;
   }
 
+  __enable_irq();
   return 0;
 }
 
@@ -106,7 +108,9 @@ static int prv_write_nor(uint32_t addr, uint8_t *buf, uint32_t size) {
   uint32_t taddr, start, remain, fill;
   uint8_t *tbuf;
   int res;
+  __disable_irq();
 
+  HAL_FLASH_SET_WDT(hflash, UINT16_MAX);
   hflash = &spi_flash_handle.handle;
 
   if ((addr < hflash->base) || (addr > (hflash->base + hflash->size))) return 0;
@@ -138,6 +142,7 @@ static int prv_write_nor(uint32_t addr, uint8_t *buf, uint32_t size) {
     remain -= fill;
   }
 
+  __enable_irq();
   return size;
 }
 
