@@ -70,13 +70,13 @@ __attribute__((naked)) NORETURN Reset_Handler(void) {
 
   // Copy data section from flash to RAM
   // memcpy(__data_start, __data_load_start, __data_end - __data_start);
-  for (uint32_t i = 0; i < (__data_end - __data_start); i++) {
+  for (int i = 0; i < (__data_end - __data_start); i++) {
     __data_start[i] = __data_load_start[i];
   }
   boot_uart_tx("data copied\n", 12);
 
   // memcpy(__retm_ro_start, __retm_ro_load_start, __retm_ro_end - __retm_ro_start);
-  for (uint32_t i = 0; i < (__retm_ro_end - __retm_ro_start); i++) {
+  for (int i = 0; i < (__retm_ro_end - __retm_ro_start); i++) {
     __retm_ro_start[i] = __retm_ro_load_start[i];
   }
   boot_uart_tx("retm copied\n", 12);

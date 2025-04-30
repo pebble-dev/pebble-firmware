@@ -56,10 +56,14 @@ static UARTDevice DBG_UART_DEVICE = {.state = &s_dbg_uart_state,
                                      .irq_priority = 1};
 UARTDevice *const DBG_UART = &DBG_UART_DEVICE;
 UARTDevice *const ACCESSORY_UART;  //TODO
+
+#ifdef USING_UART1
 IRQ_MAP(USART1, uart_irq_handler, DBG_UART);
+#else
+IRQ_MAP(USART3, uart_irq_handler, DBG_UART);
+#endif
 
 void DMAC1_CH1_IRQHandler(void) { HAL_DMA_IRQHandler(&s_dbg_uart_rx_dma_handle); }
-
 
 
 I2CBusState i2c1_state;

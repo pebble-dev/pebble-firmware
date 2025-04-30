@@ -108,11 +108,12 @@ static int prv_write_nor(uint32_t addr, uint8_t *buf, uint32_t size) {
   uint32_t taddr, start, remain, fill;
   uint8_t *tbuf;
   int res;
+
   __disable_irq();
 
-  HAL_FLASH_SET_WDT(hflash, UINT16_MAX);
   hflash = &spi_flash_handle.handle;
 
+  HAL_FLASH_SET_WDT(hflash, UINT16_MAX);
   if ((addr < hflash->base) || (addr > (hflash->base + hflash->size))) return 0;
 
   taddr = addr - hflash->base;
@@ -143,6 +144,7 @@ static int prv_write_nor(uint32_t addr, uint8_t *buf, uint32_t size) {
   }
 
   __enable_irq();
+  
   return size;
 }
 
