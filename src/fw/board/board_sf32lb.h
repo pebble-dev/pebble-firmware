@@ -118,7 +118,7 @@ typedef struct {
 
 typedef struct {
   union {
-    TIM_TypeDef* const peripheral; ///< A TIMx peripheral
+    TIM_TypeDef* const peripheral; ///< A TIMx peripheral GTIM
     LPTIM_TypeDef* const lp_peripheral; ///< A LPTIMx peripheral
   };
   const uint32_t config_clock;   ///< One of RCC_APB1Periph_TIMx. For example, RCC_APB1Periph_TIM3.
@@ -147,9 +147,19 @@ typedef struct {
 } AfConfig;
 
 typedef struct {
+  uint16_t value;
+  uint16_t resolution;
+  int enabled;
+  uint16_t channel;
+  uint8_t  is_comp; /* Is complementary*/  
+} PwmState;
+
+typedef struct {
   OutputConfig output;
   TimerConfig timer;
   AfConfig afcfg;
+  PwmState  *state;
+  
 } PwmConfig;
 
 typedef struct {

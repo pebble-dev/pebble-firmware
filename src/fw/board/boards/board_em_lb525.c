@@ -21,6 +21,8 @@
 #include "FreeRTOS.h"
 #include "semphr.h"
 #include "drivers/sf32lb/i2c_hal_definitions.h"
+#include "drivers/sf32lb/pwm_hal_definitions.h"
+#include "board/board_sf32lb.h"
 
 #define USING_UART1
 #ifdef USING_UART1
@@ -80,6 +82,29 @@ I2CBus i2c1 = {
             },
             .name = "i2c1",
             }; 
+
+
+PwmState pwm2_1_state =
+{
+    .channel = 1,
+};
+
+
+PwmConfig pwm2_1 =
+{
+    .timer =
+        {
+            .peripheral = hwp_gptim1,
+            .init = tim_init,
+            .preload = tim_preload,
+        },
+     .state = &pwm2_1_state,
+     .output = 
+      {
+            .gpio_pin = 26,
+      },
+
+};
 
 
 
