@@ -108,16 +108,28 @@ static int prv_write_nor(uint32_t addr, uint8_t *buf, uint32_t size) {
   uint32_t taddr, start, remain, fill;
   uint8_t *tbuf;
   int res;
-
-  __disable_irq();
+  uint8_t *local_buf = NULL;
 
   hflash = &spi_flash_handle.handle;
 
-  HAL_FLASH_SET_WDT(hflash, UINT16_MAX);
   if ((addr < hflash->base) || (addr > (hflash->base + hflash->size))) return 0;
 
+  if (IS_SAME_FLASH_ADDR(buf, addr) || IS_SPI_NONDMA_RAM_ADDR(buf)
+     || (IS_DMA_ACCROSS_1M_BOUNDARY((uint32_t)buf, size)))
+  {
+    local_buf = (uint8_t *)malloc(size);
+    PBL_ASSERT(local_buf != NULL, "malloc failed");
+    memcpy(local_buf, buf, size);
+    tbuf = local_buf;
+  }
+  else
+  {
+    tbuf = buf;
+  }
+
+  __disable_irq();
+
   taddr = addr - hflash->base;
-  tbuf = (uint8_t *)buf;
   remain = size;
 
   start = taddr & (QSPI_NOR_PAGE_SIZE - 1);
@@ -129,7 +141,12 @@ static int prv_write_nor(uint32_t addr, uint8_t *buf, uint32_t size) {
       fill = size;
     }
     res = HAL_QSPIEX_WRITE_PAGE(hflash, taddr, tbuf, fill);
-    if ((uint32_t)res != fill) return 0;
+
+    if ((uint32_t)res != fill) 
+    {
+      size = 0;
+      goto __EXIT;
+    }
     taddr += fill;
     tbuf += fill;
     remain -= fill;
@@ -137,14 +154,26 @@ static int prv_write_nor(uint32_t addr, uint8_t *buf, uint32_t size) {
   while (remain > 0) {
     fill = remain > QSPI_NOR_PAGE_SIZE ? QSPI_NOR_PAGE_SIZE : remain;
     res = HAL_QSPIEX_WRITE_PAGE(hflash, taddr, tbuf, fill);
-    if ((uint32_t)res != fill) return 0;
+    if ((uint32_t)res != fill)
+    {
+      size = 0;
+      goto __EXIT;
+    }
+
     taddr += fill;
     tbuf += fill;
     remain -= fill;
   }
 
+
+__EXIT:  
   __enable_irq();
-  
+
+  if (local_buf)
+  {
+    free(local_buf);
+  }
+
   return size;
 }
 
