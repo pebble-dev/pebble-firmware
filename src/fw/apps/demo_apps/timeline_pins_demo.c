@@ -276,7 +276,7 @@ void timeline_pins_demo_add_pins(TimelinePinsDemoSet pin_set) {
   const bool is_ingame = true;
   const bool recurring = true;
   switch (pin_set) {
-    case TimelinePinsDemo_Default: {
+    case TimelinePinsDemo_Default:
       // Past pins (deprecated)
       prv_add_calendar_pin(-4 * 60 * 60, 60, !is_all_day, !recurring, 0, 0);
       prv_add_generic_pin(-6 * 60 * 60, !has_subtitle);
@@ -309,7 +309,6 @@ void timeline_pins_demo_add_pins(TimelinePinsDemoSet pin_set) {
       prv_add_weather_pin(2 * 24 * 60 * 60);
       prv_add_weather_pin(3 * 24 * 60 * 60);
       // Fallthrough
-    }
     case TimelinePinsDemo_OneDayAway:
       prv_add_weather_pin(-2 * 24 * 60 * 60);
       prv_add_weather_pin(2 * 24 * 60 * 60);
