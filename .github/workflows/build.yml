@@ -3,12 +3,17 @@ name: Build
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'resources/normal/base/lang/**/*.po'
+      - 'resources/normal/base/lang/tintin.pot'
   pull_request:
     branches: [main]
     paths:
       - '.github/workflows/build.yml'
       - 'platform/**'
       - 'resources/**'
+      - '!resources/normal/base/lang/**/*.po' # Ignore changes in .po files
+      - '!resources/normal/base/lang/tintin.pot' # Ignore pot file as well
       - 'sdk/**'
       - 'src/**'
       - 'stored_apps/**'
@@ -17,6 +22,7 @@ on:
       - 'waftools/**'
       - 'waf'
       - 'wscript'
+    
 
 env:
   ARM_GNU_TOOLCHAIN_VERSION: 14.2.rel1
@@ -127,3 +133,18 @@ jobs:
           path: |
             build/qemu_micro_flash.bin
             build/qemu_spi_flash.bin
+      - name: Copy POT template
+        if: ${{ matrix.board == 'asterix' }}
+        run: cp build/src/fw/tintin.pot resources/normal/base/lang/tintin.pot
+
+      - name: Upload POT template to Crowdin
+        if: ${{ matrix.board == 'asterix' }}
+        uses: crowdin/github-action@v2
+        with:
+          upload_sources: true
+          upload_translations: true
+          config: crowdin.yml
+        env:
+          CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
