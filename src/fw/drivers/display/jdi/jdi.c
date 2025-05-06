@@ -44,12 +44,14 @@ static SemaphoreHandle_t s_dma_update_in_progress_semaphore;
 void display_init(void) 
 {
     /* Initialize JDI low level bus layer ----------------------------------*/
+    lcdc.Instance = LCDC1;
     memcpy(&lcdc.Init, &lcdc_int_cfg, sizeof(LCDC_InitTypeDef));
     HAL_LCDC_Init(&lcdc);
 
     BSP_LCD_Reset(0);//Reset LCD
     HAL_Delay_us(10);
     BSP_LCD_Reset(1);
+    PBL_LOG(LOG_LEVEL_ALWAYS, "jdi display_init ok.\n");
 }
 
 uint32_t display_baud_rate_change(uint32_t new_frequency_hz) 
