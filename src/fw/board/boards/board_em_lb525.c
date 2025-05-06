@@ -55,7 +55,7 @@ static UARTDevice DBG_UART_DEVICE = {.state = &s_dbg_uart_state,
                                      .rx_gpio = UART_RX,  // TODO: Setting GPIOs to actual values
                                      .periph = &s_dbg_uart_handle,
                                      .rx_dma = &s_dbg_uart_rx_dma_handle,
-                                     .irq_priority = 1};
+                                     .irq_priority = 5};
 UARTDevice *const DBG_UART = &DBG_UART_DEVICE;
 UARTDevice *const ACCESSORY_UART;  //TODO
 

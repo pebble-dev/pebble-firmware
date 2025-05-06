@@ -163,12 +163,12 @@ static void prv_init(UARTDevice *dev, UARTInitMode_t mode) {
     default:
       break;
   }
-  dev->state->initialized = true;
+  dev->state->initialized = true;  
   if (dev->rx_dma) {
     // initialize the DMA request
     __HAL_LINKDMA(dev->periph, hdmarx, *dev->rx_dma);
     IRQn_Type dma_irqn = get_dma_channel_irqn(dev->rx_dma);
-    HAL_NVIC_SetPriority(dma_irqn, 0, 0);
+    NVIC_SetPriority(dma_irqn, dev->irq_priority);
     HAL_NVIC_EnableIRQ(dma_irqn);
     __HAL_UART_ENABLE_IT(dev->periph, UART_IT_IDLE);
   }
@@ -239,7 +239,7 @@ static void prv_set_interrupt_enabled(UARTDevice *dev, bool enabled) {
     PBL_ASSERTN(dev->state->tx_irq_handler || dev->state->rx_irq_handler);
     // enable the interrupt
     IRQn_Type uart_irqn = get_uart_irqn(dev->periph);
-    HAL_NVIC_SetPriority(uart_irqn, dev->irq_priority, 0);
+    NVIC_SetPriority(uart_irqn, dev->irq_priority);
     HAL_NVIC_EnableIRQ(uart_irqn);
   } else {
     // disable the interrupt
