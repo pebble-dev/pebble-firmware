@@ -68,6 +68,8 @@ static const BoardConfigAccessory BOARD_CONFIG_ACCESSORY = {
 extern const VoltageMonitorDevice * VOLTAGE_MONITOR_BATTERY;
 
 
+
+
 static const BoardConfig BOARD_CONFIG = {
   .ambient_light_dark_threshold = 150,
   .ambient_k_delta_threshold = 50,

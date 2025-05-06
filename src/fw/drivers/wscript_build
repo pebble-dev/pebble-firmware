@@ -525,6 +525,7 @@ elif bld.is_asterix():
         ],
     )
 
+
 if mcu_family in ('STM32F2', 'STM32F4', 'STM32F7'):
     bld.objects(
         name='driver_dma',
@@ -1548,15 +1549,15 @@ if mcu_family == 'SF32LB':
             'flash/flash_erase.c',
             'flash/cd_flash_driver.c',
             'battery/battery_common.c',
+            'display/jdi/jdi.c',
             'sf32lb/stubs/battery.c',
             'i2c.c',
             'sf32lb/i2c_hal.c',
             'sf32lb/pwm_hal.c',
-            'sf32lb/jdi.c',
             'flash/sf32lb52_int_flash.c',
             'task_watchdog.c',
             'sf32lb/stubs/watchdog.c',
-            'sf32lb/stubs/display.c',
+            #'sf32lb/stubs/display.c',
             #'display/sharp_ls013b7dh01/sharp_ls013b7dh01_nrf5.c',
             'sf32lb/stubs/accel.c',
             'sf32lb/stubs/ambient_light.c',

@@ -10,6 +10,7 @@
 #include "drivers/dma.h"
 #include "bf0_hal.h"
 #include "register.h"
+#include "../display.h"
 
 /**
   * @brief  JDI Registers
@@ -47,5 +48,15 @@
 #define  THE_LCD_PIXEL_WIDTH    ((uint16_t)240)
 #define  THE_LCD_PIXEL_HEIGHT   ((uint16_t)240)
 
+typedef enum {
+  DISPLAY_STATE_IDLE,
+  DISPLAY_STATE_WRITING
+} DisplayState;
+
+typedef struct {
+  DisplayState state;
+  NextRowCallback get_next_row;
+  UpdateCompleteCallback complete;
+} DisplayContext;
 
 

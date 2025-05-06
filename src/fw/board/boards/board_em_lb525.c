@@ -142,6 +142,7 @@ void BSP_LCD_PowerUp(void)
 
 
 
+
 void board_early_init(void) {
 }
 
