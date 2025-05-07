@@ -10,8 +10,8 @@ def configure(conf):
 def build(bld):
     if bld.env.MICRO_FAMILY == 'SF32LB':
         excludes = ['**/bf0_hal_audcodec.c']
-        micro_sources = bld.path.ant_glob('SiFliSDK/drivers/hal/*.c', excl=excludes)
-        micro_sources += bld.path.ant_glob('lcpu_52x.c')
+        micro_sources = bld.path.ant_glob('lcpu_52x.c')
+        micro_sources += bld.path.ant_glob('SiFliSDK/drivers/hal/*.c', excl=excludes)
         micro_sources += bld.path.ant_glob('SiFliSDK/drivers/cmsis/sf32lb52x/bf0_pin_const.c')
         micro_sources += bld.path.ant_glob('SiFliSDK/drivers/cmsis/sf32lb52x/bf0_lcpu_init.c')
         micro_sources += bld.path.ant_glob('SiFliSDK/drivers/cmsis/sf32lb52x/lcpu_patch.c')
