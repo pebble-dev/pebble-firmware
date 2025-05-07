@@ -163,7 +163,7 @@ static void prv_init(UARTDevice *dev, UARTInitMode_t mode) {
     default:
       break;
   }
-  dev->state->initialized = true;  
+  dev->state->initialized = true;
   if (dev->rx_dma) {
     // initialize the DMA request
     __HAL_LINKDMA(dev->periph, hdmarx, *dev->rx_dma);
@@ -293,25 +293,29 @@ void uart_irq_handler(UARTDevice *dev) {
         .overrun_error = uart_has_rx_overrun(dev),
         .framing_error = uart_has_rx_framing_error(dev),
     };
+    // DMA
     if (dev->state->rx_dma_buffer) {
       // process bytes from the DMA buffer
       const uint32_t dma_length = dev->state->rx_dma_length;
-      const uint32_t next_idx = dma_length - __HAL_DMA_GET_COUNTER(dev->rx_dma);
-      // make sure we didn't underflow the index
-      PBL_ASSERTN(next_idx < dma_length);
-      while (dev->state->rx_dma_index != next_idx) {
-        const uint8_t data = dev->state->rx_dma_buffer[dev->state->rx_dma_index];
+      const uint32_t recv_total_index = dma_length - __HAL_DMA_GET_COUNTER(dev->rx_dma);
+      int32_t recv_len = recv_total_index - dev->state->rx_dma_index;
+      if (recv_len < 0) {
+        recv_len += dma_length;
+      }
+
+      for (uint32_t i = 0; i < recv_len; i++) {
+        const uint8_t data = dev->state->rx_dma_buffer[dev->state->rx_dma_index + i];
         if (dev->state->rx_irq_handler(dev, data, &err_flags)) {
           should_context_switch = true;
         }
-        if (++dev->state->rx_dma_index == dma_length) {
-          dev->state->rx_dma_index = 0;
-        }
       }
-      // explicitly clear error flags since we're not reading from the data register
+      dev->state->rx_dma_index = recv_total_index;
+      if (dev->state->rx_dma_index >= dma_length) {
+        dev->state->rx_dma_index = 0;
+        HAL_UART_DmaTransmit(dev->periph, dev->state->rx_dma_buffer, dma_length, DMA_PERIPH_TO_MEMORY);
+      }
       uart_clear_all_interrupt_flags(dev);
-
-      __HAL_UART_CLEAR_IDLEFLAG(dev->periph); // IDLEFLAG needs to be cleaned manually
+      __HAL_UART_CLEAR_IDLEFLAG(dev->periph);
     } else {
       const bool has_byte = uart_is_rx_ready(dev);
       // read the data register regardless to clear the error flags
@@ -332,21 +336,26 @@ void uart_irq_handler(UARTDevice *dev) {
 }
 
 void uart_clear_all_interrupt_flags(UARTDevice *dev) {
-  dev->periph->Instance->ISR &= ~(USART_ISR_TXE | USART_ISR_RXNE | USART_ISR_ORE);
+  // dev->periph->Instance->ISR &= ~(USART_ISR_TXE | USART_ISR_RXNE | USART_ISR_ORE);
+  __HAL_UART_CLEAR_OREFLAG(dev->periph);
 }
 
 // DMA
 ////////////////////////////////////////////////////////////////////////////////
 
 void uart_start_rx_dma(UARTDevice *dev, void *buffer, uint32_t length) {
+  dev->state->rx_dma_buffer = buffer;
+  dev->state->rx_dma_length = length;
+  dev->state->rx_dma_index = 0;
   HAL_UART_DmaTransmit(dev->periph, buffer, length, DMA_PERIPH_TO_MEMORY);
 }
 
 void uart_stop_rx_dma(UARTDevice *dev) {
+  dev->state->rx_dma_buffer = NULL;
+  dev->state->rx_dma_length = 0;
   HAL_UART_DMAPause(dev->periph);
 }
 
 void uart_clear_rx_dma_buffer(UARTDevice *dev) {
-  dev->state->rx_dma_index =
-      dev->state->rx_dma_length - __HAL_DMA_GET_COUNTER(dev->rx_dma);
+  dev->state->rx_dma_index = dev->state->rx_dma_length - __HAL_DMA_GET_COUNTER(dev->rx_dma);
 }
