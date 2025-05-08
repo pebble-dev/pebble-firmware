@@ -18,7 +18,7 @@
 // clang-format off
 #include <os/os_mbuf.h>
 // clang-format on
-
+#include <stdio.h>
 #include <board/board.h>
 #include <drivers/uart.h>
 #include <kernel/pebble_tasks.h>
@@ -69,8 +69,16 @@ static void prv_rx_task_main(void *unused) {
 static int32_t mbox_rx_ind(ipc_queue_handle_t handle, size_t size)
 {
     static BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-    
-    HAL_HPAON_WakeCore(CORE_ID_LCPU);
+
+#if 1   // FIX ME: Currently LCPU could not sleep. 
+    {
+        static int wake_lcpu=1;
+        if (wake_lcpu) {
+            HAL_HPAON_WakeCore(CORE_ID_LCPU);
+            wake_lcpu=0;
+        }
+    }
+#endif
     xSemaphoreGiveFromISR(s_rx_data_ready, &xHigherPriorityTaskWoken);
     return 0;
 }
@@ -118,7 +126,8 @@ int pb_config_mbox(void)
     if (ipc_queue_open(mbox_env.ipc_port))
         PBL_ASSERT(0,"Could not open IPC");
     NVIC_EnableIRQ(LCPU2HCPU_IRQn);
-        
+    NVIC_SetPriority(LCPU2HCPU_IRQn, 5);
+    
     mbox_env.is_init = 1;
     return 0;
 }
@@ -132,15 +141,23 @@ hci_uart_frame_cb(uint8_t pkt_type, void *data)
         {
             struct ble_hci_ev *ev = data;            
             struct ble_hci_ev_command_complete *cmd_complete = (void *) ev->data;
-            
+#if DEBUG
+            HAL_DBG_print_data(data, 0, ev->length+sizeof(*ev));
+            PBL_LOG(LOG_LEVEL_INFO, "Event %x", ev->opcode);            
+#endif            
             if (ev->opcode==BLE_HCI_EVCODE_COMMAND_COMPLETE)
-                PBL_LOG(LOG_LEVEL_INFO, "CMD complete %x", cmd_complete->opcode);
+                PBL_LOG(LOG_LEVEL_INFO, "\tCMD complete %x", cmd_complete->opcode);
             
             if (ev->opcode==BLE_HCI_EVCODE_COMMAND_COMPLETE&&cmd_complete->opcode==0xFC11)
                 break;                    
         }
         return ble_transport_to_hs_evt(data);
     case HCI_H4_ACL:
+        struct os_mbuf *om=(struct os_mbuf *)data;       
+        PBL_LOG(LOG_LEVEL_INFO, "ACL IND %x", OS_MBUF_PKTLEN(om));   
+#if DEBUG    
+        HAL_DBG_print_data((char*)data, 0, OS_MBUF_PKTLEN(om));
+#endif
         return ble_transport_to_hs_acl(data);
     default:
         assert(0);
@@ -149,7 +166,7 @@ hci_uart_frame_cb(uint8_t pkt_type, void *data)
 
     return -1;
 }
-#if 0
+#if DEBUG
 void HAL_DBG_printf(const char *fmt, ...)
 {
     va_list args;
@@ -197,15 +214,25 @@ int ble_transport_to_ll_cmd_impl(void *buf) {
   struct ble_hci_cmd *cmd = buf;
   hci_cmd[0]=1;
   memcpy(&(hci_cmd[1]), buf, 3 + cmd->length);
+  PBL_LOG(LOG_LEVEL_INFO, "BLE TX CMD %x, len=%d", cmd->opcode, 3 + cmd->length+1);
+#if DEBUG  
+  HAL_DBG_print_data((char*)hci_cmd, 0, 3 + cmd->length+1);
+#endif
   int written = ipc_queue_write(mbox_env.ipc_port, hci_cmd, 3 + cmd->length+1, 10);
-  PBL_LOG(LOG_LEVEL_INFO, "BLE TX CMD %x", cmd->opcode);
   ble_transport_free(buf);
   return (written>=0)?0:-1;
 }
 
+static uint8_t hci_acl[256];
 int ble_transport_to_ll_acl_impl(struct os_mbuf *om) {
   uint8_t * data=OS_MBUF_DATA(om, uint8_t*);  
-  int written = ipc_queue_write(mbox_env.ipc_port, data, OS_MBUF_PKTLEN(om), 10);    
+  PBL_LOG(LOG_LEVEL_INFO, "BLE TX ACL len=%d",  OS_MBUF_PKTLEN(om));
+  hci_acl[0]=2;
+  memcpy(&(hci_acl[1]), data, OS_MBUF_PKTLEN(om));  
+#if DEBUG    
+  HAL_DBG_print_data((char*)hci_acl, 0, OS_MBUF_PKTLEN(om)+1);  
+#endif
+  int written = ipc_queue_write(mbox_env.ipc_port, hci_acl, OS_MBUF_PKTLEN(om)+1, 10);    
   return (written>=0)?0:-1;
 }
 
