@@ -52,6 +52,7 @@
 #include "drivers/vibe.h"
 #include "drivers/voltage_monitor.h"
 #include "drivers/watchdog.h"
+#include "drivers/adc.h"
 
 #include "resource/resource.h"
 #include "resource/system_resource.h"
@@ -288,9 +289,12 @@ static void init_drivers(void) {
 
   serial_console_init();
 
+  /*adc need init before device use adc*/
+  adc_init();
+  
   voltage_monitor_init();
-
   battery_init();
+  
   vibe_init();
 
 #if CAPABILITY_HAS_ACCESSORY_CONNECTOR

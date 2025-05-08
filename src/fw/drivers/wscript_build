@@ -1554,6 +1554,7 @@ if mcu_family == 'SF32LB':
             'i2c.c',
             'sf32lb/i2c_hal.c',
             'sf32lb/pwm_hal.c',
+            'sf32lb/adc.c',
             'flash/sf32lb52_int_flash.c',
             'task_watchdog.c',
             'sf32lb/stubs/watchdog.c',
