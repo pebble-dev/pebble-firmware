@@ -568,16 +568,16 @@ int adc_init(void)
         }
         else
         {
-            PBL_LOG(LOG_LEVEL_ERROR,"Get ADC configure fail\n");
+            PBL_LOG(LOG_LEVEL_ERROR,"Get ADC configure fail");
             ret = -1;
         }
     }
 
 exit:
     if(ret < 0)
-        PBL_LOG(LOG_LEVEL_ALWAYS,"adc init fail!");
+        PBL_LOG(LOG_LEVEL_ALWAYS,"ADC init fail!");
     else
-        PBL_LOG(LOG_LEVEL_ALWAYS,"adc init ok!");
+        PBL_LOG(LOG_LEVEL_ALWAYS,"ADC init ok!");
     return ret;
 
 }

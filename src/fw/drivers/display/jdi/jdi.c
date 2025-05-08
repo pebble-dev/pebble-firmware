@@ -47,11 +47,11 @@ void display_init(void)
     lcdc.Instance = LCDC1;
     memcpy(&lcdc.Init, &lcdc_int_cfg, sizeof(LCDC_InitTypeDef));
     HAL_LCDC_Init(&lcdc);
-
+    s_dma_update_in_progress_semaphore = xSemaphoreCreateBinary();
     BSP_LCD_Reset(0);//Reset LCD
     HAL_Delay_us(10);
     BSP_LCD_Reset(1);
-    PBL_LOG(LOG_LEVEL_ALWAYS, "jdi display_init ok.\n");
+    PBL_LOG(LOG_LEVEL_INFO, "JDI display_init ok.");
 }
 
 uint32_t display_baud_rate_change(uint32_t new_frequency_hz) 
