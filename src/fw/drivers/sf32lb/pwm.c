@@ -211,7 +211,17 @@ struct bf0_pwm *  find_tim_obj(TIM_TypeDef* TIMx)
 // Note: pwm peripheral needs to be enabled before the duty cycle can be set
 void pwm_set_duty_cycle(const PwmConfig *pwm, uint32_t duty_cycle)
 {
-    struct bf0_pwm * p_pwm_obj = container_of(&(pwm->timer), struct bf0_pwm, tim_config);
+    //struct bf0_pwm * p_pwm_obj = container_of(&(pwm->timer), struct bf0_pwm, tim_config);
+    struct bf0_pwm * p_pwm_obj = NULL;
+
+    p_pwm_obj  = find_tim_obj(pwm->timer.peripheral);
+    if(p_pwm_obj == NULL)
+    {
+        PBL_LOG(LOG_LEVEL_ERROR, "PWM find fail");
+        return;
+    }
+    PBL_ASSERTN(pwm != NULL);
+
     GPT_HandleTypeDef *htim = &(p_pwm_obj->tim_handle);
     
 
@@ -232,7 +242,7 @@ void pwm_set_duty_cycle(const PwmConfig *pwm, uint32_t duty_cycle)
     else
 #endif
     GPT_clock = HAL_RCC_GetPCLKFreq(htim->core, 1);
-    PBL_LOG(LOG_LEVEL_INFO, "pwm use PCLK = %d;\n", (int)GPT_clock);
+    PBL_LOG(LOG_LEVEL_INFO, "PWM use PCLK = %d;", (int)GPT_clock);
 
     /* Convert nanosecond to frequency and duty cycle. 1s = 1 * 1000 * 1000 * 1000 ns */
     GPT_clock /= 1000000UL;
@@ -241,7 +251,7 @@ void pwm_set_duty_cycle(const PwmConfig *pwm, uint32_t duty_cycle)
     period = period / psc;
     __HAL_GPT_SET_PRESCALER(htim, psc - 1);
 
-    PBL_LOG(LOG_LEVEL_INFO,"psc %d, Period %d,", (int)psc, (int)period);
+    PBL_LOG(LOG_LEVEL_INFO,"PWM psc %d, period %d,", (int)psc, (int)period);
 
     if (period < MIN_PERIOD)
     {
@@ -252,7 +262,7 @@ void pwm_set_duty_cycle(const PwmConfig *pwm, uint32_t duty_cycle)
     pulse = duty_cycle * p_pwm_obj->pwm_config.period/p_pwm_obj->pwm_config.resolution;
 
     pulse = (unsigned long long)pulse* GPT_clock / psc / 1000ULL;
-    PBL_LOG(LOG_LEVEL_INFO, "Pulse %d", (int)pulse);
+    PBL_LOG(LOG_LEVEL_INFO, "PWM pulse %d", (int)pulse);
     
     if (pulse < MIN_PULSE)
     {
@@ -277,7 +287,18 @@ void pwm_set_duty_cycle(const PwmConfig *pwm, uint32_t duty_cycle)
 
 void pwm_enable(const PwmConfig *pwm, bool enable)
 {
-    struct bf0_pwm * p_pwm_obj = container_of(&(pwm->timer), struct bf0_pwm, tim_config);
+    //struct bf0_pwm * p_pwm_obj = container_of(&(pwm->timer), struct bf0_pwm, tim_config);
+    struct bf0_pwm * p_pwm_obj = NULL;
+
+    p_pwm_obj  = find_tim_obj(pwm->timer.peripheral);
+    if(p_pwm_obj == NULL)
+    {
+        PBL_LOG(LOG_LEVEL_ERROR, "PWM find fail");
+        return;
+    }
+    PBL_ASSERTN(pwm != NULL);
+    
+
     GPT_HandleTypeDef *htim = &(p_pwm_obj->tim_handle);
     
     /* Converts the channel number to the channel number of Hal library */
@@ -333,7 +354,7 @@ static int bf0_hw_pwm_init(struct bf0_pwm *device)
 
     if (HAL_GPT_Base_Init(tim) != HAL_OK)
     {
-        PBL_LOG(LOG_LEVEL_ERROR, "%s time base init failed", device->name);
+        PBL_LOG(LOG_LEVEL_ERROR, "PWM_HAL %s time base init failed", device->name);
         
         goto __exit;
     }
@@ -341,13 +362,13 @@ static int bf0_hw_pwm_init(struct bf0_pwm *device)
     clock_config.ClockSource = GPT_CLOCKSOURCE_INTERNAL;
     if (HAL_GPT_ConfigClockSource(tim, &clock_config) != HAL_OK)
     {
-        PBL_LOG(LOG_LEVEL_ERROR,"%s clock init failed", device->name);
+        PBL_LOG(LOG_LEVEL_ERROR,"PWM_HAL %s clock init failed", device->name);
         goto __exit;
     }
 
     if (HAL_GPT_PWM_Init(tim) != HAL_OK)
     {
-        PBL_LOG(LOG_LEVEL_ERROR,"%s pwm init failed", device->name);
+        PBL_LOG(LOG_LEVEL_ERROR,"PWM_HAL %s gpt init failed", device->name);
         goto __exit;
     }
     ret = 1;
@@ -383,128 +404,159 @@ void tim_preload(TIM_TypeDef* TIMx, uint16_t TIM_OCPreload)
     return ;
 
 }
-void pwm_hal_pins_set_gpio(const PwmConfig *pwm)
+
+
+void pwm_hal_pins_set_gpio(struct bf0_pwm *device, uint32_t pin, uint16_t channel)
 {
     int pad_pwm;
     int hcpu_pwm;
+    //struct bf0_pwm * p_pwm_obj = container_of(&(pwm->timer), struct bf0_pwm, tim_config);
+    struct bf0_pwm * p_pwm_obj = device;
+
     pin_function func_pwm = GPTIM1_CH1;
     #ifdef hwp_gptim1
-    if(pwm->timer.peripheral == hwp_gptim1)
+    if(p_pwm_obj->tim_handle.Instance == hwp_gptim1) 
     {
-        if(pwm->state->channel ==1)
+        if(channel ==1)
             func_pwm = GPTIM1_CH1;
-        else if(pwm->state->channel == 2)
+        else if(channel == 2)
             func_pwm = GPTIM1_CH2;
-        else if(pwm->state->channel == 3)
+        else if(channel == 3)
             func_pwm = GPTIM1_CH3;
-        else if(pwm->state->channel == 4)
+        else if(channel == 4)
             func_pwm = GPTIM1_CH4;
     }
     #endif
     #ifdef hwp_gptim2
-    if(pwm->timer.peripheral == hwp_gptim2)
+    if(p_pwm_obj->tim_handle.Instance == hwp_gptim2)
     {
-        if(pwm->state->channel ==1)
+        if(channel ==1)
             func_pwm = GPTIM2_CH1;
-        else if(pwm->state->channel == 2)
+        else if(channel == 2)
             func_pwm = GPTIM2_CH2;
-        else if(pwm->state->channel == 3)
+        else if(channel == 3)
             func_pwm = GPTIM2_CH3;
-        else if(pwm->state->channel == 4)
+        else if(channel == 4)
             func_pwm = GPTIM2_CH4;
     }
     #endif
     #ifdef hwp_gptim3
-    if(pwm->timer.peripheral == hwp_gptim3)
+    if(p_pwm_obj->tim_handle.Instance == hwp_gptim3)
     {
-        if(pwm->state->channel ==1)
+        if(channel ==1)
             func_pwm = GPTIM3_CH1;
-        else if(pwm->state->channel == 2)
+        else if(channel == 2)
             func_pwm = GPTIM3_CH2;
-        else if(pwm->state->channel == 3)
+        else if(channel == 3)
             func_pwm = GPTIM3_CH3;
-        else if(pwm->state->channel == 4)
+        else if(channel == 4)
             func_pwm = GPTIM3_CH4;
     }
     #endif
     #ifdef hwp_gptim4
     if(pwm->timer->peripheral == hwp_gptim4)
     {
-        if(pwm->state->channel ==1)
+        if(channel ==1)
             func_pwm = GPTIM4_CH1;
-        else if(pwm->state->channel == 2)
+        else if(channel == 2)
             func_pwm = GPTIM4_CH2;
-        else if(pwm->state->channel == 3)
+        else if(channel == 3)
             func_pwm = GPTIM4_CH3;
-        else if(pwm->state->channel == 4)
+        else if(channel == 4)
             func_pwm = GPTIM4_CH4;
     }
     #endif
     #ifdef hwp_gptim5
-    if(pwm->timer.peripheral == hwp_gptim5)
+    if(p_pwm_obj->tim_handle.Instance == hwp_gptim5)
     {
-        if(pwm->state->channel ==1)
+        if(channel ==1)
             func_pwm = GPTIM5_CH1;
-        else if(pwm->state->channel == 2)
+        else if(channel == 2)
             func_pwm = GPTIM5_CH2;
-        else if(pwm->state->channel == 3)
+        else if(channel == 3)
             func_pwm = GPTIM5_CH3;
-        else if(pwm->state->channel == 4)
+        else if(channel == 4)
             func_pwm = GPTIM5_CH4;
     }
     #endif
     #ifdef hwp_atim1
-    if(pwm->timer.peripheral == (GPT_TypeDef *)hwp_atim1)
+    if(p_pwm_obj->tim_handle.Instance == (GPT_TypeDef *)hwp_atim1)
     {
-        if(pwm->state->channel ==1)
+        if(channel ==1)
             func_pwm = ATIM1_CH1;
-        else if(pwm->state->channel == 2)
+        else if(channel == 2)
             func_pwm = ATIM1_CH2;
-        else if(pwm->state->channel == 3)
+        else if(channel == 3)
             func_pwm = ATIM1_CH3;
-        else if(pwm->state->channel == 4)
+        else if(channel == 4)
             func_pwm = ATIM1_CH4;
     }
     #endif
     #ifdef hwp_atim2
-    if(pwm->timer.peripheral == (GPT_TypeDef *)hwp_atim2)
+    if(p_pwm_obj->tim_handle.Instance == (GPT_TypeDef *)hwp_atim2)
     {
-        if(pwm->state->channel ==1)
+        if(channel ==1)
             func_pwm = ATIM2_CH1;
-        else if(pwm->state->channel == 2)
+        else if(channel == 2)
             func_pwm = ATIM2_CH2;
-        else if(pwm->state->channel == 3)
+        else if(channel == 3)
             func_pwm = ATIM2_CH3;
-        else if(pwm->state->channel == 4)
+        else if(channel == 4)
             func_pwm = ATIM2_CH4;
     }
     #endif
 
-    pad_pwm = pwm->output.gpio_pin;
-    hcpu_pwm = (pad_pwm > 96) ? 0 : 1;
+    hcpu_pwm = (pin > 96) ? 0 : 1;
+    if(hcpu_pwm)
+    {
+        pad_pwm = pin + PAD_PA00;
+    }
+    else
+    {
+        pad_pwm = pin - 96 + PAD_PB00;
+    }
+
     HAL_PIN_Set(pad_pwm, func_pwm, PIN_NOPULL, hcpu_pwm);
+    PBL_LOG(LOG_LEVEL_INFO, "set pin[%d],as [%s] ch_%d;", (int)pin, p_pwm_obj->name, channel);
 } 
+
 
 void pwm_init(const PwmConfig *pwm, uint32_t resolution, uint32_t frequency)
 {
-    struct bf0_pwm * p_pwm_obj = container_of(&(pwm->timer), struct bf0_pwm, tim_config);
+    struct bf0_pwm * p_pwm_obj = NULL;
+
+    p_pwm_obj  = find_tim_obj(pwm->timer.peripheral);
+    if(p_pwm_obj == NULL)
+    {
+        PBL_LOG(LOG_LEVEL_ERROR, "PWM find fail");
+        return;
+    }
     PBL_ASSERTN(pwm != NULL);
+    
     if(resolution == 0)
         return;
-    uint32_t freq = frequency / resolution;      /*get real freq*/
+    uint32_t freq = frequency;      /*get real freq*/
     uint32_t peroid = 1000000000UL/(freq);                               /*get real peoiod ns*/
+    uint32_t pin = pwm-> output.gpio_pin;
+
     p_pwm_obj->pwm_config.resolution = resolution;
     p_pwm_obj->pwm_config.period = peroid;
     p_pwm_obj->pwm_config.channel = pwm->state->channel;
     p_pwm_obj->pwm_config.is_comp = pwm->state->is_comp;
-    pwm_hal_pins_set_gpio(pwm);
+    pwm_hal_pins_set_gpio(p_pwm_obj, pin, p_pwm_obj->pwm_config.channel);
     if (bf0_hw_pwm_init(p_pwm_obj) != 1)
     {
-        PBL_LOG(LOG_LEVEL_ERROR, "%s init failed", p_pwm_obj->name);
-        goto __exit;
+        PBL_LOG(LOG_LEVEL_ERROR, "PWM  init [%s] failed", p_pwm_obj->name);
+        return;
     }
-    
-__exit:
+    PBL_LOG(LOG_LEVEL_INFO, "PWM init [%s] ok, freq= %d Hz;", p_pwm_obj->name, (int)frequency);
     return;
 }
-
+
+
+void example_pwm(){
+    pwm_init(&pwm2_ch1, 1000, 1000);
+    pwm_set_duty_cycle(&pwm2_ch1, 500);
+    pwm_enable(&pwm2_ch1, true);
+    return;
+}

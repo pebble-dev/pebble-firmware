@@ -27,3 +27,6 @@ void pwm_init(const PwmConfig *pwm, uint32_t resolution, uint32_t frequency);
 void pwm_set_duty_cycle(const PwmConfig *pwm, uint32_t duty_cycle);
 
 void pwm_enable(const PwmConfig *pwm, bool enable);
+
+extern void example_pwm();
+

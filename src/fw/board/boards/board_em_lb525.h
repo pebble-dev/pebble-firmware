@@ -66,6 +66,10 @@ static const BoardConfigAccessory BOARD_CONFIG_ACCESSORY = {
 };
 
 extern const VoltageMonitorDevice * VOLTAGE_MONITOR_BATTERY;
+extern PwmConfig pwm2_ch1;
+
+extern ADCInputConfig adc1_ch7;
+extern ADCInputConfig adc1_ch0;
 
 
 

@@ -24,6 +24,8 @@
 #include "drivers/sf32lb/pwm_hal_definitions.h"
 #include "board/board_sf32lb.h"
 
+
+
 #define USING_UART1
 #ifdef USING_UART1
 #define UART_INST USART1
@@ -90,7 +92,7 @@ PwmState pwm2_1_state =
 };
 
 
-PwmConfig pwm2_1 =
+PwmConfig pwm2_ch1 =
 {
     .timer =
         {
@@ -106,6 +108,16 @@ PwmConfig pwm2_1 =
 
 };
 
+ADCInputConfig adc1_ch7 ={
+    .adc = hwp_gpadc1,
+    .adc_channel = 7,
+    .gpio_pin = 255,        //adc1_ch7 don't need config pin
+    };
+ADCInputConfig adc1_ch0 ={
+    .adc = hwp_gpadc1,
+    .adc_channel = 0,
+    .gpio_pin = 28,        //adc1_ch0 PA28
+    };
 
 
 #define LCD_RESET_PIN           (0)         // GPIO_A00
@@ -144,6 +156,10 @@ void BSP_LCD_PowerUp(void)
 
 
 void board_early_init(void) {
+
+
+
+
 }
 
 void board_init(void) {
