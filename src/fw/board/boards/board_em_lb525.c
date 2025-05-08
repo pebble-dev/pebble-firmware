@@ -29,12 +29,12 @@
 #define UART_INST USART1
 #define UART_TX PAD_PA19
 #define UART_RX PAD_PA18
-#define UART_DMAREQ DMA_REQUEST_4
+#define UART_DMAREQ DMA_REQUEST_5
 #else
 #define UART_INST USART3
 #define UART_TX PAD_PA20
 #define UART_RX PAD_PA27
-#define UART_DMAREQ DMA_REQUEST_7
+#define UART_DMAREQ DMA_REQUEST_27
 #endif
 
 static UARTDeviceState s_dbg_uart_state;

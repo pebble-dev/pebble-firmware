@@ -303,7 +303,7 @@ void uart_irq_handler(UARTDevice *dev) {
         recv_len += dma_length;
       }
 
-      for (uint32_t i = 0; i < recv_len; i++) {
+      for (int32_t i = 0; i < recv_len; i++) {
         const uint8_t data = dev->state->rx_dma_buffer[dev->state->rx_dma_index + i];
         if (dev->state->rx_irq_handler(dev, data, &err_flags)) {
           should_context_switch = true;
