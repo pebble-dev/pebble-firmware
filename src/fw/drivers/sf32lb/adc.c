@@ -11,7 +11,7 @@
 #include "board/board_sf32lb.h"
 #include "bf0_pin_const.h"
 
-#define ADC_DEBUG   1
+//#define ADC_DEBUG   1
 
 #ifdef hwp_gpadc1
 #define ADC1_CONFIG                                                 \

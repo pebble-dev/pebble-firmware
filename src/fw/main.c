@@ -53,6 +53,8 @@
 #include "drivers/voltage_monitor.h"
 #include "drivers/watchdog.h"
 #include "drivers/adc.h"
+#include "drivers/i2c.h"
+
 
 #include "resource/resource.h"
 #include "resource/system_resource.h"
@@ -291,7 +293,10 @@ static void init_drivers(void) {
 
   /*adc need init before device use adc*/
   adc_init();
-  
+
+  /*i2c need repear  before i2c init*/
+  i2c_repear();
+
   voltage_monitor_init();
   battery_init();
   

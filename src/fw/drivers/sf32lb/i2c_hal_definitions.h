@@ -64,24 +64,7 @@ struct rt_i2c_msg
 };
 
 
-#if defined(I2C1)
-extern struct I2CBusHal i2c1_hal_obj;
-#endif
-#if defined(I2C2)
-extern struct I2CBusHal i2c2_hal_obj;
-#endif
-#if defined(I2C3)
-extern struct I2CBusHal i2c3_hal_obj;
-#endif
-#if defined(I2C4)
-extern struct I2CBusHal i2c4_hal_obj;
-#endif
-#if defined(I2C5)
-extern struct I2CBusHal i2c5_hal_obj;
-#endif
-#if defined(I2C6)
-extern struct I2CBusHal i2c6_hal_obj;
-#endif
+extern struct I2CBusHal i2c_hal_obj[];
 
 
 #define RT_I2C_WR                0x0000
@@ -124,3 +107,9 @@ extern struct I2CBusHal i2c6_hal_obj;
 #define I2C4_CORE   CORE_ID_LCPU
 #define I2C5_CORE   CORE_ID_LCPU
 #define I2C6_CORE   CORE_ID_LCPU
+#define I2C1_DMA_IRQHandler              DMAC1_CH3_IRQHandler
+#define I2C1_DMA_IRQ_PRIO                1
+#define I2C1_DMA_INSTANCE                DMA1_Channel5
+#define I2C1_DMA_REQUEST                 DMA_REQUEST_22
+#define I2C1_DMA_IRQ                     DMAC1_CH5_IRQn
+

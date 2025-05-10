@@ -13,7 +13,201 @@
 #include "drivers/i2c_definitions.h"
 #include "board/board_sf32lb.h"
 #include "bf0_pin_const.h"
-//#ifdef HAL_I2C_MODULE_ENABLED
+
+#define I2C_HAL_DEBUG 1
+enum
+{
+    #ifdef I2C1
+    I2C1_INDEX,
+    #endif
+    #ifdef I2C2
+    I2C2_INDEX,
+    #endif
+    #ifdef I2C3
+    I2C3_INDEX,
+    #endif
+    #ifdef I2C4
+    I2C4_INDEX,
+    #endif
+    #ifdef I2C5
+    I2C5_INDEX,
+    #endif
+    #ifdef I2C6
+    I2C6_INDEX,
+    #endif
+    I2C_MAX,
+};
+
+#if defined(I2C1)
+#define BF0_I2C1_CFG                      \
+    {                                     \
+        .device_name = "i2c1",            \
+        .Instance = I2C1,                 \
+        .irq_type = I2C1_IRQn,            \
+        .core     = I2C1_CORE,            \
+        .open_flag= RT_DEVICE_FLAG_RDWR,    \
+    }
+#define I2C1_CFG_DEFAULT                \
+    {                                    \
+        0,                              \
+        0,                              \
+        5000,                           \
+        400000,                          \
+    }
+#endif
+
+#if defined(I2C2)
+#define BF0_I2C2_CFG                      \
+    {                                     \
+        .device_name = "i2c2",            \
+        .Instance = I2C2,                 \
+        .irq_type = I2C2_IRQn,            \
+        .core     = I2C2_CORE,            \
+        .open_flag= RT_DEVICE_FLAG_RDWR,    \
+    }
+#define I2C2_CFG_DEFAULT                \
+    {                                     \
+        0,                              \
+        0,                              \
+        5000,                           \
+        400000,                          \
+    }
+#endif
+
+#if defined(I2C3)
+#define BF0_I2C3_CFG                      \
+    {                                     \
+        .device_name = "i2c3",            \
+        .Instance = I2C3,                 \
+        .irq_type = I2C3_IRQn,            \
+        .core     = I2C3_CORE,            \
+        .open_flag= RT_DEVICE_FLAG_RDWR,    \
+    }
+#define I2C3_CFG_DEFAULT                \
+    {                                     \
+        0,                              \
+        0,                              \
+        5000,                           \
+        400000,                          \
+    }
+#endif
+
+#if defined(I2C4)
+#define BF0_I2C4_CFG                      \
+    {                                     \
+        .device_name = "i2c4",            \
+        .Instance = I2C4,                 \
+        .irq_type = I2C4_IRQn,            \
+        .core     = I2C4_CORE,            \
+        .open_flag= RT_DEVICE_FLAG_RDWR,    \
+    }
+#define I2C4_CFG_DEFAULT                \
+    {                                     \
+        0,                              \
+        0,                              \
+        5000,                           \
+        400000,                          \
+    }
+#endif
+
+
+#if defined(I2C5)
+#define BF0_I2C5_CFG                      \
+    {                                     \
+        .device_name = "i2c5",            \
+        .Instance = I2C5,                 \
+        .irq_type = I2C5_IRQn,            \
+        .core     = I2C5_CORE,            \
+        .open_flag= RT_DEVICE_FLAG_RDWR,    \
+    }
+#define I2C5_CFG_DEFAULT                \
+    {                                    \
+        0,                              \
+        0,                              \
+        5000,                           \
+        400000,                          \
+    } 
+#endif
+
+#if defined(I2C6)
+#define BF0_I2C6_CFG                      \
+    {                                     \
+        .device_name = "i2c6",            \
+        .Instance = I2C6,                 \
+        .irq_type = I2C6_IRQn,            \
+        .core     = I2C6_CORE,            \
+        .open_flag= RT_DEVICE_FLAG_RDWR,    \
+    }
+#define I2C6_CFG_DEFAULT                \
+    {                                    \
+        0,                              \
+        0,                              \
+        5000,                           \
+        400000,                          \
+    } 
+#endif
+
+
+static bf0_i2c_config_t bf0_i2c_cfg[] =
+{
+    #if defined(I2C1)
+    BF0_I2C1_CFG,
+    #endif
+    
+    #if defined(I2C2)
+    BF0_I2C2_CFG,
+    #endif
+
+    #if defined(I2C3)
+    BF0_I2C3_CFG,
+    #endif
+
+    #if defined(I2C4)
+    BF0_I2C4_CFG,
+    #endif
+    
+    #if defined(I2C5)
+    BF0_I2C5_CFG,
+    #endif
+
+    #if defined(I2C6)
+    BF0_I2C6_CFG,
+    #endif
+
+
+};
+
+#define I2C_NUM  (sizeof(bf0_i2c_cfg) / sizeof(bf0_i2c_cfg[0]))
+
+static struct rt_i2c_configuration rt_i2c_cfg_default[I2C_NUM] =
+{
+    #ifdef I2C1
+    I2C1_CFG_DEFAULT,
+    #endif
+
+    #ifdef I2C2
+    I2C2_CFG_DEFAULT,
+    #endif
+
+    #ifdef I2C3
+    I2C3_CFG_DEFAULT,
+    #endif
+    
+    #ifdef I2C4
+    I2C4_CFG_DEFAULT,
+    #endif
+    
+    #ifdef I2C5
+    I2C5_CFG_DEFAULT,
+    #endif
+        
+    #ifdef I2C6
+    I2C6_CFG_DEFAULT,
+    #endif
+};
+
+struct I2CBusHal i2c_hal_obj[I2C_NUM];
+
 
 static void hal_semaphore_give(I2CBusState *bus_state) 
 {
@@ -21,11 +215,11 @@ static void hal_semaphore_give(I2CBusState *bus_state)
     xSemaphoreGive(bus_state->event_semaphore);
 }
 
-static void I2Cx_IRQHandler(struct I2CBusHal *hal)
+static void I2Cx_IRQHandler(uint16_t index)
 {
-    I2C_HandleTypeDef *handle;
-    I2CBus *bus = hal->bus;
-    handle = &(hal->handle);
+    I2C_HandleTypeDef *handle ;
+    I2CBus *bus = i2c_hal_obj[index].bus;
+    handle = &( i2c_hal_obj[index].handle);
 
     if (handle->XferISR != NULL)
     {
@@ -48,159 +242,55 @@ static void I2Cx_IRQHandler(struct I2CBusHal *hal)
 }
 
 #if defined(I2C1)
-bf0_i2c_config_t bf0_i2c1_cfg =
-{
-    .device_name = "i2c1",
-    .Instance = I2C1,
-    .irq_type = I2C1_IRQn,
-    .core     = I2C1_CORE,
-    .open_flag= RT_DEVICE_FLAG_RDWR,
-};
-struct rt_i2c_configuration i2c1_cfg_default = 
-{
-    0,       // mode;  RT_I2C_ADDR_10BIT / RT_I2C_NO_START / RT_I2C_IGNORE_NACK / RT_I2C_NO_READ_ACK
-    0,       // addr;
-    5000,    // timeout;
-    400000   // max_hz;
-}; 
-struct I2CBusHal i2c1_hal_obj;
-
-
 void I2C1_IRQHandler(void)
 {
-    I2Cx_IRQHandler(&i2c1_hal_obj); 
+    I2Cx_IRQHandler(I2C1_INDEX); 
 }
-
 #endif
+
 
 #if defined(I2C2)
-bf0_i2c_config_t bf0_i2c2_cfg =
-{
-    .device_name = "i2c2",
-    .Instance = I2C2,
-    .irq_type = I2C2_IRQn,
-    .core     = I2C2_CORE,
-    .open_flag= RT_DEVICE_FLAG_RDWR,
-};
-struct rt_i2c_configuration i2c2_cfg_default = 
-{
-    0,       // mode;  RT_I2C_ADDR_10BIT / RT_I2C_NO_START / RT_I2C_IGNORE_NACK / RT_I2C_NO_READ_ACK
-    0,       // addr;
-    5000,    // timeout;
-    400000   // max_hz;
-}; 
-
-struct I2CBusHal i2c2_hal_obj;
-
 void I2C2_IRQHandler(void)
 {
-    I2Cx_IRQHandler(&i2c2_hal_obj); 
+    I2Cx_IRQHandler(I2C2_INDEX); 
 }
 #endif
+
 
 #if defined(I2C3)
-bf0_i2c_config_t bf0_i2c3_cfg =
-{
-    .device_name = "i2c3",
-    .Instance = I2C3,
-    .irq_type = I2C3_IRQn,
-    .core     = I2C3_CORE,
-    .open_flag= RT_DEVICE_FLAG_RDWR,
-};
-struct rt_i2c_configuration i2c3_cfg_default = 
-{
-    0,       // mode;  RT_I2C_ADDR_10BIT / RT_I2C_NO_START / RT_I2C_IGNORE_NACK / RT_I2C_NO_READ_ACK
-    0,       // addr;
-    5000,    // timeout;
-    400000   // max_hz;
-}; 
-
-struct I2CBusHal i2c3_hal_obj;
-
 void I2C3_IRQHandler(void)
 {
-    I2Cx_IRQHandler(&i2c3_hal_obj);  
+    I2Cx_IRQHandler(I2C3_INDEX); 
 }
 #endif
 
+
 #if defined(I2C4)
-bf0_i2c_config_t bf0_i2c4_cfg=
-{
-    .device_name = "i2c4",
-    .Instance = I2C4,
-    .irq_type = I2C4_IRQn,
-    .core     = I2C4_CORE,
-    .open_flag= RT_DEVICE_FLAG_RDWR,
-};
-struct rt_i2c_configuration i2c4_cfg_default = 
-{
-    0,       // mode;  RT_I2C_ADDR_10BIT / RT_I2C_NO_START / RT_I2C_IGNORE_NACK / RT_I2C_NO_READ_ACK
-    0,       // addr;
-    5000,    // timeout;
-    400000   // max_hz;
-}; 
-
-struct I2CBusHal i2c4_hal_obj;
-
 void I2C4_IRQHandler(void)
 {
-    I2Cx_IRQHandler(&i2c4_hal_obj); 
+    I2Cx_IRQHandler(I2C4_INDEX); 
 }
 #endif
 
 #if defined(I2C5)
-bf0_i2c_config_t bf0_i2c5_cfg=
-{
-    .device_name = "i2c5",
-    .Instance = I2C5,
-    .irq_type = I2C5_IRQn,
-    .core     = I2C5_CORE,
-    .open_flag= RT_DEVICE_FLAG_RDWR,
-};
-struct rt_i2c_configuration i2c5_cfg_default = 
-{
-    0,       // mode;  RT_I2C_ADDR_10BIT / RT_I2C_NO_START / RT_I2C_IGNORE_NACK / RT_I2C_NO_READ_ACK
-    0,       // addr;
-    5000,    // timeout;
-    400000   // max_hz;
-}; 
-
-struct I2CBusHal i2c5_hal_obj;
-
 void I2C5_IRQHandler(void)
 {
-    I2Cx_IRQHandler(&i2c5_hal_obj); 
+    I2Cx_IRQHandler(I2C5_INDEX); 
 }
 #endif
 
 #if defined(I2C6)
-bf0_i2c_config_t bf0_i2c6_cfg =
-{
-    .device_name = "i2c6",
-    .Instance = I2C6,
-    .irq_type = I2C6_IRQn,
-    .core     = I2C6_CORE,
-    .open_flag= RT_DEVICE_FLAG_RDWR,
-};
-struct rt_i2c_configuration i2c6_cfg_default = 
-{
-    0,       // mode;  RT_I2C_ADDR_10BIT / RT_I2C_NO_START / RT_I2C_IGNORE_NACK / RT_I2C_NO_READ_ACK
-    0,       // addr;
-    5000,    // timeout;
-    400000   // max_hz;
-}; 
-
-struct I2CBusHal i2c6_hal_obj;
-
 void I2C6_IRQHandler(void)
 {
-    I2Cx_IRQHandler(&i2c6_hal_obj); 
+    I2Cx_IRQHandler(I2C6_INDEX); 
 }
 #endif
-static void I2Cx_DMA_IRQHandler(struct I2CBusHal *hal )
+
+
+static void I2Cx_DMA_IRQHandler(uint16_t index)
 {
     I2C_HandleTypeDef *handle;
-    handle = &(hal->handle);
+    handle = &(i2c_hal_obj[index].handle);
     if (handle->State == HAL_I2C_STATE_BUSY_TX)
     {
         HAL_DMA_IRQHandler(handle->hdmatx);
@@ -233,10 +323,11 @@ struct dma_config i2c1_trx_dma =
 };
 
 #endif
+
 #if defined(I2C1_DMA_IRQHandler)
 void I2C1_DMA_IRQHandler(void)
 {
-    I2Cx_DMA_IRQHandler(&i2c1_obj);
+    I2Cx_DMA_IRQHandler(I2C1_INDEX);
 }
 #endif
 
@@ -252,7 +343,7 @@ struct dma_config i2c2_trx_dma =
 #if defined(I2C2_DMA_IRQHandler)
 void I2C2_DMA_IRQHandler(void)
 {
-    I2Cx_DMA_IRQHandler(&i2c2_obj);
+    I2Cx_DMA_IRQHandler(I2C2_INDEX);
 }
 #endif
 #if defined(I2C3_DMA_INSTANCE)
@@ -267,7 +358,7 @@ struct dma_config i2c3_trx_dma =
 #if defined(I2C3_DMA_IRQHandler)
 void I2C3_DMA_IRQHandler(void)
 {
-    I2Cx_DMA_IRQHandler(&i2c3_obj);
+    I2Cx_DMA_IRQHandler(I2C3_INDEX);
 }
 #endif
 #if defined(I2C4_DMA_INSTANCE)
@@ -282,11 +373,11 @@ struct dma_config i2c4_trx_dma =
 #if defined(I2C4_DMA_IRQHandler)
 void I2C4_DMA_IRQHandler(void)
 {
-    I2Cx_DMA_IRQHandler(&i2c4_obj);
+    I2Cx_DMA_IRQHandler(I2C4_INDEX);
 }
 #endif
 #if defined(I2C5_DMA_INSTANCE)
-struct dma_config i2c4_trx_dma = 
+struct dma_config i2c5_trx_dma =
 { 
     .dma_irq_prio = I2C5_DMA_IRQ_PRIO,
     .Instance = I2C5_DMA_INSTANCE,
@@ -297,11 +388,11 @@ struct dma_config i2c4_trx_dma =
 #if defined(I2C5_DMA_IRQHandler)
 void I2C5_DMA_IRQHandler(void)
 {
-    I2Cx_DMA_IRQHandler(&i2c5_obj);
+    I2Cx_DMA_IRQHandler(I2C5_INDEX);
 }
 #endif
 #if defined(I2C6_DMA_INSTANCE)
-struct dma_config i2c4_trx_dma = 
+struct dma_config i2c6_trx_dma = 
 { 
     .dma_irq_prio = I2C6_DMA_IRQ_PRIO,
     .Instance = I2C6_DMA_INSTANCE,
@@ -312,7 +403,7 @@ struct dma_config i2c4_trx_dma =
 #if defined(I2C6_DMA_IRQHandler)
 void I2C6_DMA_IRQHandler(void)
 {
-    I2Cx_DMA_IRQHandler(&i2c6_obj);
+    I2Cx_DMA_IRQHandler(I2C6_INDEX);
 }
 #endif
 struct rt_i2c_msg msgs[2];
@@ -552,12 +643,11 @@ void i2c_hal_start_transfer(I2CBus *bus)
 
 int i2c_bus_configure(struct I2CBusHal * i2c_hal, struct rt_i2c_configuration *configuration)
 {
-    int  ret = 0;
-
-    PBL_LOG(LOG_LEVEL_ALWAYS, "i2c_bus_configure start");
-
+    HAL_StatusTypeDef ret = HAL_OK;
     PBL_ASSERTN(i2c_hal != NULL);
     PBL_ASSERTN(configuration != NULL);
+    i2c_hal->bf0_i2c_cfg->open_flag = RT_DEVICE_FLAG_RDWR | configuration->open_flag ;
+    i2c_hal->bf0_i2c_cfg->timeout = configuration->timeout;
 
     if (configuration->mode & RT_I2C_ADDR_10BIT)
     {
@@ -569,8 +659,7 @@ int i2c_bus_configure(struct I2CBusHal * i2c_hal, struct rt_i2c_configuration *c
         i2c_hal->handle.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
         i2c_hal->handle.Init.OwnAddress1 = (configuration->addr & 0x7fff) << 1;
     }
-    i2c_hal->bf0_i2c_cfg->open_flag = RT_DEVICE_FLAG_RDWR | configuration->open_flag ;
-    i2c_hal->bf0_i2c_cfg->timeout = configuration->timeout;
+    
     i2c_hal->handle.Init.ClockSpeed = configuration->max_hz;
     i2c_hal->handle.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
     i2c_hal->handle.core = i2c_hal->bf0_i2c_cfg->core;
@@ -603,10 +692,16 @@ int i2c_bus_configure(struct I2CBusHal * i2c_hal, struct rt_i2c_configuration *c
     #endif
 
     ret = HAL_I2C_Init(&(i2c_hal->handle));
-
-    PBL_LOG(LOG_LEVEL_ALWAYS, "i2c_bus_configure end");
-
-    return ret;
+    
+    if(ret != HAL_OK)
+    {
+        PBL_LOG(LOG_LEVEL_ERROR, "I2C [%s] bus_configure fail!", i2c_hal->bf0_i2c_cfg->device_name);
+        return -1;
+    }
+    #ifdef I2C_HAL_DEBUG
+    PBL_LOG(LOG_LEVEL_INFO, "I2C [%s] bus_configure ok!", i2c_hal->bf0_i2c_cfg->device_name);
+    #endif
+    return 0;
 }
 
 
@@ -614,94 +709,84 @@ int i2c_bus_configure(struct I2CBusHal * i2c_hal, struct rt_i2c_configuration *c
 
 void i2c_hal_enable(I2CBus *bus)
 {
-    if(strcmp(bus->name, "i2c1"))
+    #if defined(I2C1)
+    if(bus->hal->handle.Instance == I2C1)
     {
-        #if defined(I2C1)
-        HAL_RCC_EnableModule(RCC_MOD_I2C1);
-        #endif
+        HAL_RCC_EnableModule(RCC_MOD_I2C1);        
     }
-    else if(strcmp(bus->name, "i2c2"))
+    #endif
+    #if defined(I2C2)
+    else if(bus->hal->handle.Instance == I2C2)
+    {        
+        HAL_RCC_EnableModule(RCC_MOD_I2C2);        
+    }
+    #endif
+    #if defined(I2C3)
+    else if(bus->hal->handle.Instance == I2C3)
+    {        
+        HAL_RCC_EnableModule(RCC_MOD_I2C3);    
+    }
+    #endif
+    #if defined(I2C4)
+    else if(bus->hal->handle.Instance == I2C4)
+    {        
+        HAL_RCC_EnableModule(RCC_MOD_I2C4);        
+    }
+    #endif
+    #if defined(I2C5)
+    else if(bus->hal->handle.Instance == I2C5)
     {
-        #if defined(I2C2)
-        HAL_RCC_EnableModule(RCC_MOD_I2C2);
-        #endif
-
+         HAL_RCC_EnableModule(RCC_MOD_I2C5);        
     }
-    else if(strcmp(bus->name, "i2c3"))
-    {
-        #if defined(I2C3)
-        HAL_RCC_EnableModule(RCC_MOD_I2C3);
-        #endif
-
+    #endif
+    #if defined(I2C6)
+    else if(bus->hal->handle.Instance == I2C6)
+    {        
+        HAL_RCC_EnableModule(RCC_MOD_I2C6);        
     }
-    else if(strcmp(bus->name, "i2c4"))
-    {
-        #if defined(I2C4)
-        HAL_RCC_EnableModule(RCC_MOD_I2C4);
-        #endif
-
-    }
-    else if(strcmp(bus->name, "i2c5"))
-    {
-        #if defined(I2C5)
-        HAL_RCC_EnableModule(RCC_MOD_I2C5);
-        #endif
-
-    }
-    else if(strcmp(bus->name, "i2c6"))
-    {
-        #if defined(I2C6)
-        HAL_RCC_EnableModule(RCC_MOD_I2C6);
-        #endif
-    }
-
-
+    #endif
+    PBL_LOG(LOG_LEVEL_INFO, "I2C [%s] enable!", bus->name);
 }
 
 void i2c_hal_disable(I2CBus *bus)
 {
-    if(strcmp(bus->name, "i2c1"))
-    {
     #if defined(I2C1)
-        HAL_RCC_DisableModule(RCC_MOD_I2C1);
-    #endif
-    }
-    else if(strcmp(bus->name, "i2c2"))
+    if(bus->hal->handle.Instance == I2C1)
     {
+        HAL_RCC_DisableModule(RCC_MOD_I2C1);        
+    }
+    #endif
     #if defined(I2C2)
-        HAL_RCC_DisableModule(RCC_MOD_I2C2);
-    #endif
-
+    else if(bus->hal->handle.Instance == I2C2)
+    {        
+        HAL_RCC_DisableModule(RCC_MOD_I2C2);        
     }
-    else if(strcmp(bus->name, "i2c3"))
-    {
+    #endif
     #if defined(I2C3)
-        HAL_RCC_DisableModule(RCC_MOD_I2C3);
-    #endif
-
+    else if(bus->hal->handle.Instance == I2C3)
+    {        
+        HAL_RCC_DisableModule(RCC_MOD_I2C3);    
     }
-    else if(strcmp(bus->name, "i2c4"))
-    {
+    #endif
     #if defined(I2C4)
-        HAL_RCC_DisableModule(RCC_MOD_I2C4);
-    #endif
-
+    else if(bus->hal->handle.Instance == I2C4)
+    {        
+        HAL_RCC_DisableModule(RCC_MOD_I2C4);        
     }
-    else if(strcmp(bus->name, "i2c5"))
-    {
+    #endif
     #if defined(I2C5)
-        HAL_RCC_DisableModule(RCC_MOD_I2C5);
-    #endif
-
-    }
-    else if(strcmp(bus->name, "i2c6"))
+    else if(bus->hal->handle.Instance == I2C5)
     {
-    #if defined(I2C6)
-        HAL_RCC_DisableModule(RCC_MOD_I2C6);
-    #endif
+        HAL_RCC_DisableModule(RCC_MOD_I2C5);        
     }
-
-
+    #endif
+    #if defined(I2C6)
+    else if(bus->hal->handle.Instance == I2C6)
+    {        
+        HAL_RCC_DisableModule(RCC_MOD_I2C6);        
+    }
+    #endif    
+    PBL_LOG(LOG_LEVEL_INFO, "I2C [%s] disable!", bus->name);
 }
 
 bool i2c_hal_is_busy(I2CBus *bus)
@@ -714,38 +799,59 @@ bool i2c_hal_is_busy(I2CBus *bus)
 }       
 
 
-static void i2c_get_dma_info(void)
+static void i2c_get_dma_info(uint16_t index)
 {
-#if defined(I2C1_DMA_INSTANCEC) && defined(I2C1)
-    i2c1_obj.i2c_dma_flag = 1;
-    i2c1_obj.dma_rx = &i2c1_trx_dma;
-    i2c1_obj.dma_tx = &i2c1_trx_dma;
-#endif
-#if defined(I2C2_DMA_INSTANCEC) && defined(I2C2)
-    i2c2_obj.i2c_dma_flag = 1;
-    i2c2_obj.dma_rx = &i2c2_trx_dma;
-    i2c2_obj.dma_tx = &i2c2_trx_dma;
-#endif
-#if defined(I2C3_DMA_INSTANCEC) && defined(I2C3)
-    i2c3_obj.i2c_dma_flag = 1;
-    i2c3_obj.dma_rx = &i2c3_trx_dma;
-    i2c3_obj.dma_tx = &i2c3_trx_dma;
-#endif
-#if defined(I2C4_DMA_INSTANCEC) && defined(I2C4)
-    i2c4_obj.i2c_dma_flag = 1;
-    i2c4_obj.dma_rx = &i2c4_trx_dma;
-    i2c4_obj.dma_tx = &i2c4_trx_dma;
-#endif
-#if defined(I2C5_DMA_INSTANCEC) && defined(I2C5)
-    i2c5_obj.i2c_dma_flag = 1;
-    i2c5_obj.dma_rx = &i2c5_trx_dma;
-    i2c5_obj.dma_tx = &i2c5_trx_dma;
-#endif
-#if defined(I2C6_DMA_INSTANCEC) && defined(I2C6)
-    i2c6_obj.i2c_dma_flag = 1;
-    i2c6_obj.dma_rx = &i2c6_trx_dma;
-    i2c6_obj.dma_tx = &i2c6_trx_dma;
-#endif
+    struct dma_config *i2c_dma = NULL;
+    if(index > I2C_NUM)
+        return;
+    
+
+    if(index == 0)
+    {
+        #if defined(I2C1_DMA_INSTANCE)
+        i2c_dma = &i2c1_trx_dma;
+        #endif
+    }
+    else if(index == 1)
+    {
+        #if defined(I2C2_DMA_INSTANCE)
+        i2c_dma = &i2c2_trx_dma;
+        #endif
+    }
+    else if(index == 2)
+    {
+        #if defined(I2C3_DMA_INSTANCE)
+        i2c_dma = &i2c3_trx_dma;
+        #endif
+    }
+    else if(index == 3)
+    {   
+        #if defined(I2C4_DMA_INSTANCE)
+        i2c_dma = &i2c4_trx_dma;
+        #endif
+    }
+    else if(index == 4)
+    {
+        #if defined(I2C5_DMA_INSTANCE)
+        i2c_dma = &i2c5_trx_dma;
+        #endif
+    }
+    else if(index == 5)
+    {
+        #if defined(I2C6_DMA_INSTANCE)
+        i2c_dma = &i2c6_trx_dma;
+        #endif
+    }
+    if(i2c_dma)
+    {
+        i2c_hal_obj[index].i2c_dma_flag = 1;
+        bf0_i2c_cfg[index].dma_rx = i2c_dma;
+        bf0_i2c_cfg[index].dma_rx = i2c_dma;
+        PBL_LOG(LOG_LEVEL_INFO, "I2C [%s] has config DMA!", bf0_i2c_cfg[index].device_name);
+    }
+    else
+        PBL_LOG(LOG_LEVEL_INFO, "I2C [%s] hasn't config DMA!", bf0_i2c_cfg[index].device_name);
+
 }
 
 int rt_hw_i2c_init(struct I2CBusHal * i2c_hal, bf0_i2c_config_t *cfg, struct rt_i2c_configuration *cfg_default)
@@ -762,113 +868,178 @@ int rt_hw_i2c_init(struct I2CBusHal * i2c_hal, bf0_i2c_config_t *cfg, struct rt_
         __HAL_LINKDMA(&(i2c_hal->handle), hdmatx, i2c_hal->dma.dma_tx);
         HAL_I2C_DMA_Init(&(i2c_hal->handle), cfg->dma_rx, cfg->dma_tx);
     }
-    i2c_bus_configure(i2c_hal, cfg_default);
+    ret = i2c_bus_configure(i2c_hal, cfg_default);
+    if(ret <  0)
+    {
+        return ret;
+    }
     return ret;
 }
 
-
-void i2c_hal_init(I2CBus *bus)
+uint16_t find_i2c_bus(I2CBus *bus)
 {
-    PBL_ASSERTN(bus != NULL);
-    struct I2CBusHal * hal = (struct I2CBusHal * )bus->hal;
-    i2c_get_dma_info();
+    uint16_t i;
+    uint16_t index = 0xff;
+    struct I2CBusHal *obj = NULL;
+    for(i = 0; i < I2C_NUM; i++)
+    {
+        //if(strcmp(bf0_i2c_cfg[i].device_name, (char *)bus->name) == 0)
+        obj = &(i2c_hal_obj[i]);
+        if(obj == bus->hal)
+        {
+          index = i;
+          break;
+        }
+
+    }
+    if(index != 0xff)
+    {
+        PBL_LOG(LOG_LEVEL_INFO, "I2C find [%s] index = [%d] ok!", (char *)bus->name, index);
+    }
+    else 
+    {
+        PBL_LOG(LOG_LEVEL_INFO, "I2C find [%s] fail!", (char *)bus->name);
+    }
     
-    if(strcmp(bus->name, "i2c1"))
+    return index;
+}
+void i2c_hal_repare()
+{
+    uint16_t i = 0;
+    int ret = 0;
+    PBL_LOG(LOG_LEVEL_ERROR, "I2C num [%d] ", I2C_NUM);
+    for(i = 0; i < I2C_NUM; i++)
     {
-        #if defined(I2C1)
-        rt_hw_i2c_init(hal, &bf0_i2c1_cfg, &i2c1_cfg_default);
-        #endif
+        i2c_get_dma_info(i);
+        ret = rt_hw_i2c_init(&i2c_hal_obj[i], &bf0_i2c_cfg[i], &rt_i2c_cfg_default[i]);
+        if(ret < 0)
+        {
+            PBL_LOG(LOG_LEVEL_ERROR, "I2C [%s] repear fail!", bf0_i2c_cfg[i].device_name);
+        }
+        else
+        {
+            PBL_LOG(LOG_LEVEL_ERROR, "I2C [%s] repear ok!", bf0_i2c_cfg[i].device_name);
+        }
+
     }
-    else if(strcmp(bus->name, "i2c2"))
-    {
-        #if defined(I2C2)
-        rt_hw_i2c_init(hal, &bf0_i2c2_cfg, &i2c2_cfg_default);
-        #endif
-    }
-    else if(strcmp(bus->name, "i2c3"))
-    {
-        #if defined(I2C3)    
-        rt_hw_i2c_init(hal, &bf0_i2c3_cfg, &i2c3_cfg_default);
-        #endif
-    }
-    else if(strcmp(bus->name, "i2c4"))
-    {
-        #if defined(I2C4)
-        rt_hw_i2c_init(hal, &bf0_i2c4_cfg, &i2c4_cfg_default);
-        #endif
-    }
-    else if(strcmp(bus->name, "i2c5"))
-    {
-        #if defined(I2C5)
-        rt_hw_i2c_init(hal, &bf0_i2c5_cfg, &i2c5_cfg_default);
-        #endif
-    }
-    else if(strcmp(bus->name, "i2c6"))
-    {
-        #if defined(I2C6)
-        rt_hw_i2c_init(hal, &bf0_i2c6_cfg, &i2c6_cfg_default);
-        #endif
-    }
-    hal->bus = bus;
+
+    return;
 
 }
-
-
-
-
+void i2c_hal_init(I2CBus *bus)
+{
+    int ret = 0;
+    PBL_ASSERTN(bus != NULL);
+    uint16_t index = 0xff;
+    index = find_i2c_bus(bus);
+    if(index > I2C_NUM)
+    {
+        ret = -1;
+        goto exit;
+    }
+  
+    i2c_hal_obj[index].bus = bus;
+  
+exit:
+    if(ret <  0)
+        PBL_LOG(LOG_LEVEL_ERROR, "I2C [%s] hal init fail!", bus->name);
+        
+    else
+        PBL_LOG(LOG_LEVEL_INFO, "I2C [%s] hal init ok!", bus->name);
+    return;
+}
 
 
 void i2c_hal_pins_set_gpio(I2CBus *bus)
 {
-    int pad_sda, pad_scl;
-    int hcpu_sda, hcpu_scl;
-    pin_function func_sda, func_scl;
-    if(strcmp(bus->name, "i2c1"))
+    
+} 
+void i2c_hal_pins_set_i2c(I2CBus *bus)
+{
+    #if 1
+    int pad_sda = 0, pad_scl = 0;
+    int hcpu_sda = 1, hcpu_scl = 1;
+    uint32_t pin_sda = 0xff, pin_scl = 0xff;
+    pin_function func_sda = PIN_FUNC_UNDEF, func_scl = PIN_FUNC_UNDEF;
+    if(bus->hal->handle.Instance == I2C1)
     {
         func_sda = I2C1_SDA;
         func_scl = I2C1_SCL;
     }
-    else if(strcmp(bus->name, "i2c2"))
+    #if defined(I2C2)
+    else if(bus->hal->handle.Instance == I2C2)
     {
         func_sda = I2C2_SDA;
         func_scl = I2C2_SCL;
     }
-    else if(strcmp(bus->name, "i2c3"))
+    #endif
+    #if defined(I2C3)
+    else if(bus->hal->handle.Instance == I2C3)
     {
         func_sda = I2C3_SDA;
         func_scl = I2C3_SCL;
     }
-    else if(strcmp(bus->name, "i2c4"))
+    #endif
+    #if defined(I2C4)
+    else if(bus->hal->handle.Instance == I2C4)
     {
         func_sda = I2C4_SDA;
         func_scl = I2C4_SCL;
     }
-    else if(strcmp(bus->name, "i2c5"))
+    #endif
+    #if defined(I2C5)
+    else if(bus->hal->handle.Instance == I2C5)
     {
         func_sda = I2C5_SDA;
         func_scl = I2C5_SCL;
     }
-    else if(strcmp(bus->name, "i2c6"))
+    #endif
+    #if defined(I2C6)
+    else if(bus->hal->handle.Instance == I2C6)
     {
         func_sda = I2C6_SDA;
         func_scl = I2C6_SCL;
     }
+    #endif
     else
     {
         func_sda = I2C1_SDA;
         func_scl = I2C1_SCL;
     }
 
-    pad_sda = bus->sda_gpio.gpio_pin;
-    pad_scl = bus->scl_gpio.gpio_pin;
-    hcpu_sda = (pad_sda > 96) ? 0 : 1;
-    hcpu_scl = (pad_scl > 96) ? 0 : 1;
-    HAL_PIN_Set(pad_sda, func_sda, PIN_NOPULL, hcpu_sda);
-    HAL_PIN_Set(pad_scl, func_scl, PIN_NOPULL, hcpu_scl);
-} 
-void i2c_hal_pins_set_i2c(I2CBus *bus)
-{
+    pin_sda = bus->sda_gpio.gpio_pin;
+    hcpu_sda = (pin_sda > 96) ? 0 : 1;
+    if(hcpu_sda)
+    {
+        pad_sda = pin_sda + PAD_PA00;
+    }
+    else
+    {
+        pad_sda = pin_sda - 96 + PAD_PB00;
+    }
+    if(pad_sda > 0)
+    {
+        HAL_PIN_Set(pad_sda, func_sda, PIN_NOPULL, hcpu_sda);
+        PBL_LOG(LOG_LEVEL_INFO, "set pin[%d],as [%s] sda pin;", (int)pin_sda, bus->name);
+    }
+    
 
+    pin_scl = bus->scl_gpio.gpio_pin;
+    hcpu_scl = (pin_scl > 96) ? 0 : 1;
+    if(hcpu_scl)
+    {
+        pad_scl = pin_scl + PAD_PA00;
+    }
+    else
+    {
+        pad_scl = pin_scl - 96 + PAD_PB00;
+    }
+    if(pad_scl > 0)
+    {
+        HAL_PIN_Set(pad_scl, func_scl, PIN_NOPULL, hcpu_scl);
+        PBL_LOG(LOG_LEVEL_INFO, "set pin[%d],as [%s] scl pin;", (int)pin_scl, bus->name);
+    }
+        
+    #endif
 }
 
-//#endif

@@ -70,6 +70,8 @@ extern PwmConfig pwm2_ch1;
 
 extern ADCInputConfig adc1_ch7;
 extern ADCInputConfig adc1_ch0;
+extern I2CBus i2c1;
+extern struct I2CSlavePort i2c1_device;
 
 
 

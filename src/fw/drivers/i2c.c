@@ -154,7 +154,7 @@ static void prv_bus_rail_power_down(I2CBus *bus) {
 //! Configure bus pins for use by I2C peripheral
 //! Lock bus and peripheral config access before configuring pins
 static void prv_bus_pins_cfg_i2c(I2CBus *bus) {
-#if MICRO_FAMILY_NRF5
+#if MICRO_FAMILY_NRF5 || defined(MICRO_FAMILY_SF32LB)
   i2c_hal_pins_set_i2c(bus);
 #else
   gpio_af_init(&bus->scl_gpio, GPIO_OType_OD, GPIO_Speed_50MHz, GPIO_PuPd_NOPULL);
@@ -265,12 +265,10 @@ void i2c_init(I2CBus *bus) {
 void i2c_use(I2CSlavePort *slave) {
   PBL_ASSERTN(slave);
   mutex_lock(slave->bus->state->bus_mutex);
-
   if (slave->bus->state->user_count == 0) {
     prv_bus_enable(slave->bus);
   }
   slave->bus->state->user_count++;
-
   mutex_unlock(slave->bus->state->bus_mutex);
 }
 
@@ -618,3 +616,17 @@ void command_power_2v5(char *arg) {
   }
 }
 #endif
+
+#ifdef MICRO_FAMILY_SF32LB
+void i2c_repear()
+{
+    i2c_hal_repare();
+}
+void example_i2c(struct I2CSlavePort * i2c)
+{
+    i2c_init(i2c->bus);
+    i2c_use(i2c);
+    i2c_release(i2c);
+}
+#endif 
+

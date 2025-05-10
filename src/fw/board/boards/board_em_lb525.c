@@ -70,9 +70,12 @@ IRQ_MAP(USART3, uart_irq_handler, DBG_UART);
 void DMAC1_CH1_IRQHandler(void) { HAL_DMA_IRQHandler(&s_dbg_uart_rx_dma_handle); }
 
 
+
+
+
 I2CBusState i2c1_state;
 I2CBus i2c1 = {
-            .hal  = &i2c1_hal_obj,
+            .hal = &i2c_hal_obj[0],
             .state = &i2c1_state,
             .scl_gpio = 
             {
@@ -85,7 +88,12 @@ I2CBus i2c1 = {
             .name = "i2c1",
             }; 
 
+struct I2CSlavePort i2c1_device = {
+            .bus = &i2c1,
+            .address = 0x38,
+            };
 
+            
 PwmState pwm2_1_state =
 {
     .channel = 1,
