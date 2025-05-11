@@ -36,10 +36,13 @@ def build(bld):
                           'SiFliSDK/middleware/ipc_queue/common',
                           'SiFliSDK/middleware/ipc_queue/porting/sf32lb52x/hcpu'
                           ]                          
+        bld.env.append_unique('LINKFLAGS',
+            ['-Wl,--undefined=lcpu_img_install'])
+
     bld.stlib(source=micro_sources,
-              target='hal_sifli',
-              use=['cmsis_core', 'pblibc'],
-              includes=micro_includes,
-              export_includes=micro_includes)
+            target='hal_sifli',
+            use=['cmsis_core', 'pblibc'],
+            includes=micro_includes,
+            export_includes=micro_includes)
 
 # vim:filetype=python
