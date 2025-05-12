@@ -903,29 +903,7 @@ uint16_t find_i2c_bus(I2CBus *bus)
     
     return index;
 }
-void i2c_hal_repare()
-{
-    uint16_t i = 0;
-    int ret = 0;
-    PBL_LOG(LOG_LEVEL_ERROR, "I2C num [%d] ", I2C_NUM);
-    for(i = 0; i < I2C_NUM; i++)
-    {
-        i2c_get_dma_info(i);
-        ret = rt_hw_i2c_init(&i2c_hal_obj[i], &bf0_i2c_cfg[i], &rt_i2c_cfg_default[i]);
-        if(ret < 0)
-        {
-            PBL_LOG(LOG_LEVEL_ERROR, "I2C [%s] repear fail!", bf0_i2c_cfg[i].device_name);
-        }
-        else
-        {
-            PBL_LOG(LOG_LEVEL_ERROR, "I2C [%s] repear ok!", bf0_i2c_cfg[i].device_name);
-        }
 
-    }
-
-    return;
-
-}
 void i2c_hal_init(I2CBus *bus)
 {
     int ret = 0;
@@ -937,8 +915,18 @@ void i2c_hal_init(I2CBus *bus)
         ret = -1;
         goto exit;
     }
-  
-    i2c_hal_obj[index].bus = bus;
+    i2c_get_dma_info(index);
+    ret = rt_hw_i2c_init(&i2c_hal_obj[index], &bf0_i2c_cfg[index], &rt_i2c_cfg_default[index]);
+    if(ret < 0)
+    {
+        PBL_LOG(LOG_LEVEL_ERROR, "I2C [%s] hw init fail!", bf0_i2c_cfg[index].device_name);
+    }
+    else
+    {
+        PBL_LOG(LOG_LEVEL_INFO, "I2C [%s] hw init ok!", bf0_i2c_cfg[index].device_name);
+        i2c_hal_obj[index].bus = bus;
+    }
+    
   
 exit:
     if(ret <  0)

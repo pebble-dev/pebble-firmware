@@ -97,7 +97,6 @@ bool i2c_write_register_block(I2CSlavePort *slave, uint8_t register_address_star
 bool i2c_write_block(I2CSlavePort *slave, uint32_t write_size, const uint8_t* buffer);
 
 #ifdef MICRO_FAMILY_SF32LB
-extern void example_i2c(struct I2CSlavePort * i2c);
-extern void i2c_repear();
+extern void example_i2c();
 #endif
 

@@ -618,15 +618,11 @@ void command_power_2v5(char *arg) {
 #endif
 
 #ifdef MICRO_FAMILY_SF32LB
-void i2c_repear()
+void example_i2c()
 {
-    i2c_hal_repare();
-}
-void example_i2c(struct I2CSlavePort * i2c)
-{
-    i2c_init(i2c->bus);
-    i2c_use(i2c);
-    i2c_release(i2c);
+    i2c_init(i2c1_device.bus);
+    i2c_use(&i2c1_device);
+    i2c_release(&i2c1_device);
 }
 #endif 
 

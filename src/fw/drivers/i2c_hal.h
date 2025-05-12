@@ -38,6 +38,4 @@ void i2c_hal_start_transfer(I2CBus *bus);
 void i2c_hal_pins_set_gpio(I2CBus *bus);
 void i2c_hal_pins_set_i2c(I2CBus *bus);
 #endif
-#ifdef MICRO_FAMILY_SF32LB
-void i2c_hal_repare();
-#endif
+

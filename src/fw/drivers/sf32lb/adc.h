@@ -29,8 +29,8 @@
 
 //! Init all adc supported
 //! Must be called before any other deviec use adc
-//! @param null
-extern int adc_init(void);
+//! @param adc_config   must init member: adc, adc_channel, gpio_pin;adc_channel:0~7; if don't need gpio_pin , gpio_pin should config as 0xFF;
+extern int adc_init(ADCInputConfig* adc_config);
 
 //! Enable or disable adc and channel, eanble adc will config pinmux
 //! Must enable adc before get adc value
@@ -41,4 +41,4 @@ extern int adc_enabled(ADCInputConfig* adc_config, bool enabled);
 //! Must enable adc before get adc value
 //! @param adc_config   must init member: adc, adc_channel;adc_channel:0~7;
 extern int get_adc_value(ADCInputConfig* adc_config, uint32_t *value);
-extern void example_adc(ADCInputConfig* adc_config);
+extern void example_adc();

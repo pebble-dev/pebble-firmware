@@ -152,12 +152,6 @@ static struct sifli_adc bf0_adc_obj[] =
 
 static float adc_vbat_factor = 2.01;
 
-static uint32_t adc_thd_reg;
-static SemaphoreHandle_t adc_semaphore;
-
-
-
-
 
 #ifdef BSP_GPADC_SUPPORT_MULTI_CH_SAMPLING
 #define GPADC_GPTIME_PEROID 100 //100ns
@@ -366,20 +360,26 @@ void GPADC_IRQHandler(void)
 #endif
 #endif
 
-static void adc_get_dma_info(void)
+static void adc_get_dma_info(uint16_t index)
 {
-#if defined(GPADC_DMA_INSTANCE) && defined(hwp_gpadc1)
-    bf0_adc_obj[ADC1_INDEX].adc_dma_flag = 1;
-    bf0_adc_obj[ADC1_INDEX].DMA = &adc1_dma;
-
-#endif
-#if defined(GPADC2_DMA_INSTANCE) && defined(hwp_gpadc2)
-    bf0_adc_obj[ADC2_INDEX].adc_dma_flag = 1;
-    bf0_adc_obj[ADC2_INDEX].DMA = &adc2_dma;
-#endif
+    if(index == 0)
+    {
+    #if defined(GPADC_DMA_INSTANCE) && defined(hwp_gpadc1)
+        bf0_adc_obj[index].adc_dma_flag = 1;
+        bf0_adc_obj[index].DMA = &adc1_dma;
+    #endif
+        
+    }
+    else if(index == 1)
+    {
+    #if defined(GPADC2_DMA_INSTANCE) && defined(hwp_gpadc2)
+        bf0_adc_obj[index].adc_dma_flag = 1;
+        bf0_adc_obj[index].DMA = &adc2_dma;
+    #endif
+    }
 }
 
-int sifli_adc_calibration(uint32_t value1, uint32_t value2,
+int sifli_adc_calibration(struct sifli_adc * obj, uint32_t value1, uint32_t value2,
                           uint32_t vol1, uint32_t vol2, float *offset, float *ratio)
 {
     float gap1, gap2;
@@ -406,10 +406,10 @@ int sifli_adc_calibration(uint32_t value1, uint32_t value2,
     adc_vol_offset = *offset;
 
     // get register value for max voltage
-    adc_thd_reg = ADC_MAX_VOLTAGE_MV * ADC_RATIO_ACCURATE / adc_vol_ratio + adc_vol_offset;
+    obj->adc_thd_reg = ADC_MAX_VOLTAGE_MV * ADC_RATIO_ACCURATE / adc_vol_ratio + adc_vol_offset;
     reg_max = GPADC_ADC_RDATA0_SLOT0_RDATA >> GPADC_ADC_RDATA0_SLOT0_RDATA_Pos;
-    if (adc_thd_reg >= (reg_max - 3))
-        adc_thd_reg = reg_max - 3;
+    if (obj->adc_thd_reg >= (reg_max - 3))
+        obj->adc_thd_reg = reg_max - 3;
 
     return adc_vol_offset;
 }
@@ -423,155 +423,163 @@ static void sifli_adc_vbat_fact_calib(uint32_t voltage, uint32_t reg)
     adc_vbat_factor = (float)voltage / vol_from_reg;
 }
 
-struct sifli_adc *  find_adc_obj(ADCInputConfig* adc_config)
+uint16_t  find_adc_obj(ADCInputConfig* adc_config)
 {
-    struct sifli_adc * adc_obj = NULL;
+    uint16_t index = 0xff;
     if(!ADC_MAX_INDEX)
-        return NULL;
+        return 0xff;
     for(int i = 0; i < ADC_MAX_INDEX;i++)
     {
         if(bf0_adc_obj[i].ADC_Handler.Instance == adc_config->adc)
         {
-            adc_obj = &(bf0_adc_obj[i]);
+            index = i;
             break;
         }
         
     }
-    return adc_obj;
+    return index ;
 }
 
-int adc_init(void)
+int adc_init(ADCInputConfig* adc_config)
 {
     int ret = 0;
-    adc_get_dma_info();
-    for (uint16_t i = 0; i < sizeof(bf0_adc_obj) / sizeof(bf0_adc_obj[0]); i++)
+    uint16_t  index = 0xff;
+    index = find_adc_obj(adc_config);
+    if(index > ADC_MAX_INDEX)
     {
-        #ifndef SF32LB55X
-        #ifdef BSP_AVDD_V18_ENABLE
-        bf0_adc_obj[i].ADC_Handler.Init.avdd_v18_en = 1;
-        #else
-        bf0_adc_obj[i].ADC_Handler.Init.avdd_v18_en = 0;
+        ret = -1;
+        PBL_LOG(LOG_LEVEL_ERROR, "find adc bus fail!");
+        goto exit;
+    }
+    struct sifli_adc * obj = &bf0_adc_obj[index];
+    adc_get_dma_info(index);
+
+    #ifndef SF32LB55X
+    #ifdef BSP_AVDD_V18_ENABLE
+    obj->ADC_Handler.Init.avdd_v18_en = 1;
+    #else
+    obj->ADC_Handler.Init.avdd_v18_en = 0;
+    #endif
+    #endif
+    
+    if (HAL_ADC_Init(&obj->ADC_Handler) != HAL_OK)
+    {
+        PBL_LOG(LOG_LEVEL_ERROR,"%s init failed", bf0_adc_obj[index].device_name);
+        ret = -1;
+        goto exit;
+    }
+    else 
+    {
+        PBL_LOG(LOG_LEVEL_INFO,"ADC hal init ok!");
+        #ifdef SF32LB52X
+        uint32_t adc_freq = 240000; // use 240k for 52x to meet ATE setting
+        HAL_ADC_SetFreq(&obj->ADC_Handler, adc_freq);
         #endif
-        #endif
-        
-        if (HAL_ADC_Init(&bf0_adc_obj[i].ADC_Handler) != HAL_OK)
+
+
+        #ifdef BSP_GPADC_SUPPORT_MULTI_CH_SAMPLING
         {
-            PBL_LOG(LOG_LEVEL_ERROR,"%s init failed", bf0_adc_obj[i].device_name);
-            ret = -1;
-            goto exit;
-        }
-        else 
-        {
-            PBL_LOG(LOG_LEVEL_INFO,"ADC hal init ok!");
+            ADC_ChannelConfTypeDef ADC_ChanConf;
+
+            /*configure all channels*/
             #ifdef SF32LB52X
-            uint32_t adc_freq = 240000; // use 240k for 52x to meet ATE setting
-            HAL_ADC_SetFreq(&bf0_adc_obj[i].ADC_Handler, adc_freq);
+            uint8_t ch_num = 7;
+            #else
+            uint8_t ch_num = 8;
             #endif
-
-
-            #ifdef BSP_GPADC_SUPPORT_MULTI_CH_SAMPLING
+            memset(&ADC_ChanConf, 0, sizeof(ADC_ChanConf));
+            HAL_ADC_Set_MultiMode(&obj->ADC_Handler, 1);
+            for (uint8_t ch = 0; ch < ch_num; ch++)
             {
-                ADC_ChannelConfTypeDef ADC_ChanConf;
-
-                /*configure all channels*/
-                #ifdef SF32LB52X
-                uint8_t ch_num = 7;
-                #else
-                uint8_t ch_num = 8;
-                #endif
-                memset(&ADC_ChanConf, 0, sizeof(ADC_ChanConf));
-                HAL_ADC_Set_MultiMode(&bf0_adc_obj[i].ADC_Handler, 1);
-                for (uint8_t ch = 0; ch < ch_num; ch++)
-                {
-                    ADC_ChanConf.Channel = ch;
-                    ADC_ChanConf.pchnl_sel = ch;
-                    ADC_ChanConf.slot_en = 1;
-                    ADC_ChanConf.nchnl_sel = 0;
-                    ADC_ChanConf.acc_num = 0;   /* remove hardware do multi point average*/
-                    HAL_ADC_ConfigChannel(&bf0_adc_obj[i].ADC_Handler, &ADC_ChanConf);
-                }
-
-                HAL_ADC_Prepare(&bf0_adc_obj[i].ADC_Handler);
-
-                /*set timer trigger src to gptimer 1*/
-                HAL_ADC_SetTimer(&bf0_adc_obj[i].ADC_Handler, HAL_ADC_SRC_GPTIM1);
-                sifli_adc_use_gptime_init();        /*add later */
-
-                HAL_NVIC_EnableIRQ(GPADC_IRQn);
-                ADC_ENABLE_TIMER_TRIGER(&bf0_adc_obj[i].ADC_Handler);
-                
-                PBL_LOG(LOG_LEVEL_INFO,"ADC_SUPPORT_MULTI_CH_SAMPLING init ok!");
+                ADC_ChanConf.Channel = ch;
+                ADC_ChanConf.pchnl_sel = ch;
+                ADC_ChanConf.slot_en = 1;
+                ADC_ChanConf.nchnl_sel = 0;
+                ADC_ChanConf.acc_num = 0;   /* remove hardware do multi point average*/
+                HAL_ADC_ConfigChannel(&obj->ADC_Handler, &ADC_ChanConf);
             }
-            #endif
+
+            HAL_ADC_Prepare(&obj->ADC_Handler);
+
+            /*set timer trigger src to gptimer 1*/
+            HAL_ADC_SetTimer(&obj->ADC_Handler, HAL_ADC_SRC_GPTIM1);
+            sifli_adc_use_gptime_init();        /*add later */
+
+            HAL_NVIC_EnableIRQ(GPADC_IRQn);
+            ADC_ENABLE_TIMER_TRIGER(&obj->ADC_Handler);
+            
+            PBL_LOG(LOG_LEVEL_INFO,"ADC_SUPPORT_MULTI_CH_SAMPLING init ok!");
         }
-        adc_semaphore = xSemaphoreCreateBinary();
-        adc_thd_reg = GPADC_ADC_RDATA0_SLOT0_RDATA >> GPADC_ADC_RDATA0_SLOT0_RDATA_Pos;
-    
-        FACTORY_CFG_ADC_T cfg;
-        int len = sizeof(FACTORY_CFG_ADC_T);
-        memset((uint8_t *)&cfg, 0, len);
-        if (BSP_CONFIG_get(FACTORY_CFG_ID_ADC, (uint8_t *)&cfg, len))  // TODO: configure read ADC parameters method after ATE confirm
-        {
-            float off, rat;
-            uint32_t vol1, vol2;
-            if (cfg.vol10 == 0 || cfg.vol25 == 0) // not valid paramter
-            {
-                //LOG_I("Get GPADC configure invalid : %d, %d\n", cfg.vol10, cfg.vol25);
-            }
-            else
-            {
-#ifndef SF32LB55X
-                cfg.vol10 &= 0x7fff;
-                cfg.vol25 &= 0x7fff;
-                vol1 = cfg.low_mv;
-                vol2 = cfg.high_mv;
-                adc_range = 1;
-#else
-                if ((cfg.vol10 & (1 << 15)) && (cfg.vol25 & (1 << 15))) // small range, use X1 mode
-                {
-                    cfg.vol10 &= 0x7fff;
-                    cfg.vol25 &= 0x7fff;
-                    vol1 = ADC_SML_RANGE_VOL1;
-                    vol2 = ADC_SML_RANGE_VOL2;
-                    adc_range = 1;
-                }
-                else // big range , use X3 mode for A0
-                {
-                    vol1 = ADC_BIG_RANGE_VOL1;
-                    vol2 = ADC_BIG_RANGE_VOL2;
-                    adc_range = 0;
-                }
-#endif
-                sifli_adc_calibration(cfg.vol10, cfg.vol25, vol1, vol2, &off, &rat);
-#ifdef SF32LB52X
-                sifli_adc_vbat_fact_calib(cfg.vbat_mv, cfg.vbat_reg);
-    
-                if (SF32LB52X_LETTER_SERIES())
-                {
-#if defined(hwp_gpadc1)
-                    if (cfg.ldovref_flag)
-                    {
-                        __HAL_ADC_SET_LDO_REF_SEL(&bf0_adc_obj[0].ADC_Handler, cfg.ldovref_sel);
-                    }
-#endif
-                }
-#endif
-                PBL_LOG(LOG_LEVEL_INFO,"\nGPADC :vol10: %d mv, %d; vol25: %d mv reg %d; offset %f, ratio %f, max reg %d;",
-                      (int)vol1, (int)cfg.vol10, (int)vol2, (int)cfg.vol25,  off, rat, (int)adc_thd_reg);
-#if defined(hwp_gpadc1)
+        #endif
+    }
+    obj->adc_semaphore = xSemaphoreCreateBinary();
+    obj->adc_thd_reg = GPADC_ADC_RDATA0_SLOT0_RDATA >> GPADC_ADC_RDATA0_SLOT0_RDATA_Pos;
 
-                PBL_LOG(LOG_LEVEL_INFO,"\n vbat_mv: %d mv, %d; ldoref_flag = %d, ldoref_sel = %d;",
-                      (int)cfg.vbat_mv, (int)cfg.vbat_reg, (int)cfg.ldovref_flag, (int)cfg.ldovref_sel);
-#endif
-    
-            }
+    FACTORY_CFG_ADC_T cfg;
+    int len = sizeof(FACTORY_CFG_ADC_T);
+    memset((uint8_t *)&cfg, 0, len);
+    if (BSP_CONFIG_get(FACTORY_CFG_ID_ADC, (uint8_t *)&cfg, len))  // TODO: configure read ADC parameters method after ATE confirm
+    {
+        float off, rat;
+        uint32_t vol1, vol2;
+        if (cfg.vol10 == 0 || cfg.vol25 == 0) // not valid paramter
+        {
+            //LOG_I("Get GPADC configure invalid : %d, %d\n", cfg.vol10, cfg.vol25);
         }
         else
         {
-            PBL_LOG(LOG_LEVEL_ERROR,"Get ADC configure fail");
-            ret = -1;
+#ifndef SF32LB55X
+            cfg.vol10 &= 0x7fff;
+            cfg.vol25 &= 0x7fff;
+            vol1 = cfg.low_mv;
+            vol2 = cfg.high_mv;
+            adc_range = 1;
+#else
+            if ((cfg.vol10 & (1 << 15)) && (cfg.vol25 & (1 << 15))) // small range, use X1 mode
+            {
+                cfg.vol10 &= 0x7fff;
+                cfg.vol25 &= 0x7fff;
+                vol1 = ADC_SML_RANGE_VOL1;
+                vol2 = ADC_SML_RANGE_VOL2;
+                adc_range = 1;
+            }
+            else // big range , use X3 mode for A0
+            {
+                vol1 = ADC_BIG_RANGE_VOL1;
+                vol2 = ADC_BIG_RANGE_VOL2;
+                adc_range = 0;
+            }
+#endif
+            sifli_adc_calibration(obj, cfg.vol10, cfg.vol25, vol1, vol2, &off, &rat);
+#ifdef SF32LB52X
+            sifli_adc_vbat_fact_calib(cfg.vbat_mv, cfg.vbat_reg);
+
+            if (SF32LB52X_LETTER_SERIES())
+            {
+#if defined(hwp_gpadc1)
+                if (cfg.ldovref_flag)
+                {
+                    __HAL_ADC_SET_LDO_REF_SEL(&obj->ADC_Handler, cfg.ldovref_sel);
+                }
+#endif
+            }
+#endif
+            PBL_LOG(LOG_LEVEL_INFO,"\nGPADC :vol10: %d mv, %d; vol25: %d mv reg %d; offset %f, ratio %f, max reg %d;",
+                  (int)vol1, (int)cfg.vol10, (int)vol2, (int)cfg.vol25,  off, rat, (int)obj->adc_thd_reg);
+#if defined(hwp_gpadc1)
+
+            PBL_LOG(LOG_LEVEL_INFO,"\n vbat_mv: %d mv, %d; ldoref_flag = %d, ldoref_sel = %d;",
+                  (int)cfg.vbat_mv, (int)cfg.vbat_reg, (int)cfg.ldovref_flag, (int)cfg.ldovref_sel);
+#endif
+
         }
     }
+    else
+    {
+        PBL_LOG(LOG_LEVEL_ERROR,"Get ADC configure fail");
+        ret = -1;
+    }
+
 
 exit:
     if(ret < 0)
@@ -589,7 +597,7 @@ void adc_pins_set_gpio(ADCInputConfig* adc_config)
     char name[5] = {'a', 'd', 'c', '0', 0};
     if(pin >= 255)
     {
-        PBL_LOG(LOG_LEVEL_INFO, "don't need config pin;");
+        PBL_LOG(LOG_LEVEL_INFO, "ADC don't need config pin;");
         return;
     }
     if(adc_config->adc == hwp_gpadc1)
@@ -610,7 +618,7 @@ void adc_pins_set_gpio(ADCInputConfig* adc_config)
     }
     HAL_PIN_Set(pad_adc, func_adc, PIN_NOPULL, hcpu_adc);
     HAL_PIN_Set_Analog(pad_adc, 1);
-    PBL_LOG(LOG_LEVEL_INFO, "ADC set pin[%d],as [%s] channel_%d ;", (int)pin, name, (int) adc_config->adc_channel);
+    PBL_LOG(LOG_LEVEL_INFO, "ADC set pin[%d],as [%s] channel_[%d] ;", (int)pin, name, (int) adc_config->adc_channel);
     return;
 } 
 
@@ -619,14 +627,16 @@ int adc_enabled(ADCInputConfig* adc_config, bool enabled)
 {
     int ret = 0;
     PBL_ASSERTN(adc_config != NULL);
-    struct sifli_adc * adc_obj = NULL;
-    adc_obj = find_adc_obj(adc_config);
-    if(!adc_obj)
+    uint16_t  index = 0xff;
+    index = find_adc_obj( adc_config);
+    if(index > ADC_MAX_INDEX)
     {
         ret = -1;
-        PBL_LOG(LOG_LEVEL_ERROR,"adc enable fail!");
+        PBL_LOG(LOG_LEVEL_ERROR, "find adc bus fail!");
         goto exit;
     }
+    struct sifli_adc * adc_obj = &bf0_adc_obj[index];
+
     HAL_StatusTypeDef status = HAL_OK;
 #ifndef BSP_GPADC_SUPPORT_MULTI_CH_SAMPLING
     if (enabled)
@@ -701,10 +711,19 @@ int get_adc_value(ADCInputConfig* adc_config, uint32_t *value)
     ADC_ChannelConfTypeDef ADC_ChanConf;
     PBL_ASSERTN(adc_config != NULL);
     PBL_ASSERTN(value != NULL);
-    struct sifli_adc * adc_obj = find_adc_obj(adc_config);
+
+    uint16_t  index = 0xff;
+    index = find_adc_obj(adc_config);
+    if(index > ADC_MAX_INDEX)
+    {
+        PBL_LOG(LOG_LEVEL_ERROR, "find adc bus fail!");
+        return -1;
+    }
+    struct sifli_adc * adc_obj = &bf0_adc_obj[index];
+
     ADC_HandleTypeDef *sifli_adc_handler = &adc_obj->ADC_Handler;
     uint32_t channel = adc_config->adc_channel;
-    xSemaphoreTake(adc_semaphore, milliseconds_to_ticks(2000));
+    xSemaphoreTake(adc_obj->adc_semaphore, milliseconds_to_ticks(2000));
 #ifdef BSP_GPADC_SUPPORT_MULTI_CH_SAMPLING
     uint32_t adc_origin = HAL_ADC_GetValue(sifli_adc_handler, channel);
     float fave = (float) adc_origin;
@@ -720,7 +739,7 @@ int get_adc_value(ADCInputConfig* adc_config, uint32_t *value)
     else
     {
         PBL_LOG(LOG_LEVEL_ERROR, "ADC channel must be between 0 and 7.");
-        xSemaphoreGive(adc_semaphore);
+        xSemaphoreGive(adc_obj->adc_semaphore);
         return -1;
     }
     ADC_ChanConf.pchnl_sel = channel;
@@ -763,7 +782,7 @@ int get_adc_value(ADCInputConfig* adc_config, uint32_t *value)
         {
             HAL_ADC_Stop(sifli_adc_handler);
             PBL_LOG(LOG_LEVEL_ERROR, "Polling ADC fail %d", (int)res);
-            xSemaphoreGive(adc_semaphore);
+            xSemaphoreGive(adc_obj->adc_semaphore);
             return -1;
         }
 
@@ -772,11 +791,11 @@ int get_adc_value(ADCInputConfig* adc_config, uint32_t *value)
         #ifdef ADC_DEBUG
         PBL_LOG(LOG_LEVEL_INFO,"ch[%d]count[%d] adc raw = %d;", (int)channel, (int)i,  (int)data[i]);
         #endif
-        if (data[i] >= adc_thd_reg)
+        if (data[i] >= adc_obj->adc_thd_reg)
         {
             HAL_ADC_Stop(sifli_adc_handler);
             PBL_LOG(LOG_LEVEL_ERROR, "ADC input voltage too large, register value %d", (int)data[i]);
-            xSemaphoreGive(adc_semaphore);
+            xSemaphoreGive(adc_obj->adc_semaphore);
             return -1;
         }
         #ifdef ADC_DEBUG
@@ -813,11 +832,9 @@ int get_adc_value(ADCInputConfig* adc_config, uint32_t *value)
 
     fave = (float)total / (ADC_SW_AVRA_CNT - 2);
     #ifdef ADC_DEBUG
-    PBL_LOG(LOG_LEVEL_INFO, "ch[%d]average val =%f;", (int)channel, fave);
+    PBL_LOG(LOG_LEVEL_INFO, "ADC ch[%d]average val =%f;", (int)channel, fave);
     #endif
-
 #endif
-
 
         #ifndef SF32LB52X   // TODO: remove macro check after 52x ADC calibration work
     float fval = sifli_adc_get_float_mv(fave) * 10; // mv to 0.1mv based
@@ -836,16 +853,17 @@ int get_adc_value(ADCInputConfig* adc_config, uint32_t *value)
     #else
     PBL_LOG(LOG_LEVEL_INFO, "ch[%d]voltage=%d;", (int)channel, (int)*value);
     #endif
-    xSemaphoreGive(adc_semaphore);
+    xSemaphoreGive(adc_obj->adc_semaphore);
     return 0;
 }
 
 
-void example_adc(ADCInputConfig* adc_config)
+void example_adc()
 {
     uint32_t adc_value;
-    adc_enabled(adc_config, true);
-    get_adc_value(adc_config, &adc_value);
-    adc_enabled(adc_config, false);
+    adc_init(&adc1_ch0);
+    adc_enabled(&adc1_ch0, true);
+    get_adc_value(&adc1_ch0, &adc_value);
+    adc_enabled(&adc1_ch0, false);
 }
 
