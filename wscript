@@ -81,7 +81,8 @@ def options(opt):
                              'robert_bb2',
                              'robert_evt',
                              'robert_es',
-                             'asterix',],
+                             'asterix',
+                             'obelix'],
                    help='Which board we are targeting '
                         'bb2, snowy_dvt, spalding, silk...')
     opt.add_option('--jtag', action='store', default=None, dest='jtag',  # default is bb2 (below)
@@ -470,6 +471,8 @@ def configure(conf):
         conf.env.MICRO_FAMILY = 'STM32F7'
     elif conf.is_asterix():
         conf.env.MICRO_FAMILY = 'NRF52840'
+    elif conf.is_obelix():
+        conf.env.MICRO_FAMILY = 'SF32LB'
     else:
         conf.fatal('No micro family specified for {}!'.format(conf.options.board))
 
@@ -845,7 +848,7 @@ def size_resources(ctx):
         max_size = 512 * 1024
     elif ctx.env.MICRO_FAMILY == 'STM32F7':
         max_size = 1024 * 1024
-    elif ctx.env.MICRO_FAMILY == 'NRF52840':
+    elif ctx.env.MICRO_FAMILY in ('NRF52840', 'SF32LB'):
         max_size = 1024 * 1024
     else:
         max_size = 256 * 1024
@@ -1603,6 +1606,9 @@ def _check_firmware_image_size(ctx, path):
     elif ctx.env.MICRO_FAMILY == 'NRF52840':
         # 1024k of flash and 32k bootloader
         max_firmware_size = (1024 - 32) * BYTES_PER_K
+    elif ctx.env.MICRO_FAMILY == 'SF32LB':
+        # 1024k of flash and 128k bootloader
+        max_firmware_size = (1024 - 128) * BYTES_PER_K
     else:
         ctx.fatal('Cannot check firmware size against unknown micro family "{}"'
                   .format(ctx.env.MICRO_FAMILY))
