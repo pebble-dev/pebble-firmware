@@ -73,6 +73,10 @@ def build(bld):
         nimble_sources += [
             'transport/hci_mbox.c',
         ]
+        nimble_includes = [
+            'port/include/nrf52',
+        ] + nimble_includes
+        
     elif bld.env.bt_controller == 'nrf52':
         nimble_sources += bld.path.ant_glob([
             'mynewt-nimble/nimble/controller/src/*.c',
