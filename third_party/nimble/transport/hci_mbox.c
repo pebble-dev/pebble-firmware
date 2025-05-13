@@ -33,6 +33,8 @@
 #include <util/math.h>
 #include "ipc_queue.h"
 
+//#define DEBUG 1
+
 static TaskHandle_t s_rx_task_handle;
 static SemaphoreHandle_t s_rx_data_ready;
 static struct hci_h4_sm hci_uart_h4sm;
@@ -70,15 +72,6 @@ static int32_t mbox_rx_ind(ipc_queue_handle_t handle, size_t size)
 {
     static BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
-#if 1   // FIX ME: Currently LCPU could not sleep. 
-    {
-        static int wake_lcpu=1;
-        if (wake_lcpu) {
-            HAL_HPAON_WakeCore(CORE_ID_LCPU);
-            wake_lcpu=0;
-        }
-    }
-#endif
     xSemaphoreGiveFromISR(s_rx_data_ready, &xHigherPriorityTaskWoken);
     return 0;
 }
@@ -232,7 +225,8 @@ int ble_transport_to_ll_acl_impl(struct os_mbuf *om) {
 #if DEBUG    
   HAL_DBG_print_data((char*)hci_acl, 0, OS_MBUF_PKTLEN(om)+1);  
 #endif
-  int written = ipc_queue_write(mbox_env.ipc_port, hci_acl, OS_MBUF_PKTLEN(om)+1, 10);    
+  int written = ipc_queue_write(mbox_env.ipc_port, hci_acl, OS_MBUF_PKTLEN(om)+1, 10);   
+  os_mbuf_free(om);
   return (written>=0)?0:-1;
 }
 

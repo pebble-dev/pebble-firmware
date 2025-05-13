@@ -74,7 +74,7 @@ def build(bld):
             'transport/hci_mbox.c',
         ]
         nimble_includes = [
-            'port/include/nrf52',
+            'port/include/cc2564x',
         ] + nimble_includes
         
     elif bld.env.bt_controller == 'nrf52':
