@@ -28,6 +28,11 @@
 
 #ifdef MICRO_FAMILY_NRF5
 #include <hal/nrf_gpio.h>
+#elifdef MICRO_FAMILY_SF32LB
+#include "bf0_hal.h"
+#endif
+
+#if defined(MICRO_FAMILY_NRF5) 
 
 typedef enum {
   GPIO_OType_PP,
@@ -48,7 +53,7 @@ typedef enum {
 
 #endif
 
-#ifdef MICRO_FAMILY_NRF5
+#if defined(MICRO_FAMILY_NRF5)
 
 void gpio_use(uint32_t pin);
 void gpio_release(uint32_t pin);
@@ -76,7 +81,7 @@ void gpio_output_init(const OutputConfig *pin_config, GPIOOType_TypeDef otype,
 //! is true, and drives it low if pin_config.active_high is false.
 void gpio_output_set(const OutputConfig *pin_config, bool asserted);
 
-#ifndef MICRO_FAMILY_NRF5
+#if !defined(MICRO_FAMILY_NRF5) && !defined(MICRO_FAMILY_SF32LB)
 
 //! Configure a GPIO alternate function.
 //!

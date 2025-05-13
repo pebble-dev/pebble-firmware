@@ -1572,7 +1572,7 @@ if mcu_family == 'SF32LB':
             'sf32lb/stubs/temperature.c',
             'sf32lb/stubs/periph_config.c',
             'sf32lb/stubs/gpio_defaults.c',
-            'sf32lb/stubs/gpio.c',
+            'sf32lb/gpio.c',
             #'nrf5/qspi.c',
             'sf32lb/stubs/button.c',
             'sf32lb/stubs/debounced_button.c',
