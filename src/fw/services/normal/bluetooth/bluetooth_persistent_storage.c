@@ -50,7 +50,8 @@
 // Let the unittest define this using a header override:
 #  include "services/normal/bluetooth/bluetooth_persistent_storage_unittest_impl.h"
 #else
-#  if BT_CONTROLLER_DA14681 || BT_CONTROLLER_QEMU || BT_CONTROLLER_NRF52 || BT_CONTROLLER_CC2564X
+#  if BT_CONTROLLER_DA14681 || BT_CONTROLLER_QEMU || BT_CONTROLLER_NRF52 || \
+      BT_CONTROLLER_CC2564X || BT_CONTROLLER_SF32LB52
 #    include "services/normal/bluetooth/bluetooth_persistent_storage_v2_impl.h"
 #  else
 #    error "Unknown BT_CONTROLLER_... define?"
