@@ -24,6 +24,7 @@
 #include <system/logging.h>
 #include <system/passert.h>
 #include <util/math.h>
+#include <stdio.h>
 
 #include "nimble_type_conversions.h"
 
