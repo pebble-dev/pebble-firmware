@@ -96,6 +96,9 @@ extern void command_flash_unprotect(void);
 //extern void command_flash_signal_test_run(void);
 extern void command_flash_show_erased_sectors(const char *arg);
 
+extern void command_otp_erase(void);
+extern void command_otp_freeze(void);
+
 extern void command_get_time(void);
 extern void command_set_time(const char *arg);
 extern void command_timezone_clear(void);
@@ -449,10 +452,14 @@ static const Command s_prompt_commands[] = {
 #endif
   { "flash validate", command_flash_validate, 0},
   { "flash erased_sectors", command_flash_show_erased_sectors, 1},
-#if !RELEASE && (PLATFORM_SILK || PLATFORM_ROBERT || PLATFORM_CALCULUS)
+#if !RELEASE && (PLATFORM_ASTERIX || PLATFORM_SILK || PLATFORM_ROBERT || PLATFORM_CALCULUS)
   { "flash apicheck", command_flash_apicheck, 1},
   //{ "flash signal test init", command_flash_signal_test_init, 0 },
   //{ "flash signal test run", command_flash_signal_test_run, 0 },
+#endif
+#if PLATFORM_ASTERIX && MANUFACTURING_FW
+  { "otp erase", command_otp_erase, 0},
+  { "otp freeze", command_otp_freeze, 0},
 #endif
 
   //{ "pmic rails", command_pmic_rails, 0},

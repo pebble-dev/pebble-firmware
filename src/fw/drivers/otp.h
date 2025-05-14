@@ -35,7 +35,7 @@ enum {
 
   NUM_OTP_SLOTS = 16,
 };
-#elif PLATFORM_SILK || PLATFORM_ASTERIX || PLATFORM_CALCULUS || PLATFORM_ROBERT
+#elif PLATFORM_SILK || PLATFORM_CALCULUS || PLATFORM_ROBERT
 enum {
   OTP_HWVER1 = 0,
   OTP_HWVER2 = 1,
@@ -54,6 +54,16 @@ enum {
   OTP_PCBA_SERIAL3 = 12,
 
   NUM_OTP_SLOTS = 16,
+};
+#elif MICRO_FAMILY_NRF5
+// OTP is on the QSPI flash and we need to shadow it in RAM
+// so keep the number of slots small. This is OK because the OTP
+// can be erased any number of times until it is frozen
+enum {
+  OTP_SERIAL1 = 0,
+  OTP_HWVER1 = 1,
+  OTP_PCBA_SERIAL1 = 2,
+  NUM_OTP_SLOTS = 3
 };
 #else
 #error "OTP Slots not set for platform"
