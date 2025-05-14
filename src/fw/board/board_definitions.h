@@ -61,6 +61,8 @@
 #include "boards/board_robert.h" // prototypes for Robert EVT
 #elif BOARD_OBELIX
 #include "boards/board_em_lb525.h" // prototypes for obelix
+#elif BOARD_OBELIX_BB
+#include "boards/board_obelix_bb.h" // prototypes for obelix
 #elif BOARD_ASTERIX_EVT1
 #include "boards/board_asterix.h"
 #else

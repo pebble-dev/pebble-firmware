@@ -111,6 +111,18 @@ elif board in ('obelix'):
             'drivers',
         ],
     )
+elif board in ('obelix_bb'):
+    bld.objects(
+        name='board',
+        source=[
+            'boards/board_obelix_bb.c',
+        ],
+        use=[
+            'fw_includes',
+            'freertos',
+            'drivers',
+        ],
+    )
 else:
     bld.fatal('src/fw/board/wscript_build: '
               'Unknown board {}'.format(board))

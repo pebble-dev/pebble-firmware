@@ -82,6 +82,7 @@ def options(opt):
                              'robert_evt',
                              'robert_es',
                              'obelix',
+                             'obelix_bb',
                              'asterix_evt1',],
                    help='Which board we are targeting '
                         'bb2, snowy_dvt, spalding, silk...')

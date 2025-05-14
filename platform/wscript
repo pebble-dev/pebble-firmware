@@ -45,7 +45,7 @@ def is_asterix(ctx):
     
 @conf
 def is_obelix(ctx):
-    return ctx.get_board() in ('obelix')    
+    return ctx.get_board() in ('obelix', 'obelix_bb')    
 
 @conf
 def get_platform_name(ctx):

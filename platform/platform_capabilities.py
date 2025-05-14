@@ -255,7 +255,7 @@ board_capability_dicts = [
         }
     },
     {
-        'boards': ['obelix'],
+        'boards': ['obelix', 'obelix_bb'],
         'capabilities':
         {
             # 'HAS_ACCESSORY_CONNECTOR',
