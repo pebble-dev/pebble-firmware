@@ -97,6 +97,8 @@ def _generate_memory_layout(bld):
         ldscript_template = bld.path.find_node('stm32f2xx_flash_fw.ld.template')
     elif bld.is_asterix():
         ldscript_template = bld.path.find_node('nrf52840_flash_fw.ld.template')
+    elif bld.is_obelix():
+        ldscript_template = bld.path.find_node('sf32lb_em525_flash_fw.ld.template')
 
     # Determine bootloader size so we can later calculate FLASH_LENGTH_*
     if bld.env.MICRO_FAMILY == 'STM32F2':
@@ -117,6 +119,10 @@ def _generate_memory_layout(bld):
     elif bld.env.MICRO_FAMILY == 'STM32F7':
         bootloader_size = '32K'
         flash_size = '2048K'
+
+    elif bld.env.MICRO_FAMILY == 'SF32LB':
+        bootloader_size = '128K'
+        flash_size = '1024K'
 
     elif bld.env.MICRO_FAMILY == 'NRF52840':
         bootloader_size = '32K'
@@ -221,6 +227,11 @@ def _generate_memory_layout(bld):
         app_ram_size_4x = APP_RAM_SIZES['diorite']
         retained_size = 256
         total_ram = (0x20000000 + retained_size, 256 * 1024 - retained_size)
+    elif bld.is_obelix():
+        app_ram_size_2x = APP_RAM_SIZES['aplite']
+        app_ram_size_3x = APP_RAM_SIZES['aplite']
+        app_ram_size_4x = APP_RAM_SIZES['diorite']
+        total_ram = (0x20000000, 512 * 1024)
     else:
         bld.fatal("No set of supported SDK platforms defined for this board")
 
@@ -385,6 +396,8 @@ def _get_mfg_paths(bld):
         return ('mfg/robert',)
     elif bld.is_asterix():
         return ('mfg/asterix',)
+    elif bld.is_obelix():
+        return ('mfg/obelix',)
     else:
         bld.fatal('No MFG configuration for board %s' % bld.env.BOARD)
 
@@ -650,6 +663,8 @@ def build(bld):
         fw_includes_use.append('stm32_stdlib')
     elif bld.env.MICRO_FAMILY.startswith('NRF'):
         fw_includes_use.append('hal_nordic')
+    elif bld.env.MICRO_FAMILY.startswith('SF32LB'):
+        fw_includes_use.append('hal_sifli')
 
     bld(export_includes=['.',
                          'applib/vendor/uPNG',
