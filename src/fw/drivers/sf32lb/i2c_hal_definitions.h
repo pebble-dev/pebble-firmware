@@ -107,9 +107,11 @@ extern struct I2CBusHal i2c_hal_obj[];
 #define I2C4_CORE   CORE_ID_LCPU
 #define I2C5_CORE   CORE_ID_LCPU
 #define I2C6_CORE   CORE_ID_LCPU
+#if 0
 #define I2C1_DMA_IRQHandler              DMAC1_CH3_IRQHandler
 #define I2C1_DMA_IRQ_PRIO                1
 #define I2C1_DMA_INSTANCE                DMA1_Channel5
 #define I2C1_DMA_REQUEST                 DMA_REQUEST_22
 #define I2C1_DMA_IRQ                     DMAC1_CH5_IRQn
+#endif
 

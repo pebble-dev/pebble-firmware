@@ -846,7 +846,7 @@ static void i2c_get_dma_info(uint16_t index)
     {
         i2c_hal_obj[index].i2c_dma_flag = 1;
         bf0_i2c_cfg[index].dma_rx = i2c_dma;
-        bf0_i2c_cfg[index].dma_rx = i2c_dma;
+        bf0_i2c_cfg[index].dma_tx = i2c_dma;
         PBL_LOG(LOG_LEVEL_INFO, "I2C [%s] has config DMA!", bf0_i2c_cfg[index].device_name);
     }
     else
@@ -867,6 +867,16 @@ int rt_hw_i2c_init(struct I2CBusHal * i2c_hal, bf0_i2c_config_t *cfg, struct rt_
         __HAL_LINKDMA(&(i2c_hal->handle), hdmarx, i2c_hal->dma.dma_rx);
         __HAL_LINKDMA(&(i2c_hal->handle), hdmatx, i2c_hal->dma.dma_tx);
         HAL_I2C_DMA_Init(&(i2c_hal->handle), cfg->dma_rx, cfg->dma_tx);
+
+        HAL_NVIC_SetPriority(i2c_hal->bf0_i2c_cfg->dma_rx->dma_irq, 5, 0); 
+        NVIC_EnableIRQ(i2c_hal->bf0_i2c_cfg->dma_rx->dma_irq);
+        HAL_NVIC_SetPriority(i2c_hal->bf0_i2c_cfg->dma_rx->dma_irq, 5, 0);
+        NVIC_EnableIRQ(i2c_hal->bf0_i2c_cfg->dma_rx->dma_irq);
+    }
+    else if(i2c_hal->i2c_int_flag)
+    {
+        HAL_NVIC_SetPriority(i2c_hal->bf0_i2c_cfg->irq_type, 5, 0);
+        NVIC_EnableIRQ(i2c_hal->bf0_i2c_cfg->irq_type);
     }
     ret = i2c_bus_configure(i2c_hal, cfg_default);
     if(ret <  0)
