@@ -24,6 +24,9 @@
 #include "system/passert.h"
 #include "uart_definitions.h"
 
+#define container_of(ptr, type, member) \
+    ((type *)((char *)(ptr) - offsetof(type, member)))
+
 typedef enum {
   UART_FullDuplex = 0,
   UART_TxOnly,
@@ -288,13 +291,17 @@ void uart_set_tx_interrupt_enabled(UARTDevice *dev, bool enabled) {
 void uart_irq_handler(UARTDevice *dev) {
   PBL_ASSERTN(dev->state->initialized);
   bool should_context_switch = false;
+  uint32_t idx;
+
   if (dev->state->rx_irq_handler && dev->state->rx_int_enabled) {
     const UARTRXErrorFlags err_flags = {
         .overrun_error = uart_has_rx_overrun(dev),
         .framing_error = uart_has_rx_framing_error(dev),
     };
     // DMA
-    if (dev->state->rx_dma_buffer) {
+    if (dev->state->rx_dma_buffer &&
+        (__HAL_UART_GET_FLAG(dev->periph, UART_FLAG_IDLE) != RESET) &&
+        (__HAL_UART_GET_IT_SOURCE(dev->periph, UART_IT_IDLE) != RESET)) {
       // process bytes from the DMA buffer
       const uint32_t dma_length = dev->state->rx_dma_length;
       const uint32_t recv_total_index = dma_length - __HAL_DMA_GET_COUNTER(dev->rx_dma);
@@ -303,16 +310,21 @@ void uart_irq_handler(UARTDevice *dev) {
         recv_len += dma_length;
       }
 
+      idx = dev->state->rx_dma_index;
       for (int32_t i = 0; i < recv_len; i++) {
-        const uint8_t data = dev->state->rx_dma_buffer[dev->state->rx_dma_index + i];
+        uint8_t data;
+        data = dev->state->rx_dma_buffer[idx];
         if (dev->state->rx_irq_handler(dev, data, &err_flags)) {
           should_context_switch = true;
+        }
+        idx++;
+        if (idx >= dma_length) {
+          idx = 0;
         }
       }
       dev->state->rx_dma_index = recv_total_index;
       if (dev->state->rx_dma_index >= dma_length) {
         dev->state->rx_dma_index = 0;
-        HAL_UART_DmaTransmit(dev->periph, dev->state->rx_dma_buffer, dma_length, DMA_PERIPH_TO_MEMORY);
       }
       uart_clear_all_interrupt_flags(dev);
       __HAL_UART_CLEAR_IDLEFLAG(dev->periph);
@@ -337,7 +349,61 @@ void uart_irq_handler(UARTDevice *dev) {
 
 void uart_clear_all_interrupt_flags(UARTDevice *dev) {
   // dev->periph->Instance->ISR &= ~(USART_ISR_TXE | USART_ISR_RXNE | USART_ISR_ORE);
-  __HAL_UART_CLEAR_OREFLAG(dev->periph);
+  UART_HandleTypeDef *uart = dev->periph;
+  if (__HAL_UART_GET_FLAG(uart, UART_FLAG_ORE) != RESET) {
+    __HAL_UART_CLEAR_OREFLAG(uart);
+  }
+  if (__HAL_UART_GET_FLAG(uart, UART_FLAG_NE) != RESET) {
+    __HAL_UART_CLEAR_NEFLAG(uart);
+  }
+  if (__HAL_UART_GET_FLAG(uart, UART_FLAG_FE) != RESET) {
+    __HAL_UART_CLEAR_FEFLAG(uart);
+  }
+  if (__HAL_UART_GET_FLAG(uart, UART_FLAG_PE) != RESET) {
+    __HAL_UART_CLEAR_PEFLAG(uart);
+  }
+  // if (__HAL_UART_GET_FLAG(uart, UART_FLAG_CTS) != RESET) {
+  //   UART_INSTANCE_CLEAR_FUNCTION(uart, UART_FLAG_CTS);
+  // }
+  // if (__HAL_UART_GET_FLAG(uart, UART_FLAG_TXE) != RESET) {
+  //   UART_INSTANCE_CLEAR_FUNCTION(uart, UART_FLAG_TXE);
+  // }
+  // if (__HAL_UART_GET_FLAG(uart, UART_FLAG_TC) != RESET) {
+  //   UART_INSTANCE_CLEAR_FUNCTION(uart, UART_FLAG_TC);
+  // }
+  // if (__HAL_UART_GET_FLAG(uart, UART_FLAG_RXNE) != RESET) {
+  //   UART_INSTANCE_CLEAR_FUNCTION(uart, UART_FLAG_RXNE);
+  // }
+}
+
+void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart) {
+  //TODO: need to find a way to convert huart to dev as dev is not container of huart
+#if 0  
+  size_t recv_len;
+  size_t recv_total_index;
+  UARTDevice *dev = container_of(huart, UARTDevice, periph);
+
+  recv_total_index = dev->state->rx_dma_length - __HAL_DMA_GET_COUNTER(dev->rx_dma);
+  if (recv_total_index < dev->state->rx_dma_index)
+    recv_len = dev->state->rx_dma_length + recv_total_index - dev->state->rx_dma_index;
+  else
+    recv_len = recv_total_index - dev->state->rx_dma_index;
+  dev->state->rx_dma_index = recv_total_index;
+
+  if (recv_len) {
+    for (size_t i = 0; i < recv_len; i++) {
+      const uint8_t data = dev->state->rx_dma_buffer[dev->state->rx_dma_index + i];
+      if (dev->state->rx_irq_handler(dev, data, NULL)) {
+        // context switch
+      }
+    }
+  }
+#endif    
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) { 
+  //TODO: 
+  //HAL_UART_RxHalfCpltCallback(huart); 
 }
 
 // DMA
@@ -347,6 +413,7 @@ void uart_start_rx_dma(UARTDevice *dev, void *buffer, uint32_t length) {
   dev->state->rx_dma_buffer = buffer;
   dev->state->rx_dma_length = length;
   dev->state->rx_dma_index = 0;
+  __HAL_UART_ENABLE_IT(dev->periph, UART_IT_IDLE);
   HAL_UART_DmaTransmit(dev->periph, buffer, length, DMA_PERIPH_TO_MEMORY);
 }
 
