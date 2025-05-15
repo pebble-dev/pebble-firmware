@@ -210,6 +210,9 @@ typedef struct {
   const bool has_mic;
   const MicConfig mic_config;
 
+  // IO expander rst ctrl
+  const OutputConfig ioe_rst;
+
   // Ambient Light Configuration
   /////////////////////////////////////////////////////////////////////////////
   const uint32_t ambient_light_dark_threshold;

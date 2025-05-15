@@ -69,51 +69,55 @@ IRQ_MAP(USART3, uart_irq_handler, DBG_UART);
 void DMAC1_CH1_IRQHandler(void) { HAL_DMA_IRQHandler(&s_dbg_uart_rx_dma_handle); }
 
 
+/*tp*/
 I2CBusState I2C1_BUS_STATE;
 I2CBus I2C1_BUS = {
     .hal = &i2c_hal_obj[0],
     .state = &I2C1_BUS_STATE,
     .scl_gpio = 
     {
-        .gpio_pin = 31,
+        .gpio_pin = 29,
     },
     .sda_gpio = 
     {
-        .gpio_pin = 33,
+        .gpio_pin = 28,
     },
     .name = "i2c1",
 }; 
 
+/*ioe*/
 I2CBusState I2C2_BUS_STATE;
 I2CBus I2C2_BUS = {
     .hal = &i2c_hal_obj[1],
     .state = &I2C2_BUS_STATE,
     .scl_gpio = 
     {
-        .gpio_pin = 31,
+        .gpio_pin = 21,
     },
     .sda_gpio = 
     {
-        .gpio_pin = 33,
+        .gpio_pin = 20,
     },
     .name = "i2c2",
 }; 
 
+/*hr*/
 I2CBusState I2C3_BUS_STATE;
 I2CBus I2C3_BUS = {
     .hal = &i2c_hal_obj[2],
     .state = &I2C2_BUS_STATE,
     .scl_gpio = 
     {
-        .gpio_pin = 31,
+        .gpio_pin = 33,
     },
     .sda_gpio = 
     {
-        .gpio_pin = 33,
+        .gpio_pin = 32,
     },
     .name = "i2c3",
 }; 
 
+/*common*/
 I2CBusState I2C_COMM_BUS_STATE;
 I2CBus I2C_COMM_BUS = {
     .hal = &i2c_hal_obj[3],
@@ -124,14 +128,20 @@ I2CBus I2C_COMM_BUS = {
     },
     .sda_gpio = 
     {
-        .gpio_pin = 33,
+        .gpio_pin = 30,
     },
     .name = "i2c4",
 };
 
+/*to pass the compiling for iic test routing */
+struct I2CSlavePort i2c1_device = {
+    .bus = &I2C1_BUS,
+    .address = 0x38,
+};
+
 static const struct I2CSlavePort I2C_SLAVE_TP_CST816 = {
     .bus = &I2C1_BUS,
-    .address = 0x5B,
+    .address = 0x15,
 };
 
 static const struct I2CSlavePort I2C_SLAVE_IOE_AW9527 = {
@@ -146,17 +156,17 @@ static const struct I2CSlavePort I2C_SLAVE_HR_GH3026 = {
 
 static const struct I2CSlavePort I2C_SLAVE_CHG_ETA4662 = {
     .bus = &I2C_COMM_BUS,
-    .address = 0x5B,
+    .address = 0x07,
 };
 
 static const struct I2CSlavePort I2C_SLAVE_MOT_AW86225 = {
     .bus = &I2C_COMM_BUS,
-    .address = 0x5B,
+    .address = 0x58,
 };
 
 static const struct I2CSlavePort I2C_SLAVE_IMU_LSM6DSOW = {
     .bus = &I2C_COMM_BUS,
-    .address = 0x5B,
+    .address = 0x6A,
 };
 
 static const struct I2CSlavePort I2C_SLAVE_MAG_MMC5603 = {

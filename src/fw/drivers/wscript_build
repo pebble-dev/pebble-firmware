@@ -215,6 +215,31 @@ elif bld.is_obelix():
         ],
     )    
 
+if bld.env.BOARD == "obelix_bb":
+    bld.objects(
+        name='driver_ioe',
+        source=[
+            'ioexp_aw9527.c',
+        ],
+        use=[
+            'driver_sf32lb',
+            'driver_gpio',
+        ],
+    ) 
+
+if bld.env.BOARD == "obelix_bb":
+    bld.objects(
+        name='driver_motor',
+        source=[
+            'vibe_aw86225.c',
+        ],
+        use=[
+            'driver_sf32lb',
+            'driver_ioe',
+            'driver_gpio',
+        ],
+    ) 
+
 ## ----------
 
 if bld.is_snowy_compatible() or bld.is_silk() or bld.is_cutts() or bld.is_robert():

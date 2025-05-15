@@ -57,6 +57,13 @@ static const BoardConfigPower BOARD_CONFIG_POWER = {
   .battery_capacity_hours = 155,
 };
 
+#define IOE_LCD_PWR_EN        IOEXP_CH00
+#define IOE_SNS_PWR_EN        IOEXP_CH06
+#define IOE_TP_RST            IOEXP_CH00
+#define IOE_HR_PWR_EN         IOEXP_CH05
+#define IOE_VIBE_RST          IOEXP_CH10
+#define IOE_MIC_EN            IOEXP_CH06
+
 extern UARTDevice * const DBG_UART;
 
 extern UARTDevice * const ACCESSORY_UART;
@@ -70,7 +77,6 @@ extern PwmConfig pwm2_ch1;
 
 extern ADCInputConfig adc1_ch7;
 extern ADCInputConfig adc1_ch0;
-extern struct I2CSlavePort i2c1_device;
 
 
 static const BoardConfig BOARD_CONFIG = {
@@ -91,10 +97,24 @@ static const BoardConfig BOARD_CONFIG = {
   .power_ctl_5v0 = { 0 },
 
   .has_mic = true,
+
+  .ioe_rst = {hwp_gpio1, 11, true},
 };
 extern void BSP_LCD_PowerDown(void);
 extern void BSP_LCD_PowerUp(void);
 extern void BSP_LCD_Reset(uint8_t high1_low0);
+
+/*to pass the compilling for i2c test */
+extern struct I2CSlavePort i2c1_device;
+
+extern I2CSlavePort* const I2C_CST816;
+extern I2CSlavePort* const I2C_AW9527;
+extern I2CSlavePort* const I2C_GH3026;
+extern I2CSlavePort* const I2C_ETA4662;
+extern I2CSlavePort* const I2C_AW86225;
+extern I2CSlavePort* const I2C_SM6DSOW;
+extern I2CSlavePort* const I2C_MMC5603;
+extern I2CSlavePort* const I2C_W1160;
 
 
 #if 0
