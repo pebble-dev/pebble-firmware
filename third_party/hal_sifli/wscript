@@ -5,7 +5,8 @@ def configure(conf):
     conf.env.append_unique('DEFINES', 'HAL_NMI_HANLDER_OVERRIDED')
     if conf.env.MICRO_FAMILY == 'SF32LB':
         conf.env.append_unique('DEFINES', 'SF32LB52X')
-
+    if conf.is_obelix_bb():
+        conf.env.append_unique('DEFINES', 'LXT_DISABLE=1')
 
 def build(bld):
     if bld.env.MICRO_FAMILY == 'SF32LB':

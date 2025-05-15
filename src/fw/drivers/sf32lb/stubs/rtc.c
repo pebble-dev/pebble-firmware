@@ -1,3 +1,4 @@
+#include "rtconfig.h"
 #include "drivers/rtc.h"
 #include "drivers/rtc_private.h"
 #include "drivers/stm32f2/rtc_calibration.h"
@@ -32,7 +33,7 @@ static RTC_HandleTypeDef RTC_Handler = {
 
 typedef uint32_t RtcIntervalTicks;
 
-static const unsigned int LSE_FREQUENCY_HZ = 32768;
+//static const unsigned int LSE_FREQUENCY_HZ = 32768;
 #define SECONDS_IN_A_DAY (60 * 60 * 24)
 #define TICKS_IN_AN_INTERVAL SECONDS_IN_A_DAY
 
@@ -157,12 +158,47 @@ static void initialize_fast_mode_state(void) {
   //save_rtc_time_state(0);
 }
 
+uint32_t rtc_get_lpcycle()
+{
+    uint32_t value;
+#ifdef  BF0_HCPU
+    value = HAL_Get_backup(RTC_BACKUP_LPCYCLE_AVE);
+    if (value == 0)
+        value = 1200000;
+    value += BSP_RTC_PPM;   // Calibrate in initial with 8 cycle
+    HAL_Set_backup(RTC_BACKUP_LPCYCLE, (uint32_t)value);
+#else
+    value = HAL_Get_backup(RTC_BACKUP_LPCYCLE);
+#endif
+    return value;
+}
+
+static uint32_t soft_rc10_backup = 0;
+static uint16_t rc10_freq_khz;
+
+void drv_set_soft_rc10_backup(uint32_t backup)
+{
+    soft_rc10_backup = backup;
+    /* RC10K freq_khz = 48000 * LXT_LP_CYCLE / v; */
+    rc10_freq_khz = (uint16_t)(48000UL * LXT_LP_CYCLE / backup);
+}
+
+void rtc_rc10_calculate_div(RTC_HandleTypeDef *hdl, uint32_t value)
+{
+    hdl->Init.DivB = RC10K_SUB_SEC_DIVB;
+
+    // 1 seconds has total 1/(x/(48*8))/256=1.5M/x cycles, times 2^14 for DIVA
+    uint32_t divider = RTC_Handler.Init.DivB * value;
+    value = ((uint64_t)48000000 * LXT_LP_CYCLE * (1 << 14) + (divider >> 1)) / divider;
+    hdl->Init.DivAInt = (uint32_t)(value >> 14);
+    hdl->Init.DivAFrac = (uint32_t)(value & ((1 << 14) - 1));
+}
+
 void rtc_init(void) {
   periph_config_acquire_lock();
   rtc_enable_backup_regs();
-#ifdef LXT_DISABLE
-#error "RTC LXT is disabled, but RTC init requires it to be enabled"
-#endif
+
+#ifndef LXT_DISABLE
 #ifdef SF32LB52X
   HAL_PMU_EnableXTAL32();
   if (HAL_PMU_LXTReady() != HAL_OK)
@@ -174,11 +210,23 @@ void rtc_init(void) {
     WTF;
   }
   HAL_RTC_ENABLE_LXT();
-  
+#endif
+
   RTC_Handler.Init.DivAInt = 0x80;
   RTC_Handler.Init.DivAFrac = 0x0;
   RTC_Handler.Init.DivB = 0x100;
   uint32_t wakesrc = RTC_INIT_NORMAL;
+
+#ifdef LXT_DISABLE
+  {
+    uint64_t value = 0;
+    value = rtc_get_lpcycle();
+    drv_set_soft_rc10_backup((uint32_t)value);
+    if (value)
+      rtc_rc10_calculate_div(&RTC_Handler, value);
+  }
+#endif
+
   if (HAL_RTC_Init(&RTC_Handler, wakesrc) != HAL_OK)
   {
     WTF;

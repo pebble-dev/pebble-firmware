@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+#include "rtconfig.h"
 #include "board/board.h"
 #include "drivers/sf32lb/uart_definitions.h"
 #include "board_em_lb525.h"
@@ -167,6 +167,18 @@ uint32_t BSP_GetOtpBase(void)
     return MPI2_MEM_BASE;
 }
 
+#define HXT_DELAY_EXP_VAL 1000
+static void LRC_init(void)
+{
+    HAL_PMU_RC10Kconfig();
+
+    HAL_RC_CAL_update_reference_cycle_on_48M(LXT_LP_CYCLE);
+    uint32_t ref_cnt = HAL_RC_CAL_get_reference_cycle_on_48M();
+    uint32_t cycle_t = (uint32_t)ref_cnt / (48 * LXT_LP_CYCLE);
+
+    HAL_PMU_SET_HXT3_RDY_DELAY((HXT_DELAY_EXP_VAL / cycle_t + 1));
+}
+
 void HAL_PreInit(void)
 {
     // __asm("B .");
@@ -192,13 +204,13 @@ void HAL_PreInit(void)
         HAL_PMU_LpCLockSelect(PMU_LPCLK_RC32);
 
         HAL_PMU_EnableDLL(1);
-
+#ifndef LXT_DISABLE 
         HAL_PMU_EnableXTAL32();
         if (HAL_PMU_LXTReady() != HAL_OK)
             HAL_ASSERT(0);
         // RTC/GTIME/LPTIME Using same low power clock source
         HAL_RTC_ENABLE_LXT();
-
+#endif  
         {
             uint8_t is_enable_lxt = 1;
             uint32_t wdt_staus = 0xFF;
@@ -216,7 +228,9 @@ void HAL_PreInit(void)
 
         HAL_RCC_LCPU_ClockSelect(RCC_CLK_MOD_LP_PERI, RCC_CLK_PERI_HXT48);
 
-        HAL_HPAON_CANCEL_LP_ACTIVE_REQUEST();
+        HAL_HPAON_CANCEL_LP_ACTIVE_REQUEST();        
+        if (HAL_LXT_DISABLED())
+            LRC_init();
     }
 
     HAL_RCC_HCPU_ConfigHCLK(240);
