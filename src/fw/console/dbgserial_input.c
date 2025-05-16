@@ -40,7 +40,7 @@ static TimerID s_stop_mode_timeout_timer;
 static bool s_stop_mode_inhibited = false;
 
 //! We DMA into this buffer as a circular buffer
-#define DMA_BUFFER_LENGTH (1024)
+#define DMA_BUFFER_LENGTH (200)
 static uint8_t DMA_BSS s_dma_buffer[DMA_BUFFER_LENGTH] __attribute__((aligned(4)));
 static bool s_dma_enabled = false;
 
