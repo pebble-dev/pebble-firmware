@@ -37,6 +37,7 @@
 #define UART_RX PAD_PA27
 #define UART_DMAREQ DMA_REQUEST_27
 #endif
+#define UART_DMA_IRQ_PRIO   (5)
 
 static UARTDeviceState s_dbg_uart_state;
 static UART_HandleTypeDef s_dbg_uart_handle = {.Instance = UART_INST,
@@ -50,6 +51,7 @@ static UART_HandleTypeDef s_dbg_uart_handle = {.Instance = UART_INST,
 static DMA_HandleTypeDef s_dbg_uart_rx_dma_handle = {
     .Instance = DMA1_Channel1,
     .Init.Request = UART_DMAREQ,
+    .Init.IrqPrio = UART_DMA_IRQ_PRIO,
 };
 static UARTDevice DBG_UART_DEVICE = {.state = &s_dbg_uart_state,
                                      .tx_gpio = UART_TX,
