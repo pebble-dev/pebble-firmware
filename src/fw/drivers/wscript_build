@@ -214,6 +214,8 @@ elif bld.is_obelix():
             'driver_gpio_defaults',
             'driver_ioe',
             'driver_motor',
+            'driver_imu',
+            'driver_touch',
         ],
     )    
 
@@ -241,6 +243,32 @@ if bld.env.BOARD == "obelix_bb":
             'driver_gpio',
         ],
     ) 
+
+if bld.env.BOARD == "obelix_bb":
+    bld.objects(
+        name='driver_imu',
+        source=[
+            'imu/imu_obelix_bb.c',
+			'imu/mmc5603/mmc5603.c',
+        ],
+        use=[
+            'driver_mmc5603',
+            'fw_includes',
+            'root_includes',
+        ],
+    )
+	
+if bld.env.BOARD == "obelix_bb":
+    bld.objects(
+        name='driver_touch',
+		source=bld.path.ant_glob('touch/cst816t/*.c'),
+		use=[
+			'freertos',
+			'fw_includes',
+			'root_includes',
+		],
+    )
+
 
 ## ----------
 
@@ -1594,8 +1622,8 @@ if mcu_family == 'SF32LB':
             'sf32lb/stubs/mcu.c',
             'sf32lb/stubs/backlight.c',
             'sf32lb/stubs/voltage_monitor.c',
-            'imu/imu_asterix.c',
-            'sf32lb/stubs/mag.c',
+            #'imu/imu_asterix.c',
+            #'sf32lb/stubs/mag.c',
             'sf32lb/stubs/temperature.c',
             'sf32lb/stubs/periph_config.c',
             'sf32lb/stubs/gpio_defaults.c',

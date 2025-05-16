@@ -225,6 +225,25 @@ ADCInputConfig adc1_ch0 ={
     };
 
 
+static const TouchSensor CST816_DEVICE = {
+  .i2c = &I2C_SLAVE_TP_CST816,
+  .int_gpio = {
+    .gpio_pin = 27,
+  },
+  //.int_exti = {
+  //  .exti_port_source = EXTI_PortSourceGPIOB,
+  //  .exti_line = 7,
+  //},
+};
+TouchSensor * const BOARD_CONFIG_TOUCH = &CST816_DEVICE;
+
+
+
+
+
+
+
+
 #define LCD_RESET_PIN           (0)         // GPIO_A00
 static void BSP_GPIO_Set(int pin, int val, int is_porta)
 {

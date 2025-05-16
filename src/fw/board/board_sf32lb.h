@@ -408,7 +408,14 @@ typedef const struct MicDevice MicDevice;
 typedef const struct QSPIPort QSPIPort;
 typedef const struct QSPIFlash QSPIFlash;
 typedef const struct ICE40LPDevice ICE40LPDevice;
-typedef const struct TouchSensor TouchSensor;
+
+
+typedef const struct TouchSensor {
+  I2CSlavePort *i2c;
+  InputConfig int_gpio;
+  ExtiConfig int_exti;
+  //OutputConfig reset_gpio;
+} TouchSensor;
 
 
 void board_early_init(void);
