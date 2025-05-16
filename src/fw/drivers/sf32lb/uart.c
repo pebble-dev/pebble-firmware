@@ -24,8 +24,7 @@
 #include "system/passert.h"
 #include "uart_definitions.h"
 
-#define container_of(ptr, type, member) \
-    ((type *)((char *)(ptr) - offsetof(type, member)))
+static UARTDevice *s_uart_dev_ptr[6] = {0};
 
 typedef enum {
   UART_FullDuplex = 0,
@@ -140,6 +139,34 @@ static UARTPinFunction_t get_uart_pin_fun(UART_HandleTypeDef *uart) {
   return pin_fun;
 }
 
+static uint32_t get_uart_index(UART_HandleTypeDef *uart) {
+  if (uart->Instance == USART1) {
+    return 0;
+  } else if (uart->Instance == USART2) {
+    return 0;
+  } else if (uart->Instance == USART3) {
+    return 0;
+  }
+#ifdef USART4
+  else if (uart->Instance == USART4) {
+    return 0;
+  }
+#endif
+#ifdef USART5
+  else if (uart->Instance == USART5) {
+    return 0;
+  }
+#endif
+#ifdef USART6
+  else if (uart->Instance == USART6) {
+    return 0;
+  }
+#endif
+  else {
+    WTF;
+  }
+}
+
 static void prv_init(UARTDevice *dev, UARTInitMode_t mode) {
   if (mode == UART_FullDuplex) {
     dev->periph->Init.Mode = UART_MODE_TX_RX;
@@ -150,6 +177,8 @@ static void prv_init(UARTDevice *dev, UARTInitMode_t mode) {
     // Initialization Error
     WTF;
   }
+
+  s_uart_dev_ptr[get_uart_index(dev->periph)] = dev;
 
   UARTPinFunction_t pin_fun = get_uart_pin_fun(dev->periph);
   switch (mode) {
@@ -185,7 +214,10 @@ void uart_init_tx_only(UARTDevice *dev) { prv_init(dev, UART_TxOnly); }
 
 void uart_init_rx_only(UARTDevice *dev) { prv_init(dev, UART_RxOnly); }
 
-void uart_deinit(UARTDevice *dev) { HAL_UART_DeInit(dev->periph); }
+void uart_deinit(UARTDevice *dev) {
+  HAL_UART_DeInit(dev->periph);
+  s_uart_dev_ptr[get_uart_index(dev->periph)] = NULL;
+}
 
 void uart_set_baud_rate(UARTDevice *dev, uint32_t baud_rate) {
   PBL_ASSERTN(dev->state->initialized);
@@ -299,8 +331,7 @@ void uart_irq_handler(UARTDevice *dev) {
         .framing_error = uart_has_rx_framing_error(dev),
     };
     // DMA
-    if (dev->state->rx_dma_buffer &&
-        (__HAL_UART_GET_FLAG(dev->periph, UART_FLAG_IDLE) != RESET) &&
+    if (dev->state->rx_dma_buffer && (__HAL_UART_GET_FLAG(dev->periph, UART_FLAG_IDLE) != RESET) &&
         (__HAL_UART_GET_IT_SOURCE(dev->periph, UART_IT_IDLE) != RESET)) {
       // process bytes from the DMA buffer
       const uint32_t dma_length = dev->state->rx_dma_length;
@@ -377,33 +408,38 @@ void uart_clear_all_interrupt_flags(UARTDevice *dev) {
 }
 
 void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart) {
-  //TODO: need to find a way to convert huart to dev as dev is not container of huart
-#if 0  
   size_t recv_len;
   size_t recv_total_index;
-  UARTDevice *dev = container_of(huart, UARTDevice, periph);
+  uint32_t idx;
+  bool should_context_switch = false;
+  UARTDevice *dev = s_uart_dev_ptr[get_uart_index(huart)];
 
   recv_total_index = dev->state->rx_dma_length - __HAL_DMA_GET_COUNTER(dev->rx_dma);
   if (recv_total_index < dev->state->rx_dma_index)
     recv_len = dev->state->rx_dma_length + recv_total_index - dev->state->rx_dma_index;
   else
     recv_len = recv_total_index - dev->state->rx_dma_index;
-  dev->state->rx_dma_index = recv_total_index;
 
+  idx = dev->state->rx_dma_index;    
+  dev->state->rx_dma_index = recv_total_index;
   if (recv_len) {
     for (size_t i = 0; i < recv_len; i++) {
-      const uint8_t data = dev->state->rx_dma_buffer[dev->state->rx_dma_index + i];
+      uint8_t data;
+      data = dev->state->rx_dma_buffer[idx];
       if (dev->state->rx_irq_handler(dev, data, NULL)) {
-        // context switch
+        should_context_switch = true;
+      }
+      idx++;
+      if (idx >= dev->state->rx_dma_length) {
+          idx = 0;
       }
     }
   }
-#endif    
+  portEND_SWITCHING_ISR(should_context_switch);
 }
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) { 
-  //TODO: 
-  //HAL_UART_RxHalfCpltCallback(huart); 
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+  HAL_UART_RxHalfCpltCallback(huart);
 }
 
 // DMA

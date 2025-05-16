@@ -33,7 +33,8 @@
 #include <util/math.h>
 #include "ipc_queue.h"
 
-//#define DEBUG 1
+// DEBUG: 1 print as hex string,   2 print as binary,  others no printing
+#define DEBUG 0
 
 static TaskHandle_t s_rx_task_handle;
 static SemaphoreHandle_t s_rx_data_ready;
@@ -45,6 +46,85 @@ struct mbox_env_tag
 };
 struct mbox_env_tag mbox_env;
 
+
+#define H4TL_PACKET_HOST    0x61
+#define H4TL_PACKET_CTRL    0x62
+
+static char * hci_type_str(int type)
+{
+    char * r;
+    switch (type) {
+        case 1:
+            r="CMD";
+            break;
+        case 2:
+            r="ACL";
+            break;
+        case 3:
+            r="SCO";
+            break;
+        case 4:
+            r="EVT";
+            break;
+        case 5:
+            r="ISO";
+            break;
+        default:
+            r="UKN";            
+    }
+    return r;
+}
+
+/**
+ * @brief Send HCI data to debug console.
+ * @param[in] type HCI type in H4 format
+ * @param[in] data HCI traffic data
+ * @param[in] len length of data in bytes.
+ * @param[in] host2ctrl 1: host to control  0: contrl to host
+ * @retval None
+*/
+#if DEBUG>0
+void hci_log_to_console(uint8_t type, uint8_t * data, uint16_t len, int host2ctrl)
+{
+    static uint8_t temp[1024], *trace ;
+    static uint16_t seq;
+    trace = &temp[0];
+    // Magic for Pebble HCI, 'PBTS'
+    *trace++ = 0x50;
+    *trace++ = 0x42;
+    *trace++ = 0x54;
+    *trace++ = 0x53;    
+    *trace++ = 0x06;
+    *trace++ = 0x01;
+    *trace++ = (len + 8) & 0xff;
+    *trace++ = (len + 8) >> 8;
+    *trace++ = seq & 0xff;
+    *trace++ = seq >> 8;
+    *trace++ = 0;
+    *trace++ = 0;
+    *trace++ = 0;
+    *trace++ = 0;
+    if (host2ctrl)
+        *trace++ = H4TL_PACKET_HOST;
+    else
+        *trace++ = H4TL_PACKET_CTRL;
+    *trace++ = type;
+    seq++;
+    memcpy(trace, data, len);
+#if DEBUG==1
+    portDISABLE_INTERRUPTS();
+    HAL_DBG_printf("%s, %s %d\n", hci_type_str(type), host2ctrl?"TX":"RX", len);    
+    HAL_DBG_print_data((char*)data,0,len);
+    portENABLE_INTERRUPTS();
+#else    
+    len+=16;
+    for (int i=0;i<len;i++)
+        dbgserial_putchar(temp[i]);
+#endif    
+}
+#else
+#define hci_log_to_console(type,data,len,host2ctrl)
+#endif
 
 static uint8_t read_buf[64];
 static void prv_rx_task_main(void *unused) {
@@ -133,24 +213,18 @@ hci_uart_frame_cb(uint8_t pkt_type, void *data)
     case HCI_H4_EVT:
         {
             struct ble_hci_ev *ev = data;            
-            struct ble_hci_ev_command_complete *cmd_complete = (void *) ev->data;
-#if DEBUG
-            HAL_DBG_print_data(data, 0, ev->length+sizeof(*ev));
-            PBL_LOG(LOG_LEVEL_INFO, "Event %x", ev->opcode);            
-#endif            
+            struct ble_hci_ev_command_complete *cmd_complete = (void *) ev->data;         
             if (ev->opcode==BLE_HCI_EVCODE_COMMAND_COMPLETE)
                 PBL_LOG(LOG_LEVEL_INFO, "\tCMD complete %x", cmd_complete->opcode);
             
             if (ev->opcode==BLE_HCI_EVCODE_COMMAND_COMPLETE&&cmd_complete->opcode==0xFC11)
                 break;                    
+            hci_log_to_console(4, data, ev->length+sizeof(*ev),0);
         }
         return ble_transport_to_hs_evt(data);
     case HCI_H4_ACL:
         struct os_mbuf *om=(struct os_mbuf *)data;       
-        PBL_LOG(LOG_LEVEL_INFO, "ACL IND %x", OS_MBUF_PKTLEN(om));   
-#if DEBUG    
-        HAL_DBG_print_data((char*)data, 0, OS_MBUF_PKTLEN(om));
-#endif
+        hci_log_to_console(4, OS_MBUF_DATA(om, uint8_t*), OS_MBUF_PKTLEN(om),0);
         return ble_transport_to_hs_acl(data);
     default:
         assert(0);
@@ -159,7 +233,7 @@ hci_uart_frame_cb(uint8_t pkt_type, void *data)
 
     return -1;
 }
-#if DEBUG
+#if DEBUG>0
 void HAL_DBG_printf(const char *fmt, ...)
 {
     va_list args;
@@ -208,9 +282,7 @@ int ble_transport_to_ll_cmd_impl(void *buf) {
   hci_cmd[0]=1;
   memcpy(&(hci_cmd[1]), buf, 3 + cmd->length);
   PBL_LOG(LOG_LEVEL_INFO, "BLE TX CMD %x, len=%d", cmd->opcode, 3 + cmd->length+1);
-#if DEBUG  
-  HAL_DBG_print_data((char*)hci_cmd, 0, 3 + cmd->length+1);
-#endif
+  hci_log_to_console(1,buf,3+cmd->length,1);
   int written = ipc_queue_write(mbox_env.ipc_port, hci_cmd, 3 + cmd->length+1, 10);
   ble_transport_free(buf);
   return (written>=0)?0:-1;
@@ -222,9 +294,7 @@ int ble_transport_to_ll_acl_impl(struct os_mbuf *om) {
   PBL_LOG(LOG_LEVEL_INFO, "BLE TX ACL len=%d",  OS_MBUF_PKTLEN(om));
   hci_acl[0]=2;
   memcpy(&(hci_acl[1]), data, OS_MBUF_PKTLEN(om));  
-#if DEBUG    
-  HAL_DBG_print_data((char*)hci_acl, 0, OS_MBUF_PKTLEN(om)+1);  
-#endif
+  hci_log_to_console(2,data,OS_MBUF_PKTLEN(om),1);
   int written = ipc_queue_write(mbox_env.ipc_port, hci_acl, OS_MBUF_PKTLEN(om)+1, 10);   
   os_mbuf_free(om);
   return (written>=0)?0:-1;
@@ -233,5 +303,6 @@ int ble_transport_to_ll_acl_impl(struct os_mbuf *om) {
 int ble_transport_to_ll_iso_impl(struct os_mbuf *om) {
   uint8_t * data=OS_MBUF_DATA(om, uint8_t*);  
   int written = ipc_queue_write(mbox_env.ipc_port, data, OS_MBUF_PKTLEN(om), 10);
+  os_mbuf_free(om);
   return (written>=0)?0:-1;
 }

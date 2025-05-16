@@ -22,7 +22,8 @@
 #include "drivers/sf32lb/i2c_hal_definitions.h"
 #include "drivers/sf32lb/pwm_hal_definitions.h"
 #include "board/board_sf32lb.h"
-
+#include "drivers/ioexp.h"
+#include "drivers/vibe.h"
 
 
 #define USING_UART1
@@ -37,6 +38,7 @@
 #define UART_RX PAD_PA27
 #define UART_DMAREQ DMA_REQUEST_27
 #endif
+#define UART_DMA_IRQ_PRIO   (5)
 
 static UARTDeviceState s_dbg_uart_state;
 static UART_HandleTypeDef s_dbg_uart_handle = {.Instance = UART_INST,
@@ -50,6 +52,7 @@ static UART_HandleTypeDef s_dbg_uart_handle = {.Instance = UART_INST,
 static DMA_HandleTypeDef s_dbg_uart_rx_dma_handle = {
     .Instance = DMA1_Channel1,
     .Init.Request = UART_DMAREQ,
+    .Init.IrqPrio = UART_DMA_IRQ_PRIO,
 };
 static UARTDevice DBG_UART_DEVICE = {.state = &s_dbg_uart_state,
                                      .tx_gpio = UART_TX,
@@ -375,6 +378,17 @@ void board_early_init(void) {
 
 }
 
+#include "bf0_hal.h"
 void board_init(void) {
-
+    i2c_init(&I2C1_BUS);
+    i2c_init(&I2C2_BUS);
+    i2c_init(&I2C3_BUS);
+    i2c_init(&I2C_COMM_BUS);  
+    
+    PBL_LOG(LOG_LEVEL_DEBUG, "enr1:0x%08lx", *(uint32_t *)&hwp_hpsys_rcc->ENR1);
+    PBL_LOG(LOG_LEVEL_DEBUG, "enr2:0x%08lx", *(uint32_t *)&hwp_hpsys_rcc->ENR2);
+    //ioexp_init();
+    //vibe_init();
+    //PBL_LOG(LOG_LEVEL_DEBUG, "enr1:0x%08lx", *(uint32_t *)&hwp_hpsys_rcc->ENR1);
+    //PBL_LOG(LOG_LEVEL_DEBUG, "enr2:0x%08lx", *(uint32_t *)&hwp_hpsys_rcc->ENR2);
 }
