@@ -98,7 +98,7 @@ static const BoardConfig BOARD_CONFIG = {
 
   .has_mic = true,
 
-  .ioe_rst = {hwp_gpio1, 11, true},
+  .ioe_rst = {hwp_gpio1, 44, true},
 };
 extern void BSP_LCD_PowerDown(void);
 extern void BSP_LCD_PowerUp(void);
