@@ -22,7 +22,8 @@
 #include "drivers/sf32lb/i2c_hal_definitions.h"
 #include "drivers/sf32lb/pwm_hal_definitions.h"
 #include "board/board_sf32lb.h"
-
+#include "drivers/ioexp.h"
+#include "drivers/vibe.h"
 
 
 #define USING_UART1
@@ -377,6 +378,17 @@ void board_early_init(void) {
 
 }
 
+#include "bf0_hal.h"
 void board_init(void) {
-
+    i2c_init(&I2C1_BUS);
+    i2c_init(&I2C2_BUS);
+    i2c_init(&I2C3_BUS);
+    i2c_init(&I2C_COMM_BUS);  
+    
+    PBL_LOG(LOG_LEVEL_DEBUG, "enr1:0x%08lx", *(uint32_t *)&hwp_hpsys_rcc->ENR1);
+    PBL_LOG(LOG_LEVEL_DEBUG, "enr2:0x%08lx", *(uint32_t *)&hwp_hpsys_rcc->ENR2);
+    //ioexp_init();
+    //vibe_init();
+    //PBL_LOG(LOG_LEVEL_DEBUG, "enr1:0x%08lx", *(uint32_t *)&hwp_hpsys_rcc->ENR1);
+    //PBL_LOG(LOG_LEVEL_DEBUG, "enr2:0x%08lx", *(uint32_t *)&hwp_hpsys_rcc->ENR2);
 }

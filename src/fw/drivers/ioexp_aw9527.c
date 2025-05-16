@@ -26,7 +26,7 @@
 static bool prv_read_register(uint8_t register_address, uint8_t *result) {
     i2c_use(I2C_AW9527);
     bool rv = i2c_read_register(I2C_AW9527, register_address, result);
-    i2c_release(I2C_AW86225);
+    i2c_release(I2C_AW9527);
     return rv;
 }
 
@@ -65,5 +65,23 @@ void ioexp_led_ctrl(uint8_t percent) {
 
 /*channel ctrl*/
 void ioexp_pin_set(IOEXP_CHANNEL_T channel, IOEXP_STATE_T state) {
-
+    if (channel >= IOEXP_CH10) {
+        uint8_t p1_value;
+        prv_read_register(0x03, &p1_value);
+        if (state == IOEXP_HIGH) {
+            p1_value |= (1<<channel);
+        } else {
+            p1_value &= ~(1<<channel);
+        }
+        prv_write_register(0x03, p1_value);
+    } else {
+        uint8_t p0_value;
+        prv_read_register(0x02, &p0_value);
+        if (state == IOEXP_HIGH) {
+            p0_value |= (1<<channel);
+        } else {
+            p0_value &= ~(1<<channel);
+        }
+        prv_write_register(0x02, p0_value);
+    }
 }

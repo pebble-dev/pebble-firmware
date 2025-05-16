@@ -212,6 +212,8 @@ elif bld.is_obelix():
             'driver_flash',
             # 'driver_accessory',
             'driver_gpio_defaults',
+            'driver_ioe',
+            'driver_motor',
         ],
     )    
 
@@ -1587,7 +1589,7 @@ if mcu_family == 'SF32LB':
             #'display/sharp_ls013b7dh01/sharp_ls013b7dh01_nrf5.c',
             'sf32lb/stubs/accel.c',
             'sf32lb/stubs/ambient_light.c',
-            'sf32lb/stubs/vibe.c',
+            #'sf32lb/stubs/vibe.c',
             'sf32lb/stubs/otp.c',
             'sf32lb/stubs/mcu.c',
             'sf32lb/stubs/backlight.c',
