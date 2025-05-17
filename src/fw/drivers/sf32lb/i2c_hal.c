@@ -413,17 +413,18 @@ static HAL_StatusTypeDef master_xfer(struct I2CBusHal * i2c_hal, struct rt_i2c_m
     uint32_t index = 0;
     struct I2CBusHal *bf0_i2c = NULL;
     struct rt_i2c_msg *msg = NULL;
-    HAL_StatusTypeDef status;
+    HAL_StatusTypeDef status = HAL_ERROR;
     uint16_t mem_addr_type;
 
     PBL_ASSERTN(i2c_hal != NULL);
     bf0_i2c = i2c_hal;
-    PBL_LOG(LOG_LEVEL_ALWAYS, "i2cmaster_xfer start");
-
     __HAL_I2C_ENABLE(&bf0_i2c->handle);
     for (index = 0; index < num; index++)
     {
         msg = &msgs[index];
+        
+        PBL_LOG(LOG_LEVEL_ALWAYS, "msg->addr = 0x%x, msg->mem_addr = 0x%x, type = %d, buf = 0x%x, len = 0x%d, timeout = %d;", 
+           (unsigned int)msg->addr, (unsigned int)msg->mem_addr, (int)mem_addr_type, (unsigned int)msg->buf, (int)msg->len, (int)bf0_i2c->bf0_i2c_cfg->timeout);
         if (msg->flags & RT_I2C_MEM_ACCESS)
         {
             if (8 >= msg->mem_addr_size)
@@ -508,6 +509,7 @@ static HAL_StatusTypeDef master_xfer(struct I2CBusHal * i2c_hal, struct rt_i2c_m
                 }
             }
         }
+        PBL_LOG(LOG_LEVEL_ALWAYS, "I2C hal transmit result = %d", (int)status);
 
         if (HAL_OK != status) goto exit;
 #if 1
@@ -571,13 +573,14 @@ exit:
 
 void i2c_hal_init_transfer(I2CBus *bus)
 {
+    
     if(I2CTransferType_SendRegisterAddress == bus->state->transfer.type)
     {
         if(bus->state->transfer.direction == I2CTransferDirection_Write)
         {
             msgs[0].addr   = bus->state->transfer.device_address;
             msgs[0].mem_addr = bus->state->transfer.register_address;
-            msgs[0].mem_addr_size = I2C_MEMADD_SIZE_8BIT;
+            msgs[0].mem_addr_size = 8;      // 8bit address
             msgs[0].flags  = RT_I2C_WR | RT_I2C_MEM_ACCESS;
             msgs[0].len    = bus->state->transfer.size;
             msgs[0].buf    = bus->state->transfer.data;
@@ -587,7 +590,7 @@ void i2c_hal_init_transfer(I2CBus *bus)
         {
             msgs[0].addr   = bus->state->transfer.device_address;
             msgs[0].mem_addr = bus->state->transfer.register_address;
-            msgs[0].mem_addr_size = I2C_MEMADD_SIZE_8BIT;
+            msgs[0].mem_addr_size = 8;      // 8bit address
             msgs[0].flags  = RT_I2C_RD | RT_I2C_MEM_ACCESS;
             msgs[0].len    = bus->state->transfer.size;
             msgs[0].buf    = bus->state->transfer.data;
@@ -629,6 +632,7 @@ void i2c_hal_abort_transfer(I2CBus *bus)
 void i2c_hal_start_transfer(I2CBus *bus)
 {
     struct I2CBusHal * hal = (struct I2CBusHal * )bus->hal;
+    PBL_LOG(LOG_LEVEL_ALWAYS,"i2c_hal_start_transfer, 0x%p", hal);
     HAL_StatusTypeDef status = master_xfer(hal, &msgs[0], msgs_num);
     if(status ==HAL_BUSY)
         return;
@@ -791,10 +795,10 @@ void i2c_hal_disable(I2CBus *bus)
 
 bool i2c_hal_is_busy(I2CBus *bus)
 {
-    bool ret = true;
+    bool ret = false;
     struct I2CBusHal * hal = (struct I2CBusHal * )bus->hal;
     if(HAL_I2C_GetState(&(hal->handle)) != HAL_I2C_STATE_READY)
-        ret = false;
+        ret = true;
     return ret;
 }       
 

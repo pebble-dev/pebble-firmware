@@ -525,8 +525,9 @@ bool i2c_read_register_block(I2CSlavePort *slave,  uint8_t register_address_star
   PBL_ASSERTN(slave);
   PBL_ASSERTN(result_buffer);
   // Do transfer locks the bus
-  bool result = prv_do_transfer(slave->bus, Read, slave->address, register_address_start, read_size,
-                                result_buffer, SendRegisterAddress);
+  PBL_LOG(LOG_LEVEL_ERROR, "slave address 0x%x", (unsigned int)slave->address);
+  bool result = prv_do_transfer(slave->bus, I2CTransferDirection_Read, slave->address, register_address_start, read_size,
+                                result_buffer, I2CTransferType_SendRegisterAddress);
 
   if (!result) {
     PBL_LOG(LOG_LEVEL_ERROR, "Read failed on bus %s", slave->bus->name);
@@ -539,8 +540,8 @@ bool i2c_read_block(I2CSlavePort *slave, uint32_t read_size, uint8_t* result_buf
   PBL_ASSERTN(slave);
   PBL_ASSERTN(result_buffer);
 
-  bool result = prv_do_transfer(slave->bus, Read, slave->address, 0, read_size, result_buffer,
-                            NoRegisterAddress);
+  bool result = prv_do_transfer(slave->bus, I2CTransferDirection_Read, slave->address, 0, read_size, result_buffer,
+                            I2CTransferType_NoRegisterAddress);
 
   if (!result) {
     PBL_LOG(LOG_LEVEL_ERROR, "Block read failed on bus %s", slave->bus->name);
@@ -558,8 +559,8 @@ bool i2c_write_register_block(I2CSlavePort *slave, uint8_t register_address_star
   PBL_ASSERTN(slave);
   PBL_ASSERTN(buffer);
   // Do transfer locks the bus
-  bool result = prv_do_transfer(slave->bus, Write, slave->address, register_address_start,
-                                write_size, (uint8_t*)buffer, SendRegisterAddress);
+  bool result = prv_do_transfer(slave->bus, I2CTransferDirection_Write, slave->address, register_address_start,
+                                write_size, (uint8_t*)buffer, I2CTransferType_SendRegisterAddress);
 
   if (!result) {
     PBL_LOG(LOG_LEVEL_ERROR, "Write failed on bus %s", slave->bus->name);
@@ -573,8 +574,8 @@ bool i2c_write_block(I2CSlavePort *slave, uint32_t write_size, const uint8_t* bu
   PBL_ASSERTN(buffer);
 
   // Do transfer locks the bus
-  bool result = prv_do_transfer(slave->bus, Write, slave->address, 0, write_size, (uint8_t*)buffer,
-                                NoRegisterAddress);
+  bool result = prv_do_transfer(slave->bus, I2CTransferDirection_Write, slave->address, 0, write_size, (uint8_t*)buffer,
+                                I2CTransferType_NoRegisterAddress);
 
   if (!result) {
     PBL_LOG(LOG_LEVEL_ERROR, "Block write failed on bus %s", slave->bus->name);
@@ -622,6 +623,8 @@ void example_i2c()
 {
     i2c_init(i2c1_device.bus);
     i2c_use(&i2c1_device);
+    uint8_t result = 0;
+    bool rv = i2c_read_register(&i2c1_device, 0x23, &result);
     i2c_release(&i2c1_device);
 }
 #endif 

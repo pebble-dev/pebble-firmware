@@ -83,7 +83,7 @@ I2CBus i2c1 = {
             .state = &i2c1_state,
             .scl_gpio = 
             {
-                .gpio_pin = 31,
+                .gpio_pin = 30,
             },
             .sda_gpio = 
             {
