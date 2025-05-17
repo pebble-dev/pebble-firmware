@@ -98,7 +98,7 @@ static const BoardConfig BOARD_CONFIG = {
 
   .has_mic = true,
 
-  .ioe_rst = {hwp_gpio1, 11, true},
+  .ioe_rst = {hwp_gpio1, 44, true},
 };
 extern void BSP_LCD_PowerDown(void);
 extern void BSP_LCD_PowerUp(void);
@@ -115,6 +115,26 @@ extern I2CSlavePort* const I2C_AW86225;
 extern I2CSlavePort* const I2C_SM6DSOW;
 extern I2CSlavePort* const I2C_MMC5603;
 extern I2CSlavePort* const I2C_W1160;
+
+
+
+static const BoardConfigMag BOARD_CONFIG_MAG = {
+  .mag_config = {
+    .axes_offsets[AXIS_X] = 1,
+    .axes_offsets[AXIS_Y] = 0,
+    .axes_offsets[AXIS_Z] = 2,
+    .axes_inverts[AXIS_X] = false,
+    .axes_inverts[AXIS_Y] = true,
+    .axes_inverts[AXIS_Z] = true,
+  },
+  //.mag_int_gpio = { GPIOF, GPIO_Pin_14 },
+  //.mag_int = { EXTI_PortSourceGPIOF, 14 },
+};
+
+extern TouchSensor * const BOARD_CONFIG_TOUCH;
+
+
+
 
 
 #if 0

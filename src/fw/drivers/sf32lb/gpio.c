@@ -50,6 +50,7 @@ void gpio_release(GPIO_TypeDef *GPIOx) {
 void gpio_output_init(const OutputConfig *pin_config, GPIOOType_TypeDef otype,
                       GPIOSpeed_TypeDef speed) {
   (void)speed;
+  gpio_use(pin_config->gpio);
   GPIO_InitTypeDef GPIO_InitStruct;
   GPIO_InitStruct.Pin = pin_config->gpio_pin;
   if (otype == GPIO_OType_OD) {
@@ -59,7 +60,7 @@ void gpio_output_init(const OutputConfig *pin_config, GPIOOType_TypeDef otype,
   } else {
     WTF;
   }
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT;
+  HAL_PIN_Set(PAD_PA00 + pin_config->gpio_pin, GPIO_A0 + pin_config->gpio_pin, PIN_NOPULL, 1); 
   GPIO_InitStruct.Pull = GPIO_NOPULL;
 
   HAL_GPIO_Init(pin_config->gpio, &GPIO_InitStruct);
@@ -72,7 +73,33 @@ void gpio_input_init(const InputConfig *pin_config) {
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
 
+  HAL_PIN_Set(PAD_PA00 + pin_config->gpio_pin, GPIO_A0 + pin_config->gpio_pin, PIN_NOPULL, 1);
   HAL_GPIO_Init(pin_config->gpio, &GPIO_InitStruct);
+}
+
+void gpio_input_init_pull_up_down(const InputConfig *input_cfg, GPIOPuPd_TypeDef pupd) {
+  gpio_use(input_cfg->gpio);
+  GPIO_InitTypeDef GPIO_InitStruct;
+  GPIO_InitStruct.Pin = input_cfg->gpio_pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+
+  int flag = 0;
+  if (pupd == GPIO_PuPd_UP) {
+    flag = GPIO_PULLUP;
+  } else if (pupd == GPIO_PuPd_DOWN) {
+    flag = GPIO_PULLDOWN;
+  } else {
+    WTF;
+  }
+
+  HAL_PIN_Set(PAD_PA00 + input_cfg->gpio_pin, GPIO_A0 + input_cfg->gpio_pin, flag, 1);
+  HAL_GPIO_Init(input_cfg->gpio, &GPIO_InitStruct);
+}
+
+bool gpio_input_read(const InputConfig *input_cfg) {
+  bool value = HAL_GPIO_ReadPin(input_cfg->gpio, input_cfg->gpio_pin);
+  return value;
 }
 
 void gpio_output_set(const OutputConfig *pin_config, bool asserted) {

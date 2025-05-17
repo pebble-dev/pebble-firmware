@@ -200,9 +200,23 @@ elif bld.is_asterix():
             'driver_vibe',
             'driver_voltage_monitor',
         ],
-    )
-    
+    ) 
+
 elif bld.is_obelix():
+    bld(
+        name='drivers',
+        use=[
+            'driver_uart',
+            'driver_sf32lb',
+            'driver_vibe',
+            'driver_mpu',
+            'driver_flash',
+            'driver_gpio_defaults',
+            'driver_imu'
+        ],
+    )    
+
+elif bld.is_obelix_bb():
     bld(
         name='drivers',
         use=[
@@ -210,12 +224,13 @@ elif bld.is_obelix():
             'driver_sf32lb',
             'driver_mpu',
             'driver_flash',
-            # 'driver_accessory',
             'driver_gpio_defaults',
             'driver_ioe',
             'driver_motor',
+            'driver_imu',
+            'driver_touch',
         ],
-    )    
+    ) 
 
 if bld.env.BOARD == "obelix_bb":
     bld.objects(
@@ -241,6 +256,19 @@ if bld.env.BOARD == "obelix_bb":
             'driver_gpio',
         ],
     ) 
+
+
+if bld.env.BOARD == "obelix_bb":
+    bld.objects(
+        name='driver_touch',
+		source=bld.path.ant_glob('touch/cst816t/*.c'),
+		use=[
+			'freertos',
+			'fw_includes',
+			'root_includes',
+		],
+    )
+
 
 ## ----------
 
@@ -922,6 +950,33 @@ elif bld.is_asterix():
             'root_includes',
         ],
     )
+elif bld.is_obelix():
+    bld.objects(
+        name='driver_imu',
+        source=[
+            'imu/imu_asterix.c',
+            'sf32lb/stubs/mag.c',
+        ],
+        use=[
+            'fw_includes',
+            'root_includes',
+        ],
+    )
+elif bld.is_obelix_bb():
+    bld.objects(
+        name='driver_imu',
+        source=[
+            'imu/imu_obelix_bb.c',
+			'imu/mmc5603/mmc5603.c',
+        ],
+        use=[
+            'driver_mmc5603',
+            'fw_includes',
+            'root_includes',
+        ],
+    )
+
+
 
 if bld.env.BOARD == "v2_0":
     bld.objects(
@@ -1538,6 +1593,19 @@ elif mcu_family == 'NRF52840':
             'root_includes',
         ],
     )
+elif mcu_family == 'SF32LB':
+    # FIXME: provide working implementation
+    bld.objects(
+        name='driver_vibe',
+        source=[
+            'sf32lb/stubs/vibe.c',
+        ],
+        use=[
+            'freertos',
+            'fw_includes',
+            'root_includes',
+        ],
+    )
 
 if mcu_family in ('STM32F2', 'STM32F4', 'STM32F7'):
     bld.objects(
@@ -1594,8 +1662,8 @@ if mcu_family == 'SF32LB':
             'sf32lb/stubs/mcu.c',
             'sf32lb/stubs/backlight.c',
             'sf32lb/stubs/voltage_monitor.c',
-            'imu/imu_asterix.c',
-            'sf32lb/stubs/mag.c',
+            #'imu/imu_asterix.c',
+            #'sf32lb/stubs/mag.c',
             'sf32lb/stubs/temperature.c',
             'sf32lb/stubs/periph_config.c',
             'sf32lb/stubs/gpio_defaults.c',
