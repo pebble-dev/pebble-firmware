@@ -422,9 +422,6 @@ static HAL_StatusTypeDef master_xfer(struct I2CBusHal * i2c_hal, struct rt_i2c_m
     for (index = 0; index < num; index++)
     {
         msg = &msgs[index];
-        
-        PBL_LOG(LOG_LEVEL_ALWAYS, "msg->addr = 0x%x, msg->mem_addr = 0x%x, type = %d, buf = 0x%x, len = 0x%d, timeout = %d;", 
-           (unsigned int)msg->addr, (unsigned int)msg->mem_addr, (int)mem_addr_type, (unsigned int)msg->buf, (int)msg->len, (int)bf0_i2c->bf0_i2c_cfg->timeout);
         if (msg->flags & RT_I2C_MEM_ACCESS)
         {
             if (8 >= msg->mem_addr_size)
@@ -435,8 +432,11 @@ static HAL_StatusTypeDef master_xfer(struct I2CBusHal * i2c_hal, struct rt_i2c_m
             {
                 mem_addr_type = I2C_MEMADD_SIZE_16BIT;
             }
+            PBL_LOG(LOG_LEVEL_ALWAYS, "msg->addr = 0x%x, msg->mem_addr = 0x%x, type = %d, buf = 0x%x, len = 0x%d, timeout = %d;", 
+            (unsigned int)msg->addr, (unsigned int)msg->mem_addr, (int)mem_addr_type, (unsigned int)msg->buf, (int)msg->len, (int)bf0_i2c->bf0_i2c_cfg->timeout);
             if (msg->flags & RT_I2C_RD)
             {
+            
                 if ((bf0_i2c->i2c_dma_flag) && (bf0_i2c->bf0_i2c_cfg->open_flag & RT_DEVICE_FLAG_DMA_RX))
                 {
                     HAL_DMA_Init(&bf0_i2c->dma.dma_rx);
