@@ -214,6 +214,11 @@ static void hal_semaphore_give(I2CBusState *bus_state)
     // If this fails, something is very wrong
     xSemaphoreGive(bus_state->event_semaphore);
 }
+static portBASE_TYPE hal_semaphore_give_from_isr(I2CBusState *bus) {
+  portBASE_TYPE should_context_switch = pdFALSE;
+  (void)xSemaphoreGiveFromISR(bus->event_semaphore,  &should_context_switch);
+  return should_context_switch;
+}
 
 static void I2Cx_IRQHandler(uint16_t index)
 {
@@ -228,7 +233,7 @@ static void I2Cx_IRQHandler(uint16_t index)
 
     if ((HAL_I2C_STATE_BUSY_TX != handle->State) && (HAL_I2C_STATE_BUSY_RX != handle->State))
     {
-        hal_semaphore_give(bus->state); 
+        hal_semaphore_give_from_isr(bus->state); 
         HAL_I2C_StateTypeDef i2c_state = HAL_I2C_GetState(handle);
         if(i2c_state == HAL_I2C_STATE_READY)
             bus->state->transfer_event = I2CTransferEvent_TransferComplete;
@@ -637,7 +642,11 @@ void i2c_hal_start_transfer(I2CBus *bus)
     if(status ==HAL_BUSY)
         return;
     if(status == HAL_OK)
+    {
         bus->state->transfer_event = I2CTransferEvent_TransferComplete;
+        if((bus->hal->i2c_dma_flag != 1) && (bus->hal->i2c_int_flag != 1))
+            hal_semaphore_give(bus->state);
+    }
     else if(status == HAL_TIMEOUT)
         bus->state->transfer_event = I2CTransferEvent_Timeout;
     else
