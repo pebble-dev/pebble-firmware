@@ -45,9 +45,9 @@ void ioexp_init(void) {
     gpio_output_set(&BOARD_CONFIG.ioe_rst, true);
 
     uint8_t rv;
-    bool found = prv_read_register(0x23, &rv);
+    bool found = prv_read_register(0x10, &rv);
     if (found) {
-        PBL_LOG(LOG_LEVEL_DEBUG, "Found AW9527 with STATUS register %02x", rv);
+        PBL_LOG(LOG_LEVEL_DEBUG, "Found AW9527 with STATUS register ID:%02x", rv);
     } else {
         PBL_LOG(LOG_LEVEL_ERROR, "Failed to read the STATUS register");
     }

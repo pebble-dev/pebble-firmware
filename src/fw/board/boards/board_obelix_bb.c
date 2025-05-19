@@ -79,11 +79,11 @@ I2CBus I2C1_BUS = {
     .state = &I2C1_BUS_STATE,
     .scl_gpio = 
     {
-        .gpio_pin = 29,
+        .gpio_pin = 11,
     },
     .sda_gpio = 
     {
-        .gpio_pin = 28,
+        .gpio_pin = 10,
     },
     .name = "i2c1",
 }; 
@@ -95,11 +95,11 @@ I2CBus I2C2_BUS = {
     .state = &I2C2_BUS_STATE,
     .scl_gpio = 
     {
-        .gpio_pin = 21,
+        .gpio_pin = 29,
     },
     .sda_gpio = 
     {
-        .gpio_pin = 20,
+        .gpio_pin = 28,
     },
     .name = "i2c2",
 }; 
@@ -111,11 +111,11 @@ I2CBus I2C3_BUS = {
     .state = &I2C2_BUS_STATE,
     .scl_gpio = 
     {
-        .gpio_pin = 33,
+        .gpio_pin = 21,
     },
     .sda_gpio = 
     {
-        .gpio_pin = 32,
+        .gpio_pin = 20,
     },
     .name = "i2c3",
 }; 
@@ -406,7 +406,7 @@ void board_init(void) {
     
     PBL_LOG(LOG_LEVEL_DEBUG, "enr1:0x%08lx", *(uint32_t *)&hwp_hpsys_rcc->ENR1);
     PBL_LOG(LOG_LEVEL_DEBUG, "enr2:0x%08lx", *(uint32_t *)&hwp_hpsys_rcc->ENR2);
-    //ioexp_init();
+    ioexp_init();
     //vibe_init();
     //PBL_LOG(LOG_LEVEL_DEBUG, "enr1:0x%08lx", *(uint32_t *)&hwp_hpsys_rcc->ENR1);
     //PBL_LOG(LOG_LEVEL_DEBUG, "enr2:0x%08lx", *(uint32_t *)&hwp_hpsys_rcc->ENR2);

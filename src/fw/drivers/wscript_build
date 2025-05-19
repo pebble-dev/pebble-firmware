@@ -201,21 +201,6 @@ elif bld.is_asterix():
             'driver_voltage_monitor',
         ],
     ) 
-
-elif bld.is_obelix():
-    bld(
-        name='drivers',
-        use=[
-            'driver_uart',
-            'driver_sf32lb',
-            'driver_vibe',
-            'driver_mpu',
-            'driver_flash',
-            'driver_gpio_defaults',
-            'driver_imu'
-        ],
-    )    
-
 elif bld.is_obelix_bb():
     bld(
         name='drivers',
@@ -231,6 +216,20 @@ elif bld.is_obelix_bb():
             'driver_touch',
         ],
     ) 
+elif bld.is_obelix():
+    bld(
+        name='drivers',
+        use=[
+            'driver_uart',
+            'driver_sf32lb',
+            'driver_vibe',
+            'driver_mpu',
+            'driver_flash',
+            'driver_gpio_defaults',
+            'driver_imu'
+        ],
+    )    
+
 
 if bld.env.BOARD == "obelix_bb":
     bld.objects(
@@ -950,6 +949,18 @@ elif bld.is_asterix():
             'root_includes',
         ],
     )
+elif bld.is_obelix_bb():
+    bld.objects(
+        name='driver_imu',
+        source=[
+            'imu/imu_obelix_bb.c',
+			'imu/mmc5603/mmc5603.c',
+        ],
+        use=[
+            'fw_includes',
+            'root_includes',
+        ],
+    )
 elif bld.is_obelix():
     bld.objects(
         name='driver_imu',
@@ -962,19 +973,7 @@ elif bld.is_obelix():
             'root_includes',
         ],
     )
-elif bld.is_obelix_bb():
-    bld.objects(
-        name='driver_imu',
-        source=[
-            'imu/imu_obelix_bb.c',
-			'imu/mmc5603/mmc5603.c',
-        ],
-        use=[
-            'driver_mmc5603',
-            'fw_includes',
-            'root_includes',
-        ],
-    )
+
 
 
 

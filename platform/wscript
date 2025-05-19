@@ -49,7 +49,7 @@ def is_obelix(ctx):
 
 @conf
 def is_obelix_bb(ctx):
-    return ctx.get_board() in ('obelix_bb')    
+    return ctx.get_board() == ('obelix_bb')
 
 @conf
 def get_platform_name(ctx):
