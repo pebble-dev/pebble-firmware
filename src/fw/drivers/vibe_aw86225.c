@@ -22,16 +22,19 @@ static bool prv_write_register(uint8_t register_address, uint8_t datum) {
 }
 
 void vibe_init(void) {
-  ioexp_pin_set(IOE_VIBE_RST, IOEXP_HIGH);
+  //ioexp_pin_set(IOE_VIBE_RST, IOEXP_HIGH);
+  gpio_output_init(&BOARD_CONFIG.vibe_rst, GPIO_OType_PP, GPIO_Speed_2MHz);
+  gpio_output_set(&BOARD_CONFIG.vibe_rst, true);
   uint8_t rv;
   bool found = prv_read_register(0x64, &rv);
   if (found) {
-    PBL_LOG(LOG_LEVEL_DEBUG, "Found AW86225 with ID register %02x", rv);
+    PBL_LOG(LOG_LEVEL_DEBUG, "Found AW86225 with ID register ID:%02x", rv);
   } else {
     PBL_LOG(LOG_LEVEL_ERROR, "Failed to read the AW86225 ID register");
   }
 
-  ioexp_pin_set(IOE_VIBE_RST, IOEXP_LOW);
+  //ioexp_pin_set(IOE_VIBE_RST, IOEXP_LOW);
+  gpio_output_set(&BOARD_CONFIG.vibe_rst, false);
 }
 
 void vibe_set_strength(int8_t strength) {

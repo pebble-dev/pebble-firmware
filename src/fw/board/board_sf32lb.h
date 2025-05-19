@@ -213,6 +213,9 @@ typedef struct {
   // IO expander rst ctrl
   const OutputConfig ioe_rst;
 
+  // Vibe rst ctrl pin
+  const OutputConfig vibe_rst;
+
   // Ambient Light Configuration
   /////////////////////////////////////////////////////////////////////////////
   const uint32_t ambient_light_dark_threshold;
