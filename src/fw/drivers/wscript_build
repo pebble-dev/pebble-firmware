@@ -214,6 +214,7 @@ elif bld.is_obelix_bb():
             'driver_motor',
             'driver_imu',
             'driver_touch',
+            'driver_battery'
         ],
     ) 
 elif bld.is_obelix():
@@ -227,6 +228,7 @@ elif bld.is_obelix():
             'driver_flash',
             'driver_gpio_defaults',
             'driver_imu'
+            'driver_battery'
         ],
     )    
 
@@ -413,6 +415,29 @@ elif bld.is_asterix():
         source=[
             'battery/battery_common.c',
             'nrf5/stubs/battery.c',
+        ],
+        use=[
+            'fw_includes',
+            'root_includes',
+        ],
+    )
+elif bld.is_obelix_bb():
+    bld.objects(
+        name='driver_battery',
+        source=[
+            'battery/battery_obelix.c',
+            'battery/charger_eta4662.c',
+        ],
+        use=[
+            'fw_includes',
+            'root_includes',
+        ],
+    )
+elif bld.is_obelix():
+    bld.objects(
+        name='driver_battery',
+        source=[
+            'sf32lb/stubs/battery.c',
         ],
         use=[
             'fw_includes',
@@ -1644,7 +1669,7 @@ if mcu_family == 'SF32LB':
             'flash/cd_flash_driver.c',
             'battery/battery_common.c',
             # 'display/jdi/jdi.c',
-            'sf32lb/stubs/battery.c',
+            #'sf32lb/stubs/battery.c',
             'i2c.c',
             'sf32lb/i2c_hal.c',
             'sf32lb/pwm.c',
