@@ -204,6 +204,11 @@ static void prv_update_status_bar_color(SwapLayer *swap_layer) {
     color_status_bar = WITHIN(cur_frame->origin.y, -96, 66) || swap_layer->swap_in_progress;
 #endif
     bg_color = layout_get_colors(swap_layer->current)->bg_color;
+
+#if PBL_BW
+    // On a black and white display we want to set the status bar to black
+    bg_color = GColorBlack;
+#endif
   }
 
   prv_update_colors(swap_layer, bg_color, color_status_bar);
