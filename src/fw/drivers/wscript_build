@@ -1662,7 +1662,8 @@ if mcu_family == 'SF32LB':
         name='driver_sf32lb',
         source=[
             'sf32lb/stubs/rtc.c',
-            'sf32lb/stubs/rng.c',
+            #'sf32lb/stubs/rng.c',
+            'sf32lb/rng.c',
             'flash/flash_api.c',
             'flash/flash_crc.c',
             'flash/flash_erase.c',
