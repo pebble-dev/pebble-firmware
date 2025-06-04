@@ -84,7 +84,7 @@ static uint8_t s_ticks_since_successful_feed = 0;
 #define WATCHDOG_FREERTOS_IRQHandler  EGU5_SWI5_IRQHandler
 #elif MICRO_FAMILY_SF32LB
 #define WATCHDOG_FREERTOS_IRQn        2
-#define WATCHDOG_FREERTOS_IRQHandler  NMI_Handler2 
+#define WATCHDOG_FREERTOS_IRQHandler  NMI_Handler2
 #else
 #define WATCHDOG_FREERTOS_IRQn        CAN2_SCE_IRQn
 #define WATCHDOG_FREERTOS_IRQHandler  CAN2_SCE_IRQHandler
@@ -291,6 +291,11 @@ void task_watchdog_init(void) {
 
   nrf_rtc_task_trigger(NRF_RTC2, NRF_RTC_TASK_START);
 #elif MICRO_FAMILY_SF32LB
+
+  //watchdog_init();
+  //watchdog_start();
+
+
 #else
   // The timer is on ABP1 which is clocked by PCLK1
   RCC_ClocksTypeDef clocks;
@@ -341,6 +346,8 @@ void task_watchdog_init(void) {
 #if MICRO_FAMILY_NRF5
   NVIC_SetPriority(WATCHDOG_FREERTOS_IRQn, configMAX_SYSCALL_INTERRUPT_PRIORITY);
 #elif MICRO_FAMILY_SF32LB
+  HAL_NVIC_SetPriority(WATCHDOG_FREERTOS_IRQn, 5, 0);
+
 #else
   NVIC_InitStructure.NVIC_IRQChannel = WATCHDOG_FREERTOS_IRQn;
   NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = configMAX_SYSCALL_INTERRUPT_PRIORITY >> 4;
