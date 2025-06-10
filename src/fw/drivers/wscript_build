@@ -425,7 +425,7 @@ elif bld.is_obelix_bb():
     bld.objects(
         name='driver_battery',
         source=[
-            'battery/battery_obelix.c',
+            'battery/battery_obelix_bb.c',
             'battery/charger_eta4662.c',
         ],
         use=[

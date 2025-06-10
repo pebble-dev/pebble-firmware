@@ -73,17 +73,17 @@ static uint8_t cst816x_register_read(uint8_t reg)
 }
 
 static void cst816x_read_point(touch_message_t* p_msg) {
-    uint8_t rbuf[5] = {0};
-    cst816x_data_read(0x02, rbuf, 5);
-
-    uint8_t press = rbuf[0] & 0x0F;
-    if (press == 0x01) {
-        p_msg->event = TOUCH_EVENT_DOWN;
-    } else {
-        p_msg->event = TOUCH_EVENT_UP;
-    }
-    p_msg->point.x = (((uint16_t)(rbuf[1] & 0x0F)) << 8) | rbuf[2];
-    p_msg->point.y = (((uint16_t)(rbuf[3] & 0X0F)) << 8) | rbuf[4];
+  uint8_t rbuf[5] = {0};
+  cst816x_data_read(0x02, rbuf, 5);
+  
+  uint8_t press = rbuf[0] & 0x0F;
+  if (press == 0x01) {
+    p_msg->event = TOUCH_EVENT_DOWN;
+  } else {
+    p_msg->event = TOUCH_EVENT_UP;
+  }
+  p_msg->point.x = (((uint16_t)(rbuf[1] & 0x0F)) << 8) | rbuf[2];
+  p_msg->point.y = (((uint16_t)(rbuf[3] & 0X0F)) << 8) | rbuf[4];
 }
 
 

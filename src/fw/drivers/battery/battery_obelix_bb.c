@@ -13,29 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 #include "drivers/battery.h"
-
 #include "drivers/exti.h"
 #include "drivers/gpio.h"
 #include "board/board.h"
 #include "drivers/otp.h"
 #include "drivers/periph_config.h"
 #include "system/logging.h"
-
 #include <mcu.h>
 
 #include <stdlib.h>
 #include <string.h>
-
 #include "charger_eta4662.h"
-
-
 
 void battery_init(void) {
   chager_init();
 }
-
 
 int battery_get_millivolts(void) {
   //ADCVoltageMonitorReading info = battery_read_voltage_monitor();
@@ -51,4 +44,30 @@ int battery_get_millivolts(void) {
 
   return 3600;//battery_convert_reading_to_millivolts(info, 3599, 1373);
 }
+
+bool battery_charge_controller_thinks_we_are_charging_impl(void) {
+  return false;//pmic_is_charging();
+}
+
+bool battery_is_usb_connected_impl(void) {
+  return false;//pmic_is_usb_connected();
+}
+
+void battery_set_charge_enable(bool charging_enabled) {
+  //pmic_set_charger_state(charging_enabled);
+}
+
+// TODO
+// This is my understanding from Figure 9 of the datasheet:
+// Charger off -> Pre charge -> Fast Charge (constant current) ->
+// Fast Charge (constant voltage) -> Maintain Charge -> Maintain Charge Done
+//
+// The Pre Charge and Charge Termination currents are programmed via I2C
+// The Fast Charge current is determined by Rset
+//
+// There doesn't seem to be a way to change the current in constant current mode
+void battery_set_fast_charge(bool fast_charge_enabled) {
+
+}
+
 

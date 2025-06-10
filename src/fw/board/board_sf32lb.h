@@ -305,6 +305,9 @@ typedef struct {
 
   //! Approximate hours of battery life
   const uint8_t battery_capacity_hours;
+
+  const InputConfig charger_int_gpio;
+  const ExtiConfig charger_exti;
 } BoardConfigPower;
 
 typedef struct {
