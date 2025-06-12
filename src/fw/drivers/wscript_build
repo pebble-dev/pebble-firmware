@@ -214,7 +214,8 @@ elif bld.is_obelix_bb():
             'driver_motor',
             'driver_imu',
             'driver_touch',
-            'driver_battery'
+            'driver_battery',
+			'driver_als'
         ],
     ) 
 elif bld.is_obelix():
@@ -228,7 +229,8 @@ elif bld.is_obelix():
             'driver_flash',
             'driver_gpio_defaults',
             'driver_imu',
-            'driver_battery'
+            'driver_battery',
+			'driver_als'
         ],
     )    
 
@@ -270,6 +272,28 @@ if bld.env.BOARD == "obelix_bb":
 		],
     )
 
+if bld.env.BOARD == "obelix_bb":
+    bld.objects(
+        name='driver_als',
+        source=[
+            'als/als_w1160.c',
+        ],
+        use=[
+            'driver_sf32lb',
+            'driver_gpio',
+        ],
+    ) 
+else:
+    bld.objects(
+        name='driver_als',
+        source=[
+            'als/als_null.c',
+        ],
+        use=[
+            'driver_sf32lb',
+            'driver_gpio',
+        ],
+    ) 
 
 ## ----------
 
