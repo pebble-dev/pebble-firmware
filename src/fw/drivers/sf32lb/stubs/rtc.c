@@ -8,6 +8,8 @@
 
 #include "bf0_hal_rtc.h"
 
+#include "rtconfig.h"
+
 // The RTC clock, CLK_RTC, can be configured to use the LXT32 (32.768 kHz) or
 // LRC10 (9.8 kHz). The prescaler values need to be set such that the CLK1S
 // event runs at 1 Hz. The formula that relates prescaler values with the
@@ -29,14 +31,86 @@ static RTC_HandleTypeDef RTC_Handler = {
         },
 };
 
+uint32_t rtc_get_lpcycle()
+{
+    uint32_t value;
+#ifdef  BF0_HCPU
+    value = HAL_Get_backup(RTC_BACKUP_LPCYCLE_AVE);
+    if (value == 0)
+        value = 1200000;
+    value += BSP_RTC_PPM;   // Calibrate in initial with 8 cycle
+    HAL_Set_backup(RTC_BACKUP_LPCYCLE, (uint32_t)value);
+#else
+    value = HAL_Get_backup(RTC_BACKUP_LPCYCLE);
+#endif
+    return value;
+}
+
+static uint32_t soft_rc10_backup = 0;
+static uint16_t rc10_freq_khz;
+
+void drv_set_soft_rc10_backup(uint32_t backup)
+{
+    soft_rc10_backup = backup;
+    /* RC10K freq_khz = 48000 * LXT_LP_CYCLE / v; */
+    rc10_freq_khz = (uint16_t)(48000UL * LXT_LP_CYCLE / backup);
+}
+
+void rtc_rc10_calculate_div(RTC_HandleTypeDef *hdl, uint32_t value)
+{
+    hdl->Init.DivB = RC10K_SUB_SEC_DIVB;
+
+    // 1 seconds has total 1/(x/(48*8))/256=1.5M/x cycles, times 2^14 for DIVA
+    uint32_t divider = RTC_Handler.Init.DivB * value;
+    value = ((uint64_t)48000000 * LXT_LP_CYCLE * (1 << 14) + (divider >> 1)) / divider;
+    hdl->Init.DivAInt = (uint32_t)(value >> 14);
+    hdl->Init.DivAFrac = (uint32_t)(value & ((1 << 14) - 1));
+}
+
 void rtc_init(void) {
-  HAL_StatusTypeDef ret;
+  // periph_config_acquire_lock();
+  // rtc_enable_backup_regs();
 
-  ret = HAL_PMU_LXTReady();
-  PBL_ASSERTN(ret == HAL_OK);
+#ifndef LXT_DISABLE
+#ifdef SF32LB52X
+  HAL_PMU_EnableXTAL32();
+  if (HAL_PMU_LXTReady() != HAL_OK)
+#else
+  if (HAL_RTC_LXT_ENABLED() && HAL_PMU_LXTReady() != HAL_OK)
+#endif
+  {
+    PBL_LOG(LOG_LEVEL_ALWAYS, "RTC init fail");
+    WTF;
+  }
+  HAL_RTC_ENABLE_LXT();
+#endif
 
-  ret = HAL_RTC_Init(&RTC_Handler, RTC_INIT_NORMAL);
-  PBL_ASSERTN(ret == HAL_OK);
+  uint32_t wakesrc = RTC_INIT_NORMAL;
+
+#ifdef LXT_DISABLE
+  {
+    uint64_t value = 0;
+    value = rtc_get_lpcycle();
+    drv_set_soft_rc10_backup((uint32_t)value);
+    if (value)
+      rtc_rc10_calculate_div(&RTC_Handler, value);
+  }
+#endif
+
+  if (HAL_RTC_Init(&RTC_Handler, wakesrc) != HAL_OK)
+  {
+    WTF;
+  }
+
+  // periph_config_release_lock();
+
+  // restore_rtc_time_state();
+  // initialize_fast_mode_state();
+
+// #ifdef PBL_LOG_ENABLED
+//   char buffer[TIME_STRING_BUFFER_SIZE];
+//   PBL_LOG(LOG_LEVEL_DEBUG, "Current time is <%s>", rtc_get_time_string(buffer));
+// #endif
 }
 
 void rtc_init_timers(void) {}
