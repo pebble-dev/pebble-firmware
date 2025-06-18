@@ -1720,7 +1720,7 @@ if mcu_family == 'SF32LB':
             #'nrf5/qspi.c',
             'sf32lb/stubs/button.c',
             'sf32lb/stubs/debounced_button.c',
-            'sf32lb/stubs/exti.c',
+            'sf32lb/exti.c',
             'sf32lb/stubs/qspi.c',
             'sf32lb/uart.c',
             #'nrf5/gpio.c',

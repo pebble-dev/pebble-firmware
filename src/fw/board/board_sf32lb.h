@@ -72,11 +72,8 @@ enum {
   IRQ_MAP(DMA##cnum##_Stream##snum, dma_stream_irq_handler, &DMA##cnum##_STREAM##snum##_DEVICE)
 
 typedef struct {
-  //! One of EXTI_PortSourceGPIOX
-  uint8_t exti_port_source;
-
-  //! Value between 0-15
-  uint8_t exti_line;
+  GPIO_TypeDef* const peripheral; ///< One of GPIOX. For example, GPIOA.
+  const uint32_t gpio_pin; ///< One of GPIO_Pin_X.
 } ExtiConfig;
 
 typedef enum {
