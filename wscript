@@ -121,7 +121,7 @@ def options(opt):
                    help='Disable PBL_LOG macros to save space')
     opt.add_option('--nohash', action='store_true',
                    help='Disable log hashing and make the logs human readable')
-    opt.add_option('--log-level', default='info', choices=['error', 'warn', 'info', 'debug', 'debug_verbose'],
+    opt.add_option('--log-level', default='debug', choices=['error', 'warn', 'info', 'debug', 'debug_verbose'],
 		   help='Default global log level')
 
     opt.add_option('--lang',
@@ -333,7 +333,7 @@ def handle_configure_options(conf):
         conf.env.append_value('DEFINES', 'BOOTLOADER_TEST_STAGE1=0')
         conf.env.append_value('DEFINES', 'BOOTLOADER_TEST_STAGE2=0')
 
-    if not conf.options.mfg and not conf.options.no_pulse_everywhere:
+    if not conf.options.no_pulse_everywhere:
         conf.env.append_value('DEFINES', 'PULSE_EVERYWHERE=1')
 
 def _create_cm0_env(conf):
@@ -989,31 +989,6 @@ def bundle(ctx):
     else:
         _make_bundle(ctx, ctx.get_tintin_fw_node().path_from(ctx.path),
                      resource_path=ctx.get_pbpack_node().path_from(ctx.path))
-        _generate_release_notes(ctx)
-
-
-def _generate_release_notes(ctx):
-    def _write_tag_to_release_notes(task):
-        output = task.outputs[0].abspath()
-        tag = task.generator.version_tag
-        with open(output, 'w') as f:
-            f.write(tag)
-        task.dep_vars = tag
-
-    git_revision = waftools.gitinfo.get_git_revision(ctx)
-    version = "{}.{}".format(git_revision['MAJOR_VERSION'], git_revision['MINOR_VERSION'])
-    version_hotfix = "{}.{}".format(version, git_revision['PATCH_VERSION'])
-    summary_node = ctx.path.find_node('release-notes').find_node('summary-{}.txt'.format(version_hotfix))
-    if summary_node is None:
-        summary_node = ctx.path.find_node('release-notes').find_node('summary-{}.txt'.format(version))
-    if summary_node is not None:
-        ctx(rule='cp ${SRC} ${TGT}',
-            source=summary_node,
-            target=ctx.path.get_bld().make_node('release-notes.txt'))
-    else:
-        ctx(rule=_write_tag_to_release_notes,
-            version_tag=git_revision['TAG'],
-            target=ctx.path.get_bld().make_node('release-notes.txt'))
 
 
 class bundle_prf(BuildContext):
@@ -1601,8 +1576,11 @@ def _check_firmware_image_size(ctx, path):
             # 2048k of flash and 32k bootloader
             max_firmware_size = (2048 - 32) * BYTES_PER_K
     elif ctx.env.MICRO_FAMILY == 'NRF52840':
-        # 1024k of flash and 32k bootloader
-        max_firmware_size = (1024 - 32) * BYTES_PER_K
+        if ctx.variant == 'prf' and not ctx.env.IS_MFG:
+            max_firmware_size = 512 * BYTES_PER_K
+        else:
+            # 1024k of flash and 32k bootloader
+            max_firmware_size = (1024 - 32) * BYTES_PER_K
     else:
         ctx.fatal('Cannot check firmware size against unknown micro family "{}"'
                   .format(ctx.env.MICRO_FAMILY))

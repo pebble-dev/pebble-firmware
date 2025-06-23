@@ -20,13 +20,16 @@
 #include "applib/ui/window_private.h"
 #include "apps/prf_apps/mfg_accel_app.h"
 #include "apps/prf_apps/mfg_als_app.h"
+#include "apps/prf_apps/mfg_bt_device_name_app.h"
 #include "apps/prf_apps/mfg_bt_sig_rf_app.h"
 #include "apps/prf_apps/mfg_btle_app.h"
 #include "apps/prf_apps/mfg_button_app.h"
 #include "apps/prf_apps/mfg_certification_app.h"
 #include "apps/prf_apps/mfg_display_app.h"
 #include "apps/prf_apps/mfg_hrm_app.h"
+#include "apps/prf_apps/mfg_program_color_app.h"
 #include "apps/prf_apps/mfg_runin_app.h"
+#include "apps/prf_apps/mfg_speaker_app.h"
 #include "apps/prf_apps/mfg_vibe_app.h"
 #include "kernel/event_loop.h"
 #include "kernel/pbl_malloc.h"
@@ -38,6 +41,7 @@
 #include "resource/resource_ids.auto.h"
 #include "services/common/bluetooth/local_id.h"
 #include "services/common/bluetooth/pairability.h"
+#include "system/bootbits.h"
 #include "system/reset.h"
 #include "util/size.h"
 
@@ -64,6 +68,10 @@ static GBitmap *s_menu_icons[2];
 //! Callback to run from the kernel main task
 static void prv_launch_app_cb(void *data) {
   app_manager_launch_new_app(&(AppLaunchConfig) { .md = data });
+}
+
+static void prv_select_bt_device_name(int index, void *context) {
+  launcher_task_add_callback(prv_launch_app_cb, (void*) mfg_bt_device_name_app_get_info());
 }
 
 #if PBL_ROUND
@@ -96,6 +104,12 @@ static void prv_select_als(int index, void *context) {
   launcher_task_add_callback(prv_launch_app_cb, (void*) mfg_als_app_get_info());
 }
 
+#if PLATFORM_ASTERIX && defined(MANUFACTURING_FW)
+static void prv_select_speaker(int index, void *context) {
+  launcher_task_add_callback(prv_launch_app_cb, (void*) mfg_speaker_app_get_info());
+}
+#endif
+
 #if !PLATFORM_SILK && !PLATFORM_ASTERIX
 static void prv_select_bt_sig_rf(int index, void *context) {
   launcher_task_add_callback(prv_launch_app_cb, (void*) mfg_bt_sig_rf_app_get_info());
@@ -117,6 +131,15 @@ static void prv_select_btle(int index, void *context) {
   launcher_task_add_callback(prv_launch_app_cb, (void*) mfg_btle_app_get_info());
 }
 #endif
+
+static void prv_select_program_color(int index, void *context) {
+  launcher_task_add_callback(prv_launch_app_cb, (void*) mfg_program_color_app_get_info());
+}
+
+static void prv_select_load_prf(int index, void *context) {
+  boot_bit_set(BOOT_BIT_FORCE_PRF);
+  system_reset();
+}
 
 static void prv_select_reset(int index, void *context) {
   system_reset();
@@ -168,7 +191,7 @@ static size_t prv_create_menu_items(SimpleMenuItem** out_menu_items) {
 
   // Define a const blueprint on the stack.
   const SimpleMenuItem s_menu_items[] = {
-    { .title = "BT Device Name" },
+    { .title = "BT Device Name",    .callback = prv_select_bt_device_name },
     { .title = "Device Serial" },
 #if PBL_ROUND
     { .title = "Calibrate Display", .callback = prv_select_calibrate_display },
@@ -192,7 +215,12 @@ static size_t prv_create_menu_items(SimpleMenuItem** out_menu_items) {
 #if BT_CONTROLLER_DA14681
     { .title = "Test BTLE",         .callback = prv_select_btle },
 #endif
+#if PLATFORM_ASTERIX && defined(MANUFACTURING_FW)
+    { .title = "Test Speaker",          .callback = prv_select_speaker },
+#endif
     { .title = "Certification",     .callback = prv_select_certification },
+    { .title = "Program Color",     .callback = prv_select_program_color },
+    { .title = "Load PRF",          .callback = prv_select_load_prf },
     { .title = "Reset",             .callback = prv_select_reset },
     { .title = "Shutdown",          .callback = prv_select_shutdown }
   };

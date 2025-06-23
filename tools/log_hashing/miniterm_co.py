@@ -15,7 +15,7 @@
 # Stuff we're patching or calling into directly
 from serial.tools.miniterm import main
 from serial import Serial
-from serial.urlhandler.protocol_socket import SocketSerial
+from serial.urlhandler.protocol_socket import Serial as SocketSerial
 from serial.serialutil import SerialException
 
 # Stuff we need
@@ -92,7 +92,7 @@ def socket_serial_read(self, size=1):
             # just need to get out of recv from time to time to check if
             # still alive
             continue
-        except socket.error, e:
+        except socket.error as e:
             # connection fails -> terminate loop
             raise SerialException('connection failed (%s)' % e)
     return bytes(data)

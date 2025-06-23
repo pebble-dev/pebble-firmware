@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#include <stdio.h>
+
 #include <bluetooth/bonding_sync.h>
 #include <bluetooth/bt_driver_advert.h>
 #include <bluetooth/gatt.h>
@@ -29,6 +31,7 @@
 
 static const ble_uuid16_t s_device_name_chr_uuid = BLE_UUID16_INIT(0x2A00);
 static char s_device_name[BT_DEVICE_NAME_BUFFER_SIZE];
+static bool s_pairing_in_progress;
 
 static int prv_device_name_read_event_cb(uint16_t conn_handle, const struct ble_gatt_error *error,
                                          struct ble_gatt_attr *attr, void *arg) {
@@ -80,6 +83,7 @@ static void prv_handle_connection_event(struct ble_gap_event *event) {
       .handle = event->connect.conn_handle,
       .is_master = desc.role == BLE_GAP_ROLE_MASTER,
       .status = HciStatusCode_Success,
+      .mtu = ble_att_mtu(event->connect.conn_handle),
   };
 
   // If OTA address != ID address, then the address must be resolved.
@@ -113,6 +117,9 @@ static void prv_handle_connection_event(struct ble_gap_event *event) {
 
   nimble_conn_params_to_pebble(&desc, &complete_event.conn_params);
   nimble_addr_to_pebble_device(&desc.peer_id_addr, &complete_event.peer_address);
+
+  s_pairing_in_progress = false;
+
   bt_driver_handle_le_connection_complete_event(&complete_event);
 }
 
@@ -183,12 +190,18 @@ static void prv_handle_passkey_event(struct ble_gap_event *event) {
 
   snprintf(passkey_str, sizeof(passkey_str), "%06lu", passkey);
   bt_driver_cb_pairing_confirm_handle_request(ctx, device_name, passkey_str);
+  s_pairing_in_progress = true;
 }
 
 static void prv_handle_pairing_complete_event(struct ble_gap_event *event) {
+  if (!s_pairing_in_progress) {
+    return;
+  }
+
   PairingUserConfirmationCtx *ctx =
       (PairingUserConfirmationCtx *)((uintptr_t)event->pairing_complete.conn_handle);
   bt_driver_cb_pairing_confirm_handle_completed(ctx, event->pairing_complete.status == 0);
+  s_pairing_in_progress = false;
 }
 
 static void prv_handle_identity_resolved_event(struct ble_gap_event *event) {
@@ -257,6 +270,14 @@ static void prv_handle_notification_rx_event(struct ble_gap_event *event) {
   }
 }
 
+static void prv_handle_notification_tx_event(struct ble_gap_event *event) {
+  PBL_LOG_D(LOG_DOMAIN_BT, LOG_LEVEL_DEBUG,
+            "notification tx event; status=%d attr_handle=%d indication=%d\n",
+            event->notify_tx.status,
+            event->notify_tx.attr_handle,
+            event->notify_tx.indication);
+}
+
 #ifdef RECOVERY_FW
 // TODO (GH-205): Implement UI to prompt user to accept/reject a repeat pairing request.
 // For now, allow this action while in recovery mode as there is no UI there
@@ -318,6 +339,10 @@ static int prv_handle_gap_event(struct ble_gap_event *event, void *arg) {
       // no log here because it's incredibly noisy
       prv_handle_notification_rx_event(event);
       break;
+    case BLE_GAP_EVENT_NOTIFY_TX:
+      PBL_LOG_D(LOG_DOMAIN_BT, LOG_LEVEL_DEBUG, "BLE_GAP_EVENT_NOTIFY_TX");
+      prv_handle_notification_tx_event(event);
+      break;
 #ifdef RECOVERY_FW
     case BLE_GAP_EVENT_REPEAT_PAIRING:
       PBL_LOG_D(LOG_DOMAIN_BT, LOG_LEVEL_DEBUG, "BLE_GAP_EVENT_REPEAT_PAIRING");
@@ -337,8 +362,8 @@ bool bt_driver_advert_advertising_enable(uint32_t min_interval_ms, uint32_t max_
   struct ble_gap_adv_params advp = {
       .conn_mode = BLE_GAP_CONN_MODE_UND,
       .disc_mode = BLE_GAP_DISC_MODE_GEN,
-      .itvl_min = BLE_GAP_CONN_ITVL_MS(min_interval_ms),
-      .itvl_max = BLE_GAP_CONN_ITVL_MS(max_interval_ms),
+      .itvl_min = BLE_GAP_ADV_ITVL_MS(min_interval_ms),
+      .itvl_max = BLE_GAP_ADV_ITVL_MS(max_interval_ms),
   };
 
   rc = ble_hs_id_infer_auto(0, &own_addr_type);

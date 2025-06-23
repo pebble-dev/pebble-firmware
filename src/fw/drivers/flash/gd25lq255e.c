@@ -6,9 +6,19 @@
 #include "system/passert.h"
 #include "system/status_codes.h"
 #include "util/math.h"
+#include "util/size.h"
 
 #define NRF5_COMPATIBLE
 #include <mcu.h>
+
+static bool s_protected;
+static FlashAddress s_protected_start;
+static FlashAddress s_protected_end;
+
+static const uint32_t prv_sec_regs[] = {
+  0x00002000,
+  0x00003000,
+};
 
 static QSPIFlashPart QSPI_FLASH_PART = {
     .instructions =
@@ -36,6 +46,9 @@ static QSPIFlashPart QSPI_FLASH_PART = {
             .reset = 0x99,
             .qspi_id = 0x9F, /* single SPI ID */
             .en4b = 0xB7,
+            .erase_sec = 0x44,
+            .program_sec = 0x42,
+            .read_sec = 0x48,
         },
     .status_bit_masks =
         {
@@ -44,12 +57,18 @@ static QSPIFlashPart QSPI_FLASH_PART = {
         },
     .flag_status_bit_masks =
         {
+            .sec_lock = (1 << 5) | (1 << 4), /* SR2, page 12 */
             .erase_suspend = 1 << 7, /* SR2 SUS1, page 14 */
         },
     .dummy_cycles =
         {
             .fast_read = 4,
         },
+    .sec_registers = {
+        .sec_regs = prv_sec_regs,
+        .num_sec_regs = ARRAY_LENGTH(prv_sec_regs),
+        .sec_reg_size = 1024,
+    },
     .supports_block_lock = false,
     .reset_latency_ms = 12,
     .suspend_to_read_latency_us = 20,
@@ -61,6 +80,18 @@ static QSPIFlashPart QSPI_FLASH_PART = {
     .size = 0x2000000, /* 32MB */
     .name = "GD25LQ255E",
 };
+
+static status_t prv_flash_check_protected(FlashAddress addr) {
+  if (!s_protected) {
+    return S_SUCCESS;
+  }
+
+  if (addr < s_protected_start || addr > s_protected_end) {
+    return S_SUCCESS;
+  }
+
+  return E_INVALID_OPERATION;
+}
 
 bool flash_check_whoami(void) { return qspi_flash_check_whoami(QSPI_FLASH); }
 
@@ -75,34 +106,24 @@ FlashAddress flash_impl_get_subsector_base_address(FlashAddress addr) {
 void flash_impl_enable_write_protection(void) {}
 
 status_t flash_impl_write_protect(FlashAddress start_sector, FlashAddress end_sector) {
-#if 0
-  FlashAddress block_addr = start_sector;
-  while (block_addr <= end_sector) {
-    uint32_t block_size;
-    if (WITHIN(block_addr, SECTOR_SIZE_BYTES, BOARD_NOR_FLASH_SIZE - SECTOR_SIZE_BYTES - 1)) {
-      // Middle of flash has 64k lock units
-      block_addr = flash_impl_get_sector_base_address(block_addr);
-      block_size = SECTOR_SIZE_BYTES;
-    } else {
-      // Start and end of flash have 1 sector of 4k lock units
-      block_addr = flash_impl_get_subsector_base_address(block_addr);
-      block_size = SUBSECTOR_SIZE_BYTES;
-    }
-    const status_t sc = qspi_flash_lock_sector(QSPI_FLASH, block_addr);
-    if (FAILED(sc)) {
-      return sc;
-    }
-    block_addr += block_size;
+  if (s_protected) {
+    return E_ERROR;
   }
-#endif
+
+  s_protected_start = start_sector;
+  s_protected_end = end_sector;
+  s_protected = true;
+
   return S_SUCCESS;
 }
 
 status_t flash_impl_unprotect(void) {
-  // No way to unprotect all of flash. This requires a full reset of the mt25q
-#if 0
-  qspi_flash_init(QSPI_FLASH, &QSPI_FLASH_PART, qspi_flash_is_in_coredump_mode(QSPI_FLASH));
-#endif
+  if (!s_protected) {
+    return E_ERROR;
+  }
+
+  s_protected = false;
+
   return S_SUCCESS;
 }
 
@@ -114,9 +135,23 @@ status_t flash_impl_init(bool coredump_mode) {
 status_t flash_impl_get_erase_status(void) { return qspi_flash_is_erase_complete(QSPI_FLASH); }
 
 status_t flash_impl_erase_subsector_begin(FlashAddress subsector_addr) {
+  status_t status;
+
+  status = prv_flash_check_protected(subsector_addr);
+  if (FAILED(status)) {
+    return status;
+  }
+
   return qspi_flash_erase_begin(QSPI_FLASH, subsector_addr, true /* is_subsector */);
 }
 status_t flash_impl_erase_sector_begin(FlashAddress sector_addr) {
+  status_t status;
+
+  status = prv_flash_check_protected(sector_addr);
+  if (FAILED(status)) {
+    return status;
+  }
+
   return qspi_flash_erase_begin(QSPI_FLASH, sector_addr, false /* !is_subsector */);
 }
 
@@ -136,6 +171,13 @@ status_t flash_impl_read_sync(void *buffer_ptr, FlashAddress start_addr, size_t 
 }
 
 int flash_impl_write_page_begin(const void *buffer, const FlashAddress start_addr, size_t len) {
+  status_t status;
+
+  status = prv_flash_check_protected(start_addr);
+  if (FAILED(status)) {
+    return status;
+  }
+
   return qspi_flash_write_page_begin(QSPI_FLASH, buffer, start_addr, len);
 }
 
@@ -165,3 +207,29 @@ status_t flash_impl_blank_check_subsector(FlashAddress addr) {
 uint32_t flash_impl_get_typical_sector_erase_duration_ms(void) { return 150; }
 
 uint32_t flash_impl_get_typical_subsector_erase_duration_ms(void) { return 50; }
+
+status_t flash_impl_read_security_register(uint32_t addr, uint8_t *val) {
+  return qspi_flash_read_security_register(QSPI_FLASH, addr, val);
+}
+
+status_t flash_impl_security_registers_are_locked(bool *locked) {
+  return qspi_flash_security_registers_are_locked(QSPI_FLASH, locked);
+}
+
+status_t flash_impl_erase_security_register(uint32_t addr) {
+  return qspi_flash_erase_security_register(QSPI_FLASH, addr);
+}
+
+status_t flash_impl_write_security_register(uint32_t addr, uint8_t val) {
+  return qspi_flash_write_security_register(QSPI_FLASH, addr, val);
+}
+
+const FlashSecurityRegisters *flash_impl_security_registers_info(void) {
+  return qspi_flash_security_registers_info(QSPI_FLASH);
+}
+
+#ifdef RECOVERY_FW
+status_t flash_impl_lock_security_registers(void) {
+  return qspi_flash_lock_security_registers(QSPI_FLASH);
+}
+#endif

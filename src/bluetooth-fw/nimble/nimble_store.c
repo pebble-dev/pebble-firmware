@@ -56,7 +56,7 @@ static ListNode **prv_find_sec_list_for_obj_type(const int obj_type) {
     case BLE_STORE_OBJ_TYPE_PEER_SEC:
       return (ListNode **)&s_peer_value_secs;
     default:
-      PBL_ASSERT(0, "Unkmown store object type");
+      PBL_ASSERT(0, "Unknown store object type");
   }
 }
 
@@ -316,6 +316,23 @@ void nimble_store_init(void) {
   ble_hs_cfg.store_write_cb = prv_nimble_store_write;
   ble_hs_cfg.store_delete_cb = prv_nimble_store_delete;
   ble_hs_cfg.store_gen_key_cb = prv_nimble_store_gen_key;
+}
+
+static bool prv_store_value_free(ListNode *node, void *context) {
+  kernel_free(node);
+  return false;
+}
+
+void nimble_store_unload(void) {
+  bt_lock();
+
+  list_foreach((ListNode *)s_peer_value_secs, prv_store_value_free, NULL);
+  list_foreach((ListNode *)s_our_value_secs, prv_store_value_free, NULL);
+
+  s_peer_value_secs = NULL;
+  s_our_value_secs = NULL;
+
+  bt_unlock();
 }
 
 static void prv_convert_bonding_remote_to_store_val(const BleBonding *bonding,

@@ -411,6 +411,7 @@ void bt_driver_handle_le_connection_complete_event(const BleConnectionCompleteEv
                                                           local_is_master);
       // Cache the BLE connection parameters
       connection->conn_params = *params;
+      connection->gatt_mtu = event->mtu;
 
       bool found_match = false;
       GAPLEConnectionIntent *intent = s_intents;
@@ -580,7 +581,7 @@ void bt_driver_handle_le_encryption_change_event(const BleEncryptionChange *even
   if (!is_encrypted) {
     // The "Encryption Change" event can only enable encryption, there's no inverse,
     // so there must be an error:
-    PBL_LOG(LOG_LEVEL_ERROR, "Encryption change failed: %u", event->status);
+    PBL_LOG(LOG_LEVEL_ERROR, "LE encryption change: failed (%u)", event->status);
     goto unlock;
   }
 
@@ -588,7 +589,7 @@ void bt_driver_handle_le_encryption_change_event(const BleEncryptionChange *even
   // gap_le_connection_by_device() will fail.
   GAPLEConnection *connection = gap_le_connection_by_addr(&event->dev_address);
   if (connection->is_encrypted) {
-    PBL_LOG(LOG_LEVEL_INFO, "Encryption refreshed!");
+    PBL_LOG(LOG_LEVEL_INFO, "LE encryption change: refreshed");
     goto unlock;
   }
 
@@ -596,7 +597,7 @@ void bt_driver_handle_le_encryption_change_event(const BleEncryptionChange *even
   connection->is_encrypted = true;
 
   if (!local_is_master) {
-    PBL_LOG(LOG_LEVEL_INFO, "Hurray! LE Security established.");
+    PBL_LOG(LOG_LEVEL_INFO, "LE encryption change: encrypted");
     bluetooth_analytics_handle_encryption_change();
     bt_driver_pebble_pairing_service_handle_status_change(connection);
   }
@@ -620,7 +621,7 @@ static void prv_start_connecting(void) {
     return;
   }
 
-  BLE_GAP_LOG_DEBUG("Starting connecting..");
+  BLE_LOG_DEBUG("Starting connecting..");
   unsigned int stack_id = bt_stack_id();
   // See Bluetooth Spec 4.0, Volume 2, Part E, Chapter 7.8.12:
   const GAP_LE_Address_Type_t local_addr_type = BleAddressType_Random;
@@ -654,7 +655,7 @@ static void prv_stop_connecting(void) {
     return;
   }
   unsigned int stack_id = bt_stack_id();
-  BLE_GAP_LOG_DEBUG("Stopping connecting...");
+  BLE_LOG_DEBUG("Stopping connecting...");
   // See Bluetooth Spec 4.0, Volume 2, Part E, Chapter 7.8.13:
   const int r = GAP_LE_Cancel_Create_Connection(stack_id);
   if (r) {
@@ -672,8 +673,8 @@ static void prv_mutate_whitelist(const BTDeviceInternal *device, bool is_adding)
   PBL_LOG(LOG_LEVEL_WARNING, "BLE whitelist mutation unimplemented");
 #else
   unsigned int stack_id = bt_stack_id();
-  BLE_GAP_LOG_DEBUG("Mutating white-list (adding=%u): " BD_ADDR_FMT,
-                    is_adding, BT_DEVICE_ADDRESS_XPLODE(device->address));
+  BLE_LOG_DEBUG("Mutating white-list (adding=%u): " BD_ADDR_FMT,
+                is_adding, BT_DEVICE_ADDRESS_XPLODE(device->address));
   // See Bluetooth Spec 4.0, Volume 2, Part E, Chapter 7.8.15:
   uint8_t status = 0;
   const uint8_t addr_type = device->is_random_address ? 0x01 : 0x00;
@@ -955,6 +956,7 @@ static BTErrno prv_unregister_intent(GAPLEConnectionIntent *intent,
 
   const BTDeviceInternal *device = &intent->device;
   const bool is_connected_real = gap_le_connection_is_connected(device);
+  const bool is_encrypted = gap_le_connection_is_encrypted(device);
 
   const BTBondingID bonding_id = prv_get_bonding_id_for_intent(intent);
 
@@ -966,8 +968,10 @@ static BTErrno prv_unregister_intent(GAPLEConnectionIntent *intent,
   if (!prv_is_intent_used(intent)) {
     should_remove_and_free = true;
 
-    if (is_connected_real) {
+    if (is_connected_real && is_encrypted) {
       // Disconnect the device because no one is using it
+      // If connection is not encrypted, we are likely undergoing a re-pairing,
+      // so don't disconnect.
       const int result = bt_driver_gap_le_disconnect(device);
       if (result != 0) {
         PBL_LOG(LOG_LEVEL_ERROR, "Ble disconnect failed: %d", result);
@@ -1124,7 +1128,7 @@ BTErrno gap_le_connect_cancel_by_bonding(BTBondingID bonding_id, GAPLEClient cli
 void gap_le_connect_cancel_all(GAPLEClient client) {
   bt_lock();
   {
-    BLE_GAP_LOG_DEBUG("Cancel connecting all for client %u...", client);
+    BLE_LOG_DEBUG("Cancel connecting all for client %u...", client);
 
     GAPLEConnectionIntent *intent = s_intents;
     while (intent) {
