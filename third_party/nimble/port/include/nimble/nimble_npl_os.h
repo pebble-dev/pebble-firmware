@@ -36,6 +36,10 @@
 
 #include "os/os_cputime.h"
 
+#if NRF52_SERIES
+#include "drivers/nrf5/hfxo.h"
+#endif
+
 #define BLE_NPL_OS_ALIGNMENT 4
 
 #define BLE_NPL_TIME_FOREVER portMAX_DELAY
