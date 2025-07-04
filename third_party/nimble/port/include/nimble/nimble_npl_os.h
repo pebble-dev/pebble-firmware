@@ -35,7 +35,6 @@
 #include "timers.h"
 
 #include "os/os_cputime.h"
-#include "os/util.h"
 
 #define BLE_NPL_OS_ALIGNMENT 4
 
