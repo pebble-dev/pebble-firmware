@@ -71,7 +71,7 @@ static bool ble_run_bts(const ResAppNum bts_file) {
 
     if (command->opcode == HCI_VS_UPDATE_UART_HCI_BAUDRATE) {
       PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_INFO, "ble_bts: Setting baud rate to %d", HCI_BAUD_RATE);
-      BTSHCIUpdateBaudRateCommand baud_rate_command = {
+      static BTSHCIUpdateBaudRateCommand baud_rate_command = {
           .opcode = HCI_VS_UPDATE_UART_HCI_BAUDRATE,
           .size = sizeof(uint32_t),
           .type = HCI_H4_CMD,
