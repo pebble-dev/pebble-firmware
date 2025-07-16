@@ -118,7 +118,9 @@ void enter_stop_mode(void) {
 
   // Configure the processor core to enter deepsleep mode when we
   // execute a WFI or WFE instruction.
-  SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk;
+  // TODO: Uncomment to enable the deep sleep after implementing
+  //       the EHCILL Four-Wire Power Management Protocol for cc2564.
+  // SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk;
 
   // Go stop now.
   __DSB(); // Drain any pending memory writes before entering sleep.
@@ -126,7 +128,7 @@ void enter_stop_mode(void) {
   __ISB(); // Let the pipeline catch up (force the WFI to activate before moving on).
 
   // Tell the processor not to emter deepsleep mode for future WFIs.
-  SCB->SCR &= ~SCB_SCR_SLEEPDEEP_Msk;
+  // SCB->SCR &= ~SCB_SCR_SLEEPDEEP_Msk;
 
   // Stop mode will change our system clock to the HSI. Move it back to the PLL.
 
