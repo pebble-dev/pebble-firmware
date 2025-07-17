@@ -57,6 +57,7 @@ master_capability_set = {
     'HAS_PUTBYTES_PREACKING',
     'HAS_FLASH_OTP',
     'WAS_BLUETOPIA',
+    'NEEDS_FIRM_233_WAR',
 }
 
 board_capability_dicts = [
@@ -288,6 +289,7 @@ board_capability_dicts = [
             'HAS_VIBE_DRV2604',
             'HAS_PMIC',
             'HAS_FLASH_OTP',
+            'NEEDS_FIRM_233_WAR',
         },
     },
     {
