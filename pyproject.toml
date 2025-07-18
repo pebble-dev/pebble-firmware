@@ -43,6 +43,14 @@ dependencies = [
     "svg-path>=7.0",
 ]
 
+[dependency-groups]
+docs = [
+    "myst-parser~=4.0",
+    "sphinx~=8.2",
+    "sphinx-book-theme~=1.1",
+    "sphinx-design~=0.6",
+]
+
 [tool.uv.sources]
 pebble-commander = { path = "./python_libs/pebble-commander" }
 pebble-loghash = { path = "./python_libs/pebble-loghash" }
