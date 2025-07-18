@@ -15,5 +15,9 @@ targets = "loader.bin"
 [project.scripts]
 pblprog = "pebble.programmer.__main__:main"
 
-[tool.setuptools]
-packages = ["pebble"]
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["pebble.programmer"]

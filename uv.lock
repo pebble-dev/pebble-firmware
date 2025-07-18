@@ -421,7 +421,7 @@ wheels = [
 [[package]]
 name = "pebble-commander"
 version = "0.0.11"
-source = { virtual = "python_libs/pebble-commander" }
+source = { directory = "python_libs/pebble-commander" }
 dependencies = [
     { name = "pebble-pulse2" },
 ]
@@ -437,12 +437,12 @@ provides-extras = ["interactive"]
 [[package]]
 name = "pebble-loghash"
 version = "2.6.0"
-source = { virtual = "python_libs/pebble-loghash" }
+source = { directory = "python_libs/pebble-loghash" }
 
 [[package]]
 name = "pebble-programmer"
 version = "0.0.3"
-source = { virtual = "python_libs/pblprog" }
+source = { directory = "python_libs/pblprog" }
 dependencies = [
     { name = "intelhex" },
     { name = "pyftdi" },
@@ -457,7 +457,7 @@ requires-dist = [
 [[package]]
 name = "pebble-pulse2"
 version = "0.0.7"
-source = { virtual = "python_libs/pulse2" }
+source = { directory = "python_libs/pulse2" }
 dependencies = [
     { name = "cobs" },
     { name = "construct" },
@@ -545,10 +545,10 @@ requires-dist = [
     { name = "nose", specifier = ">=1.3.7" },
     { name = "packaging", specifier = ">=25.0" },
     { name = "pathlib", specifier = ">=1.0.1" },
-    { name = "pebble-commander", virtual = "python_libs/pebble-commander" },
-    { name = "pebble-loghash", virtual = "python_libs/pebble-loghash" },
-    { name = "pebble-programmer", virtual = "python_libs/pblprog" },
-    { name = "pebble-pulse2", virtual = "python_libs/pulse2" },
+    { name = "pebble-commander", directory = "python_libs/pebble-commander" },
+    { name = "pebble-loghash", directory = "python_libs/pebble-loghash" },
+    { name = "pebble-programmer", directory = "python_libs/pblprog" },
+    { name = "pebble-pulse2", directory = "python_libs/pulse2" },
     { name = "pep8", specifier = ">=1.7.1" },
     { name = "pexpect", specifier = ">=4.9.0" },
     { name = "pillow", specifier = ">=11.3.0" },
