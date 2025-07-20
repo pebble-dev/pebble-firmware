@@ -145,10 +145,6 @@ AppMessageResult app_sync_set(struct AppSync *s, const Tuplet * const keys_and_v
 //! specified key.
 const Tuple * app_sync_get(const struct AppSync *s, const uint32_t key);
 
-
-//!   @} // end addtogroup AppSync
-//! @} // end addtogroup Foundation
-
 typedef struct AppSync {
   DictionaryIterator current_iter;
   union {
@@ -162,3 +158,6 @@ typedef struct AppSync {
     void *context;
   } callback;
 } AppSync;
+
+//!   @} // end addtogroup AppSync
+//! @} // end addtogroup Foundation
