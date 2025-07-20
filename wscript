@@ -713,6 +713,8 @@ def build(bld):
         return
 
     if bld.options.onlysdk:
+        # required to build src/idl
+        bld.recurse('third_party/nanopb')
         # stop here, sdk generation is done
         return
 
