@@ -15,3 +15,10 @@
 syscfg.vals:
     BLE_TRANSPORT_LL: socket
     BLE_HOST_RPA_RESOLVER: 1
+    # Copied from nRF52: values measured to be found _okay_ when doing
+    # firmware update related activites.  They may need further tuning.
+    MSYS_1_BLOCK_COUNT: 35
+    MSYS_1_BLOCK_SIZE: 304
+
+    # Seems to be necessary to get AMS to connect without crashing.
+    BLE_GATT_MAX_PROCS: 8
