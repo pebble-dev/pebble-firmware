@@ -5,160 +5,160 @@ msgstr ""
 "POT-Creation-Date: 2025-04-29 21:31+0000\n"
 "PO-Revision-Date: 2025-07-20 00:58\n"
 "Last-Translator: \n"
-"Language-Team: Russian\n"
-"Language: ru_RU\n"
+"Language-Team: Portuguese, Brazilian\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: pebbleos\n"
 "X-Crowdin-Project-ID: 789734\n"
-"X-Crowdin-Language: ru\n"
+"X-Crowdin-Language: pt-BR\n"
 "X-Crowdin-File: tintin.pot\n"
 "X-Crowdin-File-ID: 292\n"
 
 #: ../src/fw/process_management/app_manager.c:494
 #, c-format
 msgid "%.*s is not responding"
-msgstr "%.*s не отвечает"
+msgstr "%.*s não está respondendo"
 
 #: ../src/fw/process_management/process_manager.c:222
 msgid "This app requires a newer version of the Pebble firmware."
-msgstr "Это приложение требует свежую версию прошивки Pebble."
+msgstr "Este aplicativo requer uma versão mais recente do firmware Pebble."
 
 #: ../src/fw/popups/alarm_popup.c:60
 #, c-format
 msgid "Snooze for %d minutes"
-msgstr "Отложено на %d минут"
+msgstr "Adiar %d minutos"
 
 #: ../src/fw/popups/alarm_popup.c:77
 msgid "Alarm dismissed"
-msgstr "Будильник отключен"
+msgstr "Alarme cancelado"
 
 #: ../src/fw/popups/bluetooth_pairing_ui.c:244
 msgid "Pair?"
-msgstr "Привязать?"
+msgstr "Parear?"
 
 #: ../src/fw/popups/crashed_ui.c:106
 #, c-format
 msgid "%s%.*s is not responding.\n\n"
 "Open app?"
-msgstr "%s%.*s не отвечает.\n"
-"Открыть приложение?"
+msgstr "%s%.*s não está respondendo.\n\n"
+"Abrir aplicativo?"
 
 #: ../src/fw/popups/crashed_ui.c:169
 msgid "Your Pebble just reset. Please report this using the 'Support' link in the Pebble phone app."
-msgstr "Ваши часы были сброшены. Обратитесь в поддержку по ссылке в приложении Pebble на вашем телефоне."
+msgstr "Seu Pebble reiniciou. Favor reportar o erro usando o link 'Suporte' no app Pebble no celular."
 
 #: ../src/fw/popups/crashed_ui.c:172
 msgid "Bluetooth on your phone is in a high power state. Please report this using 'Support' and reboot your phone."
-msgstr "Bluetooth вашего телефона в состоянии высокого потребления. Сообщите об этом через 'Поддержка' и перезагрузите телефон."
+msgstr "O Bluetooth no seu celular está em estado de alta potência. Por favor, reporte isso usando \"Suporte\" e reinicie seu celular."
 
 #: ../src/fw/popups/health_tracking_ui.c:102
 msgid "This app requires Pebble Health to work. Enable Health in the Pebble mobile app to continue."
-msgstr "Этому приложению необходим Pebble Health. Включите Health в приложении Pebble, чтобы продолжить."
+msgstr "Este app requer o Pebble Health para funcionar. Ative-o no app no celular para continuar."
 
 #: ../src/fw/popups/health_tracking_ui.c:112
 msgid "This feature requires Pebble Health to work. Enable Health in the Pebble mobile app to continue."
-msgstr "Для этой функции необходим Pebble Health. Включите Health в приложении Pebble, чтобы продолжить."
+msgstr "Essa função requer Pebble Health para funcionar. Ative-o no aplicativo para continuar."
 
 #: ../src/fw/popups/notifications/notification_window.c:692
 msgid "Snoozed"
-msgstr "Отложен"
+msgstr "Adiado"
 
 #: ../src/fw/popups/notifications/notification_window.c:726
 msgid "Muted"
-msgstr "Скрыто"
+msgstr "Silenciado"
 
 #: ../src/fw/popups/notifications/notification_window.c:853
 msgid "Snooze"
-msgstr "Отложить"
+msgstr "Adiar"
 
 #: ../src/fw/popups/notifications/notification_window.c:872
 #, c-format
 msgid "Mute %s"
-msgstr "Скрыть %s"
+msgstr "Silenciar %s"
 
 #: ../src/fw/popups/notifications/notification_window.c:895
 msgid "Mute Always"
-msgstr "Всегда скрывать"
+msgstr "Sempre silenciar"
 
 #: ../src/fw/popups/notifications/notification_window.c:900
 msgid "Mute Weekends"
-msgstr "Скрывать по будням"
+msgstr "Silenciar ao fim de semana"
 
 #: ../src/fw/popups/notifications/notification_window.c:905
 msgid "Mute Weekdays"
-msgstr "Скрывать по выходным"
+msgstr "Silenciar em dias úteis"
 
 #: ../src/fw/popups/notifications/notification_window.c:915
 msgid "Dismiss All"
-msgstr "Отклонить все"
+msgstr "Apagar todos"
 
 #: ../src/fw/popups/notifications/notification_window.c:922
 msgid "End Quiet Time"
-msgstr "Конец Без звука"
+msgstr "Encerrar modo silêncio"
 
 #: ../src/fw/popups/notifications/notification_window.c:923
 msgid "Start Quiet Time"
-msgstr "Начало Без звука"
+msgstr "Iniciar modo silêncio"
 
 #: ../src/fw/popups/phone_ui.c:579
 msgid "Call Accepted"
-msgstr "Звонок принят"
+msgstr "Atendida"
 
 #: ../src/fw/popups/phone_ui.c:582
 msgid "Disconnected"
-msgstr "Отключен"
+msgstr "Desconectada"
 
 #: ../src/fw/popups/phone_ui.c:586
 msgid "Call Ended"
-msgstr "Звонок завершён"
+msgstr "Finalizada"
 
 #: ../src/fw/popups/phone_ui.c:589
 msgid "Call Declined"
-msgstr "Звонок отклонён"
+msgstr "Recusada"
 
 #: ../src/fw/popups/switch_worker_ui.c:110
 #, c-format
 msgid "Run %s instead of %s as the background app?"
-msgstr "Запустить %s вместо %s в качестве приложения в фоне?"
+msgstr "Executar %s ao invés de %s em plano de fundo?"
 
 #: ../src/fw/popups/wakeup_ui.c:68
 msgid "While your Pebble was off wakeup events occurred for:\n"
-msgstr "Пока ваши часы были выключены, события пробуждения случились для:\n"
+msgstr "Enquanto seu Pebble estava desligado, aconteceram estes eventos:\n"
 
 #: ../src/fw/shell/normal/battery_ui.c:64
 #: ../src/fw/shell/normal/shutdown_charging.c:102
 msgid "Fully Charged"
-msgstr "Заряжены"
+msgstr "Carregado"
 
 #: ../src/fw/shell/normal/battery_ui.c:70
 #: ../src/fw/shell/normal/shutdown_charging.c:107
 msgid "Charging"
-msgstr "Зарядка"
+msgstr "Carregando"
 
 #: ../src/fw/shell/normal/battery_ui.c:85
 #, c-format
 msgid "Powered 'til %s"
-msgstr "Заряжены до %s"
+msgstr "Com carga até %s"
 
 #: ../src/fw/shell/normal/display_calibration_prompt.c:61
 msgid "Your screen may need calibration. Calibrate it now?"
-msgstr "Вашему экрану возможно нужна калибровка?"
+msgstr "Sua tela pode precisar de calibração. Calibrar agora?"
 
 #. / Welcome title text welcoming a 3.x user to 4.x
 #: ../src/fw/shell/normal/welcome.c:35
 msgid "Pebble Updated!"
-msgstr "Pebble обновились!"
+msgstr "Pebble atualizado!"
 
 #: ../src/fw/shell/normal/welcome.c:38
 msgid "For activity and sleep tracking, press up from your watch face.\n\n"
 "Press down for current and future events.\n\n"
 "Read more at blog.pebble.com"
-msgstr "Для отслеживания активностей и сна, нажмите вверх на циферблате.\n"
-"Нажмите вниз для текущих и будущих событий.\n"
-"Узнайте больше на blog.pebble.com"
+msgstr "Para rastreamento de atividade e sono, aperte para cima no seu mostrador.\n\n"
+"Aperte para baixo para eventos atuais e futuros.\n\n"
+"Leia mais em blog.pebble.com"
 
 #: ../src/fw/shell/normal/welcome.c:47
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:41
@@ -168,202 +168,203 @@ msgstr "Для отслеживания активностей и сна, наж
 #: ../src/fw/services/normal/activity/activity_insights.c:1434
 #: ../src/fw/services/normal/notifications/ancs/ancs_item.c:161
 msgid "Dismiss"
-msgstr "Отклонить"
+msgstr "Apagar"
 
 #: ../src/fw/apps/core_apps/progress_ui_app.c:80
 msgid "Update Complete"
-msgstr "Обновление завершено"
+msgstr "Atualização concluída"
 
 #: ../src/fw/apps/core_apps/progress_ui_app.c:80
 msgid "Update Failed"
-msgstr "Обновление провалено"
+msgstr "Falha na atualização"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:62
 #, c-format
 msgid "Snooze delay set to %d minutes"
-msgstr "Установлено %d минут"
+msgstr "Adiar por %d minutos"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:191
 msgid "Delete"
-msgstr "Удалить"
+msgstr "Excluir"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:196
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_app_menu.c:71
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:194
 msgid "Disable"
-msgstr "Отключить"
+msgstr "Desativar"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:196
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:196
 msgid "Enable"
-msgstr "Включить"
+msgstr "Ativar"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:201
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:464
 msgid "Change Time"
-msgstr "Изменить время"
+msgstr "Mudar hora"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:206
 msgid "Change Days"
-msgstr "Изменить дни"
+msgstr "Mudar dias"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:212
 msgid "Convert to Basic Alarm"
-msgstr "Сделать обычным"
+msgstr "Converter para alarme simples"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:213
 msgid "Convert to Smart Alarm"
-msgstr "Сделать умным"
+msgstr "Converter para Alarme Inteligente"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:219
 msgid "Snooze Delay"
-msgstr "Задержка отложки"
+msgstr "Tempo modo soneca"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:230
 msgid "5 minutes"
-msgstr "5 минут"
+msgstr "5 minutos"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:231
 msgid "10 minutes"
-msgstr "10 минут"
+msgstr "10 minutos"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:232
 msgid "15 minutes"
-msgstr "15 минут"
+msgstr "15 minutos"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:233
 msgid "30 minutes"
-msgstr "30 минут"
+msgstr "30 minutos"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:234
 msgid "1 hour"
-msgstr "1 час"
+msgstr "1 hora"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:315
 msgid "Check something first."
-msgstr "Проверьте сначала кое-что."
+msgstr "Selecione um dia."
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:465
 msgid "New Smart Alarm"
-msgstr "Умный будильник"
+msgstr "Novo alarme inteligente"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:465
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:560
 msgid "New Alarm"
-msgstr "Будильник"
+msgstr "Novo alarme"
 
 #. / Displays as "Wake up between" then "8:00 AM - 8:30 AM" below on a separate line
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:467
 msgid "Wake up between"
-msgstr "Пробудить между"
+msgstr "Acordar entre"
 
 #. / Displays as "8:00 AM - 8:30 AM" then "Wake up interval" below on a separate line
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:469
 msgid "Wake up interval"
-msgstr "Интервал пробуждения"
+msgstr "Intervalo do alarme"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:557
 msgid "Basic Alarm"
-msgstr "Обычный"
+msgstr "Alarme básico"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:558
 #: ../src/fw/apps/system_apps/alarms/alarms.c:370
 #: ../src/fw/services/normal/alarms/alarm.c:389
 #: ../src/fw/services/normal/alarms/alarm_pin.c:33
 msgid "Smart Alarm"
-msgstr "Умный будильник"
+msgstr "Alarme Inteligente"
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:138
 msgid "Alarm Deleted"
-msgstr "Будильник удалён"
+msgstr "Alarme deletado"
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:250
 msgid "Limit reached."
-msgstr "Достигнут лимит."
+msgstr "Limite alcançado."
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:294
 msgid "ON"
-msgstr "ВКЛ"
+msgstr "ON"
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:294
 msgid "OFF"
-msgstr "ВЫКЛ"
+msgstr "OFF"
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:368
 msgid "Let us wake you in your lightest sleep so you're fully refreshed! Smart Alarm wakes you up to 30min before your alarm."
-msgstr "Разбудим вас во время легкого сна, чтобы вы были полностью отдохнувшим! Разбудит вас за 30 минут до будильника."
+msgstr "Deixe-nos acordá-lo(a) em um sono mais leve para que você se sinta melhor! O Alarme Inteligente o(a) acorda em até 30min antes do seu alarme."
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:484
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:84
 #: ../src/fw/services/normal/timeline/timeline.c:974
 msgid "Alarms"
-msgstr "Будильники"
+msgstr "Alarmes"
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:138
 msgid "Not connected"
-msgstr "Не подключено"
+msgstr "Não conectado"
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:150
 msgid "No internet\n"
 "connection"
-msgstr "Нет интернета"
+msgstr "Sem conexão\n"
+"à Internet"
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:152
 msgid "No internet connection"
-msgstr "Нет интернета"
+msgstr "Sem conexão à Internet"
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:158
 msgid "Incompatible JS"
-msgstr "Несовместимый JS"
+msgstr "JS incompatível"
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:167
 #: ../src/fw/services/normal/timeline/timeline_actions.c:278
 msgid "Failed"
-msgstr "Ошибка"
+msgstr "Falha"
 
 #. / Health disabled text
 #: ../src/fw/apps/system_apps/health/health.c:110
 msgid "Track your steps, sleep, and more! Enable Pebble Health in the mobile app."
-msgstr "Отслеживайте шаги, сон и другое! Включите Pebble Health в приложении."
+msgstr "Monitore seus passos, sono e mais! Ative Pebble Health no aplicativo."
 
 #: ../src/fw/apps/system_apps/health/health.c:167
 #: ../src/fw/services/normal/timeline/timeline.c:979
 msgid "Health"
-msgstr "Здоровье"
+msgstr "Saúde"
 
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:56
 #: ../src/fw/apps/system_apps/workout/workout_active.c:281
 #: ../src/fw/apps/system_apps/workout/workout_active.c:340
 #: ../src/fw/services/normal/activity/activity_insights.c:1852
 msgid "MI"
-msgstr "МИ"
+msgstr "MI"
 
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:56
 #: ../src/fw/apps/system_apps/workout/workout_active.c:281
 #: ../src/fw/apps/system_apps/workout/workout_active.c:341
 #: ../src/fw/services/normal/activity/activity_insights.c:1852
 msgid "KM"
-msgstr "КМ"
+msgstr "KM"
 
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:69
 #: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:80
 msgid "30 DAY AVG"
-msgstr "30 ДН СРЕДН"
+msgstr "MÉDIA 30 DIAS"
 
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:101
 msgid "CALORIES"
-msgstr "КАЛОРИИ"
+msgstr "CALORIAS"
 
 #. / Distance Label
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:103
 #: ../src/fw/apps/system_apps/workout/workout_active.c:174
 msgid "DISTANCE"
-msgstr "ДИСТАНЦИЯ"
+msgstr "DISTÂNCIA"
 
 #: ../src/fw/apps/system_apps/health/health_detail_card.c:517
 #: ../src/fw/services/common/clock.c:505 ../src/fw/services/common/clock.c:676
 msgid "Today"
-msgstr "Сегодня"
+msgstr "Hoje"
 
 #: ../src/fw/apps/system_apps/health/health_graph_card.c:299
 msgid ": "
@@ -376,61 +377,61 @@ msgstr "%a: "
 
 #: ../src/fw/apps/system_apps/health/health_graph_card.c:388
 msgid "SMTWTFS"
-msgstr "ВПВСЧПС"
+msgstr "DSTQQSS"
 
 #: ../src/fw/apps/system_apps/health/health_hr_detail_card.c:80
 #: ../src/fw/services/normal/activity/activity_insights.c:1958
 msgid "Fat Burn"
-msgstr "Сжигание жира"
+msgstr "Queima de gordura"
 
 #: ../src/fw/apps/system_apps/health/health_hr_detail_card.c:83
 #: ../src/fw/services/normal/activity/activity_insights.c:1965
 msgid "Endurance"
-msgstr "Выносливость"
+msgstr "Resistência"
 
 #: ../src/fw/apps/system_apps/health/health_hr_detail_card.c:86
 #: ../src/fw/services/normal/activity/activity_insights.c:1972
 msgid "Performance"
-msgstr "Эффективность"
+msgstr "Desempenho"
 
 #. / Resting HR
 #: ../src/fw/apps/system_apps/health/health_hr_detail_card.c:92
 msgid "TIME IN ZONES"
-msgstr "ВРЕМЯ В ЗОНАХ"
+msgstr "TEMPO EM ZONAS"
 
 #: ../src/fw/apps/system_apps/health/health_hr_summary_card.c:124
 msgid "BPM"
-msgstr "Удв/мин"
+msgstr "BPM"
 
 #. / HRM disabled
 #: ../src/fw/apps/system_apps/health/health_hr_summary_card.c:168
 msgid "Enable heart rate monitoring in the mobile app"
-msgstr "Включите мониторинг ЧСС в приложении"
+msgstr "Ativar monitoramento de pulso no aplicativo"
 
 #: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:82
 msgid "30 DAY"
-msgstr "30 ДНЕЙ"
+msgstr "30 DIAS"
 
 #: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:116
 msgid "SLEEP SESSION"
-msgstr "СЕАНС СНА"
+msgstr "SESSÃO DE SONO"
 
 #: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:129
 msgid "DEEP SLEEP"
-msgstr "ГЛУБОКИЙ СОН"
+msgstr "SONO PROFUNDO"
 
 #: ../src/fw/apps/system_apps/health/health_sleep_summary_card.c:221
 msgid "No sleep data,\n"
 "wear your watch\n"
 "to sleep"
-msgstr "Нет данных о сне,\n"
-"наденьте часы\n"
-"перед сном"
+msgstr "Sem dados de sono,\n"
+"use o seu relógio\n"
+"quando for dormir"
 
 #: ../src/fw/apps/system_apps/health/health_ui.c:66
 #, c-format
 msgid "TYPICAL %s"
-msgstr "ТИПИЧН %s"
+msgstr "%s TÍPICO(A)"
 
 #. / Shown when the current temperature is unknown
 #. / Shown when today's current temperature is unknown
@@ -455,160 +456,160 @@ msgstr "%i°"
 #: ../src/fw/apps/system_apps/music_app.c:710
 msgid "START PLAYBACK\n"
 "ON YOUR PHONE"
-msgstr "ВОСПРОИЗВЕДИТЕ\n"
-"НА ВАШЕМ ТЕЛЕФОНЕ"
+msgstr "INICIE A REPRODUÇÃO\n"
+"NO SEU CELULAR"
 
 #: ../src/fw/apps/system_apps/music_app.c:1022
 msgid "Music"
-msgstr "Музыка"
+msgstr "Música"
 
 #: ../src/fw/apps/system_apps/notifications_app.c:268
 msgid "Done"
-msgstr "Готово"
+msgstr "Pronto"
 
 #: ../src/fw/apps/system_apps/notifications_app.c:295
 msgid "Clear history?"
-msgstr "Очистить историю?"
+msgstr "Limpar histórico?"
 
 #: ../src/fw/apps/system_apps/notifications_app.c:558
 #: ../src/fw/apps/system_apps/notifications_app.c:564
 msgid "Clear All"
-msgstr "Очистить всё"
+msgstr "Limpar todos"
 
 #: ../src/fw/apps/system_apps/notifications_app.c:727
 msgid "No notifications"
-msgstr "Уведомлений нет"
+msgstr "Nenhuma notificação"
 
 #: ../src/fw/apps/system_apps/notifications_app.c:813
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:379
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:74
 #: ../src/fw/services/normal/timeline/timeline.c:958
 msgid "Notifications"
-msgstr "Уведомления"
+msgstr "Notificações"
 
 #: ../src/fw/apps/system_apps/reminders/reminder_app.c:66
 msgid "Completed"
-msgstr "Завершено"
+msgstr "Concluído"
 
 #: ../src/fw/apps/system_apps/reminders/reminder_app.c:70
 msgid "Postpone"
-msgstr "Отложить"
+msgstr "Adiar"
 
 #: ../src/fw/apps/system_apps/reminders/reminder_app.c:74
 #: ../src/fw/services/normal/activity/activity_insights.c:460
 #: ../src/fw/services/normal/timeline/timeline.c:674
 msgid "Remove"
-msgstr "Удалить"
+msgstr "Remover"
 
 #: ../src/fw/apps/system_apps/reminders/reminder_app.c:126
 msgid "Added"
-msgstr "Добавлено"
+msgstr "Adicionado"
 
 #: ../src/fw/apps/system_apps/reminders/reminder_app.c:309
 msgid "Reminder"
-msgstr "Напоминание"
+msgstr "Lembrete"
 
 #: ../src/fw/apps/system_apps/send_text/send_text.c:215
 #: ../src/fw/services/normal/phone_call_util.c:31
 msgid "Unknown"
-msgstr "Неизвестно"
+msgstr "Desconhecido"
 
 #: ../src/fw/apps/system_apps/send_text/send_text.c:273
 #: ../src/fw/apps/system_apps/send_text/send_text.c:349
 msgid "Select Contact"
-msgstr "Выбрать контакт"
+msgstr "Selecionar contato"
 
 #: ../src/fw/apps/system_apps/send_text/send_text.c:363
 msgid "Add contacts in\n"
 "mobile app"
-msgstr "Добавить контакты\n"
-"в приложение"
+msgstr "Adicione contatos\n"
+"no aplicativo"
 
 #: ../src/fw/apps/system_apps/send_text/send_text.c:396
 msgid "Send Text"
-msgstr "Отправить текст"
+msgstr "Mandar SMS"
 
 #: ../src/fw/apps/system_apps/settings/settings.c:146
 msgid "Settings"
-msgstr "Настройки"
+msgstr "Configurações"
 
 #: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:175
 msgid "No background apps"
-msgstr "Нет фоновых приложений"
+msgstr "Sem aplicativo em 2º plano"
 
 #. / No Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:184
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:210
 msgid "None"
-msgstr "Ничего"
+msgstr "Nenhum"
 
 #: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:256
 #: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:273
 msgid "Background App"
-msgstr "Прилож. в фоне"
+msgstr "Aplicativo em 2º plano"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:159
 msgid "<Untitled>"
-msgstr "<Без заголовка>"
+msgstr "<Sem título>"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:285
 msgid "Pairing Instructions"
-msgstr "Инструкции привязки"
+msgstr "Instruções de pareamento"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:289
 #, c-format
 msgid "%u Paired Phones"
-msgstr "%u привязанных телефонов"
+msgstr "%u celulares pareados"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:290
 #, c-format
 msgid "%u Paired Phone"
-msgstr "%u привязанный телефон"
+msgstr "%u celular pareado"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:425
 msgid "No LE"
-msgstr "Без LE"
+msgstr "Sem LE"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:425
 msgid "LE Only"
-msgstr "Только LE"
+msgstr "Só LE"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:428
 msgid "Connected"
-msgstr "Подключено"
+msgstr "Conectado"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:444
 msgid "Sharing Heart Rate ❤"
-msgstr "Поделиться ЧСС ❤"
+msgstr "Compartilhando pulso ❤"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:489
 msgid "Connection"
-msgstr "Подключение"
+msgstr "Conexão"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:493
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:64
 msgid "Airplane Mode"
-msgstr "Режим в самолёте"
+msgstr "Modo avião"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:500
 msgid "Now Discoverable"
-msgstr "Видимость включена"
+msgstr "Agora detectável"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:506
 msgid "Disabling..."
-msgstr "Выключение..."
+msgstr "Desativando..."
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:506
 msgid "Enabling..."
-msgstr "Включение..."
+msgstr "Ativando..."
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:529
 msgid "Disable Airplane Mode to connect."
-msgstr "Выключите Режим в самолёте для подключения."
+msgstr "Desative o modo avião para conectar."
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:532
 msgid "Open the Pebble app on your phone to connect."
-msgstr "Откройте приложение Pebble на телефоне для подключения."
+msgstr "Abra o aplicativo no seu celular para conectar."
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:670
 msgid "Bluetooth"
@@ -616,44 +617,44 @@ msgstr "Bluetooth"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:51
 msgid "Low"
-msgstr "Низкая"
+msgstr "Baixo"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:52
 msgid "Medium"
-msgstr "Средняя"
+msgstr "Médio"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:53
 msgid "High"
-msgstr "Высокая"
+msgstr "Alto"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:54
 msgid "Blinding"
-msgstr "Ослепляющая"
+msgstr "Cegante"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:89
 msgid "INTENSITY"
-msgstr "ЯРКОСТЬ"
+msgstr "INTENSIDADE"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:89
 #: ../src/fw/apps/system_apps/settings/settings_display.c:231
 msgid "Intensity"
-msgstr "Яркость"
+msgstr "Intensidade"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:101
 msgid "3 Seconds"
-msgstr "3 секунды"
+msgstr "3 segundos"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:102
 msgid "5 Seconds"
-msgstr "5 секунд"
+msgstr "5 segundos"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:103
 msgid "8 Seconds"
-msgstr "8 секунд"
+msgstr "8 segundos"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:126
 msgid "TIMEOUT"
-msgstr "ИНТЕРВАЛ"
+msgstr "TEMPO"
 
 #. / Status bar title for the Notification Window Timeout settings screen
 #. / String within Settings->Notifications that describes the window timeout setting
@@ -662,16 +663,16 @@ msgstr "ИНТЕРВАЛ"
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:242
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:289
 msgid "Timeout"
-msgstr "Интервал"
+msgstr "Tempo"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:203
 #: ../src/fw/apps/system_apps/settings/settings_system.c:192
 msgid "Language"
-msgstr "Язык"
+msgstr "Idioma"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:207
 msgid "Backlight"
-msgstr "Подсветка"
+msgstr "Luz de fundo"
 
 #. / Shows up in the Timeline settings as the status under the "Quick View" toggle.
 #: ../src/fw/apps/system_apps/settings/settings_display.c:209
@@ -681,7 +682,7 @@ msgstr "Подсветка"
 #: ../src/fw/apps/system_apps/settings/settings_system.c:942
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:139
 msgid "On"
-msgstr "Вкл"
+msgstr "Ligado"
 
 #. / Shows up in the Timeline settings as the status under the "Quick View" toggle.
 #: ../src/fw/apps/system_apps/settings/settings_display.c:211
@@ -691,167 +692,167 @@ msgstr "Вкл"
 #: ../src/fw/apps/system_apps/settings/settings_system.c:942
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:141
 msgid "Off"
-msgstr "Выкл"
+msgstr "Desligado"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:215
 msgid "Motion Enabled"
-msgstr "Датчик движения"
+msgstr "Ativação por movimento"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:223
 msgid "Ambient Sensor"
-msgstr "Датчик света"
+msgstr "Sensor de luz ambiente"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:240
 msgid "Screen Alignment"
-msgstr "Подгон экрана"
+msgstr "Alinhamento de tela"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:278
 msgid "Display"
-msgstr "Экран"
+msgstr "Tela"
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:64
 msgid "Horizontal Alignment"
-msgstr "Горизонтальный"
+msgstr "Alinhamento horizontal"
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:65
 msgid "Vertical Alignment"
-msgstr "Вертикальный"
+msgstr "Alinhamento vertical"
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:66
 msgid "Confirm Alignment"
-msgstr "Подтвердить"
+msgstr "Confirmar alinhamento"
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:69
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:70
 msgid "Up/Down to adjust\n"
 "Select to proceed"
-msgstr "Вверх/вниз регулировка\n"
-"Центр продолжить"
+msgstr "Cima/baixo: ajustar\n"
+"Meio: continuar"
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:71
 msgid "Select to confirm alignment changes"
-msgstr "Центр для подтверждения"
+msgstr "Selecione para confirmar mudanças de alinhamento"
 
 #: ../src/fw/apps/system_apps/settings/settings_factory_reset.c:72
 msgid "Resetting..."
-msgstr "Сброс..."
+msgstr "Reiniciando..."
 
 #: ../src/fw/apps/system_apps/settings/settings_factory_reset.c:124
 msgid "Perform factory reset?"
-msgstr "Сбросить настройки?"
+msgstr "Restaurar definições de fábrica?"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:78
 msgid "Allow All Notifications"
-msgstr "Показывать все"
+msgstr "Permitir todas as notificações"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:79
 msgid "Allow Phone Calls Only"
-msgstr "Только звонки"
+msgstr "Permitir apenas chamadas"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:80
 msgid "Mute All Notifications"
-msgstr "Скрывать все"
+msgstr "Silenciar todas as notificações"
 
 #. / The option in the Settings app for filtering notifications by type.
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:112
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:264
 msgid "Filter"
-msgstr "Фильтр"
+msgstr "Filtro"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:122
 #: ../src/fw/services/normal/vibes/vibes.def:4
 msgctxt "NotifVibe"
 msgid "Disabled"
-msgstr "Нет"
+msgstr "Desativado"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:123
 msgctxt "NotifVibe"
 msgid "Low"
-msgstr "Слабая"
+msgstr "Baixo"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:124
 msgctxt "NotifVibe"
 msgid "Medium"
-msgstr "Средняя"
+msgstr "Médio"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:125
 msgctxt "NotifVibe"
 msgid "High"
-msgstr "Сильная"
+msgstr "Alto"
 
 #. / The option in the Settings app for choosing a vibration intensity for notifications.
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:149
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:269
 msgid "Vibration"
-msgstr "Вибрация"
+msgstr "Vibração"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:165
 msgid "Smaller"
-msgstr "Мелкий"
+msgstr "Menor"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:166
 msgid "Default"
-msgstr "Стандартный"
+msgstr "Padrão"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:167
 msgid "Larger"
-msgstr "Большой"
+msgstr "Maior"
 
 #. / The option in the Settings app for choosing the text size of notifications.
 #. / String within Settings->Notifications that describes the text font size
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:180
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:281
 msgid "Text Size"
-msgstr "Размер"
+msgstr "Tamanho do texto"
 
 #. / 15 Second Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:202
 msgid "15 Seconds"
-msgstr "15 секунд"
+msgstr "15 segundos"
 
 #. / 1 Minute Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:204
 msgid "1 Minute"
-msgstr "1 минута"
+msgstr "1 minuto"
 
 #. / 3 Minute Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:206
 msgid "3 Minutes"
-msgstr "3 минуты"
+msgstr "3 minutos"
 
 #. / 10 Minute Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:208
 msgid "10 Minutes"
-msgstr "10 минут"
+msgstr "10 minutos"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:271
 msgid "Disabled (Plugged In)"
-msgstr "Выключено (воткнуто)"
+msgstr "Desativado (carregando)"
 
 #. / Shown in Quick Launch Settings as the title of the up button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:48
 msgid "Up Button"
-msgstr "Верхняя"
+msgstr "Botão de cima"
 
 #. / Shown in Quick Launch Settings as the title of the center button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:50
 msgid "Center Button"
-msgstr "Центральная"
+msgstr "Botão do meio"
 
 #. / Shown in Quick Launch Settings as the title of the down button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:52
 msgid "Down Button"
-msgstr "Нижняя"
+msgstr "Botão de baixo"
 
 #. / Shown in Quick Launch Settings as the title of the back button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:54
 msgid "Back Button"
-msgstr "Левая"
+msgstr "Botão de voltar"
 
 #. / Shown in Quick Launch Settings when the button is disabled.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:75
 msgid "Disabled"
-msgstr "Нет действия"
+msgstr "Desativado"
 
 #. / Title of the Quick Launch Settings submenu in Settings
 #. / Title for the Quick Launch first use dialog.
@@ -859,45 +860,45 @@ msgstr "Нет действия"
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_app_menu.c:126
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_setup_menu.c:67
 msgid "Quick Launch"
-msgstr "Кнопки"
+msgstr "Início Rápido"
 
 #. / Help text for the Quick Launch first use dialog.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_setup_menu.c:69
 msgid "Open favorite apps quickly with a long button press from your watchface."
-msgstr "Настройте долгое нажатие кнопок на циферблате на избранные приложения или действия."
+msgstr "Abra seus aplicativos favoritos rapidamente com um pressionar longo no mostrador."
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:82
 msgid "Quiet All Notifications"
-msgstr "Выкл. все уведомл."
+msgstr "Silenciar todas as notificações"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:85
 msgid "Allow Phone Calls"
-msgstr "Разрешить звонки"
+msgstr "Permitir chamadas"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:210
 msgid "Change Schedule"
-msgstr "Изменить расписание"
+msgstr "Mudar programação"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:246
 #: ../src/fw/apps/system_apps/settings/settings_time.c:240
 msgid "Manual"
-msgstr "Вручную"
+msgstr "Manual"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:251
 msgid "Calendar Aware"
-msgstr "Приоритет календаря"
+msgstr "Respeitar calendário"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:253
 msgctxt "QuietTime"
 msgid "Enabled"
-msgstr "Включено"
+msgstr "Ativado"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:254
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:261
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:269
 msgctxt "QuietTime"
 msgid "Disabled"
-msgstr "Выключено"
+msgstr "Desativado"
 
 #. #-#-#-#-#  services.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / A frequency option for alarms, i.e. the alarm would only go off every weekday. Respect
@@ -905,7 +906,7 @@ msgstr "Выключено"
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:257
 #: ../src/fw/services/normal/alarms/alarm.c:1150
 msgid "Weekdays"
-msgstr "Будни"
+msgstr "Dias úteis"
 
 #. #-#-#-#-#  services.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / A frequency option for alarms, i.e. the alarm would only go off each day on the weekend.
@@ -913,163 +914,163 @@ msgstr "Будни"
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:265
 #: ../src/fw/services/normal/alarms/alarm.c:1159
 msgid "Weekends"
-msgstr "Выходные"
+msgstr "Fins de semana"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:273
 msgid "Interruptions"
-msgstr "Исключения"
+msgstr "Interrupções"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:327
 #: ../src/fw/apps/system_apps/toggle/quiet_time.c:37
 msgid "Quiet Time"
-msgstr "Без звука"
+msgstr "Modo silêncio"
 
 #: ../src/fw/apps/system_apps/settings/settings_remote.c:75
 msgid "You're all set"
-msgstr "Вы готовы"
+msgstr "Tudo pronto"
 
 #: ../src/fw/apps/system_apps/settings/settings_remote.c:179
 msgid "Forget"
-msgstr "Забыть"
+msgstr "Esquecer"
 
 #: ../src/fw/apps/system_apps/settings/settings_remote.c:187
 msgid "Stop Sharing Heart Rate"
-msgstr "Перестать делиться ЧСС"
+msgstr "Parar de compartilhar pulso"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:145
 #: ../src/fw/apps/system_apps/settings/settings_system.c:324
 msgid "Information"
-msgstr "Информация"
+msgstr "Informações"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:146
 #: ../src/fw/apps/system_apps/settings/settings_system.c:684
 msgid "Certification"
-msgstr "Сертификация"
+msgstr "Certificações"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:147
 msgid "Stand-By Mode"
-msgstr "Режим ожидания"
+msgstr "Modo stand-by"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:148
 msgid "Shut Down"
-msgstr "Выключить"
+msgstr "Desligar"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:149
 msgid "Factory Reset"
-msgstr "Сброс настроек"
+msgstr "Restaur. de fábrica"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:190
 msgid "BT Address"
-msgstr "BT адрес"
+msgstr "Endereço BT"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:191
 msgid "Firmware"
-msgstr "Прошивка"
+msgstr "Firmware"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:193
 msgid "Recovery"
-msgstr "Восстановление"
+msgstr "Recuperação"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:194
 msgid "Bootloader"
-msgstr "Загрузчик"
+msgstr "Inicializador"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:195
 msgid "Hardware"
-msgstr "Версия HW"
+msgstr "Hardware"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:196
 msgid "Serial"
-msgstr "Серийн. номер"
+msgstr "N.º serial"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:197
 msgid "Uptime"
-msgstr "Время работы"
+msgstr "Tempo ativo"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:198
 msgid "Legal"
-msgstr "Лицензии"
+msgstr "Jurídico"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:254
 msgid "The core dump was created successfully. Please create a support request as usual."
-msgstr "Дамп ядра успешно создан. Создайте запрос в поддержку как обычно."
+msgstr "Core dump criado com sucesso. Por favor, crie uma solicitação de suporte."
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:267
 msgid "Core dump and reboot?"
-msgstr "Дамп ядра и перезагрузка?"
+msgstr "Core dump e reiniciar?"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:284
 msgid "Did your Pebble reset?"
-msgstr "Ваши часы только что сбросились?"
+msgstr "Seu Pebble reiniciou?"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:645
 msgid "See details..."
-msgstr "Подробнее..."
+msgstr "Ver detalhes..."
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:922
 msgid "Do you want to shut down?"
-msgstr "Выключить часы?"
+msgstr "Quer desligar o aparelho?"
 
 #. / Refers to the class of all non-score vibes, e.g. 3rd party app vibes
 #: ../src/fw/apps/system_apps/settings/settings_system.c:1012
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:90
 msgid "System"
-msgstr "Система"
+msgstr "Sistema"
 
 #. / Title of the menu for changing the watch's timezone.
 #: ../src/fw/apps/system_apps/settings/settings_time.c:138
 #: ../src/fw/apps/system_apps/settings/settings_time.c:245
 msgid "Timezone"
-msgstr "Часовой пояс"
+msgstr "Fuso horário"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:234
 msgid "Time Format"
-msgstr "Формат времени"
+msgstr "Formato da hora"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:235
 msgid "24h"
-msgstr "24ч"
+msgstr "24 h"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:235
 msgid "12h"
-msgstr "12ч"
+msgstr "12 h"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:239
 msgid "Timezone Source"
-msgstr "Источник"
+msgstr "Fonte do fuso horário"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:241
 msgid "Automatic"
-msgstr "Авто"
+msgstr "Automático"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:294
 msgid "Date & Time"
-msgstr "Дата и время"
+msgstr "Data e hora"
 
 #. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:71
 msgid "Start Time"
-msgstr "В начале"
+msgstr "Hora de início"
 
 #. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:73
 msgid "5 Min Before"
-msgstr "За 5 минут"
+msgstr "5 min antes"
 
 #. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:75
 msgid "10 Min Before"
-msgstr "За 10 минут"
+msgstr "10 min antes"
 
 #. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:77
 msgid "15 Min Before"
-msgstr "За 15 минут"
+msgstr "15 min antes"
 
 #. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:79
 msgid "30 Min Before"
-msgstr "За 30 минут"
+msgstr "30 min antes"
 
 #. / Shows up in the Timeline settings as the title for the "Timing" submenu window.
 #. / Shows up in the Timeline settings as the title for the menu item that controls the
@@ -1077,104 +1078,108 @@ msgstr "За 30 минут"
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:108
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:146
 msgid "Timing"
-msgstr "Показать"
+msgstr "Quando"
 
 #. / Shows up in the Timeline settings as a toggle-able "Quick View" item.
 #. / Title for the Timeline Quick View first use dialog.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:137
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:201
 msgid "Quick View"
-msgstr "Предпросмотр"
+msgstr "Visualização rápida"
 
 #. / Help text for the Timeline Quick View first use dialog.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:203
 msgid "Appears on your watchface when an event is about to start."
-msgstr "Появляется на циферблате, когда событие вот-вот наступит."
+msgstr "Aparece no seu mostrador quando um evento está prestes a começar."
 
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:230
 msgid "Timeline"
-msgstr "График"
+msgstr "Linha do tempo"
 
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:79
 msgid "Incoming Calls"
-msgstr "Звонки"
+msgstr "Chamadas recebidas"
 
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:233
 msgid "Vibrations"
-msgstr "Вибрация"
+msgstr "Vibrações"
 
 #: ../src/fw/apps/system_apps/timeline/timeline.c:894
 msgid "No events"
-msgstr "Событий нет"
+msgstr "Sem eventos"
 
 #. / The title of Timeline Past in Quick Launch. If the translation is too long, cut out
 #. / Timeline and only translate "Past".
 #: ../src/fw/apps/system_apps/timeline/timeline.c:1283
 msgid "Timeline Past"
-msgstr "Прошлое"
+msgstr "Passado"
 
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:39
 msgid "Turn On Airplane Mode?"
-msgstr "Включить Режим в самолёте?"
+msgstr "Ligar modo avião?"
 
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:40
 msgid "Turn Off Airplane Mode?"
-msgstr "Выключить Режим в самолёте?"
+msgstr "Desligar modo avião?"
 
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:41
 msgid "Airplane\n"
 "Mode On"
-msgstr "Режим в самолёте вкл."
+msgstr "Modo avião\n"
+"ligado"
 
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:42
 msgid "Airplane\n"
 "Mode Off"
-msgstr "Режим в самолёте выкл."
+msgstr "Modo avião\n"
+"desligado"
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:37
 msgid "Turn On Motion Backlight?"
-msgstr "Включить подсветку по движению?"
+msgstr "Ligar ativação da luz por movimento?"
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:38
 msgid "Turn Off Motion Backlight?"
-msgstr "Выключить подсветку по движению?"
+msgstr "Desligar ativação da luz por movimento?"
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:39
 msgid "Motion\n"
 "Backlight On"
-msgstr "Датчик движения вкл."
+msgstr "Ativação da luz por \n"
+"movimento ligada"
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:40
 msgid "Motion\n"
 "Backlight Off"
-msgstr "Датчик движения выкл."
+msgstr "Ativação da luz por \n"
+"movimento desligada"
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:62
 msgid "Motion Backlight"
-msgstr "Датчик движения"
+msgstr "Ativação da luz por movimento"
 
 #: ../src/fw/apps/system_apps/watchfaces.c:105
 msgid "Active"
-msgstr "Активен"
+msgstr "Ativo"
 
 #: ../src/fw/apps/system_apps/watchfaces.c:219
 msgid "Watchfaces"
-msgstr "Циферблаты"
+msgstr "Mostradores"
 
 #. / Shown when there are no forecasts available to show the user
 #: ../src/fw/apps/system_apps/weather/weather_app.c:105
 msgid "No location information available. To see weather, add locations in your Pebble mobile app."
-msgstr "Нет информации о местоположении. Чтобы видеть погоду, добавьте локацию в приложении."
+msgstr "Localização indisponível. Para ver o tempo, adicione locais no seu aplicativo."
 
 #. / Shown when there is no connection to the phone and the data that we have is not recent
 #: ../src/fw/apps/system_apps/weather/weather_app.c:205
 msgid "Unable to connect. Your weather data may be out of date; try checking the connection on your phone."
-msgstr "Не удается подключиться. Возможно данные о погоде устарели; проверьте подключение на телефоне."
+msgstr "Não foi possível conectar. A informação meteoológca pode estar desatualizada, verifique a conexão com o celular."
 
 #: ../src/fw/apps/system_apps/weather/weather_app.c:231
 #: ../src/fw/services/normal/timeline/timeline.c:966
 msgid "Weather"
-msgstr "Погода"
+msgstr "Tempo"
 
 #. / Shown when neither high nor low temperature is known
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:80
@@ -1202,27 +1207,27 @@ msgstr "%i° / %i°"
 #. / Refers to the weather conditions for tomorrow
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:234
 msgid "TOMORROW"
-msgstr "ЗАВТРА"
+msgstr "AMANHÃ"
 
 #: ../src/fw/apps/system_apps/workout/sports.c:381
 msgid "Sports"
-msgstr "Спорт"
+msgstr "Esportes"
 
 #: ../src/fw/apps/system_apps/workout/workout.c:175
 msgid "Workout\n"
 "Ended"
-msgstr "Тренировка\n"
-"окончена"
+msgstr "Treino\n"
+"terminado"
 
 #. / Health disabled text
 #: ../src/fw/apps/system_apps/workout/workout.c:201
 msgid "Enable Pebble Health in the mobile app to track workouts"
-msgstr "Включите Pebble Health в приложении для отслеживания тренировок"
+msgstr "Ative Pebble Health no aplicativo para rastrear treinos"
 
 #. / Workout app first use text
 #: ../src/fw/apps/system_apps/workout/workout.c:208
 msgid "Wear your watch snug and 2 fingers' width above your wrist bone for best results."
-msgstr "Для лучших результатов носите часы плотно, на расстоянии 2 пальцев от запястья."
+msgstr "Vista o relógio justo e a 2 dedos acima do osso do pulso para melhores resultados."
 
 #. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / Workout Label
@@ -1230,158 +1235,158 @@ msgstr "Для лучших результатов носите часы пло�
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:105
 #: ../src/fw/services/normal/activity/activity_insights.c:1876
 msgid "Workout"
-msgstr "Тренировка"
+msgstr "Treino"
 
 #. / Zone 1 HR Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:116
 msgid "FAT BURN"
-msgstr "СЖИГАНИЕ ЖИРА"
+msgstr "QUEIMA DE GORDURA"
 
 #. / Zone 2 HR Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:119
 msgid "ENDURANCE"
-msgstr "ВЫНОСЛИВОСТЬ"
+msgstr "RESISTÊNCIA"
 
 #. / Zone 3 HR Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:122
 msgid "PERFORMANCE"
-msgstr "ЭФФЕКТИВНОСТЬ"
+msgstr "DESEMPENHO"
 
 #. / Default/Zone 0 HR Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:125
 msgid "HEART RATE"
-msgstr "ЧСС"
+msgstr "PULSO"
 
 #. / Duration Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:143
 msgid "DURATION"
-msgstr "ДЛИТЕЛЬНОСТЬ"
+msgstr "DURAÇÃO"
 
 #. / Average Pace Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:147
 msgid "AVG PACE"
-msgstr "СР ТЕМП"
+msgstr "RITMO MÉDIO"
 
 #. / Average Pace Label with units
 #: ../src/fw/apps/system_apps/workout/workout_active.c:150
 msgid "AVG PACE (/MI)"
-msgstr "СР ТЕМП (/МИ)"
+msgstr "RITMO MÉDIO (/MI)"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:151
 msgid "AVG PACE (/KM)"
-msgstr "СР ТЕМП (/КМ)"
+msgstr "RITMO MÉDIO (/KM)"
 
 #. / Pace Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:156
 msgid "PACE"
-msgstr "ТЕМП"
+msgstr "RITMO"
 
 #. / Pace Label with units
 #: ../src/fw/apps/system_apps/workout/workout_active.c:159
 msgid "PACE (/MI)"
-msgstr "ТЕМП (/МИ)"
+msgstr "RITMO (/MI)"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:160
 msgid "PACE (/KM)"
-msgstr "ТЕМП (/КМ)"
+msgstr "RITMO (/KM)"
 
 #. / Speed Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:165
 msgid "SPEED"
-msgstr "СКОРОСТЬ"
+msgstr "VELOCIDADE"
 
 #. / Speed Label with units
 #: ../src/fw/apps/system_apps/workout/workout_active.c:168
 msgid "SPEED (MPH)"
-msgstr "СКОРОСТЬ (МИ/Ч)"
+msgstr "VELOCIDADE (MPH)"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:169
 msgid "SPEED (KM/H)"
-msgstr "СКОРОСТЬ (КМ/Ч)"
+msgstr "VELOCIDADE (KM/H)"
 
 #. / Distance Label with units
 #: ../src/fw/apps/system_apps/workout/workout_active.c:177
 msgid "DISTANCE (MI)"
-msgstr "ДИСТАНЦИЯ (МИ)"
+msgstr "DISTÂNCIA (MI)"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:178
 msgid "DISTANCE (KM)"
-msgstr "ДИСТАНЦИЯ (КМ)"
+msgstr "DISTÂNCIA (KM)"
 
 #. / Steps Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:182
 msgid "STEPS"
-msgstr "ШАГИ"
+msgstr "PASSOS"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:360
 msgid "MPH"
-msgstr "МИ/Ч"
+msgstr "MPH"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:361
 msgid "KM/H"
-msgstr "КМ/Ч"
+msgstr "KM/H"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:685
 msgid "End Workout?"
-msgstr "Закончить тренировку?"
+msgstr "Terminar treino?"
 
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:30
 msgid "Still sweating? Your workout is active and will be ended soon. Open the workout to keep it going."
-msgstr "Ещё потеете? Тренировка активна и скоро закончится. Откройте её, чтобы продолжить."
+msgstr "Ainda está suando? Seu treino está ativo e vai terminar em breve. Abra o aplicativo Treino para continuá-lo."
 
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:45
 msgid "End Workout"
-msgstr "Закончить тренировку"
+msgstr "Terminar treino"
 
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:51
 msgid "Open Workout"
-msgstr "Открыть тренировку"
+msgstr "Abrir treino"
 
 #. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / Walk Label
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:108
 #: ../src/fw/services/normal/activity/activity_insights.c:1874
 msgid "Walk"
-msgstr "Ходьба"
+msgstr "Caminhada"
 
 #. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / Run Label
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:111
 #: ../src/fw/services/normal/activity/activity_insights.c:1872
 msgid "Run"
-msgstr "Бег"
+msgstr "Corrida"
 
 #. / Workout automatically detected dialog text
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:129
 msgid "Workout\n"
 "Detected"
-msgstr "Обнаружена\n"
-"тренировка"
+msgstr "Treino\n"
+"detectado"
 
 #. / Walk automatically detected dialog text
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:132
 msgid "Walk\n"
 "Detected"
-msgstr "Обнаружена\n"
-"ходьба"
+msgstr "Caminhada\n"
+"detectada"
 
 #. / Run automatically detected dialog text
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:135
 msgid "Run\n"
 "Detected"
-msgstr "Обнаружен\n"
-"бег"
+msgstr "Corrida\n"
+"detectada"
 
 #: ../src/fw/apps/watch/kickstart/kickstart.c:364
 #, c-format
 msgid "%d BPM"
-msgstr "ЧСС %d"
+msgstr "%d BPM"
 
 #. / Step count greater than 1000 with a thousands seperator
 #: ../src/fw/apps/watch/kickstart/kickstart.c:472
 #, c-format
 msgid "%d,%03d"
-msgstr "%d,%03d"
+msgstr "%d.%03d"
 
 #. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / Step count less than 1000
@@ -1395,7 +1400,7 @@ msgstr "%d"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.h:71
 msgid "Remember to also forget your Pebble's Bluetooth connection from your phone."
-msgstr "Также не забудьте отвязать ваши часы от телефона."
+msgstr "Lembre-se de esquecer a conexão desse dispositivo no seu celular também."
 
 #. #-#-#-#-#  services.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / Standard vibration pattern option that has a low intensity
@@ -1403,7 +1408,7 @@ msgstr "Также не забудьте отвязать ваши часы от
 #: ../src/fw/services/normal/vibes/vibes.def:6
 #: ../src/fw/services/normal/vibes/vibe_intensity.c:52
 msgid "Standard - Low"
-msgstr "Стандарт - Слабая"
+msgstr "Padrão - baixo"
 
 #. #-#-#-#-#  services.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / Standard vibration pattern option that has a high intensity
@@ -1411,19 +1416,19 @@ msgstr "Стандарт - Слабая"
 #: ../src/fw/services/normal/vibes/vibes.def:8
 #: ../src/fw/services/normal/vibes/vibe_intensity.c:60
 msgid "Standard - High"
-msgstr "Стандарт - Высокая"
+msgstr "Padrão - alto"
 
 #: ../src/fw/services/normal/vibes/vibes.def:9
 msgid "Pulse"
-msgstr "Пульс"
+msgstr "Pulso"
 
 #: ../src/fw/services/normal/vibes/vibes.def:10
 msgid "Nudge Nudge"
-msgstr "Толчки"
+msgstr "Dois toques"
 
 #: ../src/fw/services/normal/vibes/vibes.def:12
 msgid "Jackhammer"
-msgstr "Молоток"
+msgstr "Britadeira"
 
 #: ../src/fw/services/common/clock.c:479 ../src/fw/services/common/clock.c:750
 msgid "%R"
@@ -1441,26 +1446,26 @@ msgstr "%p"
 #: ../src/fw/services/common/clock.c:507
 #: ../src/fw/services/normal/timeline/timeline_layout.c:380
 msgid "All day"
-msgstr "Весь день"
+msgstr "Dia todo"
 
 #: ../src/fw/services/common/clock.c:519 ../src/fw/services/common/clock.c:531
 #: ../src/fw/services/common/clock.c:857
 msgid "Now"
-msgstr "Сейчас"
+msgstr "Agora"
 
 #: ../src/fw/services/common/clock.c:523
 msgid " MIN. TO"
-msgstr "МИН. ДО"
+msgstr " MIN. ATÉ"
 
 #: ../src/fw/services/common/clock.c:678 ../src/fw/services/common/clock.c:760
 #: ../src/fw/services/common/clock.c:768
 msgid "Yesterday"
-msgstr "Вчера"
+msgstr "Ontem"
 
 #: ../src/fw/services/common/clock.c:680
 #: ../src/fw/services/normal/timeline/timeline_actions.c:1091
 msgid "Tomorrow"
-msgstr "Завтра"
+msgstr "Amanhã"
 
 #: ../src/fw/services/common/clock.c:683 ../src/fw/services/common/clock.c:798
 #: ../src/fw/services/common/clock.c:806
@@ -1478,11 +1483,11 @@ msgstr "%l:%M %p"
 
 #: ../src/fw/services/common/clock.c:758
 msgid "Yesterday, %l:%M %p"
-msgstr "Вчера, %l:%M %p"
+msgstr "Ontem, %l:%M %p"
 
 #: ../src/fw/services/common/clock.c:766
 msgid "Yesterday, %R"
-msgstr "Вчера, %R"
+msgstr "Ontem, %R"
 
 #: ../src/fw/services/common/clock.c:777
 msgid "%b %e, %l:%M %p"
@@ -1507,70 +1512,70 @@ msgstr "%a, %R"
 #: ../src/fw/services/common/clock.c:834
 #, c-format
 msgid "%lu H AGO"
-msgstr "%lu Ч НАЗАД"
+msgstr "HÁ %lu H"
 
 #: ../src/fw/services/common/clock.c:836
 msgid "An hour ago"
-msgstr "Час назад"
+msgstr "Há uma hora"
 
 #: ../src/fw/services/common/clock.c:838
 #, c-format
 msgid "%lu hours ago"
-msgstr "%lu часов назад"
+msgstr "Há %lu horas"
 
 #: ../src/fw/services/common/clock.c:848
 #, c-format
 msgid "%lu MIN AGO"
-msgstr "%lu МИН НАЗАД"
+msgstr "HÁ %lu MIN"
 
 #: ../src/fw/services/common/clock.c:850
 #, c-format
 msgid "%lu minute ago"
-msgstr "%lu минуты назад"
+msgstr "Há %lu min"
 
 #: ../src/fw/services/common/clock.c:852
 #, c-format
 msgid "%lu minutes ago"
-msgstr "%lu минут назад"
+msgstr "Há %lu minutos"
 
 #: ../src/fw/services/common/clock.c:857
 msgid "NOW"
-msgstr "СЕЙЧАС"
+msgstr "AGORA"
 
 #: ../src/fw/services/common/clock.c:865
 #, c-format
 msgid "IN %lu MIN"
-msgstr "ЧЕРЕЗ %lu МИН"
+msgstr "EM %lu MIN"
 
 #: ../src/fw/services/common/clock.c:867
 #, c-format
 msgid "In %lu minute"
-msgstr "%lu минут"
+msgstr "Em %lu minuto"
 
 #: ../src/fw/services/common/clock.c:869
 #, c-format
 msgid "In %lu minutes"
-msgstr "%lu минуты"
+msgstr "Em %lu minutos"
 
 #: ../src/fw/services/common/clock.c:879
 #, c-format
 msgid "IN %lu H"
-msgstr "ЧЕРЕЗ %lu Ч"
+msgstr "EM %lu H"
 
 #: ../src/fw/services/common/clock.c:881
 #, c-format
 msgid "In %lu hour"
-msgstr "%lu часа"
+msgstr "Em %lu hora"
 
 #: ../src/fw/services/common/clock.c:883
 #, c-format
 msgid "In %lu hours"
-msgstr "%lu часов"
+msgstr "Em %lu horas"
 
 #: ../src/fw/services/common/clock.c:894
 #, c-format
 msgid "%m/%d"
-msgstr "%m/%d"
+msgstr "%d/%m"
 
 #: ../src/fw/services/common/clock.c:903
 msgid "%b "
@@ -1587,180 +1592,180 @@ msgstr "%e"
 
 #: ../src/fw/services/common/clock.c:958
 msgid "this morning"
-msgstr "утра"
+msgstr "hoje de manhã"
 
 #: ../src/fw/services/common/clock.c:959
 msgid "this afternoon"
-msgstr "полудня"
+msgstr "hoje de tarde"
 
 #: ../src/fw/services/common/clock.c:960
 msgid "this evening"
-msgstr "вечера"
+msgstr "hoje ao anoitecer"
 
 #: ../src/fw/services/common/clock.c:961
 msgid "tonight"
-msgstr "ночи"
+msgstr "hoje à noite"
 
 #: ../src/fw/services/common/clock.c:962
 msgid "tomorrow morning"
-msgstr "утра завтра"
+msgstr "amanhã de manhã"
 
 #: ../src/fw/services/common/clock.c:963
 msgid "tomorrow afternoon"
-msgstr "полудня завтра"
+msgstr "amanhã de tarde"
 
 #: ../src/fw/services/common/clock.c:964
 msgid "tomorrow evening"
-msgstr "вечера завтра"
+msgstr "amanhã ao anoitecer"
 
 #: ../src/fw/services/common/clock.c:965
 msgid "tomorrow night"
-msgstr "ночи завтра"
+msgstr "amanhã à noite"
 
 #: ../src/fw/services/common/clock.c:966 ../src/fw/services/common/clock.c:967
 msgid "the day after tomorrow"
-msgstr "послезавтра"
+msgstr "depois de amanhã"
 
 #: ../src/fw/services/common/clock.c:968
 msgid "the foreseeable future"
-msgstr "обозримого будущего"
+msgstr "no futuro próximo"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:194
 msgid "How are you feeling? Have you noticed extra focus, better mood or extra energy? You have been sleeping great this week! Keep it up!"
-msgstr "Как себя чувствуете? Заметили повышенную концентрацию, лучшее настроение или прилив сил? Вы отлично спали на этой неделе! Продолжайте в том же духе!"
+msgstr "Como você tem se sentido? Notou que melhorou seu foco, humor e energia? Você tem dormido muito bem esta semana! Continue assim!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:196
 msgid "I feel fabulous!"
-msgstr "Чувствую себя шикарно!"
+msgstr "Eu me sinto fabuloso!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:197
 msgid "About average"
-msgstr "Нормально"
+msgstr "Na média"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:198
 msgid "I'm still tired"
-msgstr "Ещё уставший"
+msgstr "Ainda estou cansado"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:199
 #: ../src/fw/services/normal/activity/activity_insights.c:217
 msgid "Awesome!"
-msgstr "Отлично!"
+msgstr "Fantástico!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:200
 #: ../src/fw/services/normal/activity/activity_insights.c:218
 msgid "Keep it up!"
-msgstr "Продолжай в том же духе!"
+msgstr "Continue assim!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:201
 #: ../src/fw/services/normal/activity/activity_insights.c:219
 msgid "We'll get there!"
-msgstr "Мы справимся!"
+msgstr "Vamos chegar lá!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:212
 msgid "Congratulations - you're having a super active day! Activity makes you more focused and creative. How do you feel?"
-msgstr "Поздравляю - у вас сегодня очень активный день! Это делает вас более сосредоточенным и творческим. Как себя чувствуете?"
+msgstr "Parabéns! Você está tendo um dia super ativo! Atividade física faz você se sentir mais focado e criativo. Como se sente?"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:214
 #: ../src/fw/services/normal/activity/activity_insights.c:1172
 msgid "I feel great!"
-msgstr "Прекрасно!"
+msgstr "Eu me sindo ótimo!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:215
 msgid "About the same"
-msgstr "Как обычно"
+msgstr "Mesma coisa"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:216
 msgid "Not feeling it"
-msgstr "Не очень"
+msgstr "Não muito bem"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:246
 msgid "Activity Summary"
-msgstr "Сводка активности"
+msgstr "Resumo de atividaed"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:253
 msgid "Do you feel more energetic, sharper or optimistic? Being active helps!"
-msgstr "Чувствуете себя более энергичным, сообразительным или оптимистичным? Активность помогает!"
+msgstr "Você está tendo mais energia, foco ou otimismo? Fazer atividade física ajuda!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:254
 msgid "GREAT DAY TODAY"
-msgstr "СЕГОДНЯ ОТЛИЧНО"
+msgstr "ÓTIMO DIA HOJE"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:257
 msgid "You're being consistent and that's important, keep at it!"
-msgstr "Вы стабильно занимаетесь, и это важно, продолжайте в том же духе!"
+msgstr "Você está tendo consistência e isso é importante, continue assim!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:258
 msgid "CONSISTENT!"
-msgstr "СТАБИЛЬНОСТЬ!"
+msgstr "CONSISTÊNCIA!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:261
 #: ../src/fw/services/normal/activity/activity_insights.c:265
 msgid "Resting is fine, but try to recover and step it up tomorrow!"
-msgstr "Отдых - это норма, но постарайтесь восстановиться и поднажать завтра!"
+msgstr "Tudo bem descansar, mas tente recuperar o ritmo amanhã!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:262
 #: ../src/fw/services/normal/activity/activity_insights.c:266
 msgid "NOT VERY ACTIVE"
-msgstr "СЛАБОВАТО"
+msgstr "NÃO MUITO ATIVO"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:274
 msgid "Sleep Summary"
-msgstr "Сводка сна"
+msgstr "Resumo de sono"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:282
 msgid "You had a good night! Feel the energy 😃"
-msgstr "Вы хорошо поспали! Почувствуйте прилив сил 😃"
+msgstr "Você teve uma boa noite! Sinta a energia😃"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:285
 msgid "It's great that you're keeping a consistent sleep routine!"
-msgstr "Здорово, что вы поддерживаете постоянный режим сна!"
+msgstr "Manter uma rotina de sono consistente é ótimo!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:288
 #: ../src/fw/services/normal/activity/activity_insights.c:291
 msgid "A good night's sleep goes a long way! Try to get more hours tonight."
-msgstr "Хороший сон важен! Постарайтесь сегодня выспаться."
+msgstr "Uma boa noite de sono faz diferença! Tente dormir mais hoje."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:443
 msgid "Open App"
-msgstr "Открыть приложение"
+msgstr "Abrir aplicativo"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:548
 #: ../src/fw/services/normal/activity/activity_insights.c:553
 msgid "BELOW AVG"
-msgstr "НИЖЕ СР"
+msgstr "ABAIXO DA MÉDIA"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:548
 #: ../src/fw/services/normal/activity/activity_insights.c:553
 msgid "Below avg"
-msgstr "Ниже ср"
+msgstr "Abaixo da média"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:558
 msgid "ON AVG"
-msgstr "В СРЕДН"
+msgstr "NA MÉDIA"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:558
 msgid "On avg"
-msgstr "В средн"
+msgstr "Na média"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:563
 msgid "ABOVE AVG"
-msgstr "ВЫШЕ СР"
+msgstr "ACIMA DA MÉDIA"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:563
 msgid "Above avg"
-msgstr "Выше ср"
+msgstr "Acima da média"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:755
 msgid "Wanna know more about you? Track your activity and sleep with Pebble Health."
-msgstr "Хотите узнать о себе больше? Следите за активностью и сном в Pebble Health."
+msgstr "Quer saber mais sobre si mesmo? Rastreie a atividade e o sono com Pebble Health."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:806
 msgid "You like sleep, don't you? Get fun stats on your sleep and start waking up less groggy with Pebble Health."
-msgstr "Вы любите сон, не так ли? Получите интересную статистику своего сна и начните просыпаться менее сонными с Pebble Health."
+msgstr "Você gosta de dormir, não é? Veja estatísticas divertidas sobre seu sono e acorde menos cansado com Pebble Health."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:855
 msgid "Wish you could get daily updates on your activity and sleep progress? You can! Check out your stats with Pebble Health."
-msgstr "Хотели бы вы получать ежедневные обновления о своей активности и состоянии сна? Легко! Статистика доступна в Pebble Health."
+msgstr "Gostaria de receber atualizações sobre sua atividade física e sono? Você pode! Veja suas estatísticas com Pebble Health."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1076
 msgid "%H:%M"
@@ -1773,24 +1778,24 @@ msgstr "%l:%M%p"
 #: ../src/fw/services/normal/activity/activity_insights.c:1101
 #, c-format
 msgid "%uH %uM Sleep"
-msgstr "Сон %uH %uM"
+msgstr "%uh %umin de sono"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1132
 msgid "Nap Time"
-msgstr "Дремота"
+msgstr "Soneca"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1140
 #, c-format
 msgid "%s of sleep"
-msgstr "%s сна"
+msgstr "%s de sono"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1145
 msgid "YOU NAPPED"
-msgstr "ВЫ ДРЕМАЛИ"
+msgstr "VOCÊ DORMIU"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1146
 msgid "Of napping"
-msgstr "дремоты"
+msgstr "De sono"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1154
 #, c-format
@@ -1799,244 +1804,244 @@ msgstr "%s - %s"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1176
 msgid "I need more"
-msgstr "Нужно больше"
+msgstr "Preciso de mais"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1206
 #, c-format
 msgid "Aren't naps great? You knocked out for %dH %dM!"
-msgstr "Вздремнуть всегда здорово! Вы дремали %dH %dM!"
+msgstr "Dormir não é ótimo? Você desmaiou por %dh %dmin!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1222
 msgid "I didn't nap!?"
-msgstr "Я не дремал!?"
+msgstr "Eu não dormi!?"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1442
 msgid "Open Pin"
-msgstr "Открыть пин"
+msgstr "Abrir o Pin"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1526
 #, c-format
 msgid "Killer job! You've walked %d steps today which is %d%% above your typical. Do it again tomorrow and you'll be on top of the world!"
-msgstr "Убийственно! Сегодня вы сделали %d шагов, что на %d%% больше обычного. Повторите это завтра, и вы будете на вершине мира!"
+msgstr "Trabalho incrível! Você deu %d passos hoje, que está %d%% acima do padrão. Repita amanhã e você estará no topo do mundo!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1528
 #, c-format
 msgid "Nice moves! You've walked %d steps today which is %d%% above your typical. Crush it again tomorrow 😀"
-msgstr "Отличная ходьба! Сегодня вы сделали %d шагов, что на %d%% больше обычного. Отожги так же завтра 😀"
+msgstr "Mandou bem! Você deu %d passos hoje, que está %d%% acima do padrão. Detone de novo amanhã 😀"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1530
 #, c-format
 msgid "Hey rockstar 🎤 You've walked %d steps today which is %d%% above your typical. Nothing can stop you!"
-msgstr "Эй, рок-звезда 🎤 Сегодня вы сделали %d шагов, что на %d%% выше обычного. Ничто вас не остановит!"
+msgstr "Ei, ícone 🎤 Você deu %d passos hoje, que está %d%% acima do padrão. Nada pode lhe parar!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1532
 #, c-format
 msgid "We can barely keep up! You walked %d steps today which is %d%% above your typical. You're on 🔥"
-msgstr "Мы еле успеваем! Сегодня вы сделали %d шагов, что на %d%% выше обычного. Вы 🔥"
+msgstr "Espere por nós! Você deu %d passos hoje, que está %d%% acima do padrão. Você está em 🔥"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1535
 #, c-format
 msgid "You walked %d steps today which is %d%% above your typical. You just outstepped YOURSELF. Mic drop."
-msgstr "Сегодня вы прошли %d шагов, что на %d%% выше обычного. Вы обошли СЕБЯ. *Роняет микрофон*"
+msgstr "Você deu %d passos hoje, que está %d%% acima do padrão. Você acabou de SE superar. Sem palavras."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1542
 #, c-format
 msgid "You walked %d steps today; keep it up! Being active is the key to feeling like a million bucks. Try to beat your typical tomorrow."
-msgstr "Сегодня вы прошли %d шагов; продолжайте! Быть активным - ключ к ощущению себя на вес золота. Попробуйте превзойти себя завтра."
+msgstr "Você deu %d passos hoje; continue assim! Ser ativo é a chave para se sentir invencível. Tente superar sua média amanhã."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1545
 #, c-format
 msgid "Good job! You walked %d steps today–do it again tomorrow."
-msgstr "Хорошая работа! Сегодня вы прошли %d шагов–повторите так же завтра."
+msgstr "Bom trabalho! Você deu %d passos hoje–faça de novo amanhã."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1546
 #, c-format
 msgid "Someone's on the move 👊 You walked %d steps today; keep doing what you're doing!"
-msgstr "Кое-кто в движении 👊 Сегодня вы прошли %d шагов; продолжайте так же!"
+msgstr "Alguém está com tudo 👊 Você deu %d passos hoje; continue nesse ritmo!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1548
 #, c-format
 msgid "You keep moving, we'll keep counting! You've clocked in %d steps today. Keep it rolling, hot stuff."
-msgstr "Вы ходите, мы считаем! Сегодня вы преодолели %d шагов. Продолжайте в том же духе."
+msgstr "Você vai andando, nós vamos contando! Você cravou %d passos hoje. Continue assim, coisa linda."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1555
 #, c-format
 msgid "You walked %d steps today which is %d%% below your typical. Try to be more active tomorrow–you can do it!"
-msgstr "Сегодня вы сделали %d шагов, что на %d%% ниже обычного. Попробуйте быть активнее завтра–вы сможете!"
+msgstr "Você deu %d passos hoje, que está %d%% abaixo do padrão. Tente ser mais ativo(a) amanhã –você consegue!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1557
 #, c-format
 msgid "You walked %d steps which is %d%% below your typical. Being active makes you feel amaaaazing–try to get back on track tomorrow."
-msgstr "Сегодня вы сделали %d шагов, что на %d%% ниже обычного. Быть активным помогает чувствовать себя крууууче–постарайтесь вернуться в русло завтра."
+msgstr "Você deu %d passos, que está %d%% abaixo do seu padrão. Ser ativo faz você se sentir incríííível–tente voltar aos trilhos amanhã."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1559
 #, c-format
 msgid "You walked %d steps today which is %d%% below your typical. Don't worry, tomorrow is just around the corner 😀"
-msgstr "Сегодня вы сделали %d шагов, что на %d%% ниже обычного. Не волнуйтесь, \"завтра\" уже не за горами 😀"
+msgstr "Você andou %d passos hoje que é %d%% menos que o seu normal. Não se preocupe, amanhã é outro dia😀"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1561
 #, c-format
 msgid "You walked %d steps which is %d%% below your typical, but don't stress. You'll crush it tomorrow 😉"
-msgstr "Сегодня вы сделали %d шагов, что на %d%% ниже обычного. Но не волнуйтесь, завтра вы отожжёте 😉"
+msgstr "Você andou %d passos que é %d%% menos que o seu normal, mas não se estresse, amanhã você consegue 😉"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1568
 #, c-format
 msgid "You walked %d steps today. Don't fret, you can get back on track in no time 😉"
-msgstr "Сегодня вы сделали %d шагов. Не волнуйтесь, вы сможете вернуться в русло в короткие сроки 😉"
+msgstr "Você andou %d passos hoje. Não se chateie, logo você retoma o passo 😉"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1570
 #, c-format
 msgid "You walked %d steps today. Good news is the sky's the limit!"
-msgstr "Сегодня вы сделали %d шагов. Хорошая новость: это не предел!"
+msgstr "Você andou %d passos hoje. O bom é sempre saber que amanhã é um novo dia!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1571
 #, c-format
 msgid "You walked %d steps today. Try to take even more steps tomorrow–show us what you're made of!"
-msgstr "Сегодня вы сделали %d шагов. Попробуйте набрать больше шагов завтра–покажите из чего вы сделаны!"
+msgstr "Você andou %d passos hoje. Tente andar mais amanhã – mostre o que você pode fazer!"
 
 #. / Sleep notification on wake up, slept above their typical sleep duration
 #: ../src/fw/services/normal/activity/activity_insights.c:1624
 #, c-format
 msgid "Refreshed? You slept for %dH %dM which is %d%% above your typical. Go tackle your day 😃."
-msgstr "Отдохнули? Вы спали %dч %dм, что на %d%% выше обычного. Вперёд в новый день 😃"
+msgstr "Revigorado(a)? Você dormiu por %dh %dmin, que está %d%% acima do padrão. Vá curtir seu dia 😃."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1626
 #, c-format
 msgid "You caught some killer zzz’s! You slept for %dH %dM which is %d%% above your typical. Keep it up."
-msgstr "Вы спали как мёртвый %dч %dм, что на %d%% выше обычного. Продолжайте."
+msgstr "Como uma pedra! Você dormiu por %dh %dmin, que está %d%% acima do padrão. Continue assim."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1628
 #, c-format
 msgid "Rise and shine! You slept for %dH %dM which is %d%% above your typical. Do it again tonight, sleep master."
-msgstr "Проснитесь и пойте! Вы спали %dч %dм, что на %d%% выше обычного. Поспите так же завтра, мастер снов."
+msgstr "Acorde e brilhe! Você dormiu por %dh %dmin, que está %d%% acima do padrão. Faça o mesmo amanhã à noite, rei do sono."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1630
 #, c-format
 msgid "Mmmm...what a night. You slept for %dH %dM which is %d%% above your typical. That's gotta feel good!"
-msgstr "Ммм...что за ночь. Вы спали %dч %dм, что на %d%% выше обычного. Должно быть по ощущениям это хорошо!"
+msgstr "Mmmm... que noite. Você dormiu por %dh %dmin, que está %d%% acima do padrão. Isso que é se sentir bem!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1632
 #, c-format
 msgid "That's a lot of sheep you just counted! You slept for %dH %dM which is %d%% above your typical. Boom shakalaka."
-msgstr "Много же овец вы сосчитали! Вы спали %dч %dм, что на %d%% выше обычного. Бум шакалака."
+msgstr "Você contou bastantes carneirinhos! Você dormiu por %dh %dmin, que está %d%% acima do padrão. Arrasou."
 
 #. / Sleep notification on wake up, slept similar to their typical sleep duration
 #: ../src/fw/services/normal/activity/activity_insights.c:1640
 #, c-format
 msgid "Good mornin’. You slept for %dH %dM. Every good day begins with a solid night’s sleep...kinda like that one 😉 Keep it up!"
-msgstr "Доброе утро. Вы спали %dч %dм. Каждый хороший день начинается с крепкого сна...вроде этого! 😉 Продолжайте!"
+msgstr "Bom dia. Você dormiu por %dh %dmin. Todo dia bom começa com uma sólida noite de sonho...tipo essa 😉 Continue assim!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1643
 #, c-format
 msgid "Good morning! You slept for %dH %dM. Consistency is key; keep doing what you're doing 😃."
-msgstr "Доброе утро! Вы спали %dч %dм. Постоянность это ключ; продолжайте так же 😃"
+msgstr "Bom dia! Você dormiu por %dh %dmin. Consistência é a chave; continue nesse ritmo 😃."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1645
 #, c-format
 msgid "You're rockin' the shut eye! You slept for %dH %dM. Make it a nightly ritual. You deserve it."
-msgstr "Звезда закрытых глаз! Вы спали %dч %dм. Пора сделать это еженощным ритуалом. Вы заслужили это."
+msgstr "Você está arrasando no sono! Você dormiu por %dh %dmin. Torne isso um ritual noturno. Você merece."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1647
 #, c-format
 msgid "Feelin' good? You slept for %dH %dM. Nothing can stop you now 👊"
-msgstr "Чувствуете себя хорошо? Вы спали %dч %dм. Теперь ничто вас не остановит 👊"
+msgstr "Se sente bem? Você dormiu por %dh %dmin. Nada pode parar você agora 👊"
 
 #. / Sleep notification on wake up, slept below their typical sleep duration
 #: ../src/fw/services/normal/activity/activity_insights.c:1654
 #, c-format
 msgid "Hey sleepy head. You slept for %dH %dM which is %d%% below your typical. Try to get more tonight!"
-msgstr "Эй, соня. Вы спали %dч %dм, что на %d%% ниже обычного. Постарайтесь ночью поспать подольше!"
+msgstr "Ei, dorminhoco. Você dormiu por %dh %dmin, que está %d%% abaixo do padrão. Tente aumentar hoje a noite!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1656
 #, c-format
 msgid "Groggy? You slept for %dH %dM which is %d%% below your typical. Sleep is important for everything you do-try getting more shut eye tonight!"
-msgstr "Сонливость? Вы спали %dч %dм, что на %d%% ниже обычного. Сон важен для всего, что вы делаете-постарайтесь ночью побольше поспать!"
+msgstr "Com sono? Você dormiu por %dh %dmin, que está %d%% abaixo do padrão. Dormir é importante para tudo que você fizer-tente dormir mais hoje a noite!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1658
 #, c-format
 msgid "It's a new day! You slept for %dH %dM which is %d%% below your typical. It's not your best, but there's always tonight."
-msgstr "Новый день! Вы спали %dч %dм, что на %d%% ниже обычного. Не лучший результат, но всегда есть ещё ночь."
+msgstr "É um novo dia! Você dormiu por %dh %dmin, que está %d%% abaixo do padrão. Não é seu melhor, mas sempre tem a noite de hoje."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1660
 #, c-format
 msgid "Goooood morning! You slept for %dH %dM which is %d%% below your typical. Go crush your day and then get back in bed 😉"
-msgstr "Доооброе утроо! Вы спали %dч %dм, что на %d%% ниже обычного. Отожгите этим днём и возвращайтесь в постель 😉"
+msgstr "Booom dia! Você dormiu por %dh %dmin, que está %d%% abaixo do padrão. Arrase no dia de hoje e depois volte para a cama 😉"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1667
 #, c-format
 msgid "You slept for %dH %dM which is %d%% below your typical. Sleep is vital for all your great ideas–how 'bout getting more tonight?"
-msgstr "Вы спали %dч %dм, что на %d%% ниже обычного. Сон необходим для крутых идей–как насчёт поспать сегодня подольше?"
+msgstr "Você dormiu por %dh %dmin, que está %d%% abaixo do padrão. Dormir é vital para suas grandes ideias–que tal aumentar hoje a noite?"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1669
 #, c-format
 msgid "You only slept for %dH %dM which is %d%% below your typical. We know you're busy, but try getting more tonight. We believe in you 😉"
-msgstr "Вы спали всего лишь %dч %dм, что на %d%% ниже обычного. Мы знаем, что вы заняты, но постарайтесь ночью хорошенько поспать. Мы верим в вас 😉"
+msgstr "Você só dormiu por %dh %dmin, que está %d%% abaixo do padrão. Sabemos que você está ocupado(a), mas tente aumentar isso. Acreditamos em você 😉"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1671
 #, c-format
 msgid "You slept for %dH %dM which is %d%% below your typical. We know stuff happens; take another crack at it tonight."
-msgstr "Вы спали %dч %dм, что на %d%% ниже обычного. Мы знаем, всякое бывает; сделайте новую попытку этой ночью."
+msgstr "Você dormiu por %dh %dmin, que está %d%% abaixo do padrão. Sabemos que isso acontece; tente de novo hoje a noite."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1724
 #, c-format
 msgid "%u Steps"
-msgstr "%u шагов"
+msgstr "%u passos"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1805
 msgid "Didn’t that walk feel good?"
-msgstr "Разве эта прогулка не была приятной?"
+msgstr "Essa caminhada não foi ótima?"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1806
 msgid "Way to keep it active!"
-msgstr "Вот как надо быть активным!"
+msgstr "Boa forma de se manter ativo(a)!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1807
 msgid "You got the moves!"
-msgstr "Вот так надо двигаться!"
+msgstr "Você pegou os movimentos!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1808
 msgid "Gettin' your step on?"
-msgstr "Набираешь обороты?"
+msgstr "Mandando ver nos passos?"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1818
 msgid "Feelin' hot? Cause you're on 🔥"
-msgstr "Жарко? Потому что вы 🔥"
+msgstr "Com calor? Porque você está em 🔥"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1819
 msgid "Hey lightning bolt, way to go!"
-msgstr "Эй, молния, так держать!"
+msgstr "Ei, trovão, esse é o caminho!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1820
 msgid "You're a machine!"
-msgstr "Вы машина!"
+msgstr "Você é uma máquina!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1821
 msgid "Hey speedster, we can barely keep up!"
-msgstr "Эй, мы едва поспеваем за вами!"
+msgstr "Quase não consegui acompanhar!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1822
 msgid "Way to show us what you're made of 👊"
-msgstr "Вот как надо показывать из чего вы сделаны 👊"
+msgstr "Assim, nos mostra do que você é feito! 👊"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1832
 msgid "Workin' up a sweat?"
-msgstr "Работаете в поте лица?"
+msgstr "Começou a suar?"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1833
 msgid "Well done 💪"
-msgstr "Отлично 💪"
+msgstr "Muito bem 💪"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1834
 msgid "Endorphin rush?"
-msgstr "Прилив эндорфинов?"
+msgstr "Pico de endorfina?"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1835
 msgid "Can't stop, won't stop 👊"
-msgstr "Не могу и не хочу останавливаться 👊"
+msgstr "Não pode parar e nem vai 👊"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1836
 msgid "Keepin' that heart healthy! ❤"
-msgstr "Держим сердце здоровым! ❤"
+msgstr "Mantendo o coração saudável! ❤"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1864
 #: ../src/fw/services/normal/activity/activity_insights.c:1956
@@ -2044,37 +2049,37 @@ msgstr "Держим сердце здоровым! ❤"
 #: ../src/fw/services/normal/activity/activity_insights.c:1970
 #, c-format
 msgid "%d Min"
-msgstr "%d мин"
+msgstr "%d min"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1895
 msgid "Avg Pace"
-msgstr "Ср Темп"
+msgstr "Ritmo médio"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1911
 msgid "Distance"
-msgstr "Дистанция"
+msgstr "Distância"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1923
 msgid "Steps"
-msgstr "Шаги"
+msgstr "Passos"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1936
 msgid "Active Calories"
-msgstr "Активные калории"
+msgstr "Calorias ativas"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1949
 msgid "Avg HR"
-msgstr "Ср ЧСС"
+msgstr "Pulso médio"
 
 #: ../src/fw/services/normal/activity/health_util.c:45
 #, c-format
 msgid "%dH"
-msgstr "%dЧ"
+msgstr "%d H"
 
 #: ../src/fw/services/normal/activity/health_util.c:51
 #, c-format
 msgid "%dM"
-msgstr "%dМ"
+msgstr "%d MIN"
 
 #: ../src/fw/services/normal/activity/health_util.c:74
 #, c-format
@@ -2083,7 +2088,7 @@ msgstr "%d:%d"
 
 #: ../src/fw/services/normal/activity/health_util.c:111
 msgid "H"
-msgstr "Ч"
+msgstr "H"
 
 #: ../src/fw/services/normal/activity/health_util.c:117
 msgid " "
@@ -2091,7 +2096,7 @@ msgstr ""
 
 #: ../src/fw/services/normal/activity/health_util.c:127
 msgid "M"
-msgstr "М"
+msgstr "MIN"
 
 #: ../src/fw/services/normal/activity/health_util.c:146
 #, c-format
@@ -2101,158 +2106,158 @@ msgstr "%d.%d"
 #: ../src/fw/services/normal/alarms/alarm.c:389
 #: ../src/fw/services/normal/alarms/alarm_pin.c:33
 msgid "Alarm"
-msgstr "Будильник"
+msgstr "Alarme"
 
 #. / A frequency option for alarms, i.e. the alarm would go off every day. Respect
 #. / capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1138
 msgid "EVERY DAY"
-msgstr "ЕЖЕДНЕВНО"
+msgstr "TODO DIA"
 
 #. / A frequency option for alarms, i.e. the alarm would go off every day. Respect
 #. / capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1141
 msgid "Every Day"
-msgstr "Ежедневно"
+msgstr "Todo dia"
 
 #. / A frequency option for alarms, i.e. the alarm would only go off every weekday. Respect
 #. / capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1147
 msgid "WEEKDAYS"
-msgstr "БУДНИ"
+msgstr "DIAS ÚTEIS"
 
 #. / A frequency option for alarms, i.e. the alarm would only go off each day on the weekend.
 #. / Respect capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1156
 msgid "WEEKENDS"
-msgstr "ВЫХОДНЫЕ"
+msgstr "FINS DE SEMANA"
 
 #. / A frequency option for alarms, i.e. the alarm would only go off one time ever. Respect
 #. / capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1166
 msgid "ONCE"
-msgstr "ОДИН РАЗ"
+msgstr "UMA VEZ"
 
 #. / A frequency option for alarms, i.e. the alarm would only go off one time ever. Respect
 #. / capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1169
 msgid "Once"
-msgstr "Один раз"
+msgstr "Uma vez"
 
 #. / A frequency option for alarms, i.e. the alarm would only go off on a custom choice of
 #. / days. Respect capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1176
 msgid "CUSTOM"
-msgstr "СВОЁ"
+msgstr "PERSONALIZADO"
 
 #. / A frequency option for alarms, i.e. the alarm would only go off on a custom choice of
 #. / days. Respect capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1179
 msgid "Custom"
-msgstr "Своё"
+msgstr "Personalizado"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1192
 #: ../src/fw/applib/pbl_std/timelocal.c:48
 msgid "Sun"
-msgstr "Вс"
+msgstr "Dom"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1193
 #: ../src/fw/applib/pbl_std/timelocal.c:48
 msgid "Mon"
-msgstr "Пн"
+msgstr "Seg"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1194
 #: ../src/fw/applib/pbl_std/timelocal.c:48
 msgid "Tue"
-msgstr "Вт"
+msgstr "Ter"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1195
 #: ../src/fw/applib/pbl_std/timelocal.c:48
 msgid "Wed"
-msgstr "Ср"
+msgstr "Qua"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1196
 #: ../src/fw/applib/pbl_std/timelocal.c:49
 msgid "Thu"
-msgstr "Чт"
+msgstr "Qui"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1197
 #: ../src/fw/applib/pbl_std/timelocal.c:49
 msgid "Fri"
-msgstr "Пт"
+msgstr "Sex"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1198
 #: ../src/fw/applib/pbl_std/timelocal.c:49
 msgid "Sat"
-msgstr "Сб"
+msgstr "Sab"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1201
 msgid "Sundays"
-msgstr "По Сб"
+msgstr "Domingos"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1202
 msgid "Mondays"
-msgstr "По Пн"
+msgstr "Segundas-feiras"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1203
 msgid "Tuesdays"
-msgstr "По Вт"
+msgstr "Terças-feiras"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1204
 msgid "Wednesdays"
-msgstr "По Ср"
+msgstr "Quartas-feiras"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1205
 msgid "Thursdays"
-msgstr "По Чт"
+msgstr "Quintas-feiras"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1206
 msgid "Fridays"
-msgstr "По Пт"
+msgstr "Sextas-feiras"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1207
 msgid "Saturdays"
-msgstr "По Сб"
+msgstr "Sábados"
 
 #: ../src/fw/services/normal/alarms/alarm_pin.c:46
 msgid "Edit"
-msgstr "Изменить"
+msgstr "Editar"
 
 #: ../src/fw/services/normal/notifications/ancs/ancs_item.c:122
 msgid "sent an attachment"
-msgstr "отправлено вложение"
+msgstr "mandou um anexo"
 
 #: ../src/fw/services/normal/notifications/ancs/ancs_item.c:169
 msgid "Call Back"
-msgstr "Перезвонить"
+msgstr "Ligar de volta"
 
 #: ../src/fw/services/normal/notifications/do_not_disturb.c:128
 msgid "Calendar Aware enables Quiet Time automatically during calendar events."
-msgstr "Приоритет календаря включает Без звука автоматически во время событий календаря."
+msgstr "Respeitar calendário automaticamente ativa o modo silêncio durante eventos de calendário."
 
 #: ../src/fw/services/normal/notifications/do_not_disturb.c:134
 msgid "Press and hold the Back button from a notification to turn Quiet Time on or off."
-msgstr "Удерживайте кнопку Назад при просмотре уведомления чтобы включить или выключить Без звука."
+msgstr "Em uma notificação, aperte e segure o botão de voltar para ligar ou desligar o modo silêncio."
 
 #: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:41
 msgid "Start Quiet Time?"
-msgstr "Начать Без звука?"
+msgstr "Iniciar modo silêncio?"
 
 #: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:42
 msgid "End Quiet Time?"
-msgstr "Закончить Без звука?"
+msgstr "Encerrar modo silêncio?"
 
 #: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:43
 msgid "Quiet Time\n"
 "Started"
-msgstr "Без звука\n"
-"вкл."
+msgstr "Modo Silencioso\n"
+"Início"
 
 #: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:44
 msgid "Quiet Time\n"
 "Ended"
-msgstr "Без звука\n"
-"выкл."
+msgstr "Modo Silencioso\n"
+"Fim"
 
 #: ../src/fw/services/normal/timeline/calendar_layout.c:167
 msgid " - "
@@ -2260,230 +2265,230 @@ msgstr " - "
 
 #: ../src/fw/services/normal/timeline/calendar_layout.c:287
 msgid "All Day"
-msgstr "Весь день"
+msgstr "Dia Todo"
 
 #: ../src/fw/services/normal/timeline/calendar_layout.c:328
 msgid "Recurring"
-msgstr "Повторное"
+msgstr "Recorrente"
 
 #: ../src/fw/services/normal/timeline/sports_layout.c:63
 msgid "STARTS "
-msgstr "НАЧИНАЕТСЯ "
+msgstr "INICIA "
 
 #: ../src/fw/services/normal/timeline/sports_layout.c:141
 msgid "Broadcaster"
-msgstr "Вещательный"
+msgstr "Transmissor"
 
 #: ../src/fw/services/normal/timeline/timeline.c:715
 msgid "Can't connect. Relaunch Pebble Time app on phone."
-msgstr "Невозможно подключиться. Перезапустите Pebble Time на телефоне."
+msgstr "Sem conexão. Reinicie o app Pebble Time no celular."
 
 #: ../src/fw/services/normal/timeline/timeline.c:730
 msgid "Removed"
-msgstr "Убрано"
+msgstr "Removido"
 
 #: ../src/fw/services/normal/timeline/timeline.c:743
 #: ../src/fw/services/normal/timeline/timeline.c:765
 msgid "Dismissed"
-msgstr "Отклонено"
+msgstr "Dispensado"
 
 #: ../src/fw/services/normal/timeline/timeline.c:769
 msgid "Deleted"
-msgstr "Удалено"
+msgstr "Excluído"
 
 #: ../src/fw/services/normal/timeline/timeline.c:803
 msgid "Thanks!"
-msgstr "Спасибо!"
+msgstr "Valeu!"
 
 #: ../src/fw/services/normal/timeline/timeline.c:962
 msgid "Calendar"
-msgstr "Календарь"
+msgstr "Calendário"
 
 #: ../src/fw/services/normal/timeline/timeline.c:970
 msgid "Reminders"
-msgstr "Напоминания"
+msgstr "Lembretes"
 
 #: ../src/fw/services/normal/timeline/timeline.c:984
 msgid "Intercom"
-msgstr "Интерком"
+msgstr "Intercom"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:736
 msgid "Quickly dismiss all notifications by holding the Select button for 2 seconds from any incoming notification."
-msgstr "Быстро отклонить все уведомления удерживанием кнопки Центр 2 секунды из любого уведомления."
+msgstr "Ignore rapidamente todas as notificações segurando o botão Selecionar por 2 segundos em qualquer notificação recebida."
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:828
 msgid "Ok"
-msgstr "Ок"
+msgstr "Ok"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:829
 msgid "Yes"
-msgstr "Да"
+msgstr "Sim"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:830
 msgid "No"
-msgstr "Нет"
+msgstr "Não"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:831
 msgid "Call me"
-msgstr "Позвони мне"
+msgstr "Me ligue"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:832
 msgid "Call you later"
-msgstr "Перезвоню позже"
+msgstr "Te ligo depois"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:955
 msgid "Reply with Voice"
-msgstr "Ответить голосом"
+msgstr "Responder com Voz"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:956
 msgid "Voice"
-msgstr "Голос"
+msgstr "Voz"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:966
 msgid "Canned messages"
-msgstr "Сохранённые"
+msgstr "Mensagens automáticas"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:970
 msgid "Emoji"
-msgstr "Эмодзи"
+msgstr "Emoji"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:1079
 msgid "In 15 minutes"
-msgstr "Через 15 минут"
+msgstr "Em 15 minutos"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:1085
 msgid "Later today"
-msgstr "Позже сегодня"
+msgstr "Hoje mais tarde"
 
 #: ../src/fw/services/normal/timeline/timeline_layout.c:725
 msgid "Last updated"
-msgstr "Последнее обновление"
+msgstr "Última atualização"
 
 #. / Standard vibration pattern option that has a medium intensity
 #: ../src/fw/services/normal/vibes/vibe_intensity.c:56
 msgid "Standard - Medium"
-msgstr "Стандарт - Средняя"
+msgstr "Padrão - Médio"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 msgid "Jan"
-msgstr "Янв"
+msgstr "Jan"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 msgid "Feb"
-msgstr "Фев"
+msgstr "Fev"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 msgid "Mar"
-msgstr "Мар"
+msgstr "Mar"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 msgid "Apr"
-msgstr "Апр"
+msgstr "Abr"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 #: ../src/fw/applib/pbl_std/timelocal.c:44
 msgid "May"
-msgstr "Май"
+msgstr "Mai"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Jun"
-msgstr "Июн"
+msgstr "Jun"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Jul"
-msgstr "Июл"
+msgstr "Jul"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Aug"
-msgstr "Авг"
+msgstr "Ago"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Sep"
-msgstr "Сен"
+msgstr "Set"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Oct"
-msgstr "Окт"
+msgstr "Out"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:40
 msgid "Nov"
-msgstr "Ноя"
+msgstr "Nov"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:40
 msgid "Dec"
-msgstr "Дек"
+msgstr "Dez"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:43
 msgid "January"
-msgstr "Январь"
+msgstr "Janeiro"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:43
 msgid "February"
-msgstr "Февраль"
+msgstr "Fevereiro"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:43
 msgid "March"
-msgstr "Март"
+msgstr "Março"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:43
 msgid "April"
-msgstr "Апрель"
+msgstr "Abril"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:44
 msgid "June"
-msgstr "Июнь"
+msgstr "Junho"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:44
 msgid "July"
-msgstr "Июль"
+msgstr "Julho"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:44
 msgid "August"
-msgstr "Август"
+msgstr "Agosto"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:45
 msgid "September"
-msgstr "Сентябрь"
+msgstr "Setembro"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:45
 msgid "October"
-msgstr "Октябрь"
+msgstr "Outubro"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:45
 msgid "November"
-msgstr "Ноябрь"
+msgstr "Novembro"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:45
 msgid "December"
-msgstr "Декабрь"
+msgstr "Dezembro"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Sunday"
-msgstr "Воскресенье"
+msgstr "Domingo"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Monday"
-msgstr "Понедельник"
+msgstr "Segunda-feira"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Tuesday"
-msgstr "Вторник"
+msgstr "Terça-feira"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Wednesday"
-msgstr "Среда"
+msgstr "Quarta-feira"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:53
 msgid "Thursday"
-msgstr "Четверг"
+msgstr "Quinta-feira"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:53
 msgid "Friday"
-msgstr "Пятница"
+msgstr "Sexta-feira"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:53
 msgid "Saturday"
-msgstr "Суббота"
+msgstr "Sábado"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:56
 msgid "%H:%M:%S"
@@ -2504,20 +2509,20 @@ msgstr "%I:%M:%S %p"
 #: ../src/fw/applib/pbl_std/timelocal.c:61
 #: ../src/fw/applib/ui/date_time_selection_window_private.c:89
 msgid "AM"
-msgstr "ДП"
+msgstr "AM"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:61
 #: ../src/fw/applib/ui/date_time_selection_window_private.c:91
 msgid "PM"
-msgstr "ПП"
+msgstr "PM"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:62
 msgid "am"
-msgstr "дп"
+msgstr "am"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:62
 msgid "pm"
-msgstr "пп"
+msgstr "pm"
 
 #. / The first separator in `<hour>:<minute>:<second>`
 #. / The second separator in `<hour>:<minute>:<second>`
@@ -2545,7 +2550,7 @@ msgstr ", "
 #: ../src/fw/applib/template_string.c:203
 msgctxt "TmplStringSep"
 msgid ", and "
-msgstr ", и "
+msgstr "e "
 
 #. / Singular suffix for seconds with no units
 #. / Singular suffix for minutes with no units
@@ -2583,155 +2588,155 @@ msgstr ""
 #: ../src/fw/applib/template_string.c:276
 msgctxt "TmplStringSing"
 msgid " sec"
-msgstr " сек"
+msgstr " s"
 
 #. / Plural suffix for seconds with abbreviated units
 #: ../src/fw/applib/template_string.c:278
 msgctxt "TmplStringPlur"
 msgid " sec"
-msgstr " сек"
+msgstr " s"
 
 #. / Singular suffix for seconds with full units
 #: ../src/fw/applib/template_string.c:280
 msgctxt "TmplStringSing"
 msgid " second"
-msgstr " секунды"
+msgstr " segundo"
 
 #. / Plural suffix for seconds with full units
 #: ../src/fw/applib/template_string.c:282
 msgctxt "TmplStringPlur"
 msgid " seconds"
-msgstr " секунд"
+msgstr " segundos"
 
 #. / Singular suffix for minutes with abbreviated units
 #: ../src/fw/applib/template_string.c:291
 msgctxt "TmplStringSing"
 msgid " min"
-msgstr " мин"
+msgstr " min"
 
 #. / Plural suffix for minutes with abbreviated units
 #: ../src/fw/applib/template_string.c:293
 msgctxt "TmplStringPlur"
 msgid " min"
-msgstr " мин"
+msgstr " min"
 
 #. / Singular suffix for minutes with full units
 #: ../src/fw/applib/template_string.c:295
 msgctxt "TmplStringSing"
 msgid " minute"
-msgstr " минуты"
+msgstr " minuto"
 
 #. / Plural suffix for minutes with full units
 #: ../src/fw/applib/template_string.c:297
 msgctxt "TmplStringPlur"
 msgid " minutes"
-msgstr " минут"
+msgstr " minutos"
 
 #. / Singular suffix for hours with abbreviated units
 #: ../src/fw/applib/template_string.c:306
 msgctxt "TmplStringSing"
 msgid " hr"
-msgstr " ч"
+msgstr " h"
 
 #. / Plural suffix for hours with abbreviated units
 #: ../src/fw/applib/template_string.c:308
 msgctxt "TmplStringPlur"
 msgid " hr"
-msgstr " ч"
+msgstr " h"
 
 #. / Singular suffix for hours with full units
 #: ../src/fw/applib/template_string.c:310
 msgctxt "TmplStringSing"
 msgid " hour"
-msgstr " часа"
+msgstr " hora"
 
 #. / Plural suffix for hours with full units
 #: ../src/fw/applib/template_string.c:312
 msgctxt "TmplStringPlur"
 msgid " hours"
-msgstr " часов"
+msgstr " horas"
 
 #. / Singular suffix for days with abbreviated units
 #: ../src/fw/applib/template_string.c:321
 msgctxt "TmplStringSing"
 msgid " d"
-msgstr " дн"
+msgstr " d"
 
 #. / Plural suffix for days with abbreviated units
 #: ../src/fw/applib/template_string.c:323
 msgctxt "TmplStringPlur"
 msgid " d"
-msgstr " дн"
+msgstr " d"
 
 #. / Singular suffix for days with full units
 #: ../src/fw/applib/template_string.c:325
 msgctxt "TmplStringSing"
 msgid " day"
-msgstr " дня"
+msgstr " dia"
 
 #. / Plural suffix for days with full units
 #: ../src/fw/applib/template_string.c:327
 msgctxt "TmplStringPlur"
 msgid " days"
-msgstr " дней"
+msgstr " dias"
 
 #. / Singular suffix for months with abbreviated units
 #: ../src/fw/applib/template_string.c:337
 msgctxt "TmplStringSing"
 msgid " mo"
-msgstr " мес"
+msgstr " mês"
 
 #. / Plural suffix for months with abbreviated units
 #: ../src/fw/applib/template_string.c:339
 msgctxt "TmplStringPlur"
 msgid " mo"
-msgstr " мес"
+msgstr " meses"
 
 #. / Singular suffix for months with full units
 #: ../src/fw/applib/template_string.c:341
 msgctxt "TmplStringSing"
 msgid " month"
-msgstr " месяца"
+msgstr " mês"
 
 #. / Plural suffix for months with full units
 #: ../src/fw/applib/template_string.c:343
 msgctxt "TmplStringPlur"
 msgid " months"
-msgstr " месяцев"
+msgstr " mêses"
 
 #. / Singular suffix for years with abbreviated units
 #: ../src/fw/applib/template_string.c:354
 msgctxt "TmplStringSing"
 msgid " yr"
-msgstr " л"
+msgstr " a"
 
 #. / Plural suffix for years with abbreviated units
 #: ../src/fw/applib/template_string.c:356
 msgctxt "TmplStringPlur"
 msgid " yr"
-msgstr " л"
+msgstr " a"
 
 #. / Singular suffix for years with full units
 #: ../src/fw/applib/template_string.c:358
 msgctxt "TmplStringSing"
 msgid " year"
-msgstr " год"
+msgstr " ano"
 
 #. / Plural suffix for years with full units
 #: ../src/fw/applib/template_string.c:360
 msgctxt "TmplStringPlur"
 msgid " years"
-msgstr " лет"
+msgstr " anos"
 
 #: ../src/fw/applib/ui/dialogs/bt_conn_dialog.c:110
 msgid "Check bluetooth connection"
-msgstr "Проверьте Bluetooth подключение"
+msgstr "Verifique a conexão Bluetooth"
 
 #: ../src/fw/applib/ui/time_range_selection_window.c:190
 msgid "Start"
-msgstr "Начало"
+msgstr "Início"
 
 #: ../src/fw/applib/ui/time_range_selection_window.c:194
 msgid "End"
-msgstr "Конец"
+msgstr "Fim"
 
