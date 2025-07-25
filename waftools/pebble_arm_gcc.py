@@ -98,7 +98,7 @@ def options(opt):
     opt.add_option('--gdb', action='store_true',
                    help='build in GDB mode (no optimization, no logs)')
     opt.add_option('--lto', action='store_true', help='Enable link-time optimization')
-    opt.add_option('--no-lto', action='store_true', help='Disable link-time optimization')
+    opt.add_option('--no-lto', '--nolto', action='store_true', help='Disable link-time optimization')
     opt.add_option('--save_temps', action='store_true',
                    help='Save *.i and *.s files during compilation')
     opt.add_option('--no_debug', action='store_true',
