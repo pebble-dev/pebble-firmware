@@ -193,6 +193,7 @@ uint8_t uart_read_byte(UARTDevice *dev) {
 
 UARTRXErrorFlags uart_has_errored_out(UARTDevice *dev) {
   uint16_t errors = dev->periph->SR;
+  PBL_ASSERTN(!(errors & USART_FLAG_ORE));
   UARTRXErrorFlags flags = {
     .parity_error = (errors & USART_FLAG_PE) != 0,
     .overrun_error = (errors & USART_FLAG_ORE) != 0,
@@ -208,6 +209,7 @@ bool uart_is_rx_ready(UARTDevice *dev) {
 }
 
 bool uart_has_rx_overrun(UARTDevice *dev) {
+  PBL_ASSERTN(!(dev->periph->SR & USART_SR_ORE));
   return dev->periph->SR & USART_SR_ORE;
 }
 
@@ -285,10 +287,13 @@ void uart_irq_handler(UARTDevice *dev) {
   PBL_ASSERTN(dev->state->initialized);
   bool should_context_switch = false;
   if (dev->state->rx_irq_handler && dev->state->rx_int_enabled) {
+    uint32_t sr = dev->periph->SR; /* We must read this exactly once, at the beginning of the ISR, to latch the state of things we detected. */
     const UARTRXErrorFlags err_flags = {
-      .overrun_error = uart_has_rx_overrun(dev),
-      .framing_error = uart_has_rx_framing_error(dev),
+      .overrun_error = !!(sr & USART_SR_ORE),
+      .framing_error = !!(sr & USART_SR_FE),
     };
+    uint32_t sr_to_clear = (err_flags.overrun_error ? USART_SR_ORE : 0) | (err_flags.framing_error ? USART_SR_FE : 0);
+    PBL_ASSERTN(!sr_to_clear);
     if (dev->state->rx_dma_buffer) {
       // process bytes from the DMA buffer
       const uint32_t dma_length = dev->state->rx_dma_length;
@@ -307,13 +312,15 @@ void uart_irq_handler(UARTDevice *dev) {
       // explicitly clear error flags since we're not reading from the data register
       uart_clear_all_interrupt_flags(dev);
     } else {
-      const bool has_byte = uart_is_rx_ready(dev);
-      // read the data register regardless to clear the error flags
-      const uint8_t data = uart_read_byte(dev);
+      const bool has_byte = sr & USART_SR_RXNE;
       if (has_byte) {
+        /* the byte read will clear SR */
+        const uint8_t data = uart_read_byte(dev);
         if (dev->state->rx_irq_handler(dev, data, &err_flags)) {
           should_context_switch = true;
         }
+      } else if (sr_to_clear) {
+        dev->periph->SR = ~sr_to_clear;
       }
     }
   }
@@ -326,6 +333,7 @@ void uart_irq_handler(UARTDevice *dev) {
 }
 
 void uart_clear_all_interrupt_flags(UARTDevice *dev) {
+  // XXX: THIS IS WRONG.  This is not atomic.
   dev->periph->SR &= ~(USART_SR_TXE | USART_SR_RXNE | USART_SR_ORE);
 }
 
