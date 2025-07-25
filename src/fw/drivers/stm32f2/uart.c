@@ -193,6 +193,7 @@ uint8_t uart_read_byte(UARTDevice *dev) {
 
 UARTRXErrorFlags uart_has_errored_out(UARTDevice *dev) {
   uint16_t errors = dev->periph->SR;
+  PBL_ASSERTN(!(errors & USART_FLAG_ORE));
   UARTRXErrorFlags flags = {
     .parity_error = (errors & USART_FLAG_PE) != 0,
     .overrun_error = (errors & USART_FLAG_ORE) != 0,
@@ -284,11 +285,14 @@ void uart_set_tx_interrupt_enabled(UARTDevice *dev, bool enabled) {
 void uart_irq_handler(UARTDevice *dev) {
   PBL_ASSERTN(dev->state->initialized);
   bool should_context_switch = false;
+  uint32_t sr = dev->periph->SR; /* We must read this exactly once, at the beginning of the ISR, to latch the state of things we detected. */
   if (dev->state->rx_irq_handler && dev->state->rx_int_enabled) {
     const UARTRXErrorFlags err_flags = {
-      .overrun_error = uart_has_rx_overrun(dev),
-      .framing_error = uart_has_rx_framing_error(dev),
+      .overrun_error = !!(sr & USART_SR_ORE),
+      .framing_error = !!(sr & USART_SR_FE),
     };
+    uint32_t sr_to_clear = (err_flags.overrun_error ? USART_SR_ORE : 0) | (err_flags.framing_error ? USART_SR_FE : 0);
+
     if (dev->state->rx_dma_buffer) {
       // process bytes from the DMA buffer
       const uint32_t dma_length = dev->state->rx_dma_length;
@@ -304,20 +308,33 @@ void uart_irq_handler(UARTDevice *dev) {
           dev->state->rx_dma_index = 0;
         }
       }
-      // explicitly clear error flags since we're not reading from the data register
-      uart_clear_all_interrupt_flags(dev);
+      
+      // we will not be reading from the data register, so clear this interrupt bit
+      sr_to_clear |= USART_SR_RXNE;
     } else {
-      const bool has_byte = uart_is_rx_ready(dev);
-      // read the data register regardless to clear the error flags
-      const uint8_t data = uart_read_byte(dev);
+      const bool has_byte = sr & USART_SR_RXNE;
       if (has_byte) {
+        // the byte read from DR will clear SR; don't go reset it again later
+        sr_to_clear = 0;
+        const uint8_t data = uart_read_byte(dev);
         if (dev->state->rx_irq_handler(dev, data, &err_flags)) {
           should_context_switch = true;
         }
       }
     }
+    
+    /* We want to write all ones except for these bits, because this
+     * register is write-zero-to-clear, but not write-one-to-set.  This way,
+     * we can be sure that we only clear bits that we actually handled --
+     * and a bit can't get reset without us noticing, and there is not a
+     * read-to-write race condition associated with &=.  Otherwise, we can
+     * (and do!) lose bytes for the Bluetooth UART here infrequently!
+     */
+    if (sr_to_clear) {
+      dev->periph->SR = ~sr_to_clear;
+    }
   }
-  if (dev->state->tx_irq_handler && dev->state->tx_int_enabled && uart_is_tx_ready(dev)) {
+  if (dev->state->tx_irq_handler && dev->state->tx_int_enabled && (sr & USART_SR_TXE)) {
     if (dev->state->tx_irq_handler(dev)) {
       should_context_switch = true;
     }
@@ -326,7 +343,8 @@ void uart_irq_handler(UARTDevice *dev) {
 }
 
 void uart_clear_all_interrupt_flags(UARTDevice *dev) {
-  dev->periph->SR &= ~(USART_SR_TXE | USART_SR_RXNE | USART_SR_ORE);
+  /* See comment above about sr_to_clear for why this is not a &=. */
+  dev->periph->SR = ~(USART_SR_TXE | USART_SR_RXNE | USART_SR_ORE);
 }
 
 
