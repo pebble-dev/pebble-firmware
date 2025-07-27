@@ -47,6 +47,8 @@ struct uart_tx {
   struct os_mbuf *om;
   uint8_t *buf;
   bool buf_needs_free;
+
+  struct uart_tx *dispose_next;
 };
 
 static TaskHandle_t s_rx_task_handle;
@@ -58,6 +60,8 @@ static SemaphoreHandle_t s_cmd_done;
 static QueueHandle_t s_tx_queue;
 static struct hci_h4_sm hci_uart_h4sm;
 static bool chipset_start_done = false;
+
+static struct uart_tx *uart_tx_dispose_head = NULL;
 
 static void prv_lock(void) { portENTER_CRITICAL(); }
 
@@ -86,6 +90,21 @@ static int hci_uart_frame_cb(uint8_t pkt_type, void *data) {
   return -1;
 }
 
+static void prv_dispose_uart_tx(struct uart_tx *tx) {
+  struct uart_tx *next;
+  while (tx) {
+    if (tx->type == HCI_H4_CMD && tx->buf_needs_free) {
+      ble_transport_free(tx->buf);
+    }
+    if (tx->type == HCI_H4_ISO || tx->type == HCI_H4_ACL) {
+      os_mbuf_free_chain(tx->om);
+    }
+    next = tx->dispose_next;
+    kernel_free(tx);
+    tx = next;
+  }
+}
+
 static int hci_uart_tx_char(BaseType_t *should_context_switch) {
   struct uart_tx *tx = NULL;
   uint8_t ch;
@@ -102,9 +121,10 @@ static int hci_uart_tx_char(BaseType_t *should_context_switch) {
       ch = tx->buf[tx->idx];
       tx->idx++;
       if (tx->idx == tx->len) {
-        if (tx->buf_needs_free) ble_transport_free(tx->buf);
+        tx->dispose_next = uart_tx_dispose_head;
+        uart_tx_dispose_head = tx;
+        xSemaphoreGiveFromISR(s_rx_data_ready, should_context_switch);
         xQueueReceiveFromISR(s_tx_queue, &tx, should_context_switch);
-        kernel_free(tx);
       }
       break;
     case HCI_H4_ACL:
@@ -113,9 +133,10 @@ static int hci_uart_tx_char(BaseType_t *should_context_switch) {
       os_mbuf_adj(tx->om, 1);
       tx->len--;
       if (tx->len == 0) {
-        os_mbuf_free_chain(tx->om);
+        tx->dispose_next = uart_tx_dispose_head;
+        uart_tx_dispose_head = tx;
+        xSemaphoreGiveFromISR(s_rx_data_ready, should_context_switch);
         xQueueReceiveFromISR(s_tx_queue, &tx, should_context_switch);
-        kernel_free(tx);
       }
       break;
     default:
@@ -162,9 +183,22 @@ static uint8_t read_buf[64];
 static void prv_rx_task_main(void *unused) {
   int consumed_bytes;
   uint16_t bytes_remaining;
+  struct uart_tx *dispose_head;
 
   while (true) {
     xSemaphoreTake(s_rx_data_ready, portMAX_DELAY);
+
+    /* Dispose of any UART transmissions that the ISR has taken care of for
+     * us.  We can't do that in the ISR, because the ISR might need to take
+     * locks to hand things back to NimBLE!  Atomically grab the list of
+     * things to dispose, and then dispose of them.
+     */
+    prv_lock();
+    dispose_head = uart_tx_dispose_head;
+    uart_tx_dispose_head = NULL;
+    prv_unlock();
+
+    prv_dispose_uart_tx(dispose_head);
 
     while (true) {
       prv_lock();
