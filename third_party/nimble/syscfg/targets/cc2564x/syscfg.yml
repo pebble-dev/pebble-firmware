@@ -22,3 +22,15 @@ syscfg.vals:
 
     # Seems to be necessary to get AMS to connect without crashing.
     BLE_GATT_MAX_PROCS: 8
+    
+    # If we do not turn on flow control, large volumes of NOTIFY events
+    # (ANCS, etc) will cause us to crash.
+    BLE_HW_FLOW_CTRL: 1
+    BLE_HS_FLOW_CTRL_THRESH: 5
+    BLE_HS_FLOW_CTRL_TX_ON_DISCONNECT: 1
+    BLE_TRANSPORT_ACL_COUNT: 20
+    BLE_TRANSPORT_ACL_FROM_LL_COUNT: 20
+
+    # CC2564B does not support LE-SC or MITM (and enabling them wedges a phone until you reboot!).
+    BLE_SM_IO_CAP: 'BLE_HS_IO_DISPLAY_YESNO'
+    BLE_SM_LEGACY: 1
