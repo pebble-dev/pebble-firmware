@@ -18,7 +18,7 @@ def build(bld):
         build_libutil('libutil-cm0', bld.all_envs['cortex-m0'])
 
     build_libutil('libutil', bld.env)
-    build_libutil('libutil-32bit', bld.all_envs['32bit'])
+    build_libutil('libutil-local', bld.all_envs['local'])
 
 
 # vim:filetype=python
