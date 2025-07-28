@@ -5,160 +5,160 @@ msgstr ""
 "POT-Creation-Date: 2025-07-27 12:27+0000\n"
 "PO-Revision-Date: 2025-07-28 07:16\n"
 "Last-Translator: \n"
-"Language-Team: French\n"
-"Language: fr_FR\n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: pebbleos\n"
 "X-Crowdin-Project-ID: 789734\n"
-"X-Crowdin-Language: fr\n"
+"X-Crowdin-Language: ja\n"
 "X-Crowdin-File: tintin.pot\n"
 "X-Crowdin-File-ID: 292\n"
 
 #: ../src/fw/process_management/app_manager.c:494
 #, c-format
 msgid "%.*s is not responding"
-msgstr "%.*s ne répond pas"
+msgstr "%.*s の反応がありません"
 
 #: ../src/fw/process_management/process_manager.c:222
 msgid "This app requires a newer version of the Pebble firmware."
-msgstr "Cette appli requiert une version plus récente du micrologiciel"
+msgstr "このアプリには新しいバージョンのPebbleが必要です。"
 
 #: ../src/fw/popups/alarm_popup.c:60
 #, c-format
 msgid "Snooze for %d minutes"
-msgstr "Répéter dans %d minutes"
+msgstr "%d分後にまた鳴らします。"
 
 #: ../src/fw/popups/alarm_popup.c:77
 msgid "Alarm dismissed"
-msgstr "Alarme annulée"
+msgstr "アラームが解除されました。"
 
 #: ../src/fw/popups/bluetooth_pairing_ui.c:244
 msgid "Pair?"
-msgstr "Jumeler ?"
+msgstr "ペアリングしますか？"
 
 #: ../src/fw/popups/crashed_ui.c:106
 #, c-format
 msgid "%s%.*s is not responding.\n\n"
 "Open app?"
-msgstr "%s%.*s ne répond pas.\n\n"
-"Ouvrir l'app ?"
+msgstr "%s%.*sの反応がありません。\n"
+"アプリを開きますか？"
 
 #: ../src/fw/popups/crashed_ui.c:169
 msgid "Your Pebble just reset. Please report this using the 'Support' link in the Pebble phone app."
-msgstr "Votre Pebble a crashé. Veuillez nous le signaler."
+msgstr "あなたのPebbleはリセットされました。Pebbleアプリを開いて、「サポート」リンクから問題を報告して下さい。"
 
 #: ../src/fw/popups/crashed_ui.c:172
 msgid "Bluetooth on your phone is in a high power state. Please report this using 'Support' and reboot your phone."
-msgstr "Votre Bluetooth ne fonctionne pas correctement. Veuillez nous le signaler et redémarrer votre téléphone."
+msgstr "あなたのスマートフォンのBluetoothの消費電力が大きすぎます。「サポート」から問題を報告して、スマートフォンを再起動して下さい。"
 
 #: ../src/fw/popups/health_tracking_ui.c:102
 msgid "This app requires Pebble Health to work. Enable Health in the Pebble mobile app to continue."
-msgstr "Veuillez activer la fonction \"Bien-Être\" dans l'appli mobile Pebble pour utiliser cette application"
+msgstr "このアプリはPebble Healthの動作が必要です。PebbleアプリからPebble Healthを有効化してから続けて下さい。"
 
 #: ../src/fw/popups/health_tracking_ui.c:112
 msgid "This feature requires Pebble Health to work. Enable Health in the Pebble mobile app to continue."
-msgstr "Cette fonctionnalité requiert l'activation de Bien-Être. Activer Bien-Être dans l'application mobile Pebble pour continuer."
+msgstr "この機能はPebble Healthの動作が必要です。PebbleアプリからPebble Healthを有効化してから続けて下さい。"
 
 #: ../src/fw/popups/notifications/notification_window.c:692
 msgid "Snoozed"
-msgstr "Ok !"
+msgstr "スヌーズ中"
 
 #: ../src/fw/popups/notifications/notification_window.c:726
 msgid "Muted"
-msgstr "Bloqué"
+msgstr "ミュート中"
 
 #: ../src/fw/popups/notifications/notification_window.c:853
 msgid "Snooze"
-msgstr "Répéter"
+msgstr "スヌーズ"
 
 #: ../src/fw/popups/notifications/notification_window.c:872
 #, c-format
 msgid "Mute %s"
-msgstr "Bloquer %s"
+msgstr "ミュート %s"
 
 #: ../src/fw/popups/notifications/notification_window.c:895
 msgid "Mute Always"
-msgstr "Toujours bloquer"
+msgstr "いつもミュート"
 
 #: ../src/fw/popups/notifications/notification_window.c:900
 msgid "Mute Weekends"
-msgstr "Bloquer le week-end"
+msgstr "週末だけミュート"
 
 #: ../src/fw/popups/notifications/notification_window.c:905
 msgid "Mute Weekdays"
-msgstr "Bloquer en semaine"
+msgstr "平日だけミュート"
 
 #: ../src/fw/popups/notifications/notification_window.c:915
 msgid "Dismiss All"
-msgstr "Tout Ignorer"
+msgstr "全部無視する"
 
 #: ../src/fw/popups/notifications/notification_window.c:922
 msgid "End Quiet Time"
-msgstr "Désactiver Tranquillité"
+msgstr "Quiet Timeをおわります"
 
 #: ../src/fw/popups/notifications/notification_window.c:923
 msgid "Start Quiet Time"
-msgstr "Activer Tranquillité"
+msgstr "Quiet Timeをはじめます"
 
 #: ../src/fw/popups/phone_ui.c:579
 msgid "Call Accepted"
-msgstr "Appel Accepté"
+msgstr "通話を開始しました"
 
 #: ../src/fw/popups/phone_ui.c:582
 msgid "Disconnected"
-msgstr "Déconnecté"
+msgstr "通話が切れました"
 
 #: ../src/fw/popups/phone_ui.c:586
 msgid "Call Ended"
-msgstr "Appel terminé"
+msgstr "通話が終わりました"
 
 #: ../src/fw/popups/phone_ui.c:589
 msgid "Call Declined"
-msgstr "Appel Rejeté"
+msgstr "通話を拒否しました"
 
 #: ../src/fw/popups/switch_worker_ui.c:110
 #, c-format
 msgid "Run %s instead of %s as the background app?"
-msgstr "Exécuter %s à la place de %s comme tâche de fond ?"
+msgstr "%sを起動する代わりに、バックグラウンドアプリとして実行しますか？"
 
 #: ../src/fw/popups/wakeup_ui.c:68
 msgid "While your Pebble was off wakeup events occurred for:\n"
-msgstr "Alors que votre Pebble était éteinte, des minuteurs ont expirés pour :\n"
+msgstr "Pebbleがオフになってる間に、こんなことがあったよ：\n"
 
 #: ../src/fw/shell/normal/battery_ui.c:64
 #: ../src/fw/shell/normal/shutdown_charging.c:102
 msgid "Fully Charged"
-msgstr "Chargée"
+msgstr "充電終わったよ。"
 
 #: ../src/fw/shell/normal/battery_ui.c:70
 #: ../src/fw/shell/normal/shutdown_charging.c:107
 msgid "Charging"
-msgstr "En Charge"
+msgstr "充電中です。"
 
 #: ../src/fw/shell/normal/battery_ui.c:85
 #, c-format
 msgid "Powered 'til %s"
-msgstr "Alimentée jusqu'à %s"
+msgstr "%sまでは電源が保ちます。"
 
 #: ../src/fw/shell/normal/display_calibration_prompt.c:61
 msgid "Your screen may need calibration. Calibrate it now?"
-msgstr "Voulez vous calibrer votre écran ?"
+msgstr "スクリーンに調整が必要みたいです。今調整しますか？"
 
 #. / Welcome title text welcoming a 3.x user to 4.x
 #: ../src/fw/shell/normal/welcome.c:35
 msgid "Pebble Updated!"
-msgstr "Pebble mise à jour !"
+msgstr "Pebbleがアップデートしたよ！"
 
 #: ../src/fw/shell/normal/welcome.c:38
 msgid "For activity and sleep tracking, press up from your watch face.\n\n"
 "Press down for current and future events.\n\n"
 "Read more at blog.pebble.com"
-msgstr "Pour suivre votre activité et votre sommeil, appuyez sur le bouton Haut depuis votre cadran.\n\n"
-"Appuyer sur Bas pour voir vos rendez-vous à venir.\n\n"
-"Plus d'informations sur blog.pebble.com"
+msgstr "活動や睡眠のトラッキングを見るには、ウォッチフェイス画面でUpボタンを押して下さい。\n\n"
+"Downボタンでは、現在やちょっと先のイベントが確認できます。\n\n"
+"詳細はblog.pebble.comまで"
 
 #: ../src/fw/shell/normal/welcome.c:47
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:41
@@ -168,491 +168,488 @@ msgstr "Pour suivre votre activité et votre sommeil, appuyez sur le bouton Haut
 #: ../src/fw/services/normal/activity/activity_insights.c:1434
 #: ../src/fw/services/normal/notifications/ancs/ancs_item.c:161
 msgid "Dismiss"
-msgstr "Ignorer"
+msgstr "無視する"
 
 #: ../src/fw/apps/core_apps/progress_ui_app.c:80
 msgid "Update Complete"
-msgstr "Mise à jour terminée"
+msgstr "アップデート完了しました"
 
 #: ../src/fw/apps/core_apps/progress_ui_app.c:80
 msgid "Update Failed"
-msgstr "Échec de la mise à jour"
+msgstr "アップデートに失敗しました"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:62
 #, c-format
 msgid "Snooze delay set to %d minutes"
-msgstr "Le rappel aura lieu après %d minutes."
+msgstr "%d分後にスヌーズをセットします"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:191
 msgid "Delete"
-msgstr "Supprimer"
+msgstr "削除"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:196
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_app_menu.c:71
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:194
 msgid "Disable"
-msgstr "Désactiver"
+msgstr "無効にする"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:196
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:196
 msgid "Enable"
-msgstr "Activer"
+msgstr "有効にする"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:201
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:465
 msgid "Change Time"
-msgstr "Changer l'heure"
+msgstr "時間変更"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:206
 msgid "Change Days"
-msgstr "Changer jours"
+msgstr "日付変更"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:212
 msgid "Convert to Basic Alarm"
-msgstr "Désactiver mode réveil en douceur"
+msgstr "ふつうのアラームに変換する"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:213
 msgid "Convert to Smart Alarm"
-msgstr "Activer mode réveil en douceur"
+msgstr "スマートアラームに変更する"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:219
 msgid "Snooze Delay"
-msgstr "Rappel d'alarme"
+msgstr "スヌーズ時間"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:230
 msgid "5 minutes"
-msgstr ""
+msgstr "5分後"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:231
 msgid "10 minutes"
-msgstr ""
+msgstr "10分後"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:232
 msgid "15 minutes"
-msgstr ""
+msgstr "１５分後"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:233
 msgid "30 minutes"
-msgstr ""
+msgstr "30分後"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:234
 msgid "1 hour"
-msgstr "1 heure"
+msgstr "1 時間後"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:316
 msgid "Check something first."
-msgstr "Veuillez cocher une case"
+msgstr "まず何かをチェックしてください。"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:466
 msgid "New Smart Alarm"
-msgstr "Nouveau réveil en douceur"
+msgstr "新しいスマートアラーム"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:466
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:561
 msgid "New Alarm"
-msgstr "Nouvelle alarme"
+msgstr "新しい普通のアラーム"
 
 #. / Displays as "Wake up between" then "8:00 AM - 8:30 AM" below on a separate line
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:468
 msgid "Wake up between"
-msgstr "Réveil entre"
+msgstr "この間に起こして"
 
 #. / Displays as "8:00 AM - 8:30 AM" then "Wake up interval" below on a separate line
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:470
 msgid "Wake up interval"
-msgstr "Réveil entre"
+msgstr "またあとで起こして"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:558
 msgid "Basic Alarm"
-msgstr "Alarme Classique"
+msgstr "ふつうのアラーム"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:559
 #: ../src/fw/apps/system_apps/alarms/alarms.c:370
 #: ../src/fw/services/normal/alarms/alarm.c:389
 #: ../src/fw/services/normal/alarms/alarm_pin.c:33
 msgid "Smart Alarm"
-msgstr "Réveil en douceur"
+msgstr "スマートアラーム"
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:138
 msgid "Alarm Deleted"
-msgstr "Alarme supprimée"
+msgstr "アラームを削除しました"
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:250
 msgid "Limit reached."
-msgstr "Limite atteinte."
+msgstr "上限に達しました。"
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:294
 msgid "ON"
-msgstr ""
+msgstr "オン"
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:294
 msgid "OFF"
-msgstr ""
+msgstr "オフ"
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:368
 msgid "Let us wake you in your lightest sleep so you're fully refreshed! Smart Alarm wakes you up to 30min before your alarm."
-msgstr "Évitez les réveils difficiles ! Pebble attend une phase de sommeil léger pour vous réveiller entre 30 minutes avant et l'heure de votre réveil."
+msgstr "完全にリフレッシュされるように、最も軽い睡眠で目を覚ましましょう！スマートアラームはアラームの30分前にあなたを目覚めさせます。"
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:493
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:84
 #: ../src/fw/services/normal/timeline/timeline.c:974
 msgid "Alarms"
-msgstr "Alarmes"
+msgstr "アラーム"
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:138
 msgid "Not connected"
-msgstr "Pas de connexion"
+msgstr "接続されていません"
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:150
 msgid "No internet\n"
 "connection"
-msgstr "Pas de connexion à internet"
+msgstr "インターネット接続がありません"
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:152
 msgid "No internet connection"
-msgstr "Pas de connexion à internet"
+msgstr "インターネット接続がありません"
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:158
 msgid "Incompatible JS"
-msgstr "JS incompatible"
+msgstr "JSとの互換性なし"
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:167
 #: ../src/fw/services/normal/timeline/timeline_actions.c:278
 msgid "Failed"
-msgstr "Erreur"
+msgstr "失敗しました"
 
 #. / Health disabled text
 #: ../src/fw/apps/system_apps/health/health.c:110
 msgid "Track your steps, sleep, and more! Enable Pebble Health in the mobile app."
-msgstr "Comptez vos pas, heures de sommeil et bien plus ! Il suffit d'activer Bien-Être dans l'application mobile."
+msgstr "歩数、睡眠それにもっと！トラッキングするにはモバイルアプリからPebble Healthを有効にしてください。"
 
 #: ../src/fw/apps/system_apps/health/health.c:167
 #: ../src/fw/services/normal/timeline/timeline.c:979
 msgid "Health"
-msgstr "Bien-Être"
+msgstr "Health"
 
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:56
 #: ../src/fw/apps/system_apps/workout/workout_active.c:281
 #: ../src/fw/apps/system_apps/workout/workout_active.c:340
 #: ../src/fw/services/normal/activity/activity_insights.c:1852
 msgid "MI"
-msgstr ""
+msgstr "マイル"
 
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:56
 #: ../src/fw/apps/system_apps/workout/workout_active.c:281
 #: ../src/fw/apps/system_apps/workout/workout_active.c:341
 #: ../src/fw/services/normal/activity/activity_insights.c:1852
 msgid "KM"
-msgstr ""
+msgstr "キロメーター"
 
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:69
 #: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:80
 msgid "30 DAY AVG"
-msgstr "MOY. 30 J"
+msgstr "30 日平均"
 
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:101
 msgid "CALORIES"
-msgstr ""
+msgstr "カロリー"
 
 #. / Distance Label
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:103
 #: ../src/fw/apps/system_apps/workout/workout_active.c:174
 msgid "DISTANCE"
-msgstr ""
+msgstr "距離"
 
 #: ../src/fw/apps/system_apps/health/health_detail_card.c:517
 #: ../src/fw/services/common/clock.c:505 ../src/fw/services/common/clock.c:676
 msgid "Today"
-msgstr "Aujourd'hui"
+msgstr "今日"
 
 #: ../src/fw/apps/system_apps/health/health_graph_card.c:299
 msgid ": "
-msgstr " : "
+msgstr ": "
 
 #: ../src/fw/apps/system_apps/health/health_graph_card.c:305
 #, c-format
 msgid "%a: "
-msgstr "%a : "
+msgstr "%a: "
 
 #: ../src/fw/apps/system_apps/health/health_graph_card.c:388
 msgid "SMTWTFS"
-msgstr "DLMMJVS"
+msgstr "日月火水木金土"
 
 #: ../src/fw/apps/system_apps/health/health_hr_detail_card.c:80
 #: ../src/fw/services/normal/activity/activity_insights.c:1958
 msgid "Fat Burn"
-msgstr "Modéré"
+msgstr "脂肪燃焼"
 
 #: ../src/fw/apps/system_apps/health/health_hr_detail_card.c:83
 #: ../src/fw/services/normal/activity/activity_insights.c:1965
 msgid "Endurance"
-msgstr "Intense"
+msgstr "持久力"
 
 #: ../src/fw/apps/system_apps/health/health_hr_detail_card.c:86
 #: ../src/fw/services/normal/activity/activity_insights.c:1972
 msgid "Performance"
-msgstr "Vigoureux"
+msgstr "パフォーマンス"
 
 #. / Resting HR
 #: ../src/fw/apps/system_apps/health/health_hr_detail_card.c:92
 msgid "TIME IN ZONES"
-msgstr ""
+msgstr "ゾーンの時間"
 
 #: ../src/fw/apps/system_apps/health/health_hr_summary_card.c:124
 msgid "BPM"
-msgstr ""
+msgstr "BPM"
 
 #. / HRM disabled
 #: ../src/fw/apps/system_apps/health/health_hr_summary_card.c:168
 msgid "Enable heart rate monitoring in the mobile app"
-msgstr "Activer le suivi de rythme cardiaque dans Pebble sur votre téléphone"
+msgstr "モバイルアプリで心拍数のモニタリングを有効にしてください"
 
 #: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:82
 msgid "30 DAY"
-msgstr "30 JOURS"
+msgstr "30 日間"
 
 #: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:116
 msgid "SLEEP SESSION"
-msgstr "SOMMEIL"
+msgstr "睡眠時間"
 
 #: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:129
 msgid "DEEP SLEEP"
-msgstr "SOMMEIL PROFOND"
+msgstr "深い眠り"
 
 #: ../src/fw/apps/system_apps/health/health_sleep_summary_card.c:221
 msgid "No sleep data,\n"
 "wear your watch\n"
 "to sleep"
-msgstr "Aucun sommeil. Portez Pebble pendant le sommeil."
+msgstr "睡眠データがありません、Pebbleを着けて寝てください"
 
 #: ../src/fw/apps/system_apps/health/health_ui.c:66
 #, c-format
 msgid "TYPICAL %s"
-msgstr "%s TYPIQUE"
+msgstr "通常 %s"
 
 #. / Shown when the current temperature is unknown
 #. / Shown when today's current temperature is unknown
 #: ../src/fw/apps/system_apps/launcher/default/launcher_app_glance_weather.c:132
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:202
 msgid "--°"
-msgstr ""
+msgstr "--°"
 
 #. / Shown when today's temperature and conditions phrase is known (e.g. "52° - Fair")
 #: ../src/fw/apps/system_apps/launcher/default/launcher_app_glance_weather.c:138
 #, c-format
 msgid "%i° - %s"
-msgstr "%i° - %s "
+msgstr "%i° - %s"
 
 #. / Today's current temperature (e.g. "68°")
 #: ../src/fw/apps/system_apps/launcher/default/launcher_app_glance_weather.c:140
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:207
 #, c-format
 msgid "%i°"
-msgstr ""
+msgstr "%i°"
 
 #: ../src/fw/apps/system_apps/music_app.c:710
 msgid "START PLAYBACK\n"
 "ON YOUR PHONE"
-msgstr "COMMENCER\n"
-"LA LECTURE\n"
-"SUR LE MOBILE"
+msgstr "あなたのスマホで再生します"
 
 #: ../src/fw/apps/system_apps/music_app.c:1022
 msgid "Music"
-msgstr "Musique"
+msgstr "ミュージック"
 
 #: ../src/fw/apps/system_apps/notifications_app.c:268
 msgid "Done"
-msgstr "Terminé"
+msgstr "完了"
 
 #: ../src/fw/apps/system_apps/notifications_app.c:295
 msgid "Clear history?"
-msgstr "Purger l'historique ?"
+msgstr "履歴を消しますか？"
 
 #: ../src/fw/apps/system_apps/notifications_app.c:558
 #: ../src/fw/apps/system_apps/notifications_app.c:564
 msgid "Clear All"
-msgstr "Tout Effacer"
+msgstr "全部消します"
 
 #: ../src/fw/apps/system_apps/notifications_app.c:727
 msgid "No notifications"
-msgstr "Pas de notifications"
+msgstr "何も通知ないよ"
 
 #: ../src/fw/apps/system_apps/notifications_app.c:813
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:379
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:74
 #: ../src/fw/services/normal/timeline/timeline.c:958
 msgid "Notifications"
-msgstr ""
+msgstr "通知"
 
 #: ../src/fw/apps/system_apps/reminders/reminder_app.c:66
 msgid "Completed"
-msgstr "Fait"
+msgstr "完了"
 
 #: ../src/fw/apps/system_apps/reminders/reminder_app.c:70
 msgid "Postpone"
-msgstr "Me rappeler"
+msgstr "また後で"
 
 #: ../src/fw/apps/system_apps/reminders/reminder_app.c:74
 #: ../src/fw/services/normal/activity/activity_insights.c:460
 #: ../src/fw/services/normal/timeline/timeline.c:674
 msgid "Remove"
-msgstr "Effacer"
+msgstr "削除する"
 
 #: ../src/fw/apps/system_apps/reminders/reminder_app.c:126
 msgid "Added"
-msgstr "Ajouté"
+msgstr "追加する"
 
 #: ../src/fw/apps/system_apps/reminders/reminder_app.c:309
 msgid "Reminder"
-msgstr "Rappel"
+msgstr "リマインドする"
 
 #: ../src/fw/apps/system_apps/send_text/send_text.c:215
 #: ../src/fw/services/normal/phone_call_util.c:31
 msgid "Unknown"
-msgstr "Inconnu"
+msgstr "不明"
 
 #: ../src/fw/apps/system_apps/send_text/send_text.c:273
 #: ../src/fw/apps/system_apps/send_text/send_text.c:349
 msgid "Select Contact"
-msgstr "Choisir Destinataire"
+msgstr "連絡先を選択"
 
 #: ../src/fw/apps/system_apps/send_text/send_text.c:363
 msgid "Add contacts in\n"
 "mobile app"
-msgstr "Ajoutez vos contacts\n"
-"dans l'app mobile"
+msgstr "モバイルアプリに連絡先を追加する"
 
 #: ../src/fw/apps/system_apps/send_text/send_text.c:396
 msgid "Send Text"
-msgstr "Message"
+msgstr "テキストを送信"
 
 #: ../src/fw/apps/system_apps/settings/settings.c:146
 msgid "Settings"
-msgstr "Réglages"
+msgstr "設定"
 
 #: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:175
 msgid "No background apps"
-msgstr "Aucune tâche de fond"
+msgstr "バックグラウンドアプリがありません"
 
 #. / No Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:184
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:210
 msgid "None"
-msgstr "Aucune"
+msgstr "なし"
 
 #: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:256
 #: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:273
 msgid "Background App"
-msgstr "Tâche de fond"
+msgstr "バックグラウンド アプリ"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:159
 msgid "<Untitled>"
-msgstr "<Sans Titre>"
+msgstr "<Untitled>"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:285
 msgid "Pairing Instructions"
-msgstr "Instructions de jumelage"
+msgstr "ペアリング手順"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:289
 #, c-format
 msgid "%u Paired Phones"
-msgstr "%u Téléphones jumelés"
+msgstr "%u ペアリング済み電話一覧"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:290
 #, c-format
 msgid "%u Paired Phone"
-msgstr "%u Téléphone jumelé"
+msgstr "%u ペアリング中の電話"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:425
 msgid "No LE"
-msgstr "Aucun LE"
+msgstr "No LE"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:425
 msgid "LE Only"
-msgstr "LE uniquement"
+msgstr "Bluetooth LEのみ"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:428
 msgid "Connected"
-msgstr "Connecté"
+msgstr "接続済み"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:444
 msgid "Sharing Heart Rate ❤"
-msgstr "Rythme cardiaque partagé ❤"
+msgstr "心拍数をシェアする❤"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:489
 msgid "Connection"
-msgstr "Connexion"
+msgstr "接続"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:493
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:64
 msgid "Airplane Mode"
-msgstr "Mode avion"
+msgstr "機内モード"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:500
 msgid "Now Discoverable"
-msgstr "Détectable"
+msgstr "見つかりません"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:506
 msgid "Disabling..."
-msgstr "Désactivation..."
+msgstr "無効化してます…"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:506
 msgid "Enabling..."
-msgstr "Activation..."
+msgstr "有効にしてます…"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:529
 msgid "Disable Airplane Mode to connect."
-msgstr "Désactivez le mode avion pour vous connecter"
+msgstr "接続するには機内モードを無効にしてください。"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:532
 msgid "Open the Pebble app on your phone to connect."
-msgstr "Ouvrez l'appli Pebble pour vous connecter"
+msgstr "スマホと接続するにはPebbleアプリを開いてください。"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:670
 msgid "Bluetooth"
-msgstr ""
+msgstr "Bluetooth"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:51
 msgid "Low"
-msgstr "Faible"
+msgstr "Low"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:52
 msgid "Medium"
-msgstr "Moyenne"
+msgstr "Medium"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:53
 msgid "High"
-msgstr "Forte"
+msgstr "High"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:54
 msgid "Blinding"
-msgstr "Aveuglante"
+msgstr "ブラインドする"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:89
 msgid "INTENSITY"
-msgstr "LUMINOSITE"
+msgstr "強度"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:89
 #: ../src/fw/apps/system_apps/settings/settings_display.c:231
 msgid "Intensity"
-msgstr "Luminosité"
+msgstr "強度"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:101
 msgid "3 Seconds"
-msgstr "3 secondes"
+msgstr "3秒間"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:102
 msgid "5 Seconds"
-msgstr "5 secondes"
+msgstr "5秒間"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:103
 msgid "8 Seconds"
-msgstr "8 secondes"
+msgstr "8秒間"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:126
 msgid "TIMEOUT"
-msgstr ""
+msgstr "時間切れ"
 
 #. / Status bar title for the Notification Window Timeout settings screen
 #. / String within Settings->Notifications that describes the window timeout setting
@@ -661,16 +658,16 @@ msgstr ""
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:242
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:289
 msgid "Timeout"
-msgstr ""
+msgstr "時間切れ"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:203
 #: ../src/fw/apps/system_apps/settings/settings_system.c:192
 msgid "Language"
-msgstr "Langue"
+msgstr "言語"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:207
 msgid "Backlight"
-msgstr "Rétroéclairage"
+msgstr "バックライト"
 
 #. / Shows up in the Timeline settings as the status under the "Quick View" toggle.
 #: ../src/fw/apps/system_apps/settings/settings_display.c:209
@@ -680,7 +677,7 @@ msgstr "Rétroéclairage"
 #: ../src/fw/apps/system_apps/settings/settings_system.c:942
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:139
 msgid "On"
-msgstr "Activé"
+msgstr "オン"
 
 #. / Shows up in the Timeline settings as the status under the "Quick View" toggle.
 #: ../src/fw/apps/system_apps/settings/settings_display.c:211
@@ -690,167 +687,167 @@ msgstr "Activé"
 #: ../src/fw/apps/system_apps/settings/settings_system.c:942
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:141
 msgid "Off"
-msgstr "Désactivé"
+msgstr "オフ"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:215
 msgid "Motion Enabled"
-msgstr "Mouvements"
+msgstr "モーション有効"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:223
 msgid "Ambient Sensor"
-msgstr "Lumière Ambiente"
+msgstr "アンビエントセンサー"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:240
 msgid "Screen Alignment"
-msgstr "Alignement écran"
+msgstr "画面調整"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:278
 msgid "Display"
-msgstr "Affichage"
+msgstr "表示"
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:64
 msgid "Horizontal Alignment"
-msgstr "Alignement Horizontal"
+msgstr "水平方向の調整"
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:65
 msgid "Vertical Alignment"
-msgstr "Alignement Vertical"
+msgstr "垂直方向の調整"
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:66
 msgid "Confirm Alignment"
-msgstr "Confirmer l'alignement"
+msgstr "調整の確定"
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:69
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:70
 msgid "Up/Down to adjust\n"
 "Select to proceed"
-msgstr "HAUT/BAS: ajuster\n"
-"SELECT: continuer"
+msgstr "Up/Downで調整して\n"
+"Selectしてください"
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:71
 msgid "Select to confirm alignment changes"
-msgstr "Presser SELECT pour confirmer"
+msgstr "調整変更を確定するためにSelectしてください"
 
 #: ../src/fw/apps/system_apps/settings/settings_factory_reset.c:72
 msgid "Resetting..."
-msgstr "Réinitialisation..."
+msgstr "リセット中です..."
 
 #: ../src/fw/apps/system_apps/settings/settings_factory_reset.c:124
 msgid "Perform factory reset?"
-msgstr "Réinitialiser ?"
+msgstr "初期化しますか？"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:78
 msgid "Allow All Notifications"
-msgstr "Autoriser notifications"
+msgstr "すべての通知を受け取る"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:79
 msgid "Allow Phone Calls Only"
-msgstr "Appels seulement"
+msgstr "着電だけ受け取る"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:80
 msgid "Mute All Notifications"
-msgstr "Bloquer notifications"
+msgstr "すべての通知をミュートにする"
 
 #. / The option in the Settings app for filtering notifications by type.
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:112
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:264
 msgid "Filter"
-msgstr "Filtre"
+msgstr "フィルター"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:122
 #: ../src/fw/services/normal/vibes/vibes.def:4
 msgctxt "NotifVibe"
 msgid "Disabled"
-msgstr "Désactivée"
+msgstr "無効化"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:123
 msgctxt "NotifVibe"
 msgid "Low"
-msgstr "Faible"
+msgstr "Low"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:124
 msgctxt "NotifVibe"
 msgid "Medium"
-msgstr "Moyenne"
+msgstr "Medium"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:125
 msgctxt "NotifVibe"
 msgid "High"
-msgstr "Forte"
+msgstr "High"
 
 #. / The option in the Settings app for choosing a vibration intensity for notifications.
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:149
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:269
 msgid "Vibration"
-msgstr "Vibrations"
+msgstr "バイブ"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:165
 msgid "Smaller"
-msgstr "Petit"
+msgstr "控えめ"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:166
 msgid "Default"
-msgstr "Normal"
+msgstr "デフォルト"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:167
 msgid "Larger"
-msgstr "Grand"
+msgstr "大きめ"
 
 #. / The option in the Settings app for choosing the text size of notifications.
 #. / String within Settings->Notifications that describes the text font size
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:180
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:281
 msgid "Text Size"
-msgstr "Taille du Texte"
+msgstr "文字サイズ"
 
 #. / 15 Second Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:202
 msgid "15 Seconds"
-msgstr "15 Secondes"
+msgstr "15 秒間"
 
 #. / 1 Minute Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:204
 msgid "1 Minute"
-msgstr ""
+msgstr "1 分間"
 
 #. / 3 Minute Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:206
 msgid "3 Minutes"
-msgstr ""
+msgstr "3 分間"
 
 #. / 10 Minute Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:208
 msgid "10 Minutes"
-msgstr ""
+msgstr "10 分間"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:271
 msgid "Disabled (Plugged In)"
-msgstr "Désactivé (connecté)"
+msgstr "無効 (差し込み済)"
 
 #. / Shown in Quick Launch Settings as the title of the up button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:48
 msgid "Up Button"
-msgstr "Bouton Haut"
+msgstr "Upボタン"
 
 #. / Shown in Quick Launch Settings as the title of the center button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:50
 msgid "Center Button"
-msgstr "Bouton du milieu"
+msgstr "Centerボタン"
 
 #. / Shown in Quick Launch Settings as the title of the down button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:52
 msgid "Down Button"
-msgstr "Bouton Bas"
+msgstr "Downボタン"
 
 #. / Shown in Quick Launch Settings as the title of the back button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:54
 msgid "Back Button"
-msgstr "Bouton retour"
+msgstr "Backボタン"
 
 #. / Shown in Quick Launch Settings when the button is disabled.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:75
 msgid "Disabled"
-msgstr "Désactivé"
+msgstr "無効化"
 
 #. / Title of the Quick Launch Settings submenu in Settings
 #. / Title for the Quick Launch first use dialog.
@@ -858,45 +855,45 @@ msgstr "Désactivé"
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_app_menu.c:126
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_setup_menu.c:67
 msgid "Quick Launch"
-msgstr "Raccourcis"
+msgstr "クイック起動"
 
 #. / Help text for the Quick Launch first use dialog.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_setup_menu.c:69
 msgid "Open favorite apps quickly with a long button press from your watchface."
-msgstr "Ouvrez vos applications favorites en appuyant longtemps sur un bouton depuis le cadran."
+msgstr "お気に入りのアプリをウォッチフェイスからでもボタン長押しで起動できます。"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:82
 msgid "Quiet All Notifications"
-msgstr "Aucune interruption"
+msgstr "全ての通知を鳴らしません"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:85
 msgid "Allow Phone Calls"
-msgstr "Appels seulement"
+msgstr "着信を許可"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:210
 msgid "Change Schedule"
-msgstr "Nouveaux horaires"
+msgstr "スケジュールを変更"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:246
 #: ../src/fw/apps/system_apps/settings/settings_time.c:240
 msgid "Manual"
-msgstr "Mode Manuel"
+msgstr "マニュアル"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:251
 msgid "Calendar Aware"
-msgstr "Selon Agenda"
+msgstr "カレンダーに表示する"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:253
 msgctxt "QuietTime"
 msgid "Enabled"
-msgstr "Activé"
+msgstr "有効"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:254
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:261
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:269
 msgctxt "QuietTime"
 msgid "Disabled"
-msgstr "Désactivé"
+msgstr "無効"
 
 #. #-#-#-#-#  services.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / A frequency option for alarms, i.e. the alarm would only go off every weekday. Respect
@@ -904,7 +901,7 @@ msgstr "Désactivé"
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:257
 #: ../src/fw/services/normal/alarms/alarm.c:1150
 msgid "Weekdays"
-msgstr "Semaine"
+msgstr "平日"
 
 #. #-#-#-#-#  services.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / A frequency option for alarms, i.e. the alarm would only go off each day on the weekend.
@@ -912,163 +909,163 @@ msgstr "Semaine"
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:265
 #: ../src/fw/services/normal/alarms/alarm.c:1159
 msgid "Weekends"
-msgstr "Week-end"
+msgstr "週末"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:273
 msgid "Interruptions"
-msgstr ""
+msgstr "中断"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:327
 #: ../src/fw/apps/system_apps/toggle/quiet_time.c:37
 msgid "Quiet Time"
-msgstr "Tranquillité"
+msgstr "Quiet Time"
 
 #: ../src/fw/apps/system_apps/settings/settings_remote.c:75
 msgid "You're all set"
-msgstr "C'est bon !"
+msgstr "完了"
 
 #: ../src/fw/apps/system_apps/settings/settings_remote.c:179
 msgid "Forget"
-msgstr "Oublier"
+msgstr "忘れなさい"
 
 #: ../src/fw/apps/system_apps/settings/settings_remote.c:187
 msgid "Stop Sharing Heart Rate"
-msgstr "Ne plus partager le rythme cardiaque"
+msgstr "心拍数共有をストップ"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:145
 #: ../src/fw/apps/system_apps/settings/settings_system.c:324
 msgid "Information"
-msgstr "Informations"
+msgstr "情報"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:146
 #: ../src/fw/apps/system_apps/settings/settings_system.c:684
 msgid "Certification"
-msgstr "Certifications"
+msgstr "証明書"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:147
 msgid "Stand-By Mode"
-msgstr "Veille Auto."
+msgstr "スタンバイモード"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:148
 msgid "Shut Down"
-msgstr "Arrêt"
+msgstr "シャットダウン"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:149
 msgid "Factory Reset"
-msgstr "Réinitialisation"
+msgstr "工場出荷状態に戻す"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:190
 msgid "BT Address"
-msgstr "Adresse BT"
+msgstr "Bluetooth アドレス"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:191
 msgid "Firmware"
-msgstr "Version Système"
+msgstr "ファームウェア"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:193
 msgid "Recovery"
-msgstr "Version PRF"
+msgstr "Recovery"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:194
 msgid "Bootloader"
-msgstr ""
+msgstr "Bootloader"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:195
 msgid "Hardware"
-msgstr "Modèle"
+msgstr "ハードウェア"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:196
 msgid "Serial"
-msgstr "Numéro de série"
+msgstr "シリアルNo"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:197
 msgid "Uptime"
-msgstr ""
+msgstr "起動時間"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:198
 msgid "Legal"
-msgstr "Mentions Légales"
+msgstr "法規情報"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:254
 msgid "The core dump was created successfully. Please create a support request as usual."
-msgstr "Un coredump a été généré. Veuillez contacter le support technique."
+msgstr "ダンプファイルは正常に作成されました。通常通りサポートリクエストを作成してください。"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:267
 msgid "Core dump and reboot?"
-msgstr "Coredump & Redémarrer ?"
+msgstr "ダンプファイルを作成して再起動しますか？"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:284
 msgid "Did your Pebble reset?"
-msgstr "Pebble a-t-elle crashé ?"
+msgstr "Pebbleはリセットされましたか？"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:645
 msgid "See details..."
-msgstr "Détails ..."
+msgstr "詳細を表示…"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:922
 msgid "Do you want to shut down?"
-msgstr "Éteindre la montre ?"
+msgstr "シャットダウンしますか？"
 
 #. / Refers to the class of all non-score vibes, e.g. 3rd party app vibes
 #: ../src/fw/apps/system_apps/settings/settings_system.c:1012
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:90
 msgid "System"
-msgstr "Système"
+msgstr "システム"
 
 #. / Title of the menu for changing the watch's timezone.
 #: ../src/fw/apps/system_apps/settings/settings_time.c:138
 #: ../src/fw/apps/system_apps/settings/settings_time.c:245
 msgid "Timezone"
-msgstr "Fuseau horaire"
+msgstr "タイムゾーン"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:234
 msgid "Time Format"
-msgstr "Format horaire"
+msgstr "時刻の形式"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:235
 msgid "24h"
-msgstr ""
+msgstr "24時間表示"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:235
 msgid "12h"
-msgstr ""
+msgstr "12時間表記"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:239
 msgid "Timezone Source"
-msgstr "Sélection Fuseau Horaire"
+msgstr "タイムゾーン取得元"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:241
 msgid "Automatic"
-msgstr "Automatique"
+msgstr "自動取得"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:294
 msgid "Date & Time"
-msgstr "Date et heure"
+msgstr "日時"
 
 #. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:71
 msgid "Start Time"
-msgstr "A l'heure"
+msgstr "開始時刻"
 
 #. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:73
 msgid "5 Min Before"
-msgstr "5 min. avant"
+msgstr "5分前"
 
 #. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:75
 msgid "10 Min Before"
-msgstr "10 min. avant"
+msgstr "10 分前"
 
 #. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:77
 msgid "15 Min Before"
-msgstr "15 min. avant"
+msgstr "15 分前"
 
 #. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:79
 msgid "30 Min Before"
-msgstr "30 min. avant"
+msgstr "30 分前"
 
 #. / Shows up in the Timeline settings as the title for the "Timing" submenu window.
 #. / Shows up in the Timeline settings as the title for the menu item that controls the
@@ -1076,152 +1073,154 @@ msgstr "30 min. avant"
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:108
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:146
 msgid "Timing"
-msgstr "Afficher"
+msgstr "タイミング"
 
 #. / Shows up in the Timeline settings as a toggle-able "Quick View" item.
 #. / Title for the Timeline Quick View first use dialog.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:137
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:201
 msgid "Quick View"
-msgstr "Aperçu"
+msgstr "クイックビュー"
 
 #. / Help text for the Timeline Quick View first use dialog.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:203
 msgid "Appears on your watchface when an event is about to start."
-msgstr "Apparaît au dessus de votre écran quand un évènment est sur le point de démarrer."
+msgstr "イベントが始まる直前にお知らせする。"
 
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:230
 msgid "Timeline"
-msgstr ""
+msgstr "タイムライン"
 
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:79
 msgid "Incoming Calls"
-msgstr "Appels entrants"
+msgstr "着信履歴"
 
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:233
 msgid "Vibrations"
-msgstr ""
+msgstr "バイブ"
 
 #: ../src/fw/apps/system_apps/timeline/timeline.c:894
 msgid "No events"
-msgstr "Rien à signaler"
+msgstr "イベントなし"
 
 #. / The title of Timeline Past in Quick Launch. If the translation is too long, cut out
 #. / Timeline and only translate "Past".
 #: ../src/fw/apps/system_apps/timeline/timeline.c:1283
 msgid "Timeline Past"
-msgstr "Timeline: Passé"
+msgstr "さかのぼる"
 
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:39
 msgid "Turn On Airplane Mode?"
-msgstr "Activer mode avion ?"
+msgstr "？"
 
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:40
 msgid "Turn Off Airplane Mode?"
-msgstr "Désactiver mode avion ?"
+msgstr "機内モードをOFFにしますか？"
 
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:41
 msgid "Airplane\n"
 "Mode On"
-msgstr "Mode avion activé"
+msgstr "機内モード\n"
+"オン"
 
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:42
 msgid "Airplane\n"
 "Mode Off"
-msgstr "Mode avion désactivé"
+msgstr "機内モード\n"
+"オフ"
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:37
 msgid "Turn On Motion Backlight?"
-msgstr "Activer rétro-éclairage sur mouvement"
+msgstr "モーションバックライトをONにしますか？"
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:38
 msgid "Turn Off Motion Backlight?"
-msgstr "Désactiver rétro-éclairage sur mouvement"
+msgstr "モーションバックライトをオフにしますか？"
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:39
 msgid "Motion\n"
 "Backlight On"
-msgstr "Rétro-éclairage sur mouvement activé"
+msgstr "モーションバックライトがオン"
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:40
 msgid "Motion\n"
 "Backlight Off"
-msgstr "Rétro-éclairage sur mouvement désactivé"
+msgstr "モーションバックライトがオフ"
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:62
 msgid "Motion Backlight"
-msgstr "Rétro-éclairage sur mouvement"
+msgstr "モーションバックライト"
 
 #: ../src/fw/apps/system_apps/watchfaces.c:105
 msgid "Active"
-msgstr "Sélectionné"
+msgstr "アクティブ"
 
 #: ../src/fw/apps/system_apps/watchfaces.c:219
 msgid "Watchfaces"
-msgstr "Cadrans"
+msgstr "ウォッチフェイス"
 
 #. / Shown when there are no forecasts available to show the user
 #: ../src/fw/apps/system_apps/weather/weather_app.c:105
 msgid "No location information available. To see weather, add locations in your Pebble mobile app."
-msgstr "Aucun emplacement défini. Pour voir la météo, définissez des emplacements dans l'application mobile Pebble."
+msgstr "位置情報がありません。天気を確認するには、Pebbleモバイルアプリに位置情報を追加してください。"
 
 #. / Shown when there is no connection to the phone and the data that we have is not recent
 #: ../src/fw/apps/system_apps/weather/weather_app.c:205
 msgid "Unable to connect. Your weather data may be out of date; try checking the connection on your phone."
-msgstr "Connexion impossible. Votre météo risque de ne pas être à jour. Vérifiez la connexion avec votre téléphone."
+msgstr "接続できません。天気データが古い可能性があります。携帯電話の接続を確認してください。"
 
 #: ../src/fw/apps/system_apps/weather/weather_app.c:231
 #: ../src/fw/services/normal/timeline/timeline.c:966
 msgid "Weather"
-msgstr "Météo"
+msgstr ""
 
 #. / Shown when neither high nor low temperature is known
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:80
 msgid "--° / --°"
-msgstr ""
+msgstr "--° / --°"
 
 #. / Shown when only the day's high temperature is known, (e.g. "68° / --°")
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:85
 #, c-format
 msgid "%i° / --°"
-msgstr ""
+msgstr "%i° / --°"
 
 #. / Shown when only the day's low temperature is known (e.g. "--° / 52°")
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:88
 #, c-format
 msgid "--° / %i°"
-msgstr ""
+msgstr "--° / %i°"
 
 #. / A day's high and low temperature, separated by a foward slash (e.g. "68° / 52°")
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:91
 #, c-format
 msgid "%i° / %i°"
-msgstr ""
+msgstr "%i° / %i°"
 
 #. / Refers to the weather conditions for tomorrow
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:234
 msgid "TOMORROW"
-msgstr "DEMAIN"
+msgstr "明日"
 
 #: ../src/fw/apps/system_apps/workout/sports.c:381
 msgid "Sports"
-msgstr ""
+msgstr "スポーツ"
 
 #: ../src/fw/apps/system_apps/workout/workout.c:175
 msgid "Workout\n"
 "Ended"
-msgstr "Fin de\n"
-"l'exercice"
+msgstr "ワークアウト\n"
+"終了"
 
 #. / Health disabled text
 #: ../src/fw/apps/system_apps/workout/workout.c:201
 msgid "Enable Pebble Health in the mobile app to track workouts"
-msgstr "Activer Pebble Bien-Être sur votre téléphone pour suivre vos activités"
+msgstr "ワークアウトを追跡するために、モバイルアプリでPebble Healthを有効してください"
 
 #. / Workout app first use text
 #: ../src/fw/apps/system_apps/workout/workout.c:208
 msgid "Wear your watch snug and 2 fingers' width above your wrist bone for best results."
-msgstr "Pour obtenir les meilleurs résultats, portez votre montre légèrement serrée et la largeur de deux doigts au dessus de l'os du poignet."
+msgstr "最高の結果を得るには、手首の骨から ２本分の指の幅を空けて着用してください。"
 
 #. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / Workout Label
@@ -1229,158 +1228,155 @@ msgstr "Pour obtenir les meilleurs résultats, portez votre montre légèrement 
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:105
 #: ../src/fw/services/normal/activity/activity_insights.c:1876
 msgid "Workout"
-msgstr "Exercice"
+msgstr "ワークアウト"
 
 #. / Zone 1 HR Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:116
 msgid "FAT BURN"
-msgstr "MODÉRÉ"
+msgstr "脂肪燃焼"
 
 #. / Zone 2 HR Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:119
 msgid "ENDURANCE"
-msgstr "INTENSE"
+msgstr "耐久度"
 
 #. / Zone 3 HR Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:122
 msgid "PERFORMANCE"
-msgstr "VIGOUREUX"
+msgstr "パフォーマンス"
 
 #. / Default/Zone 0 HR Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:125
 msgid "HEART RATE"
-msgstr "RYTHME"
+msgstr "心拍率"
 
 #. / Duration Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:143
 msgid "DURATION"
-msgstr "DURÉE"
+msgstr "期間"
 
 #. / Average Pace Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:147
 msgid "AVG PACE"
-msgstr "RYTHME MOY"
+msgstr "平均ペース"
 
 #. / Average Pace Label with units
 #: ../src/fw/apps/system_apps/workout/workout_active.c:150
 msgid "AVG PACE (/MI)"
-msgstr "CADENCE MOY. (/MI)"
+msgstr "平均ペース(/MI)"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:151
 msgid "AVG PACE (/KM)"
-msgstr "CADENCE MOY. (/KM)"
+msgstr "平均ペース(/KM)"
 
 #. / Pace Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:156
 msgid "PACE"
-msgstr "ALLURE"
+msgstr "ペース"
 
 #. / Pace Label with units
 #: ../src/fw/apps/system_apps/workout/workout_active.c:159
 msgid "PACE (/MI)"
-msgstr "CADENCE (/MI)"
+msgstr "ペース(/MI)"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:160
 msgid "PACE (/KM)"
-msgstr "CADENCE (/KM)"
+msgstr "ペース(/KM)"
 
 #. / Speed Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:165
 msgid "SPEED"
-msgstr "VITESSE"
+msgstr "速度"
 
 #. / Speed Label with units
 #: ../src/fw/apps/system_apps/workout/workout_active.c:168
 msgid "SPEED (MPH)"
-msgstr "VITESSE (MPH)"
+msgstr "速度 (MPH)"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:169
 msgid "SPEED (KM/H)"
-msgstr "VITESSE (KM/H)"
+msgstr "速度 (KM/H)"
 
 #. / Distance Label with units
 #: ../src/fw/apps/system_apps/workout/workout_active.c:177
 msgid "DISTANCE (MI)"
-msgstr ""
+msgstr "距離 (MI)"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:178
 msgid "DISTANCE (KM)"
-msgstr ""
+msgstr "距離 (KM)"
 
 #. / Steps Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:182
 msgid "STEPS"
-msgstr "PAS"
+msgstr "歩数"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:360
 msgid "MPH"
-msgstr ""
+msgstr "マイル/時"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:361
 msgid "KM/H"
-msgstr ""
+msgstr "KM/時"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:685
 msgid "End Workout?"
-msgstr "Terminer l'exercice ?"
+msgstr "ワークアウトを終了しますか？"
 
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:30
 msgid "Still sweating? Your workout is active and will be ended soon. Open the workout to keep it going."
-msgstr "Toujours chaud ? Votre exercice est toujours actif et va être arrêté automatiquement bientôt. Ouvrez votre exercice pour le garder actif."
+msgstr "まだ運動中ですか？ワークアウトは継続中で、間もなく終了します。もっと続けるには、ワークアウトを開いでください。"
 
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:45
 msgid "End Workout"
-msgstr "Fin de l'exercice"
+msgstr "トレーニングを終了"
 
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:51
 msgid "Open Workout"
-msgstr "Libre"
+msgstr "ワークアウトを開く"
 
 #. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / Walk Label
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:108
 #: ../src/fw/services/normal/activity/activity_insights.c:1874
 msgid "Walk"
-msgstr "Marche"
+msgstr "ウォーキング"
 
 #. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / Run Label
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:111
 #: ../src/fw/services/normal/activity/activity_insights.c:1872
 msgid "Run"
-msgstr "Course"
+msgstr "ランニング"
 
 #. / Workout automatically detected dialog text
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:129
 msgid "Workout\n"
 "Detected"
-msgstr "Exercice\n"
-"détecté"
+msgstr "ワークアウト検出"
 
 #. / Walk automatically detected dialog text
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:132
 msgid "Walk\n"
 "Detected"
-msgstr "Marche\n"
-"détectée"
+msgstr "ウォーキングが検出されました"
 
 #. / Run automatically detected dialog text
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:135
 msgid "Run\n"
 "Detected"
-msgstr "Course\n"
-"détectée"
+msgstr "ランニングが検出されました"
 
 #: ../src/fw/apps/watch/kickstart/kickstart.c:364
 #, c-format
 msgid "%d BPM"
-msgstr ""
+msgstr "%d BPM"
 
 #. / Step count greater than 1000 with a thousands seperator
 #: ../src/fw/apps/watch/kickstart/kickstart.c:472
 #, c-format
 msgid "%d,%03d"
-msgstr ""
+msgstr "%d,%03d"
 
 #. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / Step count less than 1000
@@ -1390,11 +1386,11 @@ msgstr ""
 #: ../src/fw/services/normal/activity/health_util.c:124
 #, c-format
 msgid "%d"
-msgstr ""
+msgstr "%d"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.h:71
 msgid "Remember to also forget your Pebble's Bluetooth connection from your phone."
-msgstr "Vous devez aussi oublier la connexion Bluetooth sur votre téléphone."
+msgstr "また、あなたの携帯電話からあなたのPebbleのBluetooth接続を削除することも忘れないでください。"
 
 #. #-#-#-#-#  services.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / Standard vibration pattern option that has a low intensity
@@ -1402,7 +1398,7 @@ msgstr "Vous devez aussi oublier la connexion Bluetooth sur votre téléphone."
 #: ../src/fw/services/normal/vibes/vibes.def:6
 #: ../src/fw/services/normal/vibes/vibe_intensity.c:52
 msgid "Standard - Low"
-msgstr "Standard - Faible"
+msgstr "標準 - 小さい"
 
 #. #-#-#-#-#  services.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / Standard vibration pattern option that has a high intensity
@@ -1410,632 +1406,632 @@ msgstr "Standard - Faible"
 #: ../src/fw/services/normal/vibes/vibes.def:8
 #: ../src/fw/services/normal/vibes/vibe_intensity.c:60
 msgid "Standard - High"
-msgstr "Standard - Forte"
+msgstr "標準 - 大きい"
 
 #: ../src/fw/services/normal/vibes/vibes.def:9
 msgid "Pulse"
-msgstr "Impulsion"
+msgstr "パルス"
 
 #: ../src/fw/services/normal/vibes/vibes.def:10
 msgid "Nudge Nudge"
-msgstr "Toc Toc"
+msgstr "ノックノック"
 
 #: ../src/fw/services/normal/vibes/vibes.def:12
 msgid "Jackhammer"
-msgstr "Marteau piqueur"
+msgstr "ジャックハンマー"
 
 #: ../src/fw/services/common/clock.c:479 ../src/fw/services/common/clock.c:750
 msgid "%R"
-msgstr ""
+msgstr "%R"
 
 #: ../src/fw/services/common/clock.c:479
 msgid "%l:%M"
-msgstr "%I:%M"
+msgstr "%l:%M"
 
 #: ../src/fw/services/common/clock.c:492
 #, c-format
 msgid "%p"
-msgstr ""
+msgstr "%p"
 
 #: ../src/fw/services/common/clock.c:507
 #: ../src/fw/services/normal/timeline/timeline_layout.c:380
 msgid "All day"
-msgstr "Journée"
+msgstr "一日中"
 
 #: ../src/fw/services/common/clock.c:519 ../src/fw/services/common/clock.c:531
 #: ../src/fw/services/common/clock.c:857
 msgid "Now"
-msgstr "Maintenant"
+msgstr "今"
 
 #: ../src/fw/services/common/clock.c:523
 msgid " MIN. TO"
-msgstr " MIN. AVANT"
+msgstr " 分"
 
 #: ../src/fw/services/common/clock.c:678 ../src/fw/services/common/clock.c:760
 #: ../src/fw/services/common/clock.c:768
 msgid "Yesterday"
-msgstr "Hier"
+msgstr "昨日"
 
 #: ../src/fw/services/common/clock.c:680
 #: ../src/fw/services/normal/timeline/timeline_actions.c:1091
 msgid "Tomorrow"
-msgstr "Demain"
+msgstr "明日"
 
 #: ../src/fw/services/common/clock.c:683 ../src/fw/services/common/clock.c:798
 #: ../src/fw/services/common/clock.c:806
 #, c-format
 msgid "%A"
-msgstr ""
+msgstr "%A"
 
 #: ../src/fw/services/common/clock.c:686
 msgid "%B %d"
-msgstr ""
+msgstr "%B %d"
 
 #: ../src/fw/services/common/clock.c:746
 msgid "%l:%M %p"
-msgstr "%I:%M %p"
+msgstr "%l:%M %p"
 
 #: ../src/fw/services/common/clock.c:758
 msgid "Yesterday, %l:%M %p"
-msgstr "Hier, à %I:%M %p"
+msgstr "昨日、 %l:%M %p"
 
 #: ../src/fw/services/common/clock.c:766
 msgid "Yesterday, %R"
-msgstr "Hier, %R"
+msgstr "昨日、%R"
 
 #: ../src/fw/services/common/clock.c:777
 msgid "%b %e, %l:%M %p"
-msgstr "%e %b, %I:%M %p"
+msgstr "%b %e, %l:%M %p"
 
 #: ../src/fw/services/common/clock.c:779 ../src/fw/services/common/clock.c:787
 msgid "%B %e"
-msgstr "%e %B"
+msgstr "%B %e"
 
 #: ../src/fw/services/common/clock.c:785
 msgid "%b %e, %R"
-msgstr "%e %b, %R"
+msgstr "%b %e, %R"
 
 #: ../src/fw/services/common/clock.c:796
 msgid "%a, %l:%M %p"
-msgstr "%a, %i:%M %p"
+msgstr "%a, %l:%M %p"
 
 #: ../src/fw/services/common/clock.c:804
 msgid "%a, %R"
-msgstr ""
+msgstr "%a, %R"
 
 #: ../src/fw/services/common/clock.c:834
 #, c-format
 msgid "%lu H AGO"
-msgstr "IL Y A %lu H"
+msgstr "%lu 時間前"
 
 #: ../src/fw/services/common/clock.c:836
 msgid "An hour ago"
-msgstr "Il y a une heure"
+msgstr "1時間前"
 
 #: ../src/fw/services/common/clock.c:838
 #, c-format
 msgid "%lu hours ago"
-msgstr "Il y a %lu heures"
+msgstr "%lu 時間前"
 
 #: ../src/fw/services/common/clock.c:848
 #, c-format
 msgid "%lu MIN AGO"
-msgstr "IL Y A %lu MIN"
+msgstr "%lu 分前"
 
 #: ../src/fw/services/common/clock.c:850
 #, c-format
 msgid "%lu minute ago"
-msgstr "Il y a %lu minutes"
+msgstr "%lu 分前"
 
 #: ../src/fw/services/common/clock.c:852
 #, c-format
 msgid "%lu minutes ago"
-msgstr "Il y a %lu minutes"
+msgstr "%lu 分前"
 
 #: ../src/fw/services/common/clock.c:857
 msgid "NOW"
-msgstr "MAINTENANT"
+msgstr "今すぐ"
 
 #: ../src/fw/services/common/clock.c:865
 #, c-format
 msgid "IN %lu MIN"
-msgstr "DANS %lu MIN"
+msgstr "%lu 分後"
 
 #: ../src/fw/services/common/clock.c:867
 #, c-format
 msgid "In %lu minute"
-msgstr "Dans %lu minute"
+msgstr "%lu 分後"
 
 #: ../src/fw/services/common/clock.c:869
 #, c-format
 msgid "In %lu minutes"
-msgstr "Dans %lu minutes"
+msgstr "%lu 分後"
 
 #: ../src/fw/services/common/clock.c:879
 #, c-format
 msgid "IN %lu H"
-msgstr "DANS %lu H"
+msgstr "%lu 時間後"
 
 #: ../src/fw/services/common/clock.c:881
 #, c-format
 msgid "In %lu hour"
-msgstr "Dans %lu hour"
+msgstr "%lu 時間後"
 
 #: ../src/fw/services/common/clock.c:883
 #, c-format
 msgid "In %lu hours"
-msgstr "Dans %lu hours"
+msgstr "%lu 時間後"
 
 #: ../src/fw/services/common/clock.c:894
 #, c-format
 msgid "%m/%d"
-msgstr "%d/%m"
+msgstr "%m/%d"
 
 #: ../src/fw/services/common/clock.c:903
 msgid "%b "
-msgstr ""
+msgstr "%b "
 
 #: ../src/fw/services/common/clock.c:903
 msgid "%B "
-msgstr ""
+msgstr "%B "
 
 #: ../src/fw/services/common/clock.c:907
 #, c-format
 msgid "%e"
-msgstr ""
+msgstr "%e"
 
 #: ../src/fw/services/common/clock.c:958
 msgid "this morning"
-msgstr "ce matin"
+msgstr "今朝"
 
 #: ../src/fw/services/common/clock.c:959
 msgid "this afternoon"
-msgstr "cet après-midi"
+msgstr "午後"
 
 #: ../src/fw/services/common/clock.c:960
 msgid "this evening"
-msgstr "ce soir"
+msgstr "夕方"
 
 #: ../src/fw/services/common/clock.c:961
 msgid "tonight"
-msgstr "ce soir"
+msgstr "今晩"
 
 #: ../src/fw/services/common/clock.c:962
 msgid "tomorrow morning"
-msgstr "demain matin"
+msgstr "明日の朝"
 
 #: ../src/fw/services/common/clock.c:963
 msgid "tomorrow afternoon"
-msgstr "demain midi"
+msgstr "明日の午後"
 
 #: ../src/fw/services/common/clock.c:964
 msgid "tomorrow evening"
-msgstr "demain soir"
+msgstr "明日の夕方"
 
 #: ../src/fw/services/common/clock.c:965
 msgid "tomorrow night"
-msgstr "demain soir"
+msgstr "明日の夜"
 
 #: ../src/fw/services/common/clock.c:966 ../src/fw/services/common/clock.c:967
 msgid "the day after tomorrow"
-msgstr "après-demain"
+msgstr "明後日"
 
 #: ../src/fw/services/common/clock.c:968
 msgid "the foreseeable future"
-msgstr "plusieurs jours"
+msgstr "いつかの将来"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:194
 msgid "How are you feeling? Have you noticed extra focus, better mood or extra energy? You have been sleeping great this week! Keep it up!"
-msgstr "Comment vous sentez-vous ? Vous sentez-vous plus concentré(e), de meilleure humeur ou plus dynamique ? Vous avez très bien dormi cette semaine, continuez !"
+msgstr "気分はどうですか？超集中してたり、より良い気分やエネルギーに満ち溢れてませんか？今週の睡眠は素晴らしいです！継続してください！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:196
 msgid "I feel fabulous!"
-msgstr "Super !"
+msgstr "素晴らしい！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:197
 msgid "About average"
-msgstr "Moyen"
+msgstr "だいたい平均"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:198
 msgid "I'm still tired"
-msgstr "Toujours fatigué(e)"
+msgstr "まだ疲れている"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:199
 #: ../src/fw/services/normal/activity/activity_insights.c:217
 msgid "Awesome!"
-msgstr "Super "
+msgstr "すごい！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:200
 #: ../src/fw/services/normal/activity/activity_insights.c:218
 msgid "Keep it up!"
-msgstr "Continuez !"
+msgstr "その調子！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:201
 #: ../src/fw/services/normal/activity/activity_insights.c:219
 msgid "We'll get there!"
-msgstr "Ça va venir !"
+msgstr "きっとできるよ！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:212
 msgid "Congratulations - you're having a super active day! Activity makes you more focused and creative. How do you feel?"
-msgstr "Félicitations pour une journée très active ! L'activité augmente votre concentration et créativité. Le ressentez-vous ?"
+msgstr "おめでとうございます - あなたは超アクティブな一日を過ごしました！アクティビティがあなたをもっと集中させ、クリエイティブにします。どんな感じですか？"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:214
 #: ../src/fw/services/normal/activity/activity_insights.c:1172
 msgid "I feel great!"
-msgstr "Super !"
+msgstr "気分最高！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:215
 msgid "About the same"
-msgstr "A peu près pareil"
+msgstr "いつも通り"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:216
 msgid "Not feeling it"
-msgstr "Je le sens pas trop ..."
+msgstr "そうでもないかな"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:246
 msgid "Activity Summary"
-msgstr "Rapport Activité"
+msgstr "アクティビティ概要"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:253
 msgid "Do you feel more energetic, sharper or optimistic? Being active helps!"
-msgstr "Ressentez vous plus d'énergie, de créativité ou d'optimisme ? Être actif aide !"
+msgstr "よりエネルギッシュ、シャープ、楽観的な感じがしませんか？アクティブであることいいことです！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:254
 msgid "GREAT DAY TODAY"
-msgstr "SUPER JOURNÉE"
+msgstr "素晴らしき今日"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:257
 msgid "You're being consistent and that's important, keep at it!"
-msgstr "Vous êtes constant(e) et c'est le plus important, continuez !"
+msgstr "継続は力なりです。続けましょう！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:258
 msgid "CONSISTENT!"
-msgstr "CONSTANT(E) !"
+msgstr "継続！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:261
 #: ../src/fw/services/normal/activity/activity_insights.c:265
 msgid "Resting is fine, but try to recover and step it up tomorrow!"
-msgstr "Vous vous êtes bien reposé(e) aujourd'hui, essayez d'être plus actif(ve) demain !"
+msgstr "休憩は良いことです、明日は回復し、ステップアップしてみてください！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:262
 #: ../src/fw/services/normal/activity/activity_insights.c:266
 msgid "NOT VERY ACTIVE"
-msgstr "PAS TRÈS ACTIF"
+msgstr "そんなにアクティブじゃないね"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:274
 msgid "Sleep Summary"
-msgstr "Rapport Sommeil"
+msgstr "睡眠の概要"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:282
 msgid "You had a good night! Feel the energy 😃"
-msgstr "Vous avez bien dormi ! Profitez de cette énergie 😃"
+msgstr "良い夜を過ごしました！エネルギーを感じなさい 😃"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:285
 msgid "It's great that you're keeping a consistent sleep routine!"
-msgstr "Le meilleur sommeil est un sommeil régulier. Bravo !"
+msgstr "一貫した睡眠のルーチンを維持することは素晴らしいことです！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:288
 #: ../src/fw/services/normal/activity/activity_insights.c:291
 msgid "A good night's sleep goes a long way! Try to get more hours tonight."
-msgstr "Une bonne nuit de sommeil peut faire beaucoup ! Essayer de dormir un peu plus ce soir."
+msgstr "良い夜の睡眠は長い道のりです! 今夜はもっと睡眠時間確保につとめてみてください。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:443
 msgid "Open App"
-msgstr "Ouvrir l’app"
+msgstr "アプリを開く"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:548
 #: ../src/fw/services/normal/activity/activity_insights.c:553
 msgid "BELOW AVG"
-msgstr "EN BAISSE"
+msgstr "平均以下"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:548
 #: ../src/fw/services/normal/activity/activity_insights.c:553
 msgid "Below avg"
-msgstr "En baisse"
+msgstr "平均以下"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:558
 msgid "ON AVG"
-msgstr "En moyenne"
+msgstr "平均点"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:558
 msgid "On avg"
-msgstr "En moy."
+msgstr "平均点"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:563
 msgid "ABOVE AVG"
-msgstr "PLUS QUE LA MOY."
+msgstr "平均以上"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:563
 msgid "Above avg"
-msgstr "Plus que la moy."
+msgstr "平均以上"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:755
 msgid "Wanna know more about you? Track your activity and sleep with Pebble Health."
-msgstr "Envie de mieux vous connaître ? Activez le suivi d'activité et de sommeil avec Pebble Bien-Être."
+msgstr "もっと自分のことを知りたいですか？Pebble Healthで活動を記録し、睡眠を取ろう。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:806
 msgid "You like sleep, don't you? Get fun stats on your sleep and start waking up less groggy with Pebble Health."
-msgstr "Vous aimez bien dormir, non ? Obtenez des statistiques sur votre sommeil et réveillez-vous un peu plus en forme avec Pebble Bien-Être."
+msgstr "あなたは睡眠が好きですよね？Pebble Healthであなたの睡眠に関する楽しい統計を取得し、目が覚めた時のグロッキーなことを減らしましょう。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:855
 msgid "Wish you could get daily updates on your activity and sleep progress? You can! Check out your stats with Pebble Health."
-msgstr "Envie d'en savoir plus sur votre activité et la qualité de votre sommeil ? C'est possible ! Vos statistiques sont disponible dans Pebble Bien-Être."
+msgstr "アクティビティと睡眠の進捗状況について毎日のアップデートを入手したいですか？できます！Pebble Healthであなたの統計をチェックしてください。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1076
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1076
 msgid "%l:%M%p"
-msgstr "%I:%M:%p"
+msgstr "%l:%M%p"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1101
 #, c-format
 msgid "%uH %uM Sleep"
-msgstr "%uH %uM Sommeil"
+msgstr "%uH %uM 寝ました"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1132
 msgid "Nap Time"
-msgstr "Temps de Sieste"
+msgstr "昼寝"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1140
 #, c-format
 msgid "%s of sleep"
-msgstr "%s de sommeil"
+msgstr "%s の睡眠"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1145
 msgid "YOU NAPPED"
-msgstr "SIESTE"
+msgstr "昼寝しました"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1146
 msgid "Of napping"
-msgstr "De sieste"
+msgstr "の昼寝"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1154
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s - %s"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1176
 msgid "I need more"
-msgstr "J'ai besoin de plus"
+msgstr "もっと必要"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1206
 #, c-format
 msgid "Aren't naps great? You knocked out for %dH %dM!"
-msgstr "Rien ne vaut une bonne sieste ! Vous avez dormi %dh%d !"
+msgstr "お昼寝って最高じゃない？ %d時間 %d分ノックアウトされてたよ！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1222
 msgid "I didn't nap!?"
-msgstr "Je n'ai pas fait de sieste !?"
+msgstr "私は昼寝しませんでしたよ！？"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1442
 msgid "Open Pin"
-msgstr "Voir moment"
+msgstr "ピンを開く"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1526
 #, c-format
 msgid "Killer job! You've walked %d steps today which is %d%% above your typical. Do it again tomorrow and you'll be on top of the world!"
-msgstr "Bien joué ! Vous avez fait %d pas aujourd'hui, soit %d%% de plus que votre moyenne. Continuez comme ça !"
+msgstr "キラージョブ！あなたは今日 %d 歩でした。あなたは世の中の上位%d%です。 明日もう一度やれば、あなたは世界のトップに立つでしょう！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1528
 #, c-format
 msgid "Nice moves! You've walked %d steps today which is %d%% above your typical. Crush it again tomorrow 😀"
-msgstr "Trop fort ! Vous avez fait %d pas aujourd'hui, soit %d%% de plus que votre moyenne. On remet ça demain !"
+msgstr "素敵な動きです! 今日は%d 歩も歩いて世の中の上位 %d%です。明日もう一度クラッシュしてください 😀"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1530
 #, c-format
 msgid "Hey rockstar 🎤 You've walked %d steps today which is %d%% above your typical. Nothing can stop you!"
-msgstr "Bravo champion(ne) ! Vous avez fait %d pas aujourd'hui, soit %d%% de plus que d'habitude. Rien ne vous arrête !"
+msgstr "やあロックスター 🎤 今日は %d 歩も歩きました。 あなたは世の中の歩数の上位%d%です。あなたを止めることはできません！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1532
 #, c-format
 msgid "We can barely keep up! You walked %d steps today which is %d%% above your typical. You're on 🔥"
-msgstr "On a du mal à suivre ! Vous avez fait %d pas aujourd'hui ce qui est %d%% de plus que votre moyenne."
+msgstr "私たちはかろうじて追いつくことができます！あなたは今日 %d 歩も歩きました。あなたは平均的な人たちの上位%d%% です。. You're on 🔥"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1535
 #, c-format
 msgid "You walked %d steps today which is %d%% above your typical. You just outstepped YOURSELF. Mic drop."
-msgstr "Trop fort ! Vous avez fait %d pas aujourd'hui, soit %d%% de plus que votre moyenne. Un peu de réconfort ... et on remet ça demain !"
+msgstr "あなたは今日 %d 歩も歩きました。 あなたは平均的な人たちの上位%d%にいます 。あなたは自分自身を超えました。脱帽です。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1542
 #, c-format
 msgid "You walked %d steps today; keep it up! Being active is the key to feeling like a million bucks. Try to beat your typical tomorrow."
-msgstr "Vous avez fait %d pas aujourd'hui ; c'est bien ! Être actif est essentiel pour se sentir en forme. Essayez de battre votre moyenne demain."
+msgstr "あなたは今日 %d 歩を歩きました。続けてください！アクティブであることは、100万ドルのように感じるための鍵です。あなたの平均を、明日は打ち負かして下さい。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1545
 #, c-format
 msgid "Good job! You walked %d steps today–do it again tomorrow."
-msgstr "Bien joué ! Vous avez fait %d pas aujourd'hui - on remet ça demain !"
+msgstr "よくできました！今日は %d 歩歩きましたね。明日もう一度やりましょう。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1546
 #, c-format
 msgid "Someone's on the move 👊 You walked %d steps today; keep doing what you're doing!"
-msgstr "En pleine forme 👊 Vous avez fait %d pas aujourd'hui ; continuez comme ça !"
+msgstr "誰かが移動中です 👊 あなたは今日 %d ステップ歩きました; あなたがやっていることを続けてください！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1548
 #, c-format
 msgid "You keep moving, we'll keep counting! You've clocked in %d steps today. Keep it rolling, hot stuff."
-msgstr "Un kilomètre à pied, ça use, ça use ... Vous avez accumulé %d pas aujourd'hui.  Continuez à user vos souliers !"
+msgstr "あなたは移動し続けます、私たちは数え続けます！今日は %d ステップでクロックされています。それを続けてください、熱いもの。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1555
 #, c-format
 msgid "You walked %d steps today which is %d%% below your typical. Try to be more active tomorrow–you can do it!"
-msgstr "Seulement %d pas aujourd'hui. C'est %d%% en dessous de votre moyenne. Essayez d'être plus actif demain !"
+msgstr "あなたは今日 %d ステップを歩きました。 %d%% 典型的なステップの下にあります。明日はもっとアクティブにしてみてください！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1557
 #, c-format
 msgid "You walked %d steps which is %d%% below your typical. Being active makes you feel amaaaazing–try to get back on track tomorrow."
-msgstr "Longue journée enfermé(e) ? Vous avez marché %d pas soit %d%% en dessous de votre moyenne. Être actif donne des ailes ! On va faire mieux demain."
+msgstr "あなたは %d ステップを歩きました。 %d%% 典型的なステップの下にあります。アクティブになっていると、明日また軌道に乗ってみましょう。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1559
 #, c-format
 msgid "You walked %d steps today which is %d%% below your typical. Don't worry, tomorrow is just around the corner 😀"
-msgstr "Vous avez fait %d pas aujourd'hui ce qui est %d%% de moins que d'habitude. Il n'y a rien de mal à prendre un peu de repos. Et demain est un nouveau jour 😃"
+msgstr "あなたは今日 %d ステップを歩きました。 %d%% 典型的なステップの下にあります。心配しないでください、明日はすぐ近くにあります 😀"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1561
 #, c-format
 msgid "You walked %d steps which is %d%% below your typical, but don't stress. You'll crush it tomorrow 😉"
-msgstr "Vous avez fait %d pas ce qui est %d%% de moins que d'habitude, mais vous allez être super en forme demain 😃"
+msgstr "あなたは %d ステップを歩きました。 %d%% 典型的なステップの下にありますが、ストレスを感じないでください。明日😉"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1568
 #, c-format
 msgid "You walked %d steps today. Don't fret, you can get back on track in no time 😉"
-msgstr "Pas trop en forme aujourd'hui ? Ça arrive. Vous avez fait %d pas. Pas d'inquiétude, vous pouvez vous rattraper demain 😃"
+msgstr "今日は %d 歩歩きました。心配しないで、すぐにトラックに戻ることができます 😉"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1570
 #, c-format
 msgid "You walked %d steps today. Good news is the sky's the limit!"
-msgstr "Salut l'ami(e). Vous avez fait seulement %d pas aujourd'hui mais tout le monde a le droit à un peu de repos. Demain est un nouveau jour !"
+msgstr "あなたは今日 %d ステップ歩きました。良いニュースは空の限界です！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1571
 #, c-format
 msgid "You walked %d steps today. Try to take even more steps tomorrow–show us what you're made of!"
-msgstr "Vous avez fait %d pas aujourd'hui. Essayez d'en faire un peu plus demain, vous en êtes capable!"
+msgstr "今日は %d ステップを歩きました。明日はさらにステップを踏み出してみてください。あなたが作ったものを見せてください！"
 
 #. / Sleep notification on wake up, slept above their typical sleep duration
 #: ../src/fw/services/normal/activity/activity_insights.c:1624
 #, c-format
 msgid "Refreshed? You slept for %dH %dM which is %d%% above your typical. Go tackle your day 😃."
-msgstr "Bien reposé(e) ? Vous avez dormi %d h %d min soit %d%% de plus que d'habitude. Vous allez avoir la pêche aujourd'hui 😃 !"
+msgstr "リフレッシュできました？ %d時間 %d分 %d%% の典型的な上に眠りました。続けてください 😃。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1626
 #, c-format
 msgid "You caught some killer zzz’s! You slept for %dH %dM which is %d%% above your typical. Keep it up."
-msgstr "Pro de l'oreiller ! Vous avez dormi %d h %d min, soit %d%% de plus que d'habitude. Continuez comme ça !"
+msgstr "キラーZZZを捕まえました！ %d時間 %d分 %d%% の典型的な上に眠りました。続けてください。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1628
 #, c-format
 msgid "Rise and shine! You slept for %dH %dM which is %d%% above your typical. Do it again tonight, sleep master."
-msgstr "Lève toi et marche ! Vous avez dormi %d h %d min ce qui est %d%% au dessus de votre moyenne. Recommencez demain !"
+msgstr "ライズアンドシャイン！あなたは普段の %d時間 %d分 %d%% 多く眠りました。今夜もよく眠りましょうね、スリープマスター。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1630
 #, c-format
 msgid "Mmmm...what a night. You slept for %dH %dM which is %d%% above your typical. That's gotta feel good!"
-msgstr "Le sommeil du juste ! Vous avez dormi %d h %d min ce qui est %d%% de plus que d'habitude. Vous devez vous sentir en pleine forme !"
+msgstr "ムムム...なんて夜でしょう。 普段のあなたより%d時間 %d分 %d%たくさん寝ました。いい気分であること間違いなしです！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1632
 #, c-format
 msgid "That's a lot of sheep you just counted! You slept for %dH %dM which is %d%% above your typical. Boom shakalaka."
-msgstr "Jamais compté autant de moutons ! Vous avez dormi %d h %d min ce qui est %d%% de plus que d'habitude !"
+msgstr "たっくさんの羊数えましたね！ふだんのあなたより %d時価 %d分 %d%% たくさん寝ました。ブーンシャカシャカ。"
 
 #. / Sleep notification on wake up, slept similar to their typical sleep duration
 #: ../src/fw/services/normal/activity/activity_insights.c:1640
 #, c-format
 msgid "Good mornin’. You slept for %dH %dM. Every good day begins with a solid night’s sleep...kinda like that one 😉 Keep it up!"
-msgstr "Bonjour! Vous avez dormi %dH %dM. Une bonne journée commence par une bonne nuit... un peu comme aujourd'hui 😉 continuez !"
+msgstr "おはようございます。 あなたは%d時間 %d分眠っていました。毎日良い日は確実な睡眠から始まります...まあそういうことです。😉続けてください！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1643
 #, c-format
 msgid "Good morning! You slept for %dH %dM. Consistency is key; keep doing what you're doing 😃."
-msgstr "Vous avez dormi %d h %d min. Un sommeil régulier est une grande richesse, continuez 😃 !"
+msgstr "おはようございます！ %d時間 %d分 眠りました。キーは継続性です。継続しましょう😃。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1645
 #, c-format
 msgid "You're rockin' the shut eye! You slept for %dH %dM. Make it a nightly ritual. You deserve it."
-msgstr "Super nuit ! Vous avez dormi %d h %d min. Gardez cette habitude, vous le méritez !"
+msgstr "あなたの目は本当にロックンロール！ %d時間 %d分寝ました。毎晩の儀式にしましょう。あなたはそれができます。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1647
 #, c-format
 msgid "Feelin' good? You slept for %dH %dM. Nothing can stop you now 👊"
-msgstr "En forme ? Vous avez dormi %d h %d min. Rien ne peut vous arrêter maintenant 👊"
+msgstr "いい感じ？ %d時間 %d分眠りました。今のあなたを止めるものは何もありません👊"
 
 #. / Sleep notification on wake up, slept below their typical sleep duration
 #: ../src/fw/services/normal/activity/activity_insights.c:1654
 #, c-format
 msgid "Hey sleepy head. You slept for %dH %dM which is %d%% below your typical. Try to get more tonight!"
-msgstr "Un peu fatigué(e) ? Vous avez moins bien dormi que d'habitude. %d h %d min soit %d%% de moins. Essayez de faire mieux ce soir !"
+msgstr "おいスリーピーヘッド！あなたは %d時間 %d分眠りましたがこれは普段のあなたの%d%です。今夜はしっかり寝なさいよ！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1656
 #, c-format
 msgid "Groggy? You slept for %dH %dM which is %d%% below your typical. Sleep is important for everything you do-try getting more shut eye tonight!"
-msgstr "Paupières lourdes ? Vous avez dormi %d h %d min, soit %d%% de moins que d'habitude. Le sommeil est très important ! Essayez de vous coucher plus tôt ce soir."
+msgstr "グロッキーですか？ あなたは%d時間 %d分寝ましたが、普段のなたの %d% 下回っています。 睡眠は何事にも代えがたいですから今夜はもっと目を閉じてみてださい！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1658
 #, c-format
 msgid "It's a new day! You slept for %dH %dM which is %d%% below your typical. It's not your best, but there's always tonight."
-msgstr "Un nouveau jour se lève ! Vous avez dormi %d h %d min ce qui est %d%% de moins que d'habitude. Ce n'est pas votre record mais vous pourrez vous rattraper ce soir."
+msgstr "新しい朝です！ 普段のあなたの%d時間 %d分 %d%下回っています。 あなたのベストではありませんが、夜は今日も来ます。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1660
 #, c-format
 msgid "Goooood morning! You slept for %dH %dM which is %d%% below your typical. Go crush your day and then get back in bed 😉"
-msgstr "Boooonnnjour ! Vous avez dormi %d h %d min ce qui est %d%% en dessous de votre moyenne. Passez une bonne journée et revenez vous coucher 😉"
+msgstr "おっはようございます！ %d時間 %d分 %d%普段のあなたよりも全然です 。 一日をぶっ飛ばしてベットに戻ってきなさい😉"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1667
 #, c-format
 msgid "You slept for %dH %dM which is %d%% below your typical. Sleep is vital for all your great ideas–how 'bout getting more tonight?"
-msgstr "Un peu fatigué ? Vous n'avez dormi que %d h %d min ce qui est %d%% de moins que d'habitude. Le sommeil est essentiel à vos grands projets ! Essayez de dormir plus ce soir !"
+msgstr "あなたは あなたは%d時間 %d分寝て、 普段のあなたの%d% 下回ってます。あなたの睡眠はすべての偉大なアイデアのために不可欠です-で、今夜はどうやってたくさん寝ますか？"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1669
 #, c-format
 msgid "You only slept for %dH %dM which is %d%% below your typical. We know you're busy, but try getting more tonight. We believe in you 😉"
-msgstr "Vous n'avez dormi que %d h %d min, soit %d%% de moins que d'habitude. On comprend que vous êtes occupé(e) mais essayez de dormir plus ce soir. On croit en vous 😉"
+msgstr "あなたの睡眠はたったの%d時間 %d分です。これは普段のあなたの %d% 下回ってます。 私たちはあなたが忙しいことを知っていますが、今夜はもっと多く寝ようとしてね。 信じています😉"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1671
 #, c-format
 msgid "You slept for %dH %dM which is %d%% below your typical. We know stuff happens; take another crack at it tonight."
-msgstr "La nuit a été un peu courte 😟 Vous n'avez dormi que %d h %d min ce qui est %d%% en dessous de votre moyenne. Ça arrive mais essayez de dormir plus ce soir."
+msgstr "あなたは%d時間 %d分寝ましたが、これは普段のあなたの %d% 下回ってます。多分何かあったのでしょう、今日はもっと寝てね。"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1724
 #, c-format
 msgid "%u Steps"
-msgstr "%u Pas"
+msgstr "%u 歩"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1805
 msgid "Didn’t that walk feel good?"
-msgstr "On se sent mieux après une bonne marche !"
+msgstr "歩き心地が良くなかった？"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1806
 msgid "Way to keep it active!"
-msgstr "Bravo, vous restez actif(ve) !"
+msgstr "アクティブに保つための方法！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1807
 msgid "You got the moves!"
-msgstr "Vous avez la pêche !"
+msgstr "運動したね！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1808
 msgid "Gettin' your step on?"
-msgstr "D'un pas régulier ?"
+msgstr "歩いていますか？"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1818
 msgid "Feelin' hot? Cause you're on 🔥"
-msgstr "Un peu chaud ? Pas étonnant !"
+msgstr "暑いですか？そりゃあなたは🔥の上にいるからね"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1819
 msgid "Hey lightning bolt, way to go!"
-msgstr "Comme une fusée !"
+msgstr "ライトニングボルト、すげえ早いな！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1820
 msgid "You're a machine!"
-msgstr "Comme une fusée !"
+msgstr "あなたはまるでマシンです！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1821
 msgid "Hey speedster, we can barely keep up!"
-msgstr "On a du mal à vous suivre !"
+msgstr "やあスピードスター、だれも追いつくことができません！"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1822
 msgid "Way to show us what you're made of 👊"
-msgstr "Continuez à nous montrer de quoi vous êtes fait(e) 👊"
+msgstr "あなたが👊 で作られているということを示す証拠だ"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1832
 msgid "Workin' up a sweat?"
-msgstr "Un peu chaud ?"
+msgstr "汗をかいてる？"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1833
 msgid "Well done 💪"
-msgstr "Bien joué 💪"
+msgstr "よくできました💪"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1834
 msgid "Endorphin rush?"
-msgstr "Plein d'endorphine ?"
+msgstr "エンドルフィンの洪水？"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1835
 msgid "Can't stop, won't stop 👊"
-msgstr "Toujours plus loin 👊"
+msgstr "止まれませんし、止まるな👊"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1836
 msgid "Keepin' that heart healthy! ❤"
-msgstr "Vous gardez un coeur sain ! ❤"
+msgstr "心臓を健康に！ ❤"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1864
 #: ../src/fw/services/normal/activity/activity_insights.c:1956
@@ -2043,46 +2039,46 @@ msgstr "Vous gardez un coeur sain ! ❤"
 #: ../src/fw/services/normal/activity/activity_insights.c:1970
 #, c-format
 msgid "%d Min"
-msgstr ""
+msgstr "%d 分"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1895
 msgid "Avg Pace"
-msgstr "Rythme Moy."
+msgstr "平均ペース"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1911
 msgid "Distance"
-msgstr ""
+msgstr "距離"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1923
 msgid "Steps"
-msgstr "Pas"
+msgstr "歩数"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1936
 msgid "Active Calories"
-msgstr "Calories actifs"
+msgstr "活動時のカロリー"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1949
 msgid "Avg HR"
-msgstr "Rythme Moy."
+msgstr "平均心拍数"
 
 #: ../src/fw/services/normal/activity/health_util.c:45
 #, c-format
 msgid "%dH"
-msgstr ""
+msgstr "%d 時間"
 
 #: ../src/fw/services/normal/activity/health_util.c:51
 #, c-format
 msgid "%dM"
-msgstr ""
+msgstr "%d分"
 
 #: ../src/fw/services/normal/activity/health_util.c:74
 #, c-format
 msgid "%d:%d"
-msgstr ""
+msgstr "%d:%d"
 
 #: ../src/fw/services/normal/activity/health_util.c:111
 msgid "H"
-msgstr ""
+msgstr "時"
 
 #: ../src/fw/services/normal/activity/health_util.c:117
 msgid " "
@@ -2090,433 +2086,433 @@ msgstr ""
 
 #: ../src/fw/services/normal/activity/health_util.c:127
 msgid "M"
-msgstr ""
+msgstr "分"
 
 #: ../src/fw/services/normal/activity/health_util.c:146
 #, c-format
 msgid "%d.%d"
-msgstr ""
+msgstr "%d.%d"
 
 #: ../src/fw/services/normal/alarms/alarm.c:389
 #: ../src/fw/services/normal/alarms/alarm_pin.c:33
 msgid "Alarm"
-msgstr "Alarme"
+msgstr "アラーム"
 
 #. / A frequency option for alarms, i.e. the alarm would go off every day. Respect
 #. / capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1138
 msgid "EVERY DAY"
-msgstr "TOUS LES JOURS"
+msgstr "毎日"
 
 #. / A frequency option for alarms, i.e. the alarm would go off every day. Respect
 #. / capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1141
 msgid "Every Day"
-msgstr "Tous les jours"
+msgstr "毎日"
 
 #. / A frequency option for alarms, i.e. the alarm would only go off every weekday. Respect
 #. / capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1147
 msgid "WEEKDAYS"
-msgstr "SEMAINE"
+msgstr "平日"
 
 #. / A frequency option for alarms, i.e. the alarm would only go off each day on the weekend.
 #. / Respect capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1156
 msgid "WEEKENDS"
-msgstr "WEEK-END"
+msgstr "週末"
 
 #. / A frequency option for alarms, i.e. the alarm would only go off one time ever. Respect
 #. / capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1166
 msgid "ONCE"
-msgstr "UNE FOIS"
+msgstr "一度だけ"
 
 #. / A frequency option for alarms, i.e. the alarm would only go off one time ever. Respect
 #. / capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1169
 msgid "Once"
-msgstr "Une fois"
+msgstr "一度だけ"
 
 #. / A frequency option for alarms, i.e. the alarm would only go off on a custom choice of
 #. / days. Respect capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1176
 msgid "CUSTOM"
-msgstr "PERSONNALISÉ"
+msgstr "カスタム設定"
 
 #. / A frequency option for alarms, i.e. the alarm would only go off on a custom choice of
 #. / days. Respect capitalization!
 #: ../src/fw/services/normal/alarms/alarm.c:1179
 msgid "Custom"
-msgstr "Personnaliser"
+msgstr "カスタム設定"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1192
 #: ../src/fw/applib/pbl_std/timelocal.c:48
 msgid "Sun"
-msgstr "Dim"
+msgstr "日"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1193
 #: ../src/fw/applib/pbl_std/timelocal.c:48
 msgid "Mon"
-msgstr "Lun"
+msgstr "月"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1194
 #: ../src/fw/applib/pbl_std/timelocal.c:48
 msgid "Tue"
-msgstr "Mar"
+msgstr "火"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1195
 #: ../src/fw/applib/pbl_std/timelocal.c:48
 msgid "Wed"
-msgstr "Mer"
+msgstr "水"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1196
 #: ../src/fw/applib/pbl_std/timelocal.c:49
 msgid "Thu"
-msgstr "Jeu"
+msgstr "木"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1197
 #: ../src/fw/applib/pbl_std/timelocal.c:49
 msgid "Fri"
-msgstr "Ven"
+msgstr "金"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1198
 #: ../src/fw/applib/pbl_std/timelocal.c:49
 msgid "Sat"
-msgstr "Sam"
+msgstr "土"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1201
 msgid "Sundays"
-msgstr "Les Dimanches"
+msgstr "日曜日"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1202
 msgid "Mondays"
-msgstr "Les Lundis"
+msgstr "月曜日"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1203
 msgid "Tuesdays"
-msgstr "Les Mardis"
+msgstr "火曜日"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1204
 msgid "Wednesdays"
-msgstr "Les Mercredis"
+msgstr "水曜日"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1205
 msgid "Thursdays"
-msgstr "Les Jeudis"
+msgstr "木曜日"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1206
 msgid "Fridays"
-msgstr "Les Vendredis"
+msgstr "金曜日"
 
 #: ../src/fw/services/normal/alarms/alarm.c:1207
 msgid "Saturdays"
-msgstr "Les Samedis"
+msgstr "土曜日"
 
 #: ../src/fw/services/normal/alarms/alarm_pin.c:46
 msgid "Edit"
-msgstr "Modifier"
+msgstr "編集"
 
 #: ../src/fw/services/normal/notifications/ancs/ancs_item.c:122
 msgid "sent an attachment"
-msgstr "a envoyé un fichier joint"
+msgstr ""
 
 #: ../src/fw/services/normal/notifications/ancs/ancs_item.c:169
 msgid "Call Back"
-msgstr "Rappeler"
+msgstr "折り返す"
 
 #: ../src/fw/services/normal/notifications/do_not_disturb.c:128
 msgid "Calendar Aware enables Quiet Time automatically during calendar events."
-msgstr "Le mode \"Selon Agenda\" active Tranquillité automatiquement selon votre calendrier."
+msgstr "Calendar Awareは、カレンダーイベント中に自動的にQuiet Timeを有効にします。"
 
 #: ../src/fw/services/normal/notifications/do_not_disturb.c:134
 msgid "Press and hold the Back button from a notification to turn Quiet Time on or off."
-msgstr "Tenez le bouton Retour appuyé sur une notification pour activer et désactiver Tranquillité."
+msgstr "通知から戻るボタンを長押しすると、Quiet Timeのオンとオフが切り替わります。"
 
 #: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:41
 msgid "Start Quiet Time?"
-msgstr "Activer Tranquillité ?"
+msgstr "Quiet Timeをはじめます？"
 
 #: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:42
 msgid "End Quiet Time?"
-msgstr "Désactiver Tranquillité ?"
+msgstr "Quiet Timeをおわります？"
 
 #: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:43
 msgid "Quiet Time\n"
 "Started"
-msgstr "Tranquillité\n"
-"activée"
+msgstr "Quiet Time\n"
+"がはじまりました"
 
 #: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:44
 msgid "Quiet Time\n"
 "Ended"
-msgstr "Tranquillité\n"
-"désactivée"
+msgstr "Quiet Time\n"
+"がおわりました"
 
 #: ../src/fw/services/normal/timeline/calendar_layout.c:167
 msgid " - "
-msgstr ""
+msgstr " - "
 
 #: ../src/fw/services/normal/timeline/calendar_layout.c:287
 msgid "All Day"
-msgstr "Journée"
+msgstr "終日"
 
 #: ../src/fw/services/normal/timeline/calendar_layout.c:328
 msgid "Recurring"
-msgstr "Récurrent"
+msgstr "繰り返し"
 
 #: ../src/fw/services/normal/timeline/sports_layout.c:63
 msgid "STARTS "
-msgstr "COMMENCE "
+msgstr "開始 "
 
 #: ../src/fw/services/normal/timeline/sports_layout.c:141
 msgid "Broadcaster"
-msgstr "Diffusion"
+msgstr "ブロードキャスター"
 
 #: ../src/fw/services/normal/timeline/timeline.c:715
 msgid "Can't connect. Relaunch Pebble Time app on phone."
-msgstr "Veuillez ouvrir l'application Pebble sur votre mobile."
+msgstr "接続できません。Pebble Timeアプリを端末から再起動してください。"
 
 #: ../src/fw/services/normal/timeline/timeline.c:730
 msgid "Removed"
-msgstr "Effacé"
+msgstr "削除しました"
 
 #: ../src/fw/services/normal/timeline/timeline.c:743
 #: ../src/fw/services/normal/timeline/timeline.c:765
 msgid "Dismissed"
-msgstr "Ignoré"
+msgstr "無視する"
 
 #: ../src/fw/services/normal/timeline/timeline.c:769
 msgid "Deleted"
-msgstr "Supprimée"
+msgstr "削除"
 
 #: ../src/fw/services/normal/timeline/timeline.c:803
 msgid "Thanks!"
-msgstr "Merci !"
+msgstr "ありがとう！"
 
 #: ../src/fw/services/normal/timeline/timeline.c:962
 msgid "Calendar"
-msgstr "Calendrier"
+msgstr "カレンダー"
 
 #: ../src/fw/services/normal/timeline/timeline.c:970
 msgid "Reminders"
-msgstr "Rappels"
+msgstr "リマインダー"
 
 #: ../src/fw/services/normal/timeline/timeline.c:984
 msgid "Intercom"
-msgstr "Interphone"
+msgstr "インターコム"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:736
 msgid "Quickly dismiss all notifications by holding the Select button for 2 seconds from any incoming notification."
-msgstr "Faîtes disparaître toutes les notifications en appuyant sur le bouton Sélectionner pendant deux secondes depuis n'importe quelle notification."
+msgstr "任意の着信通知から ２秒間中央ボタンを押し続けると、すべての通知をすばやく解除できます。"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:828
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:829
 msgid "Yes"
-msgstr "Oui"
+msgstr "はい"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:830
 msgid "No"
-msgstr "Non"
+msgstr "いいえ"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:831
 msgid "Call me"
-msgstr "Appelle-moi"
+msgstr "電話ちょうだい"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:832
 msgid "Call you later"
-msgstr "Je t'appelle plus tard"
+msgstr "あとで電話します"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:955
 msgid "Reply with Voice"
-msgstr "Dicter Réponse"
+msgstr "音声で返信する"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:956
 msgid "Voice"
-msgstr "Dicter"
+msgstr "音声"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:966
 msgid "Canned messages"
-msgstr "Messages préenregistrés"
+msgstr "定型文"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:970
 msgid "Emoji"
-msgstr ""
+msgstr "絵文字"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:1079
 msgid "In 15 minutes"
-msgstr "Dans 15 minutes"
+msgstr "15 分後"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:1085
 msgid "Later today"
-msgstr "Plus tard aujourd'hui"
+msgstr "今日後ほど"
 
 #: ../src/fw/services/normal/timeline/timeline_layout.c:725
 msgid "Last updated"
-msgstr "Mis à jour"
+msgstr "最終更新"
 
 #. / Standard vibration pattern option that has a medium intensity
 #: ../src/fw/services/normal/vibes/vibe_intensity.c:56
 msgid "Standard - Medium"
-msgstr "Standard - Moyenne"
+msgstr "標準 - 中"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 msgid "Jan"
-msgstr "Janv."
+msgstr "1月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 msgid "Feb"
-msgstr "Févr."
+msgstr "2月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 msgid "Mar"
-msgstr "Mars"
+msgstr "3月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 msgid "Apr"
-msgstr "Avr."
+msgstr "4月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 #: ../src/fw/applib/pbl_std/timelocal.c:44
 msgid "May"
-msgstr "Mai"
+msgstr "5月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Jun"
-msgstr "Juin"
+msgstr "6月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Jul"
-msgstr "Juill."
+msgstr "7月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Aug"
-msgstr "Août"
+msgstr "8月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Sep"
-msgstr "Sept."
+msgstr "9月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Oct"
-msgstr "Oct."
+msgstr "10月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:40
 msgid "Nov"
-msgstr "Nov."
+msgstr "11月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:40
 msgid "Dec"
-msgstr "Déc."
+msgstr "12月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:43
 msgid "January"
-msgstr "Janvier"
+msgstr "1月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:43
 msgid "February"
-msgstr "Février"
+msgstr "2月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:43
 msgid "March"
-msgstr "Mars"
+msgstr "3月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:43
 msgid "April"
-msgstr "Avril"
+msgstr "4月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:44
 msgid "June"
-msgstr "Juin"
+msgstr "6月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:44
 msgid "July"
-msgstr "Juillet"
+msgstr "7月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:44
 msgid "August"
-msgstr "Août"
+msgstr "8月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:45
 msgid "September"
-msgstr "Septembre"
+msgstr "9月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:45
 msgid "October"
-msgstr "Octobre"
+msgstr "10月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:45
 msgid "November"
-msgstr "Novembre"
+msgstr "11月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:45
 msgid "December"
-msgstr "Décembre"
+msgstr "12月"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Sunday"
-msgstr "Dimanche"
+msgstr "日曜日"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Monday"
-msgstr "Lundi"
+msgstr "月曜日"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Tuesday"
-msgstr "Mardi"
+msgstr "火曜日"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Wednesday"
-msgstr "Mercredi"
+msgstr "水曜日"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:53
 msgid "Thursday"
-msgstr "Jeudi"
+msgstr "木曜日"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:53
 msgid "Friday"
-msgstr "Vendredi"
+msgstr "金曜日"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:53
 msgid "Saturday"
-msgstr "Samedi"
+msgstr "土曜日"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:56
 msgid "%H:%M:%S"
-msgstr ""
+msgstr "%H:%M:%S"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:57
 msgid "%m/%d/%y"
-msgstr "%d/%m/%y"
+msgstr "%m/%d/%y"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:58
 msgid "%a %b %e %H:%M:%S %Y"
-msgstr ""
+msgstr "%a %b %e %H:%M:%S %Y"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:59
 msgid "%I:%M:%S %p"
-msgstr ""
+msgstr "%I:%M:%S %p"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:61
 #: ../src/fw/applib/ui/date_time_selection_window_private.c:89
 msgid "AM"
-msgstr ""
+msgstr "AM"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:61
 #: ../src/fw/applib/ui/date_time_selection_window_private.c:91
 msgid "PM"
-msgstr ""
+msgstr "PM"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:62
 msgid "am"
-msgstr ""
+msgstr "am"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:62
 msgid "pm"
-msgstr ""
+msgstr "pm"
 
 #. / The first separator in `<hour>:<minute>:<second>`
 #. / The second separator in `<hour>:<minute>:<second>`
@@ -2524,7 +2520,7 @@ msgstr ""
 #: ../src/fw/applib/template_string.c:195
 msgctxt "TmplStringSep"
 msgid ":"
-msgstr ""
+msgstr "："
 
 #. / The first separator in `<hour> hr <minute> min <second> sec`
 #. / The second separator in `<hour> hr <minute> min <second> sec`
@@ -2538,13 +2534,13 @@ msgstr ""
 #: ../src/fw/applib/template_string.c:201
 msgctxt "TmplStringSep"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #. / The second separator in `<hour> hours, <minute> minutes, and <second> seconds`
 #: ../src/fw/applib/template_string.c:203
 msgctxt "TmplStringSep"
 msgid ", and "
-msgstr ", et "
+msgstr ", and "
 
 #. / Singular suffix for seconds with no units
 #. / Singular suffix for minutes with no units
@@ -2582,155 +2578,155 @@ msgstr ""
 #: ../src/fw/applib/template_string.c:276
 msgctxt "TmplStringSing"
 msgid " sec"
-msgstr " s"
+msgstr " 秒"
 
 #. / Plural suffix for seconds with abbreviated units
 #: ../src/fw/applib/template_string.c:278
 msgctxt "TmplStringPlur"
 msgid " sec"
-msgstr " s"
+msgstr " 秒"
 
 #. / Singular suffix for seconds with full units
 #: ../src/fw/applib/template_string.c:280
 msgctxt "TmplStringSing"
 msgid " second"
-msgstr " seconde"
+msgstr " 秒"
 
 #. / Plural suffix for seconds with full units
 #: ../src/fw/applib/template_string.c:282
 msgctxt "TmplStringPlur"
 msgid " seconds"
-msgstr " secondes"
+msgstr " 秒間"
 
 #. / Singular suffix for minutes with abbreviated units
 #: ../src/fw/applib/template_string.c:291
 msgctxt "TmplStringSing"
 msgid " min"
-msgstr ""
+msgstr " 分"
 
 #. / Plural suffix for minutes with abbreviated units
 #: ../src/fw/applib/template_string.c:293
 msgctxt "TmplStringPlur"
 msgid " min"
-msgstr ""
+msgstr " 分"
 
 #. / Singular suffix for minutes with full units
 #: ../src/fw/applib/template_string.c:295
 msgctxt "TmplStringSing"
 msgid " minute"
-msgstr ""
+msgstr " 分"
 
 #. / Plural suffix for minutes with full units
 #: ../src/fw/applib/template_string.c:297
 msgctxt "TmplStringPlur"
 msgid " minutes"
-msgstr ""
+msgstr " 分間"
 
 #. / Singular suffix for hours with abbreviated units
 #: ../src/fw/applib/template_string.c:306
 msgctxt "TmplStringSing"
 msgid " hr"
-msgstr " h"
+msgstr " 時間"
 
 #. / Plural suffix for hours with abbreviated units
 #: ../src/fw/applib/template_string.c:308
 msgctxt "TmplStringPlur"
 msgid " hr"
-msgstr " h"
+msgstr " 時間"
 
 #. / Singular suffix for hours with full units
 #: ../src/fw/applib/template_string.c:310
 msgctxt "TmplStringSing"
 msgid " hour"
-msgstr " heure"
+msgstr " 時間"
 
 #. / Plural suffix for hours with full units
 #: ../src/fw/applib/template_string.c:312
 msgctxt "TmplStringPlur"
 msgid " hours"
-msgstr " heures"
+msgstr " 時間"
 
 #. / Singular suffix for days with abbreviated units
 #: ../src/fw/applib/template_string.c:321
 msgctxt "TmplStringSing"
 msgid " d"
-msgstr " j"
+msgstr " d"
 
 #. / Plural suffix for days with abbreviated units
 #: ../src/fw/applib/template_string.c:323
 msgctxt "TmplStringPlur"
 msgid " d"
-msgstr " j"
+msgstr " d"
 
 #. / Singular suffix for days with full units
 #: ../src/fw/applib/template_string.c:325
 msgctxt "TmplStringSing"
 msgid " day"
-msgstr " jour"
+msgstr " 日"
 
 #. / Plural suffix for days with full units
 #: ../src/fw/applib/template_string.c:327
 msgctxt "TmplStringPlur"
 msgid " days"
-msgstr " jours"
+msgstr " 日数"
 
 #. / Singular suffix for months with abbreviated units
 #: ../src/fw/applib/template_string.c:337
 msgctxt "TmplStringSing"
 msgid " mo"
-msgstr " m"
+msgstr " mo"
 
 #. / Plural suffix for months with abbreviated units
 #: ../src/fw/applib/template_string.c:339
 msgctxt "TmplStringPlur"
 msgid " mo"
-msgstr " m"
+msgstr " mo"
 
 #. / Singular suffix for months with full units
 #: ../src/fw/applib/template_string.c:341
 msgctxt "TmplStringSing"
 msgid " month"
-msgstr " mois"
+msgstr " 月"
 
 #. / Plural suffix for months with full units
 #: ../src/fw/applib/template_string.c:343
 msgctxt "TmplStringPlur"
 msgid " months"
-msgstr " mois"
+msgstr " ヶ月"
 
 #. / Singular suffix for years with abbreviated units
 #: ../src/fw/applib/template_string.c:354
 msgctxt "TmplStringSing"
 msgid " yr"
-msgstr " a"
+msgstr " yr"
 
 #. / Plural suffix for years with abbreviated units
 #: ../src/fw/applib/template_string.c:356
 msgctxt "TmplStringPlur"
 msgid " yr"
-msgstr " a"
+msgstr " yr"
 
 #. / Singular suffix for years with full units
 #: ../src/fw/applib/template_string.c:358
 msgctxt "TmplStringSing"
 msgid " year"
-msgstr " an"
+msgstr " 年"
 
 #. / Plural suffix for years with full units
 #: ../src/fw/applib/template_string.c:360
 msgctxt "TmplStringPlur"
 msgid " years"
-msgstr " ans"
+msgstr " 年"
 
 #: ../src/fw/applib/ui/dialogs/bt_conn_dialog.c:110
 msgid "Check bluetooth connection"
-msgstr "Le Bluetooth est-il connecté ?"
+msgstr "Bluetooth 接続を確認する"
 
 #: ../src/fw/applib/ui/time_range_selection_window.c:190
 msgid "Start"
-msgstr "Début"
+msgstr "スタート"
 
 #: ../src/fw/applib/ui/time_range_selection_window.c:194
 msgid "End"
-msgstr "Fin"
+msgstr "終了"
 
