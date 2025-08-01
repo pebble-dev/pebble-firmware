@@ -37,7 +37,13 @@ sudo apt update
 2. Install required dependencies
 
 ```shell
-sudo apt install clang gcc gcc-multilib git gettext python3-dev python3-venv
+sudo apt install clang gcc gcc-multilib git gettext python3-dev pipx
+```
+
+3. Install [uv](https://docs.astral.sh/uv):
+
+```shell
+pipx install uv
 ```
 
 ::::
@@ -51,6 +57,12 @@ sudo apt install clang gcc gcc-multilib git gettext python3-dev python3-venv
 
 ```shell
 brew link python@3
+```
+
+3. Install [uv](https://docs.astral.sh/uv):
+
+```shell
+brew install uv
 ```
 
 ::::
@@ -99,33 +111,6 @@ Once cloned, enter the `pebble-firmware` directory before continuing:
 
 ```shell
 cd pebble-firmware
-```
-
-## Python dependencies
-
-A series of additional Python dependencies are also required.
-Follow the next steps to install them in a [Python virtual environment](https://docs.python.org/3/library/venv.html).
-
-1. Create a new virtual environment:
-
-```shell
-python3 -m venv .venv
-```
-
-2. Activate the virtual environment:
-
-```shell
-source .venv/bin/activate
-```
-
-```{tip}
-Remember to activate the virtual environment before every time you start working!
-```
-
-3. Install dependencies
-
-```shell
-pip install -r requirements.txt
 ```
 
 ## Building
