@@ -56,6 +56,7 @@ master_capability_set = {
     'USE_PARALLEL_FLASH',
     'HAS_PUTBYTES_PREACKING',
     'HAS_FLASH_OTP',
+    'WAS_BLUETOPIA',
 }
 
 board_capability_dicts = [
@@ -66,6 +67,7 @@ board_capability_dicts = [
             'HAS_APPLE_MFI',
             'HAS_DEFECTIVE_FW_CRC',
             'HAS_MAGNETOMETER',
+            'WAS_BLUETOPIA',
         },
     },
     {
@@ -76,6 +78,7 @@ board_capability_dicts = [
             'HAS_DEFECTIVE_FW_CRC',
             'HAS_LED',
             'HAS_MAGNETOMETER',
+            'WAS_BLUETOPIA',
         },
     },
     {
@@ -102,6 +105,7 @@ board_capability_dicts = [
             'HAS_VIBE_SCORES',
             'USE_PARALLEL_FLASH',
             'HAS_WEATHER',
+            'WAS_BLUETOPIA',
         },
     },
     {
@@ -129,6 +133,7 @@ board_capability_dicts = [
             'HAS_VIBE_SCORES',
             'USE_PARALLEL_FLASH',
             'HAS_WEATHER',
+            'WAS_BLUETOPIA',
         },
     },
     {
@@ -154,6 +159,7 @@ board_capability_dicts = [
             'HAS_VIBE_SCORES',
             'USE_PARALLEL_FLASH',
             'HAS_WEATHER',
+            'WAS_BLUETOPIA',
         },
     },
     {
@@ -179,6 +185,7 @@ board_capability_dicts = [
             'HAS_VIBE_SCORES',
             'USE_PARALLEL_FLASH',
             'HAS_WEATHER',
+            'WAS_BLUETOPIA',
         },
     },
     {
