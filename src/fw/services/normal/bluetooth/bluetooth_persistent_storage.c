@@ -88,7 +88,14 @@ typedef struct PACKED {
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //! Settings File
 
-#define BT_PERSISTENT_STORAGE_FILE_NAME "gap_bonding_db"
+#if CAPABILITY_WAS_BLUETOPIA
+  // Avoid making a mess with unreadable pairing names if someone downgrades
+  // to a Bluetopia firmware -- we'll just store our bondings in an entirely
+  // different database.
+  #define BT_PERSISTENT_STORAGE_FILE_NAME "gap_bonding_db_v2"
+#else
+  #define BT_PERSISTENT_STORAGE_FILE_NAME "gap_bonding_db"
+#endif
 #define BT_PERSISTENT_STORAGE_FILE_SIZE (4096)
 
 //! All of the actual pairings use a BTBondingID as a key. This is because with BLE pairings an
