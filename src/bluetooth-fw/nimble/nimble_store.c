@@ -268,6 +268,9 @@ static int prv_nimble_store_write(int obj_type, const union ble_store_value *val
     case BLE_STORE_OBJ_TYPE_OUR_SEC:
     case BLE_STORE_OBJ_TYPE_PEER_SEC:
       return prv_nimble_store_write_sec(obj_type, &val->sec);
+    case BLE_STORE_OBJ_TYPE_CCCD:
+      PBL_LOG_D(LOG_DOMAIN_BT, LOG_LEVEL_ERROR, "prv_nimble_store_write is faking it for a CCCD!");
+      return 0;
     default:
       return BLE_HS_ENOTSUP;
   }
@@ -278,6 +281,9 @@ static int prv_nimble_store_delete(int obj_type, const union ble_store_key *key)
     case BLE_STORE_OBJ_TYPE_OUR_SEC:
     case BLE_STORE_OBJ_TYPE_PEER_SEC:
       return prv_nimble_store_delete_sec(obj_type, &key->sec);
+    case BLE_STORE_OBJ_TYPE_CCCD:
+      PBL_LOG_D(LOG_DOMAIN_BT, LOG_LEVEL_ERROR, "prv_nimble_store_delete is faking it for a CCCD!");
+      return 0;
     default:
       return BLE_HS_ENOTSUP;
   }
