@@ -25,7 +25,7 @@ syscfg.vals:
     
     # If we do not turn on flow control, large volumes of NOTIFY events
     # (ANCS, etc) will cause us to crash.
-    BLE_HW_FLOW_CTRL: 1
+    BLE_HS_FLOW_CTRL: 1
     BLE_HS_FLOW_CTRL_THRESH: 5
     BLE_HS_FLOW_CTRL_TX_ON_DISCONNECT: 1
     BLE_TRANSPORT_ACL_COUNT: 20
