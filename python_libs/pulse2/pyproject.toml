@@ -17,5 +17,6 @@ dev = [
 	"mock>=2.0.0; python_version < \"3.3.0\"",
 ]
 
-[tool.setuptools]
-packages = ["pebble"]
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"

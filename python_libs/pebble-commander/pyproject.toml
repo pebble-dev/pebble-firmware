@@ -17,3 +17,7 @@ Interactive = [
 
 [project.scripts]
 pebble-commander = "pebble.commander.__main__:main [Interactive]"
+
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
