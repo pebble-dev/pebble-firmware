@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-29 21:31+0000\n"
+"POT-Creation-Date: 2025-07-28 07:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -209,7 +209,7 @@ msgid "Enable"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:201
-#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:464
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:465
 msgid "Change Time"
 msgstr ""
 
@@ -249,34 +249,34 @@ msgstr ""
 msgid "1 hour"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:315
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:316
 msgid "Check something first."
 msgstr ""
 
-#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:465
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:466
 msgid "New Smart Alarm"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:465
-#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:560
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:466
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:561
 msgid "New Alarm"
 msgstr ""
 
 #. / Displays as "Wake up between" then "8:00 AM - 8:30 AM" below on a separate line
-#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:467
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:468
 msgid "Wake up between"
 msgstr ""
 
 #. / Displays as "8:00 AM - 8:30 AM" then "Wake up interval" below on a separate line
-#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:469
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:470
 msgid "Wake up interval"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:557
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:558
 msgid "Basic Alarm"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:558
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:559
 #: ../src/fw/apps/system_apps/alarms/alarms.c:370
 #: ../src/fw/services/normal/alarms/alarm.c:389
 #: ../src/fw/services/normal/alarms/alarm_pin.c:33
@@ -305,7 +305,7 @@ msgid ""
 "Alarm wakes you up to 30min before your alarm."
 msgstr ""
 
-#: ../src/fw/apps/system_apps/alarms/alarms.c:484
+#: ../src/fw/apps/system_apps/alarms/alarms.c:493
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:84
 #: ../src/fw/services/normal/timeline/timeline.c:974
 msgid "Alarms"
