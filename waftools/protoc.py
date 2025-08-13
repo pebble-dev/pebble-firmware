@@ -103,3 +103,6 @@ def configure(conf):
     Follow the instructions on the wiki for installing it: https://pebbletechnology.atlassian.net/wiki/display/DEV/Getting+Started+with+Firmware
     """
     conf.find_program('nanopb_generator', var='NANOPB_GENERATOR', errmsg=missing_nanopb)
+    # Prevent race condition in nanopb_generator when running multiple instances in parallel
+    from nanopb.generator import proto
+    proto.load_nanopb_pb2()
