@@ -57,6 +57,7 @@ master_capability_set = {
     'HAS_PUTBYTES_PREACKING',
     'HAS_FLASH_OTP',
     'WAS_BLUETOPIA',
+    'HAS_VIBE_AW86225',
 }
 
 board_capability_dicts = [
@@ -307,6 +308,7 @@ board_capability_dicts = [
             'HAS_VIBE_SCORES',
             'HAS_WEATHER',
             'HAS_PUTBYTES_PREACKING',
+            'HAS_VIBE_AW86225',
             'HAS_FLASH_OTP',
         },
     },
