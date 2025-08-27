@@ -1670,7 +1670,7 @@ class FlashPrfCommand(BuildContext):
 
 
 def flash_prf(ctx):
-    flash_everything(ctx, ctx.get_tintin_fw_node_prf())
+    flash_fw(ctx, ctx.get_tintin_fw_node_prf())
 
 
 class FlashBootCommand(BuildContext):
