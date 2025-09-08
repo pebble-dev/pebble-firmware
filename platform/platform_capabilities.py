@@ -58,6 +58,7 @@ master_capability_set = {
     'HAS_FLASH_OTP',
     'WAS_BLUETOPIA',
     'HAS_VIBE_AW86225',
+    'NEEDS_FIRM_579_STATS',
 }
 
 board_capability_dicts = [
@@ -289,6 +290,7 @@ board_capability_dicts = [
             'HAS_VIBE_DRV2604',
             'HAS_PMIC',
             'HAS_FLASH_OTP',
+            'NEEDS_FIRM_579_STATS',
         },
     },
     {
