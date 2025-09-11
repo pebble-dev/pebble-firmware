@@ -249,7 +249,7 @@ class ResourcePack(object):
         for i, entry in enumerate(self.table_entries, start=1):
             print('  %u: Offset %u Length %u CRC 0x%x' % (i, entry.offset, entry.length, entry.crc))
 
-    def __init__(self, is_system):
+    def __init__(self, is_system=True):
         self.table_size = 512 if is_system else 256
         self.content_start = self.MANIFEST_SIZE_BYTES + self.table_size * self.TABLE_ENTRY_SIZE_BYTES
 
