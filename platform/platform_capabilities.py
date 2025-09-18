@@ -60,6 +60,7 @@ master_capability_set = {
     'WAS_BLUETOPIA',
     'HAS_VIBE_AW86225',
     'NEEDS_FIRM_579_STATS',
+    'HAS_PBLBOOT',
 }
 
 board_capability_dicts = [
@@ -318,6 +319,7 @@ board_capability_dicts = [
             'HAS_BUILTIN_HRM',
             'HAS_ALS_W1160',
             'HAS_MAGNETOMETER',
+            'HAS_PBLBOOT',
         },
     },
 ]
