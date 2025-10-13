@@ -38,7 +38,7 @@ master_capability_set = {
     'HAS_GLYPH_BITMAP_CACHING',
     'HAS_HARDWARE_PANIC_SCREEN',
     'HAS_HEALTH_TRACKING',
-    'HAS_JAVASCRIPT',
+    'HAS_ROCKY_JS',
     'HAS_LAUNCHER4',
     'HAS_LED',
     'HAS_MAGNETOMETER',
@@ -95,7 +95,7 @@ board_capability_dicts = [
             'HAS_CORE_NAVIGATION4',
             'HAS_DEFECTIVE_FW_CRC',
             'HAS_HEALTH_TRACKING',
-            'HAS_JAVASCRIPT',
+            'HAS_ROCKY_JS',
             'HAS_LAUNCHER4',
             'HAS_MAGNETOMETER',
             'HAS_MAPPABLE_FLASH',
@@ -123,7 +123,7 @@ board_capability_dicts = [
             'HAS_DEFECTIVE_FW_CRC',
             'HAS_HARDWARE_PANIC_SCREEN',
             'HAS_HEALTH_TRACKING',
-            'HAS_JAVASCRIPT',
+            'HAS_ROCKY_JS',
             'HAS_LAUNCHER4',
             'HAS_MAGNETOMETER',
             'HAS_MAPPABLE_FLASH',
@@ -150,7 +150,7 @@ board_capability_dicts = [
             'HAS_DEFECTIVE_FW_CRC',
             'HAS_HARDWARE_PANIC_SCREEN',
             'HAS_HEALTH_TRACKING',
-            'HAS_JAVASCRIPT',
+            'HAS_ROCKY_JS',
             'HAS_LAUNCHER4',
             'HAS_MAGNETOMETER',
             'HAS_MAPPABLE_FLASH',
@@ -176,7 +176,7 @@ board_capability_dicts = [
             'HAS_DEFECTIVE_FW_CRC',
             'HAS_HARDWARE_PANIC_SCREEN',
             'HAS_HEALTH_TRACKING',
-            'HAS_JAVASCRIPT',
+            'HAS_ROCKY_JS',
             'HAS_LAUNCHER4',
             'HAS_MAGNETOMETER',
             'HAS_MAPPABLE_FLASH',
@@ -200,7 +200,7 @@ board_capability_dicts = [
             'HAS_BUILTIN_HRM',
             'HAS_CORE_NAVIGATION4',
             'HAS_HEALTH_TRACKING',
-            'HAS_JAVASCRIPT',
+            'HAS_ROCKY_JS',
             'HAS_LAUNCHER4',
             # 'HAS_MAPPABLE_FLASH' -- TODO: PBL-33860 verify memory-mappable flash works on silk before activating
             'HAS_MICROPHONE',
@@ -226,7 +226,7 @@ board_capability_dicts = [
             'HAS_CORE_NAVIGATION4',
             'HAS_GLYPH_BITMAP_CACHING',
             'HAS_HEALTH_TRACKING',
-            'HAS_JAVASCRIPT',
+            'HAS_ROCKY_JS',
             'HAS_LAUNCHER4',
             'HAS_MAGNETOMETER',
             'HAS_MASKING',
@@ -251,7 +251,7 @@ board_capability_dicts = [
             'HAS_CORE_NAVIGATION4',
             'HAS_GLYPH_BITMAP_CACHING',
             'HAS_HEALTH_TRACKING',
-            'HAS_JAVASCRIPT',
+            'HAS_ROCKY_JS',
             'HAS_LAUNCHER4',
             'HAS_MAGNETOMETER',
             'HAS_MASKING',
@@ -275,7 +275,7 @@ board_capability_dicts = [
             'HAS_APP_GLANCES',
             'HAS_CORE_NAVIGATION4',
             'HAS_HEALTH_TRACKING',
-            'HAS_JAVASCRIPT',
+            'HAS_ROCKY_JS',
             'HAS_LAUNCHER4',
             # 'HAS_MAPPABLE_FLASH' -- TODO: PBL-33860 verify memory-mappable flash works on silk before activating
             'HAS_MICROPHONE',
@@ -300,7 +300,7 @@ board_capability_dicts = [
             'HAS_APP_GLANCES',
             'HAS_CORE_NAVIGATION4',
             'HAS_HEALTH_TRACKING',
-            'HAS_JAVASCRIPT',
+            'HAS_ROCKY_JS',
             'HAS_LAUNCHER4',
             'HAS_PMIC',
             'HAS_SDK_SHELL4',
@@ -364,7 +364,7 @@ def get_capability_dict(ctx, board):
         capabilities_of_board.discard('HAS_ACCESSORY_CONNECTOR')
 
     if ctx.env.NOJS:
-        capabilities_of_board.discard('HAS_JAVASCRIPT')
+        capabilities_of_board.discard('HAS_ROCKY_JS')
 
     # End overrides section
 
@@ -373,7 +373,7 @@ def get_capability_dict(ctx, board):
     cp_dict.update({key: False for key in false_capabilities})
 
     # inject expected JS bytecode version
-    if cp_dict.get('HAS_JAVASCRIPT', False):
+    if cp_dict.get('HAS_ROCKY_JS', False):
         cp_dict['JAVASCRIPT_BYTECODE_VERSION'] = JAVASCRIPT_BYTECODE_VERSION
 
     return cp_dict
