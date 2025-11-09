@@ -1,3 +1,8 @@
+/* SPDX-FileCopyrightText: 2024 Google LLC */
+/* SPDX-License-Identifier: Apache-2.0 */
+/* SPDX-FileCopyrightText: 2025 Joshua Wise */
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+
 // Included by prefs.c to declare the list of preferences and their keys
   PREFS_MACRO(PREF_KEY_CLOCK_24H, s_clock_24h)
   PREFS_MACRO(PREF_KEY_CLOCK_TIMEZONE_SOURCE_IS_MANUAL, s_clock_timezone_source_is_manual)
@@ -57,3 +62,6 @@
 
   PREFS_MACRO(PREF_KEY_SETTINGS_MENU_HIGHLIGHT_COLOR, s_settings_menu_highlight_color)
   PREFS_MACRO(PREF_KEY_APPS_MENU_HIGHLIGHT_COLOR, s_apps_menu_highlight_color)
+#if PLATFORM_ASTERIX
+  PREFS_MACRO(PREF_KEY_BLUETOOTH_LEGACY_COMPAT, s_bluetooth_legacy_compat)
+#endif

@@ -1,8 +1,11 @@
 /* SPDX-FileCopyrightText: 2024 Google LLC */
 /* SPDX-License-Identifier: Apache-2.0 */
+/* SPDX-FileCopyrightText: 2025 Joshua Wise */
+/* SPDX-License-Identifier: GPL-3.0-or-later */
 
 #include "services/common/comm_session/session.h"
 #include "mfg/mfg_info.h"
+#include "shell/prefs.h"
 
 #include <string.h>
 
@@ -10,13 +13,19 @@
 
 #define FACTORY_REGISTRY_ENDPOINT 5001
 
+#if PLATFORM_ASTERIX && !RECOVERY_FW
+static bool prv_should_override() { return shell_prefs_bluetooth_legacy_compat(); }
+#else
+static bool prv_should_override() { return false; }
+#endif
+
 static void prv_send_response(const uint8_t *data, unsigned int length) {
   comm_session_send_data(comm_session_get_system_session(), FACTORY_REGISTRY_ENDPOINT,
                          data, length, COMM_SESSION_DEFAULT_TIMEOUT);
 }
 
 static void prv_send_color_response(void) {
-  const uint8_t response[] = { 0x01, 0x04, 0x0, 0x0, 0x0, mfg_info_get_watch_color() };
+  const uint8_t response[] = { 0x01, 0x04, 0x0, 0x0, 0x0, prv_should_override() ? WATCH_INFO_COLOR_PEBBLE_2_SE_BLACK : mfg_info_get_watch_color() };
   prv_send_response(response, sizeof(response));
 }
 

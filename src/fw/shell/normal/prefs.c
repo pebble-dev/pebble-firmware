@@ -1,5 +1,7 @@
 /* SPDX-FileCopyrightText: 2024 Google LLC */
 /* SPDX-License-Identifier: Apache-2.0 */
+/* SPDX-FileCopyrightText: 2025 Joshua Wise */
+/* SPDX-License-Identifier: GPL-3.0-or-later */
 
 #include "quick_launch.h"
 #include "shell/normal/quick_launch.h"
@@ -12,6 +14,7 @@
 #include "apps/system_apps/toggle/quiet_time.h"
 #include "board/board.h"
 #include "applib/graphics/gtypes.h"
+#include "comm/ble/gap_le_slave_discovery.h"
 #include "drivers/ambient_light.h"
 #include "drivers/backlight.h"
 #include "mfg/mfg_info.h"
@@ -223,6 +226,11 @@ static uint8_t s_legacy_app_render_mode = 0; // Default to bezel mode
 
 static GColor s_settings_menu_highlight_color = GColorCobaltBlue;
 static GColor s_apps_menu_highlight_color = GColorVividCerulean;
+
+#if PLATFORM_ASTERIX
+#define PREF_KEY_BLUETOOTH_LEGACY_COMPAT "bluetoothLegacyCompat"
+static bool s_bluetooth_legacy_compat = false;
+#endif
 
 
 // ============================================================================================
@@ -574,6 +582,16 @@ static bool prv_set_s_coredump_on_request_enabled(bool *enabled) {
   s_coredump_on_request_enabled = *enabled;
   return true;
 }
+
+#if PLATFORM_ASTERIX
+static bool prv_set_s_bluetooth_legacy_compat(bool *enabled) {
+  s_bluetooth_legacy_compat = *enabled;
+  if (gap_le_slave_is_discoverable()) {
+    gap_le_slave_set_discoverable(true); // recompute the advertising data
+  }
+  return true;
+}
+#endif
 
 #if PLATFORM_OBELIX
 static bool prv_set_s_legacy_app_render_mode(uint8_t *mode) {
@@ -1563,3 +1581,13 @@ GColor shell_prefs_get_apps_menu_highlight_color(void){
 void shell_prefs_set_apps_menu_highlight_color(GColor color) {
   prv_pref_set(PREF_KEY_APPS_MENU_HIGHLIGHT_COLOR, &color, sizeof(GColor));
 }
+
+#if PLATFORM_ASTERIX
+bool shell_prefs_bluetooth_legacy_compat(void) {
+  return s_bluetooth_legacy_compat;
+}
+
+void shell_prefs_set_bluetooth_legacy_compat(bool enabled) {
+  prv_pref_set(PREF_KEY_BLUETOOTH_LEGACY_COMPAT, &enabled, sizeof(enabled));
+}
+#endif

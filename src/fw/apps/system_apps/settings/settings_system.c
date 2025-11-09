@@ -1,5 +1,7 @@
 /* SPDX-FileCopyrightText: 2024 Google LLC */
 /* SPDX-License-Identifier: Apache-2.0 */
+/* SPDX-FileCopyrightText: 2025 Joshua Wise */
+/* SPDX-License-Identifier: GPL-3.0-or-later */
 
 #include "settings_factory_reset.h"
 #include "settings_menu.h"
@@ -65,6 +67,9 @@ enum {
   DebuggingItemALSThreshold,
 #if PLATFORM_ASTERIX || PLATFORM_OBELIX
   DebuggingItemMotionSensitivity,
+#endif
+#if PLATFORM_ASTERIX
+  DebuggingItemBluetoothLegacy,
 #endif
 #if CAPABILITY_HAS_DYNAMIC_BACKLIGHT
   DebuggingItemDynamicBacklightMinThreshold,
@@ -584,6 +589,9 @@ static const char* s_debugging_titles[DebuggingItem_Count] = {
 #if PLATFORM_ASTERIX || PLATFORM_OBELIX
   [DebuggingItemMotionSensitivity] = i18n_noop("Motion Sensitivity"),
 #endif
+#if PLATFORM_ASTERIX
+  [DebuggingItemBluetoothLegacy]  = i18n_noop("BLE compat mode"),
+#endif
 #if CAPABILITY_HAS_DYNAMIC_BACKLIGHT
   [DebuggingItemDynamicBacklightMinThreshold] = i18n_noop("Dyn BL Min Threshold"),
   [DebuggingItemDynamicBacklightMaxThreshold] = i18n_noop("Dyn BL Max Threshold"),
@@ -617,6 +625,11 @@ static void prv_debugging_draw_row_callback(GContext* ctx, const Layer *cell_lay
 #if PLATFORM_ASTERIX || PLATFORM_OBELIX
   else if (cell_index->row == DebuggingItemMotionSensitivity) {
     subtitle_text = i18n_get(s_motion_sensitivity_labels[prv_motion_sensitivity_get_selection_index()], data);
+  }
+#endif
+#if PLATFORM_ASTERIX
+  else if (cell_index->row == DebuggingItemBluetoothLegacy) {
+    subtitle_text = shell_prefs_bluetooth_legacy_compat() ? i18n_get("Emulate silk", data) : i18n_get("Disabled", data);
   }
 #endif
 #if CAPABILITY_HAS_DYNAMIC_BACKLIGHT
@@ -667,6 +680,11 @@ static void prv_debugging_select_callback(MenuLayer *menu_layer,
 #if PLATFORM_ASTERIX || PLATFORM_OBELIX
     case DebuggingItemMotionSensitivity:
       prv_motion_sensitivity_menu_push(data);
+      break;
+#endif
+#if PLATFORM_ASTERIX
+    case DebuggingItemBluetoothLegacy:
+      shell_prefs_set_bluetooth_legacy_compat(!shell_prefs_bluetooth_legacy_compat());
       break;
 #endif
 #if CAPABILITY_HAS_DYNAMIC_BACKLIGHT

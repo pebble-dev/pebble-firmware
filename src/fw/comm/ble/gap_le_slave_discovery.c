@@ -1,5 +1,7 @@
 /* SPDX-FileCopyrightText: 2024 Google LLC */
 /* SPDX-License-Identifier: Apache-2.0 */
+/* SPDX-FileCopyrightText: 2025 Joshua Wise */
+/* SPDX-License-Identifier: GPL-3.0-or-later */
 
 #include "board/board.h"
 
@@ -29,6 +31,17 @@
 #include <btutil/bt_uuid.h>
 #include <util/attributes.h>
 #include <util/size.h>
+#include "shell/prefs.h"
+
+#if PLATFORM_ASTERIX && !RECOVERY_FW
+static bool prv_should_override() { return shell_prefs_bluetooth_legacy_compat(); }
+#else
+static bool prv_should_override() { return false; }
+#endif
+
+#ifndef BT_VENDOR_ID_COMPAT
+#define BT_VENDOR_ID_COMPAT BT_VENDOR_ID
+#endif
 
 static GAPLEAdvertisingJobRef s_discovery_advert_job;
 
@@ -103,8 +116,8 @@ static void prv_schedule_ad_job(void) {
     };
   } mfg_data = {
     .payload_type = 0 /* For future proofing. Only one type for now.*/,
-    .hw_platform = TINTIN_METADATA.hw_platform,
-    .color = mfg_info_get_watch_color(),
+    .hw_platform = prv_should_override() ? FirmwareMetadataPlatformPebbleSilk : TINTIN_METADATA.hw_platform,
+    .color = prv_should_override() ? WATCH_INFO_COLOR_PEBBLE_2_SE_BLACK : mfg_info_get_watch_color(),
     .fw_version = {
       .major = GIT_MAJOR_VERSION,
       .minor = GIT_MINOR_VERSION,
@@ -118,7 +131,7 @@ static void prv_schedule_ad_job(void) {
          MFG_SERIAL_NUMBER_SIZE);
 
   ble_ad_set_manufacturer_specific_data(ad,
-                                       BT_VENDOR_ID,
+                                       prv_should_override() ? BT_VENDOR_ID_COMPAT : BT_VENDOR_ID,
                                        (const uint8_t *) &mfg_data,
                                        sizeof(struct ManufacturerSpecificData));
 

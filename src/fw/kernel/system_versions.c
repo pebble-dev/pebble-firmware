@@ -1,5 +1,7 @@
 /* SPDX-FileCopyrightText: 2024 Google LLC */
 /* SPDX-License-Identifier: Apache-2.0 */
+/* SPDX-FileCopyrightText: 2025 Joshua Wise */
+/* SPDX-License-Identifier: GPL-3.0-or-later */
 
 #include "console/prompt.h"
 #include "drivers/fpc_pinstrap.h"
@@ -28,6 +30,14 @@
 #include <bluetooth/bluetooth_types.h>
 
 #include <string.h>
+
+#include "shell/prefs.h"
+
+#if PLATFORM_ASTERIX && !RECOVERY_FW
+static bool prv_should_override() { return shell_prefs_bluetooth_legacy_compat(); }
+#else
+static bool prv_should_override() { return false; }
+#endif
 
 #define VERSION_REQUEST 0x00
 #define VERSION_RESPONSE 0x01
@@ -64,6 +74,9 @@ static void prv_fixup_firmware_metadata(FirmwareMetadata *fw_metadata) {
   fw_metadata->version_timestamp = htonl(fw_metadata->version_timestamp);
   fixup_string(fw_metadata->version_tag, sizeof(fw_metadata->version_tag));
   fixup_string(fw_metadata->version_short, sizeof(fw_metadata->version_short));
+  if (prv_should_override()) {
+    fw_metadata->hw_platform = FirmwareMetadataPlatformPebbleSilk;
+  }
 }
 
 static void prv_fixup_running_firmware_metadata(FirmwareMetadata *fw_metadata) {
