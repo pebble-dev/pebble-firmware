@@ -1,8 +1,15 @@
+/* SPDX-FileCopyrightText: 2025 Core Devices */
+/* SPDX-FileCopyrightText: 2025 Joshua Wise */
+/* SPDX-License-Identifier: Apache-2.0 */
+
 #pragma once
 
 #include "drivers/pmic/npm1300.h"
 #include "services/imu/units.h"
 #include "util/size.h"
+
+#define BT_VENDOR_ID_COMPAT 0x0154
+#define BT_VENDOR_NAME_COMPAT "Pebble Technology"
 
 #define BT_VENDOR_ID 0x0EEA
 #define BT_VENDOR_NAME "Core Devices LLC"

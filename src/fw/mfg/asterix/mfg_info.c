@@ -1,9 +1,12 @@
 /* SPDX-FileCopyrightText: 2025 Core Devices LLC */
 /* SPDX-License-Identifier: Apache-2.0 */
+/* SPDX-FileCopyrightText: 2025 Joshua Wise */
+/* SPDX-License-Identifier: GPL-3.0-or-later */
 
 #include "mfg/mfg_info.h"
 #include "drivers/flash.h"
 #include "flash_region/flash_region.h"
+#include "shell/prefs.h"
 
 #define CURRENT_DATA_VERSION 0
 
