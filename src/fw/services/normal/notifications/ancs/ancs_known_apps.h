@@ -1,5 +1,7 @@
 /* SPDX-FileCopyrightText: 2024 Google LLC */
 /* SPDX-License-Identifier: Apache-2.0 */
+/* SPDX-FileCopyrightText: 2025 Joshua Wise */
+/* SPDX-License-Identifier: GPL-3.0-or-later */
 
 // @nolint
 // please don't change these values manually, they are derived from the spreadsheet
@@ -52,8 +54,8 @@
     APP("com.apple.mobileslideshow", TIMELINE_RESOURCE_NOTIFICATION_IOS_PHOTOS, GColorBlueMoonARGB8),
     APP("com.linkedin.LinkedIn", TIMELINE_RESOURCE_NOTIFICATION_LINKEDIN, GColorCobaltBlueARGB8),
     APP("com.tinyspeck.chatlyio", TIMELINE_RESOURCE_NOTIFICATION_SLACK, GColorFollyARGB8),
-    APP("com.automattic.beeper", TIMELINE_RESOURCE_GENERIC_SMS, GColorVividVioletARGB8), // icon resource can be replaced with bespoke Beeper icon from https://github.com/pebble-dev/iconography
-    APP("com.hammerandchisel.discord", TIMELINE_RESOURCE_GENERIC_SMS, GColorIndigoARGB8), // icon resource can be replaced with bespoke Discord icon from https://github.com/pebble-dev/iconography
+    APP("com.automattic.beeper", TIMELINE_RESOURCE_NOTIFICATION_BEEPER, GColorVividVioletARGB8),
+    APP("com.hammerandchisel.discord", TIMELINE_RESOURCE_NOTIFICATION_DISCORD, GColorIndigoARGB8),
     APP("com.revolut.revolut", TIMELINE_RESOURCE_PAY_BILL, GColorDarkGrayARGB8),
     APP("com.transferwise.Transferwise", TIMELINE_RESOURCE_PAY_BILL, GColorGreenARGB8),
     APP("de.no26.Number26", TIMELINE_RESOURCE_PAY_BILL, GColorCadetBlueARGB8),
