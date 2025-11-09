@@ -1,19 +1,7 @@
 name: Build PRF
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-    paths:
-      - '.github/workflows/build-prf.yml'
-      - 'resources/**'
-      - 'src/**'
-      - 'tools/**'
-      - 'third_party/**'
-      - 'waftools/**'
-      - 'waf'
-      - 'wscript'
+  workflow_dispatch
 
 jobs:
   build:
@@ -82,15 +70,3 @@ jobs:
         id: build_id
         run: |
           echo "BUILD_ID=$(arm-none-eabi-readelf -n build/prf/src/fw/tintin_fw.elf | sed -n -e 's/^.*Build ID: //p')" >> "$GITHUB_OUTPUT"
-
-      - name: Upload log hash dictionary
-        uses: Noelware/s3-action@2.3.1
-        if: ${{ github.event_name == 'push' }}
-        with:
-          access-key-id: ${{ secrets.LOG_HASH_BUCKET_KEY_ID }}
-          secret-key: ${{ secrets.LOG_HASH_BUCKET_SECRET }}
-          endpoint: ${{ vars.LOG_HASH_BUCKET_ENDPOINT }}
-          bucket: ${{ vars.LOG_HASH_BUCKET_NAME }}
-          files: |
-            build/prf/src/fw/tintin_fw_loghash_dict.json
-          path-format: ${{ steps.build_id.outputs.BUILD_ID }}-${{ github.sha }}-prf.json
