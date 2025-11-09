@@ -1985,6 +1985,36 @@
     },
     {
       "type": "pdc",
+      "name": "NOTIFICATION_BEEPER_TINY",
+      "file": "rebble-iconography/brand-logos/25px_Beeper.svg"
+    },
+    {
+      "type": "pdc",
+      "name": "NOTIFICATION_BEEPER_SMALL",
+      "file": "rebble-iconography/brand-logos/50px_Beeper.svg"
+    },
+    {
+      "type": "pdc",
+      "name": "NOTIFICATION_BEEPER_LARGE",
+      "file": "rebble-iconography/brand-logos/80px_Beeper.svg"
+    },
+    {
+      "type": "pdc",
+      "name": "NOTIFICATION_DISCORD_TINY",
+      "file": "rebble-iconography/brand-logos/25px_Discord.svg"
+    },
+    {
+      "type": "pdc",
+      "name": "NOTIFICATION_DISCORD_SMALL",
+      "file": "rebble-iconography/brand-logos/50px_Discord.svg"
+    },
+    {
+      "type": "pdc",
+      "name": "NOTIFICATION_DISCORD_LARGE",
+      "file": "rebble-iconography/brand-logos/80px_Discord.svg"
+    },
+    {
+      "type": "pdc",
       "name": "SMART_ALARM_TINY",
       "file": "normal/snowy/images/Pebble_25x25_Smart_alarm.svg"
     },
@@ -3079,6 +3109,24 @@
         "tiny": "RESOURCE_ID_BLE_HRM_SHARING_TINY",
         "small": "RESOURCE_ID_BLE_HRM_SHARING_SMALL",
         "large": "RESOURCE_ID_BLE_HRM_SHARING_LARGE"
+      }
+    },
+    {
+      "name": "NOTIFICATION_BEEPER",
+      "id": 120,
+      "sizes": {
+        "tiny": "RESOURCE_ID_NOTIFICATION_BEEPER_TINY",
+        "small": "RESOURCE_ID_NOTIFICATION_BEEPER_SMALL",
+        "large": "RESOURCE_ID_NOTIFICATION_BEEPER_LARGE"
+      }
+    },
+    {
+      "name": "NOTIFICATION_DISCORD",
+      "id": 121,
+      "sizes": {
+        "tiny": "RESOURCE_ID_NOTIFICATION_DISCORD_TINY",
+        "small": "RESOURCE_ID_NOTIFICATION_DISCORD_SMALL",
+        "large": "RESOURCE_ID_NOTIFICATION_DISCORD_LARGE"
       }
     }
   ],
