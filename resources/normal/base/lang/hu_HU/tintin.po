@@ -5,8 +5,8 @@ msgstr ""
 "POT-Creation-Date: 2025-11-05 22:01+0000\n"
 "PO-Revision-Date: 2025-11-09 00:51\n"
 "Last-Translator: \n"
-"Language-Team: Dutch\n"
-"Language: nl_NL\n"
+"Language-Team: Hungarian\n"
+"Language: hu_HU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,14 +33,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: pebbleos\n"
 "X-Crowdin-Project-ID: 789734\n"
-"X-Crowdin-Language: nl\n"
+"X-Crowdin-Language: hu\n"
 "X-Crowdin-File: /resources/normal/base/lang/tintin.pot\n"
 "X-Crowdin-File-ID: 302\n"
 
 #: ../src/fw/process_management/app_manager.c:494
 #, c-format
 msgid "%.*s is not responding"
-msgstr "%.*s reageert niet"
+msgstr ""
 
 #: ../src/fw/process_management/process_manager.c:222
 msgid "This app requires a newer version of the Pebble firmware."
@@ -71,44 +71,44 @@ msgstr ""
 
 #: ../src/fw/popups/crashed_ui.c:172
 msgid "Bluetooth on your phone is in a high power state. Please report this using 'Support' and reboot your phone."
-msgstr "Bluetooth op je telefoon gebruikt erg veel batterij. Meldt dit via 'Support' en herstart je telefoon."
+msgstr ""
 
 #: ../src/fw/popups/health_tracking_ui.c:102
 msgid "This app requires Pebble Health to work. Enable Health in the Pebble mobile app to continue."
-msgstr "Deze app heeft Pebble Gezondheid nodig om te werken. Zet Gezondheid in de Pebble app aan om verder te gaan."
+msgstr ""
 
 #: ../src/fw/popups/health_tracking_ui.c:112
 msgid "This feature requires Pebble Health to work. Enable Health in the Pebble mobile app to continue."
-msgstr "Deze functie heeft Pebble Gezondheid nodig om te werken. Zet Gezondheid in de Pebble app aan om verder te gaan."
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:692
 msgid "Snoozed"
-msgstr "Gesluimerd"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:726
 msgid "Muted"
-msgstr "Gedempt"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:853
 msgid "Snooze"
-msgstr "Sluimer"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:872
 #, c-format
 msgid "Mute %s"
-msgstr "Demp %s"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:895
 msgid "Mute Always"
-msgstr "Altijd dempen"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:900
 msgid "Mute Weekends"
-msgstr "Weekenden dempen"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:905
 msgid "Mute Weekdays"
-msgstr "Weekdagen dempen"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:915
 msgid "Dismiss All"
@@ -116,32 +116,32 @@ msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:922
 msgid "End Quiet Time"
-msgstr "Niet storen stoppen"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:923
 msgid "Start Quiet Time"
-msgstr "Niet storen starten"
+msgstr ""
 
 #: ../src/fw/popups/phone_ui.c:579
 msgid "Call Accepted"
-msgstr "Oproep geaccepteerd"
+msgstr ""
 
 #: ../src/fw/popups/phone_ui.c:582
 msgid "Disconnected"
-msgstr "Niet verbonden"
+msgstr ""
 
 #: ../src/fw/popups/phone_ui.c:586
 msgid "Call Ended"
-msgstr "Gesprek beëindigd"
+msgstr ""
 
 #: ../src/fw/popups/phone_ui.c:589
 msgid "Call Declined"
-msgstr "Oproep geweigerd"
+msgstr ""
 
 #: ../src/fw/popups/switch_worker_ui.c:110
 #, c-format
 msgid "Run %s instead of %s as the background app?"
-msgstr "%s uitvoeren in plaats van %s als achtergrondapp?"
+msgstr ""
 
 #: ../src/fw/popups/wakeup_ui.c:68
 msgid "While your Pebble was off wakeup events occurred for:\n"
@@ -150,34 +150,32 @@ msgstr ""
 #: ../src/fw/shell/normal/battery_ui.c:64
 #: ../src/fw/shell/normal/shutdown_charging.c:102
 msgid "Fully Charged"
-msgstr "Volledig opgeladen"
+msgstr ""
 
 #: ../src/fw/shell/normal/battery_ui.c:70
 #: ../src/fw/shell/normal/shutdown_charging.c:107
 msgid "Charging"
-msgstr "Bezig met opladen"
+msgstr ""
 
 #: ../src/fw/shell/normal/battery_ui.c:85
 #, c-format
 msgid "Powered 'til %s"
-msgstr "Stroom tot %s"
+msgstr ""
 
 #: ../src/fw/shell/normal/display_calibration_prompt.c:61
 msgid "Your screen may need calibration. Calibrate it now?"
-msgstr "Je scherm moet mogelijk gekalibreerd worden. Nu kalibreren?"
+msgstr ""
 
 #. / Welcome title text welcoming a 3.x user to 4.x
 #: ../src/fw/shell/normal/welcome.c:35
 msgid "Pebble Updated!"
-msgstr "Pebble bijgewerkt!"
+msgstr ""
 
 #: ../src/fw/shell/normal/welcome.c:38
 msgid "For activity and sleep tracking, press up from your watch face.\n\n"
 "Press down for current and future events.\n\n"
 "Read more at blog.pebble.com"
-msgstr "Voor het bijhouden van activiteiten en slaap, druk op 'omhoog' vanaf de wijzerplaat.\n\n"
-"Druk 'omlaag' voor huidige en toekomstige gebeurtenissen.\n\n"
-"Lees meer op blog.pebble.com"
+msgstr ""
 
 #: ../src/fw/shell/normal/welcome.c:47
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:41
@@ -187,114 +185,114 @@ msgstr "Voor het bijhouden van activiteiten en slaap, druk op 'omhoog' vanaf de 
 #: ../src/fw/services/normal/activity/activity_insights.c:1434
 #: ../src/fw/services/normal/notifications/ancs/ancs_item.c:161
 msgid "Dismiss"
-msgstr "Negeren"
+msgstr ""
 
 #: ../src/fw/apps/core_apps/progress_ui_app.c:80
 msgid "Update Complete"
-msgstr "Update voltooid"
+msgstr ""
 
 #: ../src/fw/apps/core_apps/progress_ui_app.c:80
 msgid "Update Failed"
-msgstr "Bijwerken mislukt"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:62
 #, c-format
 msgid "Snooze delay set to %d minutes"
-msgstr "Sluimertijd ingesteld op %d minuten"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:191
 msgid "Delete"
-msgstr "Verwijderen"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:196
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_app_menu.c:71
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:194
 msgid "Disable"
-msgstr "Uitschakelen"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:196
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:196
 msgid "Enable"
-msgstr "Inschakelen"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:201
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:465
 msgid "Change Time"
-msgstr "Tijd aanpassen"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:206
 msgid "Change Days"
-msgstr "Dagen wijzigen"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:212
 msgid "Convert to Basic Alarm"
-msgstr "Omzetten naar standaardwekker"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:213
 msgid "Convert to Smart Alarm"
-msgstr "Omzetten naar slimme wekker"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:219
 msgid "Snooze Delay"
-msgstr "Snoozetijd"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:230
 msgid "5 minutes"
-msgstr "5 minuten"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:231
 msgid "10 minutes"
-msgstr "10 minuten"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:232
 msgid "15 minutes"
-msgstr "15 minuten"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:233
 msgid "30 minutes"
-msgstr "30 minuten"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:234
 msgid "1 hour"
-msgstr "1 uur"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:316
 msgid "Check something first."
-msgstr "Kruis eerst opties aan."
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:466
 msgid "New Smart Alarm"
-msgstr "Nieuwe slimme wekker"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:466
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:561
 msgid "New Alarm"
-msgstr "Nieuwe wekker"
+msgstr ""
 
 #. / Displays as "Wake up between" then "8:00 AM - 8:30 AM" below on a separate line
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:468
 msgid "Wake up between"
-msgstr "Word wakker tussen"
+msgstr ""
 
 #. / Displays as "8:00 AM - 8:30 AM" then "Wake up interval" below on a separate line
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:470
 msgid "Wake up interval"
-msgstr "Wekinterval"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:558
 msgid "Basic Alarm"
-msgstr "Standaardwekker"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:559
 #: ../src/fw/apps/system_apps/alarms/alarms.c:370
 #: ../src/fw/services/normal/alarms/alarm.c:389
 #: ../src/fw/services/normal/alarms/alarm_pin.c:33
 msgid "Smart Alarm"
-msgstr "Slimme wekker"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:138
 msgid "Alarm Deleted"
-msgstr "Wekker verwijderd"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:250
 msgid "Limit reached."
@@ -302,11 +300,11 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:294
 msgid "ON"
-msgstr "AAN"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:294
 msgid "OFF"
-msgstr "UIT"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:368
 msgid "Let us wake you in your lightest sleep so you're fully refreshed! Smart Alarm wakes you up to 30min before your alarm."
@@ -316,7 +314,7 @@ msgstr ""
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:84
 #: ../src/fw/services/normal/timeline/timeline.c:974
 msgid "Alarms"
-msgstr "Wekker"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:138
 msgid "Not connected"
@@ -338,7 +336,7 @@ msgstr ""
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:167
 #: ../src/fw/services/normal/timeline/timeline_actions.c:278
 msgid "Failed"
-msgstr "Mislukt"
+msgstr ""
 
 #. / Health disabled text
 #: ../src/fw/apps/system_apps/health/health.c:110
@@ -476,7 +474,7 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/music_app.c:1022
 msgid "Music"
-msgstr "Muziek"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/notifications_app.c:268
 msgid "Done"
@@ -500,7 +498,7 @@ msgstr ""
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:74
 #: ../src/fw/services/normal/timeline/timeline.c:958
 msgid "Notifications"
-msgstr "Notificaties"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/reminders/reminder_app.c:66
 msgid "Completed"
@@ -527,7 +525,7 @@ msgstr ""
 #: ../src/fw/apps/system_apps/send_text/send_text.c:215
 #: ../src/fw/services/normal/phone_call_util.c:31
 msgid "Unknown"
-msgstr "Onbekend"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/send_text/send_text.c:273
 #: ../src/fw/apps/system_apps/send_text/send_text.c:349
@@ -537,30 +535,30 @@ msgstr ""
 #: ../src/fw/apps/system_apps/send_text/send_text.c:363
 msgid "Add contacts in\n"
 "mobile app"
-msgstr "Voeg contactpersonen toe in de app"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/send_text/send_text.c:396
 msgid "Send Text"
-msgstr "Bericht verzenden"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings.c:146
 msgid "Settings"
-msgstr "Instellingen"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:175
 msgid "No background apps"
-msgstr "Geen achtergrondapps"
+msgstr ""
 
 #. / No Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:184
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:210
 msgid "None"
-msgstr "Geen"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:256
 #: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:273
 msgid "Background App"
-msgstr "Achtergrondapp"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:159
 msgid "<Untitled>"
@@ -568,107 +566,107 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:285
 msgid "Pairing Instructions"
-msgstr "Koppelinstructies"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:289
 #, c-format
 msgid "%u Paired Phones"
-msgstr "%u verbonden telefoons"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:290
 #, c-format
 msgid "%u Paired Phone"
-msgstr "%u verbonden telefoon"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:425
 msgid "No LE"
-msgstr "Geen LE"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:425
 msgid "LE Only"
-msgstr "Alleen LE"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:428
 msgid "Connected"
-msgstr "Verbonden"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:444
 msgid "Sharing Heart Rate ❤"
-msgstr "Hartslag delen ❤"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:489
 msgid "Connection"
-msgstr "Verbinding"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:493
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:64
 msgid "Airplane Mode"
-msgstr "Vliegtuigmodus"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:500
 msgid "Now Discoverable"
-msgstr "Nu detecteerbaar"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:506
 msgid "Disabling..."
-msgstr "Uitschakelen..."
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:506
 msgid "Enabling..."
-msgstr "Inschakelen..."
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:529
 msgid "Disable Airplane Mode to connect."
-msgstr "Schakel vliegtuigmodus uit om te verbinden."
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:532
 msgid "Open the Pebble app on your phone to connect."
-msgstr "Open de Pebble-app op je telefoon om te verbinden."
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:670
 msgid "Bluetooth"
-msgstr "Bluetooth"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:51
 msgid "Low"
-msgstr "Laag"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:52
 msgid "Medium"
-msgstr "Medium"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:53
 msgid "High"
-msgstr "Hoog"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:54
 msgid "Blinding"
-msgstr "Verblindend"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:89
 msgid "INTENSITY"
-msgstr "INTENSITEIT"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:89
 #: ../src/fw/apps/system_apps/settings/settings_display.c:231
 msgid "Intensity"
-msgstr "Intensiteit"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:101
 msgid "3 Seconds"
-msgstr "3 seconden"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:102
 msgid "5 Seconds"
-msgstr "5 seconden"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:103
 msgid "8 Seconds"
-msgstr "8 seconden"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:126
 msgid "TIMEOUT"
-msgstr "TIME-OUT"
+msgstr ""
 
 #. / Status bar title for the Notification Window Timeout settings screen
 #. / String within Settings->Notifications that describes the window timeout setting
@@ -677,16 +675,16 @@ msgstr "TIME-OUT"
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:242
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:289
 msgid "Timeout"
-msgstr "Time-out"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:203
 #: ../src/fw/apps/system_apps/settings/settings_system.c:192
 msgid "Language"
-msgstr "Taal"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:207
 msgid "Backlight"
-msgstr "Licht"
+msgstr ""
 
 #. / Shows up in the Timeline settings as the status under the "Quick View" toggle.
 #: ../src/fw/apps/system_apps/settings/settings_display.c:209
@@ -696,7 +694,7 @@ msgstr "Licht"
 #: ../src/fw/apps/system_apps/settings/settings_system.c:942
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:139
 msgid "On"
-msgstr "Aan"
+msgstr ""
 
 #. / Shows up in the Timeline settings as the status under the "Quick View" toggle.
 #: ../src/fw/apps/system_apps/settings/settings_display.c:211
@@ -706,147 +704,146 @@ msgstr "Aan"
 #: ../src/fw/apps/system_apps/settings/settings_system.c:942
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:141
 msgid "Off"
-msgstr "Uit"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:215
 msgid "Motion Enabled"
-msgstr "Bij bewegen"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:223
 msgid "Ambient Sensor"
-msgstr "Omgevingssensor"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:240
 msgid "Screen Alignment"
-msgstr "Schermuitlijning"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:278
 msgid "Display"
-msgstr "Scherm"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:64
 msgid "Horizontal Alignment"
-msgstr "Horizontale uitlijning"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:65
 msgid "Vertical Alignment"
-msgstr "Verticale uitlijning"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:66
 msgid "Confirm Alignment"
-msgstr "Uitlijning bevestigen"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:69
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:70
 msgid "Up/Down to adjust\n"
 "Select to proceed"
-msgstr "Omhoog/Omlaag om aan te passen\n"
-"Selecteer om verder te gaan"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:71
 msgid "Select to confirm alignment changes"
-msgstr "Klik om de uitlijningswijzigingen te bevestigen"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_factory_reset.c:72
 msgid "Resetting..."
-msgstr "Herstarten..."
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_factory_reset.c:124
 msgid "Perform factory reset?"
-msgstr "Opnieuw instellen?"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:78
 msgid "Allow All Notifications"
-msgstr "Alle meldingen toestaan"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:79
 msgid "Allow Phone Calls Only"
-msgstr "Alleen telefoongesprekken toestaan"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:80
 msgid "Mute All Notifications"
-msgstr "Alle meldingen dempen"
+msgstr ""
 
 #. / The option in the Settings app for filtering notifications by type.
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:112
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:264
 msgid "Filter"
-msgstr "Filter"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:122
 #: ../src/fw/services/normal/vibes/vibes.def:4
 msgctxt "NotifVibe"
 msgid "Disabled"
-msgstr "Uitgeschakeld"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:123
 msgctxt "NotifVibe"
 msgid "Low"
-msgstr "Laag"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:124
 msgctxt "NotifVibe"
 msgid "Medium"
-msgstr "Medium"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:125
 msgctxt "NotifVibe"
 msgid "High"
-msgstr "Hoog"
+msgstr ""
 
 #. / The option in the Settings app for choosing a vibration intensity for notifications.
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:149
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:269
 msgid "Vibration"
-msgstr "Trillen"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:165
 msgid "Smaller"
-msgstr "Kleiner"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:166
 msgid "Default"
-msgstr "Standaard"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:167
 msgid "Larger"
-msgstr "Groter"
+msgstr ""
 
 #. / The option in the Settings app for choosing the text size of notifications.
 #. / String within Settings->Notifications that describes the text font size
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:180
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:281
 msgid "Text Size"
-msgstr "Tekstgrootte"
+msgstr ""
 
 #. / 15 Second Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:202
 msgid "15 Seconds"
-msgstr "15 seconden"
+msgstr ""
 
 #. / 1 Minute Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:204
 msgid "1 Minute"
-msgstr "1 minuut"
+msgstr ""
 
 #. / 3 Minute Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:206
 msgid "3 Minutes"
-msgstr "3 minuten"
+msgstr ""
 
 #. / 10 Minute Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:208
 msgid "10 Minutes"
-msgstr "10 minuten"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:271
 msgid "Disabled (Plugged In)"
-msgstr "Uit (aan de lader)"
+msgstr ""
 
 #. / Shown in Quick Launch Settings as the title of the up button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:48
 msgid "Up Button"
-msgstr "Omhoog-knop"
+msgstr ""
 
 #. / Shown in Quick Launch Settings as the title of the center button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:50
@@ -856,7 +853,7 @@ msgstr ""
 #. / Shown in Quick Launch Settings as the title of the down button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:52
 msgid "Down Button"
-msgstr "Omlaag-knop"
+msgstr ""
 
 #. / Shown in Quick Launch Settings as the title of the back button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:54
@@ -866,7 +863,7 @@ msgstr ""
 #. / Shown in Quick Launch Settings when the button is disabled.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:75
 msgid "Disabled"
-msgstr "Uitgeschakeld"
+msgstr ""
 
 #. / Title of the Quick Launch Settings submenu in Settings
 #. / Title for the Quick Launch first use dialog.
@@ -874,7 +871,7 @@ msgstr "Uitgeschakeld"
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_app_menu.c:126
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_setup_menu.c:67
 msgid "Quick Launch"
-msgstr "Snelkoppeling"
+msgstr ""
 
 #. / Help text for the Quick Launch first use dialog.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_setup_menu.c:69
@@ -945,7 +942,7 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_remote.c:179
 msgid "Forget"
-msgstr "Vergeet"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_remote.c:187
 msgid "Stop Sharing Heart Rate"
@@ -967,15 +964,15 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:148
 msgid "Shut Down"
-msgstr "Uitschakelen"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:149
 msgid "Factory Reset"
-msgstr "Herstel"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:190
 msgid "BT Address"
-msgstr "Bluetooth-adres"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:191
 msgid "Firmware"
@@ -983,7 +980,7 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:193
 msgid "Recovery"
-msgstr "Systeemherstel"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:194
 msgid "Bootloader"
@@ -995,7 +992,7 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:196
 msgid "Serial"
-msgstr "Serienummer"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:197
 msgid "Uptime"
@@ -1003,7 +1000,7 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:198
 msgid "Legal"
-msgstr "Juridisch"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:254
 msgid "The core dump was created successfully. Please create a support request as usual."
@@ -1043,11 +1040,11 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:235
 msgid "24h"
-msgstr "24 uur"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:235
 msgid "12h"
-msgstr "12 uur"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:239
 msgid "Timezone Source"
@@ -1059,7 +1056,7 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:294
 msgid "Date & Time"
-msgstr "Datum en tijd"
+msgstr ""
 
 #. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:71
@@ -1148,33 +1145,33 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:37
 msgid "Turn On Motion Backlight?"
-msgstr "Licht bij beweging activeren?"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:38
 msgid "Turn Off Motion Backlight?"
-msgstr "Licht niet bij beweging activeren?"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:39
 msgid "Motion\n"
 "Backlight On"
-msgstr "Licht bij beweging aan"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:40
 msgid "Motion\n"
 "Backlight Off"
-msgstr "Licht bij beweging uit"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:62
 msgid "Motion Backlight"
-msgstr "Licht bij beweging"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/watchfaces.c:105
 msgid "Active"
-msgstr "Actief"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/watchfaces.c:219
 msgid "Watchfaces"
-msgstr "Wijzerplaten"
+msgstr ""
 
 #. / Shown when there are no forecasts available to show the user
 #: ../src/fw/apps/system_apps/weather/weather_app.c:105
@@ -1221,7 +1218,7 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/workout/sports.c:381
 msgid "Sports"
-msgstr "Sport"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/workout/workout.c:175
 msgid "Workout\n"
@@ -1288,7 +1285,7 @@ msgstr ""
 #. / Pace Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:156
 msgid "PACE"
-msgstr "TEMPO"
+msgstr ""
 
 #. / Pace Label with units
 #: ../src/fw/apps/system_apps/workout/workout_active.c:159
@@ -1302,7 +1299,7 @@ msgstr ""
 #. / Speed Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:165
 msgid "SPEED"
-msgstr "SNELHEID"
+msgstr ""
 
 #. / Speed Label with units
 #: ../src/fw/apps/system_apps/workout/workout_active.c:168
@@ -1501,7 +1498,7 @@ msgstr ""
 
 #: ../src/fw/services/common/clock.c:779 ../src/fw/services/common/clock.c:787
 msgid "%B %e"
-msgstr "%e %B"
+msgstr ""
 
 #: ../src/fw/services/common/clock.c:785
 msgid "%b %e, %R"
@@ -1522,12 +1519,12 @@ msgstr ""
 
 #: ../src/fw/services/common/clock.c:836
 msgid "An hour ago"
-msgstr "Een uur geleden"
+msgstr ""
 
 #: ../src/fw/services/common/clock.c:838
 #, c-format
 msgid "%lu hours ago"
-msgstr "%lu uur geleden"
+msgstr ""
 
 #: ../src/fw/services/common/clock.c:848
 #, c-format
@@ -1542,7 +1539,7 @@ msgstr ""
 #: ../src/fw/services/common/clock.c:852
 #, c-format
 msgid "%lu minutes ago"
-msgstr "%lu minuten geleden"
+msgstr ""
 
 #: ../src/fw/services/common/clock.c:857
 msgid "NOW"
@@ -2112,7 +2109,7 @@ msgstr ""
 #: ../src/fw/services/normal/alarms/alarm.c:389
 #: ../src/fw/services/normal/alarms/alarm_pin.c:33
 msgid "Alarm"
-msgstr "Wekker"
+msgstr ""
 
 #. / A frequency option for alarms, i.e. the alarm would go off every day. Respect
 #. / capitalization!
@@ -2165,37 +2162,37 @@ msgstr ""
 #: ../src/fw/services/normal/alarms/alarm.c:1192
 #: ../src/fw/applib/pbl_std/timelocal.c:48
 msgid "Sun"
-msgstr "zo"
+msgstr ""
 
 #: ../src/fw/services/normal/alarms/alarm.c:1193
 #: ../src/fw/applib/pbl_std/timelocal.c:48
 msgid "Mon"
-msgstr "ma"
+msgstr ""
 
 #: ../src/fw/services/normal/alarms/alarm.c:1194
 #: ../src/fw/applib/pbl_std/timelocal.c:48
 msgid "Tue"
-msgstr "di"
+msgstr ""
 
 #: ../src/fw/services/normal/alarms/alarm.c:1195
 #: ../src/fw/applib/pbl_std/timelocal.c:48
 msgid "Wed"
-msgstr "wo"
+msgstr ""
 
 #: ../src/fw/services/normal/alarms/alarm.c:1196
 #: ../src/fw/applib/pbl_std/timelocal.c:49
 msgid "Thu"
-msgstr "do"
+msgstr ""
 
 #: ../src/fw/services/normal/alarms/alarm.c:1197
 #: ../src/fw/applib/pbl_std/timelocal.c:49
 msgid "Fri"
-msgstr "vr"
+msgstr ""
 
 #: ../src/fw/services/normal/alarms/alarm.c:1198
 #: ../src/fw/applib/pbl_std/timelocal.c:49
 msgid "Sat"
-msgstr "za"
+msgstr ""
 
 #: ../src/fw/services/normal/alarms/alarm.c:1201
 msgid "Sundays"
@@ -2227,7 +2224,7 @@ msgstr ""
 
 #: ../src/fw/services/normal/alarms/alarm_pin.c:46
 msgid "Edit"
-msgstr "Wijzigen"
+msgstr ""
 
 #: ../src/fw/services/normal/notifications/ancs/ancs_item.c:122
 msgid "sent an attachment"
@@ -2326,19 +2323,19 @@ msgstr ""
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:829
 msgid "Yes"
-msgstr "Ja"
+msgstr ""
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:830
 msgid "No"
-msgstr "Nee"
+msgstr ""
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:831
 msgid "Call me"
-msgstr "Bel me"
+msgstr ""
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:832
 msgid "Call you later"
-msgstr "Bel je later"
+msgstr ""
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:955
 msgid "Reply with Voice"
@@ -2375,124 +2372,124 @@ msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 msgid "Jan"
-msgstr "jan"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 msgid "Feb"
-msgstr "feb"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 msgid "Mar"
-msgstr "mrt"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 msgid "Apr"
-msgstr "apr"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:38
 #: ../src/fw/applib/pbl_std/timelocal.c:44
 msgid "May"
-msgstr "mei"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Jun"
-msgstr "jun"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Jul"
-msgstr "jul"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Aug"
-msgstr "aug"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Sep"
-msgstr "sep"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:39
 msgid "Oct"
-msgstr "okt"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:40
 msgid "Nov"
-msgstr "nov"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:40
 msgid "Dec"
-msgstr "dec"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:43
 msgid "January"
-msgstr "januari"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:43
 msgid "February"
-msgstr "februari"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:43
 msgid "March"
-msgstr "maart"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:43
 msgid "April"
-msgstr "april"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:44
 msgid "June"
-msgstr "juni"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:44
 msgid "July"
-msgstr "juli"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:44
 msgid "August"
-msgstr "augustus"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:45
 msgid "September"
-msgstr "september"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:45
 msgid "October"
-msgstr "oktober"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:45
 msgid "November"
-msgstr "november"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:45
 msgid "December"
-msgstr "december"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Sunday"
-msgstr "zondag"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Monday"
-msgstr "maandag"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Tuesday"
-msgstr "dinsdag"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Wednesday"
-msgstr "woensdag"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:53
 msgid "Thursday"
-msgstr "donderdag"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:53
 msgid "Friday"
-msgstr "vrijdag"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:53
 msgid "Saturday"
-msgstr "zaterdag"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:56
 msgid "%H:%M:%S"
@@ -2500,7 +2497,7 @@ msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:57
 msgid "%m/%d/%y"
-msgstr "%d/%m/%y"
+msgstr ""
 
 #: ../src/fw/applib/pbl_std/timelocal.c:58
 msgid "%a %b %e %H:%M:%S %Y"
