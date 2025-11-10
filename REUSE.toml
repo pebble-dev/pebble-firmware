@@ -44,3 +44,8 @@ SPDX-FileCopyrightText = "Thomas Nagy, 2005-2018 (ita)"
 path = [".github/**", ".git*", "bin/boot/*", "requirements*.txt"]
 SPDX-License-Identifier = "Apache-2.0"
 SPDX-FileCopyrightText = "2025 Core Devices"
+
+[[annotations]]
+path = "resources/normal/base/tzdata/timezones_olson.txt"
+SPDX-License-Identifier = "LicenseRef-PD-2"
+SPDX-FileCopyrightText = "Arthur David Olson"
