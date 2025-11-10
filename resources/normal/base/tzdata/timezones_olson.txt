@@ -109,10 +109,10 @@ Zone	Africa/Algiers	0:12:12 -	LMT	1891 Mar 16
 #
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Atlantic/Cape_Verde -1:34:04 -	LMT	1912 Jan 01  2:00u # Praia
-			-2:00	-	%z	1942 Sep
-			-2:00	1:00	%z	1945 Oct 15
-			-2:00	-	%z	1975 Nov 25  2:00
-			-1:00	-	%z
+			-2:00	-	-02	1942 Sep
+			-2:00	1:00	-01	1945 Oct 15
+			-2:00	-	-02	1975 Nov 25  2:00
+			-1:00	-	-01
 
 # Chad
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
@@ -349,7 +349,7 @@ Zone	Africa/Cairo	2:05:09 -	LMT	1900 Oct
 #
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Africa/Bissau	-1:02:20 -	LMT	1912 Jan  1  1:00u
-			-1:00	-	%z	1975
+			-1:00	-	-01	1975
 			 0:00	-	GMT
 
 # Comoros
@@ -414,10 +414,10 @@ Zone	Africa/Bissau	-1:02:20 -	LMT	1912 Jan  1  1:00u
 
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Africa/Nairobi	2:27:16	-	LMT	1908 May
-			2:30	-	%z	1928 Jun 30 24:00
+			2:30	-	+0230	1928 Jun 30 24:00
 			3:00	-	EAT	1930 Jan  4 24:00
-			2:30	-	%z	1936 Dec 31 24:00
-			2:45	-	%z	1942 Jul 31 24:00
+			2:30	-	+0230	1936 Dec 31 24:00
+			2:45	-	+0245	1942 Jul 31 24:00
 			3:00	-	EAT
 
 # Liberia
@@ -588,7 +588,7 @@ Rule Mauritius	2008	only	-	Oct	lastSun	2:00	1:00	-
 Rule Mauritius	2009	only	-	Mar	lastSun	2:00	0	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Indian/Mauritius	3:50:00 -	LMT	1907 # Port Louis
-			4:00 Mauritius	%z
+			4:00 Mauritius	+04/+05
 # Agalega Is, Rodriguez
 # no information; probably like Indian/Mauritius
 
@@ -907,7 +907,7 @@ Rule	Morocco	2012	only	-	Aug	20	 2:00	1:00	-
 Rule	Morocco	2012	only	-	Sep	30	 3:00	0	-
 Rule	Morocco	2013	only	-	Jul	 7	 3:00	0	-
 Rule	Morocco	2013	only	-	Aug	10	 2:00	1:00	-
-Rule	Morocco	2013	2018	-	Oct	lastSun	 3:00	0	-
+Rule	Morocco	2013	2017	-	Oct	lastSun	 3:00	0	-
 Rule	Morocco	2014	2018	-	Mar	lastSun	 2:00	1:00	-
 Rule	Morocco	2014	only	-	Jun	28	 3:00	0	-
 Rule	Morocco	2014	only	-	Aug	 2	 2:00	1:00	-
@@ -919,148 +919,148 @@ Rule	Morocco	2017	only	-	May	21	 3:00	0	-
 Rule	Morocco	2017	only	-	Jul	 2	 2:00	1:00	-
 Rule	Morocco	2018	only	-	May	13	 3:00	0	-
 Rule	Morocco	2018	only	-	Jun	17	 2:00	1:00	-
-Rule	Morocco	2019	only	-	May	 5	 3:00	-1:00	-
-Rule	Morocco	2019	only	-	Jun	 9	 2:00	0	-
-Rule	Morocco	2020	only	-	Apr	19	 3:00	-1:00	-
-Rule	Morocco	2020	only	-	May	31	 2:00	0	-
-Rule	Morocco	2021	only	-	Apr	11	 3:00	-1:00	-
-Rule	Morocco	2021	only	-	May	16	 2:00	0	-
-Rule	Morocco	2022	only	-	Mar	27	 3:00	-1:00	-
-Rule	Morocco	2022	only	-	May	 8	 2:00	0	-
-Rule	Morocco	2023	only	-	Mar	19	 3:00	-1:00	-
-Rule	Morocco	2023	only	-	Apr	23	 2:00	0	-
-Rule	Morocco	2024	only	-	Mar	10	 3:00	-1:00	-
-Rule	Morocco	2024	only	-	Apr	14	 2:00	0	-
-Rule	Morocco	2025	only	-	Feb	23	 3:00	-1:00	-
-Rule	Morocco	2025	only	-	Apr	 6	 2:00	0	-
-Rule	Morocco	2026	only	-	Feb	15	 3:00	-1:00	-
-Rule	Morocco	2026	only	-	Mar	22	 2:00	0	-
-Rule	Morocco	2027	only	-	Feb	 7	 3:00	-1:00	-
-Rule	Morocco	2027	only	-	Mar	14	 2:00	0	-
-Rule	Morocco	2028	only	-	Jan	23	 3:00	-1:00	-
-Rule	Morocco	2028	only	-	Mar	 5	 2:00	0	-
-Rule	Morocco	2029	only	-	Jan	14	 3:00	-1:00	-
-Rule	Morocco	2029	only	-	Feb	18	 2:00	0	-
-Rule	Morocco	2029	only	-	Dec	30	 3:00	-1:00	-
-Rule	Morocco	2030	only	-	Feb	10	 2:00	0	-
-Rule	Morocco	2030	only	-	Dec	22	 3:00	-1:00	-
-Rule	Morocco	2031	only	-	Jan	26	 2:00	0	-
-Rule	Morocco	2031	only	-	Dec	14	 3:00	-1:00	-
-Rule	Morocco	2032	only	-	Jan	18	 2:00	0	-
-Rule	Morocco	2032	only	-	Nov	28	 3:00	-1:00	-
-Rule	Morocco	2033	only	-	Jan	 9	 2:00	0	-
-Rule	Morocco	2033	only	-	Nov	20	 3:00	-1:00	-
-Rule	Morocco	2033	only	-	Dec	25	 2:00	0	-
-Rule	Morocco	2034	only	-	Nov	 5	 3:00	-1:00	-
-Rule	Morocco	2034	only	-	Dec	17	 2:00	0	-
-Rule	Morocco	2035	only	-	Oct	28	 3:00	-1:00	-
-Rule	Morocco	2035	only	-	Dec	 9	 2:00	0	-
-Rule	Morocco	2036	only	-	Oct	19	 3:00	-1:00	-
-Rule	Morocco	2036	only	-	Nov	23	 2:00	0	-
-Rule	Morocco	2037	only	-	Oct	 4	 3:00	-1:00	-
-Rule	Morocco	2037	only	-	Nov	15	 2:00	0	-
-Rule	Morocco	2038	only	-	Sep	26	 3:00	-1:00	-
-Rule	Morocco	2038	only	-	Oct	31	 2:00	0	-
-Rule	Morocco	2039	only	-	Sep	18	 3:00	-1:00	-
-Rule	Morocco	2039	only	-	Oct	23	 2:00	0	-
-Rule	Morocco	2040	only	-	Sep	 2	 3:00	-1:00	-
-Rule	Morocco	2040	only	-	Oct	14	 2:00	0	-
-Rule	Morocco	2041	only	-	Aug	25	 3:00	-1:00	-
-Rule	Morocco	2041	only	-	Sep	29	 2:00	0	-
-Rule	Morocco	2042	only	-	Aug	10	 3:00	-1:00	-
-Rule	Morocco	2042	only	-	Sep	21	 2:00	0	-
-Rule	Morocco	2043	only	-	Aug	 2	 3:00	-1:00	-
-Rule	Morocco	2043	only	-	Sep	13	 2:00	0	-
-Rule	Morocco	2044	only	-	Jul	24	 3:00	-1:00	-
-Rule	Morocco	2044	only	-	Aug	28	 2:00	0	-
-Rule	Morocco	2045	only	-	Jul	 9	 3:00	-1:00	-
-Rule	Morocco	2045	only	-	Aug	20	 2:00	0	-
-Rule	Morocco	2046	only	-	Jul	 1	 3:00	-1:00	-
-Rule	Morocco	2046	only	-	Aug	 5	 2:00	0	-
-Rule	Morocco	2047	only	-	Jun	23	 3:00	-1:00	-
-Rule	Morocco	2047	only	-	Jul	28	 2:00	0	-
-Rule	Morocco	2048	only	-	Jun	 7	 3:00	-1:00	-
-Rule	Morocco	2048	only	-	Jul	19	 2:00	0	-
-Rule	Morocco	2049	only	-	May	30	 3:00	-1:00	-
-Rule	Morocco	2049	only	-	Jul	 4	 2:00	0	-
-Rule	Morocco	2050	only	-	May	15	 3:00	-1:00	-
-Rule	Morocco	2050	only	-	Jun	26	 2:00	0	-
-Rule	Morocco	2051	only	-	May	 7	 3:00	-1:00	-
-Rule	Morocco	2051	only	-	Jun	18	 2:00	0	-
-Rule	Morocco	2052	only	-	Apr	28	 3:00	-1:00	-
-Rule	Morocco	2052	only	-	Jun	 2	 2:00	0	-
-Rule	Morocco	2053	only	-	Apr	13	 3:00	-1:00	-
-Rule	Morocco	2053	only	-	May	25	 2:00	0	-
-Rule	Morocco	2054	only	-	Apr	 5	 3:00	-1:00	-
-Rule	Morocco	2054	only	-	May	10	 2:00	0	-
-Rule	Morocco	2055	only	-	Mar	28	 3:00	-1:00	-
-Rule	Morocco	2055	only	-	May	 2	 2:00	0	-
-Rule	Morocco	2056	only	-	Mar	12	 3:00	-1:00	-
-Rule	Morocco	2056	only	-	Apr	23	 2:00	0	-
-Rule	Morocco	2057	only	-	Mar	 4	 3:00	-1:00	-
-Rule	Morocco	2057	only	-	Apr	 8	 2:00	0	-
-Rule	Morocco	2058	only	-	Feb	17	 3:00	-1:00	-
-Rule	Morocco	2058	only	-	Mar	31	 2:00	0	-
-Rule	Morocco	2059	only	-	Feb	 9	 3:00	-1:00	-
-Rule	Morocco	2059	only	-	Mar	23	 2:00	0	-
-Rule	Morocco	2060	only	-	Feb	 1	 3:00	-1:00	-
-Rule	Morocco	2060	only	-	Mar	 7	 2:00	0	-
-Rule	Morocco	2061	only	-	Jan	16	 3:00	-1:00	-
-Rule	Morocco	2061	only	-	Feb	27	 2:00	0	-
-Rule	Morocco	2062	only	-	Jan	 8	 3:00	-1:00	-
-Rule	Morocco	2062	only	-	Feb	12	 2:00	0	-
-Rule	Morocco	2062	only	-	Dec	31	 3:00	-1:00	-
-Rule	Morocco	2063	only	-	Feb	 4	 2:00	0	-
-Rule	Morocco	2063	only	-	Dec	16	 3:00	-1:00	-
-Rule	Morocco	2064	only	-	Jan	27	 2:00	0	-
-Rule	Morocco	2064	only	-	Dec	 7	 3:00	-1:00	-
-Rule	Morocco	2065	only	-	Jan	11	 2:00	0	-
-Rule	Morocco	2065	only	-	Nov	22	 3:00	-1:00	-
-Rule	Morocco	2066	only	-	Jan	 3	 2:00	0	-
-Rule	Morocco	2066	only	-	Nov	14	 3:00	-1:00	-
-Rule	Morocco	2066	only	-	Dec	26	 2:00	0	-
-Rule	Morocco	2067	only	-	Nov	 6	 3:00	-1:00	-
-Rule	Morocco	2067	only	-	Dec	11	 2:00	0	-
-Rule	Morocco	2068	only	-	Oct	21	 3:00	-1:00	-
-Rule	Morocco	2068	only	-	Dec	 2	 2:00	0	-
-Rule	Morocco	2069	only	-	Oct	13	 3:00	-1:00	-
-Rule	Morocco	2069	only	-	Nov	17	 2:00	0	-
-Rule	Morocco	2070	only	-	Oct	 5	 3:00	-1:00	-
-Rule	Morocco	2070	only	-	Nov	 9	 2:00	0	-
-Rule	Morocco	2071	only	-	Sep	20	 3:00	-1:00	-
-Rule	Morocco	2071	only	-	Nov	 1	 2:00	0	-
-Rule	Morocco	2072	only	-	Sep	11	 3:00	-1:00	-
-Rule	Morocco	2072	only	-	Oct	16	 2:00	0	-
-Rule	Morocco	2073	only	-	Aug	27	 3:00	-1:00	-
-Rule	Morocco	2073	only	-	Oct	 8	 2:00	0	-
-Rule	Morocco	2074	only	-	Aug	19	 3:00	-1:00	-
-Rule	Morocco	2074	only	-	Sep	30	 2:00	0	-
-Rule	Morocco	2075	only	-	Aug	11	 3:00	-1:00	-
-Rule	Morocco	2075	only	-	Sep	15	 2:00	0	-
-Rule	Morocco	2076	only	-	Jul	26	 3:00	-1:00	-
-Rule	Morocco	2076	only	-	Sep	 6	 2:00	0	-
-Rule	Morocco	2077	only	-	Jul	18	 3:00	-1:00	-
-Rule	Morocco	2077	only	-	Aug	22	 2:00	0	-
-Rule	Morocco	2078	only	-	Jul	10	 3:00	-1:00	-
-Rule	Morocco	2078	only	-	Aug	14	 2:00	0	-
-Rule	Morocco	2079	only	-	Jun	25	 3:00	-1:00	-
-Rule	Morocco	2079	only	-	Aug	 6	 2:00	0	-
-Rule	Morocco	2080	only	-	Jun	16	 3:00	-1:00	-
-Rule	Morocco	2080	only	-	Jul	21	 2:00	0	-
-Rule	Morocco	2081	only	-	Jun	 1	 3:00	-1:00	-
-Rule	Morocco	2081	only	-	Jul	13	 2:00	0	-
-Rule	Morocco	2082	only	-	May	24	 3:00	-1:00	-
-Rule	Morocco	2082	only	-	Jun	28	 2:00	0	-
-Rule	Morocco	2083	only	-	May	16	 3:00	-1:00	-
-Rule	Morocco	2083	only	-	Jun	20	 2:00	0	-
-Rule	Morocco	2084	only	-	Apr	30	 3:00	-1:00	-
-Rule	Morocco	2084	only	-	Jun	11	 2:00	0	-
-Rule	Morocco	2085	only	-	Apr	22	 3:00	-1:00	-
-Rule	Morocco	2085	only	-	May	27	 2:00	0	-
-Rule	Morocco	2086	only	-	Apr	14	 3:00	-1:00	-
-Rule	Morocco	2086	only	-	May	19	 2:00	0	-
-Rule	Morocco	2087	only	-	Mar	30	 3:00	-1:00	-
-Rule	Morocco	2087	only	-	May	11	 2:00	0	-
+Rule	Morocco	2019	only	-	May	 5	 3:00	0	-
+Rule	Morocco	2019	only	-	Jun	 9	 2:00	1:00	-
+Rule	Morocco	2020	only	-	Apr	19	 3:00	0	-
+Rule	Morocco	2020	only	-	May	31	 2:00	1:00	-
+Rule	Morocco	2021	only	-	Apr	11	 3:00	0	-
+Rule	Morocco	2021	only	-	May	16	 2:00	1:00	-
+Rule	Morocco	2022	only	-	Mar	27	 3:00	0	-
+Rule	Morocco	2022	only	-	May	 8	 2:00	1:00	-
+Rule	Morocco	2023	only	-	Mar	19	 3:00	0	-
+Rule	Morocco	2023	only	-	Apr	23	 2:00	1:00	-
+Rule	Morocco	2024	only	-	Mar	10	 3:00	0	-
+Rule	Morocco	2024	only	-	Apr	14	 2:00	1:00	-
+Rule	Morocco	2025	only	-	Feb	23	 3:00	0	-
+Rule	Morocco	2025	only	-	Apr	 6	 2:00	1:00	-
+Rule	Morocco	2026	only	-	Feb	15	 3:00	0	-
+Rule	Morocco	2026	only	-	Mar	22	 2:00	1:00	-
+Rule	Morocco	2027	only	-	Feb	 7	 3:00	0	-
+Rule	Morocco	2027	only	-	Mar	14	 2:00	1:00	-
+Rule	Morocco	2028	only	-	Jan	23	 3:00	0	-
+Rule	Morocco	2028	only	-	Mar	 5	 2:00	1:00	-
+Rule	Morocco	2029	only	-	Jan	14	 3:00	0	-
+Rule	Morocco	2029	only	-	Feb	18	 2:00	1:00	-
+Rule	Morocco	2029	only	-	Dec	30	 3:00	0	-
+Rule	Morocco	2030	only	-	Feb	10	 2:00	1:00	-
+Rule	Morocco	2030	only	-	Dec	22	 3:00	0	-
+Rule	Morocco	2031	only	-	Jan	26	 2:00	1:00	-
+Rule	Morocco	2031	only	-	Dec	14	 3:00	0	-
+Rule	Morocco	2032	only	-	Jan	18	 2:00	1:00	-
+Rule	Morocco	2032	only	-	Nov	28	 3:00	0	-
+Rule	Morocco	2033	only	-	Jan	 9	 2:00	1:00	-
+Rule	Morocco	2033	only	-	Nov	20	 3:00	0	-
+Rule	Morocco	2033	only	-	Dec	25	 2:00	1:00	-
+Rule	Morocco	2034	only	-	Nov	 5	 3:00	0	-
+Rule	Morocco	2034	only	-	Dec	17	 2:00	1:00	-
+Rule	Morocco	2035	only	-	Oct	28	 3:00	0	-
+Rule	Morocco	2035	only	-	Dec	 9	 2:00	1:00	-
+Rule	Morocco	2036	only	-	Oct	19	 3:00	0	-
+Rule	Morocco	2036	only	-	Nov	23	 2:00	1:00	-
+Rule	Morocco	2037	only	-	Oct	 4	 3:00	0	-
+Rule	Morocco	2037	only	-	Nov	15	 2:00	1:00	-
+Rule	Morocco	2038	only	-	Sep	26	 3:00	0	-
+Rule	Morocco	2038	only	-	Oct	31	 2:00	1:00	-
+Rule	Morocco	2039	only	-	Sep	18	 3:00	0	-
+Rule	Morocco	2039	only	-	Oct	23	 2:00	1:00	-
+Rule	Morocco	2040	only	-	Sep	 2	 3:00	0	-
+Rule	Morocco	2040	only	-	Oct	14	 2:00	1:00	-
+Rule	Morocco	2041	only	-	Aug	25	 3:00	0	-
+Rule	Morocco	2041	only	-	Sep	29	 2:00	1:00	-
+Rule	Morocco	2042	only	-	Aug	10	 3:00	0	-
+Rule	Morocco	2042	only	-	Sep	21	 2:00	1:00	-
+Rule	Morocco	2043	only	-	Aug	 2	 3:00	0	-
+Rule	Morocco	2043	only	-	Sep	13	 2:00	1:00	-
+Rule	Morocco	2044	only	-	Jul	24	 3:00	0	-
+Rule	Morocco	2044	only	-	Aug	28	 2:00	1:00	-
+Rule	Morocco	2045	only	-	Jul	 9	 3:00	0	-
+Rule	Morocco	2045	only	-	Aug	20	 2:00	1:00	-
+Rule	Morocco	2046	only	-	Jul	 1	 3:00	0	-
+Rule	Morocco	2046	only	-	Aug	 5	 2:00	1:00	-
+Rule	Morocco	2047	only	-	Jun	23	 3:00	0	-
+Rule	Morocco	2047	only	-	Jul	28	 2:00	1:00	-
+Rule	Morocco	2048	only	-	Jun	 7	 3:00	0	-
+Rule	Morocco	2048	only	-	Jul	19	 2:00	1:00	-
+Rule	Morocco	2049	only	-	May	30	 3:00	0	-
+Rule	Morocco	2049	only	-	Jul	 4	 2:00	1:00	-
+Rule	Morocco	2050	only	-	May	15	 3:00	0	-
+Rule	Morocco	2050	only	-	Jun	26	 2:00	1:00	-
+Rule	Morocco	2051	only	-	May	 7	 3:00	0	-
+Rule	Morocco	2051	only	-	Jun	18	 2:00	1:00	-
+Rule	Morocco	2052	only	-	Apr	28	 3:00	0	-
+Rule	Morocco	2052	only	-	Jun	 2	 2:00	1:00	-
+Rule	Morocco	2053	only	-	Apr	13	 3:00	0	-
+Rule	Morocco	2053	only	-	May	25	 2:00	1:00	-
+Rule	Morocco	2054	only	-	Apr	 5	 3:00	0	-
+Rule	Morocco	2054	only	-	May	10	 2:00	1:00	-
+Rule	Morocco	2055	only	-	Mar	28	 3:00	0	-
+Rule	Morocco	2055	only	-	May	 2	 2:00	1:00	-
+Rule	Morocco	2056	only	-	Mar	12	 3:00	0	-
+Rule	Morocco	2056	only	-	Apr	23	 2:00	1:00	-
+Rule	Morocco	2057	only	-	Mar	 4	 3:00	0	-
+Rule	Morocco	2057	only	-	Apr	 8	 2:00	1:00	-
+Rule	Morocco	2058	only	-	Feb	17	 3:00	0	-
+Rule	Morocco	2058	only	-	Mar	31	 2:00	1:00	-
+Rule	Morocco	2059	only	-	Feb	 9	 3:00	0	-
+Rule	Morocco	2059	only	-	Mar	23	 2:00	1:00	-
+Rule	Morocco	2060	only	-	Feb	 1	 3:00	0	-
+Rule	Morocco	2060	only	-	Mar	 7	 2:00	1:00	-
+Rule	Morocco	2061	only	-	Jan	16	 3:00	0	-
+Rule	Morocco	2061	only	-	Feb	27	 2:00	1:00	-
+Rule	Morocco	2062	only	-	Jan	 8	 3:00	0	-
+Rule	Morocco	2062	only	-	Feb	12	 2:00	1:00	-
+Rule	Morocco	2062	only	-	Dec	31	 3:00	0	-
+Rule	Morocco	2063	only	-	Feb	 4	 2:00	1:00	-
+Rule	Morocco	2063	only	-	Dec	16	 3:00	0	-
+Rule	Morocco	2064	only	-	Jan	27	 2:00	1:00	-
+Rule	Morocco	2064	only	-	Dec	 7	 3:00	0	-
+Rule	Morocco	2065	only	-	Jan	11	 2:00	1:00	-
+Rule	Morocco	2065	only	-	Nov	22	 3:00	0	-
+Rule	Morocco	2066	only	-	Jan	 3	 2:00	1:00	-
+Rule	Morocco	2066	only	-	Nov	14	 3:00	0	-
+Rule	Morocco	2066	only	-	Dec	26	 2:00	1:00	-
+Rule	Morocco	2067	only	-	Nov	 6	 3:00	0	-
+Rule	Morocco	2067	only	-	Dec	11	 2:00	1:00	-
+Rule	Morocco	2068	only	-	Oct	21	 3:00	0	-
+Rule	Morocco	2068	only	-	Dec	 2	 2:00	1:00	-
+Rule	Morocco	2069	only	-	Oct	13	 3:00	0	-
+Rule	Morocco	2069	only	-	Nov	17	 2:00	1:00	-
+Rule	Morocco	2070	only	-	Oct	 5	 3:00	0	-
+Rule	Morocco	2070	only	-	Nov	 9	 2:00	1:00	-
+Rule	Morocco	2071	only	-	Sep	20	 3:00	0	-
+Rule	Morocco	2071	only	-	Nov	 1	 2:00	1:00	-
+Rule	Morocco	2072	only	-	Sep	11	 3:00	0	-
+Rule	Morocco	2072	only	-	Oct	16	 2:00	1:00	-
+Rule	Morocco	2073	only	-	Aug	27	 3:00	0	-
+Rule	Morocco	2073	only	-	Oct	 8	 2:00	1:00	-
+Rule	Morocco	2074	only	-	Aug	19	 3:00	0	-
+Rule	Morocco	2074	only	-	Sep	30	 2:00	1:00	-
+Rule	Morocco	2075	only	-	Aug	11	 3:00	0	-
+Rule	Morocco	2075	only	-	Sep	15	 2:00	1:00	-
+Rule	Morocco	2076	only	-	Jul	26	 3:00	0	-
+Rule	Morocco	2076	only	-	Sep	 6	 2:00	1:00	-
+Rule	Morocco	2077	only	-	Jul	18	 3:00	0	-
+Rule	Morocco	2077	only	-	Aug	22	 2:00	1:00	-
+Rule	Morocco	2078	only	-	Jul	10	 3:00	0	-
+Rule	Morocco	2078	only	-	Aug	14	 2:00	1:00	-
+Rule	Morocco	2079	only	-	Jun	25	 3:00	0	-
+Rule	Morocco	2079	only	-	Aug	 6	 2:00	1:00	-
+Rule	Morocco	2080	only	-	Jun	16	 3:00	0	-
+Rule	Morocco	2080	only	-	Jul	21	 2:00	1:00	-
+Rule	Morocco	2081	only	-	Jun	 1	 3:00	0	-
+Rule	Morocco	2081	only	-	Jul	13	 2:00	1:00	-
+Rule	Morocco	2082	only	-	May	24	 3:00	0	-
+Rule	Morocco	2082	only	-	Jun	28	 2:00	1:00	-
+Rule	Morocco	2083	only	-	May	16	 3:00	0	-
+Rule	Morocco	2083	only	-	Jun	20	 2:00	1:00	-
+Rule	Morocco	2084	only	-	Apr	30	 3:00	0	-
+Rule	Morocco	2084	only	-	Jun	11	 2:00	1:00	-
+Rule	Morocco	2085	only	-	Apr	22	 3:00	0	-
+Rule	Morocco	2085	only	-	May	27	 2:00	1:00	-
+Rule	Morocco	2086	only	-	Apr	14	 3:00	0	-
+Rule	Morocco	2086	only	-	May	19	 2:00	1:00	-
+Rule	Morocco	2087	only	-	Mar	30	 3:00	0	-
+Rule	Morocco	2087	only	-	May	11	 2:00	1:00	-
 # For dates after the somewhat-arbitrary cutoff of 2087, assume that
 # Morocco will no longer observe DST.  At some point this table will
 # need to be extended, though quite possibly Morocco will change the
@@ -1068,10 +1068,10 @@ Rule	Morocco	2087	only	-	May	11	 2:00	0	-
 
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Africa/Casablanca	-0:30:20 -	LMT	1913 Oct 26
-			 0:00	Morocco	%z	1984 Mar 16
-			 1:00	-	%z	1986
-			 0:00	Morocco	%z	2018 Oct 28  3:00
-			 1:00	Morocco	%z
+			 0:00	Morocco	+00/+01	1984 Mar 16
+			 1:00	-	+01	1986
+			 0:00	Morocco	+00/+01	2018 Oct 28  3:00
+			 0:00	Morocco	+00/+01
 
 # Western Sahara
 #
@@ -1085,9 +1085,9 @@ Zone Africa/Casablanca	-0:30:20 -	LMT	1913 Oct 26
 # since most of it was then controlled by Morocco.
 
 Zone Africa/El_Aaiun	-0:52:48 -	LMT	1934 Jan # El Aaiún
-			-1:00	-	%z	1976 Apr 14
-			 0:00	Morocco	%z	2018 Oct 28  3:00
-			 1:00	Morocco	%z
+			-1:00	-	-01	1976 Apr 14
+			 0:00	Morocco	+00/+01	2018 Oct 28  3:00
+			 0:00	Morocco	+00/+01
 
 # Botswana
 # Burundi
@@ -1172,30 +1172,30 @@ Zone	Africa/Maputo	2:10:18 -	LMT	1909
 
 # Rule	NAME	FROM	TO	-	IN	ON	AT	SAVE	LETTER/S
 # Vanguard section, for zic and other parsers that support negative DST.
-Rule	Namibia	1994	only	-	Mar	21	0:00	-1:00	WAT
-Rule	Namibia	1994	2017	-	Sep	Sun>=1	2:00	0	CAT
-Rule	Namibia	1995	2017	-	Apr	Sun>=1	2:00	-1:00	WAT
+#Rule	Namibia	1994	only	-	Mar	21	0:00	-1:00	WAT
+#Rule	Namibia	1994	2017	-	Sep	Sun>=1	2:00	0	CAT
+#Rule	Namibia	1995	2017	-	Apr	Sun>=1	2:00	-1:00	WAT
 # Rearguard section, for parsers lacking negative DST; see ziguard.awk.
-#Rule	Namibia	1994	only	-	Mar	21	0:00	0	WAT
-#Rule	Namibia	1994	2017	-	Sep	Sun>=1	2:00	1:00	CAT
-#Rule	Namibia	1995	2017	-	Apr	Sun>=1	2:00	0	WAT
+Rule	Namibia	1994	only	-	Mar	21	0:00	0	WAT
+Rule	Namibia	1994	2017	-	Sep	Sun>=1	2:00	1:00	CAT
+Rule	Namibia	1995	2017	-	Apr	Sun>=1	2:00	0	WAT
 # End of rearguard section.
 
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Africa/Windhoek	1:08:24 -	LMT	1892 Feb 8
-			1:30	-	%z	1903 Mar
+			1:30	-	+0130	1903 Mar
 			2:00	-	SAST	1942 Sep 20  2:00
 			2:00	1:00	SAST	1943 Mar 21  2:00
 			2:00	-	SAST	1990 Mar 21 # independence
 # Vanguard section, for zic and other parsers that support negative DST.
-			2:00	Namibia	%s
+#			2:00	Namibia	%s
 # Rearguard section, for parsers lacking negative DST; see ziguard.awk.
-#			2:00	-	CAT	1994 Mar 21  0:00
+			2:00	-	CAT	1994 Mar 21  0:00
 # From Paul Eggert (2017-04-07):
 # The official date of the 2017 rule change was 2017-10-24.  See:
 # http://www.lac.org.na/laws/annoSTAT/Namibian%20Time%20Act%209%20of%202017.pdf
-#			1:00	Namibia	%s	2017 Oct 24
-#			2:00	-	CAT
+			1:00	Namibia	%s	2017 Oct 24
+			2:00	-	CAT
 # End of rearguard section.
 
 
@@ -1271,7 +1271,7 @@ Zone	Africa/Windhoek	1:08:24 -	LMT	1892 Feb 8
 Zone	Africa/Lagos	0:13:35 -	LMT	1905 Jul  1
 			0:00	-	GMT	1908 Jul  1
 			0:13:35	-	LMT	1914 Jan  1
-			0:30	-	%z	1919 Sep  1
+			0:30	-	+0030	1919 Sep  1
 			1:00	-	WAT
 
 # São Tomé and Príncipe
@@ -1546,34 +1546,34 @@ Zone	Africa/Tunis	0:40:44 -	LMT	1881 May 12
 
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Antarctica/Casey	 0	-	-00	1969
-			 8:00	-	%z	2009 Oct 18  2:00
-			11:00	-	%z	2010 Mar  5  2:00
-			 8:00	-	%z	2011 Oct 28  2:00
-			11:00	-	%z	2012 Feb 21 17:00u
-			 8:00	-	%z	2016 Oct 22
-			11:00	-	%z	2018 Mar 11  4:00
-			 8:00	-	%z	2018 Oct  7  4:00
-			11:00	-	%z	2019 Mar 17  3:00
-			 8:00	-	%z	2019 Oct  4  3:00
-			11:00	-	%z	2020 Mar  8  3:00
-			 8:00	-	%z	2020 Oct  4  0:01
-			11:00	-	%z	2021 Mar 14  0:00
-			 8:00	-	%z	2021 Oct  3  0:01
-			11:00	-	%z	2022 Mar 13  0:00
-			 8:00	-	%z	2022 Oct  2  0:01
-			11:00	-	%z	2023 Mar  9  3:00
-			 8:00	-	%z
+			 8:00	-	+08	2009 Oct 18  2:00
+			11:00	-	+11	2010 Mar  5  2:00
+			 8:00	-	+08	2011 Oct 28  2:00
+			11:00	-	+11	2012 Feb 21 17:00u
+			 8:00	-	+08	2016 Oct 22
+			11:00	-	+11	2018 Mar 11  4:00
+			 8:00	-	+08	2018 Oct  7  4:00
+			11:00	-	+11	2019 Mar 17  3:00
+			 8:00	-	+08	2019 Oct  4  3:00
+			11:00	-	+11	2020 Mar  8  3:00
+			 8:00	-	+08	2020 Oct  4  0:01
+			11:00	-	+11	2021 Mar 14  0:00
+			 8:00	-	+08	2021 Oct  3  0:01
+			11:00	-	+11	2022 Mar 13  0:00
+			 8:00	-	+08	2022 Oct  2  0:01
+			11:00	-	+11	2023 Mar  9  3:00
+			 8:00	-	+08
 Zone Antarctica/Davis	0	-	-00	1957 Jan 13
-			7:00	-	%z	1964 Nov
+			7:00	-	+07	1964 Nov
 			0	-	-00	1969 Feb
-			7:00	-	%z	2009 Oct 18  2:00
-			5:00	-	%z	2010 Mar 10 20:00u
-			7:00	-	%z	2011 Oct 28  2:00
-			5:00	-	%z	2012 Feb 21 20:00u
-			7:00	-	%z
+			7:00	-	+07	2009 Oct 18  2:00
+			5:00	-	+05	2010 Mar 10 20:00u
+			7:00	-	+07	2011 Oct 28  2:00
+			5:00	-	+05	2012 Feb 21 20:00u
+			7:00	-	+07
 Zone Antarctica/Mawson	0	-	-00	1954 Feb 13
-			6:00	-	%z	2009 Oct 18  2:00
-			5:00	-	%z
+			6:00	-	+06	2009 Oct 18  2:00
+			5:00	-	+05
 # References:
 # Casey Weather (1998-02-26)
 # http://www.antdiv.gov.au/aad/exop/sfo/casey/casey_aws.html
@@ -1751,10 +1751,10 @@ Zone Antarctica/Troll	0	-	-00	2005 Feb 12
 
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Antarctica/Vostok	0	-	-00	1957 Dec 16
-			7:00	-	%z	1994 Feb
+			7:00	-	+07	1994 Feb
 			0	-	-00	1994 Nov
-			7:00	-	%z	2023 Dec 18  2:00
-			5:00	-	%z
+			7:00	-	+07	2023 Dec 18  2:00
+			5:00	-	+05
 
 # S Africa - year-round bases
 # Marion Island, -4653+03752
@@ -1787,7 +1787,7 @@ Zone Antarctica/Vostok	0	-	-00	1957 Dec 16
 #
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Antarctica/Rothera	0	-	-00	1976 Dec  1
-			-3:00	-	%z
+			-3:00	-	-03
 
 # Uruguay - year round base
 # Artigas, King George Island, -621104-0585107
@@ -1906,8 +1906,8 @@ Rule RussiaAsia	1996	2010	-	Oct	lastSun	 2:00s	0	-
 # Afghanistan
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Kabul	4:36:48 -	LMT	1890
-			4:00	-	%z	1945
-			4:30	-	%z
+			4:00	-	+04	1945
+			4:30	-	+0430
 
 # Armenia
 # From Paul Eggert (2006-03-22):
@@ -1939,12 +1939,12 @@ Rule Armenia	2011	only	-	Mar	lastSun	 2:00s	1:00	-
 Rule Armenia	2011	only	-	Oct	lastSun	 2:00s	0	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Yerevan	2:58:00 -	LMT	1924 May  2
-			3:00	-	%z	1957 Mar
-			4:00 RussiaAsia %z	1991 Mar 31  2:00s
-			3:00 RussiaAsia	%z	1995 Sep 24  2:00s
-			4:00	-	%z	1997
-			4:00 RussiaAsia	%z	2011
-			4:00	Armenia	%z
+			3:00	-	+03	1957 Mar
+			4:00 RussiaAsia +04/+05	1991 Mar 31  2:00s
+			3:00 RussiaAsia	+03/+04	1995 Sep 24  2:00s
+			4:00	-	+04	1997
+			4:00 RussiaAsia	+04/+05	2011
+			4:00	Armenia	+04/+05
 
 # Azerbaijan
 
@@ -1965,12 +1965,12 @@ Rule	Azer	1997	2015	-	Mar	lastSun	 4:00	1:00	-
 Rule	Azer	1997	2015	-	Oct	lastSun	 5:00	0	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Baku	3:19:24 -	LMT	1924 May  2
-			3:00	-	%z	1957 Mar
-			4:00 RussiaAsia %z	1991 Mar 31  2:00s
-			3:00 RussiaAsia	%z	1992 Sep lastSun  2:00s
-			4:00	-	%z	1996
-			4:00	EUAsia	%z	1997
-			4:00	Azer	%z
+			3:00	-	+03	1957 Mar
+			4:00 RussiaAsia +04/+05	1991 Mar 31  2:00s
+			3:00 RussiaAsia	+03/+04	1992 Sep lastSun  2:00s
+			4:00	-	+04	1996
+			4:00	EUAsia	+04/+05	1997
+			4:00	Azer	+04/+05
 
 # Bangladesh
 # From Alexander Krivenyshev (2009-05-13):
@@ -2051,17 +2051,17 @@ Rule	Dhaka	2009	only	-	Dec	31	24:00	0	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Dhaka	6:01:40 -	LMT	1890
 			5:53:20	-	HMT	1941 Oct    # Howrah Mean Time?
-			6:30	-	%z	1942 May 15
-			5:30	-	%z	1942 Sep
-			6:30	-	%z	1951 Sep 30
-			6:00	-	%z	2009
-			6:00	Dhaka	%z
+			6:30	-	+0630	1942 May 15
+			5:30	-	+0530	1942 Sep
+			6:30	-	+0630	1951 Sep 30
+			6:00	-	+06	2009
+			6:00	Dhaka	+06/+07
 
 # Bhutan
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Thimphu	5:58:36 -	LMT	1947 Aug 15 # or Thimbu
-			5:30	-	%z	1987 Oct
-			6:00	-	%z
+			5:30	-	+0530	1987 Oct
+			6:00	-	+06
 
 # British Indian Ocean Territory
 # Whitman and the 1995 CIA time zone map say 5:00, but the
@@ -2071,8 +2071,8 @@ Zone	Asia/Thimphu	5:58:36 -	LMT	1947 Aug 15 # or Thimbu
 # then contained the Chagos Archipelago).
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Indian/Chagos	4:49:40	-	LMT	1907
-			5:00	-	%z	1996
-			6:00	-	%z
+			5:00	-	+05	1996
+			6:00	-	+06
 
 # Cocos (Keeling) Islands
 # Myanmar (Burma)
@@ -2088,9 +2088,9 @@ Zone	Indian/Chagos	4:49:40	-	LMT	1907
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Yangon	6:24:47 -	LMT	1880        # or Rangoon
 			6:24:47	-	RMT	1920        # Rangoon local time
-			6:30	-	%z	1942 May
-			9:00	-	%z	1945 May  3
-			6:30	-	%z
+			6:30	-	+0630	1942 May
+			9:00	-	+09	1945 May  3
+			6:30	-	+0630
 
 # China
 
@@ -2479,7 +2479,7 @@ Zone	Asia/Shanghai	8:05:43	-	LMT	1901
 # Xinjiang time, used by many in western China; represented by Ürümqi / Ürümchi
 # / Wulumuqi.  (Please use Asia/Shanghai if you prefer Beijing time.)
 Zone	Asia/Urumqi	5:50:20	-	LMT	1928
-			6:00	-	%z
+			6:00	-	+06
 
 # Hong Kong
 
@@ -2937,7 +2937,7 @@ Rule	Macau	1979	only	-	Oct	Sun>=16	03:30	0	S
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Macau	7:34:10 -	LMT	1904 Oct 30
 			8:00	-	CST	1941 Dec 21 23:00
-			9:00	Macau	%z	1945 Sep 30 24:00
+			9:00	Macau	+09/+10	1945 Sep 30 24:00
 			8:00	Macau	C%sT
 
 
@@ -2980,7 +2980,7 @@ Zone	Asia/Nicosia	2:13:28 -	LMT	1921 Nov 14
 Zone	Asia/Famagusta	2:15:48	-	LMT	1921 Nov 14
 			2:00	Cyprus	EE%sT	1998 Sep
 			2:00	EUAsia	EE%sT	2016 Sep  8
-			3:00	-	%z	2017 Oct 29 1:00u
+			3:00	-	+03	2017 Oct 29 1:00u
 			2:00	EUAsia	EE%sT
 
 # Georgia
@@ -3021,15 +3021,15 @@ Zone	Asia/Famagusta	2:15:48	-	LMT	1921 Nov 14
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Tbilisi	2:59:11 -	LMT	1880
 			2:59:11	-	TBMT	1924 May  2 # Tbilisi Mean Time
-			3:00	-	%z	1957 Mar
-			4:00 RussiaAsia %z	1991 Mar 31  2:00s
-			3:00 RussiaAsia %z	1992
-			3:00 E-EurAsia	%z	1994 Sep lastSun
-			4:00 E-EurAsia	%z	1996 Oct lastSun
-			4:00	1:00	%z	1997 Mar lastSun
-			4:00 E-EurAsia	%z	2004 Jun 27
-			3:00 RussiaAsia	%z	2005 Mar lastSun  2:00
-			4:00	-	%z
+			3:00	-	+03	1957 Mar
+			4:00 RussiaAsia +04/+05	1991 Mar 31  2:00s
+			3:00 RussiaAsia +03/+04	1992
+			3:00 E-EurAsia	+03/+04	1994 Sep lastSun
+			4:00 E-EurAsia	+04/+05	1996 Oct lastSun
+			4:00	1:00	+05	1997 Mar lastSun
+			4:00 E-EurAsia	+04/+05	2004 Jun 27
+			3:00 RussiaAsia	+03/+04	2005 Mar lastSun  2:00
+			4:00	-	+04
 
 # East Timor
 
@@ -3064,10 +3064,10 @@ Zone	Asia/Tbilisi	2:59:11 -	LMT	1880
 
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Dili	8:22:20 -	LMT	1911 Dec 31 16:00u
-			8:00	-	%z	1942 Feb 21 23:00
-			9:00	-	%z	1976 May  3
-			8:00	-	%z	2000 Sep 17  0:00
-			9:00	-	%z
+			8:00	-	+08	1942 Feb 21 23:00
+			9:00	-	+09	1976 May  3
+			8:00	-	+08	2000 Sep 17  0:00
+			9:00	-	+09
 
 # India
 
@@ -3133,9 +3133,9 @@ Zone	Asia/Kolkata	5:53:28 -	LMT	1854 Jun 28 # Kolkata
 			5:53:20	-	HMT	1870	    # Howrah Mean Time?
 			5:21:10	-	MMT	1906 Jan  1 # Madras local time
 			5:30	-	IST	1941 Oct
-			5:30	1:00	%z	1942 May 15
+			5:30	1:00	+0630	1942 May 15
 			5:30	-	IST	1942 Sep
-			5:30	1:00	%z	1945 Oct 15
+			5:30	1:00	+0630	1945 Oct 15
 			5:30	-	IST
 # Since 1970 the following are like Asia/Kolkata:
 #	Andaman Is
@@ -3187,33 +3187,33 @@ Zone Asia/Jakarta	7:07:12 -	LMT	1867 Aug 10
 # Shanks & Pottenger say the next transition was at 1924 Jan 1 0:13,
 # but this must be a typo.
 			7:07:12	-	BMT	1923 Dec 31 16:40u # Batavia
-			7:20	-	%z	1932 Nov
-			7:30	-	%z	1942 Mar 23
-			9:00	-	%z	1945 Sep 23
-			7:30	-	%z	1948 May
-			8:00	-	%z	1950 May
-			7:30	-	%z	1964
+			7:20	-	+0720	1932 Nov
+			7:30	-	+0730	1942 Mar 23
+			9:00	-	+09	1945 Sep 23
+			7:30	-	+0730	1948 May
+			8:00	-	+08	1950 May
+			7:30	-	+0730	1964
 			7:00	-	WIB
 # west and central Borneo
 Zone Asia/Pontianak	7:17:20	-	LMT	1908 May
 			7:17:20	-	PMT	1932 Nov    # Pontianak MT
-			7:30	-	%z	1942 Jan 29
-			9:00	-	%z	1945 Sep 23
-			7:30	-	%z	1948 May
-			8:00	-	%z	1950 May
-			7:30	-	%z	1964
+			7:30	-	+0730	1942 Jan 29
+			9:00	-	+09	1945 Sep 23
+			7:30	-	+0730	1948 May
+			8:00	-	+08	1950 May
+			7:30	-	+0730	1964
 			8:00	-	WITA	1988 Jan  1
 			7:00	-	WIB
 # Sulawesi, Lesser Sundas, east and south Borneo
 Zone Asia/Makassar	7:57:36 -	LMT	1920
 			7:57:36	-	MMT	1932 Nov    # Macassar MT
-			8:00	-	%z	1942 Feb  9
-			9:00	-	%z	1945 Sep 23
+			8:00	-	+08	1942 Feb  9
+			9:00	-	+09	1945 Sep 23
 			8:00	-	WITA
 # Maluku Islands, West Papua, Papua
 Zone Asia/Jayapura	9:22:48 -	LMT	1932 Nov
-			9:00	-	%z	1944 Sep  1
-			9:30	-	%z	1964
+			9:00	-	+09	1944 Sep  1
+			9:30	-	+0930	1964
 			9:00	-	WIT
 
 # Iran
@@ -3459,9 +3459,9 @@ Rule	Iran	2021	2022	-	Sep	21	24:00	0	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Tehran	3:25:44	-	LMT	1916
 			3:25:44	-	TMT	1935 Jun 13 # Tehran Mean Time
-			3:30	Iran	%z	1977 Oct 20 24:00
-			4:00	Iran	%z	1978 Nov 10 24:00
-			3:30	Iran	%z
+			3:30	Iran	+0330/+0430	1977 Oct 20 24:00
+			4:00	Iran	+04/+05	1978 Nov 10 24:00
+			3:30	Iran	+0330/+0430
 
 
 # Iraq
@@ -3504,8 +3504,8 @@ Rule	Iraq	1991	2007	-	Oct	 1	3:00s	0	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Baghdad	2:57:40	-	LMT	1890
 			2:57:36	-	BMT	1918     # Baghdad Mean Time?
-			3:00	-	%z	1982 May
-			3:00	Iraq	%z
+			3:00	-	+03	1982 May
+			3:00	Iraq	+03/+04
 
 
 ###############################################################################
@@ -3972,7 +3972,7 @@ Zone	Asia/Jerusalem	2:20:54 -	LMT	1880
 
 # Rule	NAME	FROM	TO	-	IN	ON	AT	SAVE	LETTER/S
 Rule	Japan	1948	only	-	May	Sat>=1	24:00	1:00	D
-Rule	Japan	1948	1951	-	Sep	Sat>=8	25:00	0	S
+Rule	Japan	1948	1951	-	Sep	Sun>=9	 1:00	0	S
 Rule	Japan	1949	only	-	Apr	Sat>=1	24:00	1:00	D
 Rule	Japan	1950	1951	-	May	Sat>=1	24:00	1:00	D
 
@@ -4102,7 +4102,7 @@ Rule	Jordan	2022	only	-	Feb	lastThu	24:00	1:00	S
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Amman	2:23:44 -	LMT	1931
 			2:00	Jordan	EE%sT	2022 Oct 28 0:00s
-			3:00	-	%z
+			3:00	-	+03
 
 
 # Kazakhstan
@@ -4317,84 +4317,84 @@ Zone	Asia/Amman	2:23:44 -	LMT	1931
 # Karaganda (KZ-35), North Kazakhstan (KZ-59), Pavlodar (KZ-55),
 # Shymkent city (KZ-79), Turkistan (KZ-61), and Ulytau (KZ-62).
 Zone	Asia/Almaty	5:07:48 -	LMT	1924 May  2 # or Alma-Ata
-			5:00	-	%z	1930 Jun 21
-			6:00 RussiaAsia %z	1991 Mar 31  2:00s
-			5:00 RussiaAsia	%z	1992 Jan 19  2:00s
-			6:00 RussiaAsia	%z	2004 Oct 31  2:00s
-			6:00	-	%z	2024 Mar  1  0:00
-			5:00	-	%z
+			5:00	-	+05	1930 Jun 21
+			6:00 RussiaAsia +06/+07	1991 Mar 31  2:00s
+			5:00 RussiaAsia	+05/+06	1992 Jan 19  2:00s
+			6:00 RussiaAsia	+06/+07	2004 Oct 31  2:00s
+			6:00	-	+06	2024 Mar  1  0:00
+			5:00	-	+05
 # Qyzylorda (aka Kyzylorda, Kizilorda, Kzyl-Orda, etc.) (KZ-43)
 Zone	Asia/Qyzylorda	4:21:52 -	LMT	1924 May  2
-			4:00	-	%z	1930 Jun 21
-			5:00	-	%z	1981 Apr  1
-			5:00	1:00	%z	1981 Oct  1
-			6:00	-	%z	1982 Apr  1
-			5:00 RussiaAsia	%z	1991 Mar 31  2:00s
-			4:00 RussiaAsia	%z	1991 Sep 29  2:00s
-			5:00 RussiaAsia	%z	1992 Jan 19  2:00s
-			6:00 RussiaAsia	%z	1992 Mar 29  2:00s
-			5:00 RussiaAsia	%z	2004 Oct 31  2:00s
-			6:00	-	%z	2018 Dec 21  0:00
-			5:00	-	%z
+			4:00	-	+04	1930 Jun 21
+			5:00	-	+05	1981 Apr  1
+			5:00	1:00	+06	1981 Oct  1
+			6:00	-	+06	1982 Apr  1
+			5:00 RussiaAsia	+05/+06	1991 Mar 31  2:00s
+			4:00 RussiaAsia	+04/+05	1991 Sep 29  2:00s
+			5:00 RussiaAsia	+05/+06	1992 Jan 19  2:00s
+			6:00 RussiaAsia	+06/+07	1992 Mar 29  2:00s
+			5:00 RussiaAsia	+05/+06	2004 Oct 31  2:00s
+			6:00	-	+06	2018 Dec 21  0:00
+			5:00	-	+05
 # Qostanay (aka Kostanay, Kustanay) (KZ-39)
 # The 1991/2 rules are unclear partly because of the 1997 Turgai
 # reorganization.
 Zone	Asia/Qostanay	4:14:28 -	LMT	1924 May  2
-			4:00	-	%z	1930 Jun 21
-			5:00	-	%z	1981 Apr  1
-			5:00	1:00	%z	1981 Oct  1
-			6:00	-	%z	1982 Apr  1
-			5:00 RussiaAsia	%z	1991 Mar 31  2:00s
-			4:00 RussiaAsia	%z	1992 Jan 19  2:00s
-			5:00 RussiaAsia	%z	2004 Oct 31  2:00s
-			6:00	-	%z	2024 Mar  1  0:00
-			5:00	-	%z
+			4:00	-	+04	1930 Jun 21
+			5:00	-	+05	1981 Apr  1
+			5:00	1:00	+06	1981 Oct  1
+			6:00	-	+06	1982 Apr  1
+			5:00 RussiaAsia	+05/+06	1991 Mar 31  2:00s
+			4:00 RussiaAsia	+04/+05	1992 Jan 19  2:00s
+			5:00 RussiaAsia	+05/+06	2004 Oct 31  2:00s
+			6:00	-	+06	2024 Mar  1  0:00
+			5:00	-	+05
 # Aqtöbe (aka Aktobe, formerly Aktyubinsk) (KZ-15)
 Zone	Asia/Aqtobe	3:48:40	-	LMT	1924 May  2
-			4:00	-	%z	1930 Jun 21
-			5:00	-	%z	1981 Apr  1
-			5:00	1:00	%z	1981 Oct  1
-			6:00	-	%z	1982 Apr  1
-			5:00 RussiaAsia	%z	1991 Mar 31  2:00s
-			4:00 RussiaAsia	%z	1992 Jan 19  2:00s
-			5:00 RussiaAsia	%z	2004 Oct 31  2:00s
-			5:00	-	%z
+			4:00	-	+04	1930 Jun 21
+			5:00	-	+05	1981 Apr  1
+			5:00	1:00	+06	1981 Oct  1
+			6:00	-	+06	1982 Apr  1
+			5:00 RussiaAsia	+05/+06	1991 Mar 31  2:00s
+			4:00 RussiaAsia	+04/+05	1992 Jan 19  2:00s
+			5:00 RussiaAsia	+05/+06	2004 Oct 31  2:00s
+			5:00	-	+05
 # Mangghystaū (KZ-47)
 # Aqtau was not founded until 1963, but it represents an inhabited region,
 # so include timestamps before 1963.
 Zone	Asia/Aqtau	3:21:04	-	LMT	1924 May  2
-			4:00	-	%z	1930 Jun 21
-			5:00	-	%z	1981 Oct  1
-			6:00	-	%z	1982 Apr  1
-			5:00 RussiaAsia	%z	1991 Mar 31  2:00s
-			4:00 RussiaAsia	%z	1992 Jan 19  2:00s
-			5:00 RussiaAsia	%z	1994 Sep 25  2:00s
-			4:00 RussiaAsia	%z	2004 Oct 31  2:00s
-			5:00	-	%z
+			4:00	-	+04	1930 Jun 21
+			5:00	-	+05	1981 Oct  1
+			6:00	-	+06	1982 Apr  1
+			5:00 RussiaAsia	+05/+06	1991 Mar 31  2:00s
+			4:00 RussiaAsia	+04/+05	1992 Jan 19  2:00s
+			5:00 RussiaAsia	+05/+06	1994 Sep 25  2:00s
+			4:00 RussiaAsia	+04/+05	2004 Oct 31  2:00s
+			5:00	-	+05
 # Atyraū (KZ-23) is like Mangghystaū except it switched from
 # +04/+05 to +05/+06 in spring 1999, not fall 1994.
 Zone	Asia/Atyrau	3:27:44	-	LMT	1924 May  2
-			3:00	-	%z	1930 Jun 21
-			5:00	-	%z	1981 Oct  1
-			6:00	-	%z	1982 Apr  1
-			5:00 RussiaAsia	%z	1991 Mar 31  2:00s
-			4:00 RussiaAsia	%z	1992 Jan 19  2:00s
-			5:00 RussiaAsia	%z	1999 Mar 28  2:00s
-			4:00 RussiaAsia	%z	2004 Oct 31  2:00s
-			5:00	-	%z
+			3:00	-	+03	1930 Jun 21
+			5:00	-	+05	1981 Oct  1
+			6:00	-	+06	1982 Apr  1
+			5:00 RussiaAsia	+05/+06	1991 Mar 31  2:00s
+			4:00 RussiaAsia	+04/+05	1992 Jan 19  2:00s
+			5:00 RussiaAsia	+05/+06	1999 Mar 28  2:00s
+			4:00 RussiaAsia	+04/+05	2004 Oct 31  2:00s
+			5:00	-	+05
 # West Kazakhstan (KZ-27)
 # From Paul Eggert (2016-03-18):
 # The 1989 transition is from USSR act No. 227 (1989-03-14).
 Zone	Asia/Oral	3:25:24	-	LMT	1924 May  2 # or Ural'sk
-			3:00	-	%z	1930 Jun 21
-			5:00	-	%z	1981 Apr  1
-			5:00	1:00	%z	1981 Oct  1
-			6:00	-	%z	1982 Apr  1
-			5:00 RussiaAsia	%z	1989 Mar 26  2:00s
-			4:00 RussiaAsia	%z	1992 Jan 19  2:00s
-			5:00 RussiaAsia	%z	1992 Mar 29  2:00s
-			4:00 RussiaAsia	%z	2004 Oct 31  2:00s
-			5:00	-	%z
+			3:00	-	+03	1930 Jun 21
+			5:00	-	+05	1981 Apr  1
+			5:00	1:00	+06	1981 Oct  1
+			6:00	-	+06	1982 Apr  1
+			5:00 RussiaAsia	+05/+06	1989 Mar 26  2:00s
+			4:00 RussiaAsia	+04/+05	1992 Jan 19  2:00s
+			5:00 RussiaAsia	+05/+06	1992 Mar 29  2:00s
+			4:00 RussiaAsia	+04/+05	2004 Oct 31  2:00s
+			5:00	-	+05
 
 # Kyrgyzstan (Kirgizstan)
 # Transitions through 1991 are from Shanks & Pottenger.
@@ -4415,11 +4415,11 @@ Rule	Kyrgyz	1997	2005	-	Mar	lastSun	2:30	1:00	-
 Rule	Kyrgyz	1997	2004	-	Oct	lastSun	2:30	0	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Bishkek	4:58:24 -	LMT	1924 May  2
-			5:00	-	%z	1930 Jun 21
-			6:00 RussiaAsia %z	1991 Mar 31  2:00s
-			5:00 RussiaAsia	%z	1991 Aug 31  2:00
-			5:00	Kyrgyz	%z	2005 Aug 12
-			6:00	-	%z
+			5:00	-	+05	1930 Jun 21
+			6:00 RussiaAsia +06/+07	1991 Mar 31  2:00s
+			5:00 RussiaAsia	+05/+06	1991 Aug 31  2:00
+			5:00	Kyrgyz	+05/+06	2005 Aug 12
+			6:00	-	+06
 
 ###############################################################################
 
@@ -4626,16 +4626,16 @@ Rule	NBorneo	1935	1941	-	Dec	14	0:00	0	-
 # and 1982 transition dates are from Mok Ly Yng.
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Asia/Kuching	7:21:20	-	LMT	1926 Mar
-			7:30	-	%z	1933
-			8:00 NBorneo	%z	1942 Feb 16
-			9:00	-	%z	1945 Sep 12
-			8:00	-	%z
+			7:30	-	+0730	1933
+			8:00 NBorneo	+08/+0820	1942 Feb 16
+			9:00	-	+09	1945 Sep 12
+			8:00	-	+08
 
 # Maldives
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Indian/Maldives	4:54:00 -	LMT	1880 # Malé
 			4:54:00	-	MMT	1960 # Malé Mean Time
-			5:00	-	%z
+			5:00	-	+05
 
 # Mongolia
 
@@ -4806,18 +4806,18 @@ Rule	Mongol	2015	2016	-	Sep	lastSat	0:00	0	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 # Hovd, a.k.a. Chovd, Dund-Us, Dzhargalant, Khovd, Jirgalanta
 Zone	Asia/Hovd	6:06:36 -	LMT	1905 Aug
-			6:00	-	%z	1978
-			7:00	Mongol	%z
+			6:00	-	+06	1978
+			7:00	Mongol	+07/+08
 # Ulaanbaatar, a.k.a. Ulan Bataar, Ulan Bator, Urga
 Zone	Asia/Ulaanbaatar 7:07:32 -	LMT	1905 Aug
-			7:00	-	%z	1978
-			8:00	Mongol	%z
+			7:00	-	+07	1978
+			8:00	Mongol	+08/+09
 
 # Nepal
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Kathmandu	5:41:16 -	LMT	1920
-			5:30	-	%z	1986
-			5:45	-	%z
+			5:30	-	+0530	1986
+			5:45	-	+0545
 
 # Pakistan
 
@@ -4963,10 +4963,10 @@ Rule Pakistan	2009	only	-	Apr	15	0:00	1:00	S
 
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Karachi	4:28:12 -	LMT	1907
-			5:30	-	%z	1942 Sep
-			5:30	1:00	%z	1945 Oct 15
-			5:30	-	%z	1951 Sep 30
-			5:00	-	%z	1971 Mar 26
+			5:30	-	+0530	1942 Sep
+			5:30	1:00	+0630	1945 Oct 15
+			5:30	-	+0530	1951 Sep 30
+			5:00	-	+05	1971 Mar 26
 			5:00 Pakistan	PK%sT	# Pakistan Time
 
 # Palestine
@@ -5605,8 +5605,8 @@ Zone	Asia/Manila	-15:56:08 -	LMT	1844 Dec 31
 # Qatar
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Qatar	3:26:08 -	LMT	1920     # Al Dawhah / Doha
-			4:00	-	%z	1972 Jun
-			3:00	-	%z
+			4:00	-	+04	1972 Jun
+			3:00	-	+03
 
 # Kuwait
 # Saudi Arabia
@@ -5656,7 +5656,7 @@ Zone	Asia/Qatar	3:26:08 -	LMT	1920     # Al Dawhah / Doha
 #
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Riyadh	3:06:52 -	LMT	1947 Mar 14
-			3:00	-	%z
+			3:00	-	+03
 
 # Singapore
 # taken from Mok Ly Yng (2003-10-30)
@@ -5664,13 +5664,13 @@ Zone	Asia/Riyadh	3:06:52 -	LMT	1947 Mar 14
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Singapore	6:55:25 -	LMT	1901 Jan  1
 			6:55:25	-	SMT	1905 Jun  1 # Singapore M.T.
-			7:00	-	%z	1933 Jan  1
-			7:00	0:20	%z	1936 Jan  1
-			7:20	-	%z	1941 Sep  1
-			7:30	-	%z	1942 Feb 16
-			9:00	-	%z	1945 Sep 12
-			7:30	-	%z	1981 Dec 31 16:00u
-			8:00	-	%z
+			7:00	-	+07	1933 Jan  1
+			7:00	0:20	+0720	1936 Jan  1
+			7:20	-	+0720	1941 Sep  1
+			7:30	-	+0730	1942 Feb 16
+			9:00	-	+09	1945 Sep 12
+			7:30	-	+0730	1981 Dec 31 16:00u
+			8:00	-	+08
 
 # Spratly Is
 # no information
@@ -5728,13 +5728,13 @@ Zone	Asia/Singapore	6:55:25 -	LMT	1901 Jan  1
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Colombo	5:19:24 -	LMT	1880
 			5:19:32	-	MMT	1906        # Moratuwa Mean Time
-			5:30	-	%z	1942 Jan  5
-			5:30	0:30	%z	1942 Sep
-			5:30	1:00	%z	1945 Oct 16  2:00
-			5:30	-	%z	1996 May 25  0:00
-			6:30	-	%z	1996 Oct 26  0:30
-			6:00	-	%z	2006 Apr 15  0:30
-			5:30	-	%z
+			5:30	-	+0530	1942 Jan  5
+			5:30	0:30	+06	1942 Sep
+			5:30	1:00	+0630	1945 Oct 16  2:00
+			5:30	-	+0530	1996 May 25  0:00
+			6:30	-	+0630	1996 Oct 26  0:30
+			6:00	-	+06	2006 Apr 15  0:30
+			5:30	-	+0530
 
 # Syria
 # Rule	NAME	FROM	TO	-	IN	ON	AT	SAVE	LETTER/S
@@ -5905,16 +5905,16 @@ Rule	Syria	2009	2022	-	Oct	lastFri	0:00	0	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Damascus	2:25:12 -	LMT	1920 # Dimashq
 			2:00	Syria	EE%sT	2022 Oct 28 0:00
-			3:00	-	%z
+			3:00	-	+03
 
 # Tajikistan
 # From Shanks & Pottenger.
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Dushanbe	4:35:12 -	LMT	1924 May  2
-			5:00	-	%z	1930 Jun 21
-			6:00 RussiaAsia %z	1991 Mar 31  2:00s
-			5:00	1:00	%z	1991 Sep  9  2:00s
-			5:00	-	%z
+			5:00	-	+05	1930 Jun 21
+			6:00 RussiaAsia +06/+07	1991 Mar 31  2:00s
+			5:00	1:00	+06	1991 Sep  9  2:00s
+			5:00	-	+05
 
 # Cambodia
 # Christmas I
@@ -5924,16 +5924,16 @@ Zone	Asia/Dushanbe	4:35:12 -	LMT	1924 May  2
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Bangkok	6:42:04	-	LMT	1880
 			6:42:04	-	BMT	1920 Apr # Bangkok Mean Time
-			7:00	-	%z
+			7:00	-	+07
 
 # Turkmenistan
 # From Shanks & Pottenger.
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Ashgabat	3:53:32 -	LMT	1924 May  2 # or Ashkhabad
-			4:00	-	%z	1930 Jun 21
-			5:00 RussiaAsia	%z	1991 Mar 31  2:00
-			4:00 RussiaAsia	%z	1992 Jan 19  2:00
-			5:00	-	%z
+			4:00	-	+04	1930 Jun 21
+			5:00 RussiaAsia	+05/+06	1991 Mar 31  2:00
+			4:00 RussiaAsia	+04/+05	1992 Jan 19  2:00
+			5:00	-	+05
 
 # Oman
 # Réunion
@@ -5943,25 +5943,25 @@ Zone	Asia/Ashgabat	3:53:32 -	LMT	1924 May  2 # or Ashkhabad
 # The Crozet Is also observe Réunion time; see the 'antarctica' file.
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Dubai	3:41:12 -	LMT	1920
-			4:00	-	%z
+			4:00	-	+04
 
 # Uzbekistan
 # Byalokoz 1919 says Uzbekistan was 4:27:53.
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Asia/Samarkand	4:27:53 -	LMT	1924 May  2
-			4:00	-	%z	1930 Jun 21
-			5:00	-	%z	1981 Apr  1
-			5:00	1:00	%z	1981 Oct  1
-			6:00	-	%z	1982 Apr  1
-			5:00 RussiaAsia	%z	1992
-			5:00	-	%z
+			4:00	-	+04	1930 Jun 21
+			5:00	-	+05	1981 Apr  1
+			5:00	1:00	+06	1981 Oct  1
+			6:00	-	+06	1982 Apr  1
+			5:00 RussiaAsia	+05/+06	1992
+			5:00	-	+05
 # Milne says Tashkent was 4:37:10.8.
 		#STDOFF	4:37:10.8
 Zone	Asia/Tashkent	4:37:11 -	LMT	1924 May  2
-			5:00	-	%z	1930 Jun 21
-			6:00 RussiaAsia	%z	1991 Mar 31  2:00
-			5:00 RussiaAsia	%z	1992
-			5:00	-	%z
+			5:00	-	+05	1930 Jun 21
+			6:00 RussiaAsia	+06/+07	1991 Mar 31  2:00
+			5:00 RussiaAsia	+05/+06	1992
+			5:00	-	+05
 
 # Vietnam (southern)
 
@@ -6040,14 +6040,14 @@ Zone	Asia/Tashkent	4:37:11 -	LMT	1924 May  2
 		#STDOFF	7:06:30.13
 Zone Asia/Ho_Chi_Minh	7:06:30 -	LMT	1906 Jul  1
 			7:06:30	-	PLMT	1911 May  1 # Phù Liễn MT
-			7:00	-	%z	1942 Dec 31 23:00
-			8:00	-	%z	1945 Mar 14 23:00
-			9:00	-	%z	1945 Sep  1 24:00
-			7:00	-	%z	1947 Apr  1
-			8:00	-	%z	1955 Jul  1 01:00
-			7:00	-	%z	1959 Dec 31 23:00
-			8:00	-	%z	1975 Jun 13
-			7:00	-	%z
+			7:00	-	+07	1942 Dec 31 23:00
+			8:00	-	+08	1945 Mar 14 23:00
+			9:00	-	+09	1945 Sep  1 24:00
+			7:00	-	+07	1947 Apr  1
+			8:00	-	+08	1955 Jul  1 01:00
+			7:00	-	+07	1959 Dec 31 23:00
+			8:00	-	+08	1975 Jun 13
+			7:00	-	+07
 
 # From Paul Eggert (2019-02-19):
 #
@@ -6104,8 +6104,8 @@ Zone Australia/Perth	 7:43:24 -	LMT	1895 Dec
 			 8:00	Aus	AW%sT	1943 Jul
 			 8:00	AW	AW%sT
 Zone Australia/Eucla	 8:35:28 -	LMT	1895 Dec
-			 8:45	Aus	%z	1943 Jul
-			 8:45	AW	%z
+			 8:45	Aus	+0845/+0945	1943 Jul
+			 8:45	AW	+0845/+0945
 
 # Queensland
 #
@@ -6270,8 +6270,8 @@ Rule	LH	2008	max	-	Apr	Sun>=1	2:00	0	-
 Rule	LH	2008	max	-	Oct	Sun>=1	2:00	0:30	-
 Zone Australia/Lord_Howe 10:36:20 -	LMT	1895 Feb
 			10:00	-	AEST	1981 Mar
-			10:30	LH	%z	1985 Jul
-			10:30	LH	%z
+			10:30	LH	+1030/+1130	1985 Jul
+			10:30	LH	+1030/+11
 
 # Australian miscellany
 #
@@ -6477,16 +6477,16 @@ Rule	Fiji	2019	only	-	Nov	Sun>=8	2:00	1:00	-
 Rule	Fiji	2020	only	-	Dec	20	2:00	1:00	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Pacific/Fiji	11:55:44 -	LMT	1915 Oct 26 # Suva
-			12:00	Fiji	%z
+			12:00	Fiji	+12/+13
 
 # French Polynesia
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Pacific/Gambier	 -8:59:48 -	LMT	1912 Oct  1 # Rikitea
-			 -9:00	-	%z
+			 -9:00	-	-09
 Zone	Pacific/Marquesas -9:18:00 -	LMT	1912 Oct  1
-			 -9:30	-	%z
+			 -9:30	-	-0930
 Zone	Pacific/Tahiti	 -9:58:16 -	LMT	1912 Oct  1 # Papeete
-			-10:00	-	%z
+			-10:00	-	-10
 # Clipperton (near North America) is administered from French Polynesia;
 # it is uninhabited.
 
@@ -6529,7 +6529,7 @@ Rule	Guam	1977	only	-	Aug	28	2:00	0	S
 Zone	Pacific/Guam	-14:21:00 -	LMT	1844 Dec 31
 			 9:39:00 -	LMT	1901        # Agana
 			10:00	-	GST	1941 Dec 10 # Guam
-			 9:00	-	%z	1944 Jul 31
+			 9:00	-	+09	1944 Jul 31
 			10:00	Guam	G%sT	2000 Dec 23
 			10:00	-	ChST	# Chamorro Standard Time
 
@@ -6541,30 +6541,30 @@ Zone	Pacific/Guam	-14:21:00 -	LMT	1844 Dec 31
 # Wallis & Futuna
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Pacific/Tarawa	 11:32:04 -	LMT	1901 # Bairiki
-			 12:00	-	%z
+			 12:00	-	+12
 
 # Kiribati (except Gilbert Is)
 # See Pacific/Tarawa for the Gilbert Is.
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Pacific/Kanton	  0	-	-00	1937 Aug 31
-			-12:00	-	%z	1979 Oct
-			-11:00	-	%z	1994 Dec 31
-			 13:00	-	%z
+			-12:00	-	-12	1979 Oct
+			-11:00	-	-11	1994 Dec 31
+			 13:00	-	+13
 Zone Pacific/Kiritimati	-10:29:20 -	LMT	1901
-			-10:40	-	%z	1979 Oct
-			-10:00	-	%z	1994 Dec 31
-			 14:00	-	%z
+			-10:40	-	-1040	1979 Oct
+			-10:00	-	-10	1994 Dec 31
+			 14:00	-	+14
 
 # Marshall Is
 # See Pacific/Tarawa for most locations.
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Pacific/Kwajalein	 11:09:20 -	LMT	1901
-			 11:00	-	%z	1937
-			 10:00	-	%z	1941 Apr  1
-			  9:00	-	%z	1944 Feb  6
-			 11:00	-	%z	1969 Oct
-			-12:00	-	%z	1993 Aug 20 24:00
-			 12:00	-	%z
+			 11:00	-	+11	1937
+			 10:00	-	+10	1941 Apr  1
+			  9:00	-	+09	1944 Feb  6
+			 11:00	-	+11	1969 Oct
+			-12:00	-	-12	1993 Aug 20 24:00
+			 12:00	-	+12
 
 # Micronesia
 # For Chuuk and Yap see Pacific/Port_Moresby.
@@ -6572,22 +6572,22 @@ Zone Pacific/Kwajalein	 11:09:20 -	LMT	1901
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Pacific/Kosrae	-13:08:04 -	LMT	1844 Dec 31
 			 10:51:56 -	LMT	1901
-			 11:00	-	%z	1914 Oct
-			  9:00	-	%z	1919 Feb  1
-			 11:00	-	%z	1937
-			 10:00	-	%z	1941 Apr  1
-			  9:00	-	%z	1945 Aug
-			 11:00	-	%z	1969 Oct
-			 12:00	-	%z	1999
-			 11:00	-	%z
+			 11:00	-	+11	1914 Oct
+			  9:00	-	+09	1919 Feb  1
+			 11:00	-	+11	1937
+			 10:00	-	+10	1941 Apr  1
+			  9:00	-	+09	1945 Aug
+			 11:00	-	+11	1969 Oct
+			 12:00	-	+12	1999
+			 11:00	-	+11
 
 # Nauru
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Pacific/Nauru	11:07:40 -	LMT	1921 Jan 15 # Uaobe
-			11:30	-	%z	1942 Aug 29
-			 9:00	-	%z	1945 Sep  8
-			11:30	-	%z	1979 Feb 10  2:00
-			12:00	-	%z
+			11:30	-	+1130	1942 Aug 29
+			 9:00	-	+09	1945 Sep  8
+			11:30	-	+1130	1979 Feb 10  2:00
+			12:00	-	+12
 
 # New Caledonia
 # Rule	NAME	FROM	TO	-	IN	ON	AT	SAVE	LETTER/S
@@ -6598,7 +6598,7 @@ Rule	NC	1996	only	-	Dec	 1	2:00s	1:00	-
 Rule	NC	1997	only	-	Mar	 2	2:00s	0	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Pacific/Noumea	11:05:48 -	LMT	1912 Jan 13 # Nouméa
-			11:00	NC	%z
+			11:00	NC	+11/+12
 
 
 ###############################################################################
@@ -6642,8 +6642,8 @@ Zone Pacific/Auckland	11:39:04 -	LMT	1868 Nov  2
 			12:00	NZ	NZ%sT
 
 Zone Pacific/Chatham	12:13:48 -	LMT	1868 Nov  2
-			12:15	-	%z	1946 Jan  1
-			12:45	Chatham	%z
+			12:15	-	+1215	1946 Jan  1
+			12:45	Chatham	+1245/+1345
 
 # Auckland Is
 # uninhabited; Māori and Moriori, colonial settlers, pastoralists, sealers,
@@ -6696,8 +6696,8 @@ Rule	Cook	1979	1990	-	Oct	lastSun	0:00	0:30	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Pacific/Rarotonga	13:20:56 -	LMT	1899 Dec 26 # Avarua
 			-10:39:04 -	LMT	1952 Oct 16
-			-10:30	-	%z	1978 Nov 12
-			-10:00	Cook	%z
+			-10:30	-	-1030	1978 Nov 12
+			-10:00	Cook	-10/-0930
 
 ###############################################################################
 
@@ -6714,30 +6714,30 @@ Zone Pacific/Rarotonga	13:20:56 -	LMT	1899 Dec 26 # Avarua
 
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Pacific/Niue	-11:19:40 -	LMT	1952 Oct 16	# Alofi
-			-11:20	-	%z	1964 Jul
-			-11:00	-	%z
+			-11:20	-	-1120	1964 Jul
+			-11:00	-	-11
 
 # Norfolk
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Pacific/Norfolk	11:11:52 -	LMT	1901 # Kingston
-			11:12	-	%z	1951
-			11:30	-	%z	1974 Oct 27 02:00s
-			11:30	1:00	%z	1975 Mar  2 02:00s
-			11:30	-	%z	2015 Oct  4 02:00s
-			11:00	-	%z	2019 Jul
-			11:00	AN	%z
+			11:12	-	+1112	1951
+			11:30	-	+1130	1974 Oct 27 02:00s
+			11:30	1:00	+1230	1975 Mar  2 02:00s
+			11:30	-	+1130	2015 Oct  4 02:00s
+			11:00	-	+11	2019 Jul
+			11:00	AN	+11/+12
 
 # Palau (Belau)
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Pacific/Palau	-15:02:04 -	LMT	1844 Dec 31	# Koror
 			  8:57:56 -	LMT	1901
-			  9:00	-	%z
+			  9:00	-	+09
 
 # Papua New Guinea
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Pacific/Port_Moresby 9:48:40 -	LMT	1880
 			9:48:32	-	PMMT	1895 # Port Moresby Mean Time
-			10:00	-	%z
+			10:00	-	+10
 #
 # From Paul Eggert (2014-10-13):
 # Base the Bougainville entry on the Arawa-Kieta region, which appears to have
@@ -6758,16 +6758,16 @@ Zone Pacific/Port_Moresby 9:48:40 -	LMT	1880
 #
 Zone Pacific/Bougainville 10:22:16 -	LMT	1880
 			 9:48:32 -	PMMT	1895
-			10:00	-	%z	1942 Jul
-			 9:00	-	%z	1945 Aug 21
-			10:00	-	%z	2014 Dec 28  2:00
-			11:00	-	%z
+			10:00	-	+10	1942 Jul
+			 9:00	-	+09	1945 Aug 21
+			10:00	-	+10	2014 Dec 28  2:00
+			11:00	-	+11
 
 # Pitcairn
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Pacific/Pitcairn	-8:40:20 -	LMT	1901        # Adamstown
-			-8:30	-	%z	1998 Apr 27  0:00
-			-8:00	-	%z
+			-8:30	-	-0830	1998 Apr 27  0:00
+			-8:00	-	-08
 
 # American Samoa
 # Midway
@@ -6856,15 +6856,15 @@ Rule	WS	2012	2020	-	Sep	lastSun	3:00	1	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Pacific/Apia	 12:33:04 -	LMT	1892 Jul  5
 			-11:26:56 -	LMT	1911
-			-11:30	-	%z	1950
-			-11:00	WS	%z	2011 Dec 29 24:00
-			 13:00	WS	%z
+			-11:30	-	-1130	1950
+			-11:00	WS	-11/-10	2011 Dec 29 24:00
+			 13:00	WS	+13/+14
 
 # Solomon Is
 # excludes Bougainville, for which see Papua New Guinea
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Pacific/Guadalcanal 10:39:48 -	LMT	1912 Oct  1 # Honiara
-			11:00	-	%z
+			11:00	-	+11
 
 # Tokelau
 #
@@ -6887,8 +6887,8 @@ Zone Pacific/Guadalcanal 10:39:48 -	LMT	1912 Oct  1 # Honiara
 
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Pacific/Fakaofo	-11:24:56 -	LMT	1901
-			-11:00	-	%z	2011 Dec 30
-			13:00	-	%z
+			-11:00	-	-11	2011 Dec 30
+			13:00	-	+13
 
 # Tonga
 # Rule	NAME	FROM	TO	-	IN	ON	AT	SAVE	LETTER/S
@@ -6900,9 +6900,9 @@ Rule	Tonga	2016	only	-	Nov	Sun>=1	2:00	1:00	-
 Rule	Tonga	2017	only	-	Jan	Sun>=15	3:00	0	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Pacific/Tongatapu	12:19:12 -	LMT	1945 Sep 10
-			12:20	-	%z	1961
-			13:00	-	%z	1999
-			13:00	Tonga	%z
+			12:20	-	+1220	1961
+			13:00	-	+13	1999
+			13:00	Tonga	+13/+14
 
 
 # US minor outlying islands
@@ -6991,7 +6991,7 @@ Rule	Vanuatu	1992	1993	-	Jan	Sat>=22	24:00	0	-
 Rule	Vanuatu	1992	only	-	Oct	Sat>=22	24:00	1:00	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	Pacific/Efate	11:13:16 -	LMT	1912 Jan 13 # Vila
-			11:00	Vanuatu	%z
+			11:00	Vanuatu	+11/+12
 
 ###############################################################################
 
@@ -8819,13 +8819,13 @@ Zone	Europe/London	-0:01:15 -	LMT	1847 Dec  1
 # summer and negative daylight saving time in winter.  It is for when
 # negative SAVE values are used.
 # Rule	NAME	FROM	TO	-	IN	ON	AT	SAVE	LETTER/S
-Rule	Eire	1971	only	-	Oct	31	 2:00u	-1:00	-
-Rule	Eire	1972	1980	-	Mar	Sun>=16	 2:00u	0	-
-Rule	Eire	1972	1980	-	Oct	Sun>=23	 2:00u	-1:00	-
-Rule	Eire	1981	max	-	Mar	lastSun	 1:00u	0	-
-Rule	Eire	1981	1989	-	Oct	Sun>=23	 1:00u	-1:00	-
-Rule	Eire	1990	1995	-	Oct	Sun>=22	 1:00u	-1:00	-
-Rule	Eire	1996	max	-	Oct	lastSun	 1:00u	-1:00	-
+#Rule	Eire	1971	only	-	Oct	31	 2:00u	-1:00	-
+#Rule	Eire	1972	1980	-	Mar	Sun>=16	 2:00u	0	-
+#Rule	Eire	1972	1980	-	Oct	Sun>=23	 2:00u	-1:00	-
+#Rule	Eire	1981	max	-	Mar	lastSun	 1:00u	0	-
+#Rule	Eire	1981	1989	-	Oct	Sun>=23	 1:00u	-1:00	-
+#Rule	Eire	1990	1995	-	Oct	Sun>=22	 1:00u	-1:00	-
+#Rule	Eire	1996	max	-	Oct	lastSun	 1:00u	-1:00	-
 
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 		#STDOFF	-0:25:21.1
@@ -8840,11 +8840,11 @@ Zone	Europe/Dublin	-0:25:21 -	LMT	1880 Aug  2
 			 0:00	-	GMT	1948 Apr 18  2:00s
 			 0:00	GB-Eire	GMT/IST	1968 Oct 27
 # Vanguard section, for zic and other parsers that support negative DST.
-			 1:00	Eire	IST/GMT
+#			 1:00	Eire	IST/GMT
 # Rearguard section, for parsers lacking negative DST; see ziguard.awk.
-#			 1:00	-	IST	1971 Oct 31  2:00u
-#			 0:00	GB-Eire	GMT/IST	1996
-#			 0:00	EU	GMT/IST
+			 1:00	-	IST	1971 Oct 31  2:00u
+			 0:00	GB-Eire	GMT/IST	1996
+			 0:00	EU	GMT/IST
 # End of rearguard section.
 
 
@@ -9159,7 +9159,7 @@ Zone	Europe/Minsk	1:50:16 -	LMT	1880
 			3:00	Russia	MSK/MSD	1990
 			3:00	-	MSK	1991 Mar 31  2:00s
 			2:00	Russia	EE%sT	2011 Mar 27  2:00s
-			3:00	-	%z
+			3:00	-	+03
 
 # Belgium
 # Luxembourg
@@ -9322,9 +9322,9 @@ Zone	Europe/Prague	0:57:44 -	LMT	1850
 			1:00	C-Eur	CE%sT	1945 May  9
 			1:00	Czech	CE%sT	1946 Dec  1  3:00
 # Vanguard section, for zic and other parsers that support negative DST.
-			1:00	-1:00	GMT	1947 Feb 23  2:00
+#			1:00	-1:00	GMT	1947 Feb 23  2:00
 # Rearguard section, for parsers lacking negative DST; see ziguard.awk.
-#			0:00	-	GMT	1947 Feb 23  2:00
+			0:00	-	GMT	1947 Feb 23  2:00
 # End of rearguard section.
 			1:00	Czech	CE%sT	1979
 			1:00	EU	CE%sT
@@ -9464,22 +9464,22 @@ Rule	Thule	2007	max	-	Nov	Sun>=1	2:00	0	S
 #
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone America/Danmarkshavn -1:14:40 -	LMT	1916 Jul 28
-			-3:00	-	%z	1980 Apr  6  2:00
-			-3:00	EU	%z	1996
+			-3:00	-	-03	1980 Apr  6  2:00
+			-3:00	EU	-03/-02	1996
 			0:00	-	GMT
 #
 # Use the old name Scoresbysund, as the current name Ittoqqortoormiit
 # exceeds tzdb's 14-letter limit and has no common English abbreviation.
 Zone America/Scoresbysund -1:27:52 -	LMT	1916 Jul 28 # Ittoqqortoormiit
-			-2:00	-	%z	1980 Apr  6  2:00
-			-2:00	C-Eur	%z	1981 Mar 29
-			-1:00	EU	%z	2024 Mar 31
-			-2:00	EU	%z
+			-2:00	-	-02	1980 Apr  6  2:00
+			-2:00	C-Eur	-02/-01	1981 Mar 29
+			-1:00	EU	-01/+00	2024 Mar 31
+			-2:00	EU	-02/-01
 Zone America/Nuuk	-3:26:56 -	LMT	1916 Jul 28 # Godthåb
-			-3:00	-	%z	1980 Apr  6  2:00
-			-3:00	EU	%z	2023 Mar 26  1:00u
-			-2:00	-	%z	2023 Oct 29  1:00u
-			-2:00	EU	%z
+			-3:00	-	-03	1980 Apr  6  2:00
+			-3:00	EU	-03/-02	2023 Mar 26  1:00u
+			-2:00	-	-02	2023 Oct 29  1:00u
+			-2:00	EU	-02/-01
 Zone America/Thule	-4:35:08 -	LMT	1916 Jul 28 # Pituffik
 			-4:00	Thule	A%sT
 
@@ -10601,7 +10601,7 @@ Zone	Europe/Lisbon	-0:36:45 -	LMT	1884
 Zone Atlantic/Azores	-1:42:40 -	LMT	1884        # Ponta Delgada
 			-1:54:32 -	HMT	1912 Jan  1  2:00u # Horta MT
 # Vanguard section, for zic and other parsers that support %z.
-			-2:00	Port	%z	1966 Oct  2  2:00s
+#			-2:00	Port	%z	1966 Oct  2  2:00s
 # From Tim Parenti (2024-07-01):
 # While Decreto-Lei 309/76 of 1976-04-27 reintroduced DST on the mainland by
 # falling back on 1976-09-26, it assigned the Permanent Time Commission to
@@ -10616,20 +10616,20 @@ Zone Atlantic/Azores	-1:42:40 -	LMT	1884        # Ponta Delgada
 # Though transitions in the Azores officially remained at 0:00s through 1992,
 # this was equivalent to the EU-style 1:00u adopted by the mainland in 1986, so
 # model it as such.
-			-1:00	-	%z	1982 Mar 28  0:00s
-			-1:00	Port	%z	1986
+#			-1:00	-	%z	1982 Mar 28  0:00s
+#			-1:00	Port	%z	1986
 # Rearguard section, for parsers lacking %z; see ziguard.awk.
-#			-2:00	Port	-02/-01	1942 Apr 25 22:00s
-#			-2:00	Port	+00	1942 Aug 15 22:00s
-#			-2:00	Port	-02/-01	1943 Apr 17 22:00s
-#			-2:00	Port	+00	1943 Aug 28 22:00s
-#			-2:00	Port	-02/-01	1944 Apr 22 22:00s
-#			-2:00	Port	+00	1944 Aug 26 22:00s
-#			-2:00	Port	-02/-01	1945 Apr 21 22:00s
-#			-2:00	Port	+00	1945 Aug 25 22:00s
-#			-2:00	Port	-02/-01	1966 Oct  2  2:00s
-#			-1:00	-	-01	1982 Mar 28  0:00s
-#			-1:00	Port	-01/+00	1986
+			-2:00	Port	-02/-01	1942 Apr 25 22:00s
+			-2:00	Port	+00	1942 Aug 15 22:00s
+			-2:00	Port	-02/-01	1943 Apr 17 22:00s
+			-2:00	Port	+00	1943 Aug 28 22:00s
+			-2:00	Port	-02/-01	1944 Apr 22 22:00s
+			-2:00	Port	+00	1944 Aug 26 22:00s
+			-2:00	Port	-02/-01	1945 Apr 21 22:00s
+			-2:00	Port	+00	1945 Aug 25 22:00s
+			-2:00	Port	-02/-01	1966 Oct  2  2:00s
+			-1:00	-	-01	1982 Mar 28  0:00s
+			-1:00	Port	-01/+00	1986
 # End of rearguard section.
 #
 # From Paul Eggert (1996-11-12):
@@ -10647,24 +10647,24 @@ Zone Atlantic/Azores	-1:42:40 -	LMT	1884        # Ponta Delgada
 # still observed in the interim on 1993-03-28.
 # https://dre.pt/dr/detalhe/decreto-legislativo-regional/29-1992-621553
 # https://dre.pt/dr/detalhe/decreto-legislativo-regional/9-1993-389633
-			-1:00	EU	%z	1992 Dec 27  1:00s
+			-1:00	EU	-01/+00	1992 Dec 27  1:00s
 			 0:00	EU	WE%sT	1993 Jun 17  1:00u
-			-1:00	EU	%z
+			-1:00	EU	-01/+00
 
 Zone Atlantic/Madeira	-1:07:36 -	LMT	1884        # Funchal
 			-1:07:36 -	FMT	1912 Jan  1  1:00u # Funchal MT
 # Vanguard section, for zic and other parsers that support %z.
-			-1:00	Port	%z	1966 Oct  2  2:00s
+#			-1:00	Port	%z	1966 Oct  2  2:00s
 # Rearguard section, for parsers lacking %z; see ziguard.awk.
-#			-1:00	Port	-01/+00	1942 Apr 25 22:00s
-#			-1:00	Port	+01	1942 Aug 15 22:00s
-#			-1:00	Port	-01/+00	1943 Apr 17 22:00s
-#			-1:00	Port	+01	1943 Aug 28 22:00s
-#			-1:00	Port	-01/+00	1944 Apr 22 22:00s
-#			-1:00	Port	+01	1944 Aug 26 22:00s
-#			-1:00	Port	-01/+00	1945 Apr 21 22:00s
-#			-1:00	Port	+01	1945 Aug 25 22:00s
-#			-1:00	Port	-01/+00	1966 Oct  2  2:00s
+			-1:00	Port	-01/+00	1942 Apr 25 22:00s
+			-1:00	Port	+01	1942 Aug 15 22:00s
+			-1:00	Port	-01/+00	1943 Apr 17 22:00s
+			-1:00	Port	+01	1943 Aug 28 22:00s
+			-1:00	Port	-01/+00	1944 Apr 22 22:00s
+			-1:00	Port	+01	1944 Aug 26 22:00s
+			-1:00	Port	-01/+00	1945 Apr 21 22:00s
+			-1:00	Port	+01	1945 Aug 25 22:00s
+			-1:00	Port	-01/+00	1966 Oct  2  2:00s
 # End of rearguard section.
 #
 # From Tim Parenti (2024-07-01):
@@ -10892,7 +10892,7 @@ Zone Europe/Kaliningrad	 1:22:00 -	LMT	1893 Apr
 			 2:00	Poland	EE%sT	1946 Apr  7
 			 3:00	Russia	MSK/MSD	1989 Mar 26  2:00s
 			 2:00	Russia	EE%sT	2011 Mar 27  2:00s
-			 3:00	-	%z	2014 Oct 26  2:00s
+			 3:00	-	+03	2014 Oct 26  2:00s
 			 2:00	-	EET
 
 
@@ -11142,14 +11142,14 @@ Zone Europe/Simferopol	 2:16:24 -	LMT	1880
 # http://publication.pravo.gov.ru/Document/View/0001201602150056
 
 Zone Europe/Astrakhan	 3:12:12 -	LMT	1924 May
-			 3:00	-	%z	1930 Jun 21
-			 4:00	Russia	%z	1989 Mar 26  2:00s
-			 3:00	Russia	%z	1991 Mar 31  2:00s
-			 4:00	-	%z	1992 Mar 29  2:00s
-			 3:00	Russia	%z	2011 Mar 27  2:00s
-			 4:00	-	%z	2014 Oct 26  2:00s
-			 3:00	-	%z	2016 Mar 27  2:00s
-			 4:00	-	%z
+			 3:00	-	+03	1930 Jun 21
+			 4:00	Russia	+04/+05	1989 Mar 26  2:00s
+			 3:00	Russia	+03/+04	1991 Mar 31  2:00s
+			 4:00	-	+04	1992 Mar 29  2:00s
+			 3:00	Russia	+03/+04	2011 Mar 27  2:00s
+			 4:00	-	+04	2014 Oct 26  2:00s
+			 3:00	-	+03	2016 Mar 27  2:00s
+			 4:00	-	+04
 
 # From Paul Eggert (2016-11-11):
 # Europe/Volgograd covers:
@@ -11179,15 +11179,15 @@ Zone Europe/Astrakhan	 3:12:12 -	LMT	1924 May
 # http://publication.pravo.gov.ru/Document/View/0001202012220002
 
 Zone Europe/Volgograd	 2:57:40 -	LMT	1920 Jan  3
-			 3:00	-	%z	1930 Jun 21
-			 4:00	-	%z	1961 Nov 11
-			 4:00	Russia	%z	1988 Mar 27  2:00s
+			 3:00	-	+03	1930 Jun 21
+			 4:00	-	+04	1961 Nov 11
+			 4:00	Russia	+04/+05	1988 Mar 27  2:00s
 			 3:00	Russia	MSK/MSD	1991 Mar 31  2:00s
-			 4:00	-	%z	1992 Mar 29  2:00s
+			 4:00	-	+04	1992 Mar 29  2:00s
 			 3:00	Russia	MSK/MSD	2011 Mar 27  2:00s
 			 4:00	-	MSK	2014 Oct 26  2:00s
 			 3:00	-	MSK	2018 Oct 28  2:00s
-			 4:00	-	%z	2020 Dec 27  2:00s
+			 4:00	-	+04	2020 Dec 27  2:00s
 			 3:00	-	MSK
 
 # From Paul Eggert (2016-11-11):
@@ -11202,14 +11202,14 @@ Zone Europe/Volgograd	 2:57:40 -	LMT	1920 Jan  3
 # http://publication.pravo.gov.ru/Document/View/0001201611220031
 
 Zone Europe/Saratov	 3:04:18 -	LMT	1919 Jul  1  0:00u
-			 3:00	-	%z	1930 Jun 21
-			 4:00	Russia	%z	1988 Mar 27  2:00s
-			 3:00	Russia	%z	1991 Mar 31  2:00s
-			 4:00	-	%z	1992 Mar 29  2:00s
-			 3:00	Russia	%z	2011 Mar 27  2:00s
-			 4:00	-	%z	2014 Oct 26  2:00s
-			 3:00	-	%z	2016 Dec  4  2:00s
-			 4:00	-	%z
+			 3:00	-	+03	1930 Jun 21
+			 4:00	Russia	+04/+05	1988 Mar 27  2:00s
+			 3:00	Russia	+03/+04	1991 Mar 31  2:00s
+			 4:00	-	+04	1992 Mar 29  2:00s
+			 3:00	Russia	+03/+04	2011 Mar 27  2:00s
+			 4:00	-	+04	2014 Oct 26  2:00s
+			 3:00	-	+03	2016 Dec  4  2:00s
+			 4:00	-	+04
 
 # From Paul Eggert (2016-03-18):
 # Europe/Kirov covers:
@@ -11217,10 +11217,10 @@ Zone Europe/Saratov	 3:04:18 -	LMT	1919 Jul  1  0:00u
 # The 1989 transition is from USSR act No. 227 (1989-03-14).
 #
 Zone Europe/Kirov	 3:18:48 -	LMT	1919 Jul  1  0:00u
-			 3:00	-	%z	1930 Jun 21
-			 4:00	Russia	%z	1989 Mar 26  2:00s
+			 3:00	-	+03	1930 Jun 21
+			 4:00	Russia	+04/+05	1989 Mar 26  2:00s
 			 3:00	Russia	MSK/MSD	1991 Mar 31  2:00s
-			 4:00	-	%z	1992 Mar 29  2:00s
+			 4:00	-	+04	1992 Mar 29  2:00s
 			 3:00	Russia	MSK/MSD	2011 Mar 27  2:00s
 			 4:00	-	MSK	2014 Oct 26  2:00s
 			 3:00	-	MSK
@@ -11235,15 +11235,15 @@ Zone Europe/Kirov	 3:18:48 -	LMT	1919 Jul  1  0:00u
 # The 1989 transition is from USSR act No. 227 (1989-03-14).
 
 Zone Europe/Samara	 3:20:20 -	LMT	1919 Jul  1  0:00u
-			 3:00	-	%z	1930 Jun 21
-			 4:00	-	%z	1935 Jan 27
-			 4:00	Russia	%z	1989 Mar 26  2:00s
-			 3:00	Russia	%z	1991 Mar 31  2:00s
-			 2:00	Russia	%z	1991 Sep 29  2:00s
-			 3:00	-	%z	1991 Oct 20  3:00
-			 4:00	Russia	%z	2010 Mar 28  2:00s
-			 3:00	Russia	%z	2011 Mar 27  2:00s
-			 4:00	-	%z
+			 3:00	-	+03	1930 Jun 21
+			 4:00	-	+04	1935 Jan 27
+			 4:00	Russia	+04/+05	1989 Mar 26  2:00s
+			 3:00	Russia	+03/+04	1991 Mar 31  2:00s
+			 2:00	Russia	+02/+03	1991 Sep 29  2:00s
+			 3:00	-	+03	1991 Oct 20  3:00
+			 4:00	Russia	+04/+05	2010 Mar 28  2:00s
+			 3:00	Russia	+03/+04	2011 Mar 27  2:00s
+			 4:00	-	+04
 
 # From Paul Eggert (2016-03-18):
 # Europe/Ulyanovsk covers:
@@ -11259,14 +11259,14 @@ Zone Europe/Samara	 3:20:20 -	LMT	1919 Jul  1  0:00u
 # http://publication.pravo.gov.ru/Document/View/0001201603090051
 
 Zone Europe/Ulyanovsk	 3:13:36 -	LMT	1919 Jul  1  0:00u
-			 3:00	-	%z	1930 Jun 21
-			 4:00	Russia	%z	1989 Mar 26  2:00s
-			 3:00	Russia	%z	1991 Mar 31  2:00s
-			 2:00	Russia	%z	1992 Jan 19  2:00s
-			 3:00	Russia	%z	2011 Mar 27  2:00s
-			 4:00	-	%z	2014 Oct 26  2:00s
-			 3:00	-	%z	2016 Mar 27  2:00s
-			 4:00	-	%z
+			 3:00	-	+03	1930 Jun 21
+			 4:00	Russia	+04/+05	1989 Mar 26  2:00s
+			 3:00	Russia	+03/+04	1991 Mar 31  2:00s
+			 2:00	Russia	+02/+03	1992 Jan 19  2:00s
+			 3:00	Russia	+03/+04	2011 Mar 27  2:00s
+			 4:00	-	+04	2014 Oct 26  2:00s
+			 3:00	-	+03	2016 Mar 27  2:00s
+			 4:00	-	+04
 
 # From Tim Parenti (2014-07-03), per Oscar van Vlijmen (2001-08-25):
 # Asia/Yekaterinburg covers...
@@ -11291,12 +11291,12 @@ Zone Europe/Ulyanovsk	 3:13:36 -	LMT	1919 Jul  1  0:00u
 		#STDOFF	 4:02:32.9
 Zone Asia/Yekaterinburg	 4:02:33 -	LMT	1916 Jul  3
 			 3:45:05 -	PMT	1919 Jul 15  4:00
-			 4:00	-	%z	1930 Jun 21
-			 5:00	Russia	%z	1991 Mar 31  2:00s
-			 4:00	Russia	%z	1992 Jan 19  2:00s
-			 5:00	Russia	%z	2011 Mar 27  2:00s
-			 6:00	-	%z	2014 Oct 26  2:00s
-			 5:00	-	%z
+			 4:00	-	+04	1930 Jun 21
+			 5:00	Russia	+05/+06	1991 Mar 31  2:00s
+			 4:00	Russia	+04/+05	1992 Jan 19  2:00s
+			 5:00	Russia	+05/+06	2011 Mar 27  2:00s
+			 6:00	-	+06	2014 Oct 26  2:00s
+			 5:00	-	+05
 
 
 # From Tim Parenti (2014-07-03), per Oscar van Vlijmen (2001-08-25):
@@ -11306,12 +11306,12 @@ Zone Asia/Yekaterinburg	 4:02:33 -	LMT	1916 Jul  3
 # Byalokoz 1919 says Omsk was 4:53:30.
 
 Zone Asia/Omsk		 4:53:30 -	LMT	1919 Nov 14
-			 5:00	-	%z	1930 Jun 21
-			 6:00	Russia	%z	1991 Mar 31  2:00s
-			 5:00	Russia	%z	1992 Jan 19  2:00s
-			 6:00	Russia	%z	2011 Mar 27  2:00s
-			 7:00	-	%z	2014 Oct 26  2:00s
-			 6:00	-	%z
+			 5:00	-	+05	1930 Jun 21
+			 6:00	Russia	+06/+07	1991 Mar 31  2:00s
+			 5:00	Russia	+05/+06	1992 Jan 19  2:00s
+			 6:00	Russia	+06/+07	2011 Mar 27  2:00s
+			 7:00	-	+07	2014 Oct 26  2:00s
+			 6:00	-	+06
 
 # From Paul Eggert (2016-02-22):
 # Asia/Barnaul covers:
@@ -11344,14 +11344,14 @@ Zone Asia/Omsk		 4:53:30 -	LMT	1919 Nov 14
 # http://publication.pravo.gov.ru/Document/View/0001201603090038
 
 Zone Asia/Barnaul	 5:35:00 -	LMT	1919 Dec 10
-			 6:00	-	%z	1930 Jun 21
-			 7:00	Russia	%z	1991 Mar 31  2:00s
-			 6:00	Russia	%z	1992 Jan 19  2:00s
-			 7:00	Russia	%z	1995 May 28
-			 6:00	Russia	%z	2011 Mar 27  2:00s
-			 7:00	-	%z	2014 Oct 26  2:00s
-			 6:00	-	%z	2016 Mar 27  2:00s
-			 7:00	-	%z
+			 6:00	-	+06	1930 Jun 21
+			 7:00	Russia	+07/+08	1991 Mar 31  2:00s
+			 6:00	Russia	+06/+07	1992 Jan 19  2:00s
+			 7:00	Russia	+07/+08	1995 May 28
+			 6:00	Russia	+06/+07	2011 Mar 27  2:00s
+			 7:00	-	+07	2014 Oct 26  2:00s
+			 6:00	-	+06	2016 Mar 27  2:00s
+			 7:00	-	+07
 
 # From Paul Eggert (2016-03-18):
 # Asia/Novosibirsk covers:
@@ -11365,14 +11365,14 @@ Zone Asia/Barnaul	 5:35:00 -	LMT	1919 Dec 10
 # http://publication.pravo.gov.ru/Document/View/0001201607040064
 
 Zone Asia/Novosibirsk	 5:31:40 -	LMT	1919 Dec 14  6:00
-			 6:00	-	%z	1930 Jun 21
-			 7:00	Russia	%z	1991 Mar 31  2:00s
-			 6:00	Russia	%z	1992 Jan 19  2:00s
-			 7:00	Russia	%z	1993 May 23 # say Shanks & P.
-			 6:00	Russia	%z	2011 Mar 27  2:00s
-			 7:00	-	%z	2014 Oct 26  2:00s
-			 6:00	-	%z	2016 Jul 24  2:00s
-			 7:00	-	%z
+			 6:00	-	+06	1930 Jun 21
+			 7:00	Russia	+07/+08	1991 Mar 31  2:00s
+			 6:00	Russia	+06/+07	1992 Jan 19  2:00s
+			 7:00	Russia	+07/+08	1993 May 23 # say Shanks & P.
+			 6:00	Russia	+06/+07	2011 Mar 27  2:00s
+			 7:00	-	+07	2014 Oct 26  2:00s
+			 6:00	-	+06	2016 Jul 24  2:00s
+			 7:00	-	+07
 
 # From Paul Eggert (2016-03-18):
 # Asia/Tomsk covers:
@@ -11417,14 +11417,14 @@ Zone Asia/Novosibirsk	 5:31:40 -	LMT	1919 Dec 14  6:00
 # http://publication.pravo.gov.ru/Document/View/0001201604260048
 
 Zone	Asia/Tomsk	 5:39:51 -	LMT	1919 Dec 22
-			 6:00	-	%z	1930 Jun 21
-			 7:00	Russia	%z	1991 Mar 31  2:00s
-			 6:00	Russia	%z	1992 Jan 19  2:00s
-			 7:00	Russia	%z	2002 May  1  3:00
-			 6:00	Russia	%z	2011 Mar 27  2:00s
-			 7:00	-	%z	2014 Oct 26  2:00s
-			 6:00	-	%z	2016 May 29  2:00s
-			 7:00	-	%z
+			 6:00	-	+06	1930 Jun 21
+			 7:00	Russia	+07/+08	1991 Mar 31  2:00s
+			 6:00	Russia	+06/+07	1992 Jan 19  2:00s
+			 7:00	Russia	+07/+08	2002 May  1  3:00
+			 6:00	Russia	+06/+07	2011 Mar 27  2:00s
+			 7:00	-	+07	2014 Oct 26  2:00s
+			 6:00	-	+06	2016 May 29  2:00s
+			 7:00	-	+07
 
 
 # From Tim Parenti (2014-07-03):
@@ -11455,12 +11455,12 @@ Zone	Asia/Tomsk	 5:39:51 -	LMT	1919 Dec 22
 # realigning itself with KRAT.
 
 Zone Asia/Novokuznetsk	 5:48:48 -	LMT	1924 May  1
-			 6:00	-	%z	1930 Jun 21
-			 7:00	Russia	%z	1991 Mar 31  2:00s
-			 6:00	Russia	%z	1992 Jan 19  2:00s
-			 7:00	Russia	%z	2010 Mar 28  2:00s
-			 6:00	Russia	%z	2011 Mar 27  2:00s
-			 7:00	-	%z
+			 6:00	-	+06	1930 Jun 21
+			 7:00	Russia	+07/+08	1991 Mar 31  2:00s
+			 6:00	Russia	+06/+07	1992 Jan 19  2:00s
+			 7:00	Russia	+07/+08	2010 Mar 28  2:00s
+			 6:00	Russia	+06/+07	2011 Mar 27  2:00s
+			 7:00	-	+07
 
 # From Tim Parenti (2014-07-03), per Oscar van Vlijmen (2001-08-25):
 # Asia/Krasnoyarsk covers...
@@ -11474,12 +11474,12 @@ Zone Asia/Novokuznetsk	 5:48:48 -	LMT	1924 May  1
 # Byalokoz 1919 says Krasnoyarsk was 6:11:26.
 
 Zone Asia/Krasnoyarsk	 6:11:26 -	LMT	1920 Jan  6
-			 6:00	-	%z	1930 Jun 21
-			 7:00	Russia	%z	1991 Mar 31  2:00s
-			 6:00	Russia	%z	1992 Jan 19  2:00s
-			 7:00	Russia	%z	2011 Mar 27  2:00s
-			 8:00	-	%z	2014 Oct 26  2:00s
-			 7:00	-	%z
+			 6:00	-	+06	1930 Jun 21
+			 7:00	Russia	+07/+08	1991 Mar 31  2:00s
+			 6:00	Russia	+06/+07	1992 Jan 19  2:00s
+			 7:00	Russia	+07/+08	2011 Mar 27  2:00s
+			 8:00	-	+08	2014 Oct 26  2:00s
+			 7:00	-	+07
 
 
 # From Tim Parenti (2014-07-03), per Oscar van Vlijmen (2001-08-25):
@@ -11496,12 +11496,12 @@ Zone Asia/Krasnoyarsk	 6:11:26 -	LMT	1920 Jan  6
 
 Zone Asia/Irkutsk	 6:57:05 -	LMT	1880
 			 6:57:05 -	IMT	1920 Jan 25 # Irkutsk Mean Time
-			 7:00	-	%z	1930 Jun 21
-			 8:00	Russia	%z	1991 Mar 31  2:00s
-			 7:00	Russia	%z	1992 Jan 19  2:00s
-			 8:00	Russia	%z	2011 Mar 27  2:00s
-			 9:00	-	%z	2014 Oct 26  2:00s
-			 8:00	-	%z
+			 7:00	-	+07	1930 Jun 21
+			 8:00	Russia	+08/+09	1991 Mar 31  2:00s
+			 7:00	Russia	+07/+08	1992 Jan 19  2:00s
+			 8:00	Russia	+08/+09	2011 Mar 27  2:00s
+			 9:00	-	+09	2014 Oct 26  2:00s
+			 8:00	-	+08
 
 
 # From Tim Parenti (2014-07-06):
@@ -11518,13 +11518,13 @@ Zone Asia/Irkutsk	 6:57:05 -	LMT	1880
 # http://publication.pravo.gov.ru/Document/View/0001201512300107
 
 Zone Asia/Chita	 7:33:52 -	LMT	1919 Dec 15
-			 8:00	-	%z	1930 Jun 21
-			 9:00	Russia	%z	1991 Mar 31  2:00s
-			 8:00	Russia	%z	1992 Jan 19  2:00s
-			 9:00	Russia	%z	2011 Mar 27  2:00s
-			10:00	-	%z	2014 Oct 26  2:00s
-			 8:00	-	%z	2016 Mar 27  2:00
-			 9:00	-	%z
+			 8:00	-	+08	1930 Jun 21
+			 9:00	Russia	+09/+10	1991 Mar 31  2:00s
+			 8:00	Russia	+08/+09	1992 Jan 19  2:00s
+			 9:00	Russia	+09/+10	2011 Mar 27  2:00s
+			10:00	-	+10	2014 Oct 26  2:00s
+			 8:00	-	+08	2016 Mar 27  2:00
+			 9:00	-	+09
 
 
 # From Tim Parenti (2014-07-03), per Oscar van Vlijmen (2009-11-29):
@@ -11564,12 +11564,12 @@ Zone Asia/Chita	 7:33:52 -	LMT	1919 Dec 15
 # Byalokoz 1919 says Yakutsk was 8:38:58.
 
 Zone Asia/Yakutsk	 8:38:58 -	LMT	1919 Dec 15
-			 8:00	-	%z	1930 Jun 21
-			 9:00	Russia	%z	1991 Mar 31  2:00s
-			 8:00	Russia	%z	1992 Jan 19  2:00s
-			 9:00	Russia	%z	2011 Mar 27  2:00s
-			10:00	-	%z	2014 Oct 26  2:00s
-			 9:00	-	%z
+			 8:00	-	+08	1930 Jun 21
+			 9:00	Russia	+09/+10	1991 Mar 31  2:00s
+			 8:00	Russia	+08/+09	1992 Jan 19  2:00s
+			 9:00	Russia	+09/+10	2011 Mar 27  2:00s
+			10:00	-	+10	2014 Oct 26  2:00s
+			 9:00	-	+09
 
 
 # From Tim Parenti (2014-07-03), per Oscar van Vlijmen (2009-11-29):
@@ -11587,12 +11587,12 @@ Zone Asia/Yakutsk	 8:38:58 -	LMT	1919 Dec 15
 # Go with Byalokoz.
 
 Zone Asia/Vladivostok	 8:47:31 -	LMT	1922 Nov 15
-			 9:00	-	%z	1930 Jun 21
-			10:00	Russia	%z	1991 Mar 31  2:00s
-			 9:00	Russia	%z	1992 Jan 19  2:00s
-			10:00	Russia	%z	2011 Mar 27  2:00s
-			11:00	-	%z	2014 Oct 26  2:00s
-			10:00	-	%z
+			 9:00	-	+09	1930 Jun 21
+			10:00	Russia	+10/+11	1991 Mar 31  2:00s
+			 9:00	Russia	+09/+10	1992 Jan 19  2:00s
+			10:00	Russia	+10/+11	2011 Mar 27  2:00s
+			11:00	-	+11	2014 Oct 26  2:00s
+			10:00	-	+10
 
 
 # From Tim Parenti (2014-07-03):
@@ -11610,14 +11610,14 @@ Zone Asia/Vladivostok	 8:47:31 -	LMT	1922 Nov 15
 # This transition is no doubt wrong, but we have no better info.
 
 Zone Asia/Khandyga	 9:02:13 -	LMT	1919 Dec 15
-			 8:00	-	%z	1930 Jun 21
-			 9:00	Russia	%z	1991 Mar 31  2:00s
-			 8:00	Russia	%z	1992 Jan 19  2:00s
-			 9:00	Russia	%z	2004
-			10:00	Russia	%z	2011 Mar 27  2:00s
-			11:00	-	%z	2011 Sep 13  0:00s # Decree 725?
-			10:00	-	%z	2014 Oct 26  2:00s
-			 9:00	-	%z
+			 8:00	-	+08	1930 Jun 21
+			 9:00	Russia	+09/+10	1991 Mar 31  2:00s
+			 8:00	Russia	+08/+09	1992 Jan 19  2:00s
+			 9:00	Russia	+09/+10	2004
+			10:00	Russia	+10/+11	2011 Mar 27  2:00s
+			11:00	-	+11	2011 Sep 13  0:00s # Decree 725?
+			10:00	-	+10	2014 Oct 26  2:00s
+			 9:00	-	+09
 
 
 # From Tim Parenti (2014-07-03):
@@ -11633,14 +11633,14 @@ Zone Asia/Khandyga	 9:02:13 -	LMT	1919 Dec 15
 
 # The Zone name should be Asia/Yuzhno-Sakhalinsk, but that's too long.
 Zone Asia/Sakhalin	 9:30:48 -	LMT	1905 Aug 23
-			 9:00	-	%z	1945 Aug 25
-			11:00	Russia	%z	1991 Mar 31  2:00s # Sakhalin T
-			10:00	Russia	%z	1992 Jan 19  2:00s
-			11:00	Russia	%z	1997 Mar lastSun  2:00s
-			10:00	Russia	%z	2011 Mar 27  2:00s
-			11:00	-	%z	2014 Oct 26  2:00s
-			10:00	-	%z	2016 Mar 27  2:00s
-			11:00	-	%z
+			 9:00	-	+09	1945 Aug 25
+			11:00	Russia	+11/+12	1991 Mar 31  2:00s # Sakhalin T
+			10:00	Russia	+10/+11	1992 Jan 19  2:00s
+			11:00	Russia	+11/+12	1997 Mar lastSun  2:00s
+			10:00	Russia	+10/+11	2011 Mar 27  2:00s
+			11:00	-	+11	2014 Oct 26  2:00s
+			10:00	-	+10	2016 Mar 27  2:00s
+			11:00	-	+11
 
 
 # From Tim Parenti (2014-07-03), per Oscar van Vlijmen (2009-11-29):
@@ -11663,13 +11663,13 @@ Zone Asia/Sakhalin	 9:30:48 -	LMT	1905 Aug 23
 # http://publication.pravo.gov.ru/Document/View/0001201604050038
 
 Zone Asia/Magadan	10:03:12 -	LMT	1924 May  2
-			10:00	-	%z	1930 Jun 21 # Magadan Time
-			11:00	Russia	%z	1991 Mar 31  2:00s
-			10:00	Russia	%z	1992 Jan 19  2:00s
-			11:00	Russia	%z	2011 Mar 27  2:00s
-			12:00	-	%z	2014 Oct 26  2:00s
-			10:00	-	%z	2016 Apr 24  2:00s
-			11:00	-	%z
+			10:00	-	+10	1930 Jun 21 # Magadan Time
+			11:00	Russia	+11/+12	1991 Mar 31  2:00s
+			10:00	Russia	+10/+11	1992 Jan 19  2:00s
+			11:00	Russia	+11/+12	2011 Mar 27  2:00s
+			12:00	-	+12	2014 Oct 26  2:00s
+			10:00	-	+10	2016 Apr 24  2:00s
+			11:00	-	+11
 
 
 # From Tim Parenti (2014-07-06):
@@ -11714,12 +11714,12 @@ Zone Asia/Magadan	10:03:12 -	LMT	1924 May  2
 # Go with Srednekolymsk.
 
 Zone Asia/Srednekolymsk	10:14:52 -	LMT	1924 May  2
-			10:00	-	%z	1930 Jun 21
-			11:00	Russia	%z	1991 Mar 31  2:00s
-			10:00	Russia	%z	1992 Jan 19  2:00s
-			11:00	Russia	%z	2011 Mar 27  2:00s
-			12:00	-	%z	2014 Oct 26  2:00s
-			11:00	-	%z
+			10:00	-	+10	1930 Jun 21
+			11:00	Russia	+11/+12	1991 Mar 31  2:00s
+			10:00	Russia	+10/+11	1992 Jan 19  2:00s
+			11:00	Russia	+11/+12	2011 Mar 27  2:00s
+			12:00	-	+12	2014 Oct 26  2:00s
+			11:00	-	+11
 
 
 # From Tim Parenti (2014-07-03):
@@ -11737,14 +11737,14 @@ Zone Asia/Srednekolymsk	10:14:52 -	LMT	1924 May  2
 # UTC+12 since at least then, too.
 
 Zone Asia/Ust-Nera	 9:32:54 -	LMT	1919 Dec 15
-			 8:00	-	%z	1930 Jun 21
-			 9:00	Russia	%z	1981 Apr  1
-			11:00	Russia	%z	1991 Mar 31  2:00s
-			10:00	Russia	%z	1992 Jan 19  2:00s
-			11:00	Russia	%z	2011 Mar 27  2:00s
-			12:00	-	%z	2011 Sep 13  0:00s # Decree 725?
-			11:00	-	%z	2014 Oct 26  2:00s
-			10:00	-	%z
+			 8:00	-	+08	1930 Jun 21
+			 9:00	Russia	+09/+10	1981 Apr  1
+			11:00	Russia	+11/+12	1991 Mar 31  2:00s
+			10:00	Russia	+10/+11	1992 Jan 19  2:00s
+			11:00	Russia	+11/+12	2011 Mar 27  2:00s
+			12:00	-	+12	2011 Sep 13  0:00s # Decree 725?
+			11:00	-	+11	2014 Oct 26  2:00s
+			10:00	-	+10
 
 
 # From Tim Parenti (2014-07-03), per Oscar van Vlijmen (2001-08-25):
@@ -11757,12 +11757,12 @@ Zone Asia/Ust-Nera	 9:32:54 -	LMT	1919 Dec 15
 # The Zone name should be Asia/Petropavlovsk-Kamchatski or perhaps
 # Asia/Petropavlovsk-Kamchatsky, but these are too long.
 Zone Asia/Kamchatka	10:34:36 -	LMT	1922 Nov 10
-			11:00	-	%z	1930 Jun 21
-			12:00	Russia	%z	1991 Mar 31  2:00s
-			11:00	Russia	%z	1992 Jan 19  2:00s
-			12:00	Russia	%z	2010 Mar 28  2:00s
-			11:00	Russia	%z	2011 Mar 27  2:00s
-			12:00	-	%z
+			11:00	-	+11	1930 Jun 21
+			12:00	Russia	+12/+13	1991 Mar 31  2:00s
+			11:00	Russia	+11/+12	1992 Jan 19  2:00s
+			12:00	Russia	+12/+13	2010 Mar 28  2:00s
+			11:00	Russia	+11/+12	2011 Mar 27  2:00s
+			12:00	-	+12
 
 
 # From Tim Parenti (2014-07-03):
@@ -11770,13 +11770,13 @@ Zone Asia/Kamchatka	10:34:36 -	LMT	1922 Nov 10
 # 87	RU-CHU	Chukotka Autonomous Okrug
 
 Zone Asia/Anadyr	11:49:56 -	LMT	1924 May  2
-			12:00	-	%z	1930 Jun 21
-			13:00	Russia	%z	1982 Apr  1  0:00s
-			12:00	Russia	%z	1991 Mar 31  2:00s
-			11:00	Russia	%z	1992 Jan 19  2:00s
-			12:00	Russia	%z	2010 Mar 28  2:00s
-			11:00	Russia	%z	2011 Mar 27  2:00s
-			12:00	-	%z
+			12:00	-	+12	1930 Jun 21
+			13:00	Russia	+13/+14	1982 Apr  1  0:00s
+			12:00	Russia	+12/+13	1991 Mar 31  2:00s
+			11:00	Russia	+11/+12	1992 Jan 19  2:00s
+			12:00	Russia	+12/+13	2010 Mar 28  2:00s
+			11:00	Russia	+11/+12	2011 Mar 27  2:00s
+			12:00	-	+12
 
 # Bosnia & Herzegovina
 # Croatia
@@ -11895,7 +11895,7 @@ Zone	Africa/Ceuta	-0:21:16 -	LMT	1901 Jan  1  0:00u
 			 1:00	-	CET	1986
 			 1:00	EU	CE%sT
 Zone	Atlantic/Canary	-1:01:36 -	LMT	1922 Mar # Las Palmas de Gran C.
-			-1:00	-	%z	1946 Sep 30  1:00
+			-1:00	-	-01	1946 Sep 30  1:00
 			 0:00	-	WET	1980 Apr  6  0:00s
 			 0:00	1:00	WEST	1980 Sep 28  1:00u
 			 0:00	EU	WE%sT
@@ -12214,7 +12214,7 @@ Rule	Turkey	1996	2006	-	Oct	lastSun	1:00s	0	-
 Zone	Europe/Istanbul	1:55:52 -	LMT	1880
 			1:56:56	-	IMT	1910 Oct # Istanbul Mean Time?
 			2:00	Turkey	EE%sT	1978 Jun 29
-			3:00	Turkey	%z	1984 Nov  1  2:00
+			3:00	Turkey	+03/+04	1984 Nov  1  2:00
 			2:00	Turkey	EE%sT	2007
 			2:00	EU	EE%sT	2011 Mar 27  1:00u
 			2:00	-	EET	2011 Mar 28  1:00u
@@ -12223,7 +12223,7 @@ Zone	Europe/Istanbul	1:55:52 -	LMT	1880
 			2:00	EU	EE%sT	2015 Oct 25  1:00u
 			2:00	1:00	EEST	2015 Nov  8  1:00u
 			2:00	EU	EE%sT	2016 Sep  7
-			3:00	-	%z
+			3:00	-	+03
 
 # Ukraine
 #
@@ -12452,32 +12452,32 @@ Link	Etc/GMT				GMT
 # corresponds to an unknown or invalid time zone, and things would get
 # confusing if Etc/Unknown were made valid here.
 
-Zone	Etc/GMT-14	14	-	%z
-Zone	Etc/GMT-13	13	-	%z
-Zone	Etc/GMT-12	12	-	%z
-Zone	Etc/GMT-11	11	-	%z
-Zone	Etc/GMT-10	10	-	%z
-Zone	Etc/GMT-9	9	-	%z
-Zone	Etc/GMT-8	8	-	%z
-Zone	Etc/GMT-7	7	-	%z
-Zone	Etc/GMT-6	6	-	%z
-Zone	Etc/GMT-5	5	-	%z
-Zone	Etc/GMT-4	4	-	%z
-Zone	Etc/GMT-3	3	-	%z
-Zone	Etc/GMT-2	2	-	%z
-Zone	Etc/GMT-1	1	-	%z
-Zone	Etc/GMT+1	-1	-	%z
-Zone	Etc/GMT+2	-2	-	%z
-Zone	Etc/GMT+3	-3	-	%z
-Zone	Etc/GMT+4	-4	-	%z
-Zone	Etc/GMT+5	-5	-	%z
-Zone	Etc/GMT+6	-6	-	%z
-Zone	Etc/GMT+7	-7	-	%z
-Zone	Etc/GMT+8	-8	-	%z
-Zone	Etc/GMT+9	-9	-	%z
-Zone	Etc/GMT+10	-10	-	%z
-Zone	Etc/GMT+11	-11	-	%z
-Zone	Etc/GMT+12	-12	-	%z
+Zone	Etc/GMT-14	14	-	+14
+Zone	Etc/GMT-13	13	-	+13
+Zone	Etc/GMT-12	12	-	+12
+Zone	Etc/GMT-11	11	-	+11
+Zone	Etc/GMT-10	10	-	+10
+Zone	Etc/GMT-9	9	-	+09
+Zone	Etc/GMT-8	8	-	+08
+Zone	Etc/GMT-7	7	-	+07
+Zone	Etc/GMT-6	6	-	+06
+Zone	Etc/GMT-5	5	-	+05
+Zone	Etc/GMT-4	4	-	+04
+Zone	Etc/GMT-3	3	-	+03
+Zone	Etc/GMT-2	2	-	+02
+Zone	Etc/GMT-1	1	-	+01
+Zone	Etc/GMT+1	-1	-	-01
+Zone	Etc/GMT+2	-2	-	-02
+Zone	Etc/GMT+3	-3	-	-03
+Zone	Etc/GMT+4	-4	-	-04
+Zone	Etc/GMT+5	-5	-	-05
+Zone	Etc/GMT+6	-6	-	-06
+Zone	Etc/GMT+7	-7	-	-07
+Zone	Etc/GMT+8	-8	-	-08
+Zone	Etc/GMT+9	-9	-	-09
+Zone	Etc/GMT+10	-10	-	-10
+Zone	Etc/GMT+11	-11	-	-11
+Zone	Etc/GMT+12	-12	-	-12
 # tzdb data for North and Central America and environs
 
 # This file is in the public domain, so clarified as of
@@ -16105,8 +16105,8 @@ Zone America/Puerto_Rico -4:24:25 -	LMT	1899 Mar 28 12:00 # San Juan
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone America/Miquelon	-3:44:40 -	LMT	1911 Jun 15 # St Pierre
 			-4:00	-	AST	1980 May
-			-3:00	-	%z	1987
-			-3:00	Canada	%z
+			-3:00	-	-03	1987
+			-3:00	Canada	-03/-02
 
 # Turks and Caicos
 #
@@ -16584,11 +16584,11 @@ Rule	Arg	2008	only	-	Oct	Sun>=15	0:00	1:00	-
 Zone America/Argentina/Buenos_Aires -3:53:48 - LMT	1894 Oct 31
 		#STDOFF	-4:16:48.25
 			-4:16:48 -	CMT	1920 May    # Córdoba Mean Time
-			-4:00	-	%z	1930 Dec
-			-4:00	Arg	%z	1969 Oct  5
-			-3:00	Arg	%z	1999 Oct  3
-			-4:00	Arg	%z	2000 Mar  3
-			-3:00	Arg	%z
+			-4:00	-	-04	1930 Dec
+			-4:00	Arg	-04/-03	1969 Oct  5
+			-3:00	Arg	-03/-02	1999 Oct  3
+			-4:00	Arg	-04/-03	2000 Mar  3
+			-3:00	Arg	-03/-02
 #
 # Córdoba (CB), Santa Fe (SF), Entre Ríos (ER), Corrientes (CN), Misiones (MN),
 # Chaco (CC), Formosa (FM), Santiago del Estero (SE)
@@ -16603,120 +16603,120 @@ Zone America/Argentina/Buenos_Aires -3:53:48 - LMT	1894 Oct 31
 		#STDOFF	       -4:16:48.25
 Zone America/Argentina/Cordoba -4:16:48 - LMT	1894 Oct 31
 			-4:16:48 -	CMT	1920 May
-			-4:00	-	%z	1930 Dec
-			-4:00	Arg	%z	1969 Oct  5
-			-3:00	Arg	%z	1991 Mar  3
-			-4:00	-	%z	1991 Oct 20
-			-3:00	Arg	%z	1999 Oct  3
-			-4:00	Arg	%z	2000 Mar  3
-			-3:00	Arg	%z
+			-4:00	-	-04	1930 Dec
+			-4:00	Arg	-04/-03	1969 Oct  5
+			-3:00	Arg	-03/-02	1991 Mar  3
+			-4:00	-	-04	1991 Oct 20
+			-3:00	Arg	-03/-02	1999 Oct  3
+			-4:00	Arg	-04/-03	2000 Mar  3
+			-3:00	Arg	-03/-02
 #
 # Salta (SA), La Pampa (LP), Neuquén (NQ), Rio Negro (RN)
 Zone America/Argentina/Salta -4:21:40 - LMT	1894 Oct 31
 		#STDOFF	-4:16:48.25
 			-4:16:48 -	CMT	1920 May
-			-4:00	-	%z	1930 Dec
-			-4:00	Arg	%z	1969 Oct  5
-			-3:00	Arg	%z	1991 Mar  3
-			-4:00	-	%z	1991 Oct 20
-			-3:00	Arg	%z	1999 Oct  3
-			-4:00	Arg	%z	2000 Mar  3
-			-3:00	Arg	%z	2008 Oct 18
-			-3:00	-	%z
+			-4:00	-	-04	1930 Dec
+			-4:00	Arg	-04/-03	1969 Oct  5
+			-3:00	Arg	-03/-02	1991 Mar  3
+			-4:00	-	-04	1991 Oct 20
+			-3:00	Arg	-03/-02	1999 Oct  3
+			-4:00	Arg	-04/-03	2000 Mar  3
+			-3:00	Arg	-03/-02	2008 Oct 18
+			-3:00	-	-03
 #
 # Tucumán (TM)
 Zone America/Argentina/Tucuman -4:20:52 - LMT	1894 Oct 31
 		#STDOFF	-4:16:48.25
 			-4:16:48 -	CMT	1920 May
-			-4:00	-	%z	1930 Dec
-			-4:00	Arg	%z	1969 Oct  5
-			-3:00	Arg	%z	1991 Mar  3
-			-4:00	-	%z	1991 Oct 20
-			-3:00	Arg	%z	1999 Oct  3
-			-4:00	Arg	%z	2000 Mar  3
-			-3:00	-	%z	2004 Jun  1
-			-4:00	-	%z	2004 Jun 13
-			-3:00	Arg	%z
+			-4:00	-	-04	1930 Dec
+			-4:00	Arg	-04/-03	1969 Oct  5
+			-3:00	Arg	-03/-02	1991 Mar  3
+			-4:00	-	-04	1991 Oct 20
+			-3:00	Arg	-03/-02	1999 Oct  3
+			-4:00	Arg	-04/-03	2000 Mar  3
+			-3:00	-	-03	2004 Jun  1
+			-4:00	-	-04	2004 Jun 13
+			-3:00	Arg	-03/-02
 #
 # La Rioja (LR)
 Zone America/Argentina/La_Rioja -4:27:24 - LMT	1894 Oct 31
 		#STDOFF	-4:16:48.25
 			-4:16:48 -	CMT	1920 May
-			-4:00	-	%z	1930 Dec
-			-4:00	Arg	%z	1969 Oct  5
-			-3:00	Arg	%z	1991 Mar  1
-			-4:00	-	%z	1991 May  7
-			-3:00	Arg	%z	1999 Oct  3
-			-4:00	Arg	%z	2000 Mar  3
-			-3:00	-	%z	2004 Jun  1
-			-4:00	-	%z	2004 Jun 20
-			-3:00	Arg	%z	2008 Oct 18
-			-3:00	-	%z
+			-4:00	-	-04	1930 Dec
+			-4:00	Arg	-04/-03	1969 Oct  5
+			-3:00	Arg	-03/-02	1991 Mar  1
+			-4:00	-	-04	1991 May  7
+			-3:00	Arg	-03/-02	1999 Oct  3
+			-4:00	Arg	-04/-03	2000 Mar  3
+			-3:00	-	-03	2004 Jun  1
+			-4:00	-	-04	2004 Jun 20
+			-3:00	Arg	-03/-02	2008 Oct 18
+			-3:00	-	-03
 #
 # San Juan (SJ)
 Zone America/Argentina/San_Juan -4:34:04 - LMT	1894 Oct 31
 		#STDOFF	-4:16:48.25
 			-4:16:48 -	CMT	1920 May
-			-4:00	-	%z	1930 Dec
-			-4:00	Arg	%z	1969 Oct  5
-			-3:00	Arg	%z	1991 Mar  1
-			-4:00	-	%z	1991 May  7
-			-3:00	Arg	%z	1999 Oct  3
-			-4:00	Arg	%z	2000 Mar  3
-			-3:00	-	%z	2004 May 31
-			-4:00	-	%z	2004 Jul 25
-			-3:00	Arg	%z	2008 Oct 18
-			-3:00	-	%z
+			-4:00	-	-04	1930 Dec
+			-4:00	Arg	-04/-03	1969 Oct  5
+			-3:00	Arg	-03/-02	1991 Mar  1
+			-4:00	-	-04	1991 May  7
+			-3:00	Arg	-03/-02	1999 Oct  3
+			-4:00	Arg	-04/-03	2000 Mar  3
+			-3:00	-	-03	2004 May 31
+			-4:00	-	-04	2004 Jul 25
+			-3:00	Arg	-03/-02	2008 Oct 18
+			-3:00	-	-03
 #
 # Jujuy (JY)
 Zone America/Argentina/Jujuy -4:21:12 -	LMT	1894 Oct 31
 		#STDOFF	-4:16:48.25
 			-4:16:48 -	CMT	1920 May
-			-4:00	-	%z	1930 Dec
-			-4:00	Arg	%z	1969 Oct  5
-			-3:00	Arg	%z	1990 Mar  4
-			-4:00	-	%z	1990 Oct 28
-			-4:00	1:00	%z	1991 Mar 17
-			-4:00	-	%z	1991 Oct  6
-			-3:00	1:00	%z	1992
-			-3:00	Arg	%z	1999 Oct  3
-			-4:00	Arg	%z	2000 Mar  3
-			-3:00	Arg	%z	2008 Oct 18
-			-3:00	-	%z
+			-4:00	-	-04	1930 Dec
+			-4:00	Arg	-04/-03	1969 Oct  5
+			-3:00	Arg	-03/-02	1990 Mar  4
+			-4:00	-	-04	1990 Oct 28
+			-4:00	1:00	-03	1991 Mar 17
+			-4:00	-	-04	1991 Oct  6
+			-3:00	1:00	-02	1992
+			-3:00	Arg	-03/-02	1999 Oct  3
+			-4:00	Arg	-04/-03	2000 Mar  3
+			-3:00	Arg	-03/-02	2008 Oct 18
+			-3:00	-	-03
 #
 # Catamarca (CT), Chubut (CH)
 Zone America/Argentina/Catamarca -4:23:08 - LMT	1894 Oct 31
 		#STDOFF	-4:16:48.25
 			-4:16:48 -	CMT	1920 May
-			-4:00	-	%z	1930 Dec
-			-4:00	Arg	%z	1969 Oct  5
-			-3:00	Arg	%z	1991 Mar  3
-			-4:00	-	%z	1991 Oct 20
-			-3:00	Arg	%z	1999 Oct  3
-			-4:00	Arg	%z	2000 Mar  3
-			-3:00	-	%z	2004 Jun  1
-			-4:00	-	%z	2004 Jun 20
-			-3:00	Arg	%z	2008 Oct 18
-			-3:00	-	%z
+			-4:00	-	-04	1930 Dec
+			-4:00	Arg	-04/-03	1969 Oct  5
+			-3:00	Arg	-03/-02	1991 Mar  3
+			-4:00	-	-04	1991 Oct 20
+			-3:00	Arg	-03/-02	1999 Oct  3
+			-4:00	Arg	-04/-03	2000 Mar  3
+			-3:00	-	-03	2004 Jun  1
+			-4:00	-	-04	2004 Jun 20
+			-3:00	Arg	-03/-02	2008 Oct 18
+			-3:00	-	-03
 #
 # Mendoza (MZ)
 Zone America/Argentina/Mendoza -4:35:16 - LMT	1894 Oct 31
 		#STDOFF	-4:16:48.25
 			-4:16:48 -	CMT	1920 May
-			-4:00	-	%z	1930 Dec
-			-4:00	Arg	%z	1969 Oct  5
-			-3:00	Arg	%z	1990 Mar  4
-			-4:00	-	%z	1990 Oct 15
-			-4:00	1:00	%z	1991 Mar  1
-			-4:00	-	%z	1991 Oct 15
-			-4:00	1:00	%z	1992 Mar  1
-			-4:00	-	%z	1992 Oct 18
-			-3:00	Arg	%z	1999 Oct  3
-			-4:00	Arg	%z	2000 Mar  3
-			-3:00	-	%z	2004 May 23
-			-4:00	-	%z	2004 Sep 26
-			-3:00	Arg	%z	2008 Oct 18
-			-3:00	-	%z
+			-4:00	-	-04	1930 Dec
+			-4:00	Arg	-04/-03	1969 Oct  5
+			-3:00	Arg	-03/-02	1990 Mar  4
+			-4:00	-	-04	1990 Oct 15
+			-4:00	1:00	-03	1991 Mar  1
+			-4:00	-	-04	1991 Oct 15
+			-4:00	1:00	-03	1992 Mar  1
+			-4:00	-	-04	1992 Oct 18
+			-3:00	Arg	-03/-02	1999 Oct  3
+			-4:00	Arg	-04/-03	2000 Mar  3
+			-3:00	-	-03	2004 May 23
+			-4:00	-	-04	2004 Sep 26
+			-3:00	Arg	-03/-02	2008 Oct 18
+			-3:00	-	-03
 #
 # San Luis (SL)
 
@@ -16726,53 +16726,53 @@ Rule	SanLuis	2007	2008	-	Oct	Sun>=8	0:00	1:00	-
 Zone America/Argentina/San_Luis -4:25:24 - LMT	1894 Oct 31
 		#STDOFF	-4:16:48.25
 			-4:16:48 -	CMT	1920 May
-			-4:00	-	%z	1930 Dec
-			-4:00	Arg	%z	1969 Oct  5
-			-3:00	Arg	%z	1990
-			-3:00	1:00	%z	1990 Mar 14
-			-4:00	-	%z	1990 Oct 15
-			-4:00	1:00	%z	1991 Mar  1
-			-4:00	-	%z	1991 Jun  1
-			-3:00	-	%z	1999 Oct  3
-			-4:00	1:00	%z	2000 Mar  3
-			-3:00	-	%z	2004 May 31
-			-4:00	-	%z	2004 Jul 25
-			-3:00	Arg	%z	2008 Jan 21
-			-4:00	SanLuis	%z	2009 Oct 11
-			-3:00	-	%z
+			-4:00	-	-04	1930 Dec
+			-4:00	Arg	-04/-03	1969 Oct  5
+			-3:00	Arg	-03/-02	1990
+			-3:00	1:00	-02	1990 Mar 14
+			-4:00	-	-04	1990 Oct 15
+			-4:00	1:00	-03	1991 Mar  1
+			-4:00	-	-04	1991 Jun  1
+			-3:00	-	-03	1999 Oct  3
+			-4:00	1:00	-03	2000 Mar  3
+			-3:00	-	-03	2004 May 31
+			-4:00	-	-04	2004 Jul 25
+			-3:00	Arg	-03/-02	2008 Jan 21
+			-4:00	SanLuis	-04/-03	2009 Oct 11
+			-3:00	-	-03
 #
 # Santa Cruz (SC)
 Zone America/Argentina/Rio_Gallegos -4:36:52 - LMT	1894 Oct 31
 		#STDOFF	-4:16:48.25
 			-4:16:48 -	CMT	1920 May
-			-4:00	-	%z	1930 Dec
-			-4:00	Arg	%z	1969 Oct  5
-			-3:00	Arg	%z	1999 Oct  3
-			-4:00	Arg	%z	2000 Mar  3
-			-3:00	-	%z	2004 Jun  1
-			-4:00	-	%z	2004 Jun 20
-			-3:00	Arg	%z	2008 Oct 18
-			-3:00	-	%z
+			-4:00	-	-04	1930 Dec
+			-4:00	Arg	-04/-03	1969 Oct  5
+			-3:00	Arg	-03/-02	1999 Oct  3
+			-4:00	Arg	-04/-03	2000 Mar  3
+			-3:00	-	-03	2004 Jun  1
+			-4:00	-	-04	2004 Jun 20
+			-3:00	Arg	-03/-02	2008 Oct 18
+			-3:00	-	-03
 #
 # Tierra del Fuego, Antártida e Islas del Atlántico Sur (TF)
 Zone America/Argentina/Ushuaia -4:33:12 - LMT	1894 Oct 31
 		#STDOFF	-4:16:48.25
 			-4:16:48 -	CMT	1920 May
-			-4:00	-	%z	1930 Dec
-			-4:00	Arg	%z	1969 Oct  5
-			-3:00	Arg	%z	1999 Oct  3
-			-4:00	Arg	%z	2000 Mar  3
-			-3:00	-	%z	2004 May 30
-			-4:00	-	%z	2004 Jun 20
-			-3:00	Arg	%z	2008 Oct 18
-			-3:00	-	%z
+			-4:00	-	-04	1930 Dec
+			-4:00	Arg	-04/-03	1969 Oct  5
+			-3:00	Arg	-03/-02	1999 Oct  3
+			-4:00	Arg	-04/-03	2000 Mar  3
+			-3:00	-	-03	2004 May 30
+			-4:00	-	-04	2004 Jun 20
+			-3:00	Arg	-03/-02	2008 Oct 18
+			-3:00	-	-03
 
 # Bolivia
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	America/La_Paz	-4:32:36 -	LMT	1890
 			-4:32:36 -	CMT	1931 Oct 15 # Calamarca MT
 			-4:32:36 1:00	BST	1932 Mar 21 # Bolivia ST
-			-4:00	-	%z
+			-4:00	-	-04
 
 # Brazil
 
@@ -17143,12 +17143,12 @@ Rule	Brazil	2018	only	-	Nov	Sun>=1	0:00	1:00	-
 #
 # Fernando de Noronha (administratively part of PE)
 Zone America/Noronha	-2:09:40 -	LMT	1914
-			-2:00	Brazil	%z	1990 Sep 17
-			-2:00	-	%z	1999 Sep 30
-			-2:00	Brazil	%z	2000 Oct 15
-			-2:00	-	%z	2001 Sep 13
-			-2:00	Brazil	%z	2002 Oct  1
-			-2:00	-	%z
+			-2:00	Brazil	-02/-01	1990 Sep 17
+			-2:00	-	-02	1999 Sep 30
+			-2:00	Brazil	-02/-01	2000 Oct 15
+			-2:00	-	-02	2001 Sep 13
+			-2:00	Brazil	-02/-01	2002 Oct  1
+			-2:00	-	-02
 # Other Atlantic islands have no permanent settlement.
 # These include Trindade and Martim Vaz (administratively part of ES),
 # Rocas Atoll (RN), and the St Peter and St Paul Archipelago (PE).
@@ -17161,119 +17161,119 @@ Zone America/Noronha	-2:09:40 -	LMT	1914
 # In the north a very small part from the river Javary (now Jari I guess,
 # the border with Amapá) to the Amazon, then to the Xingu.
 Zone America/Belem	-3:13:56 -	LMT	1914
-			-3:00	Brazil	%z	1988 Sep 12
-			-3:00	-	%z
+			-3:00	Brazil	-03/-02	1988 Sep 12
+			-3:00	-	-03
 #
 # west Pará (PA)
 # West Pará includes Altamira, Óbidos, Prainha, Oriximiná, and Santarém.
 Zone America/Santarem	-3:38:48 -	LMT	1914
-			-4:00	Brazil	%z	1988 Sep 12
-			-4:00	-	%z	2008 Jun 24  0:00
-			-3:00	-	%z
+			-4:00	Brazil	-04/-03	1988 Sep 12
+			-4:00	-	-04	2008 Jun 24  0:00
+			-3:00	-	-03
 #
 # Maranhão (MA), Piauí (PI), Ceará (CE), Rio Grande do Norte (RN),
 # Paraíba (PB)
 Zone America/Fortaleza	-2:34:00 -	LMT	1914
-			-3:00	Brazil	%z	1990 Sep 17
-			-3:00	-	%z	1999 Sep 30
-			-3:00	Brazil	%z	2000 Oct 22
-			-3:00	-	%z	2001 Sep 13
-			-3:00	Brazil	%z	2002 Oct  1
-			-3:00	-	%z
+			-3:00	Brazil	-03/-02	1990 Sep 17
+			-3:00	-	-03	1999 Sep 30
+			-3:00	Brazil	-03/-02	2000 Oct 22
+			-3:00	-	-03	2001 Sep 13
+			-3:00	Brazil	-03/-02	2002 Oct  1
+			-3:00	-	-03
 #
 # Pernambuco (PE) (except Atlantic islands)
 Zone America/Recife	-2:19:36 -	LMT	1914
-			-3:00	Brazil	%z	1990 Sep 17
-			-3:00	-	%z	1999 Sep 30
-			-3:00	Brazil	%z	2000 Oct 15
-			-3:00	-	%z	2001 Sep 13
-			-3:00	Brazil	%z	2002 Oct  1
-			-3:00	-	%z
+			-3:00	Brazil	-03/-02	1990 Sep 17
+			-3:00	-	-03	1999 Sep 30
+			-3:00	Brazil	-03/-02	2000 Oct 15
+			-3:00	-	-03	2001 Sep 13
+			-3:00	Brazil	-03/-02	2002 Oct  1
+			-3:00	-	-03
 #
 # Tocantins (TO)
 Zone America/Araguaina	-3:12:48 -	LMT	1914
-			-3:00	Brazil	%z	1990 Sep 17
-			-3:00	-	%z	1995 Sep 14
-			-3:00	Brazil	%z	2003 Sep 24
-			-3:00	-	%z	2012 Oct 21
-			-3:00	Brazil	%z	2013 Sep
-			-3:00	-	%z
+			-3:00	Brazil	-03/-02	1990 Sep 17
+			-3:00	-	-03	1995 Sep 14
+			-3:00	Brazil	-03/-02	2003 Sep 24
+			-3:00	-	-03	2012 Oct 21
+			-3:00	Brazil	-03/-02	2013 Sep
+			-3:00	-	-03
 #
 # Alagoas (AL), Sergipe (SE)
 Zone America/Maceio	-2:22:52 -	LMT	1914
-			-3:00	Brazil	%z	1990 Sep 17
-			-3:00	-	%z	1995 Oct 13
-			-3:00	Brazil	%z	1996 Sep  4
-			-3:00	-	%z	1999 Sep 30
-			-3:00	Brazil	%z	2000 Oct 22
-			-3:00	-	%z	2001 Sep 13
-			-3:00	Brazil	%z	2002 Oct  1
-			-3:00	-	%z
+			-3:00	Brazil	-03/-02	1990 Sep 17
+			-3:00	-	-03	1995 Oct 13
+			-3:00	Brazil	-03/-02	1996 Sep  4
+			-3:00	-	-03	1999 Sep 30
+			-3:00	Brazil	-03/-02	2000 Oct 22
+			-3:00	-	-03	2001 Sep 13
+			-3:00	Brazil	-03/-02	2002 Oct  1
+			-3:00	-	-03
 #
 # Bahia (BA)
 # There are too many Salvadors elsewhere, so use America/Bahia instead
 # of America/Salvador.
 Zone America/Bahia	-2:34:04 -	LMT	1914
-			-3:00	Brazil	%z	2003 Sep 24
-			-3:00	-	%z	2011 Oct 16
-			-3:00	Brazil	%z	2012 Oct 21
-			-3:00	-	%z
+			-3:00	Brazil	-03/-02	2003 Sep 24
+			-3:00	-	-03	2011 Oct 16
+			-3:00	Brazil	-03/-02	2012 Oct 21
+			-3:00	-	-03
 #
 # Goiás (GO), Distrito Federal (DF), Minas Gerais (MG),
 # Espírito Santo (ES), Rio de Janeiro (RJ), São Paulo (SP), Paraná (PR),
 # Santa Catarina (SC), Rio Grande do Sul (RS)
 Zone America/Sao_Paulo	-3:06:28 -	LMT	1914
-			-3:00	Brazil	%z	1963 Oct 23  0:00
-			-3:00	1:00	%z	1964
-			-3:00	Brazil	%z
+			-3:00	Brazil	-03/-02	1963 Oct 23  0:00
+			-3:00	1:00	-02	1964
+			-3:00	Brazil	-03/-02
 #
 # Mato Grosso do Sul (MS)
 Zone America/Campo_Grande -3:38:28 -	LMT	1914
-			-4:00	Brazil	%z
+			-4:00	Brazil	-04/-03
 #
 # Mato Grosso (MT)
 Zone America/Cuiaba	-3:44:20 -	LMT	1914
-			-4:00	Brazil	%z	2003 Sep 24
-			-4:00	-	%z	2004 Oct  1
-			-4:00	Brazil	%z
+			-4:00	Brazil	-04/-03	2003 Sep 24
+			-4:00	-	-04	2004 Oct  1
+			-4:00	Brazil	-04/-03
 #
 # Rondônia (RO)
 Zone America/Porto_Velho -4:15:36 -	LMT	1914
-			-4:00	Brazil	%z	1988 Sep 12
-			-4:00	-	%z
+			-4:00	Brazil	-04/-03	1988 Sep 12
+			-4:00	-	-04
 #
 # Roraima (RR)
 Zone America/Boa_Vista	-4:02:40 -	LMT	1914
-			-4:00	Brazil	%z	1988 Sep 12
-			-4:00	-	%z	1999 Sep 30
-			-4:00	Brazil	%z	2000 Oct 15
-			-4:00	-	%z
+			-4:00	Brazil	-04/-03	1988 Sep 12
+			-4:00	-	-04	1999 Sep 30
+			-4:00	Brazil	-04/-03	2000 Oct 15
+			-4:00	-	-04
 #
 # east Amazonas (AM): Boca do Acre, Jutaí, Manaus, Floriano Peixoto
 # The great circle line from Tabatinga to Porto Acre divides
 # east from west Amazonas.
 Zone America/Manaus	-4:00:04 -	LMT	1914
-			-4:00	Brazil	%z	1988 Sep 12
-			-4:00	-	%z	1993 Sep 28
-			-4:00	Brazil	%z	1994 Sep 22
-			-4:00	-	%z
+			-4:00	Brazil	-04/-03	1988 Sep 12
+			-4:00	-	-04	1993 Sep 28
+			-4:00	Brazil	-04/-03	1994 Sep 22
+			-4:00	-	-04
 #
 # west Amazonas (AM): Atalaia do Norte, Boca do Maoco, Benjamin Constant,
 #	Eirunepé, Envira, Ipixuna
 Zone America/Eirunepe	-4:39:28 -	LMT	1914
-			-5:00	Brazil	%z	1988 Sep 12
-			-5:00	-	%z	1993 Sep 28
-			-5:00	Brazil	%z	1994 Sep 22
-			-5:00	-	%z	2008 Jun 24  0:00
-			-4:00	-	%z	2013 Nov 10
-			-5:00	-	%z
+			-5:00	Brazil	-05/-04	1988 Sep 12
+			-5:00	-	-05	1993 Sep 28
+			-5:00	Brazil	-05/-04	1994 Sep 22
+			-5:00	-	-05	2008 Jun 24  0:00
+			-4:00	-	-04	2013 Nov 10
+			-5:00	-	-05
 #
 # Acre (AC)
 Zone America/Rio_Branco	-4:31:12 -	LMT	1914
-			-5:00	Brazil	%z	1988 Sep 12
-			-5:00	-	%z	2008 Jun 24  0:00
-			-4:00	-	%z	2013 Nov 10
-			-5:00	-	%z
+			-5:00	Brazil	-05/-04	1988 Sep 12
+			-5:00	-	-05	2008 Jun 24  0:00
+			-4:00	-	-04	2013 Nov 10
+			-5:00	-	-05
 
 # Chile
 
@@ -17581,50 +17581,50 @@ Rule	Chile	2023	max	-	Sep	Sun>=2	4:00u	1:00	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone America/Santiago	-4:42:45 -	LMT	1890
 			-4:42:45 -	SMT	1910 Jan 10 # Santiago Mean Time
-			-5:00	-	%z	1916 Jul  1
+			-5:00	-	-05	1916 Jul  1
 			-4:42:45 -	SMT	1918 Sep 10
-			-4:00	-	%z	1919 Jul  1
+			-4:00	-	-04	1919 Jul  1
 			-4:42:45 -	SMT	1927 Sep  1
-			-5:00	Chile	%z	1932 Sep  1
-			-4:00	-	%z	1942 Jun  1
-			-5:00	-	%z	1942 Aug  1
-			-4:00	-	%z	1946 Jul 14 24:00
-			-4:00	1:00	%z	1946 Aug 28 24:00 # central CL
-			-5:00	1:00	%z	1947 Mar 31 24:00
-			-5:00	-	%z	1947 May 21 23:00
-			-4:00	Chile	%z
+			-5:00	Chile	-05/-04	1932 Sep  1
+			-4:00	-	-04	1942 Jun  1
+			-5:00	-	-05	1942 Aug  1
+			-4:00	-	-04	1946 Jul 14 24:00
+			-4:00	1:00	-03	1946 Aug 28 24:00 # central CL
+			-5:00	1:00	-04	1947 Mar 31 24:00
+			-5:00	-	-05	1947 May 21 23:00
+			-4:00	Chile	-04/-03
 Zone America/Coyhaique	-4:48:16 -	LMT	1890
 			-4:42:45 -	SMT	1910 Jan 10
-			-5:00	-	%z	1916 Jul  1
+			-5:00	-	-05	1916 Jul  1
 			-4:42:45 -	SMT	1918 Sep 10
-			-4:00	-	%z	1919 Jul  1
+			-4:00	-	-04	1919 Jul  1
 			-4:42:45 -	SMT	1927 Sep  1
-			-5:00	Chile	%z	1932 Sep  1
-			-4:00	-	%z	1942 Jun  1
-			-5:00	-	%z	1942 Aug  1
-			-4:00	-	%z	1946 Aug 28 24:00
-			-5:00	1:00	%z	1947 Mar 31 24:00
-			-5:00	-	%z	1947 May 21 23:00
-			-4:00	Chile	%z	2025 Mar 20
-			-3:00	-	%z
+			-5:00	Chile	-05/-04	1932 Sep  1
+			-4:00	-	-04	1942 Jun  1
+			-5:00	-	-05	1942 Aug  1
+			-4:00	-	-04	1946 Aug 28 24:00
+			-5:00	1:00	-04	1947 Mar 31 24:00
+			-5:00	-	-05	1947 May 21 23:00
+			-4:00	Chile	-04/-03	2025 Mar 20
+			-3:00	-	-03
 Zone America/Punta_Arenas -4:43:40 -	LMT	1890
 			-4:42:45 -	SMT	1910 Jan 10
-			-5:00	-	%z	1916 Jul  1
+			-5:00	-	-05	1916 Jul  1
 			-4:42:45 -	SMT	1918 Sep 10
-			-4:00	-	%z	1919 Jul  1
+			-4:00	-	-04	1919 Jul  1
 			-4:42:45 -	SMT	1927 Sep  1
-			-5:00	Chile	%z	1932 Sep  1
-			-4:00	-	%z	1942 Jun  1
-			-5:00	-	%z	1942 Aug  1
-			-4:00	-	%z	1946 Aug 28 24:00
-			-5:00	1:00	%z	1947 Mar 31 24:00
-			-5:00	-	%z	1947 May 21 23:00
-			-4:00	Chile	%z	2016 Dec  4
-			-3:00	-	%z
+			-5:00	Chile	-05/-04	1932 Sep  1
+			-4:00	-	-04	1942 Jun  1
+			-5:00	-	-05	1942 Aug  1
+			-4:00	-	-04	1946 Aug 28 24:00
+			-5:00	1:00	-04	1947 Mar 31 24:00
+			-5:00	-	-05	1947 May 21 23:00
+			-4:00	Chile	-04/-03	2016 Dec  4
+			-3:00	-	-03
 Zone Pacific/Easter	-7:17:28 -	LMT	1890
 			-7:17:28 -	EMT	1932 Sep    # Easter Mean Time
-			-7:00	Chile	%z	1982 Mar 14 3:00u # Easter Time
-			-6:00	Chile	%z
+			-7:00	Chile	-07/-06	1982 Mar 14 3:00u # Easter Time
+			-6:00	Chile	-06/-05
 #
 # Salas y Gómez Island is uninhabited.
 # Other Chilean locations, including Juan Fernández Is, Desventuradas Is,
@@ -17644,10 +17644,10 @@ Zone Pacific/Easter	-7:17:28 -	LMT	1890
 #
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Antarctica/Palmer	0	-	-00	1965
-			-4:00	Arg	%z	1969 Oct  5
-			-3:00	Arg	%z	1982 May
-			-4:00	Chile	%z	2016 Dec  4
-			-3:00	-	%z
+			-4:00	Arg	-04/-03	1969 Oct  5
+			-3:00	Arg	-03/-02	1982 May
+			-4:00	Chile	-04/-03	2016 Dec  4
+			-3:00	-	-03
 
 # Colombia
 
@@ -17666,7 +17666,7 @@ Rule	CO	1993	only	-	Feb	 6	24:00	0	-
 		#STDOFF	-4:56:16.4
 Zone	America/Bogota	-4:56:16 -	LMT	1884 Mar 13
 			-4:56:16 -	BMT	1914 Nov 23 # Bogotá Mean Time
-			-5:00	CO	%z
+			-5:00	CO	-05/-04
 # Malpelo, Providencia, San Andres
 # no information; probably like America/Bogota
 
@@ -17697,10 +17697,10 @@ Rule	Ecuador	1993	only	-	Feb	 5	0:00	0	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone America/Guayaquil	-5:19:20 -	LMT	1890
 			-5:14:00 -	QMT	1931 # Quito Mean Time
-			-5:00	Ecuador	%z
+			-5:00	Ecuador	-05/-04
 Zone Pacific/Galapagos	-5:58:24 -	LMT	1931 # Puerto Baquerizo Moreno
-			-5:00	-	%z	1986
-			-6:00	Ecuador	%z
+			-5:00	-	-05	1986
+			-6:00	Ecuador	-06/-05
 
 # Falklands
 
@@ -17800,10 +17800,10 @@ Rule	Falk	2001	2010	-	Sep	Sun>=1	2:00	1:00	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Atlantic/Stanley	-3:51:24 -	LMT	1890
 			-3:51:24 -	SMT	1912 Mar 12 # Stanley Mean Time
-			-4:00	Falk	%z	1983 May
-			-3:00	Falk	%z	1985 Sep 15
-			-4:00	Falk	%z	2010 Sep  5  2:00
-			-3:00	-	%z
+			-4:00	Falk	-04/-03	1983 May
+			-3:00	Falk	-03/-02	1985 Sep 15
+			-4:00	Falk	-04/-03	2010 Sep  5  2:00
+			-3:00	-	-03
 
 # French Guiana
 # For the 1911/1912 establishment of standard time in French possessions, see:
@@ -17811,8 +17811,8 @@ Zone Atlantic/Stanley	-3:51:24 -	LMT	1890
 # page 752, 18b.
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone America/Cayenne	-3:29:20 -	LMT	1911 Jul  1
-			-4:00	-	%z	1967 Oct
-			-3:00	-	%z
+			-4:00	-	-04	1967 Oct
+			-3:00	-	-03
 
 # Guyana
 
@@ -17846,10 +17846,10 @@ Zone America/Cayenne	-3:29:20 -	LMT	1911 Jul  1
 
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	America/Guyana	-3:52:39 -	LMT	1911 Aug  1 # Georgetown
-			-4:00	-	%z	1915 Mar  1
-			-3:45	-	%z	1975 Aug  1
-			-3:00	-	%z	1992 Mar 29  1:00
-			-4:00	-	%z
+			-4:00	-	-04	1915 Mar  1
+			-3:45	-	-0345	1975 Aug  1
+			-3:00	-	-03	1992 Mar 29  1:00
+			-4:00	-	-04
 
 # Paraguay
 #
@@ -17967,10 +17967,10 @@ Rule	Para	2013	2024	-	Mar	Sun>=22	0:00	0	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone America/Asuncion	-3:50:40 -	LMT	1890
 			-3:50:40 -	AMT	1931 Oct 10 # Asunción Mean Time
-			-4:00	-	%z	1972 Oct
-			-3:00	-	%z	1974 Apr
-			-4:00	Para	%z	2024 Oct 15
-			-3:00	-	%z
+			-4:00	-	-04	1972 Oct
+			-3:00	-	-03	1974 Apr
+			-4:00	Para	-04/-03	2024 Oct 15
+			-3:00	-	-03
 
 # Peru
 #
@@ -17997,12 +17997,12 @@ Rule	Peru	1994	only	-	Apr	 1	0:00	0	-
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	America/Lima	-5:08:12 -	LMT	1890
 			-5:08:36 -	LMT	1908 Jul 28 # Lima Mean Time?
-			-5:00	Peru	%z
+			-5:00	Peru	-05/-04
 
 # South Georgia
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone Atlantic/South_Georgia -2:26:08 -	LMT	1890 # Grytviken
-			-2:00	-	%z
+			-2:00	-	-02
 
 # South Sandwich Is
 # uninhabited; scientific personnel have wintered
@@ -18012,8 +18012,8 @@ Zone Atlantic/South_Georgia -2:26:08 -	LMT	1890 # Grytviken
 Zone America/Paramaribo	-3:40:40 -	LMT	1911
 			-3:40:52 -	PMT	1935     # Paramaribo Mean Time
 			-3:40:36 -	PMT	1945 Oct    # The capital moved?
-			-3:30	-	%z	1984 Oct
-			-3:00	-	%z
+			-3:30	-	-0330	1984 Oct
+			-3:00	-	-03
 
 # Uruguay
 # From Paul Eggert (1993-11-18):
@@ -18228,15 +18228,15 @@ Rule	Uruguay	2006	2014	-	Oct	Sun>=1	 2:00	1:00	-
 # This Zone can be simplified once we assume zic %z.
 Zone America/Montevideo	-3:44:51 -	LMT	1908 Jun 10
 			-3:44:51 -	MMT	1920 May  1 # Montevideo MT
-			-4:00	-	%z	1923 Oct  1
-			-3:30	Uruguay	%z	1942 Dec 14
-			-3:00	Uruguay	%z	1960
-			-3:00	Uruguay	%z	1968
-			-3:00	Uruguay	%z	1970
-			-3:00	Uruguay	%z	1974
-			-3:00	Uruguay	%z	1974 Mar 10
-			-3:00	Uruguay	%z	1974 Dec 22
-			-3:00	Uruguay	%z
+			-4:00	-	-04	1923 Oct  1
+			-3:30	Uruguay	-0330/-03	1942 Dec 14
+			-3:00	Uruguay	-03/-0230	1960
+			-3:00	Uruguay	-03/-02	1968
+			-3:00	Uruguay	-03/-0230	1970
+			-3:00	Uruguay	-03/-02	1974
+			-3:00	Uruguay	-03/-0130	1974 Mar 10
+			-3:00	Uruguay	-03/-0230	1974 Dec 22
+			-3:00	Uruguay	-03/-02
 
 # Venezuela
 #
@@ -18270,10 +18270,10 @@ Zone America/Montevideo	-3:44:51 -	LMT	1908 Jun 10
 # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
 Zone	America/Caracas	-4:27:44 -	LMT	1890
 			-4:27:40 -	CMT	1912 Feb 12 # Caracas Mean Time?
-			-4:30	-	%z	1965 Jan  1  0:00
-			-4:00	-	%z	2007 Dec  9  3:00
-			-4:30	-	%z	2016 May  1  2:30
-			-4:00	-	%z
+			-4:30	-	-0430	1965 Jan  1  0:00
+			-4:00	-	-04	2007 Dec  9  3:00
+			-4:30	-	-0430	2016 May  1  2:30
+			-4:00	-	-04
 # Links and zones for backward compatibility
 
 # This file is in the public domain, so clarified as of

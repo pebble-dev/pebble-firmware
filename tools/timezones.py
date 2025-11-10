@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # SPDX-FileCopyrightText: 2024 Google LLC
 # SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2025 Joshua Wise
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 
 from __future__ import print_function
@@ -256,7 +258,7 @@ def build_zoneinfo_list(tzfile):
                              r"(?P<dst_name>[-A-Za-z]+)\s+"
                              # The short name of the timezone, like E%sT (EST or EDT), %z or VET
                              # Or a GMT offset like +06
-                             r"(?P<tz_abbr>([A-Z%sz\/]+)|\+\d+)"
+                             r"(?P<tz_abbr>([A-Z%sz\/]+)|([+-]\d+(/[+-]\d+)?))"
                              # Trailing spaces and comments, no year or dates allowed
                              r"(\s+\#.*)?$",
                              line, re.VERBOSE)
@@ -277,6 +279,13 @@ def build_zoneinfo_list(tzfile):
                     tz_abbr = match.group("tz_abbr").replace('%s', '*')
                     if tz_abbr.startswith('GMT/') or tz_abbr.startswith('IST/'):
                         tz_abbr = tz_abbr[4:]
+
+                    # homogenize "-05/-04" to "-05"
+                    if (tz_abbr[0] in "+-") and ("/" in tz_abbr):
+                        tz_abbr = tz_abbr.split("/")[0]
+                    # homogenize "+03" or "-03" to "+0300" or "-0300"
+                    if (tz_abbr[0] in "+-") and (len(tz_abbr) == 3):
+                        tz_abbr += "00"
 
                 zoneinfo_list.append(continent + " " + region + " " + match.group("offset") +
                                      " " + tz_abbr + " " + match.group("dst_name"))

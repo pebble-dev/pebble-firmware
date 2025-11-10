@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # SPDX-FileCopyrightText: 2024 Google LLC
 # SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2025 Joshua Wise
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 
 import os
@@ -25,7 +27,11 @@ sh.tar("-xvzf", "tzdata-latest.tar.gz")
 tz_file = os.path.join(TZDATA_DIR, "timezones_olson.txt")
 
 # backward goes last so we can just always do backreferences for links
-sh.cat(
+sh.awk(
+    "-v", "DATAFORM=rearguard",
+    "-v", "PACKRATDATA=",
+    "-v", "PACKRATLIST=",
+    "-f", "ziguard.awk",
     "africa",
     "antarctica",
     "asia",
