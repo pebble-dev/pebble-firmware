@@ -1,7 +1,7 @@
 # QEMU
 
 ```{important}
-QEMU is only available for STM32 targets
+QEMU is only available for STM32 targets such as the snowy_bb2
 ```
 
 ## Getting QEMU
@@ -11,29 +11,7 @@ Below you can also find a detailed guide on how to build it from source if you n
 
 ### Building from source
 
-1. Install OS-level pre-requisites:
-
-:::::{tab-set}
-:sync-group: os
-
-::::{tab-item} Ubuntu 24.04 LTS
-:sync: ubuntu
-
-```shell
-sudo apt install autoconf libglib2.0-dev libpixman-1-dev
-```
-
-::::
-
-::::{tab-item} macOS
-:sync: macos
-
-```shell
-brew install autoconf glib pixman
-```
-
-::::
-:::::
+1. Ensure all pre-requirements are installed from "Getting Started"
 
 2. Install `pyenv` following [this guide](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation) (steps A-D).
 3. Install Python 2.7:

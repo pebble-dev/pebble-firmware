@@ -8,6 +8,8 @@ Follow this guide to:
 
 ## Pre-requisites
 
+### arm-none-eabi Toolchain
+
 First download the Arm GNU toolchain `arm-none-eabi` 14.2.Rel1 from [here](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads).
 Make sure to make it available on your path `PATH` and then check GCC version is reported correctly:
 
@@ -18,6 +20,8 @@ Copyright (C) 2024 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
+
+### Build Dependencies
 
 A series of system-level dependencies are required.
 Follow the next steps to install them.
@@ -37,7 +41,18 @@ sudo apt update
 2. Install required dependencies
 
 ```shell
-sudo apt install clang gcc gcc-multilib git gettext python3-dev python3-venv
+sudo apt install clang gcc gcc-multilib git gettext python3-dev python3-venv autoconf libglib2.0-dev libpixman-1-dev
+```
+
+::::
+
+::::{tab-item} Arch Linux
+:sync: arch
+
+1. Install required dependencies
+
+```shell
+sudo pacman -Sy autotools clang gcc gcc-multilib git gettext python3 autoconf pixman
 ```
 
 ::::
@@ -51,6 +66,12 @@ sudo apt install clang gcc gcc-multilib git gettext python3-dev python3-venv
 
 ```shell
 brew link python@3
+```
+
+3. Install required dependencies
+
+```shell
+brew install autoconf glib pixman
 ```
 
 ::::
@@ -69,6 +90,16 @@ If building with Javascript support enabled (default), install Emscripten:
    Pick version `4.0.7` instead of `latest` when running `./emsdk install` or `./emsdk activate`.
    To conveniently access Emscripten SDK tools, the activate command will offer some suggestions.
    It is recommended to follow them.
+::::
+
+::::{tab-item} Arch Linux
+:sync: arch
+
+1. Install enscripten
+
+```shell
+sudo pacman -Sy emscripten
+```
 ::::
 
 ::::{tab-item} macOS
