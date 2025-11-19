@@ -74,7 +74,7 @@ Signed-off-by: Your Name <your.email@example.com>
 
 For your commits, replace:
 
-- `Your Name` with your legal name (pseudonyms, hacker handles, and the
+- `Your Name` with your real name (pseudonyms, hacker handles, and the
   names of groups are not allowed)
 
 - `your.email@example.com` with the same email address you are using to
