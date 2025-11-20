@@ -893,7 +893,7 @@
 
 /* Overridden by targets/cc2564x (defined by @apache-mynewt-nimble/nimble/host) */
 #ifndef MYNEWT_VAL_BLE_SM_IO_CAP
-#define MYNEWT_VAL_BLE_SM_IO_CAP (BLE_HS_IO_DISPLAY_YESNO)
+#define MYNEWT_VAL_BLE_SM_IO_CAP (BLE_HS_IO_NO_INPUT_OUTPUT)
 #endif
 
 #ifndef MYNEWT_VAL_BLE_SM_KEYPRESS

@@ -21,5 +21,5 @@ syscfg.vals:
     BLE_TRANSPORT_ACL_FROM_LL_COUNT: 20
 
     # CC2564B does not support LE-SC or MITM (and enabling them wedges a phone until you reboot!).
-    BLE_SM_IO_CAP: 'BLE_HS_IO_DISPLAY_YESNO'
+    BLE_SM_IO_CAP: 'BLE_HS_IO_NO_INPUT_OUTPUT'
     BLE_SM_LEGACY: 1
