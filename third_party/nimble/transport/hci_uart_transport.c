@@ -40,7 +40,7 @@ struct uart_tx {
 
 static TaskHandle_t s_rx_task_handle;
 static CircularBuffer s_rx_buffer;
-static uint8_t s_rx_storage[1024];
+static uint8_t s_rx_storage[256];
 static SemaphoreHandle_t s_rx_data_ready;
 static SemaphoreHandle_t s_cmd_done;
 
