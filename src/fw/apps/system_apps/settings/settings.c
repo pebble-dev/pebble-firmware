@@ -25,6 +25,7 @@
 #include "resource/resource_ids.auto.h"
 #include "services/common/i18n/i18n.h"
 #include "system/passert.h"
+#include "shell/prefs.h"
 
 #define SETTINGS_CATEGORY_MENU_CELL_UNFOCUSED_ROUND_VERTICAL_PADDING 14
 
@@ -98,11 +99,17 @@ static void prv_window_load(Window *window) {
                                PBL_IF_COLOR_ELSE(GColorBlack, GColorWhite),
                                PBL_IF_COLOR_ELSE(GColorWhite, GColorBlack));
   menu_layer_set_highlight_colors(menu_layer,
-                                  PBL_IF_COLOR_ELSE(SETTINGS_MENU_HIGHLIGHT_COLOR, GColorBlack),
+                                  PBL_IF_COLOR_ELSE(shell_prefs_get_settings_menu_highlight_color(), GColorBlack),
                                   GColorWhite);
   menu_layer_set_click_config_onto_window(menu_layer, &data->window);
 
   layer_add_child(&data->window.layer, menu_layer_get_layer(menu_layer));
+}
+
+static void prv_window_appear(Window *window) {
+  SettingsAppData *data = window_get_user_data(window);
+  menu_layer_set_highlight_colors(&data->menu_layer, shell_prefs_get_settings_menu_highlight_color(), GColorWhite);
+  menu_layer_reload_data(&data->menu_layer);
 }
 
 static void prv_window_unload(Window *window) {
@@ -120,6 +127,7 @@ static void handle_init(void) {
   window_set_window_handlers(window, &(WindowHandlers){
     .load = prv_window_load,
     .unload = prv_window_unload,
+    .appear = prv_window_appear,
   });
   window_set_background_color(window, GColorBlack);
   app_window_stack_push(window, true);

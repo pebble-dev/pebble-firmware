@@ -37,6 +37,7 @@
 #include "system/passert.h"
 #include "util/size.h"
 #include "util/uuid.h"
+#include "applib/graphics/gtypes.h"
 
 #if CAPABILITY_HAS_HEALTH_TRACKING
 #include "services/normal/activity/activity.h"
@@ -103,7 +104,12 @@ typedef struct QuickLaunchPreference {
 #define PREF_KEY_QUICK_LAUNCH_DOWN "qlDown"
 #define PREF_KEY_QUICK_LAUNCH_SELECT "qlSelect"
 #define PREF_KEY_QUICK_LAUNCH_BACK "qlBack"
+#define PREF_KEY_SETTINGS_MENU_HIGHLIGHT_COLOR "settingsMenuHighlightColor"
+#define PREF_KEY_APPS_MENU_HIGHLIGHT_COLOR "appsMenuHighlightColor"
 
+
+static GColor s_settings_menu_highlight_color = GColorCobaltBlue;
+static GColor s_apps_menu_highlight_color = GColorVividCerulean;
 static QuickLaunchPreference s_quick_launch_up = {
   .enabled = true,
   .uuid = UUID_INVALID_INIT,
@@ -309,6 +315,26 @@ static bool prv_set_s_welcome_version(uint8_t *version) {
   return true;
 }
 
+
+static bool prv_set_s_settings_menu_highlight_color(GColor *color) {
+#if PBL_COLOR
+  s_settings_menu_highlight_color = *color;
+#else
+  s_settings_menu_highlight_color = GColorBlack;
+#endif
+return true;
+}
+
+static bool prv_set_s_apps_menu_highlight_color(GColor *color) {
+#if PBL_COLOR
+  s_apps_menu_highlight_color = *color;
+#else
+  s_apps_menu_highlight_color = GColorBlack;
+#endif
+return true;
+}
+
+
 #if CAPABILITY_HAS_HEALTH_TRACKING
 static bool prv_set_s_activity_preferences(ActivitySettings *new_settings) {
   bool invalid_data = false;
@@ -459,8 +485,6 @@ static const PrefsTableEntry s_prefs_table[] = {
 #include "prefs_values.h.inc"
 };
 #undef PREFS_MACRO
-
-
 
 // ------------------------------------------------------------------------------------
 // FIXME PBL-22272. We back convert this value in
@@ -668,6 +692,7 @@ void prefs_private_handle_blob_db_event(PebbleBlobDBEvent *event) {
     }
   }
 }
+
 
 // ========================================================================================
 // Exported functions used by the firmware to read/change a preference.
@@ -1176,3 +1201,27 @@ uint16_t timeline_peek_prefs_get_before_time(void) {
   return TIMELINE_PEEK_DEFAULT_SHOW_BEFORE_TIME_S;
 }
 #endif
+
+GColor shell_prefs_get_settings_menu_highlight_color(void){
+  #if !PBL_COLOR
+    return GColorBlack;
+  #endif
+  return s_settings_menu_highlight_color;
+}
+
+void shell_prefs_set_settings_menu_highlight_color(GColor color) {
+  prv_pref_set(PREF_KEY_SETTINGS_MENU_HIGHLIGHT_COLOR, &color, sizeof(GColor));
+}
+
+
+
+GColor shell_prefs_get_apps_menu_highlight_color(void){
+  #if !PBL_COLOR
+    return GColorBlack;
+  #endif
+  return s_apps_menu_highlight_color;
+}
+
+void shell_prefs_set_apps_menu_highlight_color(GColor color) {
+  prv_pref_set(PREF_KEY_APPS_MENU_HIGHLIGHT_COLOR, &color, sizeof(GColor));
+}

@@ -115,3 +115,9 @@ void timeline_peek_prefs_set_enabled(bool enabled);
 bool timeline_peek_prefs_get_enabled(void);
 void timeline_peek_prefs_set_before_time(uint16_t before_time_m);
 uint16_t timeline_peek_prefs_get_before_time(void);
+
+GColor shell_prefs_get_settings_menu_highlight_color(void);
+void shell_prefs_set_settings_menu_highlight_color(GColor color);
+
+GColor shell_prefs_get_apps_menu_highlight_color(void);
+void shell_prefs_set_apps_menu_highlight_color(GColor color); 
