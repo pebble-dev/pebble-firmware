@@ -38,3 +38,6 @@
   PREFS_MACRO(PREF_KEY_TIMELINE_PEEK_ENABLED, s_timeline_peek_enabled)
   PREFS_MACRO(PREF_KEY_TIMELINE_PEEK_BEFORE_TIME_M, s_timeline_peek_before_time_m)
 #endif
+
+  PREFS_MACRO(PREF_KEY_SETTINGS_MENU_HIGHLIGHT_COLOR, s_settings_menu_highlight_color)
+  PREFS_MACRO(PREF_KEY_APPS_MENU_HIGHLIGHT_COLOR, s_apps_menu_highlight_color)

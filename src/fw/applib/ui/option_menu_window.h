@@ -33,9 +33,19 @@ typedef void (*OptionMenuDrawRowCallback)(OptionMenu *option_menu, GContext *ctx
 typedef void (*OptionMenuUnloadCallback)(OptionMenu *option_menu, void *context);
 typedef uint16_t (*OptionMenuGetCellHeightCallback)(OptionMenu *option_menu, uint16_t row,
                                                     bool selected, void *context);
+typedef uint16_t (*OptionMenuSelectionChangedCallback)(OptionMenu *option_menu, uint16_t row,
+                                                    bool selected, void *context);
+
+typedef void (*OptionMenuSelectionWillChangeCallback)(OptionMenu *option_menu,
+                                                     uint16_t new_row,
+                                                     uint16_t old_row,
+                                                     void *context);
+
+
 
 typedef struct OptionMenuCallbacks {
   OptionMenuSelectCallback select;
+  OptionMenuSelectionWillChangeCallback selection_will_change;
   OptionMenuGetNumRowsCallback get_num_rows;
   OptionMenuDrawRowCallback draw_row;
   OptionMenuUnloadCallback unload;

@@ -28,6 +28,7 @@
 #include "system/passert.h"
 #include "util/attributes.h"
 #include "util/struct.h"
+#include "shell/prefs.h"
 
 #define LAUNCHER_MENU_LAYER_CONTENT_INDICATOR_LAYER_HEIGHT (32)
 #define LAUNCHER_MENU_LAYER_GENERIC_APP_ICON (RESOURCE_ID_MENU_LAYER_GENERIC_WATCHAPP_ICON)
@@ -204,7 +205,7 @@ void launcher_menu_layer_init(LauncherMenuLayer *launcher_menu_layer,
   MenuLayer *menu_layer = &launcher_menu_layer->menu_layer;
   menu_layer_init(menu_layer, &menu_layer_frame);
   menu_layer_set_highlight_colors(menu_layer,
-                                  LAUNCHER_MENU_LAYER_SELECTION_BACKGROUND_COLOR,
+                                  shell_prefs_get_apps_menu_highlight_color(),
                                   PBL_IF_COLOR_ELSE(GColorBlack, GColorWhite));
   menu_layer_pad_bottom_enable(menu_layer, false);
   menu_layer_set_callbacks(menu_layer, launcher_menu_layer, &(MenuLayerCallbacks) {
