@@ -1,174 +1,164 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: pebbleos\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-09 09:17+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2025-11-16 00:52\n"
+"Last-Translator: \n"
+"Language-Team: Japanese\n"
+"Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: pebbleos\n"
+"X-Crowdin-Project-ID: 789734\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: /resources/normal/base/lang/tintin.pot\n"
+"X-Crowdin-File-ID: 302\n"
 
 #: ../src/fw/process_management/app_manager.c:494
 #, c-format
 msgid "%.*s is not responding"
-msgstr ""
+msgstr "%.*s は応答していません"
 
 #: ../src/fw/process_management/process_manager.c:222
 msgid "This app requires a newer version of the Pebble firmware."
-msgstr ""
+msgstr "このアプリは、Pebbleの新しいファームウェアが必要です。"
 
 #: ../src/fw/popups/alarm_popup.c:60
 #, c-format
 msgid "Snooze for %d minutes"
-msgstr ""
+msgstr "%d 分間スヌーズする"
 
 #: ../src/fw/popups/alarm_popup.c:77
 msgid "Alarm dismissed"
-msgstr ""
+msgstr "アラームを解除しました"
 
 #: ../src/fw/popups/bluetooth_pairing_ui.c:244
 msgid "Pair?"
-msgstr ""
+msgstr "ペアリング？"
 
 #: ../src/fw/popups/crashed_ui.c:106
 #, c-format
-msgid ""
-"%s%.*s is not responding.\n"
-"\n"
+msgid "%s%.*s is not responding.\n\n"
 "Open app?"
-msgstr ""
+msgstr "%s%.*sの反応がありません。\n"
+"アプリを開きますか？"
 
 #: ../src/fw/popups/crashed_ui.c:169
-msgid ""
-"Your Pebble just reset. Please report this using the 'Support' link in the "
-"Pebble phone app."
-msgstr ""
+msgid "Your Pebble just reset. Please report this using the 'Support' link in the Pebble phone app."
+msgstr "あなたのPebbleはリセットされました。Pebbleアプリを開いて、「サポート」リンクから問題を報告して下さい。"
 
 #: ../src/fw/popups/crashed_ui.c:172
-msgid ""
-"Bluetooth on your phone is in a high power state. Please report this using "
-"'Support' and reboot your phone."
-msgstr ""
+msgid "Bluetooth on your phone is in a high power state. Please report this using 'Support' and reboot your phone."
+msgstr "あなたのスマートフォンのBluetoothの消費電力が大きすぎます。「サポート」から問題を報告して、スマートフォンを再起動して下さい。"
 
 #: ../src/fw/popups/health_tracking_ui.c:102
-msgid ""
-"This app requires Pebble Health to work. Enable Health in the Pebble mobile "
-"app to continue."
-msgstr ""
+msgid "This app requires Pebble Health to work. Enable Health in the Pebble mobile app to continue."
+msgstr "このアプリはPebble Healthの動作が必要です。PebbleアプリからPebble Healthを有効化してから続けて下さい。"
 
 #: ../src/fw/popups/health_tracking_ui.c:112
-msgid ""
-"This feature requires Pebble Health to work. Enable Health in the Pebble "
-"mobile app to continue."
-msgstr ""
+msgid "This feature requires Pebble Health to work. Enable Health in the Pebble mobile app to continue."
+msgstr "この機能はPebble Healthの動作が必要です。PebbleアプリからPebble Healthを有効化してから続けて下さい。"
 
 #: ../src/fw/popups/notifications/notification_window.c:692
 msgid "Snoozed"
-msgstr ""
+msgstr "スヌーズ中"
 
 #: ../src/fw/popups/notifications/notification_window.c:726
 msgid "Muted"
-msgstr ""
+msgstr "ミュート中"
 
 #: ../src/fw/popups/notifications/notification_window.c:853
 msgid "Snooze"
-msgstr ""
+msgstr "スヌーズ"
 
 #: ../src/fw/popups/notifications/notification_window.c:872
 #, c-format
 msgid "Mute %s"
-msgstr ""
+msgstr "%s をミュート"
 
 #: ../src/fw/popups/notifications/notification_window.c:895
 msgid "Mute Always"
-msgstr ""
+msgstr "常にミュート"
 
 #: ../src/fw/popups/notifications/notification_window.c:900
 msgid "Mute Weekends"
-msgstr ""
+msgstr "週末だけミュート"
 
 #: ../src/fw/popups/notifications/notification_window.c:905
 msgid "Mute Weekdays"
-msgstr ""
+msgstr "平日だけミュート"
 
 #: ../src/fw/popups/notifications/notification_window.c:915
 msgid "Dismiss All"
-msgstr ""
+msgstr "全部無視する"
 
 #: ../src/fw/popups/notifications/notification_window.c:922
 msgid "End Quiet Time"
-msgstr ""
+msgstr "Quiet Timeをおわります"
 
 #: ../src/fw/popups/notifications/notification_window.c:923
 msgid "Start Quiet Time"
-msgstr ""
+msgstr "Quiet Timeをはじめます"
 
 #: ../src/fw/popups/phone_ui.c:579
 msgid "Call Accepted"
-msgstr ""
+msgstr "通話を開始しました"
 
 #: ../src/fw/popups/phone_ui.c:582
 msgid "Disconnected"
-msgstr ""
+msgstr "切断されました"
 
 #: ../src/fw/popups/phone_ui.c:586
 msgid "Call Ended"
-msgstr ""
+msgstr "通話終了"
 
 #: ../src/fw/popups/phone_ui.c:589
 msgid "Call Declined"
-msgstr ""
+msgstr "通話拒否"
 
 #: ../src/fw/popups/switch_worker_ui.c:110
 #, c-format
 msgid "Run %s instead of %s as the background app?"
-msgstr ""
+msgstr "バックグラウンドアプリとして %s の代わりに %s を実行しますか？"
 
 #: ../src/fw/popups/wakeup_ui.c:68
 msgid "While your Pebble was off wakeup events occurred for:\n"
-msgstr ""
+msgstr "Pebbleがオフ中に、以下のウェイクアップイベントが発生しました：\n"
 
 #: ../src/fw/shell/normal/battery_ui.c:64
 #: ../src/fw/shell/normal/shutdown_charging.c:102
 msgid "Fully Charged"
-msgstr ""
+msgstr "充電完了"
 
 #: ../src/fw/shell/normal/battery_ui.c:70
 #: ../src/fw/shell/normal/shutdown_charging.c:107
 msgid "Charging"
-msgstr ""
+msgstr "充電中"
 
 #: ../src/fw/shell/normal/battery_ui.c:85
 #, c-format
 msgid "Powered 'til %s"
-msgstr ""
+msgstr "%s まで稼働"
 
 #: ../src/fw/shell/normal/display_calibration_prompt.c:61
 msgid "Your screen may need calibration. Calibrate it now?"
-msgstr ""
+msgstr "画面のキャリブレーションが必要な場合があります。今すぐキャリブレーションしますか？"
 
 #. / Welcome title text welcoming a 3.x user to 4.x
 #: ../src/fw/shell/normal/welcome.c:35
 msgid "Pebble Updated!"
-msgstr ""
+msgstr "Pebble が更新されました！"
 
 #: ../src/fw/shell/normal/welcome.c:38
-msgid ""
-"For activity and sleep tracking, press up from your watch face.\n"
-"\n"
-"Press down for current and future events.\n"
-"\n"
+msgid "For activity and sleep tracking, press up from your watch face.\n\n"
+"Press down for current and future events.\n\n"
 "Read more at blog.pebble.com"
-msgstr ""
+msgstr "活動や睡眠のトラッキングを見るには、ウォッチフェイス画面でUpボタンを押して下さい。\n\n"
+"Downボタンでは、現在やちょっと先のイベントが確認できます。\n\n"
+"詳細はblog.pebble.comまで"
 
 #: ../src/fw/shell/normal/welcome.c:47
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:41
@@ -178,89 +168,89 @@ msgstr ""
 #: ../src/fw/services/normal/activity/activity_insights.c:1434
 #: ../src/fw/services/normal/notifications/ancs/ancs_item.c:161
 msgid "Dismiss"
-msgstr ""
+msgstr "無視する"
 
 #: ../src/fw/apps/core_apps/progress_ui_app.c:80
 msgid "Update Complete"
-msgstr ""
+msgstr "更新が完了しました"
 
 #: ../src/fw/apps/core_apps/progress_ui_app.c:80
 msgid "Update Failed"
-msgstr ""
+msgstr "更新に失敗しました"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:62
 #, c-format
 msgid "Snooze delay set to %d minutes"
-msgstr ""
+msgstr "%d分後にスヌーズをセットします"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:191
 msgid "Delete"
-msgstr ""
+msgstr "削除"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:196
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_app_menu.c:71
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:194
 msgid "Disable"
-msgstr ""
+msgstr "無効"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:196
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:196
 msgid "Enable"
-msgstr ""
+msgstr "有効にする"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:201
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:465
 msgid "Change Time"
-msgstr ""
+msgstr "時刻を変更"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:206
 msgid "Change Days"
-msgstr ""
+msgstr "日付を変更"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:212
 msgid "Convert to Basic Alarm"
-msgstr ""
+msgstr "ベーシックアラームに変換"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:213
 msgid "Convert to Smart Alarm"
-msgstr ""
+msgstr "スマートアラームに変更する"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:219
 msgid "Snooze Delay"
-msgstr ""
+msgstr "スヌーズ時間"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:230
 msgid "5 minutes"
-msgstr ""
+msgstr "5 分間"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:231
 msgid "10 minutes"
-msgstr ""
+msgstr "10 分間"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:232
 msgid "15 minutes"
-msgstr ""
+msgstr "15 分間"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:233
 msgid "30 minutes"
-msgstr ""
+msgstr "30 分間"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:234
 msgid "1 hour"
-msgstr ""
+msgstr "1 時間"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:316
 msgid "Check something first."
-msgstr ""
+msgstr "先に確認をします。"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:466
 msgid "New Smart Alarm"
-msgstr ""
+msgstr "新しいスマートアラーム"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:466
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:561
 msgid "New Alarm"
-msgstr ""
+msgstr "新しいアラーム"
 
 #. / Displays as "Wake up between" then "8:00 AM - 8:30 AM" below on a separate line
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:468
@@ -300,9 +290,7 @@ msgid "OFF"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:368
-msgid ""
-"Let us wake you in your lightest sleep so you're fully refreshed! Smart "
-"Alarm wakes you up to 30min before your alarm."
+msgid "Let us wake you in your lightest sleep so you're fully refreshed! Smart Alarm wakes you up to 30min before your alarm."
 msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:493
@@ -316,8 +304,7 @@ msgid "Not connected"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:150
-msgid ""
-"No internet\n"
+msgid "No internet\n"
 "connection"
 msgstr ""
 
@@ -336,8 +323,7 @@ msgstr ""
 
 #. / Health disabled text
 #: ../src/fw/apps/system_apps/health/health.c:110
-msgid ""
-"Track your steps, sleep, and more! Enable Pebble Health in the mobile app."
+msgid "Track your steps, sleep, and more! Enable Pebble Health in the mobile app."
 msgstr ""
 
 #: ../src/fw/apps/system_apps/health/health.c:167
@@ -434,8 +420,7 @@ msgid "DEEP SLEEP"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/health/health_sleep_summary_card.c:221
-msgid ""
-"No sleep data,\n"
+msgid "No sleep data,\n"
 "wear your watch\n"
 "to sleep"
 msgstr ""
@@ -466,8 +451,7 @@ msgid "%i°"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/music_app.c:710
-msgid ""
-"START PLAYBACK\n"
+msgid "START PLAYBACK\n"
 "ON YOUR PHONE"
 msgstr ""
 
@@ -532,8 +516,7 @@ msgid "Select Contact"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/send_text/send_text.c:363
-msgid ""
-"Add contacts in\n"
+msgid "Add contacts in\n"
 "mobile app"
 msgstr ""
 
@@ -736,8 +719,7 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:69
 #: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:70
-msgid ""
-"Up/Down to adjust\n"
+msgid "Up/Down to adjust\n"
 "Select to proceed"
 msgstr ""
 
@@ -876,8 +858,7 @@ msgstr ""
 
 #. / Help text for the Quick Launch first use dialog.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_setup_menu.c:69
-msgid ""
-"Open favorite apps quickly with a long button press from your watchface."
+msgid "Open favorite apps quickly with a long button press from your watchface."
 msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:82
@@ -1005,9 +986,7 @@ msgid "Legal"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:254
-msgid ""
-"The core dump was created successfully. Please create a support request as "
-"usual."
+msgid "The core dump was created successfully. Please create a support request as usual."
 msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:267
@@ -1138,14 +1117,12 @@ msgid "Turn Off Airplane Mode?"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:41
-msgid ""
-"Airplane\n"
+msgid "Airplane\n"
 "Mode On"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:42
-msgid ""
-"Airplane\n"
+msgid "Airplane\n"
 "Mode Off"
 msgstr ""
 
@@ -1158,14 +1135,12 @@ msgid "Turn Off Motion Backlight?"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:39
-msgid ""
-"Motion\n"
+msgid "Motion\n"
 "Backlight On"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:40
-msgid ""
-"Motion\n"
+msgid "Motion\n"
 "Backlight Off"
 msgstr ""
 
@@ -1183,16 +1158,12 @@ msgstr ""
 
 #. / Shown when there are no forecasts available to show the user
 #: ../src/fw/apps/system_apps/weather/weather_app.c:105
-msgid ""
-"No location information available. To see weather, add locations in your "
-"Pebble mobile app."
+msgid "No location information available. To see weather, add locations in your Pebble mobile app."
 msgstr ""
 
 #. / Shown when there is no connection to the phone and the data that we have is not recent
 #: ../src/fw/apps/system_apps/weather/weather_app.c:205
-msgid ""
-"Unable to connect. Your weather data may be out of date; try checking the "
-"connection on your phone."
+msgid "Unable to connect. Your weather data may be out of date; try checking the connection on your phone."
 msgstr ""
 
 #: ../src/fw/apps/system_apps/weather/weather_app.c:231
@@ -1233,8 +1204,7 @@ msgid "Sports"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/workout/workout.c:175
-msgid ""
-"Workout\n"
+msgid "Workout\n"
 "Ended"
 msgstr ""
 
@@ -1245,9 +1215,7 @@ msgstr ""
 
 #. / Workout app first use text
 #: ../src/fw/apps/system_apps/workout/workout.c:208
-msgid ""
-"Wear your watch snug and 2 fingers' width above your wrist bone for best "
-"results."
+msgid "Wear your watch snug and 2 fingers' width above your wrist bone for best results."
 msgstr ""
 
 #. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -1352,9 +1320,7 @@ msgid "End Workout?"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:30
-msgid ""
-"Still sweating? Your workout is active and will be ended soon. Open the "
-"workout to keep it going."
+msgid "Still sweating? Your workout is active and will be ended soon. Open the workout to keep it going."
 msgstr ""
 
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:45
@@ -1381,22 +1347,19 @@ msgstr ""
 
 #. / Workout automatically detected dialog text
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:129
-msgid ""
-"Workout\n"
+msgid "Workout\n"
 "Detected"
 msgstr ""
 
 #. / Walk automatically detected dialog text
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:132
-msgid ""
-"Walk\n"
+msgid "Walk\n"
 "Detected"
 msgstr ""
 
 #. / Run automatically detected dialog text
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:135
-msgid ""
-"Run\n"
+msgid "Run\n"
 "Detected"
 msgstr ""
 
@@ -1422,8 +1385,7 @@ msgid "%d"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.h:71
-msgid ""
-"Remember to also forget your Pebble's Bluetooth connection from your phone."
+msgid "Remember to also forget your Pebble's Bluetooth connection from your phone."
 msgstr ""
 
 #. #-#-#-#-#  services.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -1655,9 +1617,7 @@ msgid "the foreseeable future"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:194
-msgid ""
-"How are you feeling? Have you noticed extra focus, better mood or extra "
-"energy? You have been sleeping great this week! Keep it up!"
+msgid "How are you feeling? Have you noticed extra focus, better mood or extra energy? You have been sleeping great this week! Keep it up!"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:196
@@ -1688,9 +1648,7 @@ msgid "We'll get there!"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:212
-msgid ""
-"Congratulations - you're having a super active day! Activity makes you more "
-"focused and creative. How do you feel?"
+msgid "Congratulations - you're having a super active day! Activity makes you more focused and creative. How do you feel?"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:214
@@ -1784,20 +1742,15 @@ msgid "Above avg"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:755
-msgid ""
-"Wanna know more about you? Track your activity and sleep with Pebble Health."
+msgid "Wanna know more about you? Track your activity and sleep with Pebble Health."
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:806
-msgid ""
-"You like sleep, don't you? Get fun stats on your sleep and start waking up "
-"less groggy with Pebble Health."
+msgid "You like sleep, don't you? Get fun stats on your sleep and start waking up less groggy with Pebble Health."
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:855
-msgid ""
-"Wish you could get daily updates on your activity and sleep progress? You "
-"can! Check out your stats with Pebble Health."
+msgid "Wish you could get daily updates on your activity and sleep progress? You can! Check out your stats with Pebble Health."
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1076
@@ -1854,44 +1807,32 @@ msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1526
 #, c-format
-msgid ""
-"Killer job! You've walked %d steps today which is %d%% above your typical. "
-"Do it again tomorrow and you'll be on top of the world!"
+msgid "Killer job! You've walked %d steps today which is %d%% above your typical. Do it again tomorrow and you'll be on top of the world!"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1528
 #, c-format
-msgid ""
-"Nice moves! You've walked %d steps today which is %d%% above your typical. "
-"Crush it again tomorrow 😀"
+msgid "Nice moves! You've walked %d steps today which is %d%% above your typical. Crush it again tomorrow 😀"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1530
 #, c-format
-msgid ""
-"Hey rockstar 🎤 You've walked %d steps today which is %d%% above your "
-"typical. Nothing can stop you!"
+msgid "Hey rockstar 🎤 You've walked %d steps today which is %d%% above your typical. Nothing can stop you!"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1532
 #, c-format
-msgid ""
-"We can barely keep up! You walked %d steps today which is %d%% above your "
-"typical. You're on 🔥"
+msgid "We can barely keep up! You walked %d steps today which is %d%% above your typical. You're on 🔥"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1535
 #, c-format
-msgid ""
-"You walked %d steps today which is %d%% above your typical. You just "
-"outstepped YOURSELF. Mic drop."
+msgid "You walked %d steps today which is %d%% above your typical. You just outstepped YOURSELF. Mic drop."
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1542
 #, c-format
-msgid ""
-"You walked %d steps today; keep it up! Being active is the key to feeling "
-"like a million bucks. Try to beat your typical tomorrow."
+msgid "You walked %d steps today; keep it up! Being active is the key to feeling like a million bucks. Try to beat your typical tomorrow."
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1545
@@ -1901,51 +1842,37 @@ msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1546
 #, c-format
-msgid ""
-"Someone's on the move 👊 You walked %d steps today; keep doing what you're "
-"doing!"
+msgid "Someone's on the move 👊 You walked %d steps today; keep doing what you're doing!"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1548
 #, c-format
-msgid ""
-"You keep moving, we'll keep counting! You've clocked in %d steps today. Keep "
-"it rolling, hot stuff."
+msgid "You keep moving, we'll keep counting! You've clocked in %d steps today. Keep it rolling, hot stuff."
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1555
 #, c-format
-msgid ""
-"You walked %d steps today which is %d%% below your typical. Try to be more "
-"active tomorrow–you can do it!"
+msgid "You walked %d steps today which is %d%% below your typical. Try to be more active tomorrow–you can do it!"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1557
 #, c-format
-msgid ""
-"You walked %d steps which is %d%% below your typical. Being active makes you "
-"feel amaaaazing–try to get back on track tomorrow."
+msgid "You walked %d steps which is %d%% below your typical. Being active makes you feel amaaaazing–try to get back on track tomorrow."
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1559
 #, c-format
-msgid ""
-"You walked %d steps today which is %d%% below your typical. Don't worry, "
-"tomorrow is just around the corner 😀"
+msgid "You walked %d steps today which is %d%% below your typical. Don't worry, tomorrow is just around the corner 😀"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1561
 #, c-format
-msgid ""
-"You walked %d steps which is %d%% below your typical, but don't stress. "
-"You'll crush it tomorrow 😉"
+msgid "You walked %d steps which is %d%% below your typical, but don't stress. You'll crush it tomorrow 😉"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1568
 #, c-format
-msgid ""
-"You walked %d steps today. Don't fret, you can get back on track in no time "
-"😉"
+msgid "You walked %d steps today. Don't fret, you can get back on track in no time 😉"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1570
@@ -1955,67 +1882,49 @@ msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1571
 #, c-format
-msgid ""
-"You walked %d steps today. Try to take even more steps tomorrow–show us what "
-"you're made of!"
+msgid "You walked %d steps today. Try to take even more steps tomorrow–show us what you're made of!"
 msgstr ""
 
 #. / Sleep notification on wake up, slept above their typical sleep duration
 #: ../src/fw/services/normal/activity/activity_insights.c:1624
 #, c-format
-msgid ""
-"Refreshed? You slept for %dH %dM which is %d%% above your typical. Go tackle "
-"your day 😃."
+msgid "Refreshed? You slept for %dH %dM which is %d%% above your typical. Go tackle your day 😃."
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1626
 #, c-format
-msgid ""
-"You caught some killer zzz’s! You slept for %dH %dM which is %d%% above your "
-"typical. Keep it up."
+msgid "You caught some killer zzz’s! You slept for %dH %dM which is %d%% above your typical. Keep it up."
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1628
 #, c-format
-msgid ""
-"Rise and shine! You slept for %dH %dM which is %d%% above your typical. Do "
-"it again tonight, sleep master."
+msgid "Rise and shine! You slept for %dH %dM which is %d%% above your typical. Do it again tonight, sleep master."
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1630
 #, c-format
-msgid ""
-"Mmmm...what a night. You slept for %dH %dM which is %d%% above your typical. "
-"That's gotta feel good!"
+msgid "Mmmm...what a night. You slept for %dH %dM which is %d%% above your typical. That's gotta feel good!"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1632
 #, c-format
-msgid ""
-"That's a lot of sheep you just counted! You slept for %dH %dM which is %d%% "
-"above your typical. Boom shakalaka."
+msgid "That's a lot of sheep you just counted! You slept for %dH %dM which is %d%% above your typical. Boom shakalaka."
 msgstr ""
 
 #. / Sleep notification on wake up, slept similar to their typical sleep duration
 #: ../src/fw/services/normal/activity/activity_insights.c:1640
 #, c-format
-msgid ""
-"Good mornin’. You slept for %dH %dM. Every good day begins with a solid "
-"night’s sleep...kinda like that one 😉 Keep it up!"
+msgid "Good mornin’. You slept for %dH %dM. Every good day begins with a solid night’s sleep...kinda like that one 😉 Keep it up!"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1643
 #, c-format
-msgid ""
-"Good morning! You slept for %dH %dM. Consistency is key; keep doing what "
-"you're doing 😃."
+msgid "Good morning! You slept for %dH %dM. Consistency is key; keep doing what you're doing 😃."
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1645
 #, c-format
-msgid ""
-"You're rockin' the shut eye! You slept for %dH %dM. Make it a nightly "
-"ritual. You deserve it."
+msgid "You're rockin' the shut eye! You slept for %dH %dM. Make it a nightly ritual. You deserve it."
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1647
@@ -2026,51 +1935,37 @@ msgstr ""
 #. / Sleep notification on wake up, slept below their typical sleep duration
 #: ../src/fw/services/normal/activity/activity_insights.c:1654
 #, c-format
-msgid ""
-"Hey sleepy head. You slept for %dH %dM which is %d%% below your typical. Try "
-"to get more tonight!"
+msgid "Hey sleepy head. You slept for %dH %dM which is %d%% below your typical. Try to get more tonight!"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1656
 #, c-format
-msgid ""
-"Groggy? You slept for %dH %dM which is %d%% below your typical. Sleep is "
-"important for everything you do-try getting more shut eye tonight!"
+msgid "Groggy? You slept for %dH %dM which is %d%% below your typical. Sleep is important for everything you do-try getting more shut eye tonight!"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1658
 #, c-format
-msgid ""
-"It's a new day! You slept for %dH %dM which is %d%% below your typical. It's "
-"not your best, but there's always tonight."
+msgid "It's a new day! You slept for %dH %dM which is %d%% below your typical. It's not your best, but there's always tonight."
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1660
 #, c-format
-msgid ""
-"Goooood morning! You slept for %dH %dM which is %d%% below your typical. Go "
-"crush your day and then get back in bed 😉"
+msgid "Goooood morning! You slept for %dH %dM which is %d%% below your typical. Go crush your day and then get back in bed 😉"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1667
 #, c-format
-msgid ""
-"You slept for %dH %dM which is %d%% below your typical. Sleep is vital for "
-"all your great ideas–how 'bout getting more tonight?"
+msgid "You slept for %dH %dM which is %d%% below your typical. Sleep is vital for all your great ideas–how 'bout getting more tonight?"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1669
 #, c-format
-msgid ""
-"You only slept for %dH %dM which is %d%% below your typical. We know you're "
-"busy, but try getting more tonight. We believe in you 😉"
+msgid "You only slept for %dH %dM which is %d%% below your typical. We know you're busy, but try getting more tonight. We believe in you 😉"
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1671
 #, c-format
-msgid ""
-"You slept for %dH %dM which is %d%% below your typical. We know stuff "
-"happens; take another crack at it tonight."
+msgid "You slept for %dH %dM which is %d%% below your typical. We know stuff happens; take another crack at it tonight."
 msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1724
@@ -2327,9 +2222,7 @@ msgid "Calendar Aware enables Quiet Time automatically during calendar events."
 msgstr ""
 
 #: ../src/fw/services/normal/notifications/do_not_disturb.c:134
-msgid ""
-"Press and hold the Back button from a notification to turn Quiet Time on or "
-"off."
+msgid "Press and hold the Back button from a notification to turn Quiet Time on or off."
 msgstr ""
 
 #: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:41
@@ -2341,14 +2234,12 @@ msgid "End Quiet Time?"
 msgstr ""
 
 #: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:43
-msgid ""
-"Quiet Time\n"
+msgid "Quiet Time\n"
 "Started"
 msgstr ""
 
 #: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:44
-msgid ""
-"Quiet Time\n"
+msgid "Quiet Time\n"
 "Ended"
 msgstr ""
 
@@ -2406,9 +2297,7 @@ msgid "Intercom"
 msgstr ""
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:736
-msgid ""
-"Quickly dismiss all notifications by holding the Select button for 2 seconds "
-"from any incoming notification."
+msgid "Quickly dismiss all notifications by holding the Select button for 2 seconds from any incoming notification."
 msgstr ""
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:828
@@ -2834,3 +2723,4 @@ msgstr ""
 #: ../src/fw/applib/ui/time_range_selection_window.c:194
 msgid "End"
 msgstr ""
+
