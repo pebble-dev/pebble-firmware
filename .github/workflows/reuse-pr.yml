@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: Copyright (c) 2025 Joshua Wise.
+# SPDX-License-Identifier: Apache-2.0
+
+name: Check SPDX tags
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    container:
+      image: ghcr.io/pebble-dev/pebbleos-docker:v1
+
+    steps:
+      - name: Mark Github workspace as safe
+        run: git config --system --add safe.directory "${GITHUB_WORKSPACE}"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - name: Install Python dependencies
+        run: |
+          pip install -U pip
+          pip install reuse
+      - name: Run REUSE on changed files
+        run: |
+          git fetch origin ${{ github.base_ref }}
+          reuse lint-file $(git diff --name-only origin/${{ github.base_ref }}...HEAD)

@@ -57,6 +57,7 @@ analyze_mcu_flash_usage_treemap.jsonp
 .vscode
 .venv
 *.egg-info
+.eggs/
 
 waflib.zip
 *~
@@ -65,3 +66,5 @@ docs/_build
 artifacts/
 
 .claude
+
+venv/

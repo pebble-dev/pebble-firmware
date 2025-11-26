@@ -1,0 +1,46 @@
+version = 1
+
+[[annotations]]
+path = "third_party/jerryscript/jerryscript/**"
+SPDX-License-Identifier = "Apache-2.0"
+SPDX-FileCopyrightText = "2015-2016 Samsung Electronics Co., Ltd."
+
+[[annotations]]
+path = "platform/robert/boot/vendor/CMSIS/Include/**"
+SPDX-License-Identifier = "BSD-3-Clause"
+
+[[annotations]]
+path = [
+    "**/wscript",
+    "tests/test_images/**.png",
+    "tests/test_images/**.apng",
+    "tests/test_images/**.svg",
+    "tools/bitmaps/*",
+    "python_libs/pbl/**",
+    "python_libs/pblconvert/**",
+    "python_libs/pblprog/**",
+    "python_libs/pbl-commander/**",
+    "python_libs/pbl-loghash/**",
+    "python_libs/pulse2/**",
+    "resources/**.pbf",
+    "resources/**.svg",
+    "resources/**.png",
+    "sdk/**.png",
+    "sdk/**.json",
+    "sdk/**/.gitignore",
+    "sdk/**/*.js",
+    "bin/boot/*",
+    "bin/prf/*",
+]
+SPDX-License-Identifier = "Apache-2.0"
+SPDX-FileCopyrightText = "2024 Google LLC"
+
+[[annotations]]
+path = ["sdk/waf/**", "**/waf"]
+SPDX-License-Identifier = "BSD-3-Clause"
+SPDX-FileCopyrightText = "Thomas Nagy, 2005-2018 (ita)"
+
+[[annotations]]
+path = [".github/**", ".git*", "bin/boot/*", "requirements*.txt"]
+SPDX-License-Identifier = "Apache-2.0"
+SPDX-FileCopyrightText = "2025 Core Devices"
