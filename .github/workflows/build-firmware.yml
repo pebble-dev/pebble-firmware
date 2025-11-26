@@ -26,7 +26,7 @@ jobs:
 
     strategy:
       matrix:
-        board: ["snowy_dvt", "asterix", "obelix_dvt", "obelix_pvt"]
+        board: ["asterix", "obelix_dvt", "obelix_pvt"]
 
     steps:
       - name: Mark Github workspace as safe
