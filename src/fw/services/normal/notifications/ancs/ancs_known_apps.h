@@ -54,6 +54,10 @@
     APP("com.tinyspeck.chatlyio", TIMELINE_RESOURCE_NOTIFICATION_SLACK, GColorFollyARGB8),
     APP("com.automattic.beeper", TIMELINE_RESOURCE_GENERIC_SMS, GColorVividVioletARGB8), // icon resource can be replaced with bespoke Beeper icon from https://github.com/pebble-dev/iconography
     APP("com.hammerandchisel.discord", TIMELINE_RESOURCE_GENERIC_SMS, GColorIndigoARGB8), // icon resource can be replaced with bespoke Discord icon from https://github.com/pebble-dev/iconography
+    APP("com.revolut.revolut", TIMELINE_RESOURCE_PAY_BILL, GColorDarkGrayARGB8),
+    APP("com.transferwise.Transferwise", TIMELINE_RESOURCE_PAY_BILL, GColorGreenARGB8),
+    APP("de.no26.Number26", TIMELINE_RESOURCE_PAY_BILL, GColorCadetBlueARGB8),
+    APP("com.bunq.ios", TIMELINE_RESOURCE_PAY_BILL, GColorVividCeruleanARGB8),
 #endif
 
 #undef APP
