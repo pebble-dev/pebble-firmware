@@ -1,5 +1,25 @@
 # Contribution Guidelines
 
+## Licensing
+
+New contributions to this project are, by default, licensed under the GNU
+General Public License, version 3.0 or later.  Developers may, at their
+discretion, choose a more permissive license for any contribution.  Such
+contributions should be specified using the SPDX-License-Identifier tag, and
+by adding a SPDX-License-Identifier tag in the Git commit text.  (Commits
+without a SPDX-License-Identifier shall be assumed to be licensed as
+`GPL-3.0-or-later`, except for portions that impact the publicly-distributed
+SDK, which shall be assumed to be licensed as `Apache-2.0`.)
+
+Please follow the SPDX and REUSE specifications by adding
+SPDX-FileCopyrightText and SPDX-License-Identifier tags to each file that
+you modify.
+
+Licenses for software in this repository can be found in the `LICENSES`
+directory.  Some files in this repository do not have clear SPDX tags; note
+that you should also reference `REUSE.toml` when determining the origin of
+any given file.
+
 ## Developer Certification of Origin (DCO)
 
 To make a good faith effort to ensure licensing criteria are met, this
