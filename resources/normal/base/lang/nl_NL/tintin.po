@@ -5,7 +5,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Name: Nederlands\n"
 "X-Generator: POEditor.com\n"
 
 #: /Users/francois/Work/tintin/src/fw/applib/pbl_std/timelocal.c:45

@@ -7,7 +7,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Name: Português\n"
 "X-Generator: POEditor.com\n"
 
 #: ../src/fw/process_management/app_manager.c:478
