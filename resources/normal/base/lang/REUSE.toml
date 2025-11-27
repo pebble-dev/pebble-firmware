@@ -1,0 +1,11 @@
+version = 1
+
+[[annotations]]
+path = "**"
+SPDX-License-Identifier = "Apache-2.0"
+SPDX-FileCopyrightText = "2024 Google LLC"
+
+[[annotations]]
+path = "**"
+SPDX-License-Identifier = "Apache-2.0"
+SPDX-FileCopyrightText = "the PebbleOS contributors and translators"

@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Joshua Wise
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 # Add tools directory to path
 import sys
 sys.path.append('../../../tools')
@@ -79,9 +82,34 @@ def pack_lang_code(ctx, lang_code):
         if subprocess.check_output(['msgattrib', '--untranslated', po_path]) != '':
             waflib.Logs.pprint('RED', 'Warning: This PO file contains untranslated strings!')
 
+        # Save a few bytes in the .mo file by removing metadata that
+        # shouldn't be there -- and, if the .po file came from Crowdin, it
+        # might be missing its Name: metadata, so put that back.
+        po_internal_path = os.path.join(build_path, strings['file'] + '.' + name + '.po')
+        po = polib.pofile(po_path)
+
+        if 'translation_name' in resource_map:
+            po.metadata['Name'] = resource_map['translation_name']
+
+        # PebbleOS FW wants a number here, but Crowdin puts in "pebbleos".
+        if po.metadata.get('Project-Id-Version', 'pebbleos') == 'pebbleos':
+            po.metadata['Project-Id-Version'] = '31337'
+
+        allowed_keys = {
+            'Project-Id-Version',
+            'Language',
+            'Name',
+            'Content-Type',
+            'Language-Team',
+            'POT-Creation-Date',
+            'PO-Revision-Date',
+        }
+        po.metadata = dict((k, v) for k, v in po.metadata.items() if k in allowed_keys)
+
+        po.save(po_internal_path)
 
         mo_path = os.path.join(build_path, strings['file'] + '.' + name + '.mo')
-        os.system('msgfmt -c -v -o {} {}'.format(mo_path, po_path))
+        os.system('msgfmt -c -v -o {} {}'.format(mo_path, po_internal_path))
 
         waflib.Logs.pprint('CYAN', 'Created mo at {}'.format(mo_path))
 
