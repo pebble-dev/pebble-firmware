@@ -49,6 +49,9 @@ def pack_all_langs(ctx):
     language_codes = next(os.walk(ctx.path.abspath()))[1]
 
     for language_code in language_codes:
+        if not os.path.exists(os.path.join(ctx.path.abspath(), language_code, 'lang_map.json')):
+            waflib.Logs.pprint('RED', f"Language code {language_code} does not have a lang_map.json (Crowdin import without metadata?); skipping.")
+            continue
         pack_lang_code(ctx, language_code)
 
 def pack_lang(ctx):
