@@ -1,5 +1,5 @@
 # Copyright (c) 2025 Joshua Wise
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier: Apache-2.0
 
 from __future__ import absolute_import, print_function
 
