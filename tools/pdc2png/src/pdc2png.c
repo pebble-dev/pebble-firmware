@@ -176,7 +176,7 @@ static void prv_convert_pdc(const char *filename) {
   }
 
   // Read size of data
-  size_t size;
+  uint32_t size = 0;
   if (fread(&size, sizeof(size), 1, f) != 1) {
     printf("Failed to read PDC size: %s\n", filename);
     fclose(f);
