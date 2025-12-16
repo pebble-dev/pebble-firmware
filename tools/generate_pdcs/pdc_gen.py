@@ -74,7 +74,13 @@ def create_pdc_from_path(path, out_path, viewbox_size, verbose, duration, play_c
                          precise=False, raise_error=False):
 
     output, errors = create_pdc_data_from_path(path, viewbox_size, verbose, duration, play_count,
-                                               precise=False, raise_error=False)
+                                               precise, raise_error)
+
+    sequence = True
+    dirname = path
+    if os.path.isfile(path):
+        sequence = False
+        dir_name = os.path.dirname(path)
 
     if output != '':
         if out_path is None:

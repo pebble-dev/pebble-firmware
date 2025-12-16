@@ -106,7 +106,7 @@ def process_pdc_files(path):
         for f in pdc_files:
             os.remove(f)
     else:
-        print logging.info("No .pdc files found in " + path)
+        print(logging.info("No .pdc files found in " + path))
 
 
 # If any files contain invalid points, the images are moved to the 'failed' subdirectory to highlight this for the
