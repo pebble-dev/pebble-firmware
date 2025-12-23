@@ -80,12 +80,16 @@ def calc_opacity(a1, a2):
 
 def get_points_from_str(point_str):
     points = []
-    for p in point_str.split():
-        pair = p.split(',')
-        try:
-            points.append((float(pair[0]), float(pair[1])))
-        except (ValueError, TypeError):
-            return None
+    if ',' in point_str:
+        for p in point_str.split():
+            pair = p.split(',')
+            try:
+                points.append((float(pair[0]), float(pair[1])))
+            except (ValueError, TypeError):
+                return None
+    else:
+        coords = list(map(float, point_str.split()))
+        points = list(zip(coords[::2],coords[1::2]))
     return points
 
 
@@ -228,7 +232,18 @@ def create_command(translate, element, verbose=False, precise=False, raise_error
 
 
 def overwrite_inherited(element, inherited_values):
+    style = {}
+    if element.get('style'):
+        for pair in element.get('style').split(';'):
+            key, value = pair.split(':')
+            style[key.strip()] = value.strip()
     for attr in ['stroke', 'stroke-width', 'stroke-opacity', 'fill', 'fill-opacity', 'opacity']:
+        if not style.get(attr) is None:
+            if attr == 'opacity' and attr in inherited_values:
+                # Opacity compounds
+                inherited_values[attr] = inherited_values[attr] * style.get(attr)
+            else:
+                inherited_values[attr] = style.get(attr)
         if not element.get(attr) is None:
             if attr == 'opacity' and attr in inherited_values:
                 # Opacity compounds
@@ -290,7 +305,7 @@ def get_info(xml):
 def parse_svg_image(filename, verbose=False, precise=False, raise_error=False):
     root = get_xml(filename)
     translate, size = get_info(root)
-    cmd_list, error = get_commands(translate, root, verbose, precise, raise_error)
+    cmd_list, error = get_commands(translate, root, verbose, precise, raise_error, True, {})
     return size, cmd_list, error
 
 
@@ -302,7 +317,7 @@ def parse_svg_sequence(dir_name, verbose=False, precise=False, raise_error=False
         return
     translate, size = get_info(get_xml(file_list[0]))  # get the viewbox from the first file
     for filename in file_list:
-        cmd_list, error = get_commands(translate, get_xml(filename), verbose, precise, raise_error)
+        cmd_list, error = get_commands(translate, get_xml(filename), verbose, precise, raise_error, True, {})
         if cmd_list is not None:
             frames.append(cmd_list)
         if error:
