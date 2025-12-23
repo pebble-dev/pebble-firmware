@@ -391,6 +391,9 @@ HealthDetailCard *health_detail_card_create(const HealthDetailCardConfig *config
   menu_layer_set_normal_colors(menu_layer, detail_card->bg_color, GColorWhite);
   menu_layer_set_highlight_colors(menu_layer, detail_card->bg_color, GColorBlack);
   menu_layer_set_click_config_onto_window(menu_layer, &detail_card->window);
+#if FW_APPS_MENUS_WRAP
+  menu_layer_set_scroll_wrap_around(menu_layer, true);
+#endif
   layer_add_child(&detail_card->window.layer, menu_layer_get_layer(menu_layer));
 
   // setup content indicators

@@ -402,6 +402,9 @@ static void prv_handle_init(void) {
 
   menu_layer_set_highlight_colors(&data->menu_layer, ALARMS_APP_HIGHLIGHT_COLOR, GColorWhite);
   menu_layer_set_click_config_onto_window(&data->menu_layer, &data->window);
+#if FW_APPS_MENUS_WRAP
+  menu_layer_set_scroll_wrap_around(&data->menu_layer, true);
+#endif
   layer_add_child(&data->window.layer, menu_layer_get_layer(&data->menu_layer));
 
   status_bar_layer_init(&data->status_layer);

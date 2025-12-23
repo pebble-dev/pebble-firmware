@@ -92,6 +92,9 @@ static void prv_window_load(Window *window) {
                                   shell_prefs_get_settings_menu_highlight_color(),
                                   GColorWhite);
   menu_layer_set_click_config_onto_window(menu_layer, &data->window);
+#if FW_APPS_MENUS_WRAP
+  menu_layer_set_scroll_wrap_around(menu_layer, true);
+#endif
 
   layer_add_child(&data->window.layer, menu_layer_get_layer(menu_layer));
 }
