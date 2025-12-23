@@ -219,6 +219,7 @@ def options(opt):
     opt.add_option('--reboot_on_bt_crash', action='store_true', help='Forces a BT '
                    'chip crash to immediately force a system reboot instead of just cycling airplane mode. '
                    'This makes it easier for us to actually get crash info')
+    opt.add_option('--enable-menu-wrap', action='store_true', help='Enable the scroll wrap around behavior on firmware apps menus')
 
 
 def handle_configure_options(conf):
@@ -384,6 +385,10 @@ def handle_configure_options(conf):
 
     if not conf.options.no_pulse_everywhere:
         conf.env.append_value('DEFINES', 'PULSE_EVERYWHERE=1')
+    
+    if conf.options.enable_menu_wrap:
+        print("Enabling wrapping behavior of MenuLayer in firmware apps")
+        conf.env.append_value('DEFINES', 'FW_APPS_MENUS_WRAP')
 
 def _create_cm0_env(conf):
     prev_env = conf.env
