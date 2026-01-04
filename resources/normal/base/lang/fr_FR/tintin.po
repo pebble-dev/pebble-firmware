@@ -2,31 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pebbleos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 17:47+0000\n"
-"PO-Revision-Date: 2025-11-27 17:58\n"
+"POT-Creation-Date: 2025-12-01 20:11+0000\n"
+"PO-Revision-Date: 2025-12-21 00:55\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 17:47+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: \n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 17:48+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: \n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -68,7 +48,7 @@ msgstr "%s%.*s ne répond pas.\n\n"
 
 #: ../src/fw/popups/crashed_ui.c:155
 msgid "A bug report has been captured. Please finish uploading the bug report using the Pebble phone app."
-msgstr ""
+msgstr "Rapport de bogue capturé. Veuillez compléter le téléchargement du rapport de bogue dans l'application Yèble Phone."
 
 #: ../src/fw/popups/health_tracking_ui.c:89
 msgid "This app requires Pebble Health to work. Enable Health in the Pebble mobile app to continue."
@@ -214,19 +194,19 @@ msgstr "Rappel d'alarme"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:217
 msgid "5 minutes"
-msgstr ""
+msgstr "5 minutes"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:218
 msgid "10 minutes"
-msgstr ""
+msgstr "10 minutes"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:219
 msgid "15 minutes"
-msgstr ""
+msgstr "15 minutes"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:220
 msgid "30 minutes"
-msgstr ""
+msgstr "30 minutes"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:221
 msgid "1 hour"
@@ -276,11 +256,11 @@ msgstr "Limite atteinte."
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:281
 msgid "ON"
-msgstr ""
+msgstr "ON"
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:281
 msgid "OFF"
-msgstr ""
+msgstr "OFF"
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:355
 msgid "Let us wake you in your lightest sleep so you're fully refreshed! Smart Alarm wakes you up to 30min before your alarm."
@@ -318,7 +298,7 @@ msgstr "Erreur"
 #. / Insights onboarding message
 #: ../src/fw/apps/system_apps/health/health.c:81
 msgid "Psst! Want smart tips about your activity and sleep? You can enable Insights in the mobile app."
-msgstr ""
+msgstr "Psst! Voulez-vous des astuces au sujet de votre activité et de votre sommeil ? Activez 'Insight' dans l'application mobile."
 
 #. / Health disabled text
 #: ../src/fw/apps/system_apps/health/health.c:116
@@ -328,7 +308,7 @@ msgstr "Comptez vos pas, heures de sommeil et bien plus ! Il suffit d'activer Bi
 #. / Health waiting for time sync
 #: ../src/fw/apps/system_apps/health/health.c:124
 msgid "Health requires the time to be synced. Please connect your phone."
-msgstr ""
+msgstr "La fonction Bien-Être requiert la synchronisation de l'horloge avec votre téléphone. Veuillez le connecter."
 
 #: ../src/fw/apps/system_apps/health/health.c:190
 #: ../src/fw/services/normal/timeline/timeline.c:961
@@ -340,14 +320,14 @@ msgstr "Bien-Être"
 #: ../src/fw/apps/system_apps/workout/workout_active.c:327
 #: ../src/fw/services/normal/activity/activity_insights.c:1605
 msgid "MI"
-msgstr ""
+msgstr "MI"
 
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:43
 #: ../src/fw/apps/system_apps/workout/workout_active.c:268
 #: ../src/fw/apps/system_apps/workout/workout_active.c:328
 #: ../src/fw/services/normal/activity/activity_insights.c:1605
 msgid "KM"
-msgstr ""
+msgstr "KM"
 
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:56
 #: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:67
@@ -356,13 +336,13 @@ msgstr "MOY. 30 J"
 
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:88
 msgid "CALORIES"
-msgstr ""
+msgstr "CALORIES"
 
 #. / Distance Label
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:90
 #: ../src/fw/apps/system_apps/workout/workout_active.c:161
 msgid "DISTANCE"
-msgstr ""
+msgstr "DISTANCE"
 
 #: ../src/fw/apps/system_apps/health/health_detail_card.c:510
 #: ../src/fw/services/common/clock.c:493 ../src/fw/services/common/clock.c:665
@@ -400,11 +380,11 @@ msgstr "Vigoureux"
 #. / Resting HR
 #: ../src/fw/apps/system_apps/health/health_hr_detail_card.c:79
 msgid "TIME IN ZONES"
-msgstr ""
+msgstr "TEMPS DANS LES ZONES"
 
 #: ../src/fw/apps/system_apps/health/health_hr_summary_card.c:116
 msgid "BPM"
-msgstr ""
+msgstr "BPM"
 
 #. / HRM disabled
 #: ../src/fw/apps/system_apps/health/health_hr_summary_card.c:160
@@ -439,7 +419,7 @@ msgstr "%s TYPIQUE"
 #: ../src/fw/apps/system_apps/launcher/default/launcher_app_glance_weather.c:119
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:189
 msgid "--°"
-msgstr ""
+msgstr "--°"
 
 #. / Shown when today's temperature and conditions phrase is known (e.g. "52° - Fair")
 #: ../src/fw/apps/system_apps/launcher/default/launcher_app_glance_weather.c:125
@@ -452,7 +432,7 @@ msgstr "%i° - %s "
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:194
 #, c-format
 msgid "%i°"
-msgstr ""
+msgstr "%i°"
 
 #: ../src/fw/apps/system_apps/music_app.c:697
 msgid "START PLAYBACK\n"
@@ -487,7 +467,7 @@ msgstr "Pas de notifications"
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:61
 #: ../src/fw/services/normal/timeline/timeline.c:940
 msgid "Notifications"
-msgstr ""
+msgstr "Notifications"
 
 #: ../src/fw/apps/system_apps/reminders/reminder_app.c:53
 msgid "Completed"
@@ -611,24 +591,24 @@ msgstr "Ouvrez l'appli Pebble pour vous connecter"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:546
 msgid "Forget this device to pair a new device."
-msgstr ""
+msgstr "Oublier cet appareil pour associer un nouvel appareil."
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:695
 msgid "Bluetooth"
-msgstr ""
+msgstr "Bluetooth"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:44
-#: ../src/fw/apps/system_apps/settings/settings_system.c:539
+#: ../src/fw/apps/system_apps/settings/settings_system.c:544
 msgid "Low"
 msgstr "Faible"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:45
-#: ../src/fw/apps/system_apps/settings/settings_system.c:541
+#: ../src/fw/apps/system_apps/settings/settings_system.c:546
 msgid "Medium"
 msgstr "Moyenne"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:46
-#: ../src/fw/apps/system_apps/settings/settings_system.c:543
+#: ../src/fw/apps/system_apps/settings/settings_system.c:548
 msgid "High"
 msgstr "Forte"
 
@@ -653,12 +633,12 @@ msgstr "Normal"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:93
 msgid "Left-Handed"
-msgstr ""
+msgstr "Gaucher"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:118
 #: ../src/fw/apps/system_apps/settings/settings_display.c:290
 msgid "Orientation"
-msgstr ""
+msgstr "Orientation"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:131
 msgid "3 Seconds"
@@ -674,7 +654,7 @@ msgstr "8 secondes"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:156
 msgid "TIMEOUT"
-msgstr ""
+msgstr "DÉLAI D'EXPIRATION"
 
 #. / Status bar title for the Notification Window Timeout settings screen
 #. / String within Settings->Notifications that describes the window timeout setting
@@ -683,23 +663,23 @@ msgstr ""
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:232
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:313
 msgid "Timeout"
-msgstr ""
+msgstr "Délai dépassé"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:166
 msgid "Bezel"
-msgstr ""
+msgstr "Cadre"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:167
 #: ../src/fw/apps/system_apps/settings/settings_display.c:369
 msgid "Scaled"
-msgstr ""
+msgstr "Redimensionné"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:180
 msgid "Legacy App Display"
-msgstr ""
+msgstr "Affichage de l'ancienne application"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:285
-#: ../src/fw/apps/system_apps/settings/settings_system.c:209
+#: ../src/fw/apps/system_apps/settings/settings_system.c:214
 msgid "Language"
 msgstr "Langue"
 
@@ -714,7 +694,7 @@ msgstr "Rétroéclairage"
 #: ../src/fw/apps/system_apps/settings/settings_display.c:317
 #: ../src/fw/apps/system_apps/settings/settings_display.c:338
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:236
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1308
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1326
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:126
 msgid "On"
 msgstr "Activé"
@@ -725,7 +705,7 @@ msgstr "Activé"
 #: ../src/fw/apps/system_apps/settings/settings_display.c:331
 #: ../src/fw/apps/system_apps/settings/settings_display.c:340
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:236
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1308
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1326
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:128
 msgid "Off"
 msgstr "Désactivé"
@@ -740,11 +720,11 @@ msgstr "Lumière Ambiente"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:336
 msgid "Dynamic Backlight"
-msgstr ""
+msgstr "Rétroéclairage dynamique"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:347
 msgid "Max Intensity"
-msgstr ""
+msgstr "Intensité max"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:362
 msgid "Screen Alignment"
@@ -752,11 +732,11 @@ msgstr "Alignement écran"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:367
 msgid "Legacy Apps"
-msgstr ""
+msgstr "Anciennes applications"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:369
 msgid "Centered"
-msgstr ""
+msgstr "Centré"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:443
 msgid "Display"
@@ -861,34 +841,34 @@ msgstr "15 Secondes"
 #. / 1 Minute Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:194
 msgid "1 Minute"
-msgstr ""
+msgstr "1 minute"
 
 #. / 3 Minute Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:196
 msgid "3 Minutes"
-msgstr ""
+msgstr "3 minutes"
 
 #. / 10 Minute Notification Window Timeout
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:198
 msgid "10 Minutes"
-msgstr ""
+msgstr "10 minutes"
 
 #. / Standard notification design option (default)
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:245
 msgid "Classic"
-msgstr ""
+msgstr "Classique"
 
 #. / Alternative notification design option
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:247
 msgid "Flat Black"
-msgstr ""
+msgstr "Noir plat"
 
 #. / Status bar title for the Notification Design Style settings screen
 #. / String within Settings->Notifications that describes the notification design style
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:265
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:320
 msgid "Banner Style"
-msgstr ""
+msgstr "Style de bannière"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:295
 msgid "Disabled (Plugged In)"
@@ -897,36 +877,37 @@ msgstr "Désactivé (connecté)"
 #. / Shown in Quick Launch Settings as the title of the tap up button option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:46
 msgid "Tap Up"
-msgstr ""
+msgstr "Appuyer le bouton Haut"
 
 #. / Shown in Quick Launch Settings as the title of the tap down button option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:48
 msgid "Tap Down"
-msgstr ""
+msgstr "Appuyer le bouton Bas"
 
 #. / Shown in Quick Launch Settings as the title of the hold up button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:50
 msgid "Hold Up"
-msgstr ""
+msgstr "Tenez le bouton Haut"
 
 #. / Shown in Quick Launch Settings as the title of the hold center button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:52
 msgid "Hold Center"
-msgstr ""
+msgstr "Tenez le bouton Centre"
 
 #. / Shown in Quick Launch Settings as the title of the hold down button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:54
 msgid "Hold Down"
-msgstr ""
+msgstr "Tenez le bouton Bas"
 
 #. / Shown in Quick Launch Settings as the title of the hold back button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:56
 msgid "Hold Back"
-msgstr ""
+msgstr "Tenez le bouton Retour"
 
 #. / Shown in Quick Launch Settings when the button is disabled.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:63
-#: ../src/fw/apps/system_apps/settings/settings_system.c:609
+#: ../src/fw/apps/system_apps/settings/settings_system.c:617
+#: ../src/fw/apps/system_apps/settings/settings_system.c:632
 msgid "Disabled"
 msgstr "Désactivé"
 
@@ -994,7 +975,7 @@ msgstr "Week-end"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:261
 msgid "Interruptions"
-msgstr ""
+msgstr "Interruptions"
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:315
 #: ../src/fw/apps/system_apps/toggle/quiet_time.c:24
@@ -1013,152 +994,160 @@ msgstr "Oublier"
 msgid "Stop Sharing Heart Rate"
 msgstr "Ne plus partager le rythme cardiaque"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:161
-#: ../src/fw/apps/system_apps/settings/settings_system.c:284
+#: ../src/fw/apps/system_apps/settings/settings_system.c:166
+#: ../src/fw/apps/system_apps/settings/settings_system.c:289
 msgid "Information"
 msgstr "Informations"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:162
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1050
+#: ../src/fw/apps/system_apps/settings/settings_system.c:167
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1068
 msgid "Certification"
 msgstr "Certifications"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:163
+#: ../src/fw/apps/system_apps/settings/settings_system.c:168
 msgid "Stand-By Mode"
 msgstr "Veille Auto."
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:164
-#: ../src/fw/apps/system_apps/settings/settings_system.c:689
+#: ../src/fw/apps/system_apps/settings/settings_system.c:169
+#: ../src/fw/apps/system_apps/settings/settings_system.c:707
 msgid "Debugging"
-msgstr ""
+msgstr "Débogage"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:165
+#: ../src/fw/apps/system_apps/settings/settings_system.c:170
 msgid "Shut Down"
 msgstr "Arrêt"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:166
+#: ../src/fw/apps/system_apps/settings/settings_system.c:171
 msgid "Factory Reset"
 msgstr "Réinitialisation"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:207
+#: ../src/fw/apps/system_apps/settings/settings_system.c:212
 msgid "BT Address"
 msgstr "Adresse BT"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:208
+#: ../src/fw/apps/system_apps/settings/settings_system.c:213
 msgid "Firmware"
 msgstr "Version Système"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:210
+#: ../src/fw/apps/system_apps/settings/settings_system.c:215
 msgid "Recovery"
 msgstr "Version PRF"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:211
+#: ../src/fw/apps/system_apps/settings/settings_system.c:216
 msgid "Bootloader"
-msgstr ""
+msgstr "Bootloader"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:212
+#: ../src/fw/apps/system_apps/settings/settings_system.c:217
 msgid "Hardware"
 msgstr "Modèle"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:213
+#: ../src/fw/apps/system_apps/settings/settings_system.c:218
 msgid "Serial"
 msgstr "Numéro de série"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:214
+#: ../src/fw/apps/system_apps/settings/settings_system.c:219
 msgid "Uptime"
-msgstr ""
+msgstr "Temps de fonctionnement"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:215
+#: ../src/fw/apps/system_apps/settings/settings_system.c:220
 msgid "Legal"
 msgstr "Mentions Légales"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:380
+#: ../src/fw/apps/system_apps/settings/settings_system.c:385
 msgid "Core dump and reboot?"
 msgstr "Coredump & Redémarrer ?"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:538
+#: ../src/fw/apps/system_apps/settings/settings_system.c:543
 msgid "Very Low"
-msgstr ""
+msgstr "Très faible"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:540
+#: ../src/fw/apps/system_apps/settings/settings_system.c:545
 msgid "Medium-Low"
-msgstr ""
+msgstr "Moyen-Faible"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:542
+#: ../src/fw/apps/system_apps/settings/settings_system.c:547
 msgid "Medium-High"
-msgstr ""
+msgstr "Moyen-Élevé"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:544
+#: ../src/fw/apps/system_apps/settings/settings_system.c:549
 msgid "Very High"
-msgstr ""
+msgstr "Très élevé"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:569
-#: ../src/fw/apps/system_apps/settings/settings_system.c:585
+#: ../src/fw/apps/system_apps/settings/settings_system.c:574
+#: ../src/fw/apps/system_apps/settings/settings_system.c:590
 msgid "Motion Sensitivity"
-msgstr ""
+msgstr "Sensibilité au mouvement"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:581
+#: ../src/fw/apps/system_apps/settings/settings_system.c:586
 msgid "CoreDump now"
-msgstr ""
+msgstr "Effectuer un CoreDump maintenant"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:582
+#: ../src/fw/apps/system_apps/settings/settings_system.c:587
 msgid "CoreDump shortcut"
-msgstr ""
-
-#: ../src/fw/apps/system_apps/settings/settings_system.c:583
-msgid "ALS Threshold"
-msgstr ""
+msgstr "Raccourci pour le CoreDump"
 
 #: ../src/fw/apps/system_apps/settings/settings_system.c:588
+msgid "ALS Threshold"
+msgstr "Limite lumière ambiante"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:593
+msgid "BLE compat mode"
+msgstr "Mode compatibilité BLE"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:596
 msgid "Dyn BL Min Threshold"
-msgstr ""
+msgstr "Seuil Min BL Dyn"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:589
+#: ../src/fw/apps/system_apps/settings/settings_system.c:597
 msgid "Dyn BL Max Threshold"
-msgstr ""
+msgstr "Seuil Max BL Dyn"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:609
+#: ../src/fw/apps/system_apps/settings/settings_system.c:617
 msgid "10 back-button presses"
-msgstr ""
+msgstr "10 touches sur le bouton retour"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:758
+#: ../src/fw/apps/system_apps/settings/settings_system.c:632
+msgid "Emulate silk"
+msgstr "Émulation de Silk"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:776
 msgid "PebbleOS developers only!"
-msgstr ""
+msgstr "Développeurs de PebbleOS seulement"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1011
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1029
 msgid "See details..."
 msgstr "Détails ..."
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1288
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1306
 msgid "Do you want to shut down?"
 msgstr "Éteindre la montre ?"
 
 #. / Refers to the class of all non-score vibes, e.g. 3rd party app vibes
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1382
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1400
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:77
 msgid "System"
 msgstr "Système"
 
 #: ../src/fw/apps/system_apps/settings/settings_themes.c:53
 msgid "Apps Accent"
-msgstr ""
+msgstr "Accent des applications"
 
 #: ../src/fw/apps/system_apps/settings/settings_themes.c:57
 msgid "Settings Accent"
-msgstr ""
+msgstr "Accent des réglages"
 
 #: ../src/fw/apps/system_apps/settings/settings_themes.c:129
 msgid "Apps Menu Accent"
-msgstr ""
+msgstr "Accent du menu applications"
 
 #: ../src/fw/apps/system_apps/settings/settings_themes.c:188
 msgid "Settings Menu Accent"
-msgstr ""
+msgstr "Accent du menu réglages"
 
 #. / Title of the Themes Settings submenu in Settings
 #: ../src/fw/apps/system_apps/settings/settings_themes.c:266
 msgid "Themes"
-msgstr ""
+msgstr "Thèmes"
 
 #. / Title of the menu for changing the watch's timezone.
 #: ../src/fw/apps/system_apps/settings/settings_time.c:125
@@ -1172,11 +1161,11 @@ msgstr "Format horaire"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:222
 msgid "24h"
-msgstr ""
+msgstr "24 h"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:222
 msgid "12h"
-msgstr ""
+msgstr "12 h"
 
 #: ../src/fw/apps/system_apps/settings/settings_time.c:226
 msgid "Timezone Source"
@@ -1237,7 +1226,7 @@ msgstr "Apparaît au dessus de votre écran quand un évènment est sur le point
 
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:217
 msgid "Timeline"
-msgstr ""
+msgstr "Chronologie"
 
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:66
 msgid "Incoming Calls"
@@ -1245,7 +1234,7 @@ msgstr "Appels entrants"
 
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:220
 msgid "Vibrations"
-msgstr ""
+msgstr "Vibrations"
 
 #: ../src/fw/apps/system_apps/timeline/timeline.c:878
 msgid "No events"
@@ -1253,7 +1242,7 @@ msgstr "Rien à signaler"
 
 #: ../src/fw/apps/system_apps/timeline/timeline.c:1252
 msgid "Timeline Future"
-msgstr ""
+msgstr "Chronologie future"
 
 #. / The title of Timeline Past in Quick Launch. If the translation is too long, cut out
 #. / Timeline and only translate "Past".
@@ -1281,19 +1270,19 @@ msgstr "Mode avion désactivé"
 
 #: ../src/fw/apps/system_apps/toggle/backlight_state.c:30
 msgid "Turn On Backlight?"
-msgstr ""
+msgstr "Activer le rétroéclairage ?"
 
 #: ../src/fw/apps/system_apps/toggle/backlight_state.c:31
 msgid "Turn Off Backlight?"
-msgstr ""
+msgstr "Éteindre le rétroéclairage ?"
 
 #: ../src/fw/apps/system_apps/toggle/backlight_state.c:32
 msgid "Backlight On"
-msgstr ""
+msgstr "Rétroéclairage allumé"
 
 #: ../src/fw/apps/system_apps/toggle/backlight_state.c:33
 msgid "Backlight Off"
-msgstr ""
+msgstr "Rétroéclairage éteint"
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:24
 msgid "Turn On Motion Backlight?"
@@ -1343,25 +1332,25 @@ msgstr "Météo"
 #. / Shown when neither high nor low temperature is known
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:67
 msgid "--° / --°"
-msgstr ""
+msgstr "--° / --°"
 
 #. / Shown when only the day's high temperature is known, (e.g. "68° / --°")
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:72
 #, c-format
 msgid "%i° / --°"
-msgstr ""
+msgstr "%i° / --°"
 
 #. / Shown when only the day's low temperature is known (e.g. "--° / 52°")
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:75
 #, c-format
 msgid "--° / %i°"
-msgstr ""
+msgstr "--° / %i°"
 
 #. / A day's high and low temperature, separated by a foward slash (e.g. "68° / 52°")
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:78
 #, c-format
 msgid "%i° / %i°"
-msgstr ""
+msgstr "%i° - %i "
 
 #. / Refers to the weather conditions for tomorrow
 #: ../src/fw/apps/system_apps/weather/weather_app_layout.c:221
@@ -1370,7 +1359,7 @@ msgstr "DEMAIN"
 
 #: ../src/fw/apps/system_apps/workout/sports.c:368
 msgid "Sports"
-msgstr ""
+msgstr "Sports"
 
 #: ../src/fw/apps/system_apps/workout/workout.c:164
 msgid "Workout\n"
@@ -1381,7 +1370,7 @@ msgstr "Fin de\n"
 #. / Workouts waiting for time sync
 #: ../src/fw/apps/system_apps/workout/workout.c:190
 msgid "Workout requires the time to be synced. Please connect your phone."
-msgstr ""
+msgstr "L'entraînement requiert la synchronisation de l'horloge avec votre téléphone. Veuillez le connecter."
 
 #. / Health disabled text
 #: ../src/fw/apps/system_apps/workout/workout.c:198
@@ -1471,11 +1460,11 @@ msgstr "VITESSE (KM/H)"
 #. / Distance Label with units
 #: ../src/fw/apps/system_apps/workout/workout_active.c:164
 msgid "DISTANCE (MI)"
-msgstr ""
+msgstr "DISTANCE (mi)"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:165
 msgid "DISTANCE (KM)"
-msgstr ""
+msgstr "DISTANCE (km)"
 
 #. / Steps Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:169
@@ -1484,11 +1473,11 @@ msgstr "PAS"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:347
 msgid "MPH"
-msgstr ""
+msgstr "MI/H"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:348
 msgid "KM/H"
-msgstr ""
+msgstr "KM/H"
 
 #: ../src/fw/apps/system_apps/workout/workout_active.c:672
 msgid "End Workout?"
@@ -1550,13 +1539,13 @@ msgstr "Course\n"
 #: ../src/fw/apps/watch/kickstart/kickstart.c:351
 #, c-format
 msgid "%d BPM"
-msgstr ""
+msgstr "%d BPM"
 
 #. / Step count greater than 1000 with a thousands seperator
 #: ../src/fw/apps/watch/kickstart/kickstart.c:459
 #, c-format
 msgid "%d,%03d"
-msgstr ""
+msgstr "%03d/%d"
 
 #. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / Step count less than 1000
@@ -1566,7 +1555,7 @@ msgstr ""
 #: ../src/fw/services/normal/activity/health_util.c:111
 #, c-format
 msgid "%d"
-msgstr ""
+msgstr "%d"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.h:58
 msgid "Remember to also forget your Pebble's Bluetooth connection from your phone."
@@ -1602,7 +1591,7 @@ msgstr "Marteau piqueur"
 
 #: ../src/fw/services/common/clock.c:467 ../src/fw/services/common/clock.c:739
 msgid "%R"
-msgstr ""
+msgstr "%R"
 
 #: ../src/fw/services/common/clock.c:467
 msgid "%l:%M"
@@ -1611,7 +1600,7 @@ msgstr "%I:%M"
 #: ../src/fw/services/common/clock.c:480
 #, c-format
 msgid "%p"
-msgstr ""
+msgstr "%p"
 
 #: ../src/fw/services/common/clock.c:495
 #: ../src/fw/services/normal/timeline/timeline_layout.c:367
@@ -1641,11 +1630,11 @@ msgstr "Demain"
 #: ../src/fw/services/common/clock.c:795
 #, c-format
 msgid "%A"
-msgstr ""
+msgstr "%A"
 
 #: ../src/fw/services/common/clock.c:675
 msgid "%B %d"
-msgstr ""
+msgstr "%B %d"
 
 #: ../src/fw/services/common/clock.c:735
 msgid "%l:%M %p"
@@ -1677,7 +1666,7 @@ msgstr "%a, %i:%M %p"
 
 #: ../src/fw/services/common/clock.c:793
 msgid "%a, %R"
-msgstr ""
+msgstr "%R %a"
 
 #: ../src/fw/services/common/clock.c:823
 #, c-format
@@ -1749,16 +1738,16 @@ msgstr "%d/%m"
 
 #: ../src/fw/services/common/clock.c:892
 msgid "%b "
-msgstr ""
+msgstr " %b"
 
 #: ../src/fw/services/common/clock.c:892
 msgid "%B "
-msgstr ""
+msgstr " %B"
 
 #: ../src/fw/services/common/clock.c:896
 #, c-format
 msgid "%e"
-msgstr ""
+msgstr "%e"
 
 #: ../src/fw/services/common/clock.c:947
 msgid "this morning"
@@ -1927,7 +1916,7 @@ msgstr "Plus que la moy."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:829
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:829
 msgid "%l:%M%p"
@@ -1958,7 +1947,7 @@ msgstr "De sieste"
 #: ../src/fw/services/normal/activity/activity_insights.c:907
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s - %s"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:929
 msgid "I need more"
@@ -2207,7 +2196,7 @@ msgstr "Vous gardez un coeur sain ! ❤"
 #: ../src/fw/services/normal/activity/activity_insights.c:1723
 #, c-format
 msgid "%d Min"
-msgstr ""
+msgstr "%d min"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1648
 msgid "Avg Pace"
@@ -2215,7 +2204,7 @@ msgstr "Rythme Moy."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1664
 msgid "Distance"
-msgstr ""
+msgstr "Distance"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1676
 msgid "Steps"
@@ -2232,21 +2221,21 @@ msgstr "Rythme Moy."
 #: ../src/fw/services/normal/activity/health_util.c:32
 #, c-format
 msgid "%dH"
-msgstr ""
+msgstr "%dH"
 
 #: ../src/fw/services/normal/activity/health_util.c:38
 #, c-format
 msgid "%dM"
-msgstr ""
+msgstr "%dM"
 
 #: ../src/fw/services/normal/activity/health_util.c:61
 #, c-format
 msgid "%d:%d"
-msgstr ""
+msgstr "%d:%d"
 
 #: ../src/fw/services/normal/activity/health_util.c:98
 msgid "H"
-msgstr ""
+msgstr "H"
 
 #: ../src/fw/services/normal/activity/health_util.c:104
 msgid " "
@@ -2254,12 +2243,12 @@ msgstr ""
 
 #: ../src/fw/services/normal/activity/health_util.c:114
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #: ../src/fw/services/normal/activity/health_util.c:133
 #, c-format
 msgid "%d.%d"
-msgstr ""
+msgstr "%d.%d"
 
 #: ../src/fw/services/normal/alarms/alarm.c:376
 #: ../src/fw/services/normal/alarms/alarm_pin.c:20
@@ -2419,7 +2408,7 @@ msgstr "Tranquillité\n"
 
 #: ../src/fw/services/normal/timeline/calendar_layout.c:154
 msgid " - "
-msgstr ""
+msgstr " - "
 
 #: ../src/fw/services/normal/timeline/calendar_layout.c:274
 msgid "All Day"
@@ -2476,7 +2465,7 @@ msgstr "Faîtes disparaître toutes les notifications en appuyant sur le bouton 
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:817
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:818
 msgid "Yes"
@@ -2508,7 +2497,7 @@ msgstr "Messages préenregistrés"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:964
 msgid "Emoji"
-msgstr ""
+msgstr "Émoticône"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:1073
 msgid "In 15 minutes"
@@ -2650,7 +2639,7 @@ msgstr "Samedi"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:56
 msgid "%H:%M:%S"
-msgstr ""
+msgstr "%H:%M:%S"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:57
 msgid "%m/%d/%y"
@@ -2658,29 +2647,29 @@ msgstr "%d/%m/%y"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:58
 msgid "%a %b %e %H:%M:%S %Y"
-msgstr ""
+msgstr "%a %b %e %H:%M:%S %Y"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:59
 msgid "%I:%M:%S %p"
-msgstr ""
+msgstr "%I:%M:%S %p"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:61
 #: ../src/fw/applib/ui/date_time_selection_window_private.c:76
 msgid "AM"
-msgstr ""
+msgstr "AM"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:61
 #: ../src/fw/applib/ui/date_time_selection_window_private.c:78
 msgid "PM"
-msgstr ""
+msgstr "PM"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:62
 msgid "am"
-msgstr ""
+msgstr "am"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:62
 msgid "pm"
-msgstr ""
+msgstr "pm"
 
 #. / The first separator in `<hour>:<minute>:<second>`
 #. / The second separator in `<hour>:<minute>:<second>`
@@ -2688,7 +2677,7 @@ msgstr ""
 #: ../src/fw/applib/template_string.c:182
 msgctxt "TmplStringSep"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #. / The first separator in `<hour> hr <minute> min <second> sec`
 #. / The second separator in `<hour> hr <minute> min <second> sec`
@@ -2702,7 +2691,7 @@ msgstr ""
 #: ../src/fw/applib/template_string.c:188
 msgctxt "TmplStringSep"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #. / The second separator in `<hour> hours, <minute> minutes, and <second> seconds`
 #: ../src/fw/applib/template_string.c:190
@@ -2770,25 +2759,25 @@ msgstr " secondes"
 #: ../src/fw/applib/template_string.c:278
 msgctxt "TmplStringSing"
 msgid " min"
-msgstr ""
+msgstr " min"
 
 #. / Plural suffix for minutes with abbreviated units
 #: ../src/fw/applib/template_string.c:280
 msgctxt "TmplStringPlur"
 msgid " min"
-msgstr ""
+msgstr " min"
 
 #. / Singular suffix for minutes with full units
 #: ../src/fw/applib/template_string.c:282
 msgctxt "TmplStringSing"
 msgid " minute"
-msgstr ""
+msgstr " minute"
 
 #. / Plural suffix for minutes with full units
 #: ../src/fw/applib/template_string.c:284
 msgctxt "TmplStringPlur"
 msgid " minutes"
-msgstr ""
+msgstr " minutes"
 
 #. / Singular suffix for hours with abbreviated units
 #: ../src/fw/applib/template_string.c:293
@@ -2908,7 +2897,7 @@ msgstr "Erreur. Veuillez réessayer."
 
 #: ../src/fw/applib/voice/voice_window.c:354
 msgid "Enable voice in the settings page of the Pebble app."
-msgstr ""
+msgstr "Activer la voix dans la page des paramètres de l'application Pebble."
 
 #: ../src/fw/applib/voice/voice_window.c:404
 msgid "Missed that. Try again."

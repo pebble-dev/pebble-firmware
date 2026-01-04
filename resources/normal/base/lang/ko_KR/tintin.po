@@ -3,48 +3,47 @@ msgstr ""
 "Project-Id-Version: pebbleos\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-01 20:11+0000\n"
-"PO-Revision-Date: 2025-12-07 00:55\n"
+"PO-Revision-Date: 2025-12-28 00:58\n"
 "Last-Translator: \n"
-"Language-Team: Japanese\n"
-"Language: ja_JP\n"
+"Language-Team: Korean\n"
+"Language: ko_KR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: pebbleos\n"
 "X-Crowdin-Project-ID: 789734\n"
-"X-Crowdin-Language: ja\n"
+"X-Crowdin-Language: ko\n"
 "X-Crowdin-File: /resources/normal/base/lang/tintin.pot\n"
 "X-Crowdin-File-ID: 302\n"
 
 #: ../src/fw/process_management/app_manager.c:481
 #, c-format
 msgid "%.*s is not responding"
-msgstr "%.*s は応答していません"
+msgstr ""
 
 #: ../src/fw/process_management/process_manager.c:209
 msgid "This app requires a newer version of the Pebble firmware."
-msgstr "このアプリは、Pebbleの新しいファームウェアが必要です。"
+msgstr ""
 
 #: ../src/fw/popups/alarm_popup.c:47
 #, c-format
 msgid "Snooze for %d minutes"
-msgstr "%d 分間スヌーズする"
+msgstr ""
 
 #: ../src/fw/popups/alarm_popup.c:64
 msgid "Alarm dismissed"
-msgstr "アラームを解除しました"
+msgstr ""
 
 #: ../src/fw/popups/bluetooth_pairing_ui.c:231
 msgid "Pair?"
-msgstr "ペアリング？"
+msgstr ""
 
 #: ../src/fw/popups/crashed_ui.c:93
 #, c-format
 msgid "%s%.*s is not responding.\n\n"
 "Open app?"
-msgstr "%s%.*sの反応がありません。\n"
-"アプリを開きますか？"
+msgstr ""
 
 #: ../src/fw/popups/crashed_ui.c:155
 msgid "A bug report has been captured. Please finish uploading the bug report using the Pebble phone app."
@@ -52,178 +51,178 @@ msgstr ""
 
 #: ../src/fw/popups/health_tracking_ui.c:89
 msgid "This app requires Pebble Health to work. Enable Health in the Pebble mobile app to continue."
-msgstr "このアプリはPebble Healthの動作が必要です。PebbleアプリからPebble Healthを有効化してから続けて下さい。"
+msgstr ""
 
 #: ../src/fw/popups/health_tracking_ui.c:99
 msgid "This feature requires Pebble Health to work. Enable Health in the Pebble mobile app to continue."
-msgstr "この機能はPebble Healthの動作が必要です。PebbleアプリからPebble Healthを有効化してから続けて下さい。"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:685
 msgid "Snoozed"
-msgstr "スヌーズ中"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:719
 msgid "Muted"
-msgstr "ミュート中"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:846
 msgid "Snooze"
-msgstr "スヌーズ"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:865
 #, c-format
 msgid "Mute %s"
-msgstr "%s をミュート"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:888
 msgid "Mute Always"
-msgstr "常にミュート"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:893
 msgid "Mute Weekends"
-msgstr "週末だけミュート"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:898
 msgid "Mute Weekdays"
-msgstr "平日だけミュート"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:908
 msgid "Dismiss All"
-msgstr "全部無視する"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:915
 msgid "End Quiet Time"
-msgstr "Quiet Timeをおわります"
+msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:916
 msgid "Start Quiet Time"
-msgstr "Quiet Timeをはじめます"
+msgstr ""
 
 #: ../src/fw/popups/phone_ui.c:586
 msgid "Call Accepted"
-msgstr "通話を開始しました"
+msgstr ""
 
 #: ../src/fw/popups/phone_ui.c:589
 msgid "Disconnected"
-msgstr "切断されました"
+msgstr ""
 
 #: ../src/fw/popups/phone_ui.c:593
 msgid "Call Ended"
-msgstr "通話終了"
+msgstr ""
 
 #: ../src/fw/popups/phone_ui.c:596
 msgid "Call Declined"
-msgstr "通話拒否"
+msgstr ""
 
 #: ../src/fw/popups/switch_worker_ui.c:97
 #, c-format
 msgid "Run %s instead of %s as the background app?"
-msgstr "バックグラウンドアプリとして %s の代わりに %s を実行しますか？"
+msgstr ""
 
 #: ../src/fw/popups/wakeup_ui.c:55
 msgid "While your Pebble was off wakeup events occurred for:\n"
-msgstr "Pebbleがオフ中に、以下のウェイクアップイベントが発生しました：\n"
+msgstr ""
 
 #: ../src/fw/shell/normal/battery_ui.c:51
 #: ../src/fw/shell/normal/shutdown_charging.c:89
 msgid "Fully Charged"
-msgstr "充電完了"
+msgstr ""
 
 #: ../src/fw/shell/normal/battery_ui.c:57
 #: ../src/fw/shell/normal/shutdown_charging.c:94
 msgid "Charging"
-msgstr "充電中"
+msgstr ""
 
 #: ../src/fw/shell/normal/battery_ui.c:72
 #, c-format
 msgid "Powered 'til %s"
-msgstr "%s まで稼働"
+msgstr ""
 
 #: ../src/fw/shell/normal/display_calibration_prompt.c:48
 msgid "Your screen may need calibration. Calibrate it now?"
-msgstr "画面のキャリブレーションが必要な場合があります。今すぐキャリブレーションしますか？"
+msgstr ""
 
 #: ../src/fw/apps/core_apps/progress_ui_app.c:67
 msgid "Update Complete"
-msgstr "更新が完了しました"
+msgstr ""
 
 #: ../src/fw/apps/core_apps/progress_ui_app.c:67
 msgid "Update Failed"
-msgstr "更新に失敗しました"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:49
 #, c-format
 msgid "Snooze delay set to %d minutes"
-msgstr "%d分後にスヌーズをセットします"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:178
 msgid "Delete"
-msgstr "削除"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:183
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_app_menu.c:91
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:182
 msgid "Disable"
-msgstr "無効"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:183
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:184
 msgid "Enable"
-msgstr "有効にする"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:188
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:452
 msgid "Change Time"
-msgstr "時刻を変更"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:193
 msgid "Change Days"
-msgstr "日付を変更"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:199
 msgid "Convert to Basic Alarm"
-msgstr "ベーシックアラームに変換"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:200
 msgid "Convert to Smart Alarm"
-msgstr "スマートアラームに変更する"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:206
 msgid "Snooze Delay"
-msgstr "スヌーズ時間"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:217
 msgid "5 minutes"
-msgstr "5 分間"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:218
 msgid "10 minutes"
-msgstr "10 分間"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:219
 msgid "15 minutes"
-msgstr "15 分間"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:220
 msgid "30 minutes"
-msgstr "30 分間"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:221
 msgid "1 hour"
-msgstr "1 時間"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:303
 msgid "Check something first."
-msgstr "先に確認をします。"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:453
 msgid "New Smart Alarm"
-msgstr "新しいスマートアラーム"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:453
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:548
 msgid "New Alarm"
-msgstr "新しいアラーム"
+msgstr ""
 
 #. / Displays as "Wake up between" then "8:00 AM - 8:30 AM" below on a separate line
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:455
@@ -568,7 +567,7 @@ msgstr ""
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:501
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:51
 msgid "Airplane Mode"
-msgstr ""
+msgstr "비행기 모드"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:511
 msgid "Disabling..."
@@ -635,19 +634,19 @@ msgstr ""
 #: ../src/fw/apps/system_apps/settings/settings_display.c:118
 #: ../src/fw/apps/system_apps/settings/settings_display.c:290
 msgid "Orientation"
-msgstr ""
+msgstr "방향"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:131
 msgid "3 Seconds"
-msgstr ""
+msgstr "3초"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:132
 msgid "5 Seconds"
-msgstr ""
+msgstr "5초"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:133
 msgid "8 Seconds"
-msgstr ""
+msgstr "8초"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:156
 msgid "TIMEOUT"
@@ -678,12 +677,12 @@ msgstr ""
 #: ../src/fw/apps/system_apps/settings/settings_display.c:285
 #: ../src/fw/apps/system_apps/settings/settings_system.c:214
 msgid "Language"
-msgstr ""
+msgstr "언어"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:295
 #: ../src/fw/apps/system_apps/toggle/backlight_state.c:55
 msgid "Backlight"
-msgstr ""
+msgstr "백라이트"
 
 #. / Shows up in the Timeline settings as the status under the "Quick View" toggle.
 #: ../src/fw/apps/system_apps/settings/settings_display.c:305
@@ -1486,7 +1485,7 @@ msgstr ""
 #: ../src/fw/services/normal/activity/activity_insights.c:1187
 #: ../src/fw/services/normal/notifications/ancs/ancs_item.c:148
 msgid "Dismiss"
-msgstr "無視する"
+msgstr ""
 
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:32
 msgid "End Workout"
