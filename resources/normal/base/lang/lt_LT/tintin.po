@@ -2,31 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pebbleos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 17:47+0000\n"
-"PO-Revision-Date: 2025-11-27 17:58\n"
+"POT-Creation-Date: 2025-12-01 20:11+0000\n"
+"PO-Revision-Date: 2026-01-04 00:59\n"
 "Last-Translator: \n"
 "Language-Team: Lithuanian\n"
 "Language: lt_LT\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 17:47+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: \n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 17:48+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: \n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -49,11 +29,11 @@ msgstr "Ši programėlė reikalauja naujesnės Pebble programinės aparatinės �
 #: ../src/fw/popups/alarm_popup.c:47
 #, c-format
 msgid "Snooze for %d minutes"
-msgstr ""
+msgstr "Snūstelėti %d min."
 
 #: ../src/fw/popups/alarm_popup.c:64
 msgid "Alarm dismissed"
-msgstr ""
+msgstr "Žadintuvas išjungtas"
 
 #: ../src/fw/popups/bluetooth_pairing_ui.c:231
 msgid "Pair?"
@@ -174,7 +154,7 @@ msgstr "Nepavyko atnaujinti"
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:49
 #, c-format
 msgid "Snooze delay set to %d minutes"
-msgstr ""
+msgstr "Snūstelėjimo trukmė nustatyta į %d min."
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:178
 msgid "Delete"
@@ -210,7 +190,7 @@ msgstr "Keisti į išmanųjį žadintuvą"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:206
 msgid "Snooze Delay"
-msgstr ""
+msgstr "Snūstelėjimo trukmė"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:217
 msgid "5 minutes"
@@ -294,7 +274,7 @@ msgstr "Žadintuvai"
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:125
 msgid "Not connected"
-msgstr ""
+msgstr "Neprisijungta"
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:137
 msgid "No internet\n"
@@ -620,17 +600,17 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:44
-#: ../src/fw/apps/system_apps/settings/settings_system.c:539
+#: ../src/fw/apps/system_apps/settings/settings_system.c:544
 msgid "Low"
 msgstr "Mažas"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:45
-#: ../src/fw/apps/system_apps/settings/settings_system.c:541
+#: ../src/fw/apps/system_apps/settings/settings_system.c:546
 msgid "Medium"
 msgstr "Vidutinis"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:46
-#: ../src/fw/apps/system_apps/settings/settings_system.c:543
+#: ../src/fw/apps/system_apps/settings/settings_system.c:548
 msgid "High"
 msgstr "Didelis"
 
@@ -701,7 +681,7 @@ msgid "Legacy App Display"
 msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:285
-#: ../src/fw/apps/system_apps/settings/settings_system.c:209
+#: ../src/fw/apps/system_apps/settings/settings_system.c:214
 msgid "Language"
 msgstr "Kalba"
 
@@ -716,7 +696,7 @@ msgstr "Foninis apšvietimas"
 #: ../src/fw/apps/system_apps/settings/settings_display.c:317
 #: ../src/fw/apps/system_apps/settings/settings_display.c:338
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:236
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1308
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1326
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:126
 msgid "On"
 msgstr "Įjungtas"
@@ -727,7 +707,7 @@ msgstr "Įjungtas"
 #: ../src/fw/apps/system_apps/settings/settings_display.c:331
 #: ../src/fw/apps/system_apps/settings/settings_display.c:340
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:236
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1308
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1326
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:128
 msgid "Off"
 msgstr "Išjungtas"
@@ -927,7 +907,8 @@ msgstr ""
 
 #. / Shown in Quick Launch Settings when the button is disabled.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:63
-#: ../src/fw/apps/system_apps/settings/settings_system.c:609
+#: ../src/fw/apps/system_apps/settings/settings_system.c:617
+#: ../src/fw/apps/system_apps/settings/settings_system.c:632
 msgid "Disabled"
 msgstr "Išjungtas"
 
@@ -1014,128 +995,136 @@ msgstr "Pamiršti"
 msgid "Stop Sharing Heart Rate"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:161
-#: ../src/fw/apps/system_apps/settings/settings_system.c:284
+#: ../src/fw/apps/system_apps/settings/settings_system.c:166
+#: ../src/fw/apps/system_apps/settings/settings_system.c:289
 msgid "Information"
 msgstr "Informacija"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:162
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1050
+#: ../src/fw/apps/system_apps/settings/settings_system.c:167
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1068
 msgid "Certification"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:163
+#: ../src/fw/apps/system_apps/settings/settings_system.c:168
 msgid "Stand-By Mode"
 msgstr "Pristabdytoji veiksena"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:164
-#: ../src/fw/apps/system_apps/settings/settings_system.c:689
+#: ../src/fw/apps/system_apps/settings/settings_system.c:169
+#: ../src/fw/apps/system_apps/settings/settings_system.c:707
 msgid "Debugging"
-msgstr ""
+msgstr "Derinimas"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:165
+#: ../src/fw/apps/system_apps/settings/settings_system.c:170
 msgid "Shut Down"
 msgstr "Išjungti"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:166
+#: ../src/fw/apps/system_apps/settings/settings_system.c:171
 msgid "Factory Reset"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:207
+#: ../src/fw/apps/system_apps/settings/settings_system.c:212
 msgid "BT Address"
 msgstr "BT adresas"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:208
+#: ../src/fw/apps/system_apps/settings/settings_system.c:213
 msgid "Firmware"
 msgstr "Programinė aparatinė įranga"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:210
+#: ../src/fw/apps/system_apps/settings/settings_system.c:215
 msgid "Recovery"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:211
+#: ../src/fw/apps/system_apps/settings/settings_system.c:216
 msgid "Bootloader"
 msgstr "Pradinis įkėliklis"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:212
+#: ../src/fw/apps/system_apps/settings/settings_system.c:217
 msgid "Hardware"
 msgstr "Aparatinė įranga"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:213
+#: ../src/fw/apps/system_apps/settings/settings_system.c:218
 msgid "Serial"
 msgstr "Serijos numeris"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:214
+#: ../src/fw/apps/system_apps/settings/settings_system.c:219
 msgid "Uptime"
 msgstr "Veikimo laikas"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:215
+#: ../src/fw/apps/system_apps/settings/settings_system.c:220
 msgid "Legal"
 msgstr "Teisinė informacija"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:380
+#: ../src/fw/apps/system_apps/settings/settings_system.c:385
 msgid "Core dump and reboot?"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:538
+#: ../src/fw/apps/system_apps/settings/settings_system.c:543
 msgid "Very Low"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:540
+#: ../src/fw/apps/system_apps/settings/settings_system.c:545
 msgid "Medium-Low"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:542
+#: ../src/fw/apps/system_apps/settings/settings_system.c:547
 msgid "Medium-High"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:544
+#: ../src/fw/apps/system_apps/settings/settings_system.c:549
 msgid "Very High"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:569
-#: ../src/fw/apps/system_apps/settings/settings_system.c:585
+#: ../src/fw/apps/system_apps/settings/settings_system.c:574
+#: ../src/fw/apps/system_apps/settings/settings_system.c:590
 msgid "Motion Sensitivity"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:581
+#: ../src/fw/apps/system_apps/settings/settings_system.c:586
 msgid "CoreDump now"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:582
+#: ../src/fw/apps/system_apps/settings/settings_system.c:587
 msgid "CoreDump shortcut"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:583
+#: ../src/fw/apps/system_apps/settings/settings_system.c:588
 msgid "ALS Threshold"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:588
+#: ../src/fw/apps/system_apps/settings/settings_system.c:593
+msgid "BLE compat mode"
+msgstr ""
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:596
 msgid "Dyn BL Min Threshold"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:589
+#: ../src/fw/apps/system_apps/settings/settings_system.c:597
 msgid "Dyn BL Max Threshold"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:609
+#: ../src/fw/apps/system_apps/settings/settings_system.c:617
 msgid "10 back-button presses"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:758
-msgid "PebbleOS developers only!"
+#: ../src/fw/apps/system_apps/settings/settings_system.c:632
+msgid "Emulate silk"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1011
+#: ../src/fw/apps/system_apps/settings/settings_system.c:776
+msgid "PebbleOS developers only!"
+msgstr "Tik PebbleOS plėtotojams!"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1029
 msgid "See details..."
 msgstr "Rodyti išsamiau..."
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1288
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1306
 msgid "Do you want to shut down?"
 msgstr "Ar norite išjungti?"
 
 #. / Refers to the class of all non-score vibes, e.g. 3rd party app vibes
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1382
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1400
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:77
 msgid "System"
 msgstr "Sistema"
@@ -1159,7 +1148,7 @@ msgstr ""
 #. / Title of the Themes Settings submenu in Settings
 #: ../src/fw/apps/system_apps/settings/settings_themes.c:266
 msgid "Themes"
-msgstr ""
+msgstr "Apipavidalinimai"
 
 #. / Title of the menu for changing the watch's timezone.
 #: ../src/fw/apps/system_apps/settings/settings_time.c:125
@@ -1284,19 +1273,19 @@ msgstr "Lėktuvo veiksena\n"
 
 #: ../src/fw/apps/system_apps/toggle/backlight_state.c:30
 msgid "Turn On Backlight?"
-msgstr ""
+msgstr "Įjungti foninį apšvietimą?"
 
 #: ../src/fw/apps/system_apps/toggle/backlight_state.c:31
 msgid "Turn Off Backlight?"
-msgstr ""
+msgstr "Išjungti foninį apšvietimą?"
 
 #: ../src/fw/apps/system_apps/toggle/backlight_state.c:32
 msgid "Backlight On"
-msgstr ""
+msgstr "Foninis apšvietimas įjungtas"
 
 #: ../src/fw/apps/system_apps/toggle/backlight_state.c:33
 msgid "Backlight Off"
-msgstr ""
+msgstr "Foninis apšvietimas išjungtas"
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:24
 msgid "Turn On Motion Backlight?"
@@ -1322,7 +1311,7 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/watchfaces.c:92
 msgid "Active"
-msgstr ""
+msgstr "Aktyvus"
 
 #: ../src/fw/apps/system_apps/watchfaces.c:206
 msgid "Watchfaces"
@@ -1373,7 +1362,7 @@ msgstr "RYTOJ"
 
 #: ../src/fw/apps/system_apps/workout/sports.c:368
 msgid "Sports"
-msgstr ""
+msgstr "Sportas"
 
 #: ../src/fw/apps/system_apps/workout/workout.c:164
 msgid "Workout\n"
@@ -1384,7 +1373,7 @@ msgstr "Treniruotė\n"
 #. / Workouts waiting for time sync
 #: ../src/fw/apps/system_apps/workout/workout.c:190
 msgid "Workout requires the time to be synced. Please connect your phone."
-msgstr ""
+msgstr "Treniruotė reikalauja, kad būtų sinchronizuotas laikas. Prisijunkite prie telefono."
 
 #. / Health disabled text
 #: ../src/fw/apps/system_apps/workout/workout.c:198
@@ -1402,7 +1391,7 @@ msgstr ""
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:92
 #: ../src/fw/services/normal/activity/activity_insights.c:1629
 msgid "Workout"
-msgstr ""
+msgstr "Treniruotė"
 
 #. / Zone 1 HR Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:103
@@ -1887,7 +1876,7 @@ msgstr "Miego santrauka"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:259
 msgid "You had a good night! Feel the energy 😃"
-msgstr ""
+msgstr "Gerai pamiegojote! Pajuskite energijos antplūdį 😃"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:262
 msgid "It's great that you're keeping a consistent sleep routine!"
@@ -2422,7 +2411,7 @@ msgstr "Tylos laikas\n"
 
 #: ../src/fw/services/normal/timeline/calendar_layout.c:154
 msgid " - "
-msgstr ""
+msgstr " - "
 
 #: ../src/fw/services/normal/timeline/calendar_layout.c:274
 msgid "All Day"
@@ -2691,7 +2680,7 @@ msgstr ""
 #: ../src/fw/applib/template_string.c:182
 msgctxt "TmplStringSep"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #. / The first separator in `<hour> hr <minute> min <second> sec`
 #. / The second separator in `<hour> hr <minute> min <second> sec`
@@ -2705,13 +2694,13 @@ msgstr ""
 #: ../src/fw/applib/template_string.c:188
 msgctxt "TmplStringSep"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #. / The second separator in `<hour> hours, <minute> minutes, and <second> seconds`
 #: ../src/fw/applib/template_string.c:190
 msgctxt "TmplStringSep"
 msgid ", and "
-msgstr ""
+msgstr " ir "
 
 #. / Singular suffix for seconds with no units
 #. / Singular suffix for minutes with no units
@@ -2749,13 +2738,13 @@ msgstr ""
 #: ../src/fw/applib/template_string.c:263
 msgctxt "TmplStringSing"
 msgid " sec"
-msgstr ""
+msgstr " sek."
 
 #. / Plural suffix for seconds with abbreviated units
 #: ../src/fw/applib/template_string.c:265
 msgctxt "TmplStringPlur"
 msgid " sec"
-msgstr ""
+msgstr " sek."
 
 #. / Singular suffix for seconds with full units
 #: ../src/fw/applib/template_string.c:267
@@ -2907,7 +2896,7 @@ msgstr ""
 
 #: ../src/fw/applib/voice/voice_window.c:254
 msgid "Error occurred. Try again."
-msgstr ""
+msgstr "Įvyko klaida. Bandykite dar kartą."
 
 #: ../src/fw/applib/voice/voice_window.c:354
 msgid "Enable voice in the settings page of the Pebble app."
@@ -2919,5 +2908,5 @@ msgstr ""
 
 #: ../src/fw/applib/voice/voice_window.c:1139
 msgid "Listening"
-msgstr ""
+msgstr "Klausomasi"
 
