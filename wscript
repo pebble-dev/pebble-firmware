@@ -219,6 +219,11 @@ def options(opt):
     opt.add_option('--reboot_on_bt_crash', action='store_true', help='Forces a BT '
                    'chip crash to immediately force a system reboot instead of just cycling airplane mode. '
                    'This makes it easier for us to actually get crash info')
+    opt.add_option('--enable-menu-wrap', action='store_true', help='Enable the scroll wrap around behavior on firmware apps menus')
+    opt.add_option('--enable-menu-vibe-on-blocked', action='store_true', help=
+                   'Enable the vibe behavior when blocked at the top or bottom menu item on firmware apps menus.'
+                   'If enabled, this setting will override the \'--enable-menu-vibe-on-wrap\' and set it to false.')
+    opt.add_option('--enable-menu-vibe-on-wrap', action='store_true', help='Enable the vibe behavior when wrapping around on firmware apps menus')
 
 
 def handle_configure_options(conf):
@@ -384,6 +389,16 @@ def handle_configure_options(conf):
 
     if not conf.options.no_pulse_everywhere:
         conf.env.append_value('DEFINES', 'PULSE_EVERYWHERE=1')
+    
+    if conf.options.enable_menu_wrap:
+        print("Enabling wrapping behavior of MenuLayer in firmware apps")
+        conf.env.append_value('DEFINES', 'FW_APPS_MENUS_WRAP')
+    if conf.options.enable_menu_vibe_on_blocked:
+        print("Enabling vibe on blocked behavior of MenuLayer in firmware apps")
+        conf.env.append_value('DEFINES', 'FW_APPS_MENUS_VIBE_ON_BLOCKED')
+    elif conf.options.enable_menu_vibe_on_wrap:
+        print("Enabling vibe on wrap around behavior of MenuLayer in firmware apps")
+        conf.env.append_value('DEFINES', 'FW_APPS_MENUS_VIBE_ON_WRAP')
 
 def _create_cm0_env(conf):
     prev_env = conf.env
