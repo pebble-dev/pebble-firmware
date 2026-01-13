@@ -202,6 +202,15 @@ void launcher_menu_layer_init(LauncherMenuLayer *launcher_menu_layer,
     .get_cell_height = prv_menu_layer_get_cell_height,
     .selection_will_change = prv_menu_layer_selection_will_change,
   });
+#if FW_APPS_MENUS_WRAP
+  menu_layer_set_scroll_wrap_around(menu_layer, true);
+#endif
+#if FW_APPS_MENUS_VIBE_ON_WRAP
+  menu_layer_set_scroll_vibe_on_wrap(menu_layer, true);
+#endif
+#if FW_APPS_MENUS_VIBE_ON_BLOCKED
+  menu_layer_set_scroll_vibe_on_blocked(menu_layer, true);
+#endif
 
   // Only setup the content indicator on round
 #if PBL_ROUND

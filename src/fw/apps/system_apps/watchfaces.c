@@ -154,6 +154,15 @@ static void prv_window_load(Window *window) {
                                   PBL_IF_COLOR_ELSE(GColorJazzberryJam, GColorBlack),
                                   GColorWhite);
   menu_layer_set_click_config_onto_window(menu_layer, window);
+#if FW_APPS_MENUS_WRAP
+  menu_layer_set_scroll_wrap_around(menu_layer, true);
+#endif
+#if FW_APPS_MENUS_VIBE_ON_WRAP
+  menu_layer_set_scroll_vibe_on_wrap(menu_layer, true);
+#endif
+#if FW_APPS_MENUS_VIBE_ON_BLOCKED
+  menu_layer_set_scroll_vibe_on_blocked(menu_layer, true);
+#endif
   layer_add_child(&window->layer, menu_layer_get_layer(menu_layer));
 }
 
