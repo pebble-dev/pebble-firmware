@@ -20,53 +20,53 @@ static HealthProgressSegment s_hr_summary_progress_segments[] = {
   {
     // Bottom corner
     .type = HealthProgressSegmentType_Corner,
-    .points = {{71 + X_SHIFT, 88 + Y_SHIFT}, {64 + X_SHIFT, 94 + Y_SHIFT},
-               {72 + X_SHIFT, 101 + Y_SHIFT}, {80 + X_SHIFT, 93 + Y_SHIFT}},
+    .points = {{72 + X_SHIFT, 87 + Y_SHIFT}, {65 + X_SHIFT, 94 + Y_SHIFT},
+               {72 + X_SHIFT, 101 + Y_SHIFT}, {79 + X_SHIFT, 94 + Y_SHIFT}},
   },
   {
     // Left side bottom
     .amount_of_total = AMOUNT_PER_SEGMENT,
     .type = HealthProgressSegmentType_Vertical,
-    .points = {{65 + X_SHIFT, 95 + Y_SHIFT}, {72 + X_SHIFT, 89 + Y_SHIFT},
-               {42 + X_SHIFT, 58 + Y_SHIFT}, {35 + X_SHIFT, 65 + Y_SHIFT}},
+    .points = {{66 + X_SHIFT, 95 + Y_SHIFT}, {73 + X_SHIFT, 88 + Y_SHIFT},
+               {42 + X_SHIFT, 57 + Y_SHIFT}, {35 + X_SHIFT, 64 + Y_SHIFT}},
   },
   {
     // Left corner
     .type = HealthProgressSegmentType_Corner,
-    .points = {{43 + X_SHIFT, 58 + Y_SHIFT}, {36 + X_SHIFT, 50 + Y_SHIFT},
-               {29 + X_SHIFT, 58 + Y_SHIFT}, {36 + X_SHIFT, 66 + Y_SHIFT}},
+    .points = {{43 + X_SHIFT, 58 + Y_SHIFT}, {36 + X_SHIFT, 51 + Y_SHIFT},
+               {29 + X_SHIFT, 58 + Y_SHIFT}, {36 + X_SHIFT, 65 + Y_SHIFT}},
   },
   {
     // Left side top
     .amount_of_total = AMOUNT_PER_SEGMENT,
     .type = HealthProgressSegmentType_Vertical,
-    .points = {{36 + X_SHIFT, 51 + Y_SHIFT}, {44 + X_SHIFT, 58 + Y_SHIFT},
-               {72 + X_SHIFT, 29 + Y_SHIFT}, {65 + X_SHIFT, 22 + Y_SHIFT}},
+    .points = {{35 + X_SHIFT, 52 + Y_SHIFT}, {42 + X_SHIFT, 59 + Y_SHIFT},
+               {73 + X_SHIFT, 28 + Y_SHIFT}, {66 + X_SHIFT, 21 + Y_SHIFT}},
   },
   {
     // Top corner
     .type = HealthProgressSegmentType_Corner,
-    .points = {{71 + X_SHIFT, 30 + Y_SHIFT}, {79 + X_SHIFT, 23 + Y_SHIFT},
-               {71 + X_SHIFT, 16 + Y_SHIFT}, {65 + X_SHIFT, 22 + Y_SHIFT}},
+    .points = {{72 + X_SHIFT, 29 + Y_SHIFT}, {79 + X_SHIFT, 22 + Y_SHIFT},
+               {72 + X_SHIFT, 15 + Y_SHIFT}, {65 + X_SHIFT, 22 + Y_SHIFT}},
   },
   {
     // Right side top
     .amount_of_total = AMOUNT_PER_SEGMENT,
     .type = HealthProgressSegmentType_Vertical,
-    .points = {{78 + X_SHIFT, 22 + Y_SHIFT}, {71 + X_SHIFT, 28 + Y_SHIFT},
-               {102 + X_SHIFT, 60 + Y_SHIFT}, {108 + X_SHIFT, 53 + Y_SHIFT}},
+    .points = {{78 + X_SHIFT, 21 + Y_SHIFT}, {71 + X_SHIFT, 28 + Y_SHIFT},
+               {102 + X_SHIFT, 59 + Y_SHIFT}, {109 + X_SHIFT, 52 + Y_SHIFT}},
   },
   {
     // Right corner
     .type = HealthProgressSegmentType_Corner,
-    .points = {{100 + X_SHIFT, 56 + Y_SHIFT}, {108 + X_SHIFT, 66 + Y_SHIFT},
-               {114 + X_SHIFT, 59 + Y_SHIFT}, {106 + X_SHIFT, 50 + Y_SHIFT}},
+    .points = {{101 + X_SHIFT, 58 + Y_SHIFT}, {108 + X_SHIFT, 65 + Y_SHIFT},
+               {115 + X_SHIFT, 58 + Y_SHIFT}, {108 + X_SHIFT, 51 + Y_SHIFT}},
   },
   {
     // Right side bottom
     .amount_of_total = AMOUNT_PER_SEGMENT,
     .type = HealthProgressSegmentType_Vertical,
-    .points = {{102 + X_SHIFT, 57 + Y_SHIFT}, {108 + X_SHIFT, 64 + Y_SHIFT},
-               {78 + X_SHIFT, 95 + Y_SHIFT}, {71 + X_SHIFT, 89 + Y_SHIFT}},
+    .points = {{102 + X_SHIFT, 57 + Y_SHIFT}, {109 + X_SHIFT, 64 + Y_SHIFT},
+               {78 + X_SHIFT, 95 + Y_SHIFT}, {71 + X_SHIFT, 88 + Y_SHIFT}},
   },
 };
