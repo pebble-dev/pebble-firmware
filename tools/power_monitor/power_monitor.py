@@ -94,8 +94,8 @@ class MatplotlibCurrentGraph:
             self.graph_data = self.np.roll(self.graph_data, -1)
             self.graph_data[self.roll_at - 1] = read_input[1]
         if count % self.samples_to_batch == 0:
-            print "%.3f secs to collect last %d samples" % \
-                (time.time() - self.start_time, self.samples_to_batch)
+            print("%.3f secs to collect last %d samples" % \
+                (time.time() - self.start_time, self.samples_to_batch))
             self.plt.clf()
             self.plt.plot(list(self.graph_data), 'b')
             avg_all = "Avg: %.3f mA" % (self.np.average(self.graph_data) / 1000)
@@ -151,8 +151,8 @@ class BokehCurrentGraph:
             self.graph_data = self.np.roll(self.graph_data, -1)
             self.graph_data[self.roll_at - 1] = read_input[1]
         if count % self.samples_to_batch == 0:
-            print "%.3f secs to collect last %d samples" % \
-                (time.time() - self.start_time, self.samples_to_batch)
+            print("%.3f secs to collect last %d samples" % \
+                (time.time() - self.start_time, self.samples_to_batch))
             avg_all = "Avg: %.3f ma" % (self.np.average(self.graph_data) / 1000)
             avg_last_set = "Last Collection Avg: %.3f mA            %s" % \
                            (self.np.average(self.graph_data[-100:])/1000, avg_all)
@@ -216,8 +216,8 @@ if __name__ == "__main__":
     if args.rails:
       for r in args.rails:
         if r not in RailNames:
-          print 'Rail "{}" not valid for platform "{}"'.format(r, args.platform)
-          print 'Valid rails are: {}'.format(RailNames)
+          print('Rail "{}" not valid for platform "{}"'.format(r, args.platform))
+          print('Valid rails are: {}'.format(RailNames))
           sys.exit(1)
 
     # local graphing setup
@@ -287,14 +287,14 @@ if __name__ == "__main__":
             return read_tuple
 
         if args.outfile:
-            with open(args.outfile, 'wb') as csvfile:
+            with open(args.outfile, 'w', newline='') as csvfile:
                 powercsv = csv.writer(csvfile)
                 powercsv.writerow(args.rails)
                 powercsv.writerow(read_currents())
                 while args.rails and args.continuous:
                     powercsv.writerow(read_currents())
         else:
-            print args.rails
+            print(args.rails)
             while args.continuous:
                 readings = read_currents()
                 count += 1
@@ -304,6 +304,6 @@ if __name__ == "__main__":
                     for rail in args.rails:
                         totals[rail] += readings[args.rails.index(rail)+1]
                         averages[rail] = totals[rail]/count
-                    print averages
+                    print(averages)
                 else:
-                    print readings
+                    print(readings)

@@ -5,7 +5,7 @@
 # May be combined with pyftdi at a later date
 # - please do not mix Tintin code in
 
-from pyftdi.pyftdi import ftdi
+from pyftdi import ftdi
 from array import array as Array
 
 class MPSSE(ftdi.Ftdi):
@@ -152,7 +152,7 @@ class MPSSE(ftdi.Ftdi):
 
     #  Close the I2C when done
     def Close(self):
-        self.set_bitmode(0, self.BITMODE_RESET)
+        self.set_bitmode(0, self.BitMode.RESET)
         self.close()
 
     #  Set the low bit pins high/low
@@ -246,7 +246,7 @@ class MPSSE(ftdi.Ftdi):
 
             #  append data input only if write
             if cmd == self.tx or cmd == self.txrx:
-                buf.append(ord(data[k]))
+                buf.append(data[k] if isinstance(data[k], int) else ord(data[k]))
                 k += 1
 
             # In I2C mode clock one ACK bit
@@ -273,7 +273,7 @@ class MPSSE(ftdi.Ftdi):
         buf = Array('B')
         while n < size:
             rxsize = size - n
-            rxsize - min(self.I2C_TRANSFER_SIZE, rxsize)
+            rxsize = min(self.I2C_TRANSFER_SIZE, rxsize)
 
             # buf not used by build_block when reading
             data = self._build_block_buffer(self.rx, buf, rxsize)
@@ -301,7 +301,7 @@ class MPSSE(ftdi.Ftdi):
         while n < size:
             str_buf = self.read_data(size)
             for s in str_buf:
-                buf.append(ord(s))
+                buf.append(s if isinstance(s, int) else ord(s))
             r = len(buf)
             if r < 0:
                 break

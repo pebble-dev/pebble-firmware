@@ -40,7 +40,7 @@ class Ina226:
         max_i /= self.UNITS_SCALING
 
         self.calibration_value = 0.00512 / ((max_i / (1 << 15)) * shunt_r)
-        self.calibration_value = min(self.calibration_value, 0xFFFF)
+        self.calibration_value = int(min(self.calibration_value, 0xFFFF))
 
         self.current_lsb = 0.00512 / (shunt_r * self.calibration_value)
         self.current_lsb *= self.UNITS_SCALING

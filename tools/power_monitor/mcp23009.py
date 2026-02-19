@@ -44,7 +44,7 @@ class Mcp23009:
     writeString = pack('>BBB', self.i2cAddress, regAddress, regValue)
     self.i2cBus.Write(writeString)
     if self.i2cBus.GetAck() != ACK:
-      print "NO ACK RECEIVED w0"
+      print("NO ACK RECEIVED w0")
       #self.i2cBus.Stop()
       #raise Exception("No ack received for command string %s" % writeString)
 
@@ -56,13 +56,13 @@ class Mcp23009:
     writeString = pack('>BB', self.i2cAddress, regAddress)
     self.i2cBus.Write(writeString)
     if self.i2cBus.GetAck() != ACK:
-      print "NO ACK RECEIVED r1"
+      print("NO ACK RECEIVED r1")
 
     self.i2cBus.Start()
     writeString = pack('B', (self.i2cAddress + 0x01))
     self.i2cBus.Write(writeString)
     if self.i2cBus.GetAck() != ACK:
-      print "NO ACK RECEIVED r3"
+      print("NO ACK RECEIVED r3")
 
     self.i2cBus.SendNacks()
     data = self.i2cBus.Read(1)
@@ -74,7 +74,7 @@ class Mcp23009:
   def setButtons(self, back=False, up=False, down=False, select=False):
     # read the current GPIO register and mask out the buttons
     curGPIO = unpack('>B',self._i2cRead8BitReg(REG_GPIO))[0] | 0x0f
-    print "Before - setButton: 0x%x" % curGPIO
+    print("Before - setButton: 0x%x" % curGPIO)
     if back:
       curGPIO &= 0xf7
     if up:
@@ -83,7 +83,7 @@ class Mcp23009:
       curGPIO &= 0xfd
     if down:
       curGPIO &= 0xfe
-    print "After - setButton: 0x%x" % curGPIO
+    print("After - setButton: 0x%x" % curGPIO)
     self._i2cWrite8BitReg(REG_GPIO, curGPIO)
 
   def configureGPIODirection(self, gpio_mask, as_output=True):
@@ -98,7 +98,7 @@ class Mcp23009:
       self._i2cWrite8BitReg(REG_IODIR, new_gpiodir)
       gpiodir = unpack('>B', self._i2cRead8BitReg(REG_IODIR))[0]
 
-    print "REG_IODIR = 0x%x" % gpiodir
+    print("REG_IODIR = 0x%x" % gpiodir)
 
   def setUsbChargeEn(self, chargeEnable=False):
     usb_en_mask = 0x10
@@ -107,12 +107,12 @@ class Mcp23009:
     # read the current GPIO register and mask out the USB V+ En
     curGPIO = unpack('>B', self._i2cRead8BitReg(REG_GPIO))[0] & 0xEF
 
-    print "Before - setUsbChargeEn: 0x%x" % curGPIO
+    print("Before - setUsbChargeEn: 0x%x" % curGPIO)
 
     if chargeEnable:
       curGPIO |= usb_en_mask
 
-    print "After - setUsbChargeEn 0x%x" % curGPIO
+    print("After - setUsbChargeEn 0x%x" % curGPIO)
 
     self._i2cWrite8BitReg(REG_GPIO, curGPIO)
 
@@ -132,7 +132,7 @@ class Mcp23009:
       self._i2cWrite8BitReg(REG_GPIO, curGPIO)
       curGPIO = unpack('>B', self._i2cRead8BitReg(REG_GPIO))[0]
 
-    print "REG_GPIO = 0x%x" % curGPIO
+    print("REG_GPIO = 0x%x" % curGPIO)
 
   def reset(self):
     # this is the reset sequence
@@ -150,4 +150,4 @@ class Mcp23009:
 
   def readRegs(self):
     for reg in range(0,11):
-      print "%x: %x" %(reg, unpack('>B',self._i2cRead8BitReg(reg))[0])
+      print("%x: %x" %(reg, unpack('>B',self._i2cRead8BitReg(reg))[0]))
