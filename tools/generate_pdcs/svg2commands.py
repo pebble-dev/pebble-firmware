@@ -10,18 +10,14 @@ Currently the following SVG elements are supported:
 g, layer, path, rect, polyline, polygon, line, circle,
 '''
 
-import xml.etree.ElementTree as ET
+from lxml import etree as ET
+import tinycss2
+from tinycss2 import color3
 import svg.path
 import glob
 from . import pebble_commands
 
 xmlns = '{http://www.w3.org/2000/svg}'
-
-# The most used color names
-WEB_COLORS = {
-    'black': '000000',
-    'white': 'ffffff'
-}
 
 def get_viewbox(root):
     try:
@@ -49,18 +45,19 @@ def get_translate(group):
 
 
 def parse_color(color, opacity, truncate):
-    if not color is None and color[0] == '#':
-        hex_color = color[1:7]
-        if len(hex_color) != 6:
-            hex_color = ''.join([hex_color[0], hex_color[0], hex_color[1], hex_color[1], hex_color[2], hex_color[2]])
-    elif not color is None and color.lower() in WEB_COLORS:
-        hex_color = WEB_COLORS[color]
-    else:
-        return 0
+    r, g, b, a = [0, 0, 0, 0]
 
-    rgb = int(hex_color, 16)
-    r, g, b = (rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF
-    a = int(opacity * 255)
+    if color is None:
+        return pebble_commands.convert_color(r, g, b, a, truncate)
+
+    parsed_color = color3.parse_color(color)
+    if type(parsed_color) == color3.RGBA:
+        r, g, b, a = parsed_color
+
+    r = int(r * 255)
+    g = int(g * 255)
+    b = int(b * 255)
+    a = int(a * opacity * 255)
 
     return pebble_commands.convert_color(r, g, b, a, truncate)
 
@@ -194,10 +191,13 @@ svg_element_parser = {'path': parse_path,
 
 
 def create_command(translate, element, verbose=False, precise=False, raise_error=False,
-                   truncate_color=True, inherited_values={}):
-    values = overwrite_inherited(element, inherited_values)
+                   truncate_color=True, inherited_values={}, stylesheet=[]):
+    values = overwrite_inherited(element, inherited_values, stylesheet)
     try:
-        stroke_width = int(values.get('stroke-width'))
+        stroke_width = values.get('stroke-width')
+        if type(stroke_width) == str:
+            stroke_width = stroke_width.removesuffix('px')
+        stroke_width = int(stroke_width)
     except TypeError:
         stroke_width = 1
     except ValueError:
@@ -231,8 +231,26 @@ def create_command(translate, element, verbose=False, precise=False, raise_error
     return None
 
 
-def overwrite_inherited(element, inherited_values):
+def matches_css_selector(element, selector):
+    """Check if a specific element matches a CSS selector"""
+    root = element.getroottree().getroot()
+    matches = root.cssselect(selector)
+    return element in matches
+
+def overwrite_inherited(element, inherited_values, stylesheet):
     style = {}
+
+    for rule in stylesheet:
+        if rule.type == 'qualified-rule':
+            root = element.getroottree().getroot()
+            matches = root.cssselect(tinycss2.serialize(rule.prelude).strip())
+            if element in matches:
+                block = tinycss2.serialize(rule.content)
+                for item in tinycss2.parse_blocks_contents(block, skip_comments=True, skip_whitespace=True):
+                    if item.type == 'declaration':
+                        if not item.name in ['stroke', 'stroke-width', 'stroke-opacity', 'fill', 'fill-opacity', 'opacity']:
+                            continue
+                        style[item.name] = tinycss2.serialize(item.value).strip()
     if element.get('style'):
         for pair in element.get('style').split(';'):
             key, value = pair.split(':')
@@ -254,13 +272,15 @@ def overwrite_inherited(element, inherited_values):
 
 
 def get_commands(translate, group, verbose=False, precise=False, raise_error=False,
-                 truncate_color=True, inherited_values={}):
+                 truncate_color=True, inherited_values={}, stylesheet=[]):
     commands = []
     error = False
     for child in list(group):
         # ignore elements that are marked display="none"
         display = child.get('display')
         if display is not None and display == 'none':
+            continue
+        if type(child.tag) != str:
             continue
         try:
             tag = child.tag[len(xmlns):]
@@ -270,15 +290,24 @@ def get_commands(translate, group, verbose=False, precise=False, raise_error=Fal
         # traverse tree of nested layers or groups
         if tag == 'layer' or tag == 'g':
             translate += get_translate(child)
-            inherited_values = overwrite_inherited(child, inherited_values)
+            inherited_values = overwrite_inherited(child, inherited_values, stylesheet)
             cmd_list, err = get_commands(translate, child, verbose, precise, raise_error,
-                                         truncate_color, inherited_values)
+                                         truncate_color, inherited_values, stylesheet.copy())
             commands += cmd_list
             if err:
                 error = True
+        if tag == 'defs':
+            inherited_values = overwrite_inherited(child, inherited_values, stylesheet)
+            cmd_list, err = get_commands(translate, child, verbose, precise, raise_error,
+                                         truncate_color, inherited_values, stylesheet)
+            commands += cmd_list
+            if err:
+                error = True
+        elif tag == 'style':
+            stylesheet.extend(tinycss2.parse_stylesheet(child.text, skip_comments=True, skip_whitespace=True))
         else:
             try:
-                c = create_command(translate, child, verbose, precise, raise_error, truncate_color, inherited_values)
+                c = create_command(translate, child, verbose, precise, raise_error, truncate_color, inherited_values, stylesheet)
                 if c is not None:
                     commands.append(c)
             except pebble_commands.InvalidPointException:
@@ -305,7 +334,7 @@ def get_info(xml):
 def parse_svg_image(filename, verbose=False, precise=False, raise_error=False):
     root = get_xml(filename)
     translate, size = get_info(root)
-    cmd_list, error = get_commands(translate, root, verbose, precise, raise_error, True, {})
+    cmd_list, error = get_commands(translate, root, verbose, precise, raise_error, True, {}, [])
     return size, cmd_list, error
 
 
@@ -317,7 +346,7 @@ def parse_svg_sequence(dir_name, verbose=False, precise=False, raise_error=False
         return
     translate, size = get_info(get_xml(file_list[0]))  # get the viewbox from the first file
     for filename in file_list:
-        cmd_list, error = get_commands(translate, get_xml(filename), verbose, precise, raise_error, True, {})
+        cmd_list, error = get_commands(translate, get_xml(filename), verbose, precise, raise_error, True, {}, [])
         if cmd_list is not None:
             frames.append(cmd_list)
         if error:

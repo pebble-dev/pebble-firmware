@@ -12,9 +12,9 @@ Size (4 bytes) - size of PDC image or sequence following the header in bytes
 import os
 import argparse
 
-from . import pebble_commands
-from . import svg2commands
-from . import json2commands
+from generate_pdcs import pebble_commands
+from generate_pdcs import svg2commands
+from generate_pdcs import json2commands
 
 
 def create_pdc_data_from_path(path, viewbox_size, verbose, duration, play_count,

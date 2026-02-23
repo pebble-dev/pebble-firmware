@@ -30,6 +30,9 @@ packaging
 libpebble2>=0.0.16
 pyftdi==0.56.0
 pathlib
+lxml
+tinycss2
+cssselect
 
 -e python_libs/pblprog
 -e python_libs/pebble-commander
