@@ -51,10 +51,10 @@ static bool ble_run_bts(const ResAppNum bts_file) {
     i += sizeof(BTSHCICommand) + command->size;
 
     // TODO: re-add sleep mode config and deal with entering/exiting sleep mode
-    if (command->opcode == HCI_VS_SLEEP_MODE_CONFIG) {
-      PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_INFO, "ble_bts: Skipping opcode 0x%X", command->opcode);
-      continue;
-    }
+    //if (command->opcode == HCI_VS_SLEEP_MODE_CONFIG) {
+    //  PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "ble_bts: Skipping opcode 0x%X", command->opcode);
+    //  continue;
+    //}
 
     if (command->opcode == HCI_VS_UPDATE_UART_HCI_BAUDRATE) {
       PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_INFO, "ble_bts: Setting baud rate to %d", HCI_BAUD_RATE);
@@ -94,5 +94,11 @@ bool ble_chipset_start(void) {
 
   PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_INFO, "bts files sent");
 
+  return true;
+}
+
+bool ble_chipset_is_hcill(void) {
+  // CC2564 requires eHCILL protocol support; tell hci_uart_transport to
+  // parse those packets appropriately.
   return true;
 }

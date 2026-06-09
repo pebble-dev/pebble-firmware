@@ -24,6 +24,9 @@
 
 extern void ble_chipset_init(void);
 extern bool ble_chipset_start(void);
+extern bool ble_chipset_is_hcill(void);
+
+static void prv_ble_queue_ehcill(uint8_t type);
 
 struct uart_tx {
   uint8_t type;
@@ -54,13 +57,83 @@ static void prv_lock(void) { portENTER_CRITICAL(); }
 
 static void prv_unlock(void) { portEXIT_CRITICAL(); }
 
+// For chipsets that support eHCILL for power management (CC2564; ref:
+// https://www.ti.com/lit/an/swra288b/swra288b.pdf), we intercept this at
+// the packet-callback level.  hci_uart_packet_cb implements most of 
+
+#define CMD_HCILL_GO_TO_SLEEP_IND 0x30
+#define CMD_HCILL_GO_TO_SLEEP_ACK 0x31
+#define CMD_HCILL_WAKE_UP_IND     0x32
+#define CMD_HCILL_WAKE_UP_ACK     0x33
+
+typedef enum EhcillSleepSmState {
+  EHCILL_AWAKE,
+  EHCILL_SEND_ACK_THEN_AWAKE,
+  EHCILL_ASLEEP,
+  EHCILL_WAIT_FOR_WAKE_ACK,
+} EhcillSleepSmState;
+
+static EhcillSleepSmState s_ehcill_sm = EHCILL_AWAKE;
+
+static uint16_t hci_uart_packet_cb(const uint8_t *buf, uint16_t len) {
+  assert(len > 0);
+  prv_lock(); // make sure that eHCILL state machine transitions are atomic!
+  switch (s_ehcill_sm) {
+  case EHCILL_AWAKE:
+  case EHCILL_SEND_ACK_THEN_AWAKE:
+    if (buf[0] == CMD_HCILL_GO_TO_SLEEP_IND) {
+      prv_unlock();
+      PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: recv CMD_HCILL_GO_TO_SLEEP_IND");
+      prv_ble_queue_ehcill(CMD_HCILL_GO_TO_SLEEP_ACK);
+      return 1 /* we consumed the byte */;
+    }
+    if (buf[0] == CMD_HCILL_WAKE_UP_IND || buf[0] == CMD_HCILL_WAKE_UP_ACK) {
+      PBL_CROAK("CMD_HCILL_WAKE_UP_IND/ACK while already awake!");
+      WTF;
+    }
+      prv_unlock();
+    return 0; /* otherwise, this has to be a H4 packet; let the parser do its job */
+  
+  case EHCILL_ASLEEP:
+    if (buf[0] == CMD_HCILL_WAKE_UP_IND) {
+      s_ehcill_sm = EHCILL_SEND_ACK_THEN_AWAKE;
+      uart_set_tx_interrupt_enabled(BLUETOOTH_UART, true); // if there's work to do, we can continue again
+      prv_unlock();
+      PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: recv CMD_HCILL_WAKE_UP_IND");
+      return 1 /* we consumed it */;
+    }
+    PBL_CROAK("illegal HCI command received while nominally asleep");
+    WTF;
+    break;
+  
+  case EHCILL_WAIT_FOR_WAKE_ACK:
+    if (buf[0] == CMD_HCILL_WAKE_UP_IND || buf[0] == CMD_HCILL_WAKE_UP_ACK) {
+      s_ehcill_sm = EHCILL_AWAKE;
+      uart_set_tx_interrupt_enabled(BLUETOOTH_UART, true); // if there's work to do, we can continue again
+      prv_unlock();
+      if (buf[0] == CMD_HCILL_WAKE_UP_IND) {
+        PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: recv CMD_HCILL_WAKE_UP_IND");
+      } else {
+        PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: recv CMD_HCILL_WAKE_UP_ACK");
+      }
+      return 1 /* we consumed it */;
+    }
+    PBL_CROAK("illegal HCI command received while waiting for wake ack");
+    WTF;
+    break;
+  
+  default:
+    WTF;
+  }
+}
+
 static int hci_uart_frame_cb(uint8_t pkt_type, void *data) {
   xSemaphoreGive(s_cmd_done);
 
   // HACK: passing responses to commands Nimble didn't generate causes issues
   if (!chipset_start_done) {
-    ble_transport_free(data);
-    return 0;
+    // let the caller free it by returning nonzero
+    return 1;
   }
 
   switch (pkt_type) {
@@ -95,41 +168,76 @@ static void prv_dispose_uart_tx(struct uart_tx *tx) {
 static int hci_uart_tx_char(BaseType_t *should_context_switch) {
   struct uart_tx *tx = NULL;
   uint8_t ch;
+  bool should_dispose = false;
+
+  if (s_ehcill_sm == EHCILL_SEND_ACK_THEN_AWAKE) {
+    PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: waiting to send ack, xmit CMD_HCILL_WAKE_UP_ACK");
+    s_ehcill_sm = EHCILL_AWAKE;
+    return CMD_HCILL_WAKE_UP_ACK;
+  }
 
   if (xQueuePeekFromISR(s_tx_queue, &tx) == pdFALSE) return -1;
 
-  if (!tx->sent_type) {
+  if (s_ehcill_sm == EHCILL_ASLEEP) {
+    /* We have work to do; we must initiate a wakeup first, though. */
+    PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: was asleep, xmit CMD_HCILL_WAKE_UP_IND");
+    s_ehcill_sm = EHCILL_WAIT_FOR_WAKE_ACK;
+    return CMD_HCILL_WAKE_UP_IND;
+  }
+  
+  if (s_ehcill_sm == EHCILL_WAIT_FOR_WAKE_ACK) {
+    /* We are asleep and cannot transmit until we get the wake ack. */
+    PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: xmit requested, but waiting for wake ACK");
+    return -1;
+  }
+  
+  if (tx->type == CMD_HCILL_GO_TO_SLEEP_ACK) {
+    // This is not a multi-byte thing -- it is a point inside of the queue
+    // at which we will go to sleep (and then wake up later, if we need).
+    //
+    // XXX: turn off UART after completion of this, command RTS
+    // appropriately
+    ch = CMD_HCILL_GO_TO_SLEEP_ACK;
+    s_ehcill_sm = EHCILL_ASLEEP;
+    PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: xmit CMD_HCILL_GO_TO_SLEEP_ACK");
+    
+    should_dispose = true;  
+  } else if (!tx->sent_type) {
     tx->sent_type = 1;
-    return tx->type;
+    ch = tx->type;
+  } else {
+    switch (tx->type) {
+      // XXX: handle eHCILL transition to asleep
+      // XXX: emit first byte to transition to awake
+      case HCI_H4_CMD:
+        ch = tx->buf[tx->idx];
+        tx->idx++;
+        if (tx->idx == tx->len) {
+          should_dispose = true;
+        }
+        break;
+      case HCI_H4_ACL:
+      case HCI_H4_ISO:
+        os_mbuf_copydata(tx->om, 0, 1, &ch);
+        os_mbuf_adj(tx->om, 1);
+        tx->len--;
+        if (tx->len == 0) {
+          should_dispose = true;
+        }
+        break;
+    
+      default:
+        WTF;
+    }
   }
-
-  switch (tx->type) {
-    case HCI_H4_CMD:
-      ch = tx->buf[tx->idx];
-      tx->idx++;
-      if (tx->idx == tx->len) {
-        tx->dispose_next = uart_tx_dispose_head;
-        uart_tx_dispose_head = tx;
-        xSemaphoreGiveFromISR(s_rx_data_ready, should_context_switch);
-        xQueueReceiveFromISR(s_tx_queue, &tx, should_context_switch);
-      }
-      break;
-    case HCI_H4_ACL:
-    case HCI_H4_ISO:
-      os_mbuf_copydata(tx->om, 0, 1, &ch);
-      os_mbuf_adj(tx->om, 1);
-      tx->len--;
-      if (tx->len == 0) {
-        tx->dispose_next = uart_tx_dispose_head;
-        uart_tx_dispose_head = tx;
-        xSemaphoreGiveFromISR(s_rx_data_ready, should_context_switch);
-        xQueueReceiveFromISR(s_tx_queue, &tx, should_context_switch);
-      }
-      break;
-    default:
-      WTF;
+  
+  if (should_dispose) {
+    tx->dispose_next = uart_tx_dispose_head;
+    uart_tx_dispose_head = tx;
+    xSemaphoreGiveFromISR(s_rx_data_ready, should_context_switch);
+    xQueueReceiveFromISR(s_tx_queue, &tx, should_context_switch);
   }
-
+  
   return ch;
 }
 
@@ -215,6 +323,9 @@ static void prv_rx_task_main(void *unused) {
 
 void ble_transport_ll_init(void) {
   hci_h4_sm_init(&hci_uart_h4sm, &hci_h4_allocs_from_ll, hci_uart_frame_cb);
+  if (ble_chipset_is_hcill()) {
+    hci_h4_sm_set_packet_cb(&hci_uart_h4sm, hci_uart_packet_cb);
+  }
 
   s_tx_queue = xQueueCreate(TX_Q_SIZE, sizeof(struct uart_tx *));
   PBL_ASSERTN(s_tx_queue);
@@ -250,6 +361,21 @@ void ble_transport_ll_init(void) {
 static void ble_transport_tx_item(struct uart_tx *tx_item) {
   xQueueSendToBack(s_tx_queue, &tx_item, portMAX_DELAY);
   uart_set_tx_interrupt_enabled(BLUETOOTH_UART, true);
+}
+
+static void prv_ble_queue_ehcill(uint8_t type) {
+  struct uart_tx *tx_item = kernel_malloc(sizeof(struct uart_tx));
+  PBL_ASSERTN(tx_item);
+  tx_item->type = type;
+  tx_item->sent_type = 0;
+  tx_item->len = 0;
+  tx_item->buf = NULL;
+  tx_item->idx = 0;
+  tx_item->om = NULL;
+  tx_item->buf_needs_free = 0;
+
+  PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: put %02x cmd in raw buf", type);
+  ble_transport_tx_item(tx_item);
 }
 
 void ble_queue_cmd(void *buf, bool needs_free, bool wait) {
