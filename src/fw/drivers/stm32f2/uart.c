@@ -120,6 +120,29 @@ void uart_deinit(UARTDevice *dev) {
   }
 }
 
+void uart_rtscts_gpio(UARTDevice *dev, bool is_gpio) {
+  // XXX: this will get replaced with a full deinit/reinit later, but this
+  // is a quick hack to check out this logic for now
+  PBL_ASSERTN(dev->enable_flow_control);
+  if (is_gpio) {
+    const InputConfig input_config = {
+      .gpio = dev->cts_gpio.gpio,
+      .gpio_pin = dev->cts_gpio.gpio_pin,
+    };
+    gpio_input_init(&input_config);
+    const OutputConfig output_config = {
+      .gpio = dev->rts_gpio.gpio,
+      .gpio_pin = dev->rts_gpio.gpio_pin,
+      .active_high = true,
+    };
+    gpio_output_init(&output_config, GPIO_OType_PP, GPIO_Speed_25MHz);
+    gpio_output_set(&output_config, true);
+  } else {
+    gpio_af_init(&dev->cts_gpio, GPIO_OType_PP, GPIO_Speed_50MHz, GPIO_PuPd_NOPULL);
+    gpio_af_init(&dev->rts_gpio, GPIO_OType_PP, GPIO_Speed_50MHz, GPIO_PuPd_NOPULL);
+  }
+}
+
 void uart_set_baud_rate(UARTDevice *dev, uint32_t baud_rate) {
   PBL_ASSERTN(dev->state->initialized);
 

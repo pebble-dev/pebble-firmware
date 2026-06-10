@@ -7,6 +7,8 @@
 // clang-format on
 
 #include <board/board.h>
+#include <drivers/gpio.h>
+#include <drivers/exti.h>
 #include <drivers/uart.h>
 #include <kernel/pebble_tasks.h>
 #include <nimble/transport.h>
@@ -25,6 +27,27 @@
 extern void ble_chipset_init(void);
 extern bool ble_chipset_start(void);
 extern bool ble_chipset_is_hcill(void);
+
+// XXX: hack for now until UART actually can go low power
+extern void uart_rtscts_gpio(UARTDevice *dev, bool is_gpio);
+
+static void prv_rtscts_trigger(bool *should_context_switch);
+
+static void prv_rtscts_prepare_for_sleep() {
+  uart_rtscts_gpio(BLUETOOTH_UART, true);
+  gpio_input_init(&BOARD_CONFIG_BT_COMMON.wakeup.int_gpio);
+  exti_enable(BOARD_CONFIG_BT_COMMON.wakeup.int_exti);
+}
+
+static void prv_uart_restore_high_power() {
+  uart_rtscts_gpio(BLUETOOTH_UART, false);
+  exti_disable(BOARD_CONFIG_BT_COMMON.wakeup.int_exti);
+}
+
+static void prv_rtscts_trigger(bool *should_context_switch) {
+  PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: CTS triggered us to wake up");
+  prv_uart_restore_high_power();
+}
 
 struct uart_tx {
   uint8_t type;
@@ -206,8 +229,9 @@ static int hci_uart_tx_char(BaseType_t *should_context_switch) {
      * started sending it yet, we can send the ACK and go to sleep.
      *
      * XXX: turn off UART after completion of this, command RTS
-     * appropriately
+     * appropriately.  BoardConfigBtCommon.ExtiConfig
      */
+    prv_rtscts_prepare_for_sleep();
     ch = CMD_HCILL_GO_TO_SLEEP_ACK;
     s_ehcill_sm = EHCILL_ASLEEP;
     PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: xmit CMD_HCILL_GO_TO_SLEEP_ACK");
@@ -216,8 +240,6 @@ static int hci_uart_tx_char(BaseType_t *should_context_switch) {
     ch = tx->type;
   } else {
     switch (tx->type) {
-      // XXX: handle eHCILL transition to asleep
-      // XXX: emit first byte to transition to awake
       case HCI_H4_CMD:
         ch = tx->buf[tx->idx];
         tx->idx++;
@@ -345,6 +367,8 @@ void ble_transport_ll_init(void) {
 
   ble_chipset_init();
 
+  exti_configure_pin(BOARD_CONFIG_BT_COMMON.wakeup.int_exti, ExtiTrigger_Rising, prv_rtscts_trigger);
+
   uart_init(BLUETOOTH_UART);
   uart_set_baud_rate(BLUETOOTH_UART, 115200);
   uart_set_rx_interrupt_handler(BLUETOOTH_UART, prv_uart_rx_irq_handler);
@@ -369,6 +393,9 @@ void ble_transport_ll_init(void) {
 
 static void ble_transport_tx_item(struct uart_tx *tx_item) {
   xQueueSendToBack(s_tx_queue, &tx_item, portMAX_DELAY);
+  if (s_ehcill_sm == EHCILL_ASLEEP) {
+    prv_uart_restore_high_power();
+  }
   uart_set_tx_interrupt_enabled(BLUETOOTH_UART, true);
 }
 
