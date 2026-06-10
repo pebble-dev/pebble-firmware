@@ -25,6 +25,15 @@ sudo apt install autoconf libglib2.0-dev libpixman-1-dev
 
 ::::
 
+::::{tab-item} Fedora 42
+:sync: fedora
+
+```shell
+sudo dnf install autoconf libglibutil-devel pixman-devel
+```
+
+::::
+
 ::::{tab-item} macOS
 :sync: macos
 
@@ -38,9 +47,37 @@ brew install autoconf glib pixman
 2. Install `pyenv` following [this guide](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation) (steps A-D).
 3. Install Python 2.7:
 
+
+:::::{tab-set}
+:sync-group: os
+
+::::{tab-item} Ubuntu 24.04 LTS
+:sync: ubuntu
+
 ```shell
 pyenv install 2.7
 ```
+
+::::
+
+::::{tab-item} Fedora 42
+:sync: fedora
+
+```shell
+PYTHON_CFLAGS=-std=c99 pyenv install 2.7
+```
+
+::::
+
+::::{tab-item} macOS
+:sync: macos
+
+```shell
+pyenv install 2.7
+```
+
+::::
+:::::
 
 4. Activate Python 2.7 on the current shell:
 
