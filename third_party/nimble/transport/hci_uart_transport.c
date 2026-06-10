@@ -26,8 +26,6 @@ extern void ble_chipset_init(void);
 extern bool ble_chipset_start(void);
 extern bool ble_chipset_is_hcill(void);
 
-static void prv_ble_queue_ehcill(uint8_t type);
-
 struct uart_tx {
   uint8_t type;
   uint8_t sent_type;
@@ -69,6 +67,7 @@ static void prv_unlock(void) { portEXIT_CRITICAL(); }
 typedef enum EhcillSleepSmState {
   EHCILL_AWAKE,
   EHCILL_SEND_ACK_THEN_AWAKE,
+  EHCILL_PENDING_SLEEP,
   EHCILL_ASLEEP,
   EHCILL_WAIT_FOR_WAKE_ACK,
 } EhcillSleepSmState;
@@ -82,17 +81,22 @@ static uint16_t hci_uart_packet_cb(const uint8_t *buf, uint16_t len) {
   case EHCILL_AWAKE:
   case EHCILL_SEND_ACK_THEN_AWAKE:
     if (buf[0] == CMD_HCILL_GO_TO_SLEEP_IND) {
+      s_ehcill_sm = EHCILL_PENDING_SLEEP;
+      uart_set_tx_interrupt_enabled(BLUETOOTH_UART, true);
       prv_unlock();
       PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: recv CMD_HCILL_GO_TO_SLEEP_IND");
-      prv_ble_queue_ehcill(CMD_HCILL_GO_TO_SLEEP_ACK);
       return 1 /* we consumed the byte */;
     }
     if (buf[0] == CMD_HCILL_WAKE_UP_IND || buf[0] == CMD_HCILL_WAKE_UP_ACK) {
       PBL_CROAK("CMD_HCILL_WAKE_UP_IND/ACK while already awake!");
       WTF;
     }
-      prv_unlock();
+    prv_unlock();
     return 0; /* otherwise, this has to be a H4 packet; let the parser do its job */
+  
+  case EHCILL_PENDING_SLEEP:
+    PBL_CROAK("packet from baseband while pending entering sleep!");
+    return 0;
   
   case EHCILL_ASLEEP:
     if (buf[0] == CMD_HCILL_WAKE_UP_IND) {
@@ -176,9 +180,13 @@ static int hci_uart_tx_char(BaseType_t *should_context_switch) {
     return CMD_HCILL_WAKE_UP_ACK;
   }
 
-  if (xQueuePeekFromISR(s_tx_queue, &tx) == pdFALSE) return -1;
+  if ((xQueuePeekFromISR(s_tx_queue, &tx) == pdFALSE) &&
+      (s_ehcill_sm != EHCILL_PENDING_SLEEP)) {
+    return -1;
+  }
 
   if (s_ehcill_sm == EHCILL_ASLEEP) {
+    PBL_ASSERT(!tx || !tx->sent_type, "we found ourselves asleep in the middle of a packet");
     /* We have work to do; we must initiate a wakeup first, though. */
     PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: was asleep, xmit CMD_HCILL_WAKE_UP_IND");
     s_ehcill_sm = EHCILL_WAIT_FOR_WAKE_ACK;
@@ -186,22 +194,23 @@ static int hci_uart_tx_char(BaseType_t *should_context_switch) {
   }
   
   if (s_ehcill_sm == EHCILL_WAIT_FOR_WAKE_ACK) {
+    PBL_ASSERT(!tx || !tx->sent_type, "we found ourselves exiting sleep in the middle of a packet");
     /* We are asleep and cannot transmit until we get the wake ack. */
     PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: xmit requested, but waiting for wake ACK");
     return -1;
   }
   
-  if (tx->type == CMD_HCILL_GO_TO_SLEEP_ACK) {
-    // This is not a multi-byte thing -- it is a point inside of the queue
-    // at which we will go to sleep (and then wake up later, if we need).
-    //
-    // XXX: turn off UART after completion of this, command RTS
-    // appropriately
+  if ((!tx || !tx->sent_type) && s_ehcill_sm == EHCILL_PENDING_SLEEP) {
+    /* The baseband has told us to go to sleep; we need to ACK, but only at
+     * a packet boundary.  Since there is either no packet or we have not
+     * started sending it yet, we can send the ACK and go to sleep.
+     *
+     * XXX: turn off UART after completion of this, command RTS
+     * appropriately
+     */
     ch = CMD_HCILL_GO_TO_SLEEP_ACK;
     s_ehcill_sm = EHCILL_ASLEEP;
     PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: xmit CMD_HCILL_GO_TO_SLEEP_ACK");
-    
-    should_dispose = true;  
   } else if (!tx->sent_type) {
     tx->sent_type = 1;
     ch = tx->type;
@@ -361,21 +370,6 @@ void ble_transport_ll_init(void) {
 static void ble_transport_tx_item(struct uart_tx *tx_item) {
   xQueueSendToBack(s_tx_queue, &tx_item, portMAX_DELAY);
   uart_set_tx_interrupt_enabled(BLUETOOTH_UART, true);
-}
-
-static void prv_ble_queue_ehcill(uint8_t type) {
-  struct uart_tx *tx_item = kernel_malloc(sizeof(struct uart_tx));
-  PBL_ASSERTN(tx_item);
-  tx_item->type = type;
-  tx_item->sent_type = 0;
-  tx_item->len = 0;
-  tx_item->buf = NULL;
-  tx_item->idx = 0;
-  tx_item->om = NULL;
-  tx_item->buf_needs_free = 0;
-
-  PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: put %02x cmd in raw buf", type);
-  ble_transport_tx_item(tx_item);
 }
 
 void ble_queue_cmd(void *buf, bool needs_free, bool wait) {
