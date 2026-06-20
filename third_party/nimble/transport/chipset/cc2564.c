@@ -11,6 +11,7 @@
 #include <resource/resource_mapped.h>
 #include <system/logging.h>
 
+#define HCI_VS_HCILL_PARAMETERS (0xFD2B)
 #define HCI_VS_SLEEP_MODE_CONFIG (0xFD0C)
 #define HCI_VS_UPDATE_UART_HCI_BAUDRATE (0xFF36)
 #define HCI_BAUD_RATE (921600)
@@ -29,7 +30,18 @@ typedef struct PACKED {
   uint32_t baud_rate;
 } BTSHCIUpdateBaudRateCommand;
 
+typedef struct PACKED {
+  uint8_t type;
+  uint16_t opcode;
+  uint8_t size;
+  uint16_t inactivity_timeout;
+  uint16_t retransmit_timeout;
+  uint8_t rts_pulse_width;
+} BTSHCIHcillParameters;
+
+
 extern void ble_queue_cmd(void *buf, bool needs_free, bool wait);
+extern void ble_update_baudrate(uint32_t baud);
 
 static bool ble_run_bts(const ResAppNum bts_file) {
   size_t i = 0;
@@ -55,6 +67,19 @@ static bool ble_run_bts(const ResAppNum bts_file) {
     //  PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "ble_bts: Skipping opcode 0x%X", command->opcode);
     //  continue;
     //}
+    
+    if (command->opcode == HCI_VS_HCILL_PARAMETERS) {
+      static BTSHCIHcillParameters hcill_parameters_command = {
+        .type = HCI_H4_CMD,
+        .opcode = HCI_VS_HCILL_PARAMETERS,
+        .size = 5,
+        .inactivity_timeout = 0x0010, /* default from TI */
+        .retransmit_timeout = 0x0000, /* disable retransmissions! */
+        .rts_pulse_width = 0x96, /* default from TI */
+      };
+      PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_INFO, "ble_bts: HCILL parameters set");
+      command = (BTSHCICommand *)&hcill_parameters_command;
+    }
 
     if (command->opcode == HCI_VS_UPDATE_UART_HCI_BAUDRATE) {
       PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_INFO, "ble_bts: Setting baud rate to %d", HCI_BAUD_RATE);
@@ -66,11 +91,11 @@ static bool ble_run_bts(const ResAppNum bts_file) {
       };
       command = (BTSHCICommand *)&baud_rate_command;
     }
-
+    
     ble_queue_cmd(&command->opcode, false, true);
 
     if (command->opcode == HCI_VS_UPDATE_UART_HCI_BAUDRATE) {
-      uart_set_baud_rate(BLUETOOTH_UART, HCI_BAUD_RATE);
+      ble_update_baudrate(HCI_BAUD_RATE);
     }
   }
 

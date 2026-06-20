@@ -36,9 +36,6 @@ static void prv_init(UARTDevice *dev, bool is_open_drain, UARTCR1Flags cr1_extra
 
   // configure GPIO
   const GPIOOType_TypeDef otype = is_open_drain ? GPIO_OType_OD : GPIO_OType_PP;
-  if (dev->tx_gpio.gpio) {
-    gpio_af_init(&dev->tx_gpio, otype, GPIO_Speed_50MHz, GPIO_PuPd_NOPULL);
-  }
   if (dev->rx_gpio.gpio) {
     // half-duplex should only define a TX pin
     PBL_ASSERTN(!dev->half_duplex);
@@ -75,6 +72,12 @@ static void prv_init(UARTDevice *dev, bool is_open_drain, UARTCR1Flags cr1_extra
 
   dev->periph->CR1 |= USART_CR1_UE;
 
+  // Only configure TX after the UART peripheral is out of reset --
+  // otherwise, it can provide glitchy output while it comes to life.
+  if (dev->tx_gpio.gpio) {
+    gpio_af_init(&dev->tx_gpio, otype, GPIO_Speed_50MHz, GPIO_PuPd_NOPULL);
+  }
+
   dev->state->initialized = true;
 
   // initialize the DMA request
@@ -100,17 +103,35 @@ void uart_init_rx_only(UARTDevice *dev) {
 }
 
 void uart_deinit(UARTDevice *dev) {
-  dev->periph->CR1 &= ~USART_CR1_UE;
-  periph_config_disable(dev->periph, dev->rcc_apb_periph);
   // Change the pins to be digital inputs rather than AF pins. We can't change to analog inputs
   // because those aren't 5V tolerant which these pins may need to be.
   if (dev->tx_gpio.gpio) {
-    const InputConfig input_config = {
-      .gpio = dev->tx_gpio.gpio,
-      .gpio_pin = dev->tx_gpio.gpio_pin
-    };
-    gpio_input_init(&input_config);
+    if (dev->tx_pull_up_after_deinit) {
+      const OutputConfig output_config = {
+        .gpio = dev->tx_gpio.gpio,
+        .gpio_pin = dev->tx_gpio.gpio_pin,
+        .active_high = true
+      };
+      // set digital output before setting AF to avoid glitch!  also make
+      // sure we don't get inerrupted while setting up the output AF
+      portENTER_CRITICAL();
+      gpio_output_set(&output_config, true);
+      gpio_output_init(&output_config, GPIO_OType_PP, GPIO_Speed_25MHz);
+      portEXIT_CRITICAL();
+    } else {
+      const InputConfig input_config = {
+        .gpio = dev->tx_gpio.gpio,
+        .gpio_pin = dev->tx_gpio.gpio_pin
+      };
+      gpio_input_init(&input_config);
+    }
   }
+
+  // Only shut the device down after deinitializing the output pin, lest we
+  // produce a glitch.
+  dev->periph->CR1 &= ~USART_CR1_UE;
+  periph_config_disable(dev->periph, dev->rcc_apb_periph);
+
   if (dev->rx_gpio.gpio) {
     const InputConfig input_config = {
       .gpio = dev->rx_gpio.gpio,
@@ -120,27 +141,17 @@ void uart_deinit(UARTDevice *dev) {
   }
 }
 
-void uart_rtscts_gpio(UARTDevice *dev, bool is_gpio) {
-  // XXX: this will get replaced with a full deinit/reinit later, but this
-  // is a quick hack to check out this logic for now
-  PBL_ASSERTN(dev->enable_flow_control);
-  if (is_gpio) {
-    const InputConfig input_config = {
-      .gpio = dev->cts_gpio.gpio,
-      .gpio_pin = dev->cts_gpio.gpio_pin,
-    };
-    gpio_input_init(&input_config);
-    const OutputConfig output_config = {
-      .gpio = dev->rts_gpio.gpio,
-      .gpio_pin = dev->rts_gpio.gpio_pin,
-      .active_high = true,
-    };
-    gpio_output_init(&output_config, GPIO_OType_PP, GPIO_Speed_25MHz);
-    gpio_output_set(&output_config, true);
-  } else {
-    gpio_af_init(&dev->cts_gpio, GPIO_OType_PP, GPIO_Speed_50MHz, GPIO_PuPd_NOPULL);
-    gpio_af_init(&dev->rts_gpio, GPIO_OType_PP, GPIO_Speed_50MHz, GPIO_PuPd_NOPULL);
-  }
+void uart_enable_flow_control(UARTDevice *dev) {
+  /* Some UART peripherals devices need rts/cts to be switched out of AF
+   * mode only after the UART is awake and has its baud rate set (like the
+   * Bluetooth); this is an alternate path vs. doing it at uart_init time. 
+   */
+  PBL_ASSERTN(dev->cts_gpio.gpio && dev->rts_gpio.gpio);
+
+  dev->periph->CR3 |= USART_CR3_CTSE | USART_CR3_RTSE;
+
+  gpio_af_init(&dev->cts_gpio, GPIO_OType_PP, GPIO_Speed_50MHz, GPIO_PuPd_NOPULL);
+  gpio_af_init(&dev->rts_gpio, GPIO_OType_PP, GPIO_Speed_50MHz, GPIO_PuPd_NOPULL);
 }
 
 void uart_set_baud_rate(UARTDevice *dev, uint32_t baud_rate) {

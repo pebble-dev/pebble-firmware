@@ -49,6 +49,13 @@ void uart_deinit(UARTDevice *dev);
 //! Sets the baud rate of the device
 void uart_set_baud_rate(UARTDevice *dev, uint32_t baud_rate);
 
+//! Enable flow control, if it was not enabled by the device structure.
+//!
+//! Some peripherals need RTS/CTS to be enabled only after the UART is
+//! actually ready to receive, so this happens after all the masks are
+//! enabled.
+void uart_enable_flow_control(UARTDevice *dev);
+
 //! Sets a receive IRQ handler for the device which is called whenever we receive a byte (within an
 //! ISR)
 //! @note This cannot be set at the same time as a raw interrupt handler

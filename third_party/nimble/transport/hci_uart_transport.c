@@ -16,9 +16,13 @@
 #include <nimble/transport_impl.h>
 #include <os/os_mempool.h>
 #include <queue.h>
+#include <services/common/system_task.h>
 #include <system/passert.h>
 #include <util/circular_buffer.h>
 #include <util/math.h>
+
+// XXX: HACK: we need this to get access to rts_gpio and cts_gpio
+#include "drivers/stm32f2/uart_definitions.h"
 
 #define TX_Q_SIZE                                                                      \
   (MYNEWT_VAL(BLE_TRANSPORT_ACL_FROM_LL_COUNT) + MYNEWT_VAL(BLE_TRANSPORT_EVT_COUNT) + \
@@ -28,25 +32,222 @@ extern void ble_chipset_init(void);
 extern bool ble_chipset_start(void);
 extern bool ble_chipset_is_hcill(void);
 
-// XXX: hack for now until UART actually can go low power
-extern void uart_rtscts_gpio(UARTDevice *dev, bool is_gpio);
-
 static void prv_rtscts_trigger(bool *should_context_switch);
 
-static void prv_rtscts_prepare_for_sleep() {
-  uart_rtscts_gpio(BLUETOOTH_UART, true);
+static uint32_t s_uart_baud = 115200; /* boot the system at 115200 */
+
+static bool prv_uart_tx_irq_handler(UARTDevice *dev);
+static bool prv_uart_rx_irq_handler(UARTDevice *dev, uint8_t data, const UARTRXErrorFlags *err_flags);
+
+static void prv_uart_init() {
+  uart_init(BLUETOOTH_UART);
+  uart_set_baud_rate(BLUETOOTH_UART, s_uart_baud);
+  uart_set_rx_interrupt_handler(BLUETOOTH_UART, prv_uart_rx_irq_handler);
+  uart_set_tx_interrupt_handler(BLUETOOTH_UART, prv_uart_tx_irq_handler);
+  uart_set_rx_interrupt_enabled(BLUETOOTH_UART, true);
+  
+  extern void psleep(int millis);
+  psleep(1);
+  
+  uart_enable_flow_control(BLUETOOTH_UART);
+}
+
+// For chipsets that support eHCILL for power management (CC2564; ref:
+// https://www.ti.com/lit/an/swra288b/swra288b.pdf), we intercept this at
+// the packet-callback level.  hci_uart_packet_cb implements most of 
+
+#define CMD_HCILL_GO_TO_SLEEP_IND 0x30
+#define CMD_HCILL_GO_TO_SLEEP_ACK 0x31
+#define CMD_HCILL_WAKE_UP_IND     0x32
+#define CMD_HCILL_WAKE_UP_ACK     0x33
+
+#define EHCILL_DBG(x, ...) PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: " x, ##__VA_ARGS__)
+
+// this should be fixed with the eHCILL SP update
+// #define EHCILL_RETRANSMISSIONS_LEGAL
+
+typedef enum EhcillSleepSmState {
+  
+  // AWAKE: We can transmit packets freely.
+  //
+  //   Receive GO_TO_SLEEP_IND ->
+  //     Transition to EHCILL_PENDING_XMIT_SLEEP
+  EHCILL_AWAKE,
+  
+  // SEND_ACK_THEN_AWAKE: They have just sent us a WAKE_UP_IND, and we need
+  // to ACK it.
+  //
+  //   TX-empty IRQ fires ->
+  //     Send WAKE_UP_ACK
+  //     Transition to AWAKE
+  EHCILL_SEND_ACK_THEN_AWAKE,
+  
+  // PENDING_XMIT_SLEEP: We need to complete transmitting whatever packet
+  // we're in, and then send a GO_TO_SLEEP_ACK.
+  //
+  //   Packet is complete and TX-ready IRQ fires ->
+  //     Transmit GO_TO_SLEEP_ACK
+  //     If we have nothing to transmit:
+  //       Shut down flow control
+  //       Transition to EHCILL_PENDING_XMIT_SLEEP_FLUSH
+  //     If we have something to transmit:
+  //       Transition to EHCILL_SEND_WAKE_UP_IND
+  EHCILL_PENDING_XMIT_SLEEP,
+  
+  // PENDING_XMIT_SLEEP_FLUSH: We sent the GO_TO_SLEEP_ACK and are waiting
+  // for the UART to flush so we can shut it off.  RTS/CTS are already in
+  // low-power mode.
+  //
+  //   TX-empty IRQ fires ->
+  //     Transition to PENDING_SHUTDOWN_UART_BH
+  //     Trigger IRQ bottom half
+  //   RTS/CTS IRQ fires ->
+  //     Turn off RTS/CTS
+  //     Reenable flow control
+  //     Transition to EHCILL_WAIT_FOR_WAKE_IND
+  //   We want to transmit a packet ->
+  //     Turn off RTS/CTS
+  //     Reenable flow control
+  //     Transition to EHCILL_SEND_WAKE_UP_IND
+  EHCILL_PENDING_XMIT_SLEEP_FLUSH,
+  
+  // PENDING_SHUTDOWN_UART_BH: The UART has been flushed, and the bottom
+  // half of the IRQ handler needs to actually go and switch the UART off.
+  //
+  //   IRQ bottom half scheduled ->
+  //     Disable UART
+  //     Transition to EHCILL_ASLEEP
+  //   RTS/CTS IRQ fires ->
+  //     Turn off RTS/CTS
+  //     Reenable flow control
+  //     Transition to EHCILL_WAIT_FOR_WAKE_IND
+  //   We want to transmit a packet ->
+  //     Turn off RTS/CTS
+  //     Reenable flow control
+  //     Transition to EHCILL_SEND_WAKE_UP_IND
+  EHCILL_PENDING_SHUTDOWN_UART_BH,
+  
+  // ASLEEP: The UART is off.
+  //
+  //   RTS/CTS IRQ fires ->
+  //     Schedule IRQ bottom half
+  //     Transition to EHCILL_WAKE_UP_UART_BH
+  //   We want to transmit a packet ->
+  //     Turn on the UART
+  //     Transition to EHCILL_SEND_WAKE_UP_IND
+  EHCILL_ASLEEP,
+  
+  // SEND_WAKE_UP_IND: We need to transmit a WAKE_UP_IND.  The UART is on.
+  //
+  //   TX is ready ->
+  //     Transmit WAKE_UP_IND
+  //     Transition to EHCILL_WAIT_FOR_WAKE_ACK 
+  EHCILL_SEND_WAKE_UP_IND,
+
+  // WAKE_UP_UART_BH: The remote end has just woken us, and we need to turn
+  // on the UART.
+  //
+  //   IRQ bottom half scheduled ->
+  //     Turn on the UART
+  //     Transition to EHCILL_WAIT_FOR_WAKE_IND
+  //   We want to transmit a packet ->
+  //     Turn on the UART
+  //     Transition to EHCILL_SEND_WAKE_UP_IND
+  EHCILL_WAKE_UP_UART_BH,
+
+  // WAIT_FOR_WAKE_IND: The remote end has just woken us, and we are
+  // waiting for their WAKE_UP_IND.
+  //
+  //   RX WAKE_UP_IND ->
+  //     Transition to EHCILL_SEND_ACK_THEN_AWAKE
+  EHCILL_WAIT_FOR_WAKE_IND,
+
+  // WAIT_FOR_WAKE_ACK: We have just sent a WAKE_UP_IND and we are waiting
+  // for their WAKE_UP_ACK (or, if wires cross, a WAKE_UP_IND).
+  //
+  //   RX WAKE_UP_IND or RX WAKE_UP_ACK ->
+  //     Transition to EHCILL_AWAKE
+  EHCILL_WAIT_FOR_WAKE_ACK,
+} EhcillSleepSmState;
+
+static PebbleMutex *s_ehcill_mutex;
+static EhcillSleepSmState s_ehcill_sm = EHCILL_AWAKE;
+
+static TaskHandle_t s_rx_task_handle;
+static CircularBuffer s_rx_buffer;
+static uint8_t s_rx_storage[256];
+static SemaphoreHandle_t s_rx_data_ready;
+static SemaphoreHandle_t s_cmd_done;
+
+static QueueHandle_t s_tx_queue;
+static struct hci_h4_sm hci_uart_h4sm;
+static bool chipset_start_done = false;
+
+static struct uart_tx *uart_tx_dispose_head = NULL;
+
+static void prv_ehcill_state(EhcillSleepSmState st) {
+  switch(st) {
+#define ST(x) case x: /*EHCILL_DBG("SM transition " #x);*/ break;
+  ST(EHCILL_AWAKE)
+  ST(EHCILL_SEND_ACK_THEN_AWAKE)
+  ST(EHCILL_PENDING_XMIT_SLEEP)
+  ST(EHCILL_PENDING_XMIT_SLEEP_FLUSH)
+  ST(EHCILL_PENDING_SHUTDOWN_UART_BH)
+  ST(EHCILL_ASLEEP)
+  ST(EHCILL_SEND_WAKE_UP_IND)
+  ST(EHCILL_WAIT_FOR_WAKE_ACK)
+  ST(EHCILL_WAKE_UP_UART_BH)
+  ST(EHCILL_WAIT_FOR_WAKE_IND)
+#undef ST
+  default: WTF;
+  }
+  s_ehcill_sm = st;
+}
+
+static void prv_uart_prepare_for_sleep() {
+  /* eHCILL requires that we activate the RTS/CTS pins before we transmit
+   * the 'we are going to sleep' message.  Do this, but don't switch off the
+   * UART, because it still needs to finish sending.
+   */
+  const InputConfig input_config = {
+    .gpio = BLUETOOTH_UART->cts_gpio.gpio,
+    .gpio_pin = BLUETOOTH_UART->cts_gpio.gpio_pin,
+  };
+  gpio_input_init(&input_config);
+  const OutputConfig output_config = {
+    .gpio = BLUETOOTH_UART->rts_gpio.gpio,
+    .gpio_pin = BLUETOOTH_UART->rts_gpio.gpio_pin,
+    .active_high = true,
+  };
+  gpio_output_init(&output_config, GPIO_OType_PP, GPIO_Speed_25MHz);
+  gpio_output_set(&output_config, true);
+
   gpio_input_init(&BOARD_CONFIG_BT_COMMON.wakeup.int_gpio);
   exti_enable(BOARD_CONFIG_BT_COMMON.wakeup.int_exti);
 }
 
-static void prv_uart_restore_high_power() {
-  uart_rtscts_gpio(BLUETOOTH_UART, false);
-  exti_disable(BOARD_CONFIG_BT_COMMON.wakeup.int_exti);
+static void prv_uart_go_to_sleep() {
+  /* must not be called in ISR context! */
+  uart_set_rx_interrupt_enabled(BLUETOOTH_UART, false);
+  uart_set_tx_interrupt_enabled(BLUETOOTH_UART, false);
+
+  uart_deinit(BLUETOOTH_UART);
 }
 
 static void prv_rtscts_trigger(bool *should_context_switch) {
-  PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: CTS triggered us to wake up");
-  prv_uart_restore_high_power();
+  exti_disable(BOARD_CONFIG_BT_COMMON.wakeup.int_exti);
+
+  if (s_ehcill_sm == EHCILL_PENDING_XMIT_SLEEP_FLUSH || s_ehcill_sm == EHCILL_PENDING_SHUTDOWN_UART_BH) {
+    EHCILL_DBG("CTS: UART was not shut down yet, just turning on flow control again");
+    uart_enable_flow_control(BLUETOOTH_UART); // this is ISR-safe, no need to delegate to bottom half for this
+    prv_ehcill_state(EHCILL_WAIT_FOR_WAKE_IND);
+  } else if (s_ehcill_sm == EHCILL_ASLEEP) {
+    EHCILL_DBG("CTS: enqueuing UART restart");
+    prv_ehcill_state(EHCILL_WAKE_UP_UART_BH);
+    xSemaphoreGiveFromISR(s_rx_data_ready, (BaseType_t *)should_context_switch);
+  } else {
+    EHCILL_DBG("CTS: spurious IRQ?");
+  }
 }
 
 struct uart_tx {
@@ -62,87 +263,99 @@ struct uart_tx {
   struct uart_tx *dispose_next;
 };
 
-static TaskHandle_t s_rx_task_handle;
-static CircularBuffer s_rx_buffer;
-static uint8_t s_rx_storage[256];
-static SemaphoreHandle_t s_rx_data_ready;
-static SemaphoreHandle_t s_cmd_done;
-
-static QueueHandle_t s_tx_queue;
-static struct hci_h4_sm hci_uart_h4sm;
-static bool chipset_start_done = false;
-
-static struct uart_tx *uart_tx_dispose_head = NULL;
 
 static void prv_lock(void) { portENTER_CRITICAL(); }
 
 static void prv_unlock(void) { portEXIT_CRITICAL(); }
 
-// For chipsets that support eHCILL for power management (CC2564; ref:
-// https://www.ti.com/lit/an/swra288b/swra288b.pdf), we intercept this at
-// the packet-callback level.  hci_uart_packet_cb implements most of 
-
-#define CMD_HCILL_GO_TO_SLEEP_IND 0x30
-#define CMD_HCILL_GO_TO_SLEEP_ACK 0x31
-#define CMD_HCILL_WAKE_UP_IND     0x32
-#define CMD_HCILL_WAKE_UP_ACK     0x33
-
-typedef enum EhcillSleepSmState {
-  EHCILL_AWAKE,
-  EHCILL_SEND_ACK_THEN_AWAKE,
-  EHCILL_PENDING_SLEEP,
-  EHCILL_ASLEEP,
-  EHCILL_WAIT_FOR_WAKE_ACK,
-} EhcillSleepSmState;
-
-static EhcillSleepSmState s_ehcill_sm = EHCILL_AWAKE;
 
 static uint16_t hci_uart_packet_cb(const uint8_t *buf, uint16_t len) {
   assert(len > 0);
-  prv_lock(); // make sure that eHCILL state machine transitions are atomic!
+  mutex_lock(s_ehcill_mutex);
+  prv_lock(); // make sure that eHCILL state machine transitions are atomic with respect to ISR also
   switch (s_ehcill_sm) {
   case EHCILL_AWAKE:
   case EHCILL_SEND_ACK_THEN_AWAKE:
     if (buf[0] == CMD_HCILL_GO_TO_SLEEP_IND) {
-      s_ehcill_sm = EHCILL_PENDING_SLEEP;
+      prv_ehcill_state(EHCILL_PENDING_XMIT_SLEEP);
       uart_set_tx_interrupt_enabled(BLUETOOTH_UART, true);
       prv_unlock();
-      PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: recv CMD_HCILL_GO_TO_SLEEP_IND");
+      mutex_unlock(s_ehcill_mutex);
+      EHCILL_DBG("recv CMD_HCILL_GO_TO_SLEEP_IND");
       return 1 /* we consumed the byte */;
     }
-    if (buf[0] == CMD_HCILL_WAKE_UP_IND || buf[0] == CMD_HCILL_WAKE_UP_ACK) {
-      PBL_CROAK("CMD_HCILL_WAKE_UP_IND/ACK while already awake!");
+    if (buf[0] == CMD_HCILL_WAKE_UP_IND) {
+#ifdef EHCILL_RETRANSMISSIONS_LEGAL
+      /* This can also happen if waking the UART up sends a glitch, which
+       * causes the next byte to be garbled.  We can't just send another
+       * ACK, though, because if we were slow on the draw to wake up, maybe
+       * we will be stomping on a packet?  I guess we eat it for now and
+       * just cry
+       */
+      EHCILL_DBG("recv CMD_HCILL_WAKE_UP_IND out of sequence, maybe we were slow on the draw to wake up?");
+      return 1;
+#else
+      PBL_CROAK("CMD_HCILL_WAKE_UP_IND while already awake!");
+      WTF;
+#endif
+    }
+   if (buf[0] == CMD_HCILL_WAKE_UP_ACK) {
+      PBL_CROAK("CMD_HCILL_WAKE_UP_ACK while already awake!");
       WTF;
     }
     prv_unlock();
+    mutex_unlock(s_ehcill_mutex);
     return 0; /* otherwise, this has to be a H4 packet; let the parser do its job */
   
-  case EHCILL_PENDING_SLEEP:
+  case EHCILL_PENDING_XMIT_SLEEP:
+  case EHCILL_PENDING_XMIT_SLEEP_FLUSH:
+  case EHCILL_PENDING_SHUTDOWN_UART_BH:
+    if (buf[0] == CMD_HCILL_GO_TO_SLEEP_IND) {
+      /* Ok, we were just slow answering. */
+      prv_unlock();
+      mutex_unlock(s_ehcill_mutex);
+
+      EHCILL_DBG("baseband is grumpy that we were slow going to sleep");
+      return 1;
+    }
     PBL_CROAK("packet from baseband while pending entering sleep!");
     return 0;
   
   case EHCILL_ASLEEP:
+  case EHCILL_WAKE_UP_UART_BH:
+  case EHCILL_SEND_WAKE_UP_IND:
+  case EHCILL_WAIT_FOR_WAKE_IND:
     if (buf[0] == CMD_HCILL_WAKE_UP_IND) {
-      s_ehcill_sm = EHCILL_SEND_ACK_THEN_AWAKE;
+      prv_ehcill_state(EHCILL_SEND_ACK_THEN_AWAKE);
       uart_set_tx_interrupt_enabled(BLUETOOTH_UART, true); // if there's work to do, we can continue again
       prv_unlock();
-      PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: recv CMD_HCILL_WAKE_UP_IND");
+      EHCILL_DBG("recv CMD_HCILL_WAKE_UP_IND");
+      mutex_unlock(s_ehcill_mutex);
       return 1 /* we consumed it */;
     }
+#ifdef EHCILL_RETRANSMISSIONS_LEGAL
+    if (buf[0] == CMD_HCILL_GO_TO_SLEEP_IND) {
+      prv_unlock();
+      EHCILL_DBG("recv CMD_HCILL_GO_TO_SLEEP_IND while already asleep.  wow, we must have been slow");
+      mutex_unlock(s_ehcill_mutex);
+      return 1 /* we consumed it */;
+    }
+#endif
     PBL_CROAK("illegal HCI command received while nominally asleep");
     WTF;
     break;
   
   case EHCILL_WAIT_FOR_WAKE_ACK:
     if (buf[0] == CMD_HCILL_WAKE_UP_IND || buf[0] == CMD_HCILL_WAKE_UP_ACK) {
-      s_ehcill_sm = EHCILL_AWAKE;
+      prv_ehcill_state(EHCILL_AWAKE);
       uart_set_tx_interrupt_enabled(BLUETOOTH_UART, true); // if there's work to do, we can continue again
       prv_unlock();
       if (buf[0] == CMD_HCILL_WAKE_UP_IND) {
-        PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: recv CMD_HCILL_WAKE_UP_IND");
+        EHCILL_DBG("recv CMD_HCILL_WAKE_UP_IND");
       } else {
-        PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: recv CMD_HCILL_WAKE_UP_ACK");
+        EHCILL_DBG("recv CMD_HCILL_WAKE_UP_ACK");
       }
+      mutex_unlock(s_ehcill_mutex);
       return 1 /* we consumed it */;
     }
     PBL_CROAK("illegal HCI command received while waiting for wake ack");
@@ -198,43 +411,58 @@ static int hci_uart_tx_char(BaseType_t *should_context_switch) {
   bool should_dispose = false;
 
   if (s_ehcill_sm == EHCILL_SEND_ACK_THEN_AWAKE) {
-    PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: waiting to send ack, xmit CMD_HCILL_WAKE_UP_ACK");
-    s_ehcill_sm = EHCILL_AWAKE;
+    EHCILL_DBG("waiting to send ack, xmit CMD_HCILL_WAKE_UP_ACK");
+    prv_ehcill_state(EHCILL_AWAKE);
     return CMD_HCILL_WAKE_UP_ACK;
+  }
+  
+  if (s_ehcill_sm == EHCILL_PENDING_XMIT_SLEEP_FLUSH) {
+    EHCILL_DBG("last tx is done");
+    prv_ehcill_state(EHCILL_PENDING_SHUTDOWN_UART_BH);
+    xSemaphoreGiveFromISR(s_rx_data_ready, should_context_switch);
+    return -1;
   }
 
   if ((xQueuePeekFromISR(s_tx_queue, &tx) == pdFALSE) &&
-      (s_ehcill_sm != EHCILL_PENDING_SLEEP)) {
+      (s_ehcill_sm != EHCILL_PENDING_XMIT_SLEEP)) {
     return -1;
   }
 
-  if (s_ehcill_sm == EHCILL_ASLEEP) {
+  if (s_ehcill_sm == EHCILL_ASLEEP || s_ehcill_sm == EHCILL_WAKE_UP_UART_BH || s_ehcill_sm == EHCILL_PENDING_SHUTDOWN_UART_BH) {
+    PBL_CROAK("tx ready IRQ while eHCILL is asleep");
+    return -1;
+  }
+
+  if (s_ehcill_sm == EHCILL_SEND_WAKE_UP_IND) {
     PBL_ASSERT(!tx || !tx->sent_type, "we found ourselves asleep in the middle of a packet");
     /* We have work to do; we must initiate a wakeup first, though. */
-    PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: was asleep, xmit CMD_HCILL_WAKE_UP_IND");
-    s_ehcill_sm = EHCILL_WAIT_FOR_WAKE_ACK;
+    EHCILL_DBG("was asleep, xmit CMD_HCILL_WAKE_UP_IND");
+    prv_ehcill_state(EHCILL_WAIT_FOR_WAKE_ACK);
     return CMD_HCILL_WAKE_UP_IND;
   }
   
-  if (s_ehcill_sm == EHCILL_WAIT_FOR_WAKE_ACK) {
+  if (s_ehcill_sm == EHCILL_WAIT_FOR_WAKE_ACK || s_ehcill_sm == EHCILL_WAIT_FOR_WAKE_IND) {
     PBL_ASSERT(!tx || !tx->sent_type, "we found ourselves exiting sleep in the middle of a packet");
     /* We are asleep and cannot transmit until we get the wake ack. */
-    PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: xmit requested, but waiting for wake ACK");
+    EHCILL_DBG("xmit requested, but waiting for wake ACK");
     return -1;
   }
   
-  if ((!tx || !tx->sent_type) && s_ehcill_sm == EHCILL_PENDING_SLEEP) {
+  if ((!tx || !tx->sent_type) && s_ehcill_sm == EHCILL_PENDING_XMIT_SLEEP) {
     /* The baseband has told us to go to sleep; we need to ACK, but only at
      * a packet boundary.  Since there is either no packet or we have not
      * started sending it yet, we can send the ACK and go to sleep.
-     *
-     * XXX: turn off UART after completion of this, command RTS
-     * appropriately.  BoardConfigBtCommon.ExtiConfig
      */
-    prv_rtscts_prepare_for_sleep();
     ch = CMD_HCILL_GO_TO_SLEEP_ACK;
-    s_ehcill_sm = EHCILL_ASLEEP;
-    PBL_LOG_D(LOG_DOMAIN_BT_STACK, LOG_LEVEL_ERROR, "eHCILL: xmit CMD_HCILL_GO_TO_SLEEP_ACK");
+    if (tx) {
+      // we have work to do again, so wake right back up 
+      EHCILL_DBG("xmit CMD_HCILL_GO_TO_SLEEP_ACK, but there's still work to do");
+      prv_ehcill_state(EHCILL_SEND_WAKE_UP_IND);
+    } else {
+      EHCILL_DBG("xmit CMD_HCILL_GO_TO_SLEEP_ACK");
+      prv_uart_prepare_for_sleep();
+      prv_ehcill_state(EHCILL_PENDING_XMIT_SLEEP_FLUSH);
+    }
   } else if (!tx->sent_type) {
     tx->sent_type = 1;
     ch = tx->type;
@@ -314,6 +542,26 @@ static void prv_rx_task_main(void *unused) {
   while (true) {
     xSemaphoreTake(s_rx_data_ready, portMAX_DELAY);
 
+    mutex_lock(s_ehcill_mutex);
+    prv_lock();
+    if (s_ehcill_sm == EHCILL_PENDING_SHUTDOWN_UART_BH) {
+      prv_ehcill_state(EHCILL_ASLEEP);
+  
+      prv_unlock();
+  
+      EHCILL_DBG("bottom half shutting down UART, goodbye!");
+      prv_uart_go_to_sleep();
+    } else if (s_ehcill_sm == EHCILL_WAKE_UP_UART_BH) {
+      prv_ehcill_state(EHCILL_WAIT_FOR_WAKE_IND);
+      prv_unlock();
+      
+      EHCILL_DBG("bottom half waking up UART");      
+      prv_uart_init();
+    } else {
+      prv_unlock();
+    }
+    mutex_unlock(s_ehcill_mutex);
+
     /* Dispose of any UART transmissions that the ISR has taken care of for
      * us.  We can't do that in the ISR, because the ISR might need to take
      * locks to hand things back to NimBLE!  Atomically grab the list of
@@ -353,6 +601,8 @@ static void prv_rx_task_main(void *unused) {
 }
 
 void ble_transport_ll_init(void) {
+  s_ehcill_mutex = mutex_create();
+
   hci_h4_sm_init(&hci_uart_h4sm, &hci_h4_allocs_from_ll, hci_uart_frame_cb);
   if (ble_chipset_is_hcill()) {
     hci_h4_sm_set_packet_cb(&hci_uart_h4sm, hci_uart_packet_cb);
@@ -368,12 +618,9 @@ void ble_transport_ll_init(void) {
   ble_chipset_init();
 
   exti_configure_pin(BOARD_CONFIG_BT_COMMON.wakeup.int_exti, ExtiTrigger_Rising, prv_rtscts_trigger);
-
-  uart_init(BLUETOOTH_UART);
-  uart_set_baud_rate(BLUETOOTH_UART, 115200);
-  uart_set_rx_interrupt_handler(BLUETOOTH_UART, prv_uart_rx_irq_handler);
-  uart_set_tx_interrupt_handler(BLUETOOTH_UART, prv_uart_tx_irq_handler);
-  uart_set_rx_interrupt_enabled(BLUETOOTH_UART, true);
+  
+  s_uart_baud = 115200;
+  prv_uart_init();
 
   TaskParameters_t task_params = {
       .pvTaskCode = prv_rx_task_main,
@@ -391,11 +638,24 @@ void ble_transport_ll_init(void) {
   }
 }
 
+void ble_update_baudrate(uint32_t baud) {
+  s_uart_baud = baud;
+  uart_set_baud_rate(BLUETOOTH_UART, baud);
+}
+
 static void ble_transport_tx_item(struct uart_tx *tx_item) {
   xQueueSendToBack(s_tx_queue, &tx_item, portMAX_DELAY);
-  if (s_ehcill_sm == EHCILL_ASLEEP) {
-    prv_uart_restore_high_power();
+  mutex_lock(s_ehcill_mutex);
+  if (s_ehcill_sm == EHCILL_PENDING_XMIT_SLEEP_FLUSH || s_ehcill_sm == EHCILL_PENDING_SHUTDOWN_UART_BH) {
+    EHCILL_DBG("enqueuing item to tx while asleep, but UART hasn't been shut down yet; just turning on flow control");
+    uart_enable_flow_control(BLUETOOTH_UART);
+    prv_ehcill_state(EHCILL_SEND_WAKE_UP_IND);
+  } else if (s_ehcill_sm == EHCILL_ASLEEP || s_ehcill_sm == EHCILL_WAKE_UP_UART_BH) {
+    EHCILL_DBG("enqueuing item to tx while asleep, triggering wakeup");
+    prv_uart_init();
+    prv_ehcill_state(EHCILL_SEND_WAKE_UP_IND);
   }
+  mutex_unlock(s_ehcill_mutex);
   uart_set_tx_interrupt_enabled(BLUETOOTH_UART, true);
 }
 

@@ -35,6 +35,7 @@ typedef const struct UARTDevice {
   uint8_t irq_channel;
   uint8_t irq_priority;
   DMARequest *rx_dma;
+  bool tx_pull_up_after_deinit;
 } UARTDevice;
 
 // thinly wrapped by the IRQ handler in board_*.c

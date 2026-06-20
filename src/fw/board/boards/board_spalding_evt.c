@@ -196,12 +196,13 @@ static UARTDevice BLUETOOTH_UART_DEVICE = {
     .gpio_pin_source = GPIO_PinSource12,
     .gpio_af = GPIO_AF_USART1
   },
-  .enable_flow_control = true,
+  .enable_flow_control = false, // we enable this only after we are actually ready
   .periph = USART1,
   .irq_channel = USART1_IRQn,
   .irq_priority = 0xe,
   .rcc_apb_periph = RCC_APB2Periph_USART1,
   // .rx_dma = &BLUETOOTH_UART_RX_DMA_REQUEST
+  .tx_pull_up_after_deinit = true,
 };
 UARTDevice * const BLUETOOTH_UART = &BLUETOOTH_UART_DEVICE;
 IRQ_MAP(USART1, uart_irq_handler, BLUETOOTH_UART);
