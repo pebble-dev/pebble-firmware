@@ -23,3 +23,4 @@ syscfg.vals:
     # CC2564B does not support LE-SC or MITM (and enabling them wedges a phone until you reboot!).
     BLE_SM_IO_CAP: 'BLE_HS_IO_DISPLAY_YESNO'
     BLE_SM_LEGACY: 1
+    BLE_SM_SC: 0
