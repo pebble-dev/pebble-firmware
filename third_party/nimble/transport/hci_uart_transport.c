@@ -46,9 +46,6 @@ static void prv_uart_init() {
   uart_set_tx_interrupt_handler(BLUETOOTH_UART, prv_uart_tx_irq_handler);
   uart_set_rx_interrupt_enabled(BLUETOOTH_UART, true);
   
-  extern void psleep(int millis);
-  psleep(1);
-  
   uart_enable_flow_control(BLUETOOTH_UART);
 }
 
