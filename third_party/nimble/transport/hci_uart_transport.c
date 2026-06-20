@@ -522,8 +522,12 @@ static bool prv_uart_rx_irq_handler(UARTDevice *dev, uint8_t data,
   }
 
   prv_lock();
-  PBL_ASSERTN(circular_buffer_get_write_space_remaining(&s_rx_buffer) > 0);
-  circular_buffer_write(&s_rx_buffer, &data, 1);
+  PBL_ASSERTN(circular_buffer_get_write_space_remaining(&s_rx_buffer) > 1);
+  bool ok = circular_buffer_write(&s_rx_buffer, &data, 1);
+  PBL_ASSERTN(ok);
+  if (circular_buffer_get_write_space_remaining(&s_rx_buffer) < 8) {
+    uart_set_rx_interrupt_enabled(BLUETOOTH_UART, false);
+  }
   xSemaphoreGiveFromISR(s_rx_data_ready, &should_context_switch);
   prv_unlock();
 
@@ -591,7 +595,11 @@ static void prv_rx_task_main(void *unused) {
       }
 
       prv_lock();
-      circular_buffer_consume(&s_rx_buffer, consumed_bytes);
+      bool ok = circular_buffer_consume(&s_rx_buffer, consumed_bytes);
+      PBL_ASSERTN(ok);
+      if (s_ehcill_sm != EHCILL_ASLEEP && s_ehcill_sm != EHCILL_WAKE_UP_UART_BH) {
+        uart_set_rx_interrupt_enabled(BLUETOOTH_UART, true);
+      }
       prv_unlock();
     }
   }
@@ -611,6 +619,7 @@ void ble_transport_ll_init(void) {
   s_rx_data_ready = xSemaphoreCreateBinary();
   s_cmd_done = xSemaphoreCreateBinary();
   circular_buffer_init(&s_rx_buffer, s_rx_storage, sizeof(s_rx_storage));
+  s_rx_buffer.auto_reset = false;
 
   ble_chipset_init();
 
