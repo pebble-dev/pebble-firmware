@@ -20,6 +20,7 @@
 #include <system/passert.h>
 #include <util/circular_buffer.h>
 #include <util/math.h>
+#include <kernel/util/stop.h>
 
 // XXX: HACK: we need this to get access to rts_gpio and cts_gpio
 #include "drivers/stm32f2/uart_definitions.h"
@@ -40,6 +41,8 @@ static bool prv_uart_tx_irq_handler(UARTDevice *dev);
 static bool prv_uart_rx_irq_handler(UARTDevice *dev, uint8_t data, const UARTRXErrorFlags *err_flags);
 
 static void prv_uart_init() {
+  stop_mode_disable(InhibitorBluetooth);
+  
   uart_init(BLUETOOTH_UART);
   uart_set_baud_rate(BLUETOOTH_UART, s_uart_baud);
   uart_set_rx_interrupt_handler(BLUETOOTH_UART, prv_uart_rx_irq_handler);
@@ -229,6 +232,7 @@ static void prv_uart_go_to_sleep() {
   uart_set_tx_interrupt_enabled(BLUETOOTH_UART, false);
 
   uart_deinit(BLUETOOTH_UART);
+  stop_mode_enable(InhibitorBluetooth);
 }
 
 static void prv_rtscts_trigger(bool *should_context_switch) {
