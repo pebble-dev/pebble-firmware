@@ -50,6 +50,22 @@ GFont fonts_get_system_emoji_font_for_size(unsigned int font_size);
 //! @note this may load a font from the flash peripheral into RAM.
 GFont fonts_load_custom_font(ResHandle handle);
 
+//! Loads a custom font with an extension resource providing additional glyphs.
+//! This allows third-party apps to load a base font plus a supplementary glyph
+//! set — for example, a Latin base font combined with a CJK extension — without
+//! being limited by the per-resource 256KB budget. The extension glyphs are used
+//! for non-Latin, non-emoji codepoints; Latin and emoji codepoints always come
+//! from the base font.
+//! @param handle The resource handle of the base font.
+//! @param extension_handle The resource handle of the extension font containing
+//! additional glyphs (e.g. CJK characters). Pass 0 to load without an extension
+//! (equivalent to \ref fonts_load_custom_font).
+//! @return An opaque pointer to the loaded font, or a pointer to the default
+//! (fallback) font if the base font cannot be loaded.
+//! @note Both font resources must be declared in the app's package.json. The
+//! extension font must use \c "extended": true in its resource definition.
+GFont fonts_load_custom_font_with_extension(ResHandle handle, ResHandle extension_handle);
+
 //! @internal
 //! firmware-only access version of fonts_load_custom_font
 GFont fonts_load_custom_font_system(ResAppNum app_num, uint32_t resource_id);

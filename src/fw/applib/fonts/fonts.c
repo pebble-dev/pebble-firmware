@@ -62,6 +62,24 @@ GFont fonts_load_custom_font(ResHandle handle) {
   return res;
 }
 
+GFont fonts_load_custom_font_with_extension(ResHandle handle, ResHandle extension_handle) {
+  FontInfo *font_info = applib_type_malloc(FontInfo);
+  if (font_info == NULL) {
+    PBL_LOG(LOG_LEVEL_ERROR, "Couldn't malloc space for new font");
+    return NULL;
+  }
+
+  ResAppNum app_num = sys_get_current_resource_num();
+  bool result = text_resources_init_font(app_num, (uint32_t)handle,
+                                         (uint32_t)extension_handle, font_info);
+  if (!result) {
+    applib_free(font_info);
+    PBL_LOG(LOG_LEVEL_WARNING, "Getting fallback font instead");
+    return sys_font_get_system_font("RESOURCE_ID_GOTHIC_14");
+  }
+  return font_info;
+}
+
 GFont fonts_load_custom_font_system(ResAppNum app_num, uint32_t resource_id) {
   if (resource_id == 0) {
     PBL_LOG(LOG_LEVEL_ERROR, "Tried to load a font from a NULL resource");
