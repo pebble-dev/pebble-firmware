@@ -584,12 +584,15 @@ bool text_resources_init_font(ResAppNum app_num, uint32_t font_resource,
   }
   // look for an extension font and load it
   if (extended_resource) {
-    // if you want 3rd party apps to use extended fonts, you'll have to unwatch when they unload
-    // and create a syscall for resource_watch
-    PBL_ASSERTN(app_num == SYSTEM_APP);
-    if (font_info->extension_changed_cb == NULL) {
-      font_info->extension_changed_cb = resource_watch(app_num, extended_resource,
-                                                       prv_resource_changed_callback, font_info);
+    // resource_watch is only supported for system apps (it keeps a persistent
+    // callback across resource reloads). Third-party apps are short-lived and
+    // their font resources are freed automatically when the app exits, so they
+    // do not need a watch callback — they simply load the extension once.
+    if (app_num == SYSTEM_APP) {
+      if (font_info->extension_changed_cb == NULL) {
+        font_info->extension_changed_cb = resource_watch(app_num, extended_resource,
+                                                         prv_resource_changed_callback, font_info);
+      }
     }
     font_info->extended = prv_load_font_res(app_num, extended_resource, &font_info->extension,
                                             true /* is_extended */);
