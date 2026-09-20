@@ -2,31 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pebbleos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 17:47+0000\n"
-"PO-Revision-Date: 2025-11-27 17:58\n"
+"POT-Creation-Date: 2026-06-05 23:16+0000\n"
+"PO-Revision-Date: 2026-06-14 02:29\n"
 "Last-Translator: \n"
 "Language-Team: Lithuanian\n"
 "Language: lt_LT\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 17:47+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: \n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-27 17:48+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: \n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -49,11 +29,11 @@ msgstr "Ši programėlė reikalauja naujesnės Pebble programinės aparatinės �
 #: ../src/fw/popups/alarm_popup.c:47
 #, c-format
 msgid "Snooze for %d minutes"
-msgstr ""
+msgstr "Snūstelėti %d min."
 
 #: ../src/fw/popups/alarm_popup.c:64
 msgid "Alarm dismissed"
-msgstr ""
+msgstr "Žadintuvas išjungtas"
 
 #: ../src/fw/popups/bluetooth_pairing_ui.c:231
 msgid "Pair?"
@@ -84,7 +64,7 @@ msgstr ""
 
 #: ../src/fw/popups/notifications/notification_window.c:719
 msgid "Muted"
-msgstr ""
+msgstr "Pranešimai išjungti"
 
 #: ../src/fw/popups/notifications/notification_window.c:846
 msgid "Snooze"
@@ -93,19 +73,19 @@ msgstr ""
 #: ../src/fw/popups/notifications/notification_window.c:865
 #, c-format
 msgid "Mute %s"
-msgstr ""
+msgstr "Išjungti %s pranešimus"
 
 #: ../src/fw/popups/notifications/notification_window.c:888
 msgid "Mute Always"
-msgstr ""
+msgstr "Išjungti pranešimus visada"
 
 #: ../src/fw/popups/notifications/notification_window.c:893
 msgid "Mute Weekends"
-msgstr ""
+msgstr "Išjungti pranešimus savaitgaliais"
 
 #: ../src/fw/popups/notifications/notification_window.c:898
 msgid "Mute Weekdays"
-msgstr ""
+msgstr "Išjungti pranešimus šiokiadieniais"
 
 #: ../src/fw/popups/notifications/notification_window.c:908
 msgid "Dismiss All"
@@ -129,11 +109,11 @@ msgstr ""
 
 #: ../src/fw/popups/phone_ui.c:593
 msgid "Call Ended"
-msgstr ""
+msgstr "Skambutis baigtas"
 
 #: ../src/fw/popups/phone_ui.c:596
 msgid "Call Declined"
-msgstr ""
+msgstr "Skambutis atmestas"
 
 #: ../src/fw/popups/switch_worker_ui.c:97
 #, c-format
@@ -174,7 +154,7 @@ msgstr "Nepavyko atnaujinti"
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:49
 #, c-format
 msgid "Snooze delay set to %d minutes"
-msgstr ""
+msgstr "Snūstelėjimo trukmė nustatyta į %d min."
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:178
 msgid "Delete"
@@ -210,7 +190,7 @@ msgstr "Keisti į išmanųjį žadintuvą"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:206
 msgid "Snooze Delay"
-msgstr ""
+msgstr "Snūstelėjimo trukmė"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_detail.c:217
 msgid "5 minutes"
@@ -234,7 +214,7 @@ msgstr "1 valanda"
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:303
 msgid "Check something first."
-msgstr ""
+msgstr "Ką nors pažymėkite."
 
 #: ../src/fw/apps/system_apps/alarms/alarm_editor.c:453
 msgid "New Smart Alarm"
@@ -284,7 +264,7 @@ msgstr "IŠJUNGTAS"
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:355
 msgid "Let us wake you in your lightest sleep so you're fully refreshed! Smart Alarm wakes you up to 30min before your alarm."
-msgstr ""
+msgstr "Leiskite jus pažadinti lengviausioje miego fazėje, kad jastumėtės visiškai pailsėję! Išmanusis žadintuvas jus pažadina iki 30 min. prieš suskambant žadintuvui."
 
 #: ../src/fw/apps/system_apps/alarms/alarms.c:480
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:71
@@ -294,7 +274,7 @@ msgstr "Žadintuvai"
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:125
 msgid "Not connected"
-msgstr ""
+msgstr "Neprisijungta"
 
 #: ../src/fw/apps/system_apps/app_fetch_ui.c:137
 msgid "No internet\n"
@@ -319,7 +299,7 @@ msgstr "Nepavyko"
 #. / Insights onboarding message
 #: ../src/fw/apps/system_apps/health/health.c:81
 msgid "Psst! Want smart tips about your activity and sleep? You can enable Insights in the mobile app."
-msgstr ""
+msgstr "Psst! Norite naudingų patarimų apie savo veiklą ir miegą? Galite mobiliojoje programėlėje įjungti įžvalgas."
 
 #. / Health disabled text
 #: ../src/fw/apps/system_apps/health/health.c:116
@@ -334,7 +314,7 @@ msgstr ""
 #: ../src/fw/apps/system_apps/health/health.c:190
 #: ../src/fw/services/normal/timeline/timeline.c:961
 msgid "Health"
-msgstr ""
+msgstr "Sveikata"
 
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:43
 #: ../src/fw/apps/system_apps/workout/workout_active.c:268
@@ -357,7 +337,7 @@ msgstr "30 DIENŲ VID."
 
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:88
 msgid "CALORIES"
-msgstr ""
+msgstr "KALORIJOS"
 
 #. / Distance Label
 #: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:90
@@ -414,7 +394,7 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:69
 msgid "30 DAY"
-msgstr ""
+msgstr "30 DIENŲ"
 
 #: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:103
 msgid "SLEEP SESSION"
@@ -572,11 +552,11 @@ msgstr "%u susietas telefonas"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:433
 msgid "No LE"
-msgstr ""
+msgstr "Be LE"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:433
 msgid "LE Only"
-msgstr ""
+msgstr "Tik LE"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:436
 msgid "Connected"
@@ -584,7 +564,7 @@ msgstr "Prisijungta"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:452
 msgid "Sharing Heart Rate ❤"
-msgstr ""
+msgstr "Bendrinti širdies plakimo dažnį ❤"
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:497
 msgid "Connection"
@@ -613,24 +593,24 @@ msgstr "Norėdami prisijungti atverkite savo telefone Pebble programėlę."
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:546
 msgid "Forget this device to pair a new device."
-msgstr ""
+msgstr "Norėdami susieti naują įrenginį, pamirškite šį įrenginį."
 
 #: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:695
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:44
-#: ../src/fw/apps/system_apps/settings/settings_system.c:539
+#: ../src/fw/apps/system_apps/settings/settings_system.c:544
 msgid "Low"
 msgstr "Mažas"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:45
-#: ../src/fw/apps/system_apps/settings/settings_system.c:541
+#: ../src/fw/apps/system_apps/settings/settings_system.c:546
 msgid "Medium"
 msgstr "Vidutinis"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:46
-#: ../src/fw/apps/system_apps/settings/settings_system.c:543
+#: ../src/fw/apps/system_apps/settings/settings_system.c:548
 msgid "High"
 msgstr "Didelis"
 
@@ -655,12 +635,12 @@ msgstr "Numatytasis"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:93
 msgid "Left-Handed"
-msgstr ""
+msgstr "Kairiarankiams"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:118
 #: ../src/fw/apps/system_apps/settings/settings_display.c:290
 msgid "Orientation"
-msgstr ""
+msgstr "Orientacija"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:131
 msgid "3 Seconds"
@@ -698,10 +678,10 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:180
 msgid "Legacy App Display"
-msgstr ""
+msgstr "Pasenusių programėlių atvaizdavimas"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:285
-#: ../src/fw/apps/system_apps/settings/settings_system.c:209
+#: ../src/fw/apps/system_apps/settings/settings_system.c:214
 msgid "Language"
 msgstr "Kalba"
 
@@ -716,7 +696,7 @@ msgstr "Foninis apšvietimas"
 #: ../src/fw/apps/system_apps/settings/settings_display.c:317
 #: ../src/fw/apps/system_apps/settings/settings_display.c:338
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:236
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1308
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1326
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:126
 msgid "On"
 msgstr "Įjungtas"
@@ -727,7 +707,7 @@ msgstr "Įjungtas"
 #: ../src/fw/apps/system_apps/settings/settings_display.c:331
 #: ../src/fw/apps/system_apps/settings/settings_display.c:340
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:236
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1308
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1326
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:128
 msgid "Off"
 msgstr "Išjungtas"
@@ -738,15 +718,15 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:323
 msgid "Ambient Sensor"
-msgstr ""
+msgstr "Aplinkos apšvietimo jutiklis"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:336
 msgid "Dynamic Backlight"
-msgstr ""
+msgstr "Dinaminis foninis apšvietimas"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:347
 msgid "Max Intensity"
-msgstr ""
+msgstr "Didžiausias ryškumas"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:362
 msgid "Screen Alignment"
@@ -754,7 +734,7 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:367
 msgid "Legacy Apps"
-msgstr ""
+msgstr "Pasenusios programėlės"
 
 #: ../src/fw/apps/system_apps/settings/settings_display.c:369
 msgid "Centered"
@@ -792,7 +772,7 @@ msgstr "Atstatoma..."
 
 #: ../src/fw/apps/system_apps/settings/settings_factory_reset.c:111
 msgid "Perform factory reset?"
-msgstr ""
+msgstr "Atstatyti gamyklines nuostatas?"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:68
 msgid "Allow All Notifications"
@@ -804,7 +784,7 @@ msgstr "Leisti tik telefono skambučius"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:70
 msgid "Mute All Notifications"
-msgstr ""
+msgstr "Išjungti visus pranešimus"
 
 #. / The option in the Settings app for filtering notifications by type.
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:102
@@ -877,19 +857,19 @@ msgstr "10 minučių"
 #. / Standard notification design option (default)
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:245
 msgid "Classic"
-msgstr ""
+msgstr "Klasikinis"
 
 #. / Alternative notification design option
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:247
 msgid "Flat Black"
-msgstr ""
+msgstr "Juodas"
 
 #. / Status bar title for the Notification Design Style settings screen
 #. / String within Settings->Notifications that describes the notification design style
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:265
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:320
 msgid "Banner Style"
-msgstr ""
+msgstr "Viršutinės antraštės stilius"
 
 #: ../src/fw/apps/system_apps/settings/settings_notifications.c:295
 msgid "Disabled (Plugged In)"
@@ -898,36 +878,37 @@ msgstr ""
 #. / Shown in Quick Launch Settings as the title of the tap up button option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:46
 msgid "Tap Up"
-msgstr ""
+msgstr "Bakstelėjimas aukštyn"
 
 #. / Shown in Quick Launch Settings as the title of the tap down button option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:48
 msgid "Tap Down"
-msgstr ""
+msgstr "Bakstelėjimas žemyn"
 
 #. / Shown in Quick Launch Settings as the title of the hold up button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:50
 msgid "Hold Up"
-msgstr ""
+msgstr "Ilgas paspaudimas „Aukštyn“"
 
 #. / Shown in Quick Launch Settings as the title of the hold center button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:52
 msgid "Hold Center"
-msgstr ""
+msgstr "Ilgas paspaudimas „Vidurys“"
 
 #. / Shown in Quick Launch Settings as the title of the hold down button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:54
 msgid "Hold Down"
-msgstr ""
+msgstr "Ilgas paspaudimas „Žemyn“"
 
 #. / Shown in Quick Launch Settings as the title of the hold back button quick launch option.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:56
 msgid "Hold Back"
-msgstr ""
+msgstr "Ilgas paspaudimas „Atgal“"
 
 #. / Shown in Quick Launch Settings when the button is disabled.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:63
-#: ../src/fw/apps/system_apps/settings/settings_system.c:609
+#: ../src/fw/apps/system_apps/settings/settings_system.c:617
+#: ../src/fw/apps/system_apps/settings/settings_system.c:632
 msgid "Disabled"
 msgstr "Išjungtas"
 
@@ -942,7 +923,7 @@ msgstr "Greitas paleidimas"
 #. / Help text for the Quick Launch first use dialog.
 #: ../src/fw/apps/system_apps/settings/settings_quick_launch_setup_menu.c:56
 msgid "Open favorite apps quickly with a long button press from your watchface."
-msgstr ""
+msgstr "Atverkite mėgstamas programėles ilgu mygtuko paspaudimu ciferblate."
 
 #: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:70
 msgid "Quiet All Notifications"
@@ -1012,130 +993,138 @@ msgstr "Pamiršti"
 
 #: ../src/fw/apps/system_apps/settings/settings_remote.c:174
 msgid "Stop Sharing Heart Rate"
-msgstr ""
+msgstr "Nebebendrinti širdies plakimo dažnį"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:161
-#: ../src/fw/apps/system_apps/settings/settings_system.c:284
+#: ../src/fw/apps/system_apps/settings/settings_system.c:166
+#: ../src/fw/apps/system_apps/settings/settings_system.c:289
 msgid "Information"
 msgstr "Informacija"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:162
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1050
+#: ../src/fw/apps/system_apps/settings/settings_system.c:167
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1068
 msgid "Certification"
-msgstr ""
+msgstr "Sertifikavimas"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:163
+#: ../src/fw/apps/system_apps/settings/settings_system.c:168
 msgid "Stand-By Mode"
 msgstr "Pristabdytoji veiksena"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:164
-#: ../src/fw/apps/system_apps/settings/settings_system.c:689
+#: ../src/fw/apps/system_apps/settings/settings_system.c:169
+#: ../src/fw/apps/system_apps/settings/settings_system.c:707
 msgid "Debugging"
-msgstr ""
+msgstr "Derinimas"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:165
+#: ../src/fw/apps/system_apps/settings/settings_system.c:170
 msgid "Shut Down"
 msgstr "Išjungti"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:166
+#: ../src/fw/apps/system_apps/settings/settings_system.c:171
 msgid "Factory Reset"
-msgstr ""
+msgstr "Atstatyti gamyklines nuostatas"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:207
+#: ../src/fw/apps/system_apps/settings/settings_system.c:212
 msgid "BT Address"
 msgstr "BT adresas"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:208
+#: ../src/fw/apps/system_apps/settings/settings_system.c:213
 msgid "Firmware"
 msgstr "Programinė aparatinė įranga"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:210
+#: ../src/fw/apps/system_apps/settings/settings_system.c:215
 msgid "Recovery"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:211
+#: ../src/fw/apps/system_apps/settings/settings_system.c:216
 msgid "Bootloader"
 msgstr "Pradinis įkėliklis"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:212
+#: ../src/fw/apps/system_apps/settings/settings_system.c:217
 msgid "Hardware"
 msgstr "Aparatinė įranga"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:213
+#: ../src/fw/apps/system_apps/settings/settings_system.c:218
 msgid "Serial"
 msgstr "Serijos numeris"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:214
+#: ../src/fw/apps/system_apps/settings/settings_system.c:219
 msgid "Uptime"
 msgstr "Veikimo laikas"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:215
+#: ../src/fw/apps/system_apps/settings/settings_system.c:220
 msgid "Legal"
 msgstr "Teisinė informacija"
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:380
+#: ../src/fw/apps/system_apps/settings/settings_system.c:385
 msgid "Core dump and reboot?"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:538
+#: ../src/fw/apps/system_apps/settings/settings_system.c:543
 msgid "Very Low"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:540
+#: ../src/fw/apps/system_apps/settings/settings_system.c:545
 msgid "Medium-Low"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:542
+#: ../src/fw/apps/system_apps/settings/settings_system.c:547
 msgid "Medium-High"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:544
+#: ../src/fw/apps/system_apps/settings/settings_system.c:549
 msgid "Very High"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:569
-#: ../src/fw/apps/system_apps/settings/settings_system.c:585
+#: ../src/fw/apps/system_apps/settings/settings_system.c:574
+#: ../src/fw/apps/system_apps/settings/settings_system.c:590
 msgid "Motion Sensitivity"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:581
+#: ../src/fw/apps/system_apps/settings/settings_system.c:586
 msgid "CoreDump now"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:582
+#: ../src/fw/apps/system_apps/settings/settings_system.c:587
 msgid "CoreDump shortcut"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:583
-msgid "ALS Threshold"
-msgstr ""
-
 #: ../src/fw/apps/system_apps/settings/settings_system.c:588
+msgid "ALS Threshold"
+msgstr "ALS slenkstis"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:593
+msgid "BLE compat mode"
+msgstr "BLE suderinamumo veiksena"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:596
 msgid "Dyn BL Min Threshold"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:589
+#: ../src/fw/apps/system_apps/settings/settings_system.c:597
 msgid "Dyn BL Max Threshold"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:609
+#: ../src/fw/apps/system_apps/settings/settings_system.c:617
 msgid "10 back-button presses"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:758
-msgid "PebbleOS developers only!"
+#: ../src/fw/apps/system_apps/settings/settings_system.c:632
+msgid "Emulate silk"
 msgstr ""
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1011
+#: ../src/fw/apps/system_apps/settings/settings_system.c:776
+msgid "PebbleOS developers only!"
+msgstr "Tik PebbleOS plėtotojams!"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1029
 msgid "See details..."
 msgstr "Rodyti išsamiau..."
 
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1288
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1306
 msgid "Do you want to shut down?"
 msgstr "Ar norite išjungti?"
 
 #. / Refers to the class of all non-score vibes, e.g. 3rd party app vibes
-#: ../src/fw/apps/system_apps/settings/settings_system.c:1382
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1400
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:77
 msgid "System"
 msgstr "Sistema"
@@ -1159,7 +1148,7 @@ msgstr ""
 #. / Title of the Themes Settings submenu in Settings
 #: ../src/fw/apps/system_apps/settings/settings_themes.c:266
 msgid "Themes"
-msgstr ""
+msgstr "Apipavidalinimai"
 
 #. / Title of the menu for changing the watch's timezone.
 #: ../src/fw/apps/system_apps/settings/settings_time.c:125
@@ -1222,23 +1211,23 @@ msgstr "30 min. prieš"
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:95
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:133
 msgid "Timing"
-msgstr ""
+msgstr "Laiko paskyrimas"
 
 #. / Shows up in the Timeline settings as a toggle-able "Quick View" item.
 #. / Title for the Timeline Quick View first use dialog.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:124
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:188
 msgid "Quick View"
-msgstr ""
+msgstr "Greitas rodinys"
 
 #. / Help text for the Timeline Quick View first use dialog.
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:190
 msgid "Appears on your watchface when an event is about to start."
-msgstr ""
+msgstr "Atsiranda ciferblate prieš pat įvykio pradžią."
 
 #: ../src/fw/apps/system_apps/settings/settings_timeline.c:217
 msgid "Timeline"
-msgstr ""
+msgstr "Laiko skalė"
 
 #: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:66
 msgid "Incoming Calls"
@@ -1254,13 +1243,13 @@ msgstr "Nėra įvykių"
 
 #: ../src/fw/apps/system_apps/timeline/timeline.c:1252
 msgid "Timeline Future"
-msgstr ""
+msgstr "Laiko skalės ateitis"
 
 #. / The title of Timeline Past in Quick Launch. If the translation is too long, cut out
 #. / Timeline and only translate "Past".
 #: ../src/fw/apps/system_apps/timeline/timeline.c:1266
 msgid "Timeline Past"
-msgstr ""
+msgstr "Laiko skalės praeitis"
 
 #: ../src/fw/apps/system_apps/toggle/airplane_mode.c:26
 msgid "Turn On Airplane Mode?"
@@ -1284,19 +1273,19 @@ msgstr "Lėktuvo veiksena\n"
 
 #: ../src/fw/apps/system_apps/toggle/backlight_state.c:30
 msgid "Turn On Backlight?"
-msgstr ""
+msgstr "Įjungti foninį apšvietimą?"
 
 #: ../src/fw/apps/system_apps/toggle/backlight_state.c:31
 msgid "Turn Off Backlight?"
-msgstr ""
+msgstr "Išjungti foninį apšvietimą?"
 
 #: ../src/fw/apps/system_apps/toggle/backlight_state.c:32
 msgid "Backlight On"
-msgstr ""
+msgstr "Foninis apšvietimas įjungtas"
 
 #: ../src/fw/apps/system_apps/toggle/backlight_state.c:33
 msgid "Backlight Off"
-msgstr ""
+msgstr "Foninis apšvietimas išjungtas"
 
 #: ../src/fw/apps/system_apps/toggle/motion_backlight.c:24
 msgid "Turn On Motion Backlight?"
@@ -1322,7 +1311,7 @@ msgstr ""
 
 #: ../src/fw/apps/system_apps/watchfaces.c:92
 msgid "Active"
-msgstr ""
+msgstr "Aktyvus"
 
 #: ../src/fw/apps/system_apps/watchfaces.c:206
 msgid "Watchfaces"
@@ -1373,7 +1362,7 @@ msgstr "RYTOJ"
 
 #: ../src/fw/apps/system_apps/workout/sports.c:368
 msgid "Sports"
-msgstr ""
+msgstr "Sportas"
 
 #: ../src/fw/apps/system_apps/workout/workout.c:164
 msgid "Workout\n"
@@ -1384,7 +1373,7 @@ msgstr "Treniruotė\n"
 #. / Workouts waiting for time sync
 #: ../src/fw/apps/system_apps/workout/workout.c:190
 msgid "Workout requires the time to be synced. Please connect your phone."
-msgstr ""
+msgstr "Treniruotė reikalauja, kad būtų sinchronizuotas laikas. Prisijunkite prie telefono."
 
 #. / Health disabled text
 #: ../src/fw/apps/system_apps/workout/workout.c:198
@@ -1394,7 +1383,7 @@ msgstr ""
 #. / Workout app first use text
 #: ../src/fw/apps/system_apps/workout/workout.c:205
 msgid "Wear your watch snug and 2 fingers' width above your wrist bone for best results."
-msgstr ""
+msgstr "Geriausiems rezultatams pasiekti glaudžiai segėkite laikrodį 2 pirštų atstumu nuo riešo."
 
 #. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
 #. / Workout Label
@@ -1402,7 +1391,7 @@ msgstr ""
 #: ../src/fw/apps/system_apps/workout/workout_utils.c:92
 #: ../src/fw/services/normal/activity/activity_insights.c:1629
 msgid "Workout"
-msgstr ""
+msgstr "Treniruotė"
 
 #. / Zone 1 HR Label
 #: ../src/fw/apps/system_apps/workout/workout_active.c:103
@@ -1593,15 +1582,15 @@ msgstr "Standartinis – Stiprus"
 
 #: ../src/fw/services/normal/vibes/vibes.def:9
 msgid "Pulse"
-msgstr ""
+msgstr "Impulsas"
 
 #: ../src/fw/services/normal/vibes/vibes.def:10
 msgid "Nudge Nudge"
-msgstr ""
+msgstr "Bakst bakst"
 
 #: ../src/fw/services/normal/vibes/vibes.def:12
 msgid "Jackhammer"
-msgstr ""
+msgstr "Gręžimo kūjis"
 
 #: ../src/fw/services/common/clock.c:467 ../src/fw/services/common/clock.c:739
 msgid "%R"
@@ -1861,7 +1850,7 @@ msgstr "Ar jaučiatės labiau energingi, sumanūs ar optimistiškai nusiteikę? 
 
 #: ../src/fw/services/normal/activity/activity_insights.c:231
 msgid "GREAT DAY TODAY"
-msgstr ""
+msgstr "ŠIANDIEN PUIKI DIENA"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:234
 msgid "You're being consistent and that's important, keep at it!"
@@ -1887,7 +1876,7 @@ msgstr "Miego santrauka"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:259
 msgid "You had a good night! Feel the energy 😃"
-msgstr ""
+msgstr "Gerai pamiegojote! Pajuskite energijos antplūdį 😃"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:262
 msgid "It's great that you're keeping a consistent sleep routine!"
@@ -1896,7 +1885,7 @@ msgstr ""
 #: ../src/fw/services/normal/activity/activity_insights.c:265
 #: ../src/fw/services/normal/activity/activity_insights.c:268
 msgid "A good night's sleep goes a long way! Try to get more hours tonight."
-msgstr ""
+msgstr "Geras nakties miegas yra labai svarbus! Pasistenkite šiąnakt miegoti daugiau valandų."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:420
 msgid "Open App"
@@ -2064,27 +2053,27 @@ msgstr ""
 #: ../src/fw/services/normal/activity/activity_insights.c:1377
 #, c-format
 msgid "Refreshed? You slept for %dH %dM which is %d%% above your typical. Go tackle your day 😃."
-msgstr ""
+msgstr "Atsigavote? Jūs miegojote %d VAL. %d MIN., o tai yra %d%% daugiau nei jums įprasta. Pirmyn, pasitikite naują dieną 😃."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1379
 #, c-format
 msgid "You caught some killer zzz’s! You slept for %dH %dM which is %d%% above your typical. Keep it up."
-msgstr ""
+msgstr "Atsimiegojote lig soties! Jūs miegojote %d VAL. %d MIN., o tai yra %d%% daugiau nei jums įprasta. Taip ir toliau."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1381
 #, c-format
 msgid "Rise and shine! You slept for %dH %dM which is %d%% above your typical. Do it again tonight, sleep master."
-msgstr ""
+msgstr "Metas keltis! Jūs miegojote %d VAL. %d MIN., o tai yra %d%% daugiau nei jums įprasta. Pakartokite tai rytoj dar kartą, sapnų valdove."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1383
 #, c-format
 msgid "Mmmm...what a night. You slept for %dH %dM which is %d%% above your typical. That's gotta feel good!"
-msgstr ""
+msgstr "Mmmm...kokia naktis. Jūs miegojote %d VAL. %d MIN., o tai yra %d%% daugiau nei jums įprasta. Tikriausiai, gerai jaučiatės!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1385
 #, c-format
 msgid "That's a lot of sheep you just counted! You slept for %dH %dM which is %d%% above your typical. Boom shakalaka."
-msgstr ""
+msgstr "Ką tik suskaičiavote daug avelių! Jūs miegojote %d VAL. %d MIN., o tai yra %d%% daugiau nei jums įprasta. Jėga."
 
 #. / Sleep notification on wake up, slept similar to their typical sleep duration
 #: ../src/fw/services/normal/activity/activity_insights.c:1393
@@ -2100,28 +2089,28 @@ msgstr "Labas rytas! Jūs miegojote %d VAL. %d MIN. Svarbiausia – pastovumas; 
 #: ../src/fw/services/normal/activity/activity_insights.c:1398
 #, c-format
 msgid "You're rockin' the shut eye! You slept for %dH %dM. Make it a nightly ritual. You deserve it."
-msgstr ""
+msgstr "Jums labai tinka užmerktos akys! Jūs miegojote %d VAL. %d MIN. Paverskite tai savo naktiniu įpročiu. Jūs to nusipelnėte."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1400
 #, c-format
 msgid "Feelin' good? You slept for %dH %dM. Nothing can stop you now 👊"
-msgstr ""
+msgstr "Gerai jaučiatės? Jūs miegojote %d VAL. %d MIN. Dabar niekas negali jūsų sustabdyti 👊"
 
 #. / Sleep notification on wake up, slept below their typical sleep duration
 #: ../src/fw/services/normal/activity/activity_insights.c:1407
 #, c-format
 msgid "Hey sleepy head. You slept for %dH %dM which is %d%% below your typical. Try to get more tonight!"
-msgstr ""
+msgstr "Ei, miegaliau. Jūs miegojote %d VAL. %d MIN., o tai yra %d%% mažiau nei jums įprasta. Pasistenkite šią naktį skirti daugiau laiko miegui!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1409
 #, c-format
 msgid "Groggy? You slept for %dH %dM which is %d%% below your typical. Sleep is important for everything you do-try getting more shut eye tonight!"
-msgstr ""
+msgstr "Mieguisti? Jūs miegojote %d VAL. %d MIN., o tai yra %d%% mažiau nei jums įprasta. Miegas yra svarbus viskam, ką darote. Pasistenkite šiąnakt ilgiau pamiegoti!"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1411
 #, c-format
 msgid "It's a new day! You slept for %dH %dM which is %d%% below your typical. It's not your best, but there's always tonight."
-msgstr ""
+msgstr "Išaušo nauja diena! Jūs miegojote %d VAL. %d MIN., o tai yra %d%% mažiau nei jums įprasta. Ne pats geriausias rezultatas, bet visada laukia dar viena naktis."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1413
 #, c-format
@@ -2131,17 +2120,17 @@ msgstr "Labas rytas! Jūs miegojote %d VAL. %d MIN., o tai yra %d%% mažiau nei 
 #: ../src/fw/services/normal/activity/activity_insights.c:1420
 #, c-format
 msgid "You slept for %dH %dM which is %d%% below your typical. Sleep is vital for all your great ideas–how 'bout getting more tonight?"
-msgstr ""
+msgstr "Jūs miegojote %d VAL. %d MIN., o tai yra %d%% mažiau nei jums įprasta. Miegas yra gyvybiškai svarbus ir skatina nuostabias idėjas – galbūt šiąnakt pavyks pamiegoti ilgiau?"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1422
 #, c-format
 msgid "You only slept for %dH %dM which is %d%% below your typical. We know you're busy, but try getting more tonight. We believe in you 😉"
-msgstr ""
+msgstr "Jūs miegojote %d VAL. %d MIN., o tai yra %d%% mažiau nei jums įprasta. Suprantame, kad esate užsiėmę, bet pasistenkite šiąnakt pamiegoti ilgiau. Jums pavyks 😉"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1424
 #, c-format
 msgid "You slept for %dH %dM which is %d%% below your typical. We know stuff happens; take another crack at it tonight."
-msgstr ""
+msgstr "Jūs miegojote %d VAL. %d MIN., o tai yra %d%% mažiau nei jums įprasta. Visko nutinka; šią naktį pamėginkite užmigti anksčiau."
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1477
 #, c-format
@@ -2166,7 +2155,7 @@ msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1571
 msgid "Feelin' hot? Cause you're on 🔥"
-msgstr ""
+msgstr "Karšta? Ogi todėl, kad jūs 🔥"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1572
 msgid "Hey lightning bolt, way to go!"
@@ -2190,19 +2179,19 @@ msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1586
 msgid "Well done 💪"
-msgstr ""
+msgstr "Gerai padirbėta 💪"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1587
 msgid "Endorphin rush?"
-msgstr ""
+msgstr "Endorfinų antplūdis?"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1588
 msgid "Can't stop, won't stop 👊"
-msgstr ""
+msgstr "Tik į priekį 👊"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1589
 msgid "Keepin' that heart healthy! ❤"
-msgstr ""
+msgstr "Palaikome širdį sveiką! ❤"
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1617
 #: ../src/fw/services/normal/activity/activity_insights.c:1709
@@ -2230,17 +2219,17 @@ msgstr ""
 
 #: ../src/fw/services/normal/activity/activity_insights.c:1702
 msgid "Avg HR"
-msgstr ""
+msgstr "Vid. širdies plakimo dažnis"
 
 #: ../src/fw/services/normal/activity/health_util.c:32
 #, c-format
 msgid "%dH"
-msgstr ""
+msgstr "%d VAL."
 
 #: ../src/fw/services/normal/activity/health_util.c:38
 #, c-format
 msgid "%dM"
-msgstr ""
+msgstr "%d MIN."
 
 #: ../src/fw/services/normal/activity/health_util.c:61
 #, c-format
@@ -2390,7 +2379,7 @@ msgstr ""
 
 #: ../src/fw/services/normal/notifications/ancs/ancs_item.c:156
 msgid "Call Back"
-msgstr ""
+msgstr "Atskambinti"
 
 #: ../src/fw/services/normal/notifications/do_not_disturb.c:115
 msgid "Calendar Aware enables Quiet Time automatically during calendar events."
@@ -2422,15 +2411,15 @@ msgstr "Tylos laikas\n"
 
 #: ../src/fw/services/normal/timeline/calendar_layout.c:154
 msgid " - "
-msgstr ""
+msgstr " - "
 
 #: ../src/fw/services/normal/timeline/calendar_layout.c:274
 msgid "All Day"
-msgstr ""
+msgstr "Visą dieną"
 
 #: ../src/fw/services/normal/timeline/calendar_layout.c:315
 msgid "Recurring"
-msgstr ""
+msgstr "Pasikartojantis"
 
 #: ../src/fw/services/normal/timeline/sports_layout.c:50
 msgid "STARTS "
@@ -2499,11 +2488,11 @@ msgstr ""
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:949
 msgid "Reply with Voice"
-msgstr ""
+msgstr "Atsakyti balsu"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:950
 msgid "Voice"
-msgstr ""
+msgstr "Balsas"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:960
 msgid "Canned messages"
@@ -2511,7 +2500,7 @@ msgstr "Šabloninės žinutės"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:964
 msgid "Emoji"
-msgstr ""
+msgstr "Jausmaženklis"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:1073
 msgid "In 15 minutes"
@@ -2519,7 +2508,7 @@ msgstr "Po 15 minučių"
 
 #: ../src/fw/services/normal/timeline/timeline_actions.c:1079
 msgid "Later today"
-msgstr ""
+msgstr "Šiandien vėliau"
 
 #: ../src/fw/services/normal/timeline/timeline_layout.c:712
 msgid "Last updated"
@@ -2629,35 +2618,35 @@ msgstr "Sekmadienis"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Monday"
-msgstr ""
+msgstr "Pirmadienis"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Tuesday"
-msgstr ""
+msgstr "Antradienis"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:52
 msgid "Wednesday"
-msgstr ""
+msgstr "Trečiadienis"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:53
 msgid "Thursday"
-msgstr ""
+msgstr "Ketvirtadienis"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:53
 msgid "Friday"
-msgstr ""
+msgstr "Penktadienis"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:53
 msgid "Saturday"
-msgstr ""
+msgstr "Šeštadienis"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:56
 msgid "%H:%M:%S"
-msgstr ""
+msgstr "%H:%M:%S"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:57
 msgid "%m/%d/%y"
-msgstr ""
+msgstr "%y %m %d"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:58
 msgid "%a %b %e %H:%M:%S %Y"
@@ -2670,20 +2659,20 @@ msgstr ""
 #: ../src/fw/applib/pbl_std/timelocal.c:61
 #: ../src/fw/applib/ui/date_time_selection_window_private.c:76
 msgid "AM"
-msgstr ""
+msgstr "AM"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:61
 #: ../src/fw/applib/ui/date_time_selection_window_private.c:78
 msgid "PM"
-msgstr ""
+msgstr "PM"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:62
 msgid "am"
-msgstr ""
+msgstr "am"
 
 #: ../src/fw/applib/pbl_std/timelocal.c:62
 msgid "pm"
-msgstr ""
+msgstr "pm"
 
 #. / The first separator in `<hour>:<minute>:<second>`
 #. / The second separator in `<hour>:<minute>:<second>`
@@ -2691,7 +2680,7 @@ msgstr ""
 #: ../src/fw/applib/template_string.c:182
 msgctxt "TmplStringSep"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #. / The first separator in `<hour> hr <minute> min <second> sec`
 #. / The second separator in `<hour> hr <minute> min <second> sec`
@@ -2705,13 +2694,13 @@ msgstr ""
 #: ../src/fw/applib/template_string.c:188
 msgctxt "TmplStringSep"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #. / The second separator in `<hour> hours, <minute> minutes, and <second> seconds`
 #: ../src/fw/applib/template_string.c:190
 msgctxt "TmplStringSep"
 msgid ", and "
-msgstr ""
+msgstr " ir "
 
 #. / Singular suffix for seconds with no units
 #. / Singular suffix for minutes with no units
@@ -2749,145 +2738,145 @@ msgstr ""
 #: ../src/fw/applib/template_string.c:263
 msgctxt "TmplStringSing"
 msgid " sec"
-msgstr ""
+msgstr " sek."
 
 #. / Plural suffix for seconds with abbreviated units
 #: ../src/fw/applib/template_string.c:265
 msgctxt "TmplStringPlur"
 msgid " sec"
-msgstr ""
+msgstr " sek."
 
 #. / Singular suffix for seconds with full units
 #: ../src/fw/applib/template_string.c:267
 msgctxt "TmplStringSing"
 msgid " second"
-msgstr ""
+msgstr " sek."
 
 #. / Plural suffix for seconds with full units
 #: ../src/fw/applib/template_string.c:269
 msgctxt "TmplStringPlur"
 msgid " seconds"
-msgstr ""
+msgstr " sek."
 
 #. / Singular suffix for minutes with abbreviated units
 #: ../src/fw/applib/template_string.c:278
 msgctxt "TmplStringSing"
 msgid " min"
-msgstr ""
+msgstr " min."
 
 #. / Plural suffix for minutes with abbreviated units
 #: ../src/fw/applib/template_string.c:280
 msgctxt "TmplStringPlur"
 msgid " min"
-msgstr ""
+msgstr " min."
 
 #. / Singular suffix for minutes with full units
 #: ../src/fw/applib/template_string.c:282
 msgctxt "TmplStringSing"
 msgid " minute"
-msgstr ""
+msgstr " min."
 
 #. / Plural suffix for minutes with full units
 #: ../src/fw/applib/template_string.c:284
 msgctxt "TmplStringPlur"
 msgid " minutes"
-msgstr ""
+msgstr " min."
 
 #. / Singular suffix for hours with abbreviated units
 #: ../src/fw/applib/template_string.c:293
 msgctxt "TmplStringSing"
 msgid " hr"
-msgstr ""
+msgstr " val."
 
 #. / Plural suffix for hours with abbreviated units
 #: ../src/fw/applib/template_string.c:295
 msgctxt "TmplStringPlur"
 msgid " hr"
-msgstr ""
+msgstr " val."
 
 #. / Singular suffix for hours with full units
 #: ../src/fw/applib/template_string.c:297
 msgctxt "TmplStringSing"
 msgid " hour"
-msgstr ""
+msgstr " val."
 
 #. / Plural suffix for hours with full units
 #: ../src/fw/applib/template_string.c:299
 msgctxt "TmplStringPlur"
 msgid " hours"
-msgstr ""
+msgstr " val."
 
 #. / Singular suffix for days with abbreviated units
 #: ../src/fw/applib/template_string.c:308
 msgctxt "TmplStringSing"
 msgid " d"
-msgstr ""
+msgstr " d."
 
 #. / Plural suffix for days with abbreviated units
 #: ../src/fw/applib/template_string.c:310
 msgctxt "TmplStringPlur"
 msgid " d"
-msgstr ""
+msgstr " d."
 
 #. / Singular suffix for days with full units
 #: ../src/fw/applib/template_string.c:312
 msgctxt "TmplStringSing"
 msgid " day"
-msgstr ""
+msgstr " d."
 
 #. / Plural suffix for days with full units
 #: ../src/fw/applib/template_string.c:314
 msgctxt "TmplStringPlur"
 msgid " days"
-msgstr ""
+msgstr " d."
 
 #. / Singular suffix for months with abbreviated units
 #: ../src/fw/applib/template_string.c:324
 msgctxt "TmplStringSing"
 msgid " mo"
-msgstr ""
+msgstr " mėn."
 
 #. / Plural suffix for months with abbreviated units
 #: ../src/fw/applib/template_string.c:326
 msgctxt "TmplStringPlur"
 msgid " mo"
-msgstr ""
+msgstr " mėn."
 
 #. / Singular suffix for months with full units
 #: ../src/fw/applib/template_string.c:328
 msgctxt "TmplStringSing"
 msgid " month"
-msgstr ""
+msgstr " mėn."
 
 #. / Plural suffix for months with full units
 #: ../src/fw/applib/template_string.c:330
 msgctxt "TmplStringPlur"
 msgid " months"
-msgstr ""
+msgstr " mėn."
 
 #. / Singular suffix for years with abbreviated units
 #: ../src/fw/applib/template_string.c:341
 msgctxt "TmplStringSing"
 msgid " yr"
-msgstr ""
+msgstr " m."
 
 #. / Plural suffix for years with abbreviated units
 #: ../src/fw/applib/template_string.c:343
 msgctxt "TmplStringPlur"
 msgid " yr"
-msgstr ""
+msgstr " m."
 
 #. / Singular suffix for years with full units
 #: ../src/fw/applib/template_string.c:345
 msgctxt "TmplStringSing"
 msgid " year"
-msgstr ""
+msgstr " m."
 
 #. / Plural suffix for years with full units
 #: ../src/fw/applib/template_string.c:347
 msgctxt "TmplStringPlur"
 msgid " years"
-msgstr ""
+msgstr " m."
 
 #: ../src/fw/applib/ui/dialogs/bt_conn_dialog.c:97
 msgid "Check bluetooth connection"
@@ -2903,11 +2892,11 @@ msgstr "Pabaiga"
 
 #: ../src/fw/applib/voice/voice_window.c:234
 msgid "Dictation is not available."
-msgstr ""
+msgstr "Diktavimas neprieinamas."
 
 #: ../src/fw/applib/voice/voice_window.c:254
 msgid "Error occurred. Try again."
-msgstr ""
+msgstr "Įvyko klaida. Bandykite dar kartą."
 
 #: ../src/fw/applib/voice/voice_window.c:354
 msgid "Enable voice in the settings page of the Pebble app."
@@ -2915,9 +2904,9 @@ msgstr ""
 
 #: ../src/fw/applib/voice/voice_window.c:404
 msgid "Missed that. Try again."
-msgstr ""
+msgstr "Iškilo neaiškumų. Bandykite dar kartą."
 
 #: ../src/fw/applib/voice/voice_window.c:1139
 msgid "Listening"
-msgstr ""
+msgstr "Klausomasi"
 
