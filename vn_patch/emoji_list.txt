@@ -1,8 +1,20 @@
 # Extra emoji merged from the Core Devices #1725 emoji fonts (Noto Emoji fills), one codepoint per line.
 # [emoji]  = goes into the four EMOJI_nn system fonts; the firmware already routes these codepoints there.
+#            The list is in priority order: when the resource bank is full the builder drops from the END.
 # [symbol] = goes into the eight GOTHIC_nn fonts: U+2000-2BFF is drawn from the base text font.
 [emoji]
 1F438 frog
+1F35C steaming bowl (noodles)
+1F35A cooked rice
+1F6F5 motor scooter
+1F338 cherry blossom
+1F644 face with rolling eyes
+1F643 upside-down face
+1F647 person bowing
+1F64B person raising hand
+1F645 face with no good gesture
+1F646 face with ok gesture
+1F375 tea
 1F436 dog
 1F431 cat
 1F430 rabbit
@@ -13,8 +25,6 @@
 1F40D snake
 1F41F fish
 1F41D bee
-1F35C steaming bowl (noodles)
-1F35A cooked rice
 1F354 hamburger
 1F35F french fries
 1F34E red apple
@@ -22,12 +32,9 @@
 1F382 birthday cake
 1F370 shortcake
 1F366 soft ice cream
-1F375 tea
-1F6F5 motor scooter
 1F697 car
 1F68C bus
 1F6B2 bicycle
-1F338 cherry blossom
 1F339 rose
 1F31F glowing star
 1F319 crescent moon
@@ -41,11 +48,5 @@
 1F4A5 collision
 1F3E0 house
 1F3B6 musical notes
-1F644 face with rolling eyes
-1F643 upside-down face
-1F647 person bowing
-1F64B person raising hand
-1F645 face with no good gesture
-1F646 face with ok gesture
 [symbol]
 2615 hot beverage (coffee)

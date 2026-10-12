@@ -60,8 +60,10 @@ def main():
     check(len(old) == len(new), "resource count unchanged (%d)" % len(new))
     changed = [i + 1 for i in range(len(new)) if old[i] != new[i]]
     print("changed resource ids:", changed)
-    extra = 12 if a.emoji_list != "none" else 8
-    check(len(changed) == extra, "exactly %d resources changed" % extra)
+    info = json.load(open(a.built + ".json"))
+    expected = 8 + len(info["large_fonts"]) + (4 if info["emoji"] else 0)
+    check(len(changed) == expected, "exactly %d resources changed (14-28px Gothic x8, %s%s)" % (
+        expected, "+".join(info["large_fonts"]) or "no 09/36", ", 4 emoji fonts" if info["emoji"] else ""))
     sofar = zs.read("tintin_fw.bin")
     diff = sum(x != y for x, y in zip(sofar, fw))
     check(len(sofar) == len(fw) and diff < 40, "firmware image differs in only %d bytes (version, timestamp, CRCs)" % diff)
@@ -70,20 +72,24 @@ def main():
             check(zs.read(name) == zb.read(name), "%s unchanged" % name)
 
     from build_vn_pbz import read_emoji_list
-    groups, names = read_emoji_list(a.emoji_list) if a.emoji_list != "none" else ({"emoji": [], "symbol": []}, {})
+    groups, names = read_emoji_list(a.emoji_list)
+    groups["emoji"] = info.get("emoji_codepoints", [])           # what this build actually kept
+    groups["symbol"] = groups["symbol"] if info["symbols"] else []
     for rid in changed:
         d, o = new[rid - 1], old[rid - 1]
-        if d[7] == 4:                                   # system emoji font
+        if d[7] == 4 and d[1] in (14, 18, 24, 28):      # system emoji font (Gothic 36 also has 4-byte codepoints)
             miss = [names[c] for c in groups["emoji"] if lookup(d, c) is None]
             lost = [hex(cp) for cp in list(range(0xE000, 0xE540)) + list(range(0x1F300, 0x1F700)) + [0x2192, 0x2605, 0x2764]
                     if lookup(o, cp) is not None and lookup(d, cp) is None]
             check(not miss and not lost and lookup(d, 0x1F438) is not None,
                   "resource %d (emoji h%d): all %d extra emoji resolve (frog included), nothing lost" % (rid, d[1], len(groups["emoji"])))
             continue
-        check(all(lookup(d, c) is not None for c in groups["symbol"]), "resource %d: coffee/symbol glyphs resolve" % rid)
+        if d[1] in (14, 18, 24, 28):
+            check(all(lookup(d, c) is not None for c in groups["symbol"]), "resource %d: coffee/symbol glyphs resolve" % rid)
         missing = [c for c in VN if lookup(d, ord(c)) is None]
         kept = all(lookup(d, c) is not None for c in range(0x20, 0x7F))
-        lost = [cp for cp in range(0x10000) if lookup(o, cp) is not None and lookup(d, cp) is None]
+        lost = [cp for cp in list(range(0x10000)) + list(range(0x1F300, 0x1F700))
+                if lookup(o, cp) is not None and lookup(d, cp) is None]
         y, _ = decode_glyph(lookup(d, ord("y"))); dy, _ = decode_glyph(lookup(d, 0x1EF5))
         check(y <= dy, "resource %d: U+1EF5 contains the full letter y" % rid)
         check(not missing and kept and not lost,
