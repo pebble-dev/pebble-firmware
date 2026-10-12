@@ -69,6 +69,7 @@ DRAWN = {
 
 # tilde for the narrow letters i/I (the font's own tilde is wider than their stem)
 NARROW_TILDE = {
+    "09": bitmap([".##", "##."]),
     "36": bitmap([".###..#", "#######", "###..##", "#..##.."]),
     "36b": bitmap([".###..##", ".###..##", "########", "########", "##..###.", "##..###."]),
 }
