@@ -67,6 +67,13 @@ DRAWN = {
 }
 
 
+# tilde for the narrow letters i/I (the font's own tilde is wider than their stem)
+NARROW_TILDE = {
+    "36": bitmap([".###..#", "#######", "###..##", "#..##.."]),
+    "36b": bitmap([".###..##", ".###..##", "########", "########", "##..###.", "##..###."]),
+}
+
+
 class Composer:
     def __init__(self, font, kind):
         self.f, self.kind = font, kind
@@ -118,6 +125,19 @@ class Composer:
         if tone == "grave":
             return base | shift(m, tx0 - 1 - mm[2], top)
         return base | shift(m, tx1 + 1 - mm[0], top)
+
+    def narrow_tilde(self, base, adv):
+        m = NARROW_TILDE[self.kind]
+        mw, mh = bbox(m)[2] + 1, bbox(m)[3] + 1
+        x0, y0, x1, y1 = bbox(base)
+        gap = 2 if self.kind == "36b" else 1
+        left = (x0 + x1 + 1) // 2 - mw // 2               # centred on the stem
+        px = base | shift(m, left, y0 - mh - gap)
+        grow = max(0, -bbox(px)[0])                       # keep the tilde right of the pen position
+        if grow:
+            px, adv = shift(px, grow, 0), adv + grow
+        over = bbox(px)[2] + 1 - adv                      # and inside the advance
+        return px, adv + max(0, over)
 
     def dot_below(self, base, lower_y):
         d = self.drawn["dot"]
@@ -174,12 +194,16 @@ class Composer:
             own = ch in "âêôơưăÂÊÔƠƯĂ"
             lower_y = bbox(self.px("A" if upper else "x"))[3]
             for tone, cp in tones.items():
-                if cp in self.f.glyphs: continue
+                if cp in self.f.glyphs and cp not in REPLACE.get(self.kind, ()): continue
                 if tone == "dot":
                     d = self.drawn["dot"]
                     y_base = bbox(base)[3] if ch in "yY" else lower_y
                     gap = 2 if self.kind != "09" else 1
                     px = base | shift(d, self.centre(base) - bbox(d)[2] // 2, y_base + gap)
+                elif tone == "tilde" and ch in "ıI" and self.kind in NARROW_TILDE:
+                    px, adv_i = self.narrow_tilde(base, adv)
+                    out[cp] = (px, adv_i)
+                    continue
                 else:
                     px = self.stacked(base, tone, upper, own)
                 out[cp] = (px, adv)
@@ -187,7 +211,7 @@ class Composer:
 
 
 # stock glyphs that exist but are wrong: the stock bold 36 draws U+0110 as D with a bar above it
-REPLACE = {"36b": {0x110, 0x111}}
+REPLACE = {"36b": {0x110, 0x111, 0x128, 0x129}}   # 0128/0129: stock tilde is wider than the letter and overhangs its neighbours
 
 
 def compose(font, kind):
