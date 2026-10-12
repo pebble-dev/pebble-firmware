@@ -69,7 +69,6 @@ DRAWN = {
 
 # tilde for the narrow letters i/I (the font's own tilde is wider than their stem)
 NARROW_TILDE = {
-    "09": bitmap([".##", "##."]),
     "36": bitmap([".###..#", "#######", "###..##", "#..##.."]),
     "36b": bitmap([".###..##", ".###..##", "########", "########", "##..###.", "##..###."]),
 }
@@ -93,6 +92,11 @@ class Composer:
         for tone, lo, up in (("grave", "à", "À"), ("acute", "á", "Á"), ("tilde", "ã", "Ã")):
             self.marks[tone, False] = shift(above(lo, "a"), -lc, 0)
             self.marks[tone, True] = shift(above(up, "A"), -uc, 0)
+        if self.kind == "09":
+            # the 09 font squashes accented capitals to x-height and overlaps their marks, so only one
+            # row of a capital's mark lies above the letter; the lowercase marks are complete
+            for tone in ("grave", "acute", "tilde"):
+                self.marks[tone, True] = shift(self.marks[tone, False], lc - uc, 0)
 
     @staticmethod
     def centre(px):
@@ -106,6 +110,8 @@ class Composer:
 
     def stacked(self, base, tone, upper, own_mark):
         """base pixels + tone mark above (stacked when there is room, beside the base's own mark otherwise)."""
+        if self.kind == "09" and upper and own_mark:
+            base = self.open_diamond(base)
         m = self.mark(tone, upper)
         mh = bbox(m)[3] + 1
         x0, y0, x1, y1 = bbox(base)
@@ -126,6 +132,16 @@ class Composer:
         if tone == "grave":
             return base | shift(m, tx0 - 1 - mm[2], top)
         return base | shift(m, tx1 + 1 - mm[0], top)
+
+    @staticmethod
+    def open_diamond(px):
+        """The 09 capital circumflex is a 3-row diamond (1-2-1 pixels) sitting on the letter. Under a tone
+        mark its bottom point looks like a stray dot, so turn it into an open ^ (drop the last row)."""
+        x0, y0, x1, y1 = bbox(px)
+        row = lambda y: {p for p in px if p[1] == y}
+        if len(row(y0)) == 1 and len(row(y0 + 1)) == 2 and len(row(y0 + 2)) == 1:
+            return px - row(y0 + 2)
+        return px
 
     def narrow_tilde(self, base, adv):
         m = NARROW_TILDE[self.kind]
