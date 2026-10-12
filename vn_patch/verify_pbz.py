@@ -11,13 +11,15 @@ BANK = 0x80000
 def lookup(d, cp):
     """Find a glyph the way the firmware does: hash bucket -> offset table -> glyph record."""
     ver, mh, n, wc, ts, cpb, ss, ft = struct.unpack("<BBHHBBBB", d[:10])
-    assert (ver, cpb, ft) == (3, 2, 1)
+    assert ver == 3 and cpb in (2, 4) and ft in (0, 1)
+    entry = "<" + ("I" if cpb == 4 else "H") + ("H" if ft & 1 else "I")
+    es = struct.calcsize(entry)
     h, cnt, off = struct.unpack("<BBH", d[10 + 4 * (cp % ts): 14 + 4 * (cp % ts)])
     assert h == cp % ts
     ot = 10 + 4 * ts
-    gt = ot + 4 * n
+    gt = ot + es * n
     for j in range(cnt):
-        c, go = struct.unpack("<HH", d[ot + off + 4 * j: ot + off + 4 * j + 4])
+        c, go = struct.unpack(entry, d[ot + off + es * j: ot + off + es * (j + 1)])
         if c == cp:
             w, hh = d[gt + go], d[gt + go + 1]
             assert gt + go + 5 + ((w * hh + 31) // 32) * 4 <= len(d)
@@ -28,6 +30,7 @@ def lookup(d, cp):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--patcher-dir", required=True)
+    ap.add_argument("--emoji-list", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "emoji_list.txt"))
     ap.add_argument("stock"); ap.add_argument("built")
     a = ap.parse_args()
     sys.path.insert(0, a.patcher_dir)
@@ -57,7 +60,8 @@ def main():
     check(len(old) == len(new), "resource count unchanged (%d)" % len(new))
     changed = [i + 1 for i in range(len(new)) if old[i] != new[i]]
     print("changed resource ids:", changed)
-    check(len(changed) == 8, "exactly 8 resources changed")
+    extra = 12 if a.emoji_list != "none" else 8
+    check(len(changed) == extra, "exactly %d resources changed" % extra)
     sofar = zs.read("tintin_fw.bin")
     diff = sum(x != y for x, y in zip(sofar, fw))
     check(len(sofar) == len(fw) and diff < 40, "firmware image differs in only %d bytes (version, timestamp, CRCs)" % diff)
@@ -65,8 +69,18 @@ def main():
         if name not in ("manifest.json", "tintin_fw.bin", "system_resources.pbpack"):
             check(zs.read(name) == zb.read(name), "%s unchanged" % name)
 
+    from build_vn_pbz import read_emoji_list
+    groups, names = read_emoji_list(a.emoji_list) if a.emoji_list != "none" else ({"emoji": [], "symbol": []}, {})
     for rid in changed:
         d, o = new[rid - 1], old[rid - 1]
+        if d[7] == 4:                                   # system emoji font
+            miss = [names[c] for c in groups["emoji"] if lookup(d, c) is None]
+            lost = [hex(cp) for cp in list(range(0xE000, 0xE540)) + list(range(0x1F300, 0x1F700)) + [0x2192, 0x2605, 0x2764]
+                    if lookup(o, cp) is not None and lookup(d, cp) is None]
+            check(not miss and not lost and lookup(d, 0x1F438) is not None,
+                  "resource %d (emoji h%d): all %d extra emoji resolve (frog included), nothing lost" % (rid, d[1], len(groups["emoji"])))
+            continue
+        check(all(lookup(d, c) is not None for c in groups["symbol"]), "resource %d: coffee/symbol glyphs resolve" % rid)
         missing = [c for c in VN if lookup(d, ord(c)) is None]
         kept = all(lookup(d, c) is not None for c in range(0x20, 0x7F))
         lost = [cp for cp in range(0x10000) if lookup(o, cp) is not None and lookup(d, cp) is None]

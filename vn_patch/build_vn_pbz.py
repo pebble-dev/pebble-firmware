@@ -98,11 +98,71 @@ def find_pairs(sys_res, lang_res):
     return pairs
 
 
+def read_emoji_list(path):
+    """-> ({'emoji': [cp, ...], 'symbol': [cp, ...]}, names)"""
+    groups, names, cur = {"emoji": [], "symbol": []}, {}, None
+    for line in open(path, encoding="utf-8"):
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("["):
+            cur = line.strip("[]")
+            continue
+        cp, _, name = line.partition(" ")
+        groups[cur].append(int(cp, 16)); names[int(cp, 16)] = name
+    return groups, names
+
+
+def add_emoji(sys_res, plan, list_path, src_dir):
+    """Merge extra emoji from the expanded donor fonts.
+
+    [emoji]  codepoints go into the system EMOJI_nn fonts (the firmware routes U+E000-E537 and
+             U+1F300-1F6FF there);  [symbol] codepoints (U+2000-2BFF) are drawn from the base text
+             font, so they go into the Gothic fonts of the same size, regular and bold.
+    """
+    groups, names = read_emoji_list(list_path)
+    donors = {}
+    for size in SIZES:
+        donors[size] = Pbf(open(os.path.join(src_dir, "EMOJI_%d.pbf" % size), "rb").read())
+        for cp in groups["emoji"] + groups["symbol"]:
+            if cp not in donors[size].glyphs:
+                sys.exit("U+%X (%s) is not in the %dpx donor font" % (cp, names[cp], size))
+    emoji_res = {}
+    for j, r in enumerate(sys_res):
+        f = load_font(r)
+        if f and f.cp_bytes == 4 and 0x1F600 in f.glyphs and f.max_height in SIZES:
+            if f.max_height in emoji_res:
+                sys.exit("more than one %dpx emoji font in the resource pack" % f.max_height)
+            emoji_res[f.max_height] = j
+    if sorted(emoji_res) != list(SIZES):
+        sys.exit("could not find the four system emoji fonts")
+    for size, j in sorted(emoji_res.items()):
+        f = Pbf(sys_res[j])
+        have = [cp for cp in groups["emoji"] if cp in f.glyphs]
+        added, _ = f.merge(donors[size], only=set(groups["emoji"]))
+        out = f.serialize()
+        print("system resource %3d (emoji %2dpx): +%d emoji%s, %d -> %d bytes" % (
+            j + 1, size, added, " (%d already present)" % len(have) if have else "", len(sys_res[j]), len(out)))
+        sys_res[j] = out
+    for j, ext in sorted(plan.items()):
+        f = Pbf(sys_res[j])
+        added, _ = f.merge(donors[ext.max_height], only=set(groups["symbol"]))
+        out = f.serialize()
+        print("system resource %3d (h%2d): +%d symbol glyph(s) in the text font, %d -> %d bytes" % (
+            j + 1, f.max_height, added, len(sys_res[j]), len(out)))
+        sys_res[j] = out
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--patcher-dir", required=True)
     ap.add_argument("--pbl", required=True, help="Vietnamese language pack")
     ap.add_argument("--version", required=True, help="new version tag, max 32 bytes, e.g. v4.4.2-rbl-vn")
+    here = os.path.dirname(os.path.abspath(__file__))
+    ap.add_argument("--emoji-list", default=os.path.join(here, "emoji_list.txt"),
+                    help="extra emoji to merge (default: emoji_list.txt); 'none' to skip")
+    ap.add_argument("--emoji-src", default=os.path.join(here, "emoji_src"),
+                    help="directory with the expanded EMOJI_14/18/24/28.pbf donor fonts")
     ap.add_argument("pbzin"); ap.add_argument("pbzout")
     a = ap.parse_args()
     sys.path.insert(0, a.patcher_dir)
@@ -136,6 +196,9 @@ def main():
               % (j + 1, base.max_height, added, replaced, ", U+1EF5 repaired" if fixed else "",
                  len(sys_res[j]), len(out)))
         sys_res[j] = out
+
+    if a.emoji_list != "none":
+        add_emoji(sys_res, plan, a.emoji_list, a.emoji_src)
 
     new = io.BytesIO(); save_pbpack(new, sys_res)
     res_data = new.getvalue()

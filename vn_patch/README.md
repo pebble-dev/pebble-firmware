@@ -19,6 +19,17 @@ python3 verify_pbz.py --patcher-dir legacy-firmware-patcher  Pebble-4.4.2-rbl-sp
 
 Stock inputs: `https://github.com/pebble-dev/legacy-firmware-patcher/releases/download/rbl2-rc1/Pebble-4.4.2-rbl-{snowy_dvt,snowy_s3,spalding}.pbz`
 
+## Extra emoji
+
+`emoji_list.txt` names the emoji merged from Core Devices PR #1725's expanded emoji fonts
+(`emoji_src/`, with their Apache-2.0 / OFL notices): 45 emoji (frog, noodles, scooter, extra faces...)
+go into the four system EMOJI fonts, and U+2615 (coffee) into the eight Gothic fonts, because the
+firmware draws U+2000-2BFF from the text font, not the emoji font. Edit the list and rebuild
+(`--emoji-list none` skips the step). Each emoji costs about 170 bytes across the four sizes.
+
+Not possible without changing firmware code: anything outside U+E000-E537 / U+1F300-1F6FF
+(for example 🤔 🤣 🥰 🥺 🤗), flags and keycaps. That is what the C part of #1725 adds.
+
 ## Notes
 
 - Glyphs present in both (Đ đ Ĩ ĩ Ũ ũ) take the pack's version. Stock Gothic 18/28 draw Đ as D with a bar above.
@@ -28,3 +39,4 @@ Stock inputs: `https://github.com/pebble-dev/legacy-firmware-patcher/releases/do
 - Silk is not built: the grown pack (535,157 bytes) does not fit its 512 KiB resource bank. The builder refuses.
 - The pack contains no translated strings; the UI stays English.
 - Checked on the files only (CRCs, resource diffs, hash lookup of every Vietnamese letter). Not yet run on a watch.
+- Space left in the resource bank: Spalding 4,385 bytes, Snowy 7,269. `build_vn_pbz.py` refuses to build if the pack no longer fits.
