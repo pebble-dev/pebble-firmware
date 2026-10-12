@@ -19,6 +19,18 @@ python3 verify_pbz.py --patcher-dir legacy-firmware-patcher  Pebble-4.4.2-rbl-sp
 
 Stock inputs: `https://github.com/pebble-dev/legacy-firmware-patcher/releases/download/rbl2-rc1/Pebble-4.4.2-rbl-{snowy_dvt,snowy_s3,spalding}.pbz`
 
+## Which file for which watch
+
+| Watch | File | `hwrev` in the bundle |
+|---|---|---|
+| Pebble Time | `dist/Pebble-4.4.2-rbl-vn-snowy_dvt.pbz` | `snowy_dvt` |
+| Pebble Time Steel | `dist/Pebble-4.4.2-rbl-vn-snowy_s3.pbz` | `snowy_s3` |
+| Pebble Time Round | `dist/Pebble-4.4.2-rbl-vn-spalding.pbz` | `spalding` |
+
+The Time / Time Steel mapping follows Rebble's board names (the stock bundles are named the same way).
+Check the hardware revision on the watch (Settings > System > Information) before flashing; the
+bundles differ only in the firmware image, the fonts are identical.
+
 ## Extra emoji
 
 `emoji_list.txt` names the emoji merged from Core Devices PR #1725's expanded emoji fonts
