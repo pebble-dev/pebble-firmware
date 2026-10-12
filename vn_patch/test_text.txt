@@ -1,0 +1,40 @@
+== Lowercase: base, huyen, sac, hoi, nga, nang ==
+a à á ả ã ạ
+ă ằ ắ ẳ ẵ ặ
+â ầ ấ ẩ ẫ ậ
+e è é ẻ ẽ ẹ
+ê ề ế ể ễ ệ
+i ì í ỉ ĩ ị
+o ò ó ỏ õ ọ
+ô ồ ố ổ ỗ ộ
+ơ ờ ớ ở ỡ ợ
+u ù ú ủ ũ ụ
+ư ừ ứ ử ữ ự
+y ỳ ý ỷ ỹ ỵ
+== Uppercase ==
+A À Á Ả Ã Ạ
+Ă Ằ Ắ Ẳ Ẵ Ặ
+Â Ầ Ấ Ẩ Ẫ Ậ
+E È É Ẻ Ẽ Ẹ
+Ê Ề Ế Ể Ễ Ệ
+I Ì Í Ỉ Ĩ Ị
+O Ò Ó Ỏ Õ Ọ
+Ô Ồ Ố Ổ Ỗ Ộ
+Ơ Ờ Ớ Ở Ỡ Ợ
+U Ù Ú Ủ Ũ Ụ
+Ư Ừ Ứ Ử Ữ Ự
+Y Ỳ Ý Ỷ Ỹ Ỵ
+== Consonants ==
+ Đ đ
+== Words ==
+Tiếng Việt: Người Hà Nội ăn phở, uống cà phê.
+Đường Trường Sơn, Nguyễn Huệ, Thành phố Hồ Chí Minh
+Chúc mừng năm mới! Cảm ơn bạn rất nhiều.
+Xin lỗi, tôi không hiểu. Bạn khỏe không?
+QUẢNG NGÃI, HUẾ, ĐÀ NẴNG, CẦN THƠ, BẠC LIÊU
+Ừ, được rồi. Ở đây ngược lại nhỉ? Ỡ ỵ Ỵ ỷ Ỷ ỹ Ỹ ỳ Ỳ
+== Emoji (notification / message text) ==
+🐸 🐶 🐱 🐰 🐷 🐔 🐧 🐢 🐍 🐟 🐝
+🍜 🍚 🍔 🍟 🍎 🍓 🎂 🍰 🍦 🍵 ☕
+🛵 🚗 🚌 🚲 🌸 🌹 🌟 🌙 🌈 💯 👀 💤 💡 💰 📱 💥 🏠 🎶
+🙄 🙃 🙇 🙋 🙅 🙆
