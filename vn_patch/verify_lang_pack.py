@@ -43,7 +43,7 @@ def main():
             y, _ = decode_glyph(lookup(new[i], 0x1EF5))
             check(sum(1 for _ in y) > 8, "slot %d: U+1EF5 has a full body" % (i + 1))
             diff = [cp for cp in n.glyphs if n.glyphs[cp] != o.glyphs.get(cp)]
-            check(diff == [0x1EF5], "slot %d: only U+1EF5 differs (%s)" % (i + 1, [hex(c) for c in diff]))
+            check(set(diff) <= {0x1EF5, 0x128}, "slot %d: only U+1EF5 / U+0128 differ (%s)" % (i + 1, [hex(c) for c in diff]))
     for slot in (10, 11):
         n = Pbf(new[slot - 1])
         need = [c for c in VN if ord(c) > 0x2AF]            # the extension is only used above U+02AF

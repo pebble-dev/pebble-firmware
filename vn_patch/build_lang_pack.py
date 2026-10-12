@@ -68,14 +68,20 @@ def main():
             sys.exit("cannot pair pack resource %d with a stock font" % (i + 1))
         base = Pbf(sys_res[cands[0]])
         font = Pbf(res[i])
+        if 0x128 in font.glyphs and font.glyphs[0x128] != base.glyphs[0x128]:
+            font.glyphs[0x128] = base.glyphs[0x128]              # the pack's Ĩ has a clipped tilde; stock is complete
+            fixed_i = True
+        else:
+            fixed_i = False
         font.glyphs[ord("y")] = base.glyphs[ord("y")]            # reference only, removed again below
         fixed = repair_dot_below_y(font)
         del font.glyphs[ord("y")]
-        if fixed:
+        if fixed or fixed_i:
             for j in range(len(res)):                           # the pack repeats some fonts in other slots
                 if res[j] == res[i]:
                     res[j] = font.serialize()
-            print("slot %2d (h%2d): U+1EF5 repaired" % (i + 1, font.max_height))
+            print("slot %2d (h%2d): %s" % (i + 1, font.max_height,
+                  ", ".join(x for x, f in (("U+1EF5 repaired", fixed), ("U+0128 restored from stock", fixed_i)) if f)))
 
     # 2) slots 10/11: 36px extension fonts
     template = Pbf(res[7])                                       # GOTHIC_28_EXTENDED: same flavour

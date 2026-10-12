@@ -20,7 +20,9 @@ FIRMWARE, RESPACK = "tintin_fw.bin", "system_resources.pbpack"
 LANG_BASE = 0x100C                    # language packs: 256-entry table, not the system pack's 512
 # Codepoints that exist in the stock Gothic fonts but are wrong there (e.g. Đ drawn as D + macron)
 # or that the pack redraws to match its stacked marks: take the pack's version.
-PREFER_PACK = {0x110, 0x111, 0x128, 0x129, 0x168, 0x169}
+# Not U+0128 (Ĩ): the pack's capital Ĩ has its tilde clipped to one row in five of the eight sizes,
+# the stock glyph is complete.
+PREFER_PACK = {0x110, 0x111, 0x129, 0x168, 0x169}
 SIZES = (14, 18, 24, 28)
 BANK_SIZE = 0x80000                   # SYSTEM_RESOURCES_BANK_0/1 on snowy, spalding and silk (512 KiB)
 
