@@ -36,11 +36,11 @@ bundles differ only in the firmware image, the fonts are identical.
 Space in the 512 KiB resource bank is the limit, so `build_vn_pbz.py` fits things in priority order
 and keeps `--margin` (default 1 KiB) free: Vietnamese 14-28px (always) > Gothic 36 bold > Gothic 09 >
 Gothic 36 > coffee > extra emoji in the order of `emoji_list.txt`. `dist/*.pbz.json` records what each
-build got.
+build got. The Time / Time Steel bundles were built with `--skip-large 36` to leave room for more emoji.
 
 | Build | Vietnamese sizes | Extra emoji |
 |---|---|---|
-| Time / Time Steel | 09, 14, 18, 24, 28, 36, 36 bold | 7 |
+| Time / Time Steel | 09, 14, 18, 24, 28, 36 bold (36 regular skipped with `--skip-large 36`) | 37 (of 45) |
 | Time Round | 09, 14, 18, 24, 28, 36 bold (36 regular does not fit) | 19 |
 
 The glyphs for 09 / 36 / 36 bold are drawn by `compose_vn.py` from the font's own letters and marks

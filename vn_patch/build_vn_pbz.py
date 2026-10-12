@@ -196,6 +196,8 @@ def main():
                     help="directory with the expanded EMOJI_14/18/24/28.pbf donor fonts")
     ap.add_argument("--margin", type=int, default=1024,
                     help="bytes of the resource bank to leave free when fitting optional glyphs (default 1024)")
+    ap.add_argument("--skip-large", action="append", default=[], choices=["09", "36", "36b"],
+                    help="leave this Gothic font alone to save space (repeatable), e.g. --skip-large 36")
     ap.add_argument("--no-large", action="store_true", help="do not add glyphs to the Gothic 09/36/36 bold fonts")
     ap.add_argument("pbzin"); ap.add_argument("pbzout")
     a = ap.parse_args()
@@ -253,6 +255,10 @@ def main():
     if not a.no_large:
         larges = large_fonts(sys_res)
         for kind in ("36b", "09", "36"):
+            if kind in a.skip_large:
+                info["skipped_large_fonts"].append(kind)
+                print("Gothic %-3s: skipped on request" % kind)
+                continue
             trial = list(sys_res)
             n = apply_large(trial, kind, larges[kind])
             if size_of(trial) <= limit:
