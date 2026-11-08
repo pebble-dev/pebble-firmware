@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: 2026 Geert van Dijk
+# SPDX-License-Identifier: Apache-2.0
+
+from waftools.pebble_test import clar
+
+
+def build(ctx):
+    clar(ctx,
+         sources_ant_glob="src/bluetooth-fw/nimble/pairing_confirm.c",
+         test_sources_ant_glob="test_nimble_pairing.c",
+         override_includes=['nimble_pairing'],
+         add_includes=["src/bluetooth-fw/nimble"])
