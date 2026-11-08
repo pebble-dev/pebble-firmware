@@ -1,3 +1,7 @@
+/* SPDX-FileCopyrightText: 2015 Nathaniel T. Stockham */
+/* SPDX-FileCopyrightText: 2026 Geert van Dijk */
+/* SPDX-License-Identifier: MIT */
+
 /* Project Kraepelin, Main file
 The MIT License (MIT)
 
@@ -842,7 +846,7 @@ static uint32_t prv_compute_signal_energy(int16_t *d, int16_t d_len, uint16_t wa
   // Include the 5th harmonic of the arm
   uint32_t arm_5_energy = 0;
   uint16_t arm_5_hz = prv_max_mag(d, (2 * walk_hz) + arm_hz - 1, (2 * walk_hz) + arm_hz + 1,
-                                  false /*favor_low*/, false /*inc_adjacent*/, &arm_3_energy);
+                                  false /*favor_low*/, false /*inc_adjacent*/, &arm_5_energy);
 
   // Include the 3rd harmonic of the walking frequency
   uint32_t walk_3_energy;
@@ -1015,8 +1019,10 @@ static bool prv_is_stepping(KAlgState *state, uint16_t max_mag_hz, uint16_t scor
   *partial_steps = false;
 
   // -------------------------------------------------------------------
-  // Our min score and vmc thresholds for full stepping epochs and partial epochs
-  const uint16_t k_min_score = 15;
+  // Our min score and vmc thresholds for full stepping epochs and partial epochs.
+  // k_min_score and k_score_low_freq_max were retuned (from 15 and 145) against the step sample
+  // corpus after prv_compute_signal_energy() started counting the 3rd arm-swing harmonic.
+  const uint16_t k_min_score = 17;
   const uint16_t k_min_vmc = 135;
 
   const uint16_t k_partial_min_score = 9;
@@ -1031,7 +1037,7 @@ static bool prv_is_stepping(KAlgState *state, uint16_t max_mag_hz, uint16_t scor
   static const int16_t k_score_high_freq_max = 120;
 
   // Ignore if we have too much low frequency component (probably something like washing up)
-  static const int16_t k_score_low_freq_max = 145;
+  static const int16_t k_score_low_freq_max = 125;
 
   // Ignore if total energy is lower than this
   static const int32_t k_min_total_energy = 1000;
