@@ -1,4 +1,5 @@
 /* SPDX-FileCopyrightText: 2025 Google LLC */
+/* SPDX-FileCopyrightText: 2026 Geert van Dijk */
 /* SPDX-License-Identifier: Apache-2.0 */
 
 #include <stdio.h>
@@ -14,6 +15,7 @@
 #include <system/passert.h>
 #include <util/math.h>
 
+#include "nimble_pairing.h"
 #include "nimble_type_conversions.h"
 
 static const ble_uuid16_t s_device_name_chr_uuid = BLE_UUID16_INIT(0x2A00);
@@ -186,14 +188,12 @@ static void prv_handle_conn_update_req_event(struct ble_gap_event *event) {
 
 static void prv_handle_passkey_event(struct ble_gap_event *event) {
   char passkey_str[7];
-  uint32_t passkey = 0;
   const char *device_name = NULL;
   PairingUserConfirmationCtx *ctx =
       (PairingUserConfirmationCtx *)((uintptr_t)event->passkey.conn_handle);
 
-  if (event->passkey.params.action == BLE_SM_IOACT_NUMCMP) {
-    passkey = event->passkey.params.numcmp;
-  }
+  const uint32_t passkey =
+      nimble_pairing_handle_passkey_action(event->passkey.conn_handle, &event->passkey.params);
 
   if (s_device_name[0] != '\0') {
     device_name = s_device_name;
