@@ -1,0 +1,2907 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pebbleos\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-05 23:16+0000\n"
+"PO-Revision-Date: 2026-06-07 02:13\n"
+"Last-Translator: \n"
+"Language-Team: Turkish\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: pebbleos\n"
+"X-Crowdin-Project-ID: 789734\n"
+"X-Crowdin-Language: tr\n"
+"X-Crowdin-File: /resources/normal/base/lang/tintin.pot\n"
+"X-Crowdin-File-ID: 302\n"
+
+#: ../src/fw/process_management/app_manager.c:481
+#, c-format
+msgid "%.*s is not responding"
+msgstr "%.*s yanıt vermiyor"
+
+#: ../src/fw/process_management/process_manager.c:209
+msgid "This app requires a newer version of the Pebble firmware."
+msgstr "Bu uygulama, Pebble donanım yazılımının daha yeni bir sürümünü gerektiriyor."
+
+#: ../src/fw/popups/alarm_popup.c:47
+#, c-format
+msgid "Snooze for %d minutes"
+msgstr "%d dakika kadar ertele"
+
+#: ../src/fw/popups/alarm_popup.c:64
+msgid "Alarm dismissed"
+msgstr "Alarm kapatıldı"
+
+#: ../src/fw/popups/bluetooth_pairing_ui.c:231
+msgid "Pair?"
+msgstr "Eşleştir?"
+
+#: ../src/fw/popups/crashed_ui.c:93
+#, c-format
+msgid "%s%.*s is not responding.\n\n"
+"Open app?"
+msgstr "%s%.*s yanıt vermiyor.\n\n"
+"Uygulama açılsın mı?"
+
+#: ../src/fw/popups/crashed_ui.c:155
+msgid "A bug report has been captured. Please finish uploading the bug report using the Pebble phone app."
+msgstr "Bir hata raporu kaydedildi. Lütfen, telefonunuzdaki Pebble uygulamasını kullanarak raporu karşıya yüklemeyi sürdürün."
+
+#: ../src/fw/popups/health_tracking_ui.c:89
+msgid "This app requires Pebble Health to work. Enable Health in the Pebble mobile app to continue."
+msgstr "Bu uygulamanın çalışabilmesi için Pebble Sağlık gerekiyor. Sürdürmek için Pebble uygulamasından Sağlık’ı etkinleştirin."
+
+#: ../src/fw/popups/health_tracking_ui.c:99
+msgid "This feature requires Pebble Health to work. Enable Health in the Pebble mobile app to continue."
+msgstr "Bu özelliğin çalışabilmesi için Pebble Sağlık gerekiyor. Sürdürmek için Pebble uygulamasından Sağlık’ı etkinleştirin."
+
+#: ../src/fw/popups/notifications/notification_window.c:685
+msgid "Snoozed"
+msgstr "Ertelendi"
+
+#: ../src/fw/popups/notifications/notification_window.c:719
+msgid "Muted"
+msgstr "Sessize alındı"
+
+#: ../src/fw/popups/notifications/notification_window.c:846
+msgid "Snooze"
+msgstr "Ertele"
+
+#: ../src/fw/popups/notifications/notification_window.c:865
+#, c-format
+msgid "Mute %s"
+msgstr "Sessize al: %s"
+
+#: ../src/fw/popups/notifications/notification_window.c:888
+msgid "Mute Always"
+msgstr "Her zaman sessize al"
+
+#: ../src/fw/popups/notifications/notification_window.c:893
+msgid "Mute Weekends"
+msgstr "Hafta sonu sessize al"
+
+#: ../src/fw/popups/notifications/notification_window.c:898
+msgid "Mute Weekdays"
+msgstr "Hafta içi sessize al"
+
+#: ../src/fw/popups/notifications/notification_window.c:908
+msgid "Dismiss All"
+msgstr "Tümünü kapat"
+
+#: ../src/fw/popups/notifications/notification_window.c:915
+msgid "End Quiet Time"
+msgstr "Sessiz zamanı sonlandır"
+
+#: ../src/fw/popups/notifications/notification_window.c:916
+msgid "Start Quiet Time"
+msgstr "Sessiz zamanı başlat"
+
+#: ../src/fw/popups/phone_ui.c:586
+msgid "Call Accepted"
+msgstr "Çağrı kabul edildi"
+
+#: ../src/fw/popups/phone_ui.c:589
+msgid "Disconnected"
+msgstr "Bağlantı kesildi"
+
+#: ../src/fw/popups/phone_ui.c:593
+msgid "Call Ended"
+msgstr "Çağrı bitti"
+
+#: ../src/fw/popups/phone_ui.c:596
+msgid "Call Declined"
+msgstr "Çağrı reddedildi"
+
+#: ../src/fw/popups/switch_worker_ui.c:97
+#, c-format
+msgid "Run %s instead of %s as the background app?"
+msgstr "Arka plan uygulaması olarak %2$s yerine %1$s çalıştırılsın mı?"
+
+#: ../src/fw/popups/wakeup_ui.c:55
+msgid "While your Pebble was off wakeup events occurred for:\n"
+msgstr "Pebble’ınız kapalıyken şu uyandıran olaylar gerçekleşti:\n"
+
+#: ../src/fw/shell/normal/battery_ui.c:51
+#: ../src/fw/shell/normal/shutdown_charging.c:89
+msgid "Fully Charged"
+msgstr "Şarj dolu"
+
+#: ../src/fw/shell/normal/battery_ui.c:57
+#: ../src/fw/shell/normal/shutdown_charging.c:94
+msgid "Charging"
+msgstr "Şarj oluyor"
+
+#: ../src/fw/shell/normal/battery_ui.c:72
+#, c-format
+msgid "Powered 'til %s"
+msgstr "Şuna kadar şarjlı: %s"
+
+#: ../src/fw/shell/normal/display_calibration_prompt.c:48
+msgid "Your screen may need calibration. Calibrate it now?"
+msgstr "Ekranınızın kalibre edilmesi gerekebilir. Şimde kalibre edilsin mi?"
+
+#: ../src/fw/apps/core_apps/progress_ui_app.c:67
+msgid "Update Complete"
+msgstr "Güncelleme tamamlandı"
+
+#: ../src/fw/apps/core_apps/progress_ui_app.c:67
+msgid "Update Failed"
+msgstr "Güncelleme başarısız"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_detail.c:49
+#, c-format
+msgid "Snooze delay set to %d minutes"
+msgstr "Erteleme %d dakikaya ayarlandı"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_detail.c:178
+msgid "Delete"
+msgstr "Sil"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_detail.c:183
+#: ../src/fw/apps/system_apps/settings/settings_quick_launch_app_menu.c:91
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:182
+msgid "Disable"
+msgstr "Devre dışı bırak"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_detail.c:183
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:184
+msgid "Enable"
+msgstr "Etkinleştir"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_detail.c:188
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:452
+msgid "Change Time"
+msgstr "Zamanı değiştir"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_detail.c:193
+msgid "Change Days"
+msgstr "Günleri değiştir"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_detail.c:199
+msgid "Convert to Basic Alarm"
+msgstr "Basit alarma dönüştür"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_detail.c:200
+msgid "Convert to Smart Alarm"
+msgstr "Akıllı alarma dönüştür"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_detail.c:206
+msgid "Snooze Delay"
+msgstr "Erteleme süresi"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_detail.c:217
+msgid "5 minutes"
+msgstr "5 dakika"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_detail.c:218
+msgid "10 minutes"
+msgstr "10 dakika"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_detail.c:219
+msgid "15 minutes"
+msgstr "15 dakika"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_detail.c:220
+msgid "30 minutes"
+msgstr "30 dakika"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_detail.c:221
+msgid "1 hour"
+msgstr "1 saat"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:303
+msgid "Check something first."
+msgstr "Önce bir şeylere bakın."
+
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:453
+msgid "New Smart Alarm"
+msgstr "Yeni akıllı alarm"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:453
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:548
+msgid "New Alarm"
+msgstr "Yeni alarm"
+
+#. / Displays as "Wake up between" then "8:00 AM - 8:30 AM" below on a separate line
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:455
+msgid "Wake up between"
+msgstr "Şu saatler arasında uyan:"
+
+#. / Displays as "8:00 AM - 8:30 AM" then "Wake up interval" below on a separate line
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:457
+msgid "Wake up interval"
+msgstr "Uyanma aralığı:"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:545
+msgid "Basic Alarm"
+msgstr "Basit alarm"
+
+#: ../src/fw/apps/system_apps/alarms/alarm_editor.c:546
+#: ../src/fw/apps/system_apps/alarms/alarms.c:357
+#: ../src/fw/services/normal/alarms/alarm.c:376
+#: ../src/fw/services/normal/alarms/alarm_pin.c:20
+msgid "Smart Alarm"
+msgstr "Akıllı alarm"
+
+#: ../src/fw/apps/system_apps/alarms/alarms.c:125
+msgid "Alarm Deleted"
+msgstr "Alarm silindi"
+
+#: ../src/fw/apps/system_apps/alarms/alarms.c:237
+msgid "Limit reached."
+msgstr "Sınıra erişildi."
+
+#: ../src/fw/apps/system_apps/alarms/alarms.c:281
+msgid "ON"
+msgstr "AÇIK"
+
+#: ../src/fw/apps/system_apps/alarms/alarms.c:281
+msgid "OFF"
+msgstr "KAPALI"
+
+#: ../src/fw/apps/system_apps/alarms/alarms.c:355
+msgid "Let us wake you in your lightest sleep so you're fully refreshed! Smart Alarm wakes you up to 30min before your alarm."
+msgstr "En hafif uykunda seni uyandıralım; güne dinlenmiş başla. Akıllı alarm, alarm saatinden en fazla 30 dakika önce seni uyandırır."
+
+#: ../src/fw/apps/system_apps/alarms/alarms.c:480
+#: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:71
+#: ../src/fw/services/normal/timeline/timeline.c:956
+msgid "Alarms"
+msgstr "Alarmlar"
+
+#: ../src/fw/apps/system_apps/app_fetch_ui.c:125
+msgid "Not connected"
+msgstr "Bağlı değil"
+
+#: ../src/fw/apps/system_apps/app_fetch_ui.c:137
+msgid "No internet\n"
+"connection"
+msgstr "İnternet bağlantısı yok"
+
+#: ../src/fw/apps/system_apps/app_fetch_ui.c:139
+#: ../src/fw/applib/voice/voice_window.c:261
+msgid "No internet connection"
+msgstr "İnternet bağlantısı yok"
+
+#: ../src/fw/apps/system_apps/app_fetch_ui.c:145
+msgid "Incompatible JS"
+msgstr "Uyumsuz JS"
+
+#: ../src/fw/apps/system_apps/app_fetch_ui.c:154
+#: ../src/fw/services/normal/timeline/timeline_actions.c:267
+msgid "Failed"
+msgstr "Başarısız"
+
+#. / Insights onboarding message
+#: ../src/fw/apps/system_apps/health/health.c:81
+msgid "Psst! Want smart tips about your activity and sleep? You can enable Insights in the mobile app."
+msgstr "Hişşt! Aktiviten ve uykunla ilgili akıllı öneriler ister misin? Mobil uygulamadan İçgörüler’i etkinleştirebilirsin."
+
+#. / Health disabled text
+#: ../src/fw/apps/system_apps/health/health.c:116
+msgid "Track your steps, sleep, and more! Enable Pebble Health in the mobile app."
+msgstr "Adımlarını, uykunu ve daha fazlasını izle. Mobil uygulamadan Pebble Health’i etkinleştir."
+
+#. / Health waiting for time sync
+#: ../src/fw/apps/system_apps/health/health.c:124
+msgid "Health requires the time to be synced. Please connect your phone."
+msgstr "Sağlık verileri için saatin eşzamanlanması gerekiyor. Lütfen telefonunu bağla."
+
+#: ../src/fw/apps/system_apps/health/health.c:190
+#: ../src/fw/services/normal/timeline/timeline.c:961
+msgid "Health"
+msgstr "Sağlık"
+
+#: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:43
+#: ../src/fw/apps/system_apps/workout/workout_active.c:268
+#: ../src/fw/apps/system_apps/workout/workout_active.c:327
+#: ../src/fw/services/normal/activity/activity_insights.c:1605
+msgid "MI"
+msgstr "Mİ"
+
+#: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:43
+#: ../src/fw/apps/system_apps/workout/workout_active.c:268
+#: ../src/fw/apps/system_apps/workout/workout_active.c:328
+#: ../src/fw/services/normal/activity/activity_insights.c:1605
+msgid "KM"
+msgstr "KM"
+
+#: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:56
+#: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:67
+msgid "30 DAY AVG"
+msgstr "30 GÜNLÜK ORT."
+
+#: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:88
+msgid "CALORIES"
+msgstr "KALORİ"
+
+#. / Distance Label
+#: ../src/fw/apps/system_apps/health/health_activity_detail_card.c:90
+#: ../src/fw/apps/system_apps/workout/workout_active.c:161
+msgid "DISTANCE"
+msgstr "UZAKLIK"
+
+#: ../src/fw/apps/system_apps/health/health_detail_card.c:510
+#: ../src/fw/services/common/clock.c:493 ../src/fw/services/common/clock.c:665
+msgid "Today"
+msgstr "Bugün"
+
+#: ../src/fw/apps/system_apps/health/health_graph_card.c:301
+msgid ": "
+msgstr ": "
+
+#: ../src/fw/apps/system_apps/health/health_graph_card.c:307
+#, c-format
+msgid "%a: "
+msgstr "%a: "
+
+#: ../src/fw/apps/system_apps/health/health_graph_card.c:390
+msgid "SMTWTFS"
+msgstr "PPSÇPCC"
+
+#: ../src/fw/apps/system_apps/health/health_hr_detail_card.c:67
+#: ../src/fw/services/normal/activity/activity_insights.c:1711
+msgid "Fat Burn"
+msgstr "Yağ yakımı"
+
+#: ../src/fw/apps/system_apps/health/health_hr_detail_card.c:70
+#: ../src/fw/services/normal/activity/activity_insights.c:1718
+msgid "Endurance"
+msgstr "Dayanıklılık"
+
+#: ../src/fw/apps/system_apps/health/health_hr_detail_card.c:73
+#: ../src/fw/services/normal/activity/activity_insights.c:1725
+msgid "Performance"
+msgstr "Performans"
+
+#. / Resting HR
+#: ../src/fw/apps/system_apps/health/health_hr_detail_card.c:79
+msgid "TIME IN ZONES"
+msgstr "BÖLGELERDEKİ ZAMAN"
+
+#: ../src/fw/apps/system_apps/health/health_hr_summary_card.c:116
+msgid "BPM"
+msgstr "VU/DK"
+
+#. / HRM disabled
+#: ../src/fw/apps/system_apps/health/health_hr_summary_card.c:160
+msgid "Enable heart rate monitoring in the mobile app"
+msgstr "Uygulamadan kalp atışı izlemesini etkinleştirin"
+
+#: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:69
+msgid "30 DAY"
+msgstr "30 GÜN"
+
+#: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:103
+msgid "SLEEP SESSION"
+msgstr "UYKU SEANSI"
+
+#: ../src/fw/apps/system_apps/health/health_sleep_detail_card.c:116
+msgid "DEEP SLEEP"
+msgstr "DERİN UYKU"
+
+#: ../src/fw/apps/system_apps/health/health_sleep_summary_card.c:213
+msgid "No sleep data,\n"
+"wear your watch\n"
+"to sleep"
+msgstr "Uyku verisi yok,\n"
+"Uyurken saatinizi\n"
+"takın"
+
+#: ../src/fw/apps/system_apps/health/health_ui.c:59
+#, c-format
+msgid "TYPICAL %s"
+msgstr "TİPİK %s"
+
+#. / Shown when the current temperature is unknown
+#. / Shown when today's current temperature is unknown
+#: ../src/fw/apps/system_apps/launcher/default/launcher_app_glance_weather.c:119
+#: ../src/fw/apps/system_apps/weather/weather_app_layout.c:189
+msgid "--°"
+msgstr "‒°"
+
+#. / Shown when today's temperature and conditions phrase is known (e.g. "52° - Fair")
+#: ../src/fw/apps/system_apps/launcher/default/launcher_app_glance_weather.c:125
+#, c-format
+msgid "%i° - %s"
+msgstr "%i° — %s"
+
+#. / Today's current temperature (e.g. "68°")
+#: ../src/fw/apps/system_apps/launcher/default/launcher_app_glance_weather.c:127
+#: ../src/fw/apps/system_apps/weather/weather_app_layout.c:194
+#, c-format
+msgid "%i°"
+msgstr "%i°"
+
+#: ../src/fw/apps/system_apps/music_app.c:697
+msgid "START PLAYBACK\n"
+"ON YOUR PHONE"
+msgstr "TELEFONUNUZDA\n"
+"ÇALMAYI BAŞLATIN"
+
+#: ../src/fw/apps/system_apps/music_app.c:1009
+msgid "Music"
+msgstr "Müzik"
+
+#: ../src/fw/apps/system_apps/notifications_app.c:255
+msgid "Done"
+msgstr "Bitti"
+
+#: ../src/fw/apps/system_apps/notifications_app.c:282
+msgid "Clear history?"
+msgstr "Geçmiş temizlensin mi?"
+
+#: ../src/fw/apps/system_apps/notifications_app.c:545
+#: ../src/fw/apps/system_apps/notifications_app.c:551
+msgid "Clear All"
+msgstr "Tümünü temizle"
+
+#: ../src/fw/apps/system_apps/notifications_app.c:714
+msgid "No notifications"
+msgstr "Bildirim yok"
+
+#: ../src/fw/apps/system_apps/notifications_app.c:800
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:416
+#: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:61
+#: ../src/fw/services/normal/timeline/timeline.c:940
+msgid "Notifications"
+msgstr "Bildirimler"
+
+#: ../src/fw/apps/system_apps/reminders/reminder_app.c:53
+msgid "Completed"
+msgstr "Tamamlandı"
+
+#: ../src/fw/apps/system_apps/reminders/reminder_app.c:57
+msgid "Postpone"
+msgstr "Ertele"
+
+#: ../src/fw/apps/system_apps/reminders/reminder_app.c:61
+#: ../src/fw/services/normal/activity/activity_insights.c:437
+#: ../src/fw/services/normal/timeline/timeline.c:656
+msgid "Remove"
+msgstr "Kaldır"
+
+#: ../src/fw/apps/system_apps/reminders/reminder_app.c:113
+msgid "Added"
+msgstr "Eklendi"
+
+#: ../src/fw/apps/system_apps/reminders/reminder_app.c:296
+msgid "Reminder"
+msgstr "Anımsatıcı"
+
+#: ../src/fw/apps/system_apps/send_text/send_text.c:202
+#: ../src/fw/services/normal/phone_call_util.c:18
+msgid "Unknown"
+msgstr "Bilinmiyor"
+
+#: ../src/fw/apps/system_apps/send_text/send_text.c:260
+#: ../src/fw/apps/system_apps/send_text/send_text.c:336
+msgid "Select Contact"
+msgstr "Kişi seç"
+
+#: ../src/fw/apps/system_apps/send_text/send_text.c:350
+msgid "Add contacts in\n"
+"mobile app"
+msgstr "Uygulamadan kişiler ekleyin"
+
+#: ../src/fw/apps/system_apps/send_text/send_text.c:383
+msgid "Send Text"
+msgstr "Mesaj gönder"
+
+#: ../src/fw/apps/system_apps/settings/settings.c:137
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:162
+msgid "No background apps"
+msgstr "Arka plan uygulaması yok"
+
+#. / No Notification Window Timeout
+#: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:171
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:200
+msgid "None"
+msgstr "Yok"
+
+#: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:243
+#: ../src/fw/apps/system_apps/settings/settings_activity_tracker.c:260
+msgid "Background App"
+msgstr "Arka plan uygulaması"
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:147
+msgid "<Untitled>"
+msgstr "<Başlıksız>"
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:273
+msgid "Pairing Instructions"
+msgstr "Eşleştirme yönergeleri"
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:277
+#, c-format
+msgid "%u Paired Phones"
+msgstr "%u eşleştirilmiş telefon"
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:278
+#, c-format
+msgid "%u Paired Phone"
+msgstr "%u eşleştirilmiş telefon"
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:433
+msgid "No LE"
+msgstr "LE yok"
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:433
+msgid "LE Only"
+msgstr "Yalnızca LE"
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:436
+msgid "Connected"
+msgstr "Bağlı"
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:452
+msgid "Sharing Heart Rate ❤"
+msgstr "❤ Kalp atışı paylaşılıyor"
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:497
+msgid "Connection"
+msgstr "Bağlantı"
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:501
+#: ../src/fw/apps/system_apps/toggle/airplane_mode.c:51
+msgid "Airplane Mode"
+msgstr "Uçak modu"
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:511
+msgid "Disabling..."
+msgstr "Devre dışı bırakılıyor…"
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:511
+msgid "Enabling..."
+msgstr "Etkinleştiriliyor…"
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:534
+msgid "Disable Airplane Mode to connect."
+msgstr "Bağlanmak için Uçak Modu’nu devre dışı bırakın."
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:537
+msgid "Open the Pebble app on your phone to connect."
+msgstr "Bağlanmak için telefonunuzdan Pebble uygulamasını açın."
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:546
+msgid "Forget this device to pair a new device."
+msgstr "Yeni bir aygıt eşleştirmek için bu aygıtı unutun."
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.c:695
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:44
+#: ../src/fw/apps/system_apps/settings/settings_system.c:544
+msgid "Low"
+msgstr "Düşük"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:45
+#: ../src/fw/apps/system_apps/settings/settings_system.c:546
+msgid "Medium"
+msgstr "Orta"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:46
+#: ../src/fw/apps/system_apps/settings/settings_system.c:548
+msgid "High"
+msgstr "Yüksek"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:47
+msgid "Blinding"
+msgstr "Körleştiren"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:82
+msgid "INTENSITY"
+msgstr "YOĞUNLUK"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:82
+#: ../src/fw/apps/system_apps/settings/settings_display.c:349
+#: ../src/fw/apps/system_apps/settings/settings_display.c:352
+msgid "Intensity"
+msgstr "Yoğunluk"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:92
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:156
+msgid "Default"
+msgstr "Saptanmış"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:93
+msgid "Left-Handed"
+msgstr "Solak"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:118
+#: ../src/fw/apps/system_apps/settings/settings_display.c:290
+msgid "Orientation"
+msgstr "Yönelim"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:131
+msgid "3 Seconds"
+msgstr "3 saniye"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:132
+msgid "5 Seconds"
+msgstr "5 saniye"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:133
+msgid "8 Seconds"
+msgstr "8 saniye"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:156
+msgid "TIMEOUT"
+msgstr "ZAMAN AŞIMI"
+
+#. / Status bar title for the Notification Window Timeout settings screen
+#. / String within Settings->Notifications that describes the window timeout setting
+#: ../src/fw/apps/system_apps/settings/settings_display.c:156
+#: ../src/fw/apps/system_apps/settings/settings_display.c:357
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:232
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:313
+msgid "Timeout"
+msgstr "Zaman aşımı"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:166
+msgid "Bezel"
+msgstr "Çerçeve"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:167
+#: ../src/fw/apps/system_apps/settings/settings_display.c:369
+msgid "Scaled"
+msgstr "Ölçekli"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:180
+msgid "Legacy App Display"
+msgstr "Eski uygulama görüntüleme"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:285
+#: ../src/fw/apps/system_apps/settings/settings_system.c:214
+msgid "Language"
+msgstr "Dil"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:295
+#: ../src/fw/apps/system_apps/toggle/backlight_state.c:55
+msgid "Backlight"
+msgstr "Ekran ışığı"
+
+#. / Shows up in the Timeline settings as the status under the "Quick View" toggle.
+#: ../src/fw/apps/system_apps/settings/settings_display.c:305
+#: ../src/fw/apps/system_apps/settings/settings_display.c:308
+#: ../src/fw/apps/system_apps/settings/settings_display.c:317
+#: ../src/fw/apps/system_apps/settings/settings_display.c:338
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:236
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1326
+#: ../src/fw/apps/system_apps/settings/settings_timeline.c:126
+msgid "On"
+msgstr "Açık"
+
+#. / Shows up in the Timeline settings as the status under the "Quick View" toggle.
+#: ../src/fw/apps/system_apps/settings/settings_display.c:311
+#: ../src/fw/apps/system_apps/settings/settings_display.c:319
+#: ../src/fw/apps/system_apps/settings/settings_display.c:331
+#: ../src/fw/apps/system_apps/settings/settings_display.c:340
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:236
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1326
+#: ../src/fw/apps/system_apps/settings/settings_timeline.c:128
+msgid "Off"
+msgstr "Kapalı"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:315
+msgid "Motion Enabled"
+msgstr "Hareket etkin"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:323
+msgid "Ambient Sensor"
+msgstr "Ortam sensörü"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:336
+msgid "Dynamic Backlight"
+msgstr "Dinamik ekran ışığı"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:347
+msgid "Max Intensity"
+msgstr "Maksimum yoğunluk"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:362
+msgid "Screen Alignment"
+msgstr "Ekran hizalaması"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:367
+msgid "Legacy Apps"
+msgstr "Eski uygulamalar"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:369
+msgid "Centered"
+msgstr "Ortalanmış"
+
+#: ../src/fw/apps/system_apps/settings/settings_display.c:443
+msgid "Display"
+msgstr "Görüntü"
+
+#: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:51
+msgid "Horizontal Alignment"
+msgstr "Yatay hizala"
+
+#: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:52
+msgid "Vertical Alignment"
+msgstr "Dikey hizala"
+
+#: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:53
+msgid "Confirm Alignment"
+msgstr "Hizalamayı onayla"
+
+#: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:56
+#: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:57
+msgid "Up/Down to adjust\n"
+"Select to proceed"
+msgstr "Ayarlamak için yukarı/aşağı\n"
+"İlerlemek için seç"
+
+#: ../src/fw/apps/system_apps/settings/settings_display_calibration.c:58
+msgid "Select to confirm alignment changes"
+msgstr "Hizalama değişikliklerini onaylamak için seçin"
+
+#: ../src/fw/apps/system_apps/settings/settings_factory_reset.c:59
+msgid "Resetting..."
+msgstr "Yeniden ayarlanıyor…"
+
+#: ../src/fw/apps/system_apps/settings/settings_factory_reset.c:111
+msgid "Perform factory reset?"
+msgstr "Fabrika ayarlarına sıfırlansın mı?"
+
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:68
+msgid "Allow All Notifications"
+msgstr "Tüm bildirimlere izin ver"
+
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:69
+msgid "Allow Phone Calls Only"
+msgstr "Yalnızca telefon çağrılarına izin ver"
+
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:70
+msgid "Mute All Notifications"
+msgstr "Tüm bildirimleri sessize al"
+
+#. / The option in the Settings app for filtering notifications by type.
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:102
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:288
+msgid "Filter"
+msgstr "Filtre"
+
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:112
+#: ../src/fw/services/normal/vibes/vibes.def:4
+msgctxt "NotifVibe"
+msgid "Disabled"
+msgstr "Devre dışı"
+
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:113
+msgctxt "NotifVibe"
+msgid "Low"
+msgstr "Düşük"
+
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:114
+msgctxt "NotifVibe"
+msgid "Medium"
+msgstr "Orta"
+
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:115
+msgctxt "NotifVibe"
+msgid "High"
+msgstr "Yüksek"
+
+#. / The option in the Settings app for choosing a vibration intensity for notifications.
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:139
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:293
+msgid "Vibration"
+msgstr "Titreşim"
+
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:155
+msgid "Smaller"
+msgstr "Daha küçük"
+
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:157
+msgid "Larger"
+msgstr "Daha büyük"
+
+#. / The option in the Settings app for choosing the text size of notifications.
+#. / String within Settings->Notifications that describes the text font size
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:170
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:305
+msgid "Text Size"
+msgstr "Metin boyutu"
+
+#. / 15 Second Notification Window Timeout
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:192
+msgid "15 Seconds"
+msgstr "15 saniye"
+
+#. / 1 Minute Notification Window Timeout
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:194
+msgid "1 Minute"
+msgstr "1 dakika"
+
+#. / 3 Minute Notification Window Timeout
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:196
+msgid "3 Minutes"
+msgstr "3 dakika"
+
+#. / 10 Minute Notification Window Timeout
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:198
+msgid "10 Minutes"
+msgstr "10 dakika"
+
+#. / Standard notification design option (default)
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:245
+msgid "Classic"
+msgstr "Klasik"
+
+#. / Alternative notification design option
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:247
+msgid "Flat Black"
+msgstr "Düz siyah"
+
+#. / Status bar title for the Notification Design Style settings screen
+#. / String within Settings->Notifications that describes the notification design style
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:265
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:320
+msgid "Banner Style"
+msgstr "Afiş tarzı"
+
+#: ../src/fw/apps/system_apps/settings/settings_notifications.c:295
+msgid "Disabled (Plugged In)"
+msgstr "Devre dışı (takılı)"
+
+#. / Shown in Quick Launch Settings as the title of the tap up button option.
+#: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:46
+msgid "Tap Up"
+msgstr "Yukarı’ya bas"
+
+#. / Shown in Quick Launch Settings as the title of the tap down button option.
+#: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:48
+msgid "Tap Down"
+msgstr "Aşağı’ya bas"
+
+#. / Shown in Quick Launch Settings as the title of the hold up button quick launch option.
+#: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:50
+msgid "Hold Up"
+msgstr "Yukarı’yı basılı tut"
+
+#. / Shown in Quick Launch Settings as the title of the hold center button quick launch option.
+#: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:52
+msgid "Hold Center"
+msgstr "Orta’yı basılı tut"
+
+#. / Shown in Quick Launch Settings as the title of the hold down button quick launch option.
+#: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:54
+msgid "Hold Down"
+msgstr "Aşağı’yı basılı tut"
+
+#. / Shown in Quick Launch Settings as the title of the hold back button quick launch option.
+#: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:56
+msgid "Hold Back"
+msgstr "Geri’yi basılı tut"
+
+#. / Shown in Quick Launch Settings when the button is disabled.
+#: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:63
+#: ../src/fw/apps/system_apps/settings/settings_system.c:617
+#: ../src/fw/apps/system_apps/settings/settings_system.c:632
+msgid "Disabled"
+msgstr "Devre dışı"
+
+#. / Title of the Quick Launch Settings submenu in Settings
+#. / Title for the Quick Launch first use dialog.
+#: ../src/fw/apps/system_apps/settings/settings_quick_launch.c:194
+#: ../src/fw/apps/system_apps/settings/settings_quick_launch_app_menu.c:158
+#: ../src/fw/apps/system_apps/settings/settings_quick_launch_setup_menu.c:54
+msgid "Quick Launch"
+msgstr "Hemen başlat"
+
+#. / Help text for the Quick Launch first use dialog.
+#: ../src/fw/apps/system_apps/settings/settings_quick_launch_setup_menu.c:56
+msgid "Open favorite apps quickly with a long button press from your watchface."
+msgstr "Saat kadranındayken bir düğmeye uzunca basarak favori uygulamalarınızı hemen açın."
+
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:70
+msgid "Quiet All Notifications"
+msgstr "Bildirimleri sessizleştir"
+
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:73
+msgid "Allow Phone Calls"
+msgstr "Telefon çağrılarına izin ver"
+
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:198
+msgid "Change Schedule"
+msgstr "Programı değiştir"
+
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:234
+#: ../src/fw/apps/system_apps/settings/settings_time.c:227
+msgid "Manual"
+msgstr "Elle"
+
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:239
+msgid "Calendar Aware"
+msgstr "Takvime duyarlı"
+
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:241
+msgctxt "QuietTime"
+msgid "Enabled"
+msgstr "Etkin"
+
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:242
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:249
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:257
+msgctxt "QuietTime"
+msgid "Disabled"
+msgstr "Devre dışı"
+
+#. #-#-#-#-#  services.pot (PACKAGE VERSION)  #-#-#-#-#
+#. / A frequency option for alarms, i.e. the alarm would only go off every weekday. Respect
+#. / capitalization!
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:245
+#: ../src/fw/services/normal/alarms/alarm.c:1137
+msgid "Weekdays"
+msgstr "Hafta içi"
+
+#. #-#-#-#-#  services.pot (PACKAGE VERSION)  #-#-#-#-#
+#. / A frequency option for alarms, i.e. the alarm would only go off each day on the weekend.
+#. / Respect capitalization!
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:253
+#: ../src/fw/services/normal/alarms/alarm.c:1146
+msgid "Weekends"
+msgstr "Hafta soru"
+
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:261
+msgid "Interruptions"
+msgstr "Kesintiler"
+
+#: ../src/fw/apps/system_apps/settings/settings_quiet_time.c:315
+#: ../src/fw/apps/system_apps/toggle/quiet_time.c:24
+msgid "Quiet Time"
+msgstr "Sessiz zaman"
+
+#: ../src/fw/apps/system_apps/settings/settings_remote.c:62
+msgid "You're all set"
+msgstr "Her şeyiniz tamam"
+
+#: ../src/fw/apps/system_apps/settings/settings_remote.c:166
+msgid "Forget"
+msgstr "Unut"
+
+#: ../src/fw/apps/system_apps/settings/settings_remote.c:174
+msgid "Stop Sharing Heart Rate"
+msgstr "Kalp atışını paylaşmayı durdur"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:166
+#: ../src/fw/apps/system_apps/settings/settings_system.c:289
+msgid "Information"
+msgstr "Bilgi"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:167
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1068
+msgid "Certification"
+msgstr "Sertifikasyon"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:168
+msgid "Stand-By Mode"
+msgstr "Bekleme modu"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:169
+#: ../src/fw/apps/system_apps/settings/settings_system.c:707
+msgid "Debugging"
+msgstr "Hata ayıklama"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:170
+msgid "Shut Down"
+msgstr "Kapat"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:171
+msgid "Factory Reset"
+msgstr "Fabrika ayarlarına sıfırla"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:212
+msgid "BT Address"
+msgstr "BT adresi"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:213
+msgid "Firmware"
+msgstr "Donanım yazılımı"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:215
+msgid "Recovery"
+msgstr "Kurtarma"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:216
+msgid "Bootloader"
+msgstr "Önyükleyici"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:217
+msgid "Hardware"
+msgstr "Donanım"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:218
+msgid "Serial"
+msgstr "Seri №"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:219
+msgid "Uptime"
+msgstr "Açık kalma süresi"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:220
+msgid "Legal"
+msgstr "Yasal"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:385
+msgid "Core dump and reboot?"
+msgstr "Çekirdeği dök ve yeniden başlat?"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:543
+msgid "Very Low"
+msgstr "Çok düşük"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:545
+msgid "Medium-Low"
+msgstr "Orta–düşük"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:547
+msgid "Medium-High"
+msgstr "Orta–yüksek"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:549
+msgid "Very High"
+msgstr "Çok yüksek"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:574
+#: ../src/fw/apps/system_apps/settings/settings_system.c:590
+msgid "Motion Sensitivity"
+msgstr "Hareket duyarlılığı"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:586
+msgid "CoreDump now"
+msgstr "Çekirdeği şimdi dök"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:587
+msgid "CoreDump shortcut"
+msgstr "Çekirdek dökme kestirmesi"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:588
+msgid "ALS Threshold"
+msgstr "ALS eşiği"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:593
+msgid "BLE compat mode"
+msgstr "BLE uyumluluk modu"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:596
+msgid "Dyn BL Min Threshold"
+msgstr "Din. BL min. eşiği"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:597
+msgid "Dyn BL Max Threshold"
+msgstr "Din. BL maks. eşiği"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:617
+msgid "10 back-button presses"
+msgstr "10 geri düğmesi basımı"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:632
+msgid "Emulate silk"
+msgstr "Silk’e öykün"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:776
+msgid "PebbleOS developers only!"
+msgstr "Yalnızca PebbleOS geliştiricileri içindir!"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1029
+msgid "See details..."
+msgstr "Ayrıntıları gör…"
+
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1306
+msgid "Do you want to shut down?"
+msgstr "Kapatmak istiyor musunuz?"
+
+#. / Refers to the class of all non-score vibes, e.g. 3rd party app vibes
+#: ../src/fw/apps/system_apps/settings/settings_system.c:1400
+#: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:77
+msgid "System"
+msgstr "Sistem"
+
+#: ../src/fw/apps/system_apps/settings/settings_themes.c:53
+msgid "Apps Accent"
+msgstr "Uygulama vurgusu"
+
+#: ../src/fw/apps/system_apps/settings/settings_themes.c:57
+msgid "Settings Accent"
+msgstr "Ayarlar vurgusu"
+
+#: ../src/fw/apps/system_apps/settings/settings_themes.c:129
+msgid "Apps Menu Accent"
+msgstr "Uygulamalar menüsü vurgusu"
+
+#: ../src/fw/apps/system_apps/settings/settings_themes.c:188
+msgid "Settings Menu Accent"
+msgstr "Ayarlar menüsü vurgusu"
+
+#. / Title of the Themes Settings submenu in Settings
+#: ../src/fw/apps/system_apps/settings/settings_themes.c:266
+msgid "Themes"
+msgstr "Temalar"
+
+#. / Title of the menu for changing the watch's timezone.
+#: ../src/fw/apps/system_apps/settings/settings_time.c:125
+#: ../src/fw/apps/system_apps/settings/settings_time.c:232
+msgid "Timezone"
+msgstr "Zaman dilimi"
+
+#: ../src/fw/apps/system_apps/settings/settings_time.c:221
+msgid "Time Format"
+msgstr "Zaman biçimi"
+
+#: ../src/fw/apps/system_apps/settings/settings_time.c:222
+msgid "24h"
+msgstr "24 sa"
+
+#: ../src/fw/apps/system_apps/settings/settings_time.c:222
+msgid "12h"
+msgstr "12 sa"
+
+#: ../src/fw/apps/system_apps/settings/settings_time.c:226
+msgid "Timezone Source"
+msgstr "Zaman dilimi kaynağı"
+
+#: ../src/fw/apps/system_apps/settings/settings_time.c:228
+msgid "Automatic"
+msgstr "Otomatik"
+
+#: ../src/fw/apps/system_apps/settings/settings_time.c:281
+msgid "Date & Time"
+msgstr "Tarih ve zaman"
+
+#. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
+#: ../src/fw/apps/system_apps/settings/settings_timeline.c:58
+msgid "Start Time"
+msgstr "Başlangıç zamanı"
+
+#. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
+#: ../src/fw/apps/system_apps/settings/settings_timeline.c:60
+msgid "5 Min Before"
+msgstr "5 dak. önce"
+
+#. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
+#: ../src/fw/apps/system_apps/settings/settings_timeline.c:62
+msgid "10 Min Before"
+msgstr "10 dak. önce"
+
+#. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
+#: ../src/fw/apps/system_apps/settings/settings_timeline.c:64
+msgid "15 Min Before"
+msgstr "15 dak. önce"
+
+#. / Shows up in the Timeline settings as a "Timing" subtitle and submenu option.
+#: ../src/fw/apps/system_apps/settings/settings_timeline.c:66
+msgid "30 Min Before"
+msgstr "30 dak. önce"
+
+#. / Shows up in the Timeline settings as the title for the "Timing" submenu window.
+#. / Shows up in the Timeline settings as the title for the menu item that controls the
+#. / timing for when to begin showing the peek for an event.
+#: ../src/fw/apps/system_apps/settings/settings_timeline.c:95
+#: ../src/fw/apps/system_apps/settings/settings_timeline.c:133
+msgid "Timing"
+msgstr "Zamanlama"
+
+#. / Shows up in the Timeline settings as a toggle-able "Quick View" item.
+#. / Title for the Timeline Quick View first use dialog.
+#: ../src/fw/apps/system_apps/settings/settings_timeline.c:124
+#: ../src/fw/apps/system_apps/settings/settings_timeline.c:188
+msgid "Quick View"
+msgstr "Hemen görüntüle"
+
+#. / Help text for the Timeline Quick View first use dialog.
+#: ../src/fw/apps/system_apps/settings/settings_timeline.c:190
+msgid "Appears on your watchface when an event is about to start."
+msgstr "Etkinlikler başlamak üzereyken saat kadranında görünür."
+
+#: ../src/fw/apps/system_apps/settings/settings_timeline.c:217
+msgid "Timeline"
+msgstr "Zaman akışı"
+
+#: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:66
+msgid "Incoming Calls"
+msgstr "Gelen çağrılar"
+
+#: ../src/fw/apps/system_apps/settings/settings_vibe_patterns.c:220
+msgid "Vibrations"
+msgstr "Titreşimler"
+
+#: ../src/fw/apps/system_apps/timeline/timeline.c:878
+msgid "No events"
+msgstr "Etkinlik yok"
+
+#: ../src/fw/apps/system_apps/timeline/timeline.c:1252
+msgid "Timeline Future"
+msgstr "Gelecek zaman akışı"
+
+#. / The title of Timeline Past in Quick Launch. If the translation is too long, cut out
+#. / Timeline and only translate "Past".
+#: ../src/fw/apps/system_apps/timeline/timeline.c:1266
+msgid "Timeline Past"
+msgstr "Geçmiş zaman akışı"
+
+#: ../src/fw/apps/system_apps/toggle/airplane_mode.c:26
+msgid "Turn On Airplane Mode?"
+msgstr "Uçak modu açılsın mı?"
+
+#: ../src/fw/apps/system_apps/toggle/airplane_mode.c:27
+msgid "Turn Off Airplane Mode?"
+msgstr "Uçak modu kapatılsın mı?"
+
+#: ../src/fw/apps/system_apps/toggle/airplane_mode.c:28
+msgid "Airplane\n"
+"Mode On"
+msgstr "Uçak modu\n"
+"açık"
+
+#: ../src/fw/apps/system_apps/toggle/airplane_mode.c:29
+msgid "Airplane\n"
+"Mode Off"
+msgstr "Uçak modu\n"
+"kapalı"
+
+#: ../src/fw/apps/system_apps/toggle/backlight_state.c:30
+msgid "Turn On Backlight?"
+msgstr "Ekran ışığı açılsın mı?"
+
+#: ../src/fw/apps/system_apps/toggle/backlight_state.c:31
+msgid "Turn Off Backlight?"
+msgstr "Ekran ışığı kapatılsın mı?"
+
+#: ../src/fw/apps/system_apps/toggle/backlight_state.c:32
+msgid "Backlight On"
+msgstr "Ekran ışığı açık"
+
+#: ../src/fw/apps/system_apps/toggle/backlight_state.c:33
+msgid "Backlight Off"
+msgstr "Ekran ışığı kapalı"
+
+#: ../src/fw/apps/system_apps/toggle/motion_backlight.c:24
+msgid "Turn On Motion Backlight?"
+msgstr "Ekran ışığı hareketi açılsın mı?"
+
+#: ../src/fw/apps/system_apps/toggle/motion_backlight.c:25
+msgid "Turn Off Motion Backlight?"
+msgstr "Ekran ışığı hareketi kapatılsın mı?"
+
+#: ../src/fw/apps/system_apps/toggle/motion_backlight.c:26
+msgid "Motion\n"
+"Backlight On"
+msgstr "Ekran ışığı\n"
+"hareketi açık"
+
+#: ../src/fw/apps/system_apps/toggle/motion_backlight.c:27
+msgid "Motion\n"
+"Backlight Off"
+msgstr "Ekran ışığı\n"
+"hareketi kapalı"
+
+#: ../src/fw/apps/system_apps/toggle/motion_backlight.c:49
+msgid "Motion Backlight"
+msgstr "Ekran ışığı hareketi"
+
+#: ../src/fw/apps/system_apps/watchfaces.c:92
+msgid "Active"
+msgstr "Etkin"
+
+#: ../src/fw/apps/system_apps/watchfaces.c:206
+msgid "Watchfaces"
+msgstr "Saat kadranları"
+
+#. / Shown when there are no forecasts available to show the user
+#: ../src/fw/apps/system_apps/weather/weather_app.c:92
+msgid "No location information available. To see weather, add locations in your Pebble mobile app."
+msgstr "Konum bilgisi yok. Hava durumunu görmek için Pebble mobil uygulamasından konum ekle."
+
+#. / Shown when there is no connection to the phone and the data that we have is not recent
+#: ../src/fw/apps/system_apps/weather/weather_app.c:192
+msgid "Unable to connect. Your weather data may be out of date; try checking the connection on your phone."
+msgstr "Bağlanılamıyor. Hava durumu veriniz güncel olmayabilir; telefonunuzda bağlantı olup olmadığına bakın."
+
+#: ../src/fw/apps/system_apps/weather/weather_app.c:218
+#: ../src/fw/services/normal/timeline/timeline.c:948
+msgid "Weather"
+msgstr "Hava durumu"
+
+#. / Shown when neither high nor low temperature is known
+#: ../src/fw/apps/system_apps/weather/weather_app_layout.c:67
+msgid "--° / --°"
+msgstr "‒° / ‒°"
+
+#. / Shown when only the day's high temperature is known, (e.g. "68° / --°")
+#: ../src/fw/apps/system_apps/weather/weather_app_layout.c:72
+#, c-format
+msgid "%i° / --°"
+msgstr "%i° / ‒°"
+
+#. / Shown when only the day's low temperature is known (e.g. "--° / 52°")
+#: ../src/fw/apps/system_apps/weather/weather_app_layout.c:75
+#, c-format
+msgid "--° / %i°"
+msgstr "‒° / %i°"
+
+#. / A day's high and low temperature, separated by a foward slash (e.g. "68° / 52°")
+#: ../src/fw/apps/system_apps/weather/weather_app_layout.c:78
+#, c-format
+msgid "%i° / %i°"
+msgstr "%i° / %i°"
+
+#. / Refers to the weather conditions for tomorrow
+#: ../src/fw/apps/system_apps/weather/weather_app_layout.c:221
+msgid "TOMORROW"
+msgstr "YARIN"
+
+#: ../src/fw/apps/system_apps/workout/sports.c:368
+msgid "Sports"
+msgstr "Spor"
+
+#: ../src/fw/apps/system_apps/workout/workout.c:164
+msgid "Workout\n"
+"Ended"
+msgstr "Antrenman bitti"
+
+#. / Workouts waiting for time sync
+#: ../src/fw/apps/system_apps/workout/workout.c:190
+msgid "Workout requires the time to be synced. Please connect your phone."
+msgstr "Antrenman için saatin eşzamanlanması gerekiyor. Lütfen telefonunu bağla."
+
+#. / Health disabled text
+#: ../src/fw/apps/system_apps/workout/workout.c:198
+msgid "Enable Pebble Health in the mobile app to track workouts"
+msgstr "Antrenmanları izlemek için mobil uygulamadan Pebble Health’i etkinleştirin"
+
+#. / Workout app first use text
+#: ../src/fw/apps/system_apps/workout/workout.c:205
+msgid "Wear your watch snug and 2 fingers' width above your wrist bone for best results."
+msgstr "En iyi sonuç için saati bilek kemiğinin yaklaşık iki parmak üstüne, bileğini sıkıca ama rahat tutacak şekilde tak."
+
+#. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
+#. / Workout Label
+#: ../src/fw/apps/system_apps/workout/workout.c:261
+#: ../src/fw/apps/system_apps/workout/workout_utils.c:92
+#: ../src/fw/services/normal/activity/activity_insights.c:1629
+msgid "Workout"
+msgstr "Antrenman"
+
+#. / Zone 1 HR Label
+#: ../src/fw/apps/system_apps/workout/workout_active.c:103
+msgid "FAT BURN"
+msgstr "YAĞ YAKIMI"
+
+#. / Zone 2 HR Label
+#: ../src/fw/apps/system_apps/workout/workout_active.c:106
+msgid "ENDURANCE"
+msgstr "DAYANIKLILIK"
+
+#. / Zone 3 HR Label
+#: ../src/fw/apps/system_apps/workout/workout_active.c:109
+msgid "PERFORMANCE"
+msgstr "PERFORMANS"
+
+#. / Default/Zone 0 HR Label
+#: ../src/fw/apps/system_apps/workout/workout_active.c:112
+msgid "HEART RATE"
+msgstr "KALP ATIŞI"
+
+#. / Duration Label
+#: ../src/fw/apps/system_apps/workout/workout_active.c:130
+msgid "DURATION"
+msgstr "UZAKLIK"
+
+#. / Average Pace Label
+#: ../src/fw/apps/system_apps/workout/workout_active.c:134
+msgid "AVG PACE"
+msgstr "ORT. TEMPO"
+
+#. / Average Pace Label with units
+#: ../src/fw/apps/system_apps/workout/workout_active.c:137
+msgid "AVG PACE (/MI)"
+msgstr "ORT. TEMPO (/Mİ)"
+
+#: ../src/fw/apps/system_apps/workout/workout_active.c:138
+msgid "AVG PACE (/KM)"
+msgstr "ORT. TEMPO (/KM)"
+
+#. / Pace Label
+#: ../src/fw/apps/system_apps/workout/workout_active.c:143
+msgid "PACE"
+msgstr "TEMPO"
+
+#. / Pace Label with units
+#: ../src/fw/apps/system_apps/workout/workout_active.c:146
+msgid "PACE (/MI)"
+msgstr "TEMPO (/DK)"
+
+#: ../src/fw/apps/system_apps/workout/workout_active.c:147
+msgid "PACE (/KM)"
+msgstr "TEMPO (/KM)"
+
+#. / Speed Label
+#: ../src/fw/apps/system_apps/workout/workout_active.c:152
+msgid "SPEED"
+msgstr "HIZ"
+
+#. / Speed Label with units
+#: ../src/fw/apps/system_apps/workout/workout_active.c:155
+msgid "SPEED (MPH)"
+msgstr "HIZ (Mİ/SA)"
+
+#: ../src/fw/apps/system_apps/workout/workout_active.c:156
+msgid "SPEED (KM/H)"
+msgstr "HIZ (KM/SA)"
+
+#. / Distance Label with units
+#: ../src/fw/apps/system_apps/workout/workout_active.c:164
+msgid "DISTANCE (MI)"
+msgstr "UZAKLIK (Mİ)"
+
+#: ../src/fw/apps/system_apps/workout/workout_active.c:165
+msgid "DISTANCE (KM)"
+msgstr "UZAKLIK (KM)"
+
+#. / Steps Label
+#: ../src/fw/apps/system_apps/workout/workout_active.c:169
+msgid "STEPS"
+msgstr "ADIM"
+
+#: ../src/fw/apps/system_apps/workout/workout_active.c:347
+msgid "MPH"
+msgstr "Mİ/SA"
+
+#: ../src/fw/apps/system_apps/workout/workout_active.c:348
+msgid "KM/H"
+msgstr "KM/SA"
+
+#: ../src/fw/apps/system_apps/workout/workout_active.c:672
+msgid "End Workout?"
+msgstr "Antrenmanı bitir?"
+
+#: ../src/fw/apps/system_apps/workout/workout_utils.c:17
+msgid "Still sweating? Your workout is active and will be ended soon. Open the workout to keep it going."
+msgstr "Hâlâ terli misiniz? Antremanınız etkin ve yakında bitecek. Sürdürmek için antrenman sayfasını açın."
+
+#: ../src/fw/apps/system_apps/workout/workout_utils.c:28
+#: ../src/fw/services/normal/activity/activity_insights.c:1187
+#: ../src/fw/services/normal/notifications/ancs/ancs_item.c:148
+msgid "Dismiss"
+msgstr "Kapat"
+
+#: ../src/fw/apps/system_apps/workout/workout_utils.c:32
+msgid "End Workout"
+msgstr "Antrenmanı bitir"
+
+#: ../src/fw/apps/system_apps/workout/workout_utils.c:38
+msgid "Open Workout"
+msgstr "Antrenmanı aç"
+
+#. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
+#. / Walk Label
+#: ../src/fw/apps/system_apps/workout/workout_utils.c:95
+#: ../src/fw/services/normal/activity/activity_insights.c:1627
+msgid "Walk"
+msgstr "Yürüyüş"
+
+#. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
+#. / Run Label
+#: ../src/fw/apps/system_apps/workout/workout_utils.c:98
+#: ../src/fw/services/normal/activity/activity_insights.c:1625
+msgid "Run"
+msgstr "Koşu"
+
+#. / Workout automatically detected dialog text
+#: ../src/fw/apps/system_apps/workout/workout_utils.c:116
+msgid "Workout\n"
+"Detected"
+msgstr "Antrenman algılandı"
+
+#. / Walk automatically detected dialog text
+#: ../src/fw/apps/system_apps/workout/workout_utils.c:119
+msgid "Walk\n"
+"Detected"
+msgstr "Yürüyüş algılandı"
+
+#. / Run automatically detected dialog text
+#: ../src/fw/apps/system_apps/workout/workout_utils.c:122
+msgid "Run\n"
+"Detected"
+msgstr "Koşu algılandı"
+
+#: ../src/fw/apps/watch/kickstart/kickstart.c:351
+#, c-format
+msgid "%d BPM"
+msgstr "%d VU/DK"
+
+#. / Step count greater than 1000 with a thousands seperator
+#: ../src/fw/apps/watch/kickstart/kickstart.c:459
+#, c-format
+msgid "%d,%03d"
+msgstr "%d.%03d"
+
+#. #-#-#-#-#  fw.pot (PACKAGE VERSION)  #-#-#-#-#
+#. / Step count less than 1000
+#: ../src/fw/apps/watch/kickstart/kickstart.c:463
+#: ../src/fw/services/common/clock.c:887
+#: ../src/fw/services/normal/activity/health_util.c:95
+#: ../src/fw/services/normal/activity/health_util.c:111
+#, c-format
+msgid "%d"
+msgstr "%d"
+
+#: ../src/fw/apps/system_apps/settings/settings_bluetooth.h:58
+msgid "Remember to also forget your Pebble's Bluetooth connection from your phone."
+msgstr "Ayrıca telefonunuzdan Pebble’ın Bluetooth bağlantısını unutun."
+
+#. #-#-#-#-#  services.pot (PACKAGE VERSION)  #-#-#-#-#
+#. / Standard vibration pattern option that has a low intensity
+#: ../src/fw/services/normal/vibes/vibes.def:5
+#: ../src/fw/services/normal/vibes/vibes.def:6
+#: ../src/fw/services/normal/vibes/vibe_intensity.c:39
+msgid "Standard - Low"
+msgstr "Standart — Düşük"
+
+#. #-#-#-#-#  services.pot (PACKAGE VERSION)  #-#-#-#-#
+#. / Standard vibration pattern option that has a high intensity
+#: ../src/fw/services/normal/vibes/vibes.def:7
+#: ../src/fw/services/normal/vibes/vibes.def:8
+#: ../src/fw/services/normal/vibes/vibe_intensity.c:47
+msgid "Standard - High"
+msgstr "Standart — Yüksek"
+
+#: ../src/fw/services/normal/vibes/vibes.def:9
+msgid "Pulse"
+msgstr "Nabız"
+
+#: ../src/fw/services/normal/vibes/vibes.def:10
+msgid "Nudge Nudge"
+msgstr "Hişt pişt"
+
+#: ../src/fw/services/normal/vibes/vibes.def:12
+msgid "Jackhammer"
+msgstr "Darbeli matkap"
+
+#: ../src/fw/services/common/clock.c:467 ../src/fw/services/common/clock.c:739
+msgid "%R"
+msgstr "%R"
+
+#: ../src/fw/services/common/clock.c:467
+msgid "%l:%M"
+msgstr "%l:%M"
+
+#: ../src/fw/services/common/clock.c:480
+#, c-format
+msgid "%p"
+msgstr "%p"
+
+#: ../src/fw/services/common/clock.c:495
+#: ../src/fw/services/normal/timeline/timeline_layout.c:367
+msgid "All day"
+msgstr "Tüm gün"
+
+#: ../src/fw/services/common/clock.c:507 ../src/fw/services/common/clock.c:519
+#: ../src/fw/services/common/clock.c:846
+msgid "Now"
+msgstr "Şimdi"
+
+#: ../src/fw/services/common/clock.c:511
+msgid " MIN. TO"
+msgstr " DAK. KALDI:"
+
+#: ../src/fw/services/common/clock.c:667 ../src/fw/services/common/clock.c:749
+#: ../src/fw/services/common/clock.c:757
+msgid "Yesterday"
+msgstr "Dün"
+
+#: ../src/fw/services/common/clock.c:669
+#: ../src/fw/services/normal/timeline/timeline_actions.c:1085
+msgid "Tomorrow"
+msgstr "Yarın"
+
+#: ../src/fw/services/common/clock.c:672 ../src/fw/services/common/clock.c:787
+#: ../src/fw/services/common/clock.c:795
+#, c-format
+msgid "%A"
+msgstr "%A"
+
+#: ../src/fw/services/common/clock.c:675
+msgid "%B %d"
+msgstr "%d %B"
+
+#: ../src/fw/services/common/clock.c:735
+msgid "%l:%M %p"
+msgstr "%p %l:%M"
+
+#: ../src/fw/services/common/clock.c:747
+msgid "Yesterday, %l:%M %p"
+msgstr "Dün, %p %l:%M"
+
+#: ../src/fw/services/common/clock.c:755
+msgid "Yesterday, %R"
+msgstr "Dün, %R"
+
+#: ../src/fw/services/common/clock.c:766
+msgid "%b %e, %l:%M %p"
+msgstr "%b %e, %p %l:%M"
+
+#: ../src/fw/services/common/clock.c:768 ../src/fw/services/common/clock.c:776
+msgid "%B %e"
+msgstr "%e %B"
+
+#: ../src/fw/services/common/clock.c:774
+msgid "%b %e, %R"
+msgstr "%e %b, %R"
+
+#: ../src/fw/services/common/clock.c:785
+msgid "%a, %l:%M %p"
+msgstr "%a, %p %l:%M"
+
+#: ../src/fw/services/common/clock.c:793
+msgid "%a, %R"
+msgstr "%a, %R"
+
+#: ../src/fw/services/common/clock.c:823
+#, c-format
+msgid "%lu H AGO"
+msgstr "%lu SA. ÖNCE"
+
+#: ../src/fw/services/common/clock.c:825
+msgid "An hour ago"
+msgstr "1 saat önce"
+
+#: ../src/fw/services/common/clock.c:827
+#, c-format
+msgid "%lu hours ago"
+msgstr "%lu saat önce"
+
+#: ../src/fw/services/common/clock.c:837
+#, c-format
+msgid "%lu MIN AGO"
+msgstr "%lu DAK. ÖNCE"
+
+#: ../src/fw/services/common/clock.c:839
+#, c-format
+msgid "%lu minute ago"
+msgstr "%lu dakika önce"
+
+#: ../src/fw/services/common/clock.c:841
+#, c-format
+msgid "%lu minutes ago"
+msgstr "%lu dakika önce"
+
+#: ../src/fw/services/common/clock.c:846
+msgid "NOW"
+msgstr "ŞİMDİ"
+
+#: ../src/fw/services/common/clock.c:854
+#, c-format
+msgid "IN %lu MIN"
+msgstr "%lu DAK. İÇİNDE"
+
+#: ../src/fw/services/common/clock.c:856
+#, c-format
+msgid "In %lu minute"
+msgstr "%lu dakika içinde"
+
+#: ../src/fw/services/common/clock.c:858
+#, c-format
+msgid "In %lu minutes"
+msgstr "%lu dakika içinde"
+
+#: ../src/fw/services/common/clock.c:868
+#, c-format
+msgid "IN %lu H"
+msgstr "%lu SA. İÇİNDE"
+
+#: ../src/fw/services/common/clock.c:870
+#, c-format
+msgid "In %lu hour"
+msgstr "%lu saat içinde"
+
+#: ../src/fw/services/common/clock.c:872
+#, c-format
+msgid "In %lu hours"
+msgstr "%lu saat içinde"
+
+#: ../src/fw/services/common/clock.c:883
+#, c-format
+msgid "%m/%d"
+msgstr "%d/%m"
+
+#: ../src/fw/services/common/clock.c:892
+msgid "%b "
+msgstr "%b "
+
+#: ../src/fw/services/common/clock.c:892
+msgid "%B "
+msgstr "%B "
+
+#: ../src/fw/services/common/clock.c:896
+#, c-format
+msgid "%e"
+msgstr "%e"
+
+#: ../src/fw/services/common/clock.c:947
+msgid "this morning"
+msgstr "bu sabah"
+
+#: ../src/fw/services/common/clock.c:948
+msgid "this afternoon"
+msgstr "bu öğleden sonra"
+
+#: ../src/fw/services/common/clock.c:949
+msgid "this evening"
+msgstr "bu akşam"
+
+#: ../src/fw/services/common/clock.c:950
+msgid "tonight"
+msgstr "bu gece"
+
+#: ../src/fw/services/common/clock.c:951
+msgid "tomorrow morning"
+msgstr "yarın sabah"
+
+#: ../src/fw/services/common/clock.c:952
+msgid "tomorrow afternoon"
+msgstr "yarın öğleden sonra"
+
+#: ../src/fw/services/common/clock.c:953
+msgid "tomorrow evening"
+msgstr "yarın akşam"
+
+#: ../src/fw/services/common/clock.c:954
+msgid "tomorrow night"
+msgstr "yarın gece"
+
+#: ../src/fw/services/common/clock.c:955 ../src/fw/services/common/clock.c:956
+msgid "the day after tomorrow"
+msgstr "ertesi gün"
+
+#: ../src/fw/services/common/clock.c:957
+msgid "the foreseeable future"
+msgstr "yakın gelecekte"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:171
+msgid "How are you feeling? Have you noticed extra focus, better mood or extra energy? You have been sleeping great this week! Keep it up!"
+msgstr "Nasıl hissediyorsun? Daha iyi odaklanma, daha iyi bir ruh hali ya da ekstra enerji fark ettin mi? Bu hafta uykun çok iyiydi! Böyle devam et."
+
+#: ../src/fw/services/normal/activity/activity_insights.c:173
+msgid "I feel fabulous!"
+msgstr "Harika hissediyorum!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:174
+msgid "About average"
+msgstr "Ortalama sayılır"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:175
+msgid "I'm still tired"
+msgstr "Hâlâ yorgunum"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:176
+#: ../src/fw/services/normal/activity/activity_insights.c:194
+msgid "Awesome!"
+msgstr "Muhteşem!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:177
+#: ../src/fw/services/normal/activity/activity_insights.c:195
+msgid "Keep it up!"
+msgstr "Böyle devam!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:178
+#: ../src/fw/services/normal/activity/activity_insights.c:196
+msgid "We'll get there!"
+msgstr "Zamanla olacak!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:189
+msgid "Congratulations - you're having a super active day! Activity makes you more focused and creative. How do you feel?"
+msgstr "Tebrikler — bugün çok aktifsin! Hareket etmek daha odaklı ve yaratıcı olmana yardımcı olur. Nasıl hissediyorsun?"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:191
+#: ../src/fw/services/normal/activity/activity_insights.c:925
+msgid "I feel great!"
+msgstr "Çok iyi hissediyorum!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:192
+msgid "About the same"
+msgstr "Aynı sayılır"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:193
+msgid "Not feeling it"
+msgstr "Pek iyi değilim"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:223
+msgid "Activity Summary"
+msgstr "Etkinlik özeti"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:230
+msgid "Do you feel more energetic, sharper or optimistic? Being active helps!"
+msgstr "Kendini daha enerjik, daha zinde veya daha iyimser hissediyor musun? Aktif olmak seni daha iyi yapar!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:231
+msgid "GREAT DAY TODAY"
+msgstr "BUGÜN ÇOK İYİYİZ"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:234
+msgid "You're being consistent and that's important, keep at it!"
+msgstr "İstikrarlısın ve bu çok önemli. Böyle devam et!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:235
+msgid "CONSISTENT!"
+msgstr "İSTİKRARLI!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:238
+#: ../src/fw/services/normal/activity/activity_insights.c:242
+msgid "Resting is fine, but try to recover and step it up tomorrow!"
+msgstr "Dinlenmede sıkıntı yok; ancak toparlanıp yarın biraz daha hareket etmeye çalış."
+
+#: ../src/fw/services/normal/activity/activity_insights.c:239
+#: ../src/fw/services/normal/activity/activity_insights.c:243
+msgid "NOT VERY ACTIVE"
+msgstr "PEK AKTİF DEĞİLİZ"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:251
+msgid "Sleep Summary"
+msgstr "Uyku özeti"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:259
+msgid "You had a good night! Feel the energy 😃"
+msgstr "Güzel bir gece geçirdin! İçindekini hisset! 😃"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:262
+msgid "It's great that you're keeping a consistent sleep routine!"
+msgstr "Düzenli bir uyku alışkanlığına sahip olman çok güzel!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:265
+#: ../src/fw/services/normal/activity/activity_insights.c:268
+msgid "A good night's sleep goes a long way! Try to get more hours tonight."
+msgstr "İyi bir gece uykusu çok şey değiştirir. Bu gece biraz daha fazla uyumaya çalış."
+
+#: ../src/fw/services/normal/activity/activity_insights.c:420
+msgid "Open App"
+msgstr "Uygulamayı aç"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:525
+#: ../src/fw/services/normal/activity/activity_insights.c:530
+msgid "BELOW AVG"
+msgstr "ORTALAMA ALTI"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:525
+#: ../src/fw/services/normal/activity/activity_insights.c:530
+msgid "Below avg"
+msgstr "Ortalama altı"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:535
+msgid "ON AVG"
+msgstr "ORTALAMA"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:535
+msgid "On avg"
+msgstr "Ortalama"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:540
+msgid "ABOVE AVG"
+msgstr "ORTALAMA ÜZERİ"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:540
+msgid "Above avg"
+msgstr "Ortalama üzeri"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:829
+msgid "%H:%M"
+msgstr "%H:%M"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:829
+msgid "%l:%M%p"
+msgstr "%p %l:%M"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:854
+#, c-format
+msgid "%uH %uM Sleep"
+msgstr "%u SA %u DK uyku"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:885
+msgid "Nap Time"
+msgstr "Kestirme zamanı"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:893
+#, c-format
+msgid "%s of sleep"
+msgstr "%s uyku"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:898
+msgid "YOU NAPPED"
+msgstr "Kestirdin"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:899
+msgid "Of napping"
+msgstr "Kestirme"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:907
+#, c-format
+msgid "%s - %s"
+msgstr "%s–%s"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:929
+msgid "I need more"
+msgstr "5 dakika daha"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:959
+#, c-format
+msgid "Aren't naps great? You knocked out for %dH %dM!"
+msgstr "Biraz kestirme gibisi yok. %d sa %d dk aramızda yoktun!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:975
+msgid "I didn't nap!?"
+msgstr "Kestirmedim yahu!?"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1195
+msgid "Open Pin"
+msgstr "PİN’i aç"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1279
+#, c-format
+msgid "Killer job! You've walked %d steps today which is %d%% above your typical. Do it again tomorrow and you'll be on top of the world!"
+msgstr "Muhteşemsin! Bugün %d adım attın, bu da normalden %%%d daha fazla. Yarın da aynısını yaparsan senden kralı yok!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1281
+#, c-format
+msgid "Nice moves! You've walked %d steps today which is %d%% above your typical. Crush it again tomorrow 😀"
+msgstr "Bugün hareketliyiz! Bugün %d adım attın, bu da normalden %%%d daha fazla. Yarın da aynısını bekliyorum. 😀"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1283
+#, c-format
+msgid "Hey rockstar 🎤 You've walked %d steps today which is %d%% above your typical. Nothing can stop you!"
+msgstr "Şampiyon! 💪 Bugün %d adım attın; bu da ortalamanın %%%d üzerinde. Harika gidiyorsun!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1285
+#, c-format
+msgid "We can barely keep up! You walked %d steps today which is %d%% above your typical. You're on 🔥"
+msgstr "Sana yetişmekte zorlanıyoruz! Bugün %d adım attın, bu da normalden %%%d daha fazla. Harika gidiyorsun! 🔥"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1288
+#, c-format
+msgid "You walked %d steps today which is %d%% above your typical. You just outstepped YOURSELF. Mic drop."
+msgstr "Bugün %d adım attın, bu da normalden %%%d daha fazla. Kendini aştın. Diyecek lafım sözüm yok."
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1295
+#, c-format
+msgid "You walked %d steps today; keep it up! Being active is the key to feeling like a million bucks. Try to beat your typical tomorrow."
+msgstr "Bugün %d adım attın; böyle devam et! Aktif olmak, kendinizi harika hissetmenin anahtarıdır. Yarın normalden daha iyi bir performans sergilemeye çalış."
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1298
+#, c-format
+msgid "Good job! You walked %d steps today–do it again tomorrow."
+msgstr "Aferin! Bugün %d adım attın, yarın da aynısını yap."
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1299
+#, c-format
+msgid "Someone's on the move 👊 You walked %d steps today; keep doing what you're doing!"
+msgstr "Birileri hareket halinde. 👊 Bugün %d adım attın; devam, devam!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1301
+#, c-format
+msgid "You keep moving, we'll keep counting! You've clocked in %d steps today. Keep it rolling, hot stuff."
+msgstr "Sen hareket etmeye devam et, biz de saymaya devam edelim! Bugün %d adım attın. Devam et böyle, harika!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1308
+#, c-format
+msgid "You walked %d steps today which is %d%% below your typical. Try to be more active tomorrow–you can do it!"
+msgstr "Bugün %d adım attın, bu da normal temponun %%%d altında. Yarın daha aktif olmaya çalış, başarabilirsin!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1310
+#, c-format
+msgid "You walked %d steps which is %d%% below your typical. Being active makes you feel amaaaazing–try to get back on track tomorrow."
+msgstr "%d adım attın, bu da normalden %%%d daha az. Aktif olmak iyidir; yarın biraz daha efor sarfetmeye çalış lütfen!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1312
+#, c-format
+msgid "You walked %d steps today which is %d%% below your typical. Don't worry, tomorrow is just around the corner 😀"
+msgstr "Bugün %d adım attın, bu da normal adım sayının %%%d altında. Hele dur bi’, yarın ola hayrola. 😀"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1314
+#, c-format
+msgid "You walked %d steps which is %d%% below your typical, but don't stress. You'll crush it tomorrow 😉"
+msgstr "%d adım attın, bu da normalden %%%d daha az; ama endişelenme. Yarınki performansının süper olacağını biliyorum. 😉"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1321
+#, c-format
+msgid "You walked %d steps today. Don't fret, you can get back on track in no time 😉"
+msgstr "Bugün %d adım attın. Üzülme, kısa sürede eski haline dönebilirsin. 😉"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1323
+#, c-format
+msgid "You walked %d steps today. Good news is the sky's the limit!"
+msgstr "Bugün %d adım attın. Sınırları aşmak senin elinde!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1324
+#, c-format
+msgid "You walked %d steps today. Try to take even more steps tomorrow–show us what you're made of!"
+msgstr "Bugün %d adım attın. Yarın daha da fazla adım atmaya çalış; bize neler yapabileceğini göster!"
+
+#. / Sleep notification on wake up, slept above their typical sleep duration
+#: ../src/fw/services/normal/activity/activity_insights.c:1377
+#, c-format
+msgid "Refreshed? You slept for %dH %dM which is %d%% above your typical. Go tackle your day 😃."
+msgstr "Dinlendin mi? %d saat %d dakika uyudun, bu da normalden %%%d daha iyi. Kalk bakalım, bugün neler yapabileceğini görelim. 😃"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1379
+#, c-format
+msgid "You caught some killer zzz’s! You slept for %dH %dM which is %d%% above your typical. Keep it up."
+msgstr "Mışıl mışıl uyuyorsun vallahi. %d saat %d dakika uyudun, bu da normalden %%%d daha fazla. Böyle devam!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1381
+#, c-format
+msgid "Rise and shine! You slept for %dH %dM which is %d%% above your typical. Do it again tonight, sleep master."
+msgstr "Günaydın! %d saat %d dakika uyudun, bu da normalden %%%d daha fazla. Bu gece de aynısını yap, şampiyon!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1383
+#, c-format
+msgid "Mmmm...what a night. You slept for %dH %dM which is %d%% above your typical. That's gotta feel good!"
+msgstr "Mmm… ne güzel bir geceydi. %d saat %d dakika uyudun, bu da normal sürenin %%%d üzerinde. Keyfin iyidir herhalde!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1385
+#, c-format
+msgid "That's a lot of sheep you just counted! You slept for %dH %dM which is %d%% above your typical. Boom shakalaka."
+msgstr "Koyunlar say say bitmedi sanırım. %d saat %d dakika uyudun, bu da normalden %%%d daha fazla. Dokuz bin dokuz yüz doksan yedi, dokuz bin dokuz yüz doksan sekiz… şaşırttın beni de."
+
+#. / Sleep notification on wake up, slept similar to their typical sleep duration
+#: ../src/fw/services/normal/activity/activity_insights.c:1393
+#, c-format
+msgid "Good mornin’. You slept for %dH %dM. Every good day begins with a solid night’s sleep...kinda like that one 😉 Keep it up!"
+msgstr "Günaydın. %d saat %d dakika uyudun. Her güzel gün, sağlam bir gece uykusuyla başlar… tıpkı bu gece yaptığın gibi. 😉 Devam et!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1396
+#, c-format
+msgid "Good morning! You slept for %dH %dM. Consistency is key; keep doing what you're doing 😃."
+msgstr "Günaydın! %d saat %d dakika uyudun. İstikrar çok önemlidir; böyle devam et. 😃"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1398
+#, c-format
+msgid "You're rockin' the shut eye! You slept for %dH %dM. Make it a nightly ritual. You deserve it."
+msgstr "Gözlerin hiç açık kalmıyor sanırım! %d saat %d dakika uyudun. Bunu bir rutine bağla; bunu hak ediyorsun."
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1400
+#, c-format
+msgid "Feelin' good? You slept for %dH %dM. Nothing can stop you now 👊"
+msgstr "Kendini iyi hissediyor musun? %d saat %d dakika uyudun. Artık seni hiçbir şey durduramaz! 👊"
+
+#. / Sleep notification on wake up, slept below their typical sleep duration
+#: ../src/fw/services/normal/activity/activity_insights.c:1407
+#, c-format
+msgid "Hey sleepy head. You slept for %dH %dM which is %d%% below your typical. Try to get more tonight!"
+msgstr "Hey uykucu! %d saat %d dakika uyudun, bu da normal uyku sürenin %%%d altında. Bu gece daha fazla uyumaya çalış!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1409
+#, c-format
+msgid "Groggy? You slept for %dH %dM which is %d%% below your typical. Sleep is important for everything you do-try getting more shut eye tonight!"
+msgstr "Uykun mu kaçtı? %d saat %d dakika uyudun, bu da normal sürenin %%%d altında. İyi bir uyku, sen uyanıkken zihnini açık tutar; bu gece daha fazla uyumaya çalış!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1411
+#, c-format
+msgid "It's a new day! You slept for %dH %dM which is %d%% below your typical. It's not your best, but there's always tonight."
+msgstr "Yeni bir gün! %d saat %d dakika uyudun, bu da normalden %%%d daha az. En iyi gecen değil belki; ama bugün telafi edebilirsin."
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1413
+#, c-format
+msgid "Goooood morning! You slept for %dH %dM which is %d%% below your typical. Go crush your day and then get back in bed 😉"
+msgstr "Günaydın! Dün gece %d saat %d dakika uyudun, bu da normalden %%%d daha az. Gününü harika geçir ve sonra tekrar yatağa dön. 😉"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1420
+#, c-format
+msgid "You slept for %dH %dM which is %d%% below your typical. Sleep is vital for all your great ideas–how 'bout getting more tonight?"
+msgstr "%d saat %d dakika uyudun, bu da normal sürenin %%%d altında. Uyku, tüm harika fikirlerin ves sağlığın için hayati önem taşır; bu gece biraz daha erken yatsan olur mu?"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1422
+#, c-format
+msgid "You only slept for %dH %dM which is %d%% below your typical. We know you're busy, but try getting more tonight. We believe in you 😉"
+msgstr "Sadece %d saat %d dakika uyudun, bu da normal sürenin %%%d altında. Meşgul olduğunu biliyorum; ancak bu gece lütfen daha fazla uyumaya çalış. Sana inanıyorum. 😉"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1424
+#, c-format
+msgid "You slept for %dH %dM which is %d%% below your typical. We know stuff happens; take another crack at it tonight."
+msgstr "%d saat %d dakika uyudun, bu da normal sürenin %%%d altında. Bazen aksilikler olabilir; bu gece yatağa daha erken gitmeyi dene."
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1477
+#, c-format
+msgid "%u Steps"
+msgstr "%u adım"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1558
+msgid "Didn’t that walk feel good?"
+msgstr "Bu yürüyüş iyi geldi değil mi?"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1559
+msgid "Way to keep it active!"
+msgstr "İşte böyle böyle aktif kalacaksın!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1560
+msgid "You got the moves!"
+msgstr "Çok iyi gidiyorsun!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1561
+msgid "Gettin' your step on?"
+msgstr "Yürüyüşe mi başladın?"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1571
+msgid "Feelin' hot? Cause you're on 🔥"
+msgstr "Tam formundasın, yakıyorsun! 🔥"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1572
+msgid "Hey lightning bolt, way to go!"
+msgstr "Uçuyorsun, böyle devam!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1573
+msgid "You're a machine!"
+msgstr "Tıkır tıkır işleyen makine gibisin!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1574
+msgid "Hey speedster, we can barely keep up!"
+msgstr "O kadar hızlısın ki sana zor yetişiyoruz!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1575
+msgid "Way to show us what you're made of 👊"
+msgstr "Helal sana! 👊"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1585
+msgid "Workin' up a sweat?"
+msgstr "Biraz terlemiş gibisin?"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1586
+msgid "Well done 💪"
+msgstr "Aferin! 💪"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1587
+msgid "Endorphin rush?"
+msgstr "Endorfin patlaması!"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1588
+msgid "Can't stop, won't stop 👊"
+msgstr "Durmak yok, yola devam! 🚀"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1589
+msgid "Keepin' that heart healthy! ❤"
+msgstr "Kalp sağlığı her şeyin başı ❤"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1617
+#: ../src/fw/services/normal/activity/activity_insights.c:1709
+#: ../src/fw/services/normal/activity/activity_insights.c:1716
+#: ../src/fw/services/normal/activity/activity_insights.c:1723
+#, c-format
+msgid "%d Min"
+msgstr "%d dak."
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1648
+msgid "Avg Pace"
+msgstr "Ort. tempo"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1664
+msgid "Distance"
+msgstr "Uzaklık"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1676
+msgid "Steps"
+msgstr "Adım"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1689
+msgid "Active Calories"
+msgstr "Etkin kaloriler"
+
+#: ../src/fw/services/normal/activity/activity_insights.c:1702
+msgid "Avg HR"
+msgstr "Ort. KA"
+
+#: ../src/fw/services/normal/activity/health_util.c:32
+#, c-format
+msgid "%dH"
+msgstr "%d SA"
+
+#: ../src/fw/services/normal/activity/health_util.c:38
+#, c-format
+msgid "%dM"
+msgstr "%d DK"
+
+#: ../src/fw/services/normal/activity/health_util.c:61
+#, c-format
+msgid "%d:%d"
+msgstr "%d:%d"
+
+#: ../src/fw/services/normal/activity/health_util.c:98
+msgid "H"
+msgstr "SA"
+
+#: ../src/fw/services/normal/activity/health_util.c:104
+msgid " "
+msgstr ""
+
+#: ../src/fw/services/normal/activity/health_util.c:114
+msgid "M"
+msgstr "DK"
+
+#: ../src/fw/services/normal/activity/health_util.c:133
+#, c-format
+msgid "%d.%d"
+msgstr "%d.%d"
+
+#: ../src/fw/services/normal/alarms/alarm.c:376
+#: ../src/fw/services/normal/alarms/alarm_pin.c:20
+msgid "Alarm"
+msgstr "Alarm"
+
+#. / A frequency option for alarms, i.e. the alarm would go off every day. Respect
+#. / capitalization!
+#: ../src/fw/services/normal/alarms/alarm.c:1125
+msgid "EVERY DAY"
+msgstr "HER GÜN"
+
+#. / A frequency option for alarms, i.e. the alarm would go off every day. Respect
+#. / capitalization!
+#: ../src/fw/services/normal/alarms/alarm.c:1128
+msgid "Every Day"
+msgstr "Her gün"
+
+#. / A frequency option for alarms, i.e. the alarm would only go off every weekday. Respect
+#. / capitalization!
+#: ../src/fw/services/normal/alarms/alarm.c:1134
+msgid "WEEKDAYS"
+msgstr "HAFTA İÇİ"
+
+#. / A frequency option for alarms, i.e. the alarm would only go off each day on the weekend.
+#. / Respect capitalization!
+#: ../src/fw/services/normal/alarms/alarm.c:1143
+msgid "WEEKENDS"
+msgstr "HAFTA SONU"
+
+#. / A frequency option for alarms, i.e. the alarm would only go off one time ever. Respect
+#. / capitalization!
+#: ../src/fw/services/normal/alarms/alarm.c:1153
+msgid "ONCE"
+msgstr "BİR KEZ"
+
+#. / A frequency option for alarms, i.e. the alarm would only go off one time ever. Respect
+#. / capitalization!
+#: ../src/fw/services/normal/alarms/alarm.c:1156
+msgid "Once"
+msgstr "Bir kez"
+
+#. / A frequency option for alarms, i.e. the alarm would only go off on a custom choice of
+#. / days. Respect capitalization!
+#: ../src/fw/services/normal/alarms/alarm.c:1163
+msgid "CUSTOM"
+msgstr "ÖZEL"
+
+#. / A frequency option for alarms, i.e. the alarm would only go off on a custom choice of
+#. / days. Respect capitalization!
+#: ../src/fw/services/normal/alarms/alarm.c:1166
+msgid "Custom"
+msgstr "Özel"
+
+#: ../src/fw/services/normal/alarms/alarm.c:1179
+#: ../src/fw/applib/pbl_std/timelocal.c:48
+msgid "Sun"
+msgstr "Paz"
+
+#: ../src/fw/services/normal/alarms/alarm.c:1180
+#: ../src/fw/applib/pbl_std/timelocal.c:48
+msgid "Mon"
+msgstr "Pzt"
+
+#: ../src/fw/services/normal/alarms/alarm.c:1181
+#: ../src/fw/applib/pbl_std/timelocal.c:48
+msgid "Tue"
+msgstr "Sal"
+
+#: ../src/fw/services/normal/alarms/alarm.c:1182
+#: ../src/fw/applib/pbl_std/timelocal.c:48
+msgid "Wed"
+msgstr "Çar"
+
+#: ../src/fw/services/normal/alarms/alarm.c:1183
+#: ../src/fw/applib/pbl_std/timelocal.c:49
+msgid "Thu"
+msgstr "Per"
+
+#: ../src/fw/services/normal/alarms/alarm.c:1184
+#: ../src/fw/applib/pbl_std/timelocal.c:49
+msgid "Fri"
+msgstr "Cum"
+
+#: ../src/fw/services/normal/alarms/alarm.c:1185
+#: ../src/fw/applib/pbl_std/timelocal.c:49
+msgid "Sat"
+msgstr "Cts"
+
+#: ../src/fw/services/normal/alarms/alarm.c:1188
+msgid "Sundays"
+msgstr "Pazarları"
+
+#: ../src/fw/services/normal/alarms/alarm.c:1189
+msgid "Mondays"
+msgstr "Pazartesileri"
+
+#: ../src/fw/services/normal/alarms/alarm.c:1190
+msgid "Tuesdays"
+msgstr "Salıları"
+
+#: ../src/fw/services/normal/alarms/alarm.c:1191
+msgid "Wednesdays"
+msgstr "Çarşambaları"
+
+#: ../src/fw/services/normal/alarms/alarm.c:1192
+msgid "Thursdays"
+msgstr "Perşembeleri"
+
+#: ../src/fw/services/normal/alarms/alarm.c:1193
+msgid "Fridays"
+msgstr "Cumaları"
+
+#: ../src/fw/services/normal/alarms/alarm.c:1194
+msgid "Saturdays"
+msgstr "Cumartesileri"
+
+#: ../src/fw/services/normal/alarms/alarm_pin.c:33
+msgid "Edit"
+msgstr "Düzenle"
+
+#: ../src/fw/services/normal/notifications/ancs/ancs_item.c:109
+msgid "sent an attachment"
+msgstr "bir ek gönderdi"
+
+#: ../src/fw/services/normal/notifications/ancs/ancs_item.c:156
+msgid "Call Back"
+msgstr "Geri ara"
+
+#: ../src/fw/services/normal/notifications/do_not_disturb.c:115
+msgid "Calendar Aware enables Quiet Time automatically during calendar events."
+msgstr "“Takvime duyarlı”, takviminizde etkinlikler varken sessiz zamanı kendiliğinden etkinleştirir."
+
+#: ../src/fw/services/normal/notifications/do_not_disturb.c:121
+msgid "Press and hold the Back button from a notification to turn Quiet Time on or off."
+msgstr "Sessiz zamanı açmak/kapatmak için herhangi bir gelen bildirimdeyken “Geri” düğmesini basılı tutun."
+
+#: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:28
+msgid "Start Quiet Time?"
+msgstr "Sessiz zaman başlatılsın mı?"
+
+#: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:29
+msgid "End Quiet Time?"
+msgstr "Sessiz zaman bitirilsin mi?"
+
+#: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:30
+msgid "Quiet Time\n"
+"Started"
+msgstr "Sessiz zaman başladı"
+
+#: ../src/fw/services/normal/notifications/do_not_disturb_toggle.c:31
+msgid "Quiet Time\n"
+"Ended"
+msgstr "Sessiz zaman bitti"
+
+#: ../src/fw/services/normal/timeline/calendar_layout.c:154
+msgid " - "
+msgstr " - "
+
+#: ../src/fw/services/normal/timeline/calendar_layout.c:274
+msgid "All Day"
+msgstr "Tüm gün"
+
+#: ../src/fw/services/normal/timeline/calendar_layout.c:315
+msgid "Recurring"
+msgstr "Yinelenen"
+
+#: ../src/fw/services/normal/timeline/sports_layout.c:50
+msgid "STARTS "
+msgstr "BAŞLAR: "
+
+#: ../src/fw/services/normal/timeline/sports_layout.c:128
+msgid "Broadcaster"
+msgstr "Yayıncı"
+
+#: ../src/fw/services/normal/timeline/timeline.c:697
+msgid "Can't connect. Relaunch Pebble Time app on phone."
+msgstr "Bağlanılamıyor. Telefonunuzda Pebble Time uygulamasını yeniden başlatın."
+
+#: ../src/fw/services/normal/timeline/timeline.c:712
+msgid "Removed"
+msgstr "Kaldırıldı"
+
+#: ../src/fw/services/normal/timeline/timeline.c:725
+#: ../src/fw/services/normal/timeline/timeline.c:747
+msgid "Dismissed"
+msgstr "Kapatıldı"
+
+#: ../src/fw/services/normal/timeline/timeline.c:751
+msgid "Deleted"
+msgstr "Silindi"
+
+#: ../src/fw/services/normal/timeline/timeline.c:785
+msgid "Thanks!"
+msgstr "Teşekkürler!"
+
+#: ../src/fw/services/normal/timeline/timeline.c:944
+msgid "Calendar"
+msgstr "Takvim"
+
+#: ../src/fw/services/normal/timeline/timeline.c:952
+msgid "Reminders"
+msgstr "Anımsatıcılar"
+
+#: ../src/fw/services/normal/timeline/timeline.c:966
+msgid "Intercom"
+msgstr "Diyafon"
+
+#: ../src/fw/services/normal/timeline/timeline_actions.c:725
+msgid "Quickly dismiss all notifications by holding the Select button for 2 seconds from any incoming notification."
+msgstr "Herhangi bir gelen bildirimdeyken “Seç” düğmesini 2 saniye basılı tutarak tüm bildirimleri hemen kapatabilirsiniz."
+
+#: ../src/fw/services/normal/timeline/timeline_actions.c:817
+msgid "Ok"
+msgstr "Tamam"
+
+#: ../src/fw/services/normal/timeline/timeline_actions.c:818
+msgid "Yes"
+msgstr "Evet"
+
+#: ../src/fw/services/normal/timeline/timeline_actions.c:819
+msgid "No"
+msgstr "Hayır"
+
+#: ../src/fw/services/normal/timeline/timeline_actions.c:820
+msgid "Call me"
+msgstr "Beni ara"
+
+#: ../src/fw/services/normal/timeline/timeline_actions.c:821
+msgid "Call you later"
+msgstr "Daha sonra arayacağım"
+
+#: ../src/fw/services/normal/timeline/timeline_actions.c:949
+msgid "Reply with Voice"
+msgstr "Sesle yanıt ver"
+
+#: ../src/fw/services/normal/timeline/timeline_actions.c:950
+msgid "Voice"
+msgstr "Ses"
+
+#: ../src/fw/services/normal/timeline/timeline_actions.c:960
+msgid "Canned messages"
+msgstr "Banda alınmış mesajlar"
+
+#: ../src/fw/services/normal/timeline/timeline_actions.c:964
+msgid "Emoji"
+msgstr "Emoji"
+
+#: ../src/fw/services/normal/timeline/timeline_actions.c:1073
+msgid "In 15 minutes"
+msgstr "15 dakika içinde"
+
+#: ../src/fw/services/normal/timeline/timeline_actions.c:1079
+msgid "Later today"
+msgstr "Bugün daha sonra"
+
+#: ../src/fw/services/normal/timeline/timeline_layout.c:712
+msgid "Last updated"
+msgstr "Son güncelleme"
+
+#. / Standard vibration pattern option that has a medium intensity
+#: ../src/fw/services/normal/vibes/vibe_intensity.c:43
+msgid "Standard - Medium"
+msgstr "Standart — Orta"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:38
+msgid "Jan"
+msgstr "Oca"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:38
+msgid "Feb"
+msgstr "Şub"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:38
+msgid "Mar"
+msgstr "Mar"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:38
+msgid "Apr"
+msgstr "Nis"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:38
+#: ../src/fw/applib/pbl_std/timelocal.c:44
+msgid "May"
+msgstr "May"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:39
+msgid "Jun"
+msgstr "Haz"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:39
+msgid "Jul"
+msgstr "Tem"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:39
+msgid "Aug"
+msgstr "Ağu"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:39
+msgid "Sep"
+msgstr "Eyl"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:39
+msgid "Oct"
+msgstr "Eki"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:40
+msgid "Nov"
+msgstr "Kas"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:40
+msgid "Dec"
+msgstr "Ara"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:43
+msgid "January"
+msgstr "Ocak"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:43
+msgid "February"
+msgstr "Şubat"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:43
+msgid "March"
+msgstr "Mart"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:43
+msgid "April"
+msgstr "Nisan"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:44
+msgid "June"
+msgstr "Haziran"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:44
+msgid "July"
+msgstr "Temmuz"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:44
+msgid "August"
+msgstr "Ağustos"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:45
+msgid "September"
+msgstr "Eylül"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:45
+msgid "October"
+msgstr "Ekim"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:45
+msgid "November"
+msgstr "Kasım"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:45
+msgid "December"
+msgstr "Aralık"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:52
+msgid "Sunday"
+msgstr "Pazar"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:52
+msgid "Monday"
+msgstr "Pazartesi"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:52
+msgid "Tuesday"
+msgstr "Salı"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:52
+msgid "Wednesday"
+msgstr "Çarşamba"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:53
+msgid "Thursday"
+msgstr "Perşembe"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:53
+msgid "Friday"
+msgstr "Cuma"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:53
+msgid "Saturday"
+msgstr "Cumartesi"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:56
+msgid "%H:%M:%S"
+msgstr "%H:%M:%S"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:57
+msgid "%m/%d/%y"
+msgstr "%d/%m/%y"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:58
+msgid "%a %b %e %H:%M:%S %Y"
+msgstr "%e %b, %a; %H:%M:%S %Y"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:59
+msgid "%I:%M:%S %p"
+msgstr "%p %I:%M:%S"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:61
+#: ../src/fw/applib/ui/date_time_selection_window_private.c:76
+msgid "AM"
+msgstr "ÖÖ"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:61
+#: ../src/fw/applib/ui/date_time_selection_window_private.c:78
+msgid "PM"
+msgstr "ÖS"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:62
+msgid "am"
+msgstr "öö"
+
+#: ../src/fw/applib/pbl_std/timelocal.c:62
+msgid "pm"
+msgstr "ös"
+
+#. / The first separator in `<hour>:<minute>:<second>`
+#. / The second separator in `<hour>:<minute>:<second>`
+#: ../src/fw/applib/template_string.c:180
+#: ../src/fw/applib/template_string.c:182
+msgctxt "TmplStringSep"
+msgid ":"
+msgstr ":"
+
+#. / The first separator in `<hour> hr <minute> min <second> sec`
+#. / The second separator in `<hour> hr <minute> min <second> sec`
+#: ../src/fw/applib/template_string.c:184
+#: ../src/fw/applib/template_string.c:186
+msgctxt "TmplStringSep"
+msgid " "
+msgstr ""
+
+#. / The first separator in `<hour> hours, <minute> minutes, and <second> seconds`
+#: ../src/fw/applib/template_string.c:188
+msgctxt "TmplStringSep"
+msgid ", "
+msgstr ", "
+
+#. / The second separator in `<hour> hours, <minute> minutes, and <second> seconds`
+#: ../src/fw/applib/template_string.c:190
+msgctxt "TmplStringSep"
+msgid ", and "
+msgstr "ve "
+
+#. / Singular suffix for seconds with no units
+#. / Singular suffix for minutes with no units
+#. / Singular suffix for hours with no units
+#. / Singular suffix for days with no units
+#. / Singular suffix for months with no units
+#. / Singular suffix for years with no units
+#: ../src/fw/applib/template_string.c:259
+#: ../src/fw/applib/template_string.c:274
+#: ../src/fw/applib/template_string.c:289
+#: ../src/fw/applib/template_string.c:304
+#: ../src/fw/applib/template_string.c:320
+#: ../src/fw/applib/template_string.c:337
+msgctxt "TmplStringSing"
+msgid ""
+msgstr ""
+
+#. / Plural suffix for seconds with no units
+#. / Plural suffix for minutes with no units
+#. / Plural suffix for hours with no units
+#. / Plural suffix for days with no units
+#. / Plural suffix for months with no units
+#. / Plural suffix for years with no units
+#: ../src/fw/applib/template_string.c:261
+#: ../src/fw/applib/template_string.c:276
+#: ../src/fw/applib/template_string.c:291
+#: ../src/fw/applib/template_string.c:306
+#: ../src/fw/applib/template_string.c:322
+#: ../src/fw/applib/template_string.c:339
+msgctxt "TmplStringPlur"
+msgid ""
+msgstr ""
+
+#. / Singular suffix for seconds with abbreviated units
+#: ../src/fw/applib/template_string.c:263
+msgctxt "TmplStringSing"
+msgid " sec"
+msgstr " san."
+
+#. / Plural suffix for seconds with abbreviated units
+#: ../src/fw/applib/template_string.c:265
+msgctxt "TmplStringPlur"
+msgid " sec"
+msgstr " san."
+
+#. / Singular suffix for seconds with full units
+#: ../src/fw/applib/template_string.c:267
+msgctxt "TmplStringSing"
+msgid " second"
+msgstr " saniye"
+
+#. / Plural suffix for seconds with full units
+#: ../src/fw/applib/template_string.c:269
+msgctxt "TmplStringPlur"
+msgid " seconds"
+msgstr " saniye"
+
+#. / Singular suffix for minutes with abbreviated units
+#: ../src/fw/applib/template_string.c:278
+msgctxt "TmplStringSing"
+msgid " min"
+msgstr " dak."
+
+#. / Plural suffix for minutes with abbreviated units
+#: ../src/fw/applib/template_string.c:280
+msgctxt "TmplStringPlur"
+msgid " min"
+msgstr " dak."
+
+#. / Singular suffix for minutes with full units
+#: ../src/fw/applib/template_string.c:282
+msgctxt "TmplStringSing"
+msgid " minute"
+msgstr " dakika"
+
+#. / Plural suffix for minutes with full units
+#: ../src/fw/applib/template_string.c:284
+msgctxt "TmplStringPlur"
+msgid " minutes"
+msgstr " dakika"
+
+#. / Singular suffix for hours with abbreviated units
+#: ../src/fw/applib/template_string.c:293
+msgctxt "TmplStringSing"
+msgid " hr"
+msgstr " sa."
+
+#. / Plural suffix for hours with abbreviated units
+#: ../src/fw/applib/template_string.c:295
+msgctxt "TmplStringPlur"
+msgid " hr"
+msgstr " sa."
+
+#. / Singular suffix for hours with full units
+#: ../src/fw/applib/template_string.c:297
+msgctxt "TmplStringSing"
+msgid " hour"
+msgstr " saat"
+
+#. / Plural suffix for hours with full units
+#: ../src/fw/applib/template_string.c:299
+msgctxt "TmplStringPlur"
+msgid " hours"
+msgstr " saat"
+
+#. / Singular suffix for days with abbreviated units
+#: ../src/fw/applib/template_string.c:308
+msgctxt "TmplStringSing"
+msgid " d"
+msgstr " g"
+
+#. / Plural suffix for days with abbreviated units
+#: ../src/fw/applib/template_string.c:310
+msgctxt "TmplStringPlur"
+msgid " d"
+msgstr " g"
+
+#. / Singular suffix for days with full units
+#: ../src/fw/applib/template_string.c:312
+msgctxt "TmplStringSing"
+msgid " day"
+msgstr " gün"
+
+#. / Plural suffix for days with full units
+#: ../src/fw/applib/template_string.c:314
+msgctxt "TmplStringPlur"
+msgid " days"
+msgstr " gün"
+
+#. / Singular suffix for months with abbreviated units
+#: ../src/fw/applib/template_string.c:324
+msgctxt "TmplStringSing"
+msgid " mo"
+msgstr " ay"
+
+#. / Plural suffix for months with abbreviated units
+#: ../src/fw/applib/template_string.c:326
+msgctxt "TmplStringPlur"
+msgid " mo"
+msgstr " ay"
+
+#. / Singular suffix for months with full units
+#: ../src/fw/applib/template_string.c:328
+msgctxt "TmplStringSing"
+msgid " month"
+msgstr " ay"
+
+#. / Plural suffix for months with full units
+#: ../src/fw/applib/template_string.c:330
+msgctxt "TmplStringPlur"
+msgid " months"
+msgstr " ay"
+
+#. / Singular suffix for years with abbreviated units
+#: ../src/fw/applib/template_string.c:341
+msgctxt "TmplStringSing"
+msgid " yr"
+msgstr " yıl"
+
+#. / Plural suffix for years with abbreviated units
+#: ../src/fw/applib/template_string.c:343
+msgctxt "TmplStringPlur"
+msgid " yr"
+msgstr " yıl"
+
+#. / Singular suffix for years with full units
+#: ../src/fw/applib/template_string.c:345
+msgctxt "TmplStringSing"
+msgid " year"
+msgstr " yıl"
+
+#. / Plural suffix for years with full units
+#: ../src/fw/applib/template_string.c:347
+msgctxt "TmplStringPlur"
+msgid " years"
+msgstr " yıl"
+
+#: ../src/fw/applib/ui/dialogs/bt_conn_dialog.c:97
+msgid "Check bluetooth connection"
+msgstr "Bluetooth bağlantısını denetle"
+
+#: ../src/fw/applib/ui/time_range_selection_window.c:177
+msgid "Start"
+msgstr "Başlat"
+
+#: ../src/fw/applib/ui/time_range_selection_window.c:181
+msgid "End"
+msgstr "Bitir"
+
+#: ../src/fw/applib/voice/voice_window.c:234
+msgid "Dictation is not available."
+msgstr "Dikte kullanılamıyor."
+
+#: ../src/fw/applib/voice/voice_window.c:254
+msgid "Error occurred. Try again."
+msgstr "Hata oluştu. Yeniden deneyin."
+
+#: ../src/fw/applib/voice/voice_window.c:354
+msgid "Enable voice in the settings page of the Pebble app."
+msgstr "Pebble uygulamasının ayarlarından konuşmayı etkinleştirin."
+
+#: ../src/fw/applib/voice/voice_window.c:404
+msgid "Missed that. Try again."
+msgstr "Onu kaçırdık. Yeniden deneyin."
+
+#: ../src/fw/applib/voice/voice_window.c:1139
+msgid "Listening"
+msgstr "Dinliyor"
+
