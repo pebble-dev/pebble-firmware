@@ -86,9 +86,13 @@ class FontResourceGenerator(ResourceGenerator):
         """
         Search the name of the font for an integer which will be used as the
         pixel height of the generated font
+
+        A number that is a whole underscore-separated part of the name wins, so
+        that digits inside the font family name (e.g. FONT_B612_24) are not
+        taken as the height.
         """
 
-        match = re.search('([0-9]+)', name)
+        match = re.search('(?:^|_)([0-9]+)(?:_|$)', name) or re.search('([0-9]+)', name)
 
         if match is None:
             if name != 'FONT_FALLBACK' and name != 'FONT_FALLBACK_INTERNAL':
@@ -96,4 +100,4 @@ class FontResourceGenerator(ResourceGenerator):
 
             return 14
 
-        return int(match.group(0))
+        return int(match.group(1))
